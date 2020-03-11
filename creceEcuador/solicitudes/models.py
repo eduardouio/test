@@ -41,3 +41,10 @@ class Solicitud(models.Model):
     @property
     def tipo_credito(self):
         return self.id_tipo_credito.nombre
+    
+class HistorialFinanciamiento(models.Model):
+    id_usuario = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False)
+    id_solicitud = models.ForeignKey('Solicitud', on_delete=models.DO_NOTHING, blank=False)
+    fecha_financiamiento = models.DateField()
+    porcentaje_financiamiento = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=0)
+    monto_financiamiento = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
