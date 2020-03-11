@@ -6,6 +6,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'inversionista', views.UsuariosViewSet)
+router.register(r'encuesta', views.EncuestaViewSet)
 
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [

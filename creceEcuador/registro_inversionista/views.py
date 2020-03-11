@@ -9,7 +9,7 @@ from . import serializers
 
 class UsuariosViewSet(viewsets.ModelViewSet):
     """API endpoint that allows users to be viewed or edited."""
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes =[permissions.IsAuthenticated]
     queryset = models.Usuario.objects.all()
     serializer_class = serializers.UsuarioSerializer
 
@@ -17,7 +17,7 @@ class RegisterUsers(generics.CreateAPIView):
     """
     POST auth/register/inversionista/
     """
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
         username = request.data.get("username", "")
@@ -40,3 +40,8 @@ class RegisterUsers(generics.CreateAPIView):
         models.Usuario.objects.create(usuario=username, nombres=nombres, apellidos=apellidos, email=email, celular=celular, tipo_persona=tipo_persona, user=new_user)
         return Response({"mensaje": "Su cuenta ha sido agregada correctamente"},status=status.HTTP_200_OK, )
 
+class EncuestaViewSet(viewsets.ModelViewSet):
+    """API endpoint that allows users to be viewed or edited."""
+    permission_classes =[permissions.IsAuthenticated]
+    queryset = models.Encuesta.objects.all()
+    serializer_class = serializers.EncuestaSerializer

@@ -11,3 +11,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
         """"Metadata"""
         model = models.Usuario
         fields = '__all__'
+
+
+class EncuestaSerializer(serializers.ModelSerializer): 
+    
+    class Meta:
+        """"Metadata"""
+        model = models.Encuesta
+        fields = '__all__'

@@ -10,17 +10,17 @@ class Usuario(models.Model):
     persona_natural = 1
     persona_juridica = 0
     opciones_tipo_persona = [
-    	(persona_natural, "persona natural"),
-    	(persona_juridica, "persona juridica")
+        (persona_natural, "persona natural"),
+        (persona_juridica, "persona juridica")
     ]
 
     estado_confirmado = 1
     estado_noConfirmado = 0
     estado_bloqueado = -1
     opciones_estado = [
-    	(estado_confirmado,"Confirmado"),
-    	(estado_noConfirmado, "No confirmado"),
-    	(estado_bloqueado, "Bloqueado"),
+        (estado_confirmado,"Confirmado"),
+        (estado_noConfirmado, "No confirmado"),
+        (estado_bloqueado, "Bloqueado"),
     ]
 
 
@@ -41,3 +41,36 @@ class Usuario(models.Model):
 
     #Model user
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=True)
+
+class Pregunta(models.Model):
+    texto = models.CharField(max_length=50)
+    class Meta:
+        verbose_name = "Pregunta"
+        verbose_name_plural = "Preguntas"
+
+    def __str__(self):
+        return self.texto
+
+class Respuesta(models.Model):
+    texto = models.CharField(max_length=50)
+    class Meta:
+        verbose_name = "Respuesta"
+        verbose_name_plural = "Respuestas"
+
+    def __str__(self):
+        return self.texto
+
+class Encuesta(models.Model):
+    id_pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
+    id_respuesta = models.ForeignKey(Respuesta, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    fecha = models.DateField()
+    class Meta:
+        verbose_name = "Encuesta"
+        verbose_name_plural = "Encuestas"
+
+    # def __str__(self):
+    #     pass
+    
+    
+    
