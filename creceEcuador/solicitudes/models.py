@@ -21,18 +21,18 @@ class Solicitud(models.Model):
     monto = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     moneda = models.CharField(max_length=10)
     tir = models.DecimalField(max_digits=4, decimal_places=2, blank=False)
-    total_porcentaje_financiado = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=0)
+    porcentaje_financiado = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=0)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_publicacion = models.DateField()
     fecha_finalizacion = models.DateField()
     fecha_expiracion = models.DateField()
-    autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False) #Se debe especificar la app del modelo
+    id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False) #Se debe especificar la app del modelo
     id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.DO_NOTHING, blank=False)
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.DO_NOTHING, blank=False)
 
     @property
-    def nombre_autor(self):
-        return (self.autor.nombres + " "  + self.autor.apellidos)
+    def autor(self):
+        return (self.id_autor.nombres + " "  + self.id_autor.apellidos)
     
     @property
     def categoria(self):

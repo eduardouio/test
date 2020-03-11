@@ -9,6 +9,8 @@ from django.core import serializers
 from django.http import HttpResponse
 import json
 
+from .types import INICIO_DEFAULT, INICIO_KEY, CANTIDAD_KEY, CANTIDAD_DEFAULT
+
 # Create your views here.
 class SolicitudViewSet(viewsets.ModelViewSet):
     queryset = Solicitud.objects.all().order_by('fecha_publicacion')
@@ -16,35 +18,20 @@ class SolicitudViewSet(viewsets.ModelViewSet):
 
 @api_view(['GET'])
 def get_solicitudes(request):
-    #setear los nombres de las keys de los parametros necesarios
-    inicio_key = 'inicio'
-    cantidad_key = 'cantidad'
-    offset_key = 'offset'
-
-    #setear defaults para valores de los parametros
-    inicio_default = 0
-    cantidad_default = 10
-    offset_default = 0
-
     #obtener la data del request
     request_data = request.data
 
     #Setear la data del request si se encuentra
     #Si no se encuentra setear el default
-    if inicio_key in request_data:
-        inicio = request_data[inicio_key]
-    else:
-        inicio = inicio_default
+    inicio = INICIO_DEFAULT
+    if INICIO_KEY in request_data:
+        if request_data[INICIO_KEY] >= 0 :
+            inicio = request_data[INICIO_KEY]
 
-    if cantidad_key in request_data:
-        cantidad = request_data[cantidad_key]
-    else:
-        cantidad = cantidad_default
-
-    if offset_key in request_data:
-        offset = request_data[offset_key]
-    else:
-        offset = offset_default
+    cantidad = CANTIDAD_DEFAULT    
+    if CANTIDAD_KEY in request_data:
+        if request_data[CANTIDAD_KEY] >= 0 :
+            cantidad = request_data[CANTIDAD_KEY]    
 
     #Se setea el indice del ultimo registro
     final = inicio + cantidad
@@ -57,7 +44,6 @@ def get_solicitudes(request):
     diccionario_respuesta = {
         'inicio': inicio,
         'cantidad': cantidad,
-        'offset': offset,
         'data': serializer.data
     }
 
