@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'registro_inversionista',
+    'solicitudes',
 
     #rest_framework
     'rest_framework',
