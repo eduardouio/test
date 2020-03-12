@@ -1,26 +1,20 @@
-# Django - viewflow commands
+# Django - commands
 
 ## Create migrations for the plataforma app.
 
 ```
-./manage.py makemigrations plataforma
+python manage.py makemigrations `nombreModelo`
+python manage.py migrate `nombreModelo`
 ```
-
-
-## Apply it
-```
-./manage.py migrate
-```
-
 
 ## Create an admin user to initial login
 ```
-./manage.py createsuperuser
+python manage.py createsuperuser
 ```
 
 ## Run the server
 ```
-./manage.py runserver
+python manage.py runserver
 ```
 
-Go to http://127.0.0.1:8000 and see the viewflow in action!
+Go to http://127.0.0.1:8000 and see the action!
