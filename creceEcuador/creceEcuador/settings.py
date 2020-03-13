@@ -45,6 +45,13 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+#Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'info@creceecuador.com'
+EMAIL_HOST_PASSWORD = 'crece01GYE'
+EMAIL_PORT = 587
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
