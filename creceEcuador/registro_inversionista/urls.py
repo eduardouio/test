@@ -14,5 +14,6 @@ urlpatterns = [
     path('register/', views.RegisterUsers.as_view(), name="auth-register"),
     url(r'^confirmar_email/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.confirmar_email, name='confirmar_email'),
+    url(r'fase1/', views.Proceso_formulario_inversion.as_view(), name="formulario-inversion")
 # Wire up our API using automatic URL routing.
 ]

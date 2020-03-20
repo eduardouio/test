@@ -17,6 +17,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 
+import json
+
 class UsuariosViewSet(viewsets.ModelViewSet):
     """API endpoint that allows users to be viewed or edited."""
     permission_classes =[permissions.IsAuthenticated]
@@ -25,7 +27,7 @@ class UsuariosViewSet(viewsets.ModelViewSet):
 
 class RegisterUsers(generics.CreateAPIView):
     """
-    POST auth/register/inversionista/
+    inversionista/register/
     """
     permission_classes = [permissions.AllowAny]
     serializer_class = serializers.UsuarioSerializer
@@ -97,4 +99,70 @@ def confirmar_email(request, uidb64, token):
         # return redirect('home')
         return HttpResponse('Su usuario ha sido confirmado con exito')
     else:
-        return HttpResponse('Activation link is invalid!')
+        return HttpResponse('Link de activación inválido!')
+
+
+class Proceso_formulario_inversion(generics.CreateAPIView):
+    """
+    inversionista/
+    """
+    permission_classes = [permissions.AllowAny]
+    serializer_class = serializers.UsuarioSerializer
+
+    def post(self, request, *args, **kwargs):
+        #Invesionista
+        nombre = request.data.get("nombre")
+        apellidos = request.data.get("apellidos")
+        cedula = request.data.get("cedula")
+        celular = request.data.get("celular")
+        conyuge = request.data.get("conyuge")
+        direccion_domicilio = request.data.get("direccion_domicilio")
+        ciudad = request.data.get("ciudad")
+        provincia = request.data.get("provincia")
+        telefono_domicilio = request.data.get("telefono_domicilio")
+
+        #Principal fuente de ingresos
+        fuente_ingresos = request.data.get("fuente_ingresos")
+        direccion_fuente_ingresos = request.data.get("direccion_fuente_ingresos")
+        ciudad_fuentes_ingresos = request.data.get("ciudad_fuentes_ingresos")
+        ingresos_mensuales = request.data.get("ingresos_mensuales")
+
+        #Cuenta bancaria
+        banco = request.data.get("banco")
+        numero_cuenta = request.data.get("numero_cuenta")
+        tipo_cuenta = request.data.get("tipo_cuenta")
+
+        descripcion_ingresos = json.dumps(fuente_ingresos).upper()
+        #inversionista ****Revisar
+        inversionista = models.Usuario.objects.filter(cedula=cedula)[0]
+        
+
+        if conyuge:
+            nombres_conyuge = request.data.get("nombres_conyuge")
+            apellidos_conyuge = request.data.get("apellidos_conyuge")
+            cedula_conyuge = request.data.get("cedula_conyuge")
+            new_conyuge = models.Conyuge(nombres= nombres_conyuge, apellidos=apellidos_conyuge, cedula=cedula_conyuge)
+            new_conyuge.save()
+
+            inversionista.conyuge_id = new_conyuge
+        
+        new_ingresos = models.Fuente_ingresos(descripcion= descripcion_ingresos, direccion= direccion_fuente_ingresos,
+                                                ciudad= ciudad_fuentes_ingresos, ingresos_mensuales=ingresos_mensuales)
+        new_ingresos.save()
+        
+        new_banco = models.Banco(nombre=banco)
+        new_banco.save()
+
+        new_cuenta_bancaria = models.Cuenta_bancaria(numero_cuenta= numero_cuenta, tipo_cuenta= tipo_cuenta, banco= new_banco)
+        new_cuenta_bancaria.save()
+        
+
+        #agregando al inversionista respectivo
+        inversionista.ciudad = ciudad
+        inversionista.provincia = provincia
+        inversionista.telefono_domicilio = telefono_domicilio
+        inversionista.ingresos = new_ingresos
+        inversionista.cuenta_bancaria = new_cuenta_bancaria
+        inversionista.save()
+
+        return Response({"mensaje": "Formulario enviado con exito"},status=status.HTTP_200_OK, )
