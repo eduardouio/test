@@ -4,3 +4,7 @@ db.sqlite3
 *.pyc
 creceEcuador/app/migrations/*
 **/migrations
+.DS_Store
+*/.DS_Store
+.cache/*
+*/.cache/*
