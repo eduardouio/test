@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app',
     'registro_inversionista',
     'solicitudes',
+    'proceso',
 
     #rest_framework
     'rest_framework',
