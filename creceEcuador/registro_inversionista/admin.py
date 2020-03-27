@@ -9,4 +9,3 @@ admin.site.register(models.Cuenta_bancaria)
 admin.site.register(models.Conyuge)
 admin.site.register(models.Banco)
 admin.site.register(models.Fuente_ingresos)
-

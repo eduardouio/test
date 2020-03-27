@@ -19,3 +19,4 @@ class EncuestaSerializer(serializers.ModelSerializer):
         """"Metadata"""
         model = models.Encuesta
         fields = '__all__'
+

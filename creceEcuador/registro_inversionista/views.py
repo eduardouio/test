@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from rest_framework import viewsets, generics,status, permissions
+from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -166,3 +166,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         inversionista.save()
 
         return Response({"mensaje": "Formulario enviado con exito"},status=status.HTTP_200_OK, )
+
+
+
+    

@@ -2,6 +2,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class Conyuge(models.Model):
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
@@ -128,8 +129,9 @@ class Encuesta(models.Model):
 
     # def __str__(self):
     #     pass
-            
 
+
+    
 
 
     
