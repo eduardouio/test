@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'fases_inversiones',
 
     'proceso',
+    'manager_archivos',
 
 
     #rest_framework
@@ -136,3 +137,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#Ruta a los archivos
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
