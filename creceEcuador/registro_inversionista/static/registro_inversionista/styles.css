@@ -1,0 +1,67 @@
+main{
+	background-color: #D5DEE5;
+	font-family: Montserrat;
+}
+
+form{
+	width: 100%;
+}
+
+input{
+	font-family: none;
+}
+
+
+ul{
+	list-style: none;
+}
+
+ul li{
+	color: #287191;
+	font-size: 12.9px;
+}
+
+button{
+	background-color: #287191;
+	color: #FFFFFF;
+	border-radius: 9.58px;
+	padding: 5px 25px;
+	font-size: 15.82px;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+}
+
+.tipos-ingresos{
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.tipos-ingresos p{
+	border-bottom: 1px solid;
+	text-align: center;
+}
+
+.tipos-ingresos img:first-child{
+	margin-right: 23.24px;
+}
+
+.tipos-ingresos img:last-child{
+	margin-left: 23.24px;
+}
+
+label.required::after {
+    content: "*";
+}
+
+.datos_personales{
+	color: #287191;
+	display: flex;
+}
+
+.encuesta > div{
+	color: #287191;
+	font-size: 12px;
+
+}

@@ -3,13 +3,14 @@ from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
 
 from . import models
 from . import serializers
 
 #confirmacion de email
 from django.http import HttpResponse
-from .forms import SignupForm
+from .forms import SignupForm, Encuesta_form
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -29,6 +30,7 @@ class RegisterUsers(generics.CreateAPIView):
     """
     inversionista/register/
     """
+    
     permission_classes = [permissions.AllowAny]
     serializer_class = serializers.UsuarioSerializer
 
@@ -43,12 +45,17 @@ class RegisterUsers(generics.CreateAPIView):
         tipo_persona = request.data.get("tipo_persona")
         new_user = User.objects.filter(username=usuario)[0]
         models.Usuario.objects.create(usuario=usuario, nombres=nombres, apellidos=apellidos, email=email, celular=celular, tipo_persona=tipo_persona, user=new_user)
-        return Response({"mensaje": "Su cuenta ha sido agregada correctamente"},status=status.HTTP_200_OK, )
+        return HttpResponseRedirect('?submitted=True')
         #return HttpResponse('Please confirm your email address to complete the registration')
 
     def get(self, request, *args, **kwargs):
+        submitted = False
         form = SignupForm()
-        return render(request, 'signup.html', {'form': form})
+        encuesta_form = Encuesta_form()
+        if 'submitted' in request.GET:
+            submitted = True
+        return render(request, 'registro_inversionista/signup.html', {'form': form, 'encuesta_form': encuesta_form, 'submitted': submitted})
+
 
 class EncuestaViewSet(viewsets.ModelViewSet):
     """API endpoint that allows users to be viewed or edited."""
@@ -68,7 +75,7 @@ def signup(request):
         new_user.save()
         current_site = get_current_site(request)
         mail_subject = 'Activa tu cuenta de Crece Ecuador'
-        message = render_to_string('acc_active_email.html', {
+        message = render_to_string('registro_inversionista/acc_active_email.html', {
             'usuario': usuario_input,
             'domain': current_site.domain,
             'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
@@ -79,7 +86,6 @@ def signup(request):
                     mail_subject, message, to=[to_email]
         )
         email.send()
-        return HttpResponse('Por favor confirma tu correo electrónico')
 
 
 
