@@ -24,5 +24,6 @@ urlpatterns = [
     path('inversionista/', include('registro_inversionista.urls')),
     path('transferencia/', include('manager_archivos.urls')),
     path('registro/', include('fases_inversiones.urls')),
-    path('home/', TemplateView.as_view(template_name="base.html"))
+    path('home/', TemplateView.as_view(template_name="base.html")),
+    path('lista_solicitudes/', TemplateView.as_view(template_name="solicitudes.html"))
 ]
