@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include 
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("solicitudes.urls")),
-    path('/inversionista', include('registro_inversionista.urls')),
+    path('solicitudes/', include("solicitudes.urls")),
+    path('inversionista/', include('registro_inversionista.urls')),
+    path('transferencia/', include('manager_archivos.urls')),
+    path('registro/', include('fases_inversiones.urls')),
+    path('home/', TemplateView.as_view(template_name="index.html")),
+    path('lista_solicitudes/', TemplateView.as_view(template_name="solicitudes.html")),
+    path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html"))
 ]

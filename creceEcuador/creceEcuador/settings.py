@@ -41,9 +41,22 @@ INSTALLED_APPS = [
     'registro_inversionista',
     'solicitudes',
 
+    'fases_inversiones',
+
+    'proceso',
+    'manager_archivos',
+
+
     #rest_framework
     'rest_framework',
 ]
+
+#Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'info@creceecuador.com'
+EMAIL_HOST_PASSWORD = 'crece01GYE'
+EMAIL_PORT = 587
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +73,7 @@ ROOT_URLCONF = 'creceEcuador.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'creceEcuador/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,3 +137,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#Ruta a los archivos
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'creceEcuador/static'),
+]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]

@@ -1,0 +1,29 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'css/solicitudes.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'css/detalle_solicitudes.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                <section class="crece-detalle-operaciones">
+
+                </section>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+            <script src="{% static 'js/detalle_solicitud.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

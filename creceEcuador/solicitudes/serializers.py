@@ -5,6 +5,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
     autor = serializers.ReadOnlyField()
     categoria = serializers.ReadOnlyField()
     tipo_credito = serializers.ReadOnlyField()
+    tipo_persona = serializers.ReadOnlyField()
 
     class Meta:
         model = Solicitud
@@ -14,6 +15,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'operacion',
             'plazo',
             'autor',
+            'tipo_persona',
             'url',
             'imagen_url',
             'monto',

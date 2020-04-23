@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 from registro_inversionista.models import Usuario
 
 # Create your models here.
@@ -41,6 +42,15 @@ class Solicitud(models.Model):
     @property
     def tipo_credito(self):
         return self.id_tipo_credito.nombre
+        
+    @property
+    def tipo_persona(self):
+        if self.id_autor.tipo_persona == 0:
+            return "Persona Juridica"
+        
+        return "Persona Natural"
+
+
     
 class HistorialFinanciamiento(models.Model):
     id_usuario = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False)

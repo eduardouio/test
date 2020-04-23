@@ -1,0 +1,53 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'css/solicitudes.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+
+                <!-- Operaciones -->
+                <section class="crece-operaciones">
+                  <div class="container">
+                        <h5>Oportunidades de inversión </h5> 
+                          <div class= "ccrece-operaciones-vista" id="crece-operaciones-contenido">
+                            <div class="row">
+                            </div>
+                          </div>
+
+                  </div>
+                  <button class="crece-operaciones-anterior">Anterior</button>
+                  <button class="crece-operaciones-siguiente">Siguiente</button>
+                </section>
+                
+                <section class= "crece-operaciones-mobile">
+
+                  <div class="container">
+                        <h5>Oportunidades de inversión </h5> 
+                          <div class= "ccrece-operaciones-vista-mobile" id="crece-operaciones-contenido-mobile">
+                            <div class="row">
+                            </div>
+                          </div>
+
+                  </div>
+                  <button class="crece-operaciones-anterior">Anterior</button>
+                  <button class="crece-operaciones-siguiente">Siguiente</button>
+                </section>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+            <script src="{% static 'js/solicitudes.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

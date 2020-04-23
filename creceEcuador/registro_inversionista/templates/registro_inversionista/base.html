@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <title>Crece Ecuador</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="icon" href="{% static 'assets/Logo_crece_pie.png' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    
+    <link href="{% static 'registro_inversionista/styles.css' %}" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    {% block content %}
+      <p>Placeholder text in base template. Replace with page content.</p>
+    {% endblock content %}
+  </body>
+</html>

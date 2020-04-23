@@ -1,0 +1,14 @@
+{% autoescape off %}
+Estimado {{ usuario.nombres }} {{usuario.apellidos}},
+
+¡Gracias por registrarte como inversionista en Crece Ecuador!
+
+Descubre oportunidades de inversión en los términos que más se acoplen a tus preferencias. Explora las opciones en Oportunidades de Inversión y empieza a ganar rentabilidad con impacto social.
+
+Si tienes dudas o deseas nuestro acompañamiento no dudes en contactarnos.
+
+El equipo de Crece
+
+Please click on the link to confirm your registration,
+http://{{ domain }}{% url 'confirmar_email' uidb64=uid token=token %}
+{% endautoescape %}

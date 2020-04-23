@@ -1,5 +1,15 @@
 # Django - commands
 
+## Installing packages
+```
+pip install -r requirements.txt
+```
+## Adding packages
+```
+pip install PACKAGE
+pip freeze > requirements.txt
+```
+
 ## Create migrations for the plataforma app.
 
 ```

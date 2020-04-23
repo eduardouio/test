@@ -1,0 +1,1926 @@
+[
+{
+      "model": "contenttypes.contenttype",
+      "pk": 1,
+      "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 2,
+      "fields": {
+            "app_label": "auth",
+            "model": "permission"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 3,
+      "fields": {
+            "app_label": "auth",
+            "model": "group"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 4,
+      "fields": {
+            "app_label": "auth",
+            "model": "user"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 5,
+      "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 6,
+      "fields": {
+            "app_label": "sessions",
+            "model": "session"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 7,
+      "fields": {
+            "app_label": "app",
+            "model": "user"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 8,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "banco"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 9,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "conyuge"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 10,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "cuenta_bancaria"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 11,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "fuente_ingresos"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 12,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "pregunta"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 13,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "respuesta"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 14,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "usuario"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 15,
+      "fields": {
+            "app_label": "registro_inversionista",
+            "model": "encuesta"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 16,
+      "fields": {
+            "app_label": "solicitudes",
+            "model": "categoriasolicitud"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 17,
+      "fields": {
+            "app_label": "solicitudes",
+            "model": "tipocredito"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 18,
+      "fields": {
+            "app_label": "solicitudes",
+            "model": "solicitud"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 19,
+      "fields": {
+            "app_label": "solicitudes",
+            "model": "historialfinanciamiento"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 20,
+      "fields": {
+            "app_label": "fases_inversiones",
+            "model": "inversion"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 21,
+      "fields": {
+            "app_label": "fases_inversiones",
+            "model": "pago_detalle"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 22,
+      "fields": {
+            "app_label": "proceso",
+            "model": "proceso"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 23,
+      "fields": {
+            "app_label": "proceso",
+            "model": "tarea"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 24,
+      "fields": {
+            "app_label": "proceso",
+            "model": "tareaprevia"
+      }
+},
+{
+      "model": "contenttypes.contenttype",
+      "pk": 25,
+      "fields": {
+            "app_label": "manager_archivos",
+            "model": "transferenciainversion"
+      }
+},
+{
+      "model": "sessions.session",
+      "pk": "yncf3hlvy1f0yfq4nkiqhintx4tca62e",
+      "fields": {
+            "session_data": "ZWY1YzRjMTJhNWZhZjAxYWNkMWFlNmYxMWUxMDE2OTgzZmNhYzJjYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
+            "expire_date": "2020-05-05T05:47:12.832Z"
+      }
+},
+{
+      "model": "solicitudes.categoriasolicitud",
+      "pk": 1,
+      "fields": {
+            "nombre": "Tec"
+      }
+},
+{
+      "model": "solicitudes.categoriasolicitud",
+      "pk": 2,
+      "fields": {
+            "nombre": "Agro"
+      }
+},
+{
+      "model": "solicitudes.tipocredito",
+      "pk": 1,
+      "fields": {
+            "nombre": "tipo_credito_1"
+      }
+},
+{
+      "model": "solicitudes.solicitud",
+      "pk": 1,
+      "fields": {
+            "titulo": "new fintec",
+            "operacion": "operacion de la fintec",
+            "historia": "historia de la fintec",
+            "plazo": 12,
+            "url": "https://www.fintec.com",
+            "imagen_url": "https://www.bkd.com/sites/default/files/2018-06/CRE-19625421_Large.jpg",
+            "monto": "12000.00",
+            "moneda": "USD",
+            "tir": "0.61",
+            "porcentaje_financiado": "0.23",
+            "fecha_creacion": "2020-04-21",
+            "fecha_publicacion": "2020-04-21",
+            "fecha_finalizacion": "2020-04-21",
+            "fecha_expiracion": "2020-04-13",
+            "id_autor": 1,
+            "id_categoria": 1,
+            "id_tipo_credito": 1
+      }
+},
+{
+      "model": "solicitudes.solicitud",
+      "pk": 2,
+      "fields": {
+            "titulo": "Segunda fintec",
+            "operacion": "Segunda fintec operation",
+            "historia": "Segunda fintec historia",
+            "plazo": 18,
+            "url": "https://www.fintec2.com",
+            "imagen_url": "https://financialinstitutions.bakermckenzie.com/wp-content/uploads/sites/22/2017/05/CSB54692_SetA_1576x1182-13.jpg",
+            "monto": "100000.00",
+            "moneda": "USD",
+            "tir": "1.21",
+            "porcentaje_financiado": "0.88",
+            "fecha_creacion": "2020-04-21",
+            "fecha_publicacion": "2020-04-21",
+            "fecha_finalizacion": "2020-04-21",
+            "fecha_expiracion": "2020-04-28",
+            "id_autor": 1,
+            "id_categoria": 1,
+            "id_tipo_credito": 1
+      }
+},
+{
+      "model": "solicitudes.solicitud",
+      "pk": 3,
+      "fields": {
+            "titulo": "Fintec 3",
+            "operacion": "Operacion fintex 3",
+            "historia": "Historia fint",
+            "plazo": 24,
+            "url": "https://www.fintex3.com",
+            "imagen_url": "https://s3-eu-west-1.amazonaws.com/img3.n-ix.com/wp-content/uploads/2017/10/13140836/fintech-banner-3.jpg",
+            "monto": "9000.00",
+            "moneda": "USD",
+            "tir": "12.10",
+            "porcentaje_financiado": "0.00",
+            "fecha_creacion": "2020-04-22",
+            "fecha_publicacion": "2020-04-22",
+            "fecha_finalizacion": "2020-04-22",
+            "fecha_expiracion": "2020-04-12",
+            "id_autor": 1,
+            "id_categoria": 1,
+            "id_tipo_credito": 1
+      }
+},
+{
+      "model": "solicitudes.solicitud",
+      "pk": 4,
+      "fields": {
+            "titulo": "Fintec JP",
+            "operacion": "Op JP",
+            "historia": "Hist JP",
+            "plazo": 120,
+            "url": "https://www.jp.com",
+            "imagen_url": "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+            "monto": "1500.00",
+            "moneda": "USD",
+            "tir": "12.33",
+            "porcentaje_financiado": "45.00",
+            "fecha_creacion": "2020-04-22",
+            "fecha_publicacion": "2020-04-22",
+            "fecha_finalizacion": "2020-04-22",
+            "fecha_expiracion": "2020-04-30",
+            "id_autor": 2,
+            "id_categoria": 2,
+            "id_tipo_credito": 1
+      }
+},
+{
+      "model": "fases_inversiones.inversion",
+      "pk": 1,
+      "fields": {
+            "id_user": 1,
+            "id_solicitud": 1,
+            "monto": 100.0,
+            "adjudicacion": 10.0,
+            "adjudicacion_iva": 12.0,
+            "inversion_total": 112.0,
+            "ganancia_total": 12.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.inversion",
+      "pk": 2,
+      "fields": {
+            "id_user": 1,
+            "id_solicitud": 3,
+            "monto": 1002.0,
+            "adjudicacion": 120.0,
+            "adjudicacion_iva": 123.0,
+            "inversion_total": 123.0,
+            "ganancia_total": 122.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.inversion",
+      "pk": 3,
+      "fields": {
+            "id_user": 1,
+            "id_solicitud": 2,
+            "monto": 1239.0,
+            "adjudicacion": 233.0,
+            "adjudicacion_iva": 233.0,
+            "inversion_total": 23.0,
+            "ganancia_total": 24.0,
+            "estado": 0
+      }
+},
+{
+      "model": "fases_inversiones.pago_detalle",
+      "pk": 1,
+      "fields": {
+            "id_inversion": 1,
+            "orden": 1,
+            "fecha": "2020-04-22",
+            "pago": 11.0,
+            "comision": 1.0,
+            "comision_iva": 1.0,
+            "ganancia": 1.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.pago_detalle",
+      "pk": 2,
+      "fields": {
+            "id_inversion": 1,
+            "orden": 1,
+            "fecha": "2020-04-22",
+            "pago": 120.0,
+            "comision": 2.0,
+            "comision_iva": 3.0,
+            "ganancia": 12.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.pago_detalle",
+      "pk": 3,
+      "fields": {
+            "id_inversion": 1,
+            "orden": 1,
+            "fecha": "2020-04-22",
+            "pago": 12.0,
+            "comision": 2.0,
+            "comision_iva": 2.0,
+            "ganancia": 122.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.pago_detalle",
+      "pk": 4,
+      "fields": {
+            "id_inversion": 2,
+            "orden": 1,
+            "fecha": "2020-04-22",
+            "pago": 15.0,
+            "comision": 12.0,
+            "comision_iva": 2.0,
+            "ganancia": 23.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.pago_detalle",
+      "pk": 5,
+      "fields": {
+            "id_inversion": 2,
+            "orden": 1,
+            "fecha": "2020-04-22",
+            "pago": 122.0,
+            "comision": 3.0,
+            "comision_iva": 3.0,
+            "ganancia": 3.0,
+            "estado": 1
+      }
+},
+{
+      "model": "fases_inversiones.pago_detalle",
+      "pk": 6,
+      "fields": {
+            "id_inversion": 3,
+            "orden": 2,
+            "fecha": "2020-04-22",
+            "pago": 2234.0,
+            "comision": 23.0,
+            "comision_iva": 24.0,
+            "ganancia": 23.0,
+            "estado": 1
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 1,
+      "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 2,
+      "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 3,
+      "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 4,
+      "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 5,
+      "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 6,
+      "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 7,
+      "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 8,
+      "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 9,
+      "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 10,
+      "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 11,
+      "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 12,
+      "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 13,
+      "fields": {
+            "name": "Can add user",
+            "content_type": 4,
+            "codename": "add_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 14,
+      "fields": {
+            "name": "Can change user",
+            "content_type": 4,
+            "codename": "change_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 15,
+      "fields": {
+            "name": "Can delete user",
+            "content_type": 4,
+            "codename": "delete_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 16,
+      "fields": {
+            "name": "Can view user",
+            "content_type": 4,
+            "codename": "view_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 17,
+      "fields": {
+            "name": "Can add content type",
+            "content_type": 5,
+            "codename": "add_contenttype"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 18,
+      "fields": {
+            "name": "Can change content type",
+            "content_type": 5,
+            "codename": "change_contenttype"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 19,
+      "fields": {
+            "name": "Can delete content type",
+            "content_type": 5,
+            "codename": "delete_contenttype"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 20,
+      "fields": {
+            "name": "Can view content type",
+            "content_type": 5,
+            "codename": "view_contenttype"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 21,
+      "fields": {
+            "name": "Can add session",
+            "content_type": 6,
+            "codename": "add_session"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 22,
+      "fields": {
+            "name": "Can change session",
+            "content_type": 6,
+            "codename": "change_session"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 23,
+      "fields": {
+            "name": "Can delete session",
+            "content_type": 6,
+            "codename": "delete_session"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 24,
+      "fields": {
+            "name": "Can view session",
+            "content_type": 6,
+            "codename": "view_session"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 25,
+      "fields": {
+            "name": "Can add user",
+            "content_type": 7,
+            "codename": "add_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 26,
+      "fields": {
+            "name": "Can change user",
+            "content_type": 7,
+            "codename": "change_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 27,
+      "fields": {
+            "name": "Can delete user",
+            "content_type": 7,
+            "codename": "delete_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 28,
+      "fields": {
+            "name": "Can view user",
+            "content_type": 7,
+            "codename": "view_user"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 29,
+      "fields": {
+            "name": "Can add Banco",
+            "content_type": 8,
+            "codename": "add_banco"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 30,
+      "fields": {
+            "name": "Can change Banco",
+            "content_type": 8,
+            "codename": "change_banco"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 31,
+      "fields": {
+            "name": "Can delete Banco",
+            "content_type": 8,
+            "codename": "delete_banco"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 32,
+      "fields": {
+            "name": "Can view Banco",
+            "content_type": 8,
+            "codename": "view_banco"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 33,
+      "fields": {
+            "name": "Can add Conyuge",
+            "content_type": 9,
+            "codename": "add_conyuge"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 34,
+      "fields": {
+            "name": "Can change Conyuge",
+            "content_type": 9,
+            "codename": "change_conyuge"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 35,
+      "fields": {
+            "name": "Can delete Conyuge",
+            "content_type": 9,
+            "codename": "delete_conyuge"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 36,
+      "fields": {
+            "name": "Can view Conyuge",
+            "content_type": 9,
+            "codename": "view_conyuge"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 37,
+      "fields": {
+            "name": "Can add Cuenta_bancaria",
+            "content_type": 10,
+            "codename": "add_cuenta_bancaria"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 38,
+      "fields": {
+            "name": "Can change Cuenta_bancaria",
+            "content_type": 10,
+            "codename": "change_cuenta_bancaria"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 39,
+      "fields": {
+            "name": "Can delete Cuenta_bancaria",
+            "content_type": 10,
+            "codename": "delete_cuenta_bancaria"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 40,
+      "fields": {
+            "name": "Can view Cuenta_bancaria",
+            "content_type": 10,
+            "codename": "view_cuenta_bancaria"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 41,
+      "fields": {
+            "name": "Can add Fuente_ingresos",
+            "content_type": 11,
+            "codename": "add_fuente_ingresos"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 42,
+      "fields": {
+            "name": "Can change Fuente_ingresos",
+            "content_type": 11,
+            "codename": "change_fuente_ingresos"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 43,
+      "fields": {
+            "name": "Can delete Fuente_ingresos",
+            "content_type": 11,
+            "codename": "delete_fuente_ingresos"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 44,
+      "fields": {
+            "name": "Can view Fuente_ingresos",
+            "content_type": 11,
+            "codename": "view_fuente_ingresos"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 45,
+      "fields": {
+            "name": "Can add Pregunta",
+            "content_type": 12,
+            "codename": "add_pregunta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 46,
+      "fields": {
+            "name": "Can change Pregunta",
+            "content_type": 12,
+            "codename": "change_pregunta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 47,
+      "fields": {
+            "name": "Can delete Pregunta",
+            "content_type": 12,
+            "codename": "delete_pregunta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 48,
+      "fields": {
+            "name": "Can view Pregunta",
+            "content_type": 12,
+            "codename": "view_pregunta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 49,
+      "fields": {
+            "name": "Can add Respuesta",
+            "content_type": 13,
+            "codename": "add_respuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 50,
+      "fields": {
+            "name": "Can change Respuesta",
+            "content_type": 13,
+            "codename": "change_respuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 51,
+      "fields": {
+            "name": "Can delete Respuesta",
+            "content_type": 13,
+            "codename": "delete_respuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 52,
+      "fields": {
+            "name": "Can view Respuesta",
+            "content_type": 13,
+            "codename": "view_respuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 53,
+      "fields": {
+            "name": "Can add usuario",
+            "content_type": 14,
+            "codename": "add_usuario"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 54,
+      "fields": {
+            "name": "Can change usuario",
+            "content_type": 14,
+            "codename": "change_usuario"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 55,
+      "fields": {
+            "name": "Can delete usuario",
+            "content_type": 14,
+            "codename": "delete_usuario"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 56,
+      "fields": {
+            "name": "Can view usuario",
+            "content_type": 14,
+            "codename": "view_usuario"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 57,
+      "fields": {
+            "name": "Can add Encuesta",
+            "content_type": 15,
+            "codename": "add_encuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 58,
+      "fields": {
+            "name": "Can change Encuesta",
+            "content_type": 15,
+            "codename": "change_encuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 59,
+      "fields": {
+            "name": "Can delete Encuesta",
+            "content_type": 15,
+            "codename": "delete_encuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 60,
+      "fields": {
+            "name": "Can view Encuesta",
+            "content_type": 15,
+            "codename": "view_encuesta"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 61,
+      "fields": {
+            "name": "Can add categoria solicitud",
+            "content_type": 16,
+            "codename": "add_categoriasolicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 62,
+      "fields": {
+            "name": "Can change categoria solicitud",
+            "content_type": 16,
+            "codename": "change_categoriasolicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 63,
+      "fields": {
+            "name": "Can delete categoria solicitud",
+            "content_type": 16,
+            "codename": "delete_categoriasolicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 64,
+      "fields": {
+            "name": "Can view categoria solicitud",
+            "content_type": 16,
+            "codename": "view_categoriasolicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 65,
+      "fields": {
+            "name": "Can add tipo credito",
+            "content_type": 17,
+            "codename": "add_tipocredito"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 66,
+      "fields": {
+            "name": "Can change tipo credito",
+            "content_type": 17,
+            "codename": "change_tipocredito"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 67,
+      "fields": {
+            "name": "Can delete tipo credito",
+            "content_type": 17,
+            "codename": "delete_tipocredito"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 68,
+      "fields": {
+            "name": "Can view tipo credito",
+            "content_type": 17,
+            "codename": "view_tipocredito"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 69,
+      "fields": {
+            "name": "Can add solicitud",
+            "content_type": 18,
+            "codename": "add_solicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 70,
+      "fields": {
+            "name": "Can change solicitud",
+            "content_type": 18,
+            "codename": "change_solicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 71,
+      "fields": {
+            "name": "Can delete solicitud",
+            "content_type": 18,
+            "codename": "delete_solicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 72,
+      "fields": {
+            "name": "Can view solicitud",
+            "content_type": 18,
+            "codename": "view_solicitud"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 73,
+      "fields": {
+            "name": "Can add historial financiamiento",
+            "content_type": 19,
+            "codename": "add_historialfinanciamiento"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 74,
+      "fields": {
+            "name": "Can change historial financiamiento",
+            "content_type": 19,
+            "codename": "change_historialfinanciamiento"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 75,
+      "fields": {
+            "name": "Can delete historial financiamiento",
+            "content_type": 19,
+            "codename": "delete_historialfinanciamiento"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 76,
+      "fields": {
+            "name": "Can view historial financiamiento",
+            "content_type": 19,
+            "codename": "view_historialfinanciamiento"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 77,
+      "fields": {
+            "name": "Can add Inversion",
+            "content_type": 20,
+            "codename": "add_inversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 78,
+      "fields": {
+            "name": "Can change Inversion",
+            "content_type": 20,
+            "codename": "change_inversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 79,
+      "fields": {
+            "name": "Can delete Inversion",
+            "content_type": 20,
+            "codename": "delete_inversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 80,
+      "fields": {
+            "name": "Can view Inversion",
+            "content_type": 20,
+            "codename": "view_inversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 81,
+      "fields": {
+            "name": "Can add Pago_detalle",
+            "content_type": 21,
+            "codename": "add_pago_detalle"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 82,
+      "fields": {
+            "name": "Can change Pago_detalle",
+            "content_type": 21,
+            "codename": "change_pago_detalle"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 83,
+      "fields": {
+            "name": "Can delete Pago_detalle",
+            "content_type": 21,
+            "codename": "delete_pago_detalle"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 84,
+      "fields": {
+            "name": "Can view Pago_detalle",
+            "content_type": 21,
+            "codename": "view_pago_detalle"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 85,
+      "fields": {
+            "name": "Can add Proceso",
+            "content_type": 22,
+            "codename": "add_proceso"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 86,
+      "fields": {
+            "name": "Can change Proceso",
+            "content_type": 22,
+            "codename": "change_proceso"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 87,
+      "fields": {
+            "name": "Can delete Proceso",
+            "content_type": 22,
+            "codename": "delete_proceso"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 88,
+      "fields": {
+            "name": "Can view Proceso",
+            "content_type": 22,
+            "codename": "view_proceso"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 89,
+      "fields": {
+            "name": "Can add Tarea",
+            "content_type": 23,
+            "codename": "add_tarea"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 90,
+      "fields": {
+            "name": "Can change Tarea",
+            "content_type": 23,
+            "codename": "change_tarea"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 91,
+      "fields": {
+            "name": "Can delete Tarea",
+            "content_type": 23,
+            "codename": "delete_tarea"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 92,
+      "fields": {
+            "name": "Can view Tarea",
+            "content_type": 23,
+            "codename": "view_tarea"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 93,
+      "fields": {
+            "name": "Can add Tarea Previa",
+            "content_type": 24,
+            "codename": "add_tareaprevia"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 94,
+      "fields": {
+            "name": "Can change Tarea Previa",
+            "content_type": 24,
+            "codename": "change_tareaprevia"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 95,
+      "fields": {
+            "name": "Can delete Tarea Previa",
+            "content_type": 24,
+            "codename": "delete_tareaprevia"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 96,
+      "fields": {
+            "name": "Can view Tarea Previa",
+            "content_type": 24,
+            "codename": "view_tareaprevia"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 97,
+      "fields": {
+            "name": "Can add Transferencia de Inversion",
+            "content_type": 25,
+            "codename": "add_transferenciainversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 98,
+      "fields": {
+            "name": "Can change Transferencia de Inversion",
+            "content_type": 25,
+            "codename": "change_transferenciainversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 99,
+      "fields": {
+            "name": "Can delete Transferencia de Inversion",
+            "content_type": 25,
+            "codename": "delete_transferenciainversion"
+      }
+},
+{
+      "model": "auth.permission",
+      "pk": 100,
+      "fields": {
+            "name": "Can view Transferencia de Inversion",
+            "content_type": 25,
+            "codename": "view_transferenciainversion"
+      }
+},
+{
+      "model": "auth.user",
+      "pk": 1,
+      "fields": {
+            "password": "pbkdf2_sha256$180000$Q63TRwPmRjc5$TMla6OLOXrCSOHqjs7H3pggNNthLHopx0D5W1k9+Ny0=",
+            "last_login": "2020-04-21T05:47:12.826Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "ad@min.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2020-04-21T05:46:53.322Z",
+            "groups": [],
+            "user_permissions": []
+      }
+},
+{
+      "model": "registro_inversionista.usuario",
+      "pk": 1,
+      "fields": {
+            "nombres": "Juan F",
+            "apellidos": "Laso",
+            "usuario": "juanflaso",
+            "password": "",
+            "email": "j@mail.com",
+            "celular": "0982237465",
+            "tipo_persona": 1,
+            "estado": 0,
+            "direccion1": "",
+            "direccion2": "",
+            "ciudad": "",
+            "provincia": "",
+            "pais": "",
+            "user": 1,
+            "cedula": "",
+            "cedula_ruta": "",
+            "conyuge_id": null,
+            "telefono_domicilio": null,
+            "ingresos": null,
+            "cuenta_bancaria": null
+      }
+},
+{
+      "model": "registro_inversionista.usuario",
+      "pk": 2,
+      "fields": {
+            "nombres": "Jose",
+            "apellidos": "Perez",
+            "usuario": "jper",
+            "password": "",
+            "email": "jp@mail.com",
+            "celular": "0982235674",
+            "tipo_persona": 0,
+            "estado": 0,
+            "direccion1": "",
+            "direccion2": "",
+            "ciudad": "",
+            "provincia": "",
+            "pais": "",
+            "user": 1,
+            "cedula": "",
+            "cedula_ruta": "",
+            "conyuge_id": null,
+            "telefono_domicilio": null,
+            "ingresos": null,
+            "cuenta_bancaria": null
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 1,
+      "fields": {
+            "action_time": "2020-04-21T05:47:28.399Z",
+            "user": 1,
+            "content_type": 16,
+            "object_id": "1",
+            "object_repr": "CategoriaSolicitud object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 2,
+      "fields": {
+            "action_time": "2020-04-21T05:47:32.171Z",
+            "user": 1,
+            "content_type": 16,
+            "object_id": "2",
+            "object_repr": "CategoriaSolicitud object (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 3,
+      "fields": {
+            "action_time": "2020-04-21T20:15:21.293Z",
+            "user": 1,
+            "content_type": 14,
+            "object_id": "1",
+            "object_repr": "Usuario object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 4,
+      "fields": {
+            "action_time": "2020-04-21T20:15:37.858Z",
+            "user": 1,
+            "content_type": 17,
+            "object_id": "1",
+            "object_repr": "TipoCredito object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 5,
+      "fields": {
+            "action_time": "2020-04-21T20:16:48.083Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "1",
+            "object_repr": "Solicitud object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 6,
+      "fields": {
+            "action_time": "2020-04-21T20:19:07.749Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "2",
+            "object_repr": "Solicitud object (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 7,
+      "fields": {
+            "action_time": "2020-04-22T00:25:42.954Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "Solicitud object (3)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 8,
+      "fields": {
+            "action_time": "2020-04-22T00:26:35.190Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "2",
+            "object_repr": "Solicitud object (2)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Imagen url\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 9,
+      "fields": {
+            "action_time": "2020-04-22T00:28:16.606Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "1",
+            "object_repr": "Solicitud object (1)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Url\", \"Imagen url\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 10,
+      "fields": {
+            "action_time": "2020-04-22T00:53:50.511Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "Solicitud object (3)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 11,
+      "fields": {
+            "action_time": "2020-04-22T05:17:15.869Z",
+            "user": 1,
+            "content_type": 20,
+            "object_id": "1",
+            "object_repr": "Inversion object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 12,
+      "fields": {
+            "action_time": "2020-04-22T05:22:52.374Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "1",
+            "object_repr": "Pago_detalle object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 13,
+      "fields": {
+            "action_time": "2020-04-22T05:26:49.877Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "2",
+            "object_repr": "Pago_detalle object (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 14,
+      "fields": {
+            "action_time": "2020-04-22T05:29:00.314Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "3",
+            "object_repr": "Pago_detalle object (3)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 15,
+      "fields": {
+            "action_time": "2020-04-22T05:32:51.913Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "3",
+            "object_repr": "Pago_detalle object (3)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 16,
+      "fields": {
+            "action_time": "2020-04-22T05:34:25.174Z",
+            "user": 1,
+            "content_type": 20,
+            "object_id": "2",
+            "object_repr": "Inversion object (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 17,
+      "fields": {
+            "action_time": "2020-04-22T05:34:49.064Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "4",
+            "object_repr": "Pago_detalle object (4)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 18,
+      "fields": {
+            "action_time": "2020-04-22T05:35:05.558Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "4",
+            "object_repr": "Pago_detalle object (4)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 19,
+      "fields": {
+            "action_time": "2020-04-22T05:35:34.616Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "5",
+            "object_repr": "Pago_detalle object (5)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 20,
+      "fields": {
+            "action_time": "2020-04-22T05:35:52.026Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "5",
+            "object_repr": "Pago_detalle object (5)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 21,
+      "fields": {
+            "action_time": "2020-04-22T05:36:23.238Z",
+            "user": 1,
+            "content_type": 20,
+            "object_id": "3",
+            "object_repr": "Inversion object (3)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 22,
+      "fields": {
+            "action_time": "2020-04-22T05:36:35.639Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "6",
+            "object_repr": "Pago_detalle object (6)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 23,
+      "fields": {
+            "action_time": "2020-04-22T05:36:45.869Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "6",
+            "object_repr": "Pago_detalle object (6)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 24,
+      "fields": {
+            "action_time": "2020-04-22T05:36:55.619Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "5",
+            "object_repr": "Pago_detalle object (5)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 25,
+      "fields": {
+            "action_time": "2020-04-22T06:00:49.924Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "1",
+            "object_repr": "Solicitud object (1)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 26,
+      "fields": {
+            "action_time": "2020-04-22T06:01:02.345Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "2",
+            "object_repr": "Solicitud object (2)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 27,
+      "fields": {
+            "action_time": "2020-04-22T06:01:13.357Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "Solicitud object (3)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 28,
+      "fields": {
+            "action_time": "2020-04-22T06:01:28.815Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "Solicitud object (3)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 29,
+      "fields": {
+            "action_time": "2020-04-22T06:23:54.723Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "Solicitud object (3)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 30,
+      "fields": {
+            "action_time": "2020-04-22T06:24:19.834Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "1",
+            "object_repr": "Solicitud object (1)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 31,
+      "fields": {
+            "action_time": "2020-04-22T06:24:59.514Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "2",
+            "object_repr": "Pago_detalle object (2)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 32,
+      "fields": {
+            "action_time": "2020-04-22T06:32:36.293Z",
+            "user": 1,
+            "content_type": 14,
+            "object_id": "2",
+            "object_repr": "Usuario object (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 33,
+      "fields": {
+            "action_time": "2020-04-22T06:34:46.790Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "4",
+            "object_repr": "Solicitud object (4)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 34,
+      "fields": {
+            "action_time": "2020-04-22T07:24:00.347Z",
+            "user": 1,
+            "content_type": 18,
+            "object_id": "3",
+            "object_repr": "Solicitud object (3)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 35,
+      "fields": {
+            "action_time": "2020-04-22T07:24:24.997Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "6",
+            "object_repr": "Pago_detalle object (6)",
+            "action_flag": 2,
+            "change_message": "[]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 36,
+      "fields": {
+            "action_time": "2020-04-22T07:24:29.775Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "5",
+            "object_repr": "Pago_detalle object (5)",
+            "action_flag": 2,
+            "change_message": "[]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 37,
+      "fields": {
+            "action_time": "2020-04-22T07:34:01.945Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "4",
+            "object_repr": "Pago_detalle object (4)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 38,
+      "fields": {
+            "action_time": "2020-04-22T07:34:14.042Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "6",
+            "object_repr": "Pago_detalle object (6)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+},
+{
+      "model": "admin.logentry",
+      "pk": 39,
+      "fields": {
+            "action_time": "2020-04-22T07:34:36.203Z",
+            "user": 1,
+            "content_type": 21,
+            "object_id": "6",
+            "object_repr": "Pago_detalle object (6)",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+      }
+}
+]

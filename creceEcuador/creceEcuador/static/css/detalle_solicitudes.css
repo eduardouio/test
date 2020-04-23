@@ -1,0 +1,32 @@
+.crece-detalle-operaciones{
+    background-color: rgb(36, 48, 57);
+}
+
+/* descripcion operaciones */
+.crece-detalle-operaciones-descripcion img{
+    width: 100%;
+    height: auto;
+    align-self: center;
+}
+
+.crece-detalle-operaciones-descripcion-img-container {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* cifras operacion */
+.crece-detalle-operaciones-cifras-cuadro-lateral {
+    background-color: white;
+    color: rgb(36, 48, 57);
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.crece-detalle-operaciones-cifras-cuadro-central {
+    background-color: rgb(44, 190, 199);
+    color: white;
+    height: 100%;
+}

@@ -1,0 +1,59 @@
+{% extends 'registro_inversionista/base.html' %}
+{% load static %}
+{% block content %}
+  <main >
+    <div class="container">
+            <div class="row">
+                <div class="tipos-ingresos">
+                  <p>Ingresa con</p>
+                  <div>
+                    <a href="#"><img src="{% static 'registro_inversionista/assets/facebook-ingreso.png' %}"></a>
+                    <a href="#"><img src="{% static 'registro_inversionista/assets/google-ingreso.png' %}"></a>
+                    <a href="#"><img src="{% static 'registro_inversionista/assets/twitter-ingreso.png' %}"></a>
+                  </div>
+                  <p>O registrate aqui:</p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% if submitted %}
+                  <p class="success">
+                     Por favor confirme su email
+                 </p>
+                {% else %}
+                  <form method="post">
+                    {% csrf_token %}
+                    <div class="datos_personales row">
+                        {% for field in form %}
+                          <div class="col-sm-6 col-lg-6">
+                            {{ field.label_tag }} {{ field }}
+                          </div>
+                        {% endfor %}
+                      
+                    </div>
+
+                    <div class="encuesta row">
+                      <table>
+                          {% for field in encuesta_form %}
+                            <div class="col-sm-6 col-lg-6">
+                              <strong>{{ field.label_tag }}</strong> {{ field }}
+                            </div>
+                          {% endfor %}
+                           
+                      </table>
+
+                    </div>
+
+                    <button type="submit"><strong>Registrarse</strong></button>
+                  </form>
+                {% endif %}
+
+            </div>
+
+
+    </div>
+
+  </main>
+  
+{% endblock content %}

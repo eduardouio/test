@@ -3,6 +3,54 @@ from django.db import models
 from django.conf import settings
 
 
+class Conyuge(models.Model):
+    nombres = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
+    cedula = models.CharField(max_length=10)
+    class Meta:
+        verbose_name = "Conyuge"
+        verbose_name_plural = "Conyuges"
+
+class Fuente_ingresos(models.Model):
+    descripcion = models.TextField()
+    direccion = models.CharField(max_length=200)
+    ciudad = models.CharField(max_length=50)
+    ingresos_mensuales = models.FloatField()
+    class Meta:
+        verbose_name = "Fuente_ingresos"
+        verbose_name_plural = "Fuente_ingresos"
+
+class Banco(models.Model):
+    nombre = models.CharField(max_length=150)
+    class Meta:
+        verbose_name = "Banco"
+        verbose_name_plural = "Bancos"
+
+class Cuenta_bancaria(models.Model):
+
+    cuenta_corriente = 1
+    cuenta_ahorros = 0
+    opciones_tipo_cuenta = [
+        (cuenta_corriente, "cuenta corriente"),
+        (cuenta_ahorros, "cuenta ahorros")
+    ]
+
+    estado_verificada = 1
+    estado_xVerificar = 0
+    opciones_tipo_estado = [
+        (estado_verificada, "Verificada"),
+        (estado_xVerificar, "Por verificar")
+    ]
+
+    numero_cuenta = models.CharField(max_length=15)
+    tipo_cuenta = models.IntegerField(choices=opciones_tipo_cuenta)
+    estado = models.IntegerField(choices=opciones_tipo_estado, default=0)
+    banco = models.ForeignKey(Banco,null=True, on_delete=models.CASCADE)
+
+
+    class Meta:
+        verbose_name = "Cuenta_bancaria"
+        verbose_name_plural = "Cuenta_bancarias"
 
 
 class Usuario(models.Model):
@@ -42,6 +90,16 @@ class Usuario(models.Model):
     #Model user
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=True)
 
+    #datos personales para financiar una inversion
+    cedula = models.CharField(max_length=10, blank=True)
+    cedula_ruta = models.TextField(blank=True)
+    conyuge_id = models.ForeignKey(Conyuge, blank=True, null=True, on_delete=models.CASCADE)
+    telefono_domicilio =  models.CharField(blank=True, null=True, max_length=30)
+    ingresos = models.ForeignKey(Fuente_ingresos, blank=True, null=True, on_delete=models.CASCADE)
+    cuenta_bancaria = models.ForeignKey(Cuenta_bancaria, blank=True, null=True, on_delete=models.CASCADE)
+
+
+
 class Pregunta(models.Model):
     texto = models.CharField(max_length=50)
     class Meta:
@@ -71,6 +129,10 @@ class Encuesta(models.Model):
 
     # def __str__(self):
     #     pass
+
+
     
+
+
     
     
