@@ -1,5 +1,6 @@
 let HOST = "http://localhost:8000/"
 let RUTA_SOLICITUDES = HOST+"solicitudes/"
+let RUTA_DETALLE_SOLICITUD = HOST+"detalle_solicitud/"
 let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 9;
 
@@ -124,7 +125,7 @@ function crearCuadrosOportunidadesInversion(data){
 
         let detalle_porcentaje = '<div class="operacion-historia-financiado">' + decimalAPorcentaje(oportunidad.porcentaje_financiado) + '% financiado</div>';
 
-        let enlace_mas_detalles = '<div class="operacion-historia-enlace">Ver</div>'; //TODO agregar enlace real
+        let enlace_mas_detalles = '<div class="operacion-historia-enlace"><a href="'+rutaDetalleSolicitud(oportunidad.id)+'">Ver</a></div>'; //TODO agregar enlace real
 
         let cierre_progreso_operacion = '</div>';
 
@@ -148,4 +149,8 @@ function crearCuadrosOportunidadesInversion(data){
 
 function decimalAPorcentaje(decimal){
     return decimal.split(".")[1];
+}
+
+function rutaDetalleSolicitud(id){
+    return RUTA_DETALLE_SOLICITUD+"?id="+id;
 }

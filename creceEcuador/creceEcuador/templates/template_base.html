@@ -16,6 +16,7 @@
         {% block head_css %}
         <link href="{% static 'slick/slick.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'slick/slick-theme.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'slick/base.css' %}" rel="stylesheet" type="text/css">
         {% block head_css_agregado %}{% endblock head_css_agregado %}
         {% endblock head_css %}
     </head>
@@ -27,7 +28,7 @@
                     <div class="container crece-header-contenido" id="crece-header-id">
                       <div class="row">
                         <div class="col">
-                          <a class="logo navbar-brand" href="#home">
+                          <a class="logo navbar-brand" href="/home">
                               <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                                 <div class="img-responsive"><img src="{% static 'assets/Logo_crece_menu.png' %}"></div>
                               </div>
@@ -50,7 +51,7 @@
                                   <a class="nav-link" href="#">Conocenos</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#">Oportunidades</a>
+                                  <a class="nav-link" href="/lista_solicitudes">Oportunidades</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" href="#">Contactos</a>
