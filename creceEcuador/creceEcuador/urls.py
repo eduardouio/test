@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include 
 from django.views.generic.base import TemplateView
+from rest_framework_simplejwt import views as jwt_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +28,10 @@ urlpatterns = [
     path('registro/', include('fases_inversiones.urls')),
     path('home/', TemplateView.as_view(template_name="index.html")),
     path('lista_solicitudes/', TemplateView.as_view(template_name="solicitudes.html")),
-    path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html"))
+    path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html")),
+
+    # #para obtener Tokens
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
 ]

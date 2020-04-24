@@ -77,7 +77,7 @@ class Usuario(models.Model):
     apellidos = models.CharField(max_length=100)
     usuario = models.CharField(max_length=50)
     password = models.CharField(max_length=50, blank=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     celular = models.CharField(max_length=10)
     tipo_persona = models.IntegerField(choices=opciones_tipo_persona)
     estado = models.IntegerField(choices=opciones_estado, default=0)

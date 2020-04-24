@@ -1,5 +1,9 @@
 {% extends 'registro_inversionista/base.html' %}
 {% load static %}
+        {% block head_css_agregado %}
+            <link href="{% static 'registro_inversionista/styles.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+
 {% block content %}
   <main >
     <div class="container">
@@ -22,13 +26,30 @@
                      Por favor confirme su email
                  </p>
                 {% else %}
-                  <form method="post">
+                  <form method="post" novalidate>
                     {% csrf_token %}
+                    <div>
+                      {% if form.errors %}
+
+                          {% for key,value in form.errors.items %} 
+
+                            {% if key == '__all__' %}
+                              {{ value|escape }}
+                            {% endif %}
+
+
+                          {% endfor %}
+
+                      {% endif %}
+                    </div>
                     <div class="datos_personales row">
                         {% for field in form %}
                           <div class="col-sm-6 col-lg-6">
                             {{ field.label_tag }} {{ field }}
                           </div>
+                          {% for error in field.errors %}
+                              <p style="color: red">{{ error }}</p>
+                          {% endfor %}
                         {% endfor %}
                       
                     </div>
