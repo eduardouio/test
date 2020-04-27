@@ -41,7 +41,7 @@ class SignupForm(ModelForm):
 
     class Meta:
         model = models.Usuario
-        fields = ( 'nombres', 'apellidos','usuario', 'password', 'email', 'tipo_persona', 'celular', 'ciudad' )
+        fields = ( 'nombres', 'apellidos','usuario', 'password', 'email', 'tipo_persona', 'celular', 'canton' )
         widgets = {'password': forms.PasswordInput()}
     
     def clean_usuario(self):

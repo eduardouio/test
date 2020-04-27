@@ -1,1926 +1,5608 @@
 [
+  {
+    "model": "contenttypes.contenttype",
+    "id": 1,
+    "fields": {
+          "app_label": "admin",
+          "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 2,
+    "fields": {
+          "app_label": "auth",
+          "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 3,
+    "fields": {
+          "app_label": "auth",
+          "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 4,
+    "fields": {
+          "app_label": "auth",
+          "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 5,
+    "fields": {
+          "app_label": "contenttypes",
+          "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 6,
+    "fields": {
+          "app_label": "sessions",
+          "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 7,
+    "fields": {
+          "app_label": "app",
+          "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 8,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "banco"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 9,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "conyuge"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 10,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "cuenta_bancaria"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 11,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "fuente_ingresos"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 12,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "pregunta"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 13,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "respuesta"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 14,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "usuario"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 15,
+    "fields": {
+          "app_label": "registro_inversionista",
+          "model": "encuesta"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 16,
+    "fields": {
+          "app_label": "solicitudes",
+          "model": "categoriasolicitud"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 17,
+    "fields": {
+          "app_label": "solicitudes",
+          "model": "tipocredito"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 18,
+    "fields": {
+          "app_label": "solicitudes",
+          "model": "solicitud"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 19,
+    "fields": {
+          "app_label": "solicitudes",
+          "model": "historialfinanciamiento"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 20,
+    "fields": {
+          "app_label": "fases_inversiones",
+          "model": "inversion"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 21,
+    "fields": {
+          "app_label": "fases_inversiones",
+          "model": "pago_detalle"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 22,
+    "fields": {
+          "app_label": "proceso",
+          "model": "proceso"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 23,
+    "fields": {
+          "app_label": "proceso",
+          "model": "tarea"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 24,
+    "fields": {
+          "app_label": "proceso",
+          "model": "tareaprevia"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "id": 25,
+    "fields": {
+          "app_label": "manager_archivos",
+          "model": "transferenciainversion"
+    }
+},
+{
+  "model": "contenttypes.contenttype",
+  "id": 26,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "canton"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "im0x7dr1o8wtgeew3w5ep0a110mf4ic4",
+  "fields": {
+    "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
+    "expire_date": "2020-05-09T23:53:32.913Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "m7uxw1es1vcpge4xyel3p5d9u62y5lnm",
+  "fields": {
+    "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
+    "expire_date": "2020-05-09T07:12:58.478Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yncf3hlvy1f0yfq4nkiqhintx4tca62e",
+  "fields": {
+    "session_data": "ZWY1YzRjMTJhNWZhZjAxYWNkMWFlNmYxMWUxMDE2OTgzZmNhYzJjYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
+    "expire_date": "2020-05-05T05:47:12.832Z"
+  }
+},
+{
+  "model": "registro_inversionista.conyuge",
+  "pk": 1,
+  "fields": {
+    "nombres": "Juan",
+    "apellidos": "Laso",
+    "cedula": "0383294923"
+  }
+},
+{
+  "model": "registro_inversionista.conyuge",
+  "pk": 2,
+  "fields": {
+    "nombres": "Juan",
+    "apellidos": "Laso",
+    "cedula": "32424"
+  }
+},
+{
+  "model": "registro_inversionista.conyuge",
+  "pk": 3,
+  "fields": {
+    "nombres": "Juan",
+    "apellidos": "Laso",
+    "cedula": "34234"
+  }
+},
+{
+  "model": "registro_inversionista.conyuge",
+  "pk": 4,
+  "fields": {
+    "nombres": "Juan",
+    "apellidos": "Laso",
+    "cedula": "123432423"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 101,
+  "fields": {
+    "nombre": "CUENCA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 102,
+  "fields": {
+    "nombre": "GIRON"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 103,
+  "fields": {
+    "nombre": "GUALACEO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 104,
+  "fields": {
+    "nombre": "NABON"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 105,
+  "fields": {
+    "nombre": "PAUTE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 106,
+  "fields": {
+    "nombre": "PUCARA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 107,
+  "fields": {
+    "nombre": "SAN FERNANDO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 108,
+  "fields": {
+    "nombre": "SANTA ISABEL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 109,
+  "fields": {
+    "nombre": "SIGSIG"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 110,
+  "fields": {
+    "nombre": "O\u00d1A"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 111,
+  "fields": {
+    "nombre": "CHORDELEG"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 112,
+  "fields": {
+    "nombre": "EL PAN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 113,
+  "fields": {
+    "nombre": "SEVILLA DE ORO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 114,
+  "fields": {
+    "nombre": "GUACHAPALA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 115,
+  "fields": {
+    "nombre": "CAMILO PONCE ENRIQUEZ"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 201,
+  "fields": {
+    "nombre": "GUARANDA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 202,
+  "fields": {
+    "nombre": "CHILLANES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 203,
+  "fields": {
+    "nombre": "SAN JOSE DE CHIMBO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 204,
+  "fields": {
+    "nombre": "ECHEANDIA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 205,
+  "fields": {
+    "nombre": "SAN MIGUEL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 206,
+  "fields": {
+    "nombre": "CALUMA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 207,
+  "fields": {
+    "nombre": "LAS NAVES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 301,
+  "fields": {
+    "nombre": "AZOGUES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 302,
+  "fields": {
+    "nombre": "BIBLIAN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 303,
+  "fields": {
+    "nombre": "CA\u00d1AR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 304,
+  "fields": {
+    "nombre": "LA TRONCAL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 305,
+  "fields": {
+    "nombre": "EL TAMBO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 306,
+  "fields": {
+    "nombre": "DELEG"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 307,
+  "fields": {
+    "nombre": "SUSCAL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 401,
+  "fields": {
+    "nombre": "TULCAN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 402,
+  "fields": {
+    "nombre": "BOLIVAR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 403,
+  "fields": {
+    "nombre": "ESPEJO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 404,
+  "fields": {
+    "nombre": "MIRA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 405,
+  "fields": {
+    "nombre": "MONTUFAR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 406,
+  "fields": {
+    "nombre": "SAN PEDRO DE HUACA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 501,
+  "fields": {
+    "nombre": "LATACUNGA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 502,
+  "fields": {
+    "nombre": "LA MANA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 503,
+  "fields": {
+    "nombre": "PANGUA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 504,
+  "fields": {
+    "nombre": "PUJILI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 505,
+  "fields": {
+    "nombre": "SALCEDO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 506,
+  "fields": {
+    "nombre": "SAQUISILI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 507,
+  "fields": {
+    "nombre": "SIGCHOS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 601,
+  "fields": {
+    "nombre": "RIOBAMBA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 602,
+  "fields": {
+    "nombre": "ALAUSI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 603,
+  "fields": {
+    "nombre": "COLTA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 604,
+  "fields": {
+    "nombre": "CHAMBO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 605,
+  "fields": {
+    "nombre": "CHUNCHI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 606,
+  "fields": {
+    "nombre": "GUAMOTE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 607,
+  "fields": {
+    "nombre": "GUANO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 608,
+  "fields": {
+    "nombre": "PALLATANGA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 609,
+  "fields": {
+    "nombre": "PENIPE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 610,
+  "fields": {
+    "nombre": "CUMANDA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 701,
+  "fields": {
+    "nombre": "MACHALA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 702,
+  "fields": {
+    "nombre": "ARENILLAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 703,
+  "fields": {
+    "nombre": "ATAHUALPA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 704,
+  "fields": {
+    "nombre": "BALSAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 705,
+  "fields": {
+    "nombre": "CHILLA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 706,
+  "fields": {
+    "nombre": "EL GUABO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 707,
+  "fields": {
+    "nombre": "HUAQUILLAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 708,
+  "fields": {
+    "nombre": "MARCABELI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 709,
+  "fields": {
+    "nombre": "PASAJE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 710,
+  "fields": {
+    "nombre": "PI\u00d1AS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 711,
+  "fields": {
+    "nombre": "PORTOVELO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 712,
+  "fields": {
+    "nombre": "SANTA ROSA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 713,
+  "fields": {
+    "nombre": "ZARUMA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 714,
+  "fields": {
+    "nombre": "LAS LAJAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 801,
+  "fields": {
+    "nombre": "ESMERALDAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 802,
+  "fields": {
+    "nombre": "ELOY ALFARO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 803,
+  "fields": {
+    "nombre": "MUISNE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 804,
+  "fields": {
+    "nombre": "QUININDE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 805,
+  "fields": {
+    "nombre": "SAN LORENZO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 806,
+  "fields": {
+    "nombre": "ATACAMES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 807,
+  "fields": {
+    "nombre": "RIOVERDE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 808,
+  "fields": {
+    "nombre": "LA CONCORDIA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 901,
+  "fields": {
+    "nombre": "GUAYAQUIL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 902,
+  "fields": {
+    "nombre": "ALFREDO BAQUERIZO MORENO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 903,
+  "fields": {
+    "nombre": "BALAO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 904,
+  "fields": {
+    "nombre": "BALZAR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 905,
+  "fields": {
+    "nombre": "COLIMES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 906,
+  "fields": {
+    "nombre": "DAULE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 907,
+  "fields": {
+    "nombre": "DURAN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 908,
+  "fields": {
+    "nombre": "EL EMPALME"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 909,
+  "fields": {
+    "nombre": "EL TRIUNFO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 910,
+  "fields": {
+    "nombre": "MILAGRO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 911,
+  "fields": {
+    "nombre": "NARANJAL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 912,
+  "fields": {
+    "nombre": "NARANJITO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 913,
+  "fields": {
+    "nombre": "PALESTINA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 914,
+  "fields": {
+    "nombre": "PEDRO CARBO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 916,
+  "fields": {
+    "nombre": "SAMBORONDON"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 918,
+  "fields": {
+    "nombre": "SANTA LUCIA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 919,
+  "fields": {
+    "nombre": "URBINA JADO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 920,
+  "fields": {
+    "nombre": "YAGUACHI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 921,
+  "fields": {
+    "nombre": "PLAYAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 922,
+  "fields": {
+    "nombre": "SIMON BOLIVAR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 923,
+  "fields": {
+    "nombre": "CORONEL MARCELINO MARIDUE\u00d1A"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 924,
+  "fields": {
+    "nombre": "LOMAS DE SARGENTILLO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 925,
+  "fields": {
+    "nombre": "NOBOL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 927,
+  "fields": {
+    "nombre": "GENERAL ANTONIO ELIZALDE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 928,
+  "fields": {
+    "nombre": "ISIDRO AYORA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1001,
+  "fields": {
+    "nombre": "IBARRA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1002,
+  "fields": {
+    "nombre": "ANTONIO ANTE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1003,
+  "fields": {
+    "nombre": "COTACACHI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1004,
+  "fields": {
+    "nombre": "OTAVALO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1005,
+  "fields": {
+    "nombre": "PIMAMPIRO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1006,
+  "fields": {
+    "nombre": "SAN MIGUEL DE URCUQUI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1101,
+  "fields": {
+    "nombre": "LOJA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1102,
+  "fields": {
+    "nombre": "CALVAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1103,
+  "fields": {
+    "nombre": "CATAMAYO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1104,
+  "fields": {
+    "nombre": "CELICA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1105,
+  "fields": {
+    "nombre": "CHAGUARPAMBA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1106,
+  "fields": {
+    "nombre": "ESPINDOLA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1107,
+  "fields": {
+    "nombre": "GONZANAMA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1108,
+  "fields": {
+    "nombre": "MACARA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1109,
+  "fields": {
+    "nombre": "PALTAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1110,
+  "fields": {
+    "nombre": "PUYANGO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1111,
+  "fields": {
+    "nombre": "SARAGURO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1112,
+  "fields": {
+    "nombre": "SOZORANGA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1113,
+  "fields": {
+    "nombre": "ZAPOTILLO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1114,
+  "fields": {
+    "nombre": "PINDAL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1115,
+  "fields": {
+    "nombre": "QUILANGA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1116,
+  "fields": {
+    "nombre": "OLMEDO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1201,
+  "fields": {
+    "nombre": "BABAHOYO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1202,
+  "fields": {
+    "nombre": "BABA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1203,
+  "fields": {
+    "nombre": "MONTALVO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1204,
+  "fields": {
+    "nombre": "PUEBLOVIEJO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1205,
+  "fields": {
+    "nombre": "QUEVEDO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1206,
+  "fields": {
+    "nombre": "URDANETA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1207,
+  "fields": {
+    "nombre": "VENTANAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1208,
+  "fields": {
+    "nombre": "VINCES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1209,
+  "fields": {
+    "nombre": "PALENQUE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1210,
+  "fields": {
+    "nombre": "BUENA FE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1211,
+  "fields": {
+    "nombre": "VALENCIA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1212,
+  "fields": {
+    "nombre": "MOCACHE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1213,
+  "fields": {
+    "nombre": "QUINSALOMA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1301,
+  "fields": {
+    "nombre": "PORTOVIEJO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1302,
+  "fields": {
+    "nombre": "BOLIVAR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1303,
+  "fields": {
+    "nombre": "CHONE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1304,
+  "fields": {
+    "nombre": "EL CARMEN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1305,
+  "fields": {
+    "nombre": "FLAVIO ALFARO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1306,
+  "fields": {
+    "nombre": "JIPIJAPA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1307,
+  "fields": {
+    "nombre": "JUNIN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1308,
+  "fields": {
+    "nombre": "MANTA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1309,
+  "fields": {
+    "nombre": "MONTECRISTI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1310,
+  "fields": {
+    "nombre": "PAJAN"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1311,
+  "fields": {
+    "nombre": "PICHINCHA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1312,
+  "fields": {
+    "nombre": "ROCAFUERTE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1313,
+  "fields": {
+    "nombre": "SANTA ANA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1314,
+  "fields": {
+    "nombre": "SUCRE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1315,
+  "fields": {
+    "nombre": "TOSAGUA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1316,
+  "fields": {
+    "nombre": "24 DE MAYO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1317,
+  "fields": {
+    "nombre": "PEDERNALES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1318,
+  "fields": {
+    "nombre": "OLMEDO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1319,
+  "fields": {
+    "nombre": "PUERTO LOPEZ"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1320,
+  "fields": {
+    "nombre": "JAMA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1321,
+  "fields": {
+    "nombre": "JARAMIJO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1322,
+  "fields": {
+    "nombre": "SAN VICENTE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1401,
+  "fields": {
+    "nombre": "MORONA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1402,
+  "fields": {
+    "nombre": "GUALAQUIZA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1403,
+  "fields": {
+    "nombre": "LIMON INDANZA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1404,
+  "fields": {
+    "nombre": "PALORA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1405,
+  "fields": {
+    "nombre": "SANTIAGO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1406,
+  "fields": {
+    "nombre": "SUCUA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1407,
+  "fields": {
+    "nombre": "HUAMBOYA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1408,
+  "fields": {
+    "nombre": "SAN JUAN BOSCO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1409,
+  "fields": {
+    "nombre": "TAISHA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1410,
+  "fields": {
+    "nombre": "LOGRO\u00d1O"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1411,
+  "fields": {
+    "nombre": "PABLO VI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1412,
+  "fields": {
+    "nombre": "TIWINTZA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1501,
+  "fields": {
+    "nombre": "TENA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1503,
+  "fields": {
+    "nombre": "ARCHIDONA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1504,
+  "fields": {
+    "nombre": "EL CHACO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1507,
+  "fields": {
+    "nombre": "QUIJOS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1509,
+  "fields": {
+    "nombre": "CARLOS JULIO AROSEMENA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1601,
+  "fields": {
+    "nombre": "PASTAZA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1602,
+  "fields": {
+    "nombre": "MERA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1603,
+  "fields": {
+    "nombre": "SANTA CLARA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1604,
+  "fields": {
+    "nombre": "ARAJUNO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1701,
+  "fields": {
+    "nombre": "QUITO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1702,
+  "fields": {
+    "nombre": "CAYAMBE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1703,
+  "fields": {
+    "nombre": "MEJIA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1704,
+  "fields": {
+    "nombre": "PEDRO MONCAYO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1705,
+  "fields": {
+    "nombre": "RUMI\u00d1AHUI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1707,
+  "fields": {
+    "nombre": "SAN MIGUEL DE LOS BANCOS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1708,
+  "fields": {
+    "nombre": "PEDRO VICENTE MALDONADO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1709,
+  "fields": {
+    "nombre": "PUERTO QUITO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1801,
+  "fields": {
+    "nombre": "AMBATO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1802,
+  "fields": {
+    "nombre": "BA\u00d1OS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1803,
+  "fields": {
+    "nombre": "CEVALLOS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1804,
+  "fields": {
+    "nombre": "MOCHA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1805,
+  "fields": {
+    "nombre": "PATATE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1806,
+  "fields": {
+    "nombre": "QUERO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1807,
+  "fields": {
+    "nombre": "SAN PEDRO DE PELILEO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1808,
+  "fields": {
+    "nombre": "SANTIAGO DE PILLARO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1809,
+  "fields": {
+    "nombre": "TISALEO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1901,
+  "fields": {
+    "nombre": "ZAMORA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1902,
+  "fields": {
+    "nombre": "CHINCHIPE"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1903,
+  "fields": {
+    "nombre": "NANGARITZA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1904,
+  "fields": {
+    "nombre": "YACUAMBI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1905,
+  "fields": {
+    "nombre": "YANTZAZA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1906,
+  "fields": {
+    "nombre": "EL PANGUI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1907,
+  "fields": {
+    "nombre": "CENTINELA DEL CONDOR"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1908,
+  "fields": {
+    "nombre": "PALANDA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 1909,
+  "fields": {
+    "nombre": "PAQUISHA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2001,
+  "fields": {
+    "nombre": "SAN CRISTOBAL"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2002,
+  "fields": {
+    "nombre": "ISABELA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2003,
+  "fields": {
+    "nombre": "SANTA CRUZ"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2101,
+  "fields": {
+    "nombre": "LAGO AGRIO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2102,
+  "fields": {
+    "nombre": "GONZALO PIZARRO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2103,
+  "fields": {
+    "nombre": "PUTUMAYO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2104,
+  "fields": {
+    "nombre": "SHUSHUFINDI"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2105,
+  "fields": {
+    "nombre": "SUCUMBIOS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2106,
+  "fields": {
+    "nombre": "CASCALES"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2107,
+  "fields": {
+    "nombre": "CUYABENO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2201,
+  "fields": {
+    "nombre": "ORELLANA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2202,
+  "fields": {
+    "nombre": "AGUARICO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2203,
+  "fields": {
+    "nombre": "LA JOYA DE LOS SACHAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2204,
+  "fields": {
+    "nombre": "LORETO"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2301,
+  "fields": {
+    "nombre": "SANTO DOMINGO DE LOS TSACHILAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2401,
+  "fields": {
+    "nombre": "SANTA ELENA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2402,
+  "fields": {
+    "nombre": "LIBERTAD"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 2403,
+  "fields": {
+    "nombre": "SALINAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 9001,
+  "fields": {
+    "nombre": "LAS GOLONDRINAS"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 9003,
+  "fields": {
+    "nombre": "MANGA DEL CURA"
+  }
+},
+{
+  "model": "registro_inversionista.canton",
+  "pk": 9004,
+  "fields": {
+    "nombre": "EL PIEDRERO"
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 1,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 1922.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 2,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 1999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 3,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 1233.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 4,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 213.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 5,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 213.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 6,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 34234.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 7,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 34234.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 8,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 901,
+    "ingresos_mensuales": 1233.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 9,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 2133123.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 10,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 2133123.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 11,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 101,
+    "ingresos_mensuales": 2133123.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 12,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 13,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 14,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 15,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 16,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 17,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 18,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 19,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 20,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 21,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 22,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 23,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 24,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 25,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 26,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 27,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 28,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 29,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 30,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 31,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 32,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 33,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 34,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 35,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 36,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 37,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19999.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 38,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 123421.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 39,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 123421.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 40,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 3344.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 41,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 3344.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 42,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 3344.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 43,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 3344.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 44,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 45,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 46,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 47,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 48,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 49,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 50,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 51,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 52,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 53,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 54,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 55,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 56,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 57,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 58,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 59,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 60,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 21312312.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 61,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 2333.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 62,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 2334.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 63,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 64,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 65,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 66,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 67,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 68,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 69,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 70,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 102,
+    "ingresos_mensuales": 19000.0
+  }
+},
+{
+  "model": "registro_inversionista.fuente_ingresos",
+  "pk": 71,
+  "fields": {
+    "descripcion": "NULL",
+    "direccion": "Urdenor 2 Mz 214 Villa 26",
+    "canton": 107,
+    "ingresos_mensuales": 1234432.0
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 1,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 2,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 3,
+  "fields": {
+    "nombre": "grr"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 4,
+  "fields": {
+    "nombre": "gr"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 5,
+  "fields": {
+    "nombre": "gr"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 6,
+  "fields": {
+    "nombre": "gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 7,
+  "fields": {
+    "nombre": "gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 8,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 9,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 10,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 11,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 12,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 13,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 14,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 15,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 16,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 17,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 18,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 19,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 20,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 21,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 22,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 23,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 24,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 25,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 26,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 27,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 28,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 29,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 30,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 31,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 32,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 33,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 34,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 35,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 36,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 37,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 38,
+  "fields": {
+    "nombre": "gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 39,
+  "fields": {
+    "nombre": "gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 40,
+  "fields": {
+    "nombre": "f"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 41,
+  "fields": {
+    "nombre": "f"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 42,
+  "fields": {
+    "nombre": "f"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 43,
+  "fields": {
+    "nombre": "f"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 44,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 45,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 46,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 47,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 48,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 49,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 50,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 51,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 52,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 53,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 54,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 55,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 56,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 57,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 58,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 59,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 60,
+  "fields": {
+    "nombre": "122"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 61,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 62,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 63,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 64,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 65,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 66,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 67,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 68,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 69,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 70,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.banco",
+  "pk": 71,
+  "fields": {
+    "nombre": "Gye"
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 1,
+  "fields": {
+    "numero_cuenta": "183945",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 1
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 2,
+  "fields": {
+    "numero_cuenta": "129302123",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 2
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 3,
+  "fields": {
+    "numero_cuenta": "13414",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 3
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 4,
+  "fields": {
+    "numero_cuenta": "43241432",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 4
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 5,
+  "fields": {
+    "numero_cuenta": "43241432",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 5
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 6,
+  "fields": {
+    "numero_cuenta": "2342342",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 6
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 7,
+  "fields": {
+    "numero_cuenta": "2342342",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 7
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 8,
+  "fields": {
+    "numero_cuenta": "234543",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 8
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 9,
+  "fields": {
+    "numero_cuenta": "234324",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 9
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 10,
+  "fields": {
+    "numero_cuenta": "234324",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 10
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 11,
+  "fields": {
+    "numero_cuenta": "234324",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 11
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 12,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 12
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 13,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 13
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 14,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 14
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 15,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 15
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 16,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 16
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 17,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 17
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 18,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 18
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 19,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 19
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 20,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 20
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 21,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 21
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 22,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 22
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 23,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 23
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 24,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 24
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 25,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 25
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 26,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 26
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 27,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 27
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 28,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 28
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 29,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 29
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 30,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 30
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 31,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 31
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 32,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 32
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 33,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 33
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 34,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 34
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 35,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 35
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 36,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 36
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 37,
+  "fields": {
+    "numero_cuenta": "12312",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 37
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 38,
+  "fields": {
+    "numero_cuenta": "234",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 38
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 39,
+  "fields": {
+    "numero_cuenta": "234",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 39
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 40,
+  "fields": {
+    "numero_cuenta": "231",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 40
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 41,
+  "fields": {
+    "numero_cuenta": "231",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 41
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 42,
+  "fields": {
+    "numero_cuenta": "231",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 42
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 43,
+  "fields": {
+    "numero_cuenta": "231",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 43
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 44,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 44
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 45,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 45
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 46,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 46
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 47,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 47
+  }
+},
 {
-      "model": "contenttypes.contenttype",
-      "pk": 1,
-      "fields": {
-            "app_label": "admin",
-            "model": "logentry"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 48,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 48
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 2,
-      "fields": {
-            "app_label": "auth",
-            "model": "permission"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 49,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 49
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 3,
-      "fields": {
-            "app_label": "auth",
-            "model": "group"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 50,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 50
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 4,
-      "fields": {
-            "app_label": "auth",
-            "model": "user"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 51,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 51
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 5,
-      "fields": {
-            "app_label": "contenttypes",
-            "model": "contenttype"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 52,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 52
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 6,
-      "fields": {
-            "app_label": "sessions",
-            "model": "session"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 53,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 53
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 7,
-      "fields": {
-            "app_label": "app",
-            "model": "user"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 54,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 54
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 8,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "banco"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 55,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 55
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 9,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "conyuge"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 56,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 56
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 10,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "cuenta_bancaria"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 57,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 57
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 11,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "fuente_ingresos"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 58,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 58
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 12,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "pregunta"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 59,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 59
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 13,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "respuesta"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 60,
+  "fields": {
+    "numero_cuenta": "22",
+    "tipo_cuenta": 0,
+    "estado": 0,
+    "banco": 60
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 14,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "usuario"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 61,
+  "fields": {
+    "numero_cuenta": "123443",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 61
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 15,
-      "fields": {
-            "app_label": "registro_inversionista",
-            "model": "encuesta"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 62,
+  "fields": {
+    "numero_cuenta": "2813901",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 62
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 16,
-      "fields": {
-            "app_label": "solicitudes",
-            "model": "categoriasolicitud"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 63,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 63
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 17,
-      "fields": {
-            "app_label": "solicitudes",
-            "model": "tipocredito"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 64,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 64
+  }
 },
 {
-      "model": "contenttypes.contenttype",
-      "pk": 18,
-      "fields": {
-            "app_label": "solicitudes",
-            "model": "solicitud"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 19,
-      "fields": {
-            "app_label": "solicitudes",
-            "model": "historialfinanciamiento"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 20,
-      "fields": {
-            "app_label": "fases_inversiones",
-            "model": "inversion"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 21,
-      "fields": {
-            "app_label": "fases_inversiones",
-            "model": "pago_detalle"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 22,
-      "fields": {
-            "app_label": "proceso",
-            "model": "proceso"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 23,
-      "fields": {
-            "app_label": "proceso",
-            "model": "tarea"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 24,
-      "fields": {
-            "app_label": "proceso",
-            "model": "tareaprevia"
-      }
-},
-{
-      "model": "contenttypes.contenttype",
-      "pk": 25,
-      "fields": {
-            "app_label": "manager_archivos",
-            "model": "transferenciainversion"
-      }
-},
-{
-      "model": "sessions.session",
-      "pk": "yncf3hlvy1f0yfq4nkiqhintx4tca62e",
-      "fields": {
-            "session_data": "ZWY1YzRjMTJhNWZhZjAxYWNkMWFlNmYxMWUxMDE2OTgzZmNhYzJjYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
-            "expire_date": "2020-05-05T05:47:12.832Z"
-      }
-},
-{
-      "model": "solicitudes.categoriasolicitud",
-      "pk": 1,
-      "fields": {
-            "nombre": "Tec"
-      }
-},
-{
-      "model": "solicitudes.categoriasolicitud",
-      "pk": 2,
-      "fields": {
-            "nombre": "Agro"
-      }
-},
-{
-      "model": "solicitudes.tipocredito",
-      "pk": 1,
-      "fields": {
-            "nombre": "tipo_credito_1"
-      }
-},
-{
-      "model": "solicitudes.solicitud",
-      "pk": 1,
-      "fields": {
-            "titulo": "new fintec",
-            "operacion": "operacion de la fintec",
-            "historia": "historia de la fintec",
-            "plazo": 12,
-            "url": "https://www.fintec.com",
-            "imagen_url": "https://www.bkd.com/sites/default/files/2018-06/CRE-19625421_Large.jpg",
-            "monto": "12000.00",
-            "moneda": "USD",
-            "tir": "0.61",
-            "porcentaje_financiado": "0.23",
-            "fecha_creacion": "2020-04-21",
-            "fecha_publicacion": "2020-04-21",
-            "fecha_finalizacion": "2020-04-21",
-            "fecha_expiracion": "2020-04-13",
-            "id_autor": 1,
-            "id_categoria": 1,
-            "id_tipo_credito": 1
-      }
-},
-{
-      "model": "solicitudes.solicitud",
-      "pk": 2,
-      "fields": {
-            "titulo": "Segunda fintec",
-            "operacion": "Segunda fintec operation",
-            "historia": "Segunda fintec historia",
-            "plazo": 18,
-            "url": "https://www.fintec2.com",
-            "imagen_url": "https://financialinstitutions.bakermckenzie.com/wp-content/uploads/sites/22/2017/05/CSB54692_SetA_1576x1182-13.jpg",
-            "monto": "100000.00",
-            "moneda": "USD",
-            "tir": "1.21",
-            "porcentaje_financiado": "0.88",
-            "fecha_creacion": "2020-04-21",
-            "fecha_publicacion": "2020-04-21",
-            "fecha_finalizacion": "2020-04-21",
-            "fecha_expiracion": "2020-04-28",
-            "id_autor": 1,
-            "id_categoria": 1,
-            "id_tipo_credito": 1
-      }
-},
-{
-      "model": "solicitudes.solicitud",
-      "pk": 3,
-      "fields": {
-            "titulo": "Fintec 3",
-            "operacion": "Operacion fintex 3",
-            "historia": "Historia fint",
-            "plazo": 24,
-            "url": "https://www.fintex3.com",
-            "imagen_url": "https://s3-eu-west-1.amazonaws.com/img3.n-ix.com/wp-content/uploads/2017/10/13140836/fintech-banner-3.jpg",
-            "monto": "9000.00",
-            "moneda": "USD",
-            "tir": "12.10",
-            "porcentaje_financiado": "0.00",
-            "fecha_creacion": "2020-04-22",
-            "fecha_publicacion": "2020-04-22",
-            "fecha_finalizacion": "2020-04-22",
-            "fecha_expiracion": "2020-04-12",
-            "id_autor": 1,
-            "id_categoria": 1,
-            "id_tipo_credito": 1
-      }
-},
-{
-      "model": "solicitudes.solicitud",
-      "pk": 4,
-      "fields": {
-            "titulo": "Fintec JP",
-            "operacion": "Op JP",
-            "historia": "Hist JP",
-            "plazo": 120,
-            "url": "https://www.jp.com",
-            "imagen_url": "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
-            "monto": "1500.00",
-            "moneda": "USD",
-            "tir": "12.33",
-            "porcentaje_financiado": "45.00",
-            "fecha_creacion": "2020-04-22",
-            "fecha_publicacion": "2020-04-22",
-            "fecha_finalizacion": "2020-04-22",
-            "fecha_expiracion": "2020-04-30",
-            "id_autor": 2,
-            "id_categoria": 2,
-            "id_tipo_credito": 1
-      }
-},
-{
-      "model": "fases_inversiones.inversion",
-      "pk": 1,
-      "fields": {
-            "id_user": 1,
-            "id_solicitud": 1,
-            "monto": 100.0,
-            "adjudicacion": 10.0,
-            "adjudicacion_iva": 12.0,
-            "inversion_total": 112.0,
-            "ganancia_total": 12.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.inversion",
-      "pk": 2,
-      "fields": {
-            "id_user": 1,
-            "id_solicitud": 3,
-            "monto": 1002.0,
-            "adjudicacion": 120.0,
-            "adjudicacion_iva": 123.0,
-            "inversion_total": 123.0,
-            "ganancia_total": 122.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.inversion",
-      "pk": 3,
-      "fields": {
-            "id_user": 1,
-            "id_solicitud": 2,
-            "monto": 1239.0,
-            "adjudicacion": 233.0,
-            "adjudicacion_iva": 233.0,
-            "inversion_total": 23.0,
-            "ganancia_total": 24.0,
-            "estado": 0
-      }
-},
-{
-      "model": "fases_inversiones.pago_detalle",
-      "pk": 1,
-      "fields": {
-            "id_inversion": 1,
-            "orden": 1,
-            "fecha": "2020-04-22",
-            "pago": 11.0,
-            "comision": 1.0,
-            "comision_iva": 1.0,
-            "ganancia": 1.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.pago_detalle",
-      "pk": 2,
-      "fields": {
-            "id_inversion": 1,
-            "orden": 1,
-            "fecha": "2020-04-22",
-            "pago": 120.0,
-            "comision": 2.0,
-            "comision_iva": 3.0,
-            "ganancia": 12.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.pago_detalle",
-      "pk": 3,
-      "fields": {
-            "id_inversion": 1,
-            "orden": 1,
-            "fecha": "2020-04-22",
-            "pago": 12.0,
-            "comision": 2.0,
-            "comision_iva": 2.0,
-            "ganancia": 122.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.pago_detalle",
-      "pk": 4,
-      "fields": {
-            "id_inversion": 2,
-            "orden": 1,
-            "fecha": "2020-04-22",
-            "pago": 15.0,
-            "comision": 12.0,
-            "comision_iva": 2.0,
-            "ganancia": 23.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.pago_detalle",
-      "pk": 5,
-      "fields": {
-            "id_inversion": 2,
-            "orden": 1,
-            "fecha": "2020-04-22",
-            "pago": 122.0,
-            "comision": 3.0,
-            "comision_iva": 3.0,
-            "ganancia": 3.0,
-            "estado": 1
-      }
-},
-{
-      "model": "fases_inversiones.pago_detalle",
-      "pk": 6,
-      "fields": {
-            "id_inversion": 3,
-            "orden": 2,
-            "fecha": "2020-04-22",
-            "pago": 2234.0,
-            "comision": 23.0,
-            "comision_iva": 24.0,
-            "ganancia": 23.0,
-            "estado": 1
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 1,
-      "fields": {
-            "name": "Can add log entry",
-            "content_type": 1,
-            "codename": "add_logentry"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 2,
-      "fields": {
-            "name": "Can change log entry",
-            "content_type": 1,
-            "codename": "change_logentry"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 3,
-      "fields": {
-            "name": "Can delete log entry",
-            "content_type": 1,
-            "codename": "delete_logentry"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 4,
-      "fields": {
-            "name": "Can view log entry",
-            "content_type": 1,
-            "codename": "view_logentry"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 5,
-      "fields": {
-            "name": "Can add permission",
-            "content_type": 2,
-            "codename": "add_permission"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 6,
-      "fields": {
-            "name": "Can change permission",
-            "content_type": 2,
-            "codename": "change_permission"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 7,
-      "fields": {
-            "name": "Can delete permission",
-            "content_type": 2,
-            "codename": "delete_permission"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 8,
-      "fields": {
-            "name": "Can view permission",
-            "content_type": 2,
-            "codename": "view_permission"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 9,
-      "fields": {
-            "name": "Can add group",
-            "content_type": 3,
-            "codename": "add_group"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 10,
-      "fields": {
-            "name": "Can change group",
-            "content_type": 3,
-            "codename": "change_group"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 11,
-      "fields": {
-            "name": "Can delete group",
-            "content_type": 3,
-            "codename": "delete_group"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 12,
-      "fields": {
-            "name": "Can view group",
-            "content_type": 3,
-            "codename": "view_group"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 13,
-      "fields": {
-            "name": "Can add user",
-            "content_type": 4,
-            "codename": "add_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 14,
-      "fields": {
-            "name": "Can change user",
-            "content_type": 4,
-            "codename": "change_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 15,
-      "fields": {
-            "name": "Can delete user",
-            "content_type": 4,
-            "codename": "delete_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 16,
-      "fields": {
-            "name": "Can view user",
-            "content_type": 4,
-            "codename": "view_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 17,
-      "fields": {
-            "name": "Can add content type",
-            "content_type": 5,
-            "codename": "add_contenttype"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 18,
-      "fields": {
-            "name": "Can change content type",
-            "content_type": 5,
-            "codename": "change_contenttype"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 19,
-      "fields": {
-            "name": "Can delete content type",
-            "content_type": 5,
-            "codename": "delete_contenttype"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 20,
-      "fields": {
-            "name": "Can view content type",
-            "content_type": 5,
-            "codename": "view_contenttype"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 21,
-      "fields": {
-            "name": "Can add session",
-            "content_type": 6,
-            "codename": "add_session"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 22,
-      "fields": {
-            "name": "Can change session",
-            "content_type": 6,
-            "codename": "change_session"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 23,
-      "fields": {
-            "name": "Can delete session",
-            "content_type": 6,
-            "codename": "delete_session"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 24,
-      "fields": {
-            "name": "Can view session",
-            "content_type": 6,
-            "codename": "view_session"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 25,
-      "fields": {
-            "name": "Can add user",
-            "content_type": 7,
-            "codename": "add_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 26,
-      "fields": {
-            "name": "Can change user",
-            "content_type": 7,
-            "codename": "change_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 27,
-      "fields": {
-            "name": "Can delete user",
-            "content_type": 7,
-            "codename": "delete_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 28,
-      "fields": {
-            "name": "Can view user",
-            "content_type": 7,
-            "codename": "view_user"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 29,
-      "fields": {
-            "name": "Can add Banco",
-            "content_type": 8,
-            "codename": "add_banco"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 30,
-      "fields": {
-            "name": "Can change Banco",
-            "content_type": 8,
-            "codename": "change_banco"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 31,
-      "fields": {
-            "name": "Can delete Banco",
-            "content_type": 8,
-            "codename": "delete_banco"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 32,
-      "fields": {
-            "name": "Can view Banco",
-            "content_type": 8,
-            "codename": "view_banco"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 33,
-      "fields": {
-            "name": "Can add Conyuge",
-            "content_type": 9,
-            "codename": "add_conyuge"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 34,
-      "fields": {
-            "name": "Can change Conyuge",
-            "content_type": 9,
-            "codename": "change_conyuge"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 35,
-      "fields": {
-            "name": "Can delete Conyuge",
-            "content_type": 9,
-            "codename": "delete_conyuge"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 36,
-      "fields": {
-            "name": "Can view Conyuge",
-            "content_type": 9,
-            "codename": "view_conyuge"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 37,
-      "fields": {
-            "name": "Can add Cuenta_bancaria",
-            "content_type": 10,
-            "codename": "add_cuenta_bancaria"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 38,
-      "fields": {
-            "name": "Can change Cuenta_bancaria",
-            "content_type": 10,
-            "codename": "change_cuenta_bancaria"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 39,
-      "fields": {
-            "name": "Can delete Cuenta_bancaria",
-            "content_type": 10,
-            "codename": "delete_cuenta_bancaria"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 40,
-      "fields": {
-            "name": "Can view Cuenta_bancaria",
-            "content_type": 10,
-            "codename": "view_cuenta_bancaria"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 41,
-      "fields": {
-            "name": "Can add Fuente_ingresos",
-            "content_type": 11,
-            "codename": "add_fuente_ingresos"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 42,
-      "fields": {
-            "name": "Can change Fuente_ingresos",
-            "content_type": 11,
-            "codename": "change_fuente_ingresos"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 43,
-      "fields": {
-            "name": "Can delete Fuente_ingresos",
-            "content_type": 11,
-            "codename": "delete_fuente_ingresos"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 44,
-      "fields": {
-            "name": "Can view Fuente_ingresos",
-            "content_type": 11,
-            "codename": "view_fuente_ingresos"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 45,
-      "fields": {
-            "name": "Can add Pregunta",
-            "content_type": 12,
-            "codename": "add_pregunta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 46,
-      "fields": {
-            "name": "Can change Pregunta",
-            "content_type": 12,
-            "codename": "change_pregunta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 47,
-      "fields": {
-            "name": "Can delete Pregunta",
-            "content_type": 12,
-            "codename": "delete_pregunta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 48,
-      "fields": {
-            "name": "Can view Pregunta",
-            "content_type": 12,
-            "codename": "view_pregunta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 49,
-      "fields": {
-            "name": "Can add Respuesta",
-            "content_type": 13,
-            "codename": "add_respuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 50,
-      "fields": {
-            "name": "Can change Respuesta",
-            "content_type": 13,
-            "codename": "change_respuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 51,
-      "fields": {
-            "name": "Can delete Respuesta",
-            "content_type": 13,
-            "codename": "delete_respuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 52,
-      "fields": {
-            "name": "Can view Respuesta",
-            "content_type": 13,
-            "codename": "view_respuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 53,
-      "fields": {
-            "name": "Can add usuario",
-            "content_type": 14,
-            "codename": "add_usuario"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 54,
-      "fields": {
-            "name": "Can change usuario",
-            "content_type": 14,
-            "codename": "change_usuario"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 55,
-      "fields": {
-            "name": "Can delete usuario",
-            "content_type": 14,
-            "codename": "delete_usuario"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 56,
-      "fields": {
-            "name": "Can view usuario",
-            "content_type": 14,
-            "codename": "view_usuario"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 57,
-      "fields": {
-            "name": "Can add Encuesta",
-            "content_type": 15,
-            "codename": "add_encuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 58,
-      "fields": {
-            "name": "Can change Encuesta",
-            "content_type": 15,
-            "codename": "change_encuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 59,
-      "fields": {
-            "name": "Can delete Encuesta",
-            "content_type": 15,
-            "codename": "delete_encuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 60,
-      "fields": {
-            "name": "Can view Encuesta",
-            "content_type": 15,
-            "codename": "view_encuesta"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 61,
-      "fields": {
-            "name": "Can add categoria solicitud",
-            "content_type": 16,
-            "codename": "add_categoriasolicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 62,
-      "fields": {
-            "name": "Can change categoria solicitud",
-            "content_type": 16,
-            "codename": "change_categoriasolicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 63,
-      "fields": {
-            "name": "Can delete categoria solicitud",
-            "content_type": 16,
-            "codename": "delete_categoriasolicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 64,
-      "fields": {
-            "name": "Can view categoria solicitud",
-            "content_type": 16,
-            "codename": "view_categoriasolicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 65,
-      "fields": {
-            "name": "Can add tipo credito",
-            "content_type": 17,
-            "codename": "add_tipocredito"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 66,
-      "fields": {
-            "name": "Can change tipo credito",
-            "content_type": 17,
-            "codename": "change_tipocredito"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 67,
-      "fields": {
-            "name": "Can delete tipo credito",
-            "content_type": 17,
-            "codename": "delete_tipocredito"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 68,
-      "fields": {
-            "name": "Can view tipo credito",
-            "content_type": 17,
-            "codename": "view_tipocredito"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 69,
-      "fields": {
-            "name": "Can add solicitud",
-            "content_type": 18,
-            "codename": "add_solicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 70,
-      "fields": {
-            "name": "Can change solicitud",
-            "content_type": 18,
-            "codename": "change_solicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 71,
-      "fields": {
-            "name": "Can delete solicitud",
-            "content_type": 18,
-            "codename": "delete_solicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 72,
-      "fields": {
-            "name": "Can view solicitud",
-            "content_type": 18,
-            "codename": "view_solicitud"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 73,
-      "fields": {
-            "name": "Can add historial financiamiento",
-            "content_type": 19,
-            "codename": "add_historialfinanciamiento"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 74,
-      "fields": {
-            "name": "Can change historial financiamiento",
-            "content_type": 19,
-            "codename": "change_historialfinanciamiento"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 75,
-      "fields": {
-            "name": "Can delete historial financiamiento",
-            "content_type": 19,
-            "codename": "delete_historialfinanciamiento"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 76,
-      "fields": {
-            "name": "Can view historial financiamiento",
-            "content_type": 19,
-            "codename": "view_historialfinanciamiento"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 77,
-      "fields": {
-            "name": "Can add Inversion",
-            "content_type": 20,
-            "codename": "add_inversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 78,
-      "fields": {
-            "name": "Can change Inversion",
-            "content_type": 20,
-            "codename": "change_inversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 79,
-      "fields": {
-            "name": "Can delete Inversion",
-            "content_type": 20,
-            "codename": "delete_inversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 80,
-      "fields": {
-            "name": "Can view Inversion",
-            "content_type": 20,
-            "codename": "view_inversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 81,
-      "fields": {
-            "name": "Can add Pago_detalle",
-            "content_type": 21,
-            "codename": "add_pago_detalle"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 82,
-      "fields": {
-            "name": "Can change Pago_detalle",
-            "content_type": 21,
-            "codename": "change_pago_detalle"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 83,
-      "fields": {
-            "name": "Can delete Pago_detalle",
-            "content_type": 21,
-            "codename": "delete_pago_detalle"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 84,
-      "fields": {
-            "name": "Can view Pago_detalle",
-            "content_type": 21,
-            "codename": "view_pago_detalle"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 85,
-      "fields": {
-            "name": "Can add Proceso",
-            "content_type": 22,
-            "codename": "add_proceso"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 86,
-      "fields": {
-            "name": "Can change Proceso",
-            "content_type": 22,
-            "codename": "change_proceso"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 87,
-      "fields": {
-            "name": "Can delete Proceso",
-            "content_type": 22,
-            "codename": "delete_proceso"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 88,
-      "fields": {
-            "name": "Can view Proceso",
-            "content_type": 22,
-            "codename": "view_proceso"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 89,
-      "fields": {
-            "name": "Can add Tarea",
-            "content_type": 23,
-            "codename": "add_tarea"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 90,
-      "fields": {
-            "name": "Can change Tarea",
-            "content_type": 23,
-            "codename": "change_tarea"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 91,
-      "fields": {
-            "name": "Can delete Tarea",
-            "content_type": 23,
-            "codename": "delete_tarea"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 92,
-      "fields": {
-            "name": "Can view Tarea",
-            "content_type": 23,
-            "codename": "view_tarea"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 93,
-      "fields": {
-            "name": "Can add Tarea Previa",
-            "content_type": 24,
-            "codename": "add_tareaprevia"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 94,
-      "fields": {
-            "name": "Can change Tarea Previa",
-            "content_type": 24,
-            "codename": "change_tareaprevia"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 95,
-      "fields": {
-            "name": "Can delete Tarea Previa",
-            "content_type": 24,
-            "codename": "delete_tareaprevia"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 96,
-      "fields": {
-            "name": "Can view Tarea Previa",
-            "content_type": 24,
-            "codename": "view_tareaprevia"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 97,
-      "fields": {
-            "name": "Can add Transferencia de Inversion",
-            "content_type": 25,
-            "codename": "add_transferenciainversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 98,
-      "fields": {
-            "name": "Can change Transferencia de Inversion",
-            "content_type": 25,
-            "codename": "change_transferenciainversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 99,
-      "fields": {
-            "name": "Can delete Transferencia de Inversion",
-            "content_type": 25,
-            "codename": "delete_transferenciainversion"
-      }
-},
-{
-      "model": "auth.permission",
-      "pk": 100,
-      "fields": {
-            "name": "Can view Transferencia de Inversion",
-            "content_type": 25,
-            "codename": "view_transferenciainversion"
-      }
-},
-{
-      "model": "auth.user",
-      "pk": 1,
-      "fields": {
-            "password": "pbkdf2_sha256$180000$Q63TRwPmRjc5$TMla6OLOXrCSOHqjs7H3pggNNthLHopx0D5W1k9+Ny0=",
-            "last_login": "2020-04-21T05:47:12.826Z",
-            "is_superuser": true,
-            "username": "admin",
-            "first_name": "",
-            "last_name": "",
-            "email": "ad@min.com",
-            "is_staff": true,
-            "is_active": true,
-            "date_joined": "2020-04-21T05:46:53.322Z",
-            "groups": [],
-            "user_permissions": []
-      }
-},
-{
-      "model": "registro_inversionista.usuario",
-      "pk": 1,
-      "fields": {
-            "nombres": "Juan F",
-            "apellidos": "Laso",
-            "usuario": "juanflaso",
-            "password": "",
-            "email": "j@mail.com",
-            "celular": "0982237465",
-            "tipo_persona": 1,
-            "estado": 0,
-            "direccion1": "",
-            "direccion2": "",
-            "ciudad": "",
-            "provincia": "",
-            "pais": "",
-            "user": 1,
-            "cedula": "",
-            "cedula_ruta": "",
-            "conyuge_id": null,
-            "telefono_domicilio": null,
-            "ingresos": null,
-            "cuenta_bancaria": null
-      }
-},
-{
-      "model": "registro_inversionista.usuario",
-      "pk": 2,
-      "fields": {
-            "nombres": "Jose",
-            "apellidos": "Perez",
-            "usuario": "jper",
-            "password": "",
-            "email": "jp@mail.com",
-            "celular": "0982235674",
-            "tipo_persona": 0,
-            "estado": 0,
-            "direccion1": "",
-            "direccion2": "",
-            "ciudad": "",
-            "provincia": "",
-            "pais": "",
-            "user": 1,
-            "cedula": "",
-            "cedula_ruta": "",
-            "conyuge_id": null,
-            "telefono_domicilio": null,
-            "ingresos": null,
-            "cuenta_bancaria": null
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 1,
-      "fields": {
-            "action_time": "2020-04-21T05:47:28.399Z",
-            "user": 1,
-            "content_type": 16,
-            "object_id": "1",
-            "object_repr": "CategoriaSolicitud object (1)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 2,
-      "fields": {
-            "action_time": "2020-04-21T05:47:32.171Z",
-            "user": 1,
-            "content_type": 16,
-            "object_id": "2",
-            "object_repr": "CategoriaSolicitud object (2)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 3,
-      "fields": {
-            "action_time": "2020-04-21T20:15:21.293Z",
-            "user": 1,
-            "content_type": 14,
-            "object_id": "1",
-            "object_repr": "Usuario object (1)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 4,
-      "fields": {
-            "action_time": "2020-04-21T20:15:37.858Z",
-            "user": 1,
-            "content_type": 17,
-            "object_id": "1",
-            "object_repr": "TipoCredito object (1)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 5,
-      "fields": {
-            "action_time": "2020-04-21T20:16:48.083Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "1",
-            "object_repr": "Solicitud object (1)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 6,
-      "fields": {
-            "action_time": "2020-04-21T20:19:07.749Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "2",
-            "object_repr": "Solicitud object (2)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 7,
-      "fields": {
-            "action_time": "2020-04-22T00:25:42.954Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "3",
-            "object_repr": "Solicitud object (3)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 8,
-      "fields": {
-            "action_time": "2020-04-22T00:26:35.190Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "2",
-            "object_repr": "Solicitud object (2)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Imagen url\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 9,
-      "fields": {
-            "action_time": "2020-04-22T00:28:16.606Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "1",
-            "object_repr": "Solicitud object (1)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Url\", \"Imagen url\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 10,
-      "fields": {
-            "action_time": "2020-04-22T00:53:50.511Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "3",
-            "object_repr": "Solicitud object (3)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 11,
-      "fields": {
-            "action_time": "2020-04-22T05:17:15.869Z",
-            "user": 1,
-            "content_type": 20,
-            "object_id": "1",
-            "object_repr": "Inversion object (1)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 12,
-      "fields": {
-            "action_time": "2020-04-22T05:22:52.374Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "1",
-            "object_repr": "Pago_detalle object (1)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 13,
-      "fields": {
-            "action_time": "2020-04-22T05:26:49.877Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "2",
-            "object_repr": "Pago_detalle object (2)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 14,
-      "fields": {
-            "action_time": "2020-04-22T05:29:00.314Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "3",
-            "object_repr": "Pago_detalle object (3)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 15,
-      "fields": {
-            "action_time": "2020-04-22T05:32:51.913Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "3",
-            "object_repr": "Pago_detalle object (3)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 16,
-      "fields": {
-            "action_time": "2020-04-22T05:34:25.174Z",
-            "user": 1,
-            "content_type": 20,
-            "object_id": "2",
-            "object_repr": "Inversion object (2)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 17,
-      "fields": {
-            "action_time": "2020-04-22T05:34:49.064Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "4",
-            "object_repr": "Pago_detalle object (4)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 18,
-      "fields": {
-            "action_time": "2020-04-22T05:35:05.558Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "4",
-            "object_repr": "Pago_detalle object (4)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 19,
-      "fields": {
-            "action_time": "2020-04-22T05:35:34.616Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "5",
-            "object_repr": "Pago_detalle object (5)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 20,
-      "fields": {
-            "action_time": "2020-04-22T05:35:52.026Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "5",
-            "object_repr": "Pago_detalle object (5)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 21,
-      "fields": {
-            "action_time": "2020-04-22T05:36:23.238Z",
-            "user": 1,
-            "content_type": 20,
-            "object_id": "3",
-            "object_repr": "Inversion object (3)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 22,
-      "fields": {
-            "action_time": "2020-04-22T05:36:35.639Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "6",
-            "object_repr": "Pago_detalle object (6)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 23,
-      "fields": {
-            "action_time": "2020-04-22T05:36:45.869Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "6",
-            "object_repr": "Pago_detalle object (6)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 24,
-      "fields": {
-            "action_time": "2020-04-22T05:36:55.619Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "5",
-            "object_repr": "Pago_detalle object (5)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 25,
-      "fields": {
-            "action_time": "2020-04-22T06:00:49.924Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "1",
-            "object_repr": "Solicitud object (1)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 26,
-      "fields": {
-            "action_time": "2020-04-22T06:01:02.345Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "2",
-            "object_repr": "Solicitud object (2)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 27,
-      "fields": {
-            "action_time": "2020-04-22T06:01:13.357Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "3",
-            "object_repr": "Solicitud object (3)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 28,
-      "fields": {
-            "action_time": "2020-04-22T06:01:28.815Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "3",
-            "object_repr": "Solicitud object (3)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 29,
-      "fields": {
-            "action_time": "2020-04-22T06:23:54.723Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "3",
-            "object_repr": "Solicitud object (3)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 30,
-      "fields": {
-            "action_time": "2020-04-22T06:24:19.834Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "1",
-            "object_repr": "Solicitud object (1)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 31,
-      "fields": {
-            "action_time": "2020-04-22T06:24:59.514Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "2",
-            "object_repr": "Pago_detalle object (2)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 32,
-      "fields": {
-            "action_time": "2020-04-22T06:32:36.293Z",
-            "user": 1,
-            "content_type": 14,
-            "object_id": "2",
-            "object_repr": "Usuario object (2)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 33,
-      "fields": {
-            "action_time": "2020-04-22T06:34:46.790Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "4",
-            "object_repr": "Solicitud object (4)",
-            "action_flag": 1,
-            "change_message": "[{\"added\": {}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 34,
-      "fields": {
-            "action_time": "2020-04-22T07:24:00.347Z",
-            "user": 1,
-            "content_type": 18,
-            "object_id": "3",
-            "object_repr": "Solicitud object (3)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 35,
-      "fields": {
-            "action_time": "2020-04-22T07:24:24.997Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "6",
-            "object_repr": "Pago_detalle object (6)",
-            "action_flag": 2,
-            "change_message": "[]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 36,
-      "fields": {
-            "action_time": "2020-04-22T07:24:29.775Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "5",
-            "object_repr": "Pago_detalle object (5)",
-            "action_flag": 2,
-            "change_message": "[]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 37,
-      "fields": {
-            "action_time": "2020-04-22T07:34:01.945Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "4",
-            "object_repr": "Pago_detalle object (4)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 38,
-      "fields": {
-            "action_time": "2020-04-22T07:34:14.042Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "6",
-            "object_repr": "Pago_detalle object (6)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
-},
-{
-      "model": "admin.logentry",
-      "pk": 39,
-      "fields": {
-            "action_time": "2020-04-22T07:34:36.203Z",
-            "user": 1,
-            "content_type": 21,
-            "object_id": "6",
-            "object_repr": "Pago_detalle object (6)",
-            "action_flag": 2,
-            "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-      }
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 65,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 65
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 66,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 66
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 67,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 67
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 68,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 68
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 69,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 69
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 70,
+  "fields": {
+    "numero_cuenta": "1283923",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 70
+  }
+},
+{
+  "model": "registro_inversionista.cuenta_bancaria",
+  "pk": 71,
+  "fields": {
+    "numero_cuenta": "12343",
+    "tipo_cuenta": 1,
+    "estado": 0,
+    "banco": 71
+  }
+},
+{
+  "model": "solicitudes.categoriasolicitud",
+  "pk": 1,
+  "fields": {
+    "nombre": "Tec"
+  }
+},
+{
+  "model": "solicitudes.categoriasolicitud",
+  "pk": 2,
+  "fields": {
+    "nombre": "Agro"
+  }
+},
+{
+  "model": "solicitudes.tipocredito",
+  "pk": 1,
+  "fields": {
+    "nombre": "tipo_credito_1"
+  }
+},
+{
+  "model": "solicitudes.solicitud",
+  "pk": 1,
+  "fields": {
+    "titulo": "new fintec",
+    "operacion": "operacion de la fintec",
+    "historia": "historia de la fintec",
+    "plazo": 12,
+    "url": "https://www.fintec.com",
+    "imagen_url": "https://www.bkd.com/sites/default/files/2018-06/CRE-19625421_Large.jpg",
+    "monto": "12000.00",
+    "moneda": "USD",
+    "tir": "0.61",
+    "porcentaje_financiado": "0.23",
+    "fecha_creacion": "2020-04-21",
+    "fecha_publicacion": "2020-04-21",
+    "fecha_finalizacion": "2020-04-21",
+    "fecha_expiracion": "2020-04-13",
+    "id_autor": 1,
+    "id_categoria": 1,
+    "id_tipo_credito": 1
+  }
+},
+{
+  "model": "solicitudes.solicitud",
+  "pk": 2,
+  "fields": {
+    "titulo": "Segunda fintec",
+    "operacion": "Segunda fintec operation",
+    "historia": "Segunda fintec historia",
+    "plazo": 18,
+    "url": "https://www.fintec2.com",
+    "imagen_url": "https://financialinstitutions.bakermckenzie.com/wp-content/uploads/sites/22/2017/05/CSB54692_SetA_1576x1182-13.jpg",
+    "monto": "100000.00",
+    "moneda": "USD",
+    "tir": "1.21",
+    "porcentaje_financiado": "0.88",
+    "fecha_creacion": "2020-04-21",
+    "fecha_publicacion": "2020-04-21",
+    "fecha_finalizacion": "2020-04-21",
+    "fecha_expiracion": "2020-04-28",
+    "id_autor": 1,
+    "id_categoria": 1,
+    "id_tipo_credito": 1
+  }
+},
+{
+  "model": "solicitudes.solicitud",
+  "pk": 3,
+  "fields": {
+    "titulo": "Fintec 3",
+    "operacion": "Operacion fintex 3",
+    "historia": "Historia fint",
+    "plazo": 24,
+    "url": "https://www.fintex3.com",
+    "imagen_url": "https://s3-eu-west-1.amazonaws.com/img3.n-ix.com/wp-content/uploads/2017/10/13140836/fintech-banner-3.jpg",
+    "monto": "9000.00",
+    "moneda": "USD",
+    "tir": "12.10",
+    "porcentaje_financiado": "0.00",
+    "fecha_creacion": "2020-04-22",
+    "fecha_publicacion": "2020-04-22",
+    "fecha_finalizacion": "2020-04-22",
+    "fecha_expiracion": "2020-04-12",
+    "id_autor": 1,
+    "id_categoria": 1,
+    "id_tipo_credito": 1
+  }
+},
+{
+  "model": "solicitudes.solicitud",
+  "pk": 4,
+  "fields": {
+    "titulo": "Fintec JP",
+    "operacion": "Op JP",
+    "historia": "Hist JP",
+    "plazo": 120,
+    "url": "https://www.jp.com",
+    "imagen_url": "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+    "monto": "1500.00",
+    "moneda": "USD",
+    "tir": "12.33",
+    "porcentaje_financiado": "45.00",
+    "fecha_creacion": "2020-04-22",
+    "fecha_publicacion": "2020-04-22",
+    "fecha_finalizacion": "2020-04-22",
+    "fecha_expiracion": "2020-04-30",
+    "id_autor": 2,
+    "id_categoria": 2,
+    "id_tipo_credito": 1
+  }
+},
+{
+  "model": "fases_inversiones.inversion",
+  "pk": 1,
+  "fields": {
+    "id_user": 1,
+    "id_solicitud": 1,
+    "monto": 100.0,
+    "adjudicacion": 10.0,
+    "adjudicacion_iva": 12.0,
+    "inversion_total": 112.0,
+    "ganancia_total": 12.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.inversion",
+  "pk": 2,
+  "fields": {
+    "id_user": 1,
+    "id_solicitud": 3,
+    "monto": 1002.0,
+    "adjudicacion": 120.0,
+    "adjudicacion_iva": 123.0,
+    "inversion_total": 123.0,
+    "ganancia_total": 122.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.inversion",
+  "pk": 3,
+  "fields": {
+    "id_user": 1,
+    "id_solicitud": 2,
+    "monto": 1239.0,
+    "adjudicacion": 233.0,
+    "adjudicacion_iva": 233.0,
+    "inversion_total": 23.0,
+    "ganancia_total": 24.0,
+    "estado": 0
+  }
+},
+{
+  "model": "fases_inversiones.pago_detalle",
+  "pk": 1,
+  "fields": {
+    "id_inversion": 1,
+    "orden": 1,
+    "fecha": "2020-04-22",
+    "pago": 11.0,
+    "comision": 1.0,
+    "comision_iva": 1.0,
+    "ganancia": 1.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.pago_detalle",
+  "pk": 2,
+  "fields": {
+    "id_inversion": 1,
+    "orden": 1,
+    "fecha": "2020-04-22",
+    "pago": 120.0,
+    "comision": 2.0,
+    "comision_iva": 3.0,
+    "ganancia": 12.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.pago_detalle",
+  "pk": 3,
+  "fields": {
+    "id_inversion": 1,
+    "orden": 1,
+    "fecha": "2020-04-22",
+    "pago": 12.0,
+    "comision": 2.0,
+    "comision_iva": 2.0,
+    "ganancia": 122.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.pago_detalle",
+  "pk": 4,
+  "fields": {
+    "id_inversion": 2,
+    "orden": 1,
+    "fecha": "2020-04-22",
+    "pago": 15.0,
+    "comision": 12.0,
+    "comision_iva": 2.0,
+    "ganancia": 23.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.pago_detalle",
+  "pk": 5,
+  "fields": {
+    "id_inversion": 2,
+    "orden": 1,
+    "fecha": "2020-04-22",
+    "pago": 122.0,
+    "comision": 3.0,
+    "comision_iva": 3.0,
+    "ganancia": 3.0,
+    "estado": 1
+  }
+},
+{
+  "model": "fases_inversiones.pago_detalle",
+  "pk": 6,
+  "fields": {
+    "id_inversion": 3,
+    "orden": 2,
+    "fecha": "2020-04-22",
+    "pago": 2234.0,
+    "comision": 23.0,
+    "comision_iva": 24.0,
+    "ganancia": 23.0,
+    "estado": 1
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 7,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 7,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 7,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 7,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Banco",
+    "content_type": 8,
+    "codename": "add_banco"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Banco",
+    "content_type": 8,
+    "codename": "change_banco"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Banco",
+    "content_type": 8,
+    "codename": "delete_banco"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Banco",
+    "content_type": 8,
+    "codename": "view_banco"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Conyuge",
+    "content_type": 9,
+    "codename": "add_conyuge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Conyuge",
+    "content_type": 9,
+    "codename": "change_conyuge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Conyuge",
+    "content_type": 9,
+    "codename": "delete_conyuge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Conyuge",
+    "content_type": 9,
+    "codename": "view_conyuge"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Cuenta_bancaria",
+    "content_type": 10,
+    "codename": "add_cuenta_bancaria"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Cuenta_bancaria",
+    "content_type": 10,
+    "codename": "change_cuenta_bancaria"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Cuenta_bancaria",
+    "content_type": 10,
+    "codename": "delete_cuenta_bancaria"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Cuenta_bancaria",
+    "content_type": 10,
+    "codename": "view_cuenta_bancaria"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add Fuente_ingresos",
+    "content_type": 11,
+    "codename": "add_fuente_ingresos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change Fuente_ingresos",
+    "content_type": 11,
+    "codename": "change_fuente_ingresos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete Fuente_ingresos",
+    "content_type": 11,
+    "codename": "delete_fuente_ingresos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view Fuente_ingresos",
+    "content_type": 11,
+    "codename": "view_fuente_ingresos"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add Pregunta",
+    "content_type": 12,
+    "codename": "add_pregunta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change Pregunta",
+    "content_type": 12,
+    "codename": "change_pregunta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete Pregunta",
+    "content_type": 12,
+    "codename": "delete_pregunta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view Pregunta",
+    "content_type": 12,
+    "codename": "view_pregunta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add Respuesta",
+    "content_type": 13,
+    "codename": "add_respuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change Respuesta",
+    "content_type": 13,
+    "codename": "change_respuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete Respuesta",
+    "content_type": 13,
+    "codename": "delete_respuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view Respuesta",
+    "content_type": 13,
+    "codename": "view_respuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add usuario",
+    "content_type": 14,
+    "codename": "add_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change usuario",
+    "content_type": 14,
+    "codename": "change_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete usuario",
+    "content_type": 14,
+    "codename": "delete_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view usuario",
+    "content_type": 14,
+    "codename": "view_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add Encuesta",
+    "content_type": 15,
+    "codename": "add_encuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change Encuesta",
+    "content_type": 15,
+    "codename": "change_encuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete Encuesta",
+    "content_type": 15,
+    "codename": "delete_encuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view Encuesta",
+    "content_type": 15,
+    "codename": "view_encuesta"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add categoria solicitud",
+    "content_type": 16,
+    "codename": "add_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change categoria solicitud",
+    "content_type": 16,
+    "codename": "change_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete categoria solicitud",
+    "content_type": 16,
+    "codename": "delete_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view categoria solicitud",
+    "content_type": 16,
+    "codename": "view_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add tipo credito",
+    "content_type": 17,
+    "codename": "add_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change tipo credito",
+    "content_type": 17,
+    "codename": "change_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete tipo credito",
+    "content_type": 17,
+    "codename": "delete_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view tipo credito",
+    "content_type": 17,
+    "codename": "view_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add solicitud",
+    "content_type": 18,
+    "codename": "add_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change solicitud",
+    "content_type": 18,
+    "codename": "change_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete solicitud",
+    "content_type": 18,
+    "codename": "delete_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view solicitud",
+    "content_type": 18,
+    "codename": "view_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 73,
+  "fields": {
+    "name": "Can add historial financiamiento",
+    "content_type": 19,
+    "codename": "add_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 74,
+  "fields": {
+    "name": "Can change historial financiamiento",
+    "content_type": 19,
+    "codename": "change_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 75,
+  "fields": {
+    "name": "Can delete historial financiamiento",
+    "content_type": 19,
+    "codename": "delete_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 76,
+  "fields": {
+    "name": "Can view historial financiamiento",
+    "content_type": 19,
+    "codename": "view_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 77,
+  "fields": {
+    "name": "Can add Inversion",
+    "content_type": 20,
+    "codename": "add_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 78,
+  "fields": {
+    "name": "Can change Inversion",
+    "content_type": 20,
+    "codename": "change_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 79,
+  "fields": {
+    "name": "Can delete Inversion",
+    "content_type": 20,
+    "codename": "delete_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 80,
+  "fields": {
+    "name": "Can view Inversion",
+    "content_type": 20,
+    "codename": "view_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 81,
+  "fields": {
+    "name": "Can add Pago_detalle",
+    "content_type": 21,
+    "codename": "add_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 82,
+  "fields": {
+    "name": "Can change Pago_detalle",
+    "content_type": 21,
+    "codename": "change_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 83,
+  "fields": {
+    "name": "Can delete Pago_detalle",
+    "content_type": 21,
+    "codename": "delete_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 84,
+  "fields": {
+    "name": "Can view Pago_detalle",
+    "content_type": 21,
+    "codename": "view_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 85,
+  "fields": {
+    "name": "Can add Proceso",
+    "content_type": 22,
+    "codename": "add_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 86,
+  "fields": {
+    "name": "Can change Proceso",
+    "content_type": 22,
+    "codename": "change_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 87,
+  "fields": {
+    "name": "Can delete Proceso",
+    "content_type": 22,
+    "codename": "delete_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 88,
+  "fields": {
+    "name": "Can view Proceso",
+    "content_type": 22,
+    "codename": "view_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 89,
+  "fields": {
+    "name": "Can add Tarea",
+    "content_type": 23,
+    "codename": "add_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 90,
+  "fields": {
+    "name": "Can change Tarea",
+    "content_type": 23,
+    "codename": "change_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 91,
+  "fields": {
+    "name": "Can delete Tarea",
+    "content_type": 23,
+    "codename": "delete_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 92,
+  "fields": {
+    "name": "Can view Tarea",
+    "content_type": 23,
+    "codename": "view_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 93,
+  "fields": {
+    "name": "Can add Tarea Previa",
+    "content_type": 24,
+    "codename": "add_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 94,
+  "fields": {
+    "name": "Can change Tarea Previa",
+    "content_type": 24,
+    "codename": "change_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 95,
+  "fields": {
+    "name": "Can delete Tarea Previa",
+    "content_type": 24,
+    "codename": "delete_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 96,
+  "fields": {
+    "name": "Can view Tarea Previa",
+    "content_type": 24,
+    "codename": "view_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 97,
+  "fields": {
+    "name": "Can add Transferencia de Inversion",
+    "content_type": 25,
+    "codename": "add_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 98,
+  "fields": {
+    "name": "Can change Transferencia de Inversion",
+    "content_type": 25,
+    "codename": "change_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 99,
+  "fields": {
+    "name": "Can delete Transferencia de Inversion",
+    "content_type": 25,
+    "codename": "delete_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 100,
+  "fields": {
+    "name": "Can view Transferencia de Inversion",
+    "content_type": 25,
+    "codename": "view_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 101,
+  "fields": {
+    "name": "Can add Canton",
+    "content_type": 26,
+    "codename": "add_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 102,
+  "fields": {
+    "name": "Can change Canton",
+    "content_type": 26,
+    "codename": "change_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 103,
+  "fields": {
+    "name": "Can delete Canton",
+    "content_type": 26,
+    "codename": "delete_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 104,
+  "fields": {
+    "name": "Can view Canton",
+    "content_type": 26,
+    "codename": "view_canton"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$Q63TRwPmRjc5$TMla6OLOXrCSOHqjs7H3pggNNthLHopx0D5W1k9+Ny0=",
+    "last_login": "2020-04-25T23:53:32.910Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "ad@min.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-04-21T05:46:53.322Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "juanflaso",
+    "first_name": "Juan",
+    "last_name": "Laso",
+    "email": "jflaso@espol.edu.ec",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-04-23T22:11:22.329Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$MnO5k4VVydcG$OQU32F91AT/uzpZUx6q5ZU2FLBUNl+HV65H8+MNjwRI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "juanflaso1",
+    "first_name": "Juan",
+    "last_name": "Laso",
+    "email": "juanflaso1@hotmail.com",
+    "is_staff": false,
+    "is_active": false,
+    "date_joined": "2020-04-26T00:36:33.495Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "registro_inversionista.usuario",
+  "pk": 1,
+  "fields": {
+    "nombres": "Juan F",
+    "apellidos": "Laso",
+    "usuario": "juanflaso",
+    "password": "",
+    "email": "j@mail.com",
+    "celular": "0982237465",
+    "tipo_persona": 1,
+    "estado": 0,
+    "direccion1": "",
+    "direccion2": "",
+    "canton": null,
+    "provincia": "Guayas",
+    "pais": "",
+    "user": 1,
+    "cedula": "1804563052",
+    "cedula_ruta": "media/cedula/1804563052.png",
+    "conyuge_id": 4,
+    "telefono_domicilio": "0981172459",
+    "ingresos": 71,
+    "cuenta_bancaria": 71
+  }
+},
+{
+  "model": "registro_inversionista.usuario",
+  "pk": 2,
+  "fields": {
+    "nombres": "Jose",
+    "apellidos": "Perez",
+    "usuario": "jper",
+    "password": "",
+    "email": "jp@mail.com",
+    "celular": "0982235674",
+    "tipo_persona": 0,
+    "estado": 0,
+    "direccion1": "",
+    "direccion2": "",
+    "canton": null,
+    "provincia": "",
+    "pais": "",
+    "user": 1,
+    "cedula": "",
+    "cedula_ruta": "",
+    "conyuge_id": null,
+    "telefono_domicilio": null,
+    "ingresos": null,
+    "cuenta_bancaria": null
+  }
+},
+{
+  "model": "registro_inversionista.usuario",
+  "pk": 3,
+  "fields": {
+    "nombres": "Juan",
+    "apellidos": "Laso",
+    "usuario": "juanflaso",
+    "password": "",
+    "email": "jflaso@espol.edu.ec",
+    "celular": "0981172467",
+    "tipo_persona": 1,
+    "estado": 1,
+    "direccion1": "",
+    "direccion2": "",
+    "canton": null,
+    "provincia": "",
+    "pais": "",
+    "user": 2,
+    "cedula": "",
+    "cedula_ruta": "",
+    "conyuge_id": null,
+    "telefono_domicilio": null,
+    "ingresos": null,
+    "cuenta_bancaria": null
+  }
+},
+{
+  "model": "registro_inversionista.usuario",
+  "pk": 4,
+  "fields": {
+    "nombres": "Juan",
+    "apellidos": "Laso",
+    "usuario": "juanflaso1",
+    "password": "",
+    "email": "juanflaso1@hotmail.com",
+    "celular": "0981172459",
+    "tipo_persona": 1,
+    "estado": 0,
+    "direccion1": "",
+    "direccion2": "",
+    "canton": null,
+    "provincia": "",
+    "pais": "",
+    "user": 3,
+    "cedula": "",
+    "cedula_ruta": "",
+    "conyuge_id": null,
+    "telefono_domicilio": null,
+    "ingresos": null,
+    "cuenta_bancaria": null
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2020-04-21T05:47:28.399Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "1",
+    "object_repr": "CategoriaSolicitud object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2020-04-21T05:47:32.171Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "2",
+    "object_repr": "CategoriaSolicitud object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2020-04-21T20:15:21.293Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Usuario object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2020-04-21T20:15:37.858Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "1",
+    "object_repr": "TipoCredito object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2020-04-21T20:16:48.083Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "Solicitud object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2020-04-21T20:19:07.749Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "2",
+    "object_repr": "Solicitud object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2020-04-22T00:25:42.954Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2020-04-22T00:26:35.190Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "2",
+    "object_repr": "Solicitud object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2020-04-22T00:28:16.606Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "Solicitud object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Url\", \"Imagen url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2020-04-22T00:53:50.511Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2020-04-22T05:17:15.869Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "1",
+    "object_repr": "Inversion object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2020-04-22T05:22:52.374Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "1",
+    "object_repr": "Pago_detalle object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2020-04-22T05:26:49.877Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "2",
+    "object_repr": "Pago_detalle object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2020-04-22T05:29:00.314Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "3",
+    "object_repr": "Pago_detalle object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2020-04-22T05:32:51.913Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "3",
+    "object_repr": "Pago_detalle object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2020-04-22T05:34:25.174Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "2",
+    "object_repr": "Inversion object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2020-04-22T05:34:49.064Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "4",
+    "object_repr": "Pago_detalle object (4)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2020-04-22T05:35:05.558Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "4",
+    "object_repr": "Pago_detalle object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2020-04-22T05:35:34.616Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "5",
+    "object_repr": "Pago_detalle object (5)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2020-04-22T05:35:52.026Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "5",
+    "object_repr": "Pago_detalle object (5)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2020-04-22T05:36:23.238Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "3",
+    "object_repr": "Inversion object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2020-04-22T05:36:35.639Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "Pago_detalle object (6)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2020-04-22T05:36:45.869Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "Pago_detalle object (6)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2020-04-22T05:36:55.619Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "5",
+    "object_repr": "Pago_detalle object (5)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2020-04-22T06:00:49.924Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "Solicitud object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2020-04-22T06:01:02.345Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "2",
+    "object_repr": "Solicitud object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2020-04-22T06:01:13.357Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2020-04-22T06:01:28.815Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2020-04-22T06:23:54.723Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2020-04-22T06:24:19.834Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "Solicitud object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2020-04-22T06:24:59.514Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "2",
+    "object_repr": "Pago_detalle object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2020-04-22T06:32:36.293Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "2",
+    "object_repr": "Usuario object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2020-04-22T06:34:46.790Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "4",
+    "object_repr": "Solicitud object (4)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2020-04-22T07:24:00.347Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2020-04-22T07:24:24.997Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "Pago_detalle object (6)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2020-04-22T07:24:29.775Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "5",
+    "object_repr": "Pago_detalle object (5)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2020-04-22T07:34:01.945Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "4",
+    "object_repr": "Pago_detalle object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2020-04-22T07:34:14.042Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "Pago_detalle object (6)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2020-04-22T07:34:36.203Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "Pago_detalle object (6)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2020-04-25T07:14:28.384Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Usuario object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cedula\"]}}]"
+  }
 }
 ]

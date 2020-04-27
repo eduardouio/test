@@ -8,6 +8,12 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 import requests
+from rest_framework.parsers import MultiPartParser
+from .types import MENSAJE_NOT_FOUND
+from rest_framework.views import APIView
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.core.files.base import ContentFile
 
 
 from . import models
@@ -252,14 +258,16 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         celular = request.data.get("celular")
         conyuge = request.data.get("conyuge")
         direccion_domicilio = request.data.get("direccion_domicilio")
-        ciudad = request.data.get("ciudad")
+        nombre_canton = request.data.get("canton")
+        canton = models.Canton.objects.get(nombre=nombre_canton)
         provincia = request.data.get("provincia")
         telefono_domicilio = request.data.get("telefono_domicilio")
 
         #Principal fuente de ingresos
         fuente_ingresos = request.data.get("fuente_ingresos")
         direccion_fuente_ingresos = request.data.get("direccion_fuente_ingresos")
-        ciudad_fuentes_ingresos = request.data.get("ciudad_fuentes_ingresos")
+        nombre_canton_fuentes_ingresos = request.data.get("canton_fuentes_ingresos")
+        canton_fuentes_ingresos = models.Canton.objects.get(nombre=nombre_canton_fuentes_ingresos)
         ingresos_mensuales = request.data.get("ingresos_mensuales")
 
         #Cuenta bancaria
@@ -270,7 +278,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         descripcion_ingresos = json.dumps(fuente_ingresos).upper()
         #inversionista ****Revisar
         inversionista = models.Usuario.objects.filter(cedula=cedula)[0]
-        
+
 
         if conyuge:
             nombres_conyuge = request.data.get("nombres_conyuge")
@@ -282,7 +290,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
             inversionista.conyuge_id = new_conyuge
         
         new_ingresos = models.Fuente_ingresos(descripcion= descripcion_ingresos, direccion= direccion_fuente_ingresos,
-                                                ciudad= ciudad_fuentes_ingresos, ingresos_mensuales=ingresos_mensuales)
+                                                canton= canton_fuentes_ingresos, ingresos_mensuales=ingresos_mensuales)
         new_ingresos.save()
         
         new_banco = models.Banco(nombre=banco)
@@ -293,7 +301,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         
 
         #agregando al inversionista respectivo
-        inversionista.ciudad = ciudad
+        inversionista.ciudad = canton
         inversionista.provincia = provincia
         inversionista.telefono_domicilio = telefono_domicilio
         inversionista.ingresos = new_ingresos
@@ -327,6 +335,47 @@ class Login_Users(generics.CreateAPIView):
 
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+
+class ImagenCedulaView(APIView):        
+    parser_classes = (MultiPartParser, )
+    def post(self, request, filename, format=None):
+        try: 
+            file_obj = request.data['img']
+            url_base = settings.MEDIA_ROOT +"/cedula/"+filename
+
+            cedula = filename.split(".")[0]
+
+            inversionista = models.Usuario.objects.filter(cedula=cedula)[0]
+
+            with open(url_base, 'wb+') as destination:
+                for chunk in file_obj.chunks():
+                    destination.write(chunk)
+            
+            inversionista.cedula_ruta = settings.MEDIA_URL +"cedula/"+filename
+
+            inversionista.save()
+
+            diccionario_respuesta = {
+                'status': status.HTTP_200_OK,
+                'mensaje': "Imagen guardada"
+            }
+
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+        #Index error quiere decir que no se encontró usuario con cédula del nombre del archivo
+        except IndexError as e:
+            diccionario_respuesta = {
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': "Usuario no existe o nombre de archivo no tiene formato <cedula>.<extension>",
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
+        except Exception as e:
+            diccionario_respuesta = {
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': str(e),
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
 
 def Dashboard(request):
@@ -363,5 +412,8 @@ def LoginView(request):
  
     return render(request, 'registro_inversionista/login.html', {'form': form, 'submitted': submitted})
 
+def completar_datos_financieros_view(request):
+    if request.method == 'GET': 
+        return render(request, 'registro_inversionista/completa_datos.html')
 
 

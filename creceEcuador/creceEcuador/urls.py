@@ -18,6 +18,8 @@ from django.urls import path
 from django.urls import include 
 from django.views.generic.base import TemplateView
 from rest_framework_simplejwt import views as jwt_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -35,3 +37,6 @@ urlpatterns = [
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
