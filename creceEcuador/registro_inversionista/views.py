@@ -15,6 +15,10 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
+
+
 
 from . import models
 from . import serializers
@@ -30,6 +34,7 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 
 import json
+import jwt
 
 # Get the JWT settings, add these lines after the import/from lines
 # from rest_framework_jwt.settings import api_settings
@@ -161,29 +166,6 @@ class EncuestaViewSet(viewsets.ModelViewSet):
     queryset = models.Encuesta.objects.all()
     serializer_class = serializers.EncuestaSerializer
 
-def signup(request, form):
-    #form = SignupForm(request.POST)
-    usuario_input = form.save(commit=False)
-    new_user = User(
-        username=usuario_input.usuario, password=usuario_input.password, 
-        email=usuario_input.email, first_name=usuario_input.nombres, last_name=usuario_input.apellidos,
-    )
-    new_user.set_password(usuario_input.password)
-    new_user.is_active = False
-    new_user.save()
-    current_site = get_current_site(request)
-    mail_subject = 'Activa tu cuenta de Crece Ecuador'
-    message = render_to_string('registro_inversionista/acc_active_email.html', {
-        'usuario': usuario_input,
-        'domain': current_site.domain,
-        'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
-        'token':account_activation_token.make_token(new_user),
-    })
-    to_email = form.cleaned_data.get('email')
-    email = EmailMessage(
-                mail_subject, message, to=[to_email]
-    )
-    email.send()
     
 def SignupView(request):
     submitted = False
@@ -322,18 +304,32 @@ class Login_Users(generics.CreateAPIView):
     serializer_class = serializers.UsuarioSerializer
 
     def post(self, request, *args, **kwargs):
+        
         username = request.data.get("username", "")
         password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
+            
             r = requests.post('http://localhost:8000/api/token/', data = {'username':username, 'password': password})
             dic_tokens = r.json()
+
             usuario = serializers.UserSerializer(user,
                                                  context=self.get_serializer_context()).data
-            return Response({'tokens':dic_tokens, 'user':usuario},  status=status.HTTP_200_OK) 
+
+            response = HttpResponse(json.dumps({'auth_token':dic_tokens}), content_type='application/json',  status=status.HTTP_200_OK)   
+            response.set_cookie('auth_token', json.dumps(dic_tokens),
+                        max_age=None, expires=None, path='/', domain=None, secure=False, httponly=True)
+            login(request, user)
+            return response
+            #return Response({'tokens':dic_tokens, 'user':usuario},  status=status.HTTP_200_OK) 
 
 
         return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+    def get(self, request, *args, **kwargs):
+
+        return render(request, 'registro_inversionista/login.html')
+
 
 
 class ImagenCedulaView(APIView):        
@@ -378,8 +374,27 @@ class ImagenCedulaView(APIView):
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
 
+@login_required
 def Dashboard(request):
-    return render(request, 'registro_inversionista/dashboard_inversionista.html')
+    
+
+    if request.user.is_authenticated:
+        token_dic = request.COOKIES.get('auth_token')
+
+        token = json.loads(token_dic)
+
+        token_access = token.get('access')
+        token_refresh = token.get('refresh')
+        headers = {"Authorization": "Bearer "+token_access}
+        decodedPayload = jwt.decode(token_access,None,None)
+        r = requests.get("http://localhost:8000/inversionista/bancos/", headers=headers)
+
+        usuario = models.Usuario.objects.filter(user=request.user.id)[0]
+
+        return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
+
+
+        
 
 
 
@@ -400,10 +415,11 @@ def LoginView(request):
 
             r = requests.post('http://127.0.0.1:8000/inversionista/login_inversionista/', 
                                 data = {'username':cd.get('username'), 'password': cd.get('password')})
-            dic_tokens = r.json().get('tokens')
-            user = r.json().get('user')
+            print(r.json())
+            dic_tokens = r.json().get('auth_token')
+            user = r.json()
             return render(request, 'registro_inversionista/dashboard_inversionista.html', 
-                                    {'submitted': submitted, 'tokens': dic_tokens, 'user': user.get('username')})
+                                    {'submitted': submitted, 'tokens': dic_tokens})
             
     else:
         form = Login_form()

@@ -3,6 +3,8 @@ from django.urls import include, path
 from rest_framework import routers
 from . import views
 from django.views.generic.base import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 
 
 
@@ -22,6 +24,7 @@ urlpatterns = [
     url(r'fase1/', views.Proceso_formulario_inversion.as_view(), name="formulario-inversion"),
     path('login_inversionista/', views.Login_Users.as_view(), name="inversionista_login"),
     path('dashboard/', views.Dashboard, name='dashboard'),
+   
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),
     path('completa_datos/', views.completar_datos_financieros_view, name="completa_datos"),

@@ -24,7 +24,7 @@
                       <button><strong>Solicitante</strong></button>
                   </div>
                   <div class="col-lg-6">
-                     <button id="myButton" onClick="obtener_Usuario({{tokens}},'{{user}}')"><strong>Inversionista</strong></button>
+                     <button id="myButton" onClick="mostrar_inversionista()"><strong>Inversionista</strong></button>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
           <div class='crece-usuario'>
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
             <div class="usuario-nombre" id='nombre-usuario'>
-              Nombre de Usuario
+              {{ usuario.nombres }} {{usuario.apellidos}}
             </div>
           </div>
           <nav>

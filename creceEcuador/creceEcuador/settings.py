@@ -51,6 +51,8 @@ INSTALLED_APPS = [
 
     #rest_framework
     'rest_framework',
+
+
 ]
 
 #Email
@@ -198,4 +200,11 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+
+LOGIN_URL = '/inversionista/login_inversionista/'
+
+
+#SESSION_ENGINE =  'django.contrib.sessions.backends.signed_cookies'
+
 

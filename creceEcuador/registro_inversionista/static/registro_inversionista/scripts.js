@@ -36,7 +36,70 @@ function obtener_Usuario(dic_tokens, username){
 
             go_to_dashboard(res)
         }
-    });
+    });    
+}
 
-    
+function login(argument) {
+    // body...
+
+    let usuario = document.getElementById("id_username").value
+
+    let password = document.getElementById("id_password").value
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+
+            var next = getParameterByName('next')
+            if(next){
+                window.location.href = next
+            }
+            else{
+                window.location.href = RUTA_DASHBOARD
+            }
+
+
+        }else if(this.status == 401 && this.readyState == 4){
+            console.log(this)
+
+            let main = document.getElementById("main-id")
+            let mensaje = document.createElement("p")
+            mensaje.innerHTML = "Usuario incorrecto o contraseña incorrectos"
+
+            main.appendChild(mensaje)
+        }
+    };
+    xhttp.open("POST", "http://localhost:8000/inversionista/login_inversionista/", true);
+    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({
+                                "username": usuario,
+                                "password": password,
+                            })
+                );
+
+
+
+}
+
+function mostrar_inversionista(argument) {
+    // body...
+    let botones = document.getElementById("botones")
+
+    botones.style.display='none'
+    let dashboard = document.getElementById("dashboard")
+
+    dashboard.style.display = 'block'
+}
+
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
