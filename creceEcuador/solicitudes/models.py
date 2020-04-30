@@ -22,6 +22,7 @@ class Solicitud(models.Model):
     monto = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     moneda = models.CharField(max_length=10)
     tir = models.DecimalField(max_digits=4, decimal_places=2, blank=False)
+    tin = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=True)
     porcentaje_financiado = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=0)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_publicacion = models.DateField()

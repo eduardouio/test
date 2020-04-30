@@ -37,6 +37,7 @@ pytest-django==3.9.0
 python-dateutil==2.5.3
 pytz==2018.5
 PyYAML==3.11
+reportlab==3.5.42
 requests==2.19.1
 requests-oauthlib==1.0.0
 requests-toolbelt==0.8.0

@@ -1,0 +1,28 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css %}
+            <link href="{% static 'fases_inversiones/styles.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css %}
+    </head>
+    <body>      
+
+
+                {% block content %}  
+
+                
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+            <script src="{% static 'fases_inversiones/scripts.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>
