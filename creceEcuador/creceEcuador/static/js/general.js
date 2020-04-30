@@ -11,41 +11,66 @@ $(".crece-menu-toogle").click(function(){
 });
 
 $("button").click(function(){
-  var solicitar = document.getElementById("crece-solicitar-id");
-  var invertir = document.getElementById("crece-invertir-id")
+  var solicitar = $("#crece-solicitar-id");
+  var invertir = $("#crece-invertir-id");
   if(this.className == "btn crece-invertir-button"){
-      solicitar.style.display = "none";
-      invertir.style.display = "block";
+    solicitar.hide();
+    invertir.css("display","flex");
+    $(".crece-solicitar-button").removeClass("crece-solicitar-invertir-elegido");
+    $(".crece-invertir-button").addClass("crece-solicitar-invertir-elegido");
+
   }
   else{
-    solicitar.style.display = "block";
-    invertir.style.display = "none";
+    solicitar.css("display","flex");
+    invertir.hide();
+    $(".crece-solicitar-button").addClass("crece-solicitar-invertir-elegido");
+    $(".crece-invertir-button").removeClass("crece-solicitar-invertir-elegido");
   }
 });
 
 
 $(document).ready(function(){
-      $(".crece-carrusel-imagenes").slick({
-        speed: 500,
-        focusOnSelect: true,
-        dots: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-
-        // the magic
-          responsive: [{
-              breakpoint: 600,
-              settings: "unslick" // destroys slick
-
-            }]
-
-      });
-
-      cargar_operaciones()
+      
+  cargar_carrusel();
+  cargar_operaciones();
    
   
 });
+
+function cargar_carrusel(){
+  var celular = window.matchMedia("(max-width: 600px)")
+
+  if(celular.matches){
+    $(".crece-carrusel-imagenes-movil").slick({
+      speed: 500,
+      focusOnSelect: true,
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+
+
+    });
+  }
+  else{
+    $(".crece-carrusel-imagenes").slick({
+      speed: 500,
+      focusOnSelect: true,
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+
+      // the magic
+        responsive: [{
+            breakpoint: 600,
+            settings: "unslick" // destroys slick
+
+          }]
+
+    });
+  }
+}
 
 function cargar_operaciones() {
    // Set up our HTTP request
