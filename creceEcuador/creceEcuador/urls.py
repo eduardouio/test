@@ -34,7 +34,7 @@ urlpatterns = [
     path('calculadora/', TemplateView.as_view(template_name="calculadora.html")),
     path('preguntas_frecuentes/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
     path('nosotros/', TemplateView.as_view(template_name="nosotros.html")),
-
+    path('anunciar-solicitud/', TemplateView.as_view(template_name="anunciar_solicitud.html")),
 
     # #para obtener Tokens
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

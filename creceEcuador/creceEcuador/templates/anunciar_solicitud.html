@@ -1,0 +1,29 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+        {% block content %}  
+        <div class="row justify-content-center">
+            <iframe width="80%" height="800px" name="htmlComp-iframe"
+                scrolling="auto"
+                src="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/2380124295d52464d217a41022434492/9197208925d52464d4e5714067895361.php">
+            </iframe>
+        </div>
+        {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>
