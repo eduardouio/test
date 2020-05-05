@@ -1,0 +1,270 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'css/nosotros.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                <!-- Seccion imagen banner -->
+                <section class="crece-nosotros-banner">
+                    <div class="crece-nosotros-banner-imagen">
+
+                    </div>
+                </section>
+
+                <!-- Seccion pilares -->
+                <section class="crece-nosotros-pilares row justify-content-center">
+                    <div class="col-lg-9 col-10">
+                        <h2>Nuestros Pilares</h2>
+                        <div class="row">
+
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-pilares-imagen col-12">
+                                        <img src="{% static 'assets/Logo_crece_pie.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-pilares-separador col-12">
+                                        <span>100% Inclusión</span>
+                                    </div>
+                                    <div class="crece-nosotros-pilares-parrafo col-12">
+                                        <p>Somos una opción para quienes no acceden a financiamiento tradicional 
+                                            y acuden al mercado informal pagando altísimas tasas de interés y 
+                                            poniendo en riesgo el futuro de sus negocios.</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-pilares-imagen col-12">
+                                        <img src="{% static 'assets/Logo_crece_pie.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-pilares-separador col-12">
+                                        <span>100% Innovación</span>
+                                    </div>
+                                    <div class="crece-nosotros-pilares-parrafo col-12">
+                                        <p>Solicitud y análisis crediticio en línea, disminución de los tiempos 
+                                            de evaluación y constante mejora de los procesos tecnológicos.</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-pilares-imagen col-12">
+                                        <img src="{% static 'assets/Logo_crece_pie.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-pilares-separador col-12">
+                                        <span>100% Transparencia</span>
+                                    </div>
+                                    <div class="crece-nosotros-pilares-parrafo col-12">
+                                        <p>Eliminamos las letras pequeñas. Las condiciones son claras 
+                                            y todos los costos son públicos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                    <div class="row justify-content-center">
+                                        <div class="crece-nosotros-pilares-imagen col-12">
+                                            <img src="{% static 'assets/Logo_crece_pie.png' %}">
+                                        </div>
+                                        <div class="crece-nosotros-pilares-separador col-12">
+                                            <span>100% Confianza</span>
+                                        </div>
+                                        <div class="crece-nosotros-pilares-parrafo col-12">
+                                            <p>Contamos con profesionales capacitados y aplicamos procesos adecuados 
+                                                para proteger a todos nuestros usuarios.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Seccion video crece -->
+                <section class="crece-nosotros-video row justify-content-center">
+                    <div class="crece-nosotros-video-container col-lg-7 col-10">
+                        <iframe src="https://www.youtube-nocookie.com/embed/IRoQBlLF-w0" 
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="crece-nosotros-equipo row justify-content-center">
+                    <div class="col-lg-9 col-10">
+                        <h2>Nuestro Equipo</h2>
+                        <div class="row">
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/Pablo.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Pablo Arosemena Marriott</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Presidente</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/Fco.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Francisco Briones Rugel</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>CEO</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/Wander.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Wander Bravo</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Director de Tecnología</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/Wander.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Luiggi Alarcón</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Desarrollador Senior</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/JF.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Juan Francisco Laso</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Desarrollador Senior</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/Nacho.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Luis I. Reyes</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Desarrollador Senior</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/CM.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Cristóbal Matute</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Director Estratégico</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/JJ.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Juan José Salcedo</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Director de Riesgos</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/RV.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Roberto Vásconez Moscoso</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Director Legal</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Persona nosotros-->
+                            <div class="col-lg-6 col-12">
+                                <div class="row justify-content-center">
+                                    <div class="crece-nosotros-equipo-imagen col-12">
+                                        <img src="{% static 'assets/JD.png' %}">
+                                    </div>
+                                    <div class="crece-nosotros-equipo-nombre col-12">
+                                        <span>Jorge Delgado</span>
+                                    </div>
+                                    <div class="crece-nosotros-equipo-puesto col-12">
+                                        <p>Aliado de comunicaciones</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

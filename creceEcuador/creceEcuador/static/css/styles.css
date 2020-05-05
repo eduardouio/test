@@ -123,157 +123,217 @@ ul li{
 
 
 
-/*Operaciones*/
-.crece-operaciones-mobile, .crece-operaciones {
-    background: #005B7A;
-    color: #ffffff;
+/* Seccion Oportunidades */
+
+.crece-oportunidades-contenedor {
+  background-color: white;
+  width: 332px;
+  height: 540px;
+  border-radius: 10px;
+  border: 1px solid #DEDEDE;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-.crece-operaciones-titulo{
+.crece-oportunidades-contenedor:hover {
+  box-shadow: 0px 1px 3px #0000005D;
+}
+
+.crece-oportunidades-titulo {
+  color: #005B7A;
   font-size: 26.62px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-top: 10px;
+}
+.crece-oportunidades-imagen {
+  width: 332px;
+  height: 162px;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  border-radius: 10px 10px 0px 0px;
+  padding: 0px;
 }
 
-.crece-operaciones-ver-mas-boton{
-  font-size: 26px;
-  font-weight: 700;
-  background-color: #FFD500;
-  border-radius: 20px;
-  padding: 0px 57px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
+.crece-oportunidades-imagen-gradiente {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005b7a+0,063240+100&1+0,0+100 */
+  background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b7a', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+  width: 332px;
+  height: 162px;
+  border-radius: 10px 10px 0px 0px;
 
-.crece-operaciones-mobile img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 134px;
-  width: 100%;
-}
-
-.operacion-header {
-  height: 134px;
-  width: 100%;
-  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-
-
-.operacion-autor{
-  background: rgba(255, 255, 255, 0.87);
-  color: #000000;
+.crece-oportunidades-imagen-gradiente-texto span{
+  display: block;
+  font-size: 14px;
+  padding: 0.5px 0px;
 }
 
-.operacion-autor p:nth-child(1){
-  margin-bottom: -10px;
-  font-size: 17.88px;
-  padding: 0px 5px;
+.crece-oportunidades-imagen-gradiente-texto{
+  padding-left: 32px;
 }
 
-.operacion-autor p:nth-child(2){
-  margin-bottom: 0;
-  padding: 0px 5px;
-  padding-top: 3px;
-  font-size: 10.93px;
-  font-weight: 700;
+.crece-oportunidades-imagen-gradiente-texto strong{
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.5px 0px;
 }
 
-
-.operacion-detalle-grid{
-  display: grid;
-  grid-template-columns: auto auto auto;
+.crece-oportunidades-contenido-monto {
+  color: #005B7A;
+  margin-top: 10px;
 }
 
-.operacion-detalle-grid>div{ 
-  border-right: solid;
-  border-bottom: solid;
-  border-color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  font-size: 15.8px;
-  font-weight: 200;
-  border-right-width: 0.25px;
-  border-bottom-width: 0.25px;
+.crece-oportunidades-contenido-monto p{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-.operacion-autor
-
-.operacion-detalle-grid strong{ 
-  font-size: 11.16px;
+.crece-oportunidades-contenido-monto strong{
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.operacion-detalle-grid div.row1-col3{
-  border-right: none;
+.crece-oportunidades-contenido-monto-texto {
+  padding: 0px;
 }
 
-.operacion-detalle-grid div.row2-col1{
-  grid-column-start: 1;
-  grid-column-end: 3;
-  border-bottom: none;
+.crece-oportunidades-contenido-monto-barra{
+  height: 3px;
+  width: 95%;
+  background-color: #DEDEDE;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 3px;
 }
 
-.operacion-detalle-grid div.row2-col2{
-  border-right: none;
-  border-bottom: none;
-}
-
-.operacion-historia-titulo{
-  background: #1199AD;
-  font-size: 11.16px !important;
-  padding: 10px 5px;
-  border-bottom: none !important;
-  border-right: none !important;
-  text-align: left !important;
-  grid-column-start: 1;
-  grid-column-end: 4;
-}
-
-.operacion-historia-1, .operacion-historia-2{
-  border-bottom: none !important;
-}
-
-.operacion-historia-3{
-  border-bottom: none !important;
-  border-right: none !important;
-}
-
-
-
-.operacion-historia-financiado{
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#8eb445+0,8eb445+50,2989d8+50,ffffff+51,ffffff+100 */
-  background: #ffffff; /* Old browsers */
-  background: -moz-linear-gradient(left,  #8eb445 0%, #8eb445 30%, #2989d8 30%, #ffffff 31%, #ffffff 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left,  #8eb445 0%,#8eb445 30%,#2989d8 30%,#ffffff 31%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right,  #8eb445 0%,#8eb445 30%,#2989d8 30%,#ffffff 31%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8eb445', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
-
-  color: #000000;
-  text-align: center;
-}
-
-.operacion-historia-enlace{
-  background: #1199AD;
-  text-align: center;
-  padding: 9px;
-}
-
-.operacion-historia-enlace a{
-  color: white;
-  padding: 6px 45px;
+.crece-oportunidades-contenido-monto-barra-progreso{
+  height: 100%;
   background-color: #005B7A;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.crece-oportunidades-contenido-informacion{
+  color: #005B7A;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.crece-oportunidades-contenido-informacion p{
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.crece-oportunidades-contenido-informacion strong{
+  font-weight: 600;
+}
+
+.crece-oportunidades-contenido-solicitante {
+  color: #005B7A;
+  margin-top: 33px;
+}
+
+.crece-oportunidades-contenido-solicitante strong{
+  font: Bold 16px/29px Montserrat;
+}
+
+.crece-oportunidades-contenido-solicitante p{
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
+  width: 271px;
+  height: 52px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  margin-bottom: 10px;
+}
+
+.crece-oportunidades-contenido-historial{
+  color: #005B7A;
+  font-size: 14px;
+  text-align: center;
+}
+
+.crece-oportunidades-contenido-historial p{
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.crece-oportunidades-contenido-historial strong{
+  font-weight: 600;
+}
+
+.crece-oportunidades-contenido-historial-centro {
+  padding: 0px;
+}
+
+.crece-oportunidades-contenido-botones{
+  margin-top: 12px;
+}
+
+.crece-oportunidades-contenido-botones a{
+  display: inline-block;
+  width: 118px;
+  height: 29px;
+  text-align: center;
   font-size: 13.2px;
-  border-radius: 14px;
+  font-weight: 700;
+  border-radius: 30px;
+  padding-top: 3px;
 }
 
-.operacion-header img {
-  max-width: 100%;
-  height:auto;
+.crece-oportunidades-contenido-botones-blanco a{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #005B7A;
+  color: #005B7A;
 }
 
+.crece-oportunidades-contenido-botones-azul a{
+  background: #005B7A 0% 0% no-repeat padding-box;
+  border: 1px solid #005B7A;
+  color: white;
+}
+
+.crece-oportunidades-mas a {
+  background: #005B7A 0% 0% no-repeat padding-box;
+  border: 1px solid #005B7A;
+  color: white;
+
+  display: inline-block;
+  width: 225.5px;
+  height: 49.31px;
+  text-align: center;
+  font-size: 26.62px;
+  font-weight: 700;
+  border-radius: 30px;
+  padding-top: 3px;
+  margin-bottom: 5px;
+}
+
+.crece-oportunidades-mas a:hover,  
+.crece-oportunidades-contenido-botones-azul a:hover{
+  text-decoration: none;
+  background: rgba(0, 91, 122, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 91, 122, 0.8);
+}
+
+.crece-oportunidades-contenido-botones-blanco a:hover{
+  text-decoration: none;
+  color:#1199AD;
+  border: 1px solid #1199AD;
+}
 
 /*Reconocimientos*/
 .crece-reconocimientos {
@@ -339,23 +399,6 @@ ul li{
     font-weight: 500;
   }
 
-
-  /*Operaciones*/
-  .crece-operaciones-mobile{
-    display: none;
-  }
-
-  
-
-  .crece-operaciones-col:nth-child(1){
-    margin-left: auto;
-  }
-
-  .crece-operaciones-col:nth-child(3){
-    margin-right: auto;
-  }
-
-
   /*Reconocimientos*/
   .crece-reconocimientos-vista-mobile{
     display: none;
@@ -371,21 +414,6 @@ ul li{
 
   .reconocimiento-col1 div:nth-child(2), .reconocimiento-col2 div:nth-child(2){
     margin-top: 30px
-  }
-
-}
-
-@media screen and (max-width: 1118px) {
-  .crece-operaciones{
-    display: none;
-  }
-
-  .crece-operaciones-mobile{
-    display: block;
-  }
-
-  .ccrece-operaciones-vista-mobile .crece-operaciones-col{
-    margin: 10px;
   }
 
 }
@@ -474,33 +502,6 @@ ul li{
   .crece-solicitar-invertir-text{
       display: inline-block;
   }
-
-  /*Operaciones*/
-  .crece-operaciones-mobile{
-    display: none;
-  }
-
-  .operacion-header img {
-    max-width: 100%;
-    height:auto;
-  }
-
-  .crece-operaciones{
-    display: none;
-  }
-
-  .crece-operaciones-mobile{
-    display: block;
-  }
-
-  .crece-operaciones-col:nth-child(1){
-    margin-left: auto;
-  }
-
-  .crece-operaciones-col:nth-child(3){
-    margin-right: auto;
-  }
-
 
   /*Reconocimientos*/
   .crece-reconocimientos-vista-mobile{
@@ -604,18 +605,6 @@ ul li{
     margin-left: 0;
     margin-top: 25px;
   }
-  /*Operaciones*/
-  .crece-operaciones{
-    display: none;
-  }
-  .crece-operaciones-mobile{
-    display: block;
-  }
-
-  .ccrece-operaciones-vista-mobile .crece-operaciones-col{
-    margin: 10px;
-  }
-  
 
   /*Reconocimientos*/
   .crece-reconocimientos-vista{

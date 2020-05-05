@@ -18,7 +18,7 @@
         <link href="{% static 'slick/slick-theme.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         {% block head_css_agregado %}{% endblock head_css_agregado %}
         {% endblock head_css %}
     </head>
@@ -50,7 +50,7 @@
                                   <a class="nav-link" href="#">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#">Conocenos</a>
+                                  <a class="nav-link" href="/nosotros/">Conocenos</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" href="/lista_solicitudes">Oportunidades</a>
@@ -123,7 +123,7 @@
                         <div class="col-sm-5 col-lg-5 crece-footer-contenido-enlaces">
                               
                                 <ul>
-                                  <li><a href="#"><strong>Quienes Somos</strong></a></li>
+                                  <li><a href="/nosotros"><strong>Quienes Somos</strong></a></li>
                                   <li><a href="#"><strong>Preguntas Frecuentes</strong></a></li>
                                   <li><a href="#"><strong>Terminos y condiciones</strong></a></li>
                                   <li><a href="#"><strong>Politicas de privacidad</strong></a></li>
@@ -173,7 +173,7 @@
                             <div class="col">
                               <div class="crece-footer-contenido-enlaces">
                                 <ul>
-                                  <li><a href="#"><strong>Quienes Somos</strong></a></li>
+                                  <li><a href="/nosotros/"><strong>Quienes Somos</strong></a></li>
                                   <li><a href="#"><strong>Preguntas Frecuentes</strong></a></li>
                                   <li><a href="#"><strong>Terminos y condiciones</strong></a></li>
                                   <li><a href="#"><strong>Politicas de privacidad</strong></a></li>
@@ -193,8 +193,10 @@
                               <div>
                                 Whatsapp: <a href="https://wa.me/593988349088">+593-98-834-9088</a>
                               </div>
-                              <div>
-                                Escríbenos: info@creceecuador.com
+                              <div>Escríbenos: 
+                                <a href="mailto: info@creceecuador.com">
+                                  <span>info@creceecuador.com</span>
+                                </a>
                               </div>
                             </div>
                           </div>
