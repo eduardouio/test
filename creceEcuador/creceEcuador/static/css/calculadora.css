@@ -168,87 +168,87 @@ input[type=range].solicitante:focus::-ms-fill-upper {
 input[type=range].inversionista {
   -webkit-appearance: none;
   width: 100%;
-  margin: 8.05px 0;
+  margin: 10.4px 0;
 }
 input[type=range].inversionista:focus {
   outline: none;
 }
 input[type=range].inversionista::-webkit-slider-runnable-track {
   width: 100%;
-  height: 4.9px;
+  height: 3.2px;
   cursor: pointer;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-  background: rgba(208, 211, 212, 0.39);
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #52bf4a;
   border-radius: 1.3px;
-  border: 0px solid #000000;
+  border: 0.2px solid #010101;
 }
 input[type=range].inversionista::-webkit-slider-thumb {
-  box-shadow: 0px 0px 1.4px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  border: 3.1px solid #ecf0f1;
-  height: 21px;
-  width: 21px;
-  border-radius: 0px;
-  background: #d0d3d4;
+  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
+  border: 0px solid #129636;
+  height: 24px;
+  width: 24px;
+  border-radius: 50px;
+  background: #1fbf4a;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -8.05px;
+  margin-top: -10.6px;
 }
 input[type=range].inversionista:focus::-webkit-slider-runnable-track {
-  background: rgba(219, 221, 222, 0.39);
+  background: #64c65d;
 }
 input[type=range].inversionista::-moz-range-track {
   width: 100%;
-  height: 4.9px;
+  height: 3.2px;
   cursor: pointer;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-  background: rgba(208, 211, 212, 0.39);
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #52bf4a;
   border-radius: 1.3px;
-  border: 0px solid #000000;
+  border: 0.2px solid #010101;
 }
 input[type=range].inversionista::-moz-range-thumb {
-  box-shadow: 0px 0px 1.4px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  border: 3.1px solid #ecf0f1;
-  height: 21px;
-  width: 21px;
-  border-radius: 0px;
-  background: #d0d3d4;
+  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
+  border: 0px solid #129636;
+  height: 24px;
+  width: 24px;
+  border-radius: 50px;
+  background: #1fbf4a;
   cursor: pointer;
 }
 input[type=range].inversionista::-ms-track {
   width: 100%;
-  height: 4.9px;
+  height: 3.2px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
 input[type=range].inversionista::-ms-fill-lower {
-  background: rgba(197, 201, 202, 0.39);
-  border: 0px solid #000000;
+  background: #46b13f;
+  border: 0.2px solid #010101;
   border-radius: 2.6px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
 input[type=range].inversionista::-ms-fill-upper {
-  background: rgba(208, 211, 212, 0.39);
-  border: 0px solid #000000;
+  background: #52bf4a;
+  border: 0.2px solid #010101;
   border-radius: 2.6px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
 input[type=range].inversionista::-ms-thumb {
-  box-shadow: 0px 0px 1.4px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  border: 3.1px solid #ecf0f1;
-  height: 21px;
-  width: 21px;
-  border-radius: 0px;
-  background: #d0d3d4;
+  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
+  border: 0px solid #129636;
+  height: 24px;
+  width: 24px;
+  border-radius: 50px;
+  background: #1fbf4a;
   cursor: pointer;
-  height: 4.9px;
+  height: 3.2px;
 }
 input[type=range].inversionista:focus::-ms-fill-lower {
-  background: rgba(208, 211, 212, 0.39);
+  background: #52bf4a;
 }
 input[type=range].inversionista:focus::-ms-fill-upper {
-  background: rgba(219, 221, 222, 0.39);
+  background: #64c65d;
 }
 
 .crece-calculadora-inversionista-container{

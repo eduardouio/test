@@ -32,7 +32,7 @@ urlpatterns = [
     path('lista_solicitudes/', TemplateView.as_view(template_name="solicitudes.html")),
     path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html")),
     path('calculadora/', TemplateView.as_view(template_name="calculadora.html")),
-
+    path('preguntas_frecuentes/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
 
     # #para obtener Tokens
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
