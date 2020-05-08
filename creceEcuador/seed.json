@@ -1,210 +1,210 @@
 [
-  {
-    "model": "contenttypes.contenttype",
-    "id": 1,
-    "fields": {
-          "app_label": "admin",
-          "model": "logentry"
-    }
+{
+  "model": "contenttypes.contenttype",
+  "id": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 2,
-    "fields": {
-          "app_label": "auth",
-          "model": "permission"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 3,
-    "fields": {
-          "app_label": "auth",
-          "model": "group"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 4,
-    "fields": {
-          "app_label": "auth",
-          "model": "user"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 5,
-    "fields": {
-          "app_label": "contenttypes",
-          "model": "contenttype"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 6,
-    "fields": {
-          "app_label": "sessions",
-          "model": "session"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 7,
-    "fields": {
-          "app_label": "app",
-          "model": "user"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 7,
+  "fields": {
+    "app_label": "app",
+    "model": "user"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 8,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "banco"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 8,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "banco"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 9,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "conyuge"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 9,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "conyuge"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 10,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "cuenta_bancaria"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 10,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "cuenta_bancaria"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 11,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "fuente_ingresos"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 11,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "fuente_ingresos"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 12,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "pregunta"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 12,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "pregunta"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 13,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "respuesta"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 13,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "respuesta"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 14,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "usuario"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 14,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "usuario"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 15,
-    "fields": {
-          "app_label": "registro_inversionista",
-          "model": "encuesta"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 15,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "encuesta"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 16,
-    "fields": {
-          "app_label": "solicitudes",
-          "model": "categoriasolicitud"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 16,
+  "fields": {
+    "app_label": "registro_inversionista",
+    "model": "canton"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 17,
-    "fields": {
-          "app_label": "solicitudes",
-          "model": "tipocredito"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 17,
+  "fields": {
+    "app_label": "solicitudes",
+    "model": "categoriasolicitud"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 18,
-    "fields": {
-          "app_label": "solicitudes",
-          "model": "solicitud"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 18,
+  "fields": {
+    "app_label": "solicitudes",
+    "model": "tipocredito"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 19,
-    "fields": {
-          "app_label": "solicitudes",
-          "model": "historialfinanciamiento"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 19,
+  "fields": {
+    "app_label": "solicitudes",
+    "model": "solicitud"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 20,
-    "fields": {
-          "app_label": "fases_inversiones",
-          "model": "inversion"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 20,
+  "fields": {
+    "app_label": "solicitudes",
+    "model": "historialfinanciamiento"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 21,
-    "fields": {
-          "app_label": "fases_inversiones",
-          "model": "pago_detalle"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 21,
+  "fields": {
+    "app_label": "fases_inversiones",
+    "model": "inversion"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 22,
-    "fields": {
-          "app_label": "proceso",
-          "model": "proceso"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 22,
+  "fields": {
+    "app_label": "fases_inversiones",
+    "model": "pago_detalle"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 23,
-    "fields": {
-          "app_label": "proceso",
-          "model": "tarea"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 23,
+  "fields": {
+    "app_label": "proceso",
+    "model": "proceso"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 24,
-    "fields": {
-          "app_label": "proceso",
-          "model": "tareaprevia"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 24,
+  "fields": {
+    "app_label": "proceso",
+    "model": "tarea"
+  }
 },
 {
-    "model": "contenttypes.contenttype",
-    "id": 25,
-    "fields": {
-          "app_label": "manager_archivos",
-          "model": "transferenciainversion"
-    }
+  "model": "contenttypes.contenttype",
+  "id": 25,
+  "fields": {
+    "app_label": "proceso",
+    "model": "tareaprevia"
+  }
 },
 {
   "model": "contenttypes.contenttype",
   "id": 26,
   "fields": {
-    "app_label": "registro_inversionista",
-    "model": "canton"
+    "app_label": "manager_archivos",
+    "model": "transferenciainversion"
   }
 },
 {
@@ -221,6 +221,14 @@
   "fields": {
     "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
     "expire_date": "2020-05-09T07:12:58.478Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qltf1uys1a1f9hl435ymf9wnct3s3s9q",
+  "fields": {
+    "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
+    "expire_date": "2020-05-19T22:26:56.954Z"
   }
 },
 {
@@ -3779,14 +3787,15 @@
   "fields": {
     "titulo": "new fintec",
     "operacion": "operacion de la fintec",
-    "historia": "historia de la fintec",
+    "historia": "Mes\u00edas Pastu\u00f1a es un sembrador y comerciante de mora de la comuna Sarahuasi Provincia de Cotopaxi. Mes\u00edas tiene 32 a\u00f1os, es bachiller, y est\u00e1 casado con Paulina Toapanta de 25 a\u00f1os (tienen un hijo juntos). Inici\u00f3 sus actividades en el a\u00f1o 2016. Durante el a\u00f1o 2018 factur\u00f3 $87,917 (+102% vs 2017). Solicita financiamiento para comprar mora y cumplir con la entrega de nuevos contratos con empresas productoras de pulpa de fruta. Los pedidos que tiene sobrepasan la cantidad de m\u00e1s de 100.000 toneladas hasta diciembre del 2020.",
     "plazo": 12,
     "url": "https://www.fintec.com",
     "imagen_url": "https://www.bkd.com/sites/default/files/2018-06/CRE-19625421_Large.jpg",
     "monto": "12000.00",
     "moneda": "USD",
     "tir": "0.61",
-    "porcentaje_financiado": "0.23",
+    "tin": "1.00",
+    "porcentaje_financiado": "23.00",
     "fecha_creacion": "2020-04-21",
     "fecha_publicacion": "2020-04-21",
     "fecha_finalizacion": "2020-04-21",
@@ -3802,14 +3811,15 @@
   "fields": {
     "titulo": "Segunda fintec",
     "operacion": "Segunda fintec operation",
-    "historia": "Segunda fintec historia",
+    "historia": "Comenc\u00e9 con mi negocio hace 4 a\u00f1os atr\u00e1s junto al apoyo y el aporte de mi familia. Nos dedicamos al dise\u00f1o y confecci\u00f3n de uniforme de trabajo para todo tipo de industrias. Actualmente mantengo contratos con empresas grandes de Guayaquil y sus alrededores. Tengo que entregar un pedido de uniformes para uno de los productores de az\u00facar m\u00e1s reconocido del medio, necesito capital de trabajo para cubrir costos de materia prima y otros relacionados a la producci\u00f3n y entrega.",
     "plazo": 18,
     "url": "https://www.fintec2.com",
     "imagen_url": "https://financialinstitutions.bakermckenzie.com/wp-content/uploads/sites/22/2017/05/CSB54692_SetA_1576x1182-13.jpg",
     "monto": "100000.00",
     "moneda": "USD",
     "tir": "1.21",
-    "porcentaje_financiado": "0.88",
+    "tin": "1.00",
+    "porcentaje_financiado": "88.88",
     "fecha_creacion": "2020-04-21",
     "fecha_publicacion": "2020-04-21",
     "fecha_finalizacion": "2020-04-21",
@@ -3824,15 +3834,16 @@
   "pk": 3,
   "fields": {
     "titulo": "Fintec 3",
-    "operacion": "Operacion fintex 3",
-    "historia": "Historia fint",
+    "operacion": "op fintec 3",
+    "historia": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "plazo": 24,
     "url": "https://www.fintex3.com",
     "imagen_url": "https://s3-eu-west-1.amazonaws.com/img3.n-ix.com/wp-content/uploads/2017/10/13140836/fintech-banner-3.jpg",
     "monto": "9000.00",
     "moneda": "USD",
     "tir": "12.10",
-    "porcentaje_financiado": "0.00",
+    "tin": "1.00",
+    "porcentaje_financiado": "57.80",
     "fecha_creacion": "2020-04-22",
     "fecha_publicacion": "2020-04-22",
     "fecha_finalizacion": "2020-04-22",
@@ -3848,14 +3859,15 @@
   "fields": {
     "titulo": "Fintec JP",
     "operacion": "Op JP",
-    "historia": "Hist JP",
+    "historia": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "plazo": 120,
     "url": "https://www.jp.com",
     "imagen_url": "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
     "monto": "1500.00",
     "moneda": "USD",
     "tir": "12.33",
-    "porcentaje_financiado": "45.00",
+    "tin": "1.00",
+    "porcentaje_financiado": "99.99",
     "fecha_creacion": "2020-04-22",
     "fecha_publicacion": "2020-04-22",
     "fecha_finalizacion": "2020-04-22",
@@ -4928,11 +4940,407 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 105,
+  "fields": {
+    "name": "Can add Canton",
+    "content_type": 16,
+    "codename": "add_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 106,
+  "fields": {
+    "name": "Can change Canton",
+    "content_type": 16,
+    "codename": "change_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 107,
+  "fields": {
+    "name": "Can delete Canton",
+    "content_type": 16,
+    "codename": "delete_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 108,
+  "fields": {
+    "name": "Can view Canton",
+    "content_type": 16,
+    "codename": "view_canton"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 109,
+  "fields": {
+    "name": "Can add categoria solicitud",
+    "content_type": 17,
+    "codename": "add_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 110,
+  "fields": {
+    "name": "Can change categoria solicitud",
+    "content_type": 17,
+    "codename": "change_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 111,
+  "fields": {
+    "name": "Can delete categoria solicitud",
+    "content_type": 17,
+    "codename": "delete_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 112,
+  "fields": {
+    "name": "Can view categoria solicitud",
+    "content_type": 17,
+    "codename": "view_categoriasolicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 113,
+  "fields": {
+    "name": "Can add tipo credito",
+    "content_type": 18,
+    "codename": "add_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 114,
+  "fields": {
+    "name": "Can change tipo credito",
+    "content_type": 18,
+    "codename": "change_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 115,
+  "fields": {
+    "name": "Can delete tipo credito",
+    "content_type": 18,
+    "codename": "delete_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 116,
+  "fields": {
+    "name": "Can view tipo credito",
+    "content_type": 18,
+    "codename": "view_tipocredito"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 117,
+  "fields": {
+    "name": "Can add solicitud",
+    "content_type": 19,
+    "codename": "add_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 118,
+  "fields": {
+    "name": "Can change solicitud",
+    "content_type": 19,
+    "codename": "change_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 119,
+  "fields": {
+    "name": "Can delete solicitud",
+    "content_type": 19,
+    "codename": "delete_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 120,
+  "fields": {
+    "name": "Can view solicitud",
+    "content_type": 19,
+    "codename": "view_solicitud"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 121,
+  "fields": {
+    "name": "Can add historial financiamiento",
+    "content_type": 20,
+    "codename": "add_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 122,
+  "fields": {
+    "name": "Can change historial financiamiento",
+    "content_type": 20,
+    "codename": "change_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 123,
+  "fields": {
+    "name": "Can delete historial financiamiento",
+    "content_type": 20,
+    "codename": "delete_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 124,
+  "fields": {
+    "name": "Can view historial financiamiento",
+    "content_type": 20,
+    "codename": "view_historialfinanciamiento"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 125,
+  "fields": {
+    "name": "Can add Inversion",
+    "content_type": 21,
+    "codename": "add_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 126,
+  "fields": {
+    "name": "Can change Inversion",
+    "content_type": 21,
+    "codename": "change_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 127,
+  "fields": {
+    "name": "Can delete Inversion",
+    "content_type": 21,
+    "codename": "delete_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 128,
+  "fields": {
+    "name": "Can view Inversion",
+    "content_type": 21,
+    "codename": "view_inversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 129,
+  "fields": {
+    "name": "Can add Pago_detalle",
+    "content_type": 22,
+    "codename": "add_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 130,
+  "fields": {
+    "name": "Can change Pago_detalle",
+    "content_type": 22,
+    "codename": "change_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 131,
+  "fields": {
+    "name": "Can delete Pago_detalle",
+    "content_type": 22,
+    "codename": "delete_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 132,
+  "fields": {
+    "name": "Can view Pago_detalle",
+    "content_type": 22,
+    "codename": "view_pago_detalle"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 133,
+  "fields": {
+    "name": "Can add Proceso",
+    "content_type": 23,
+    "codename": "add_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 134,
+  "fields": {
+    "name": "Can change Proceso",
+    "content_type": 23,
+    "codename": "change_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 135,
+  "fields": {
+    "name": "Can delete Proceso",
+    "content_type": 23,
+    "codename": "delete_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 136,
+  "fields": {
+    "name": "Can view Proceso",
+    "content_type": 23,
+    "codename": "view_proceso"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 137,
+  "fields": {
+    "name": "Can add Tarea",
+    "content_type": 24,
+    "codename": "add_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 138,
+  "fields": {
+    "name": "Can change Tarea",
+    "content_type": 24,
+    "codename": "change_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 139,
+  "fields": {
+    "name": "Can delete Tarea",
+    "content_type": 24,
+    "codename": "delete_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 140,
+  "fields": {
+    "name": "Can view Tarea",
+    "content_type": 24,
+    "codename": "view_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 141,
+  "fields": {
+    "name": "Can add Tarea Previa",
+    "content_type": 25,
+    "codename": "add_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 142,
+  "fields": {
+    "name": "Can change Tarea Previa",
+    "content_type": 25,
+    "codename": "change_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 143,
+  "fields": {
+    "name": "Can delete Tarea Previa",
+    "content_type": 25,
+    "codename": "delete_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 144,
+  "fields": {
+    "name": "Can view Tarea Previa",
+    "content_type": 25,
+    "codename": "view_tareaprevia"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 145,
+  "fields": {
+    "name": "Can add Transferencia de Inversion",
+    "content_type": 26,
+    "codename": "add_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 146,
+  "fields": {
+    "name": "Can change Transferencia de Inversion",
+    "content_type": 26,
+    "codename": "change_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 147,
+  "fields": {
+    "name": "Can delete Transferencia de Inversion",
+    "content_type": 26,
+    "codename": "delete_transferenciainversion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 148,
+  "fields": {
+    "name": "Can view Transferencia de Inversion",
+    "content_type": 26,
+    "codename": "view_transferenciainversion"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$180000$Q63TRwPmRjc5$TMla6OLOXrCSOHqjs7H3pggNNthLHopx0D5W1k9+Ny0=",
-    "last_login": "2020-04-25T23:53:32.910Z",
+    "last_login": "2020-05-05T22:26:56.951Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -5083,6 +5491,114 @@
     "telefono_domicilio": null,
     "ingresos": null,
     "cuenta_bancaria": null
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 1,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "transferencia/banner.png",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 2,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "transferencia/banner_zRA2V5r.png",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 3,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "transferencia/AmazonCloudFront.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 4,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "transferencia/AmazonCloudFront_rd3oSuN.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 5,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "media/transferencia/AmazonCloudFront_uoTbTEl.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 6,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "media/transferencia/AmazonCloudFront_5lW37ef.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 7,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "media/transferencia/AmazonCloudFront_pBwVGC1.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 8,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "media/transferencia/25866338.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
+  }
+},
+{
+  "model": "manager_archivos.transferenciainversion",
+  "pk": 9,
+  "fields": {
+    "id_inversion": 1,
+    "url_documento": "media/transferencia/25866338.pdf",
+    "fecha_creacion": "2020-04-28",
+    "fecha_aprobacion": null,
+    "usuario_aprobacion": null,
+    "estado": 0
   }
 },
 {
@@ -5603,6 +6119,136 @@
     "object_repr": "Usuario object (1)",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Cedula\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2020-05-05T22:27:51.203Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "4",
+    "object_repr": "Solicitud object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Historia\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2020-05-05T22:27:57.327Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Operacion\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2020-05-05T22:28:38.789Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Operacion\", \"Historia\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2020-05-05T22:29:29.618Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "2",
+    "object_repr": "Solicitud object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Historia\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2020-05-05T22:30:16.600Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "1",
+    "object_repr": "Solicitud object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Historia\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2020-05-05T22:53:06.687Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "3",
+    "object_repr": "Solicitud object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2020-05-05T22:53:16.710Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "2",
+    "object_repr": "Solicitud object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2020-05-05T22:53:28.108Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "1",
+    "object_repr": "Solicitud object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2020-05-05T23:02:03.046Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "4",
+    "object_repr": "Solicitud object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2020-05-05T23:02:30.247Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "4",
+    "object_repr": "Solicitud object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
   }
 }
 ]

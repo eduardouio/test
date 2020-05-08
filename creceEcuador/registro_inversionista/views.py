@@ -215,7 +215,7 @@ def confirmar_email(request, uidb64, token):
         # return render(request, 'http://127.0.0.1:8000/inversionista/dashboard/', 
         #                             {'user': user.username})
         #login(request, user)
-        # return redirect('home')
+        # return redirect('/')
 
         #return HttpResponse('Su usuario ha sido confirmado con!')
         return redirect('http://localhost:8000/inversionista/login/')
