@@ -12,7 +12,7 @@ $(".crece-menu-toogle").click(function(){
     }
 });
 
-$("button").click(function(){
+$("div.crece-solicitar-invertir button").click(function(){
   var solicitar = $("#crece-solicitar-id");
   var invertir = $("#crece-invertir-id");
   if(this.className == "btn crece-invertir-button"){
