@@ -7,8 +7,7 @@ let COMISION_ADJUDICACION = MONTO_SOLICITANTE * 0.008;
 let ADJUDICACION_FACTOR = 1.12
 let COlUMNAS_TABLA_INVERSIOMISTA = 5
 
-let HOST = "http://localhost:8000/"
-let RUTA_FASE_2 = HOST+"registro/fase2/"
+let RUTA_FASE_2 = "/registro/fase2/"
 
 
 /*Calcula valores de las cuotas y llena la tabla de inversion*/

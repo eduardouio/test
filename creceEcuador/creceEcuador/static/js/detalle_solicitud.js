@@ -1,5 +1,4 @@
-let HOST = "http://localhost:8000/"
-let RUTA_SOLICITUDES = HOST+"solicitudes/";
+let RUTA_SOLICITUDES ="/solicitudes/";
 
 
 $( document ).ready(function() {
@@ -75,7 +74,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">'+
 '                                                            <strong>'+
-'                                                                '+calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado)+
+'                                                                $'+calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado)+
 '                                                            </strong>'+
 '                                                            <span>'+ oportunidad.porcentaje_financiado+'% recolectado</span>'+
 '                                                        </div>'+

@@ -1,13 +1,11 @@
-let HOST = "http://localhost:8000/"
-let RUTA_USUARIOS = HOST+"inversionista/"
-let RUTA_DASHBOARD = HOST+"inversionista/dashboard/"
+let RUTA_USUARIOS = "/inversionista/"
+let RUTA_DASHBOARD = "/inversionista/dashboard/"
 
 
 
 function go_to_dashboard(user) {
 	// body...
 	usuario = user
-	//location.href = "http://localhost:8000/inversionista/dashboard/";
 
 	let botones = document.getElementById("botones")
 
@@ -70,7 +68,7 @@ function login(argument) {
             main.appendChild(mensaje)
         }
     };
-    xhttp.open("POST", "http://localhost:8000/inversionista/login_inversionista/", true);
+    xhttp.open("POST", "/inversionista/login_inversionista/", true);
     xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
     xhttp.send(JSON.stringify({
                                 "username": usuario,
