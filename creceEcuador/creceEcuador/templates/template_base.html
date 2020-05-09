@@ -16,7 +16,9 @@
         {% block head_css %}
         <link href="{% static 'slick/slick.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'slick/slick-theme.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static 'slick/base.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         {% block head_css_agregado %}{% endblock head_css_agregado %}
         {% endblock head_css %}
     </head>
@@ -25,10 +27,10 @@
             <main>
                 <header class="crece-header">
 
-                    <div class="container crece-header-contenido" id="crece-header-id">
+                    <div class="container crece-header-contenido col-lg-10" id="crece-header-id">
                       <div class="row">
-                        <div class="col">
-                          <a class="logo navbar-brand" href="/home">
+                        <div class="col col-lg-4">
+                          <a class="logo navbar-brand" href="/">
                               <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                                 <div class="img-responsive"><img src="{% static 'assets/Logo_crece_menu.png' %}"></div>
                               </div>
@@ -41,14 +43,14 @@
                         </div>
 
 
-                          <div class="crece-header-nav" >
+                          <div class="crece-header-nav col-lg-8" >
                             <nav class="navbar navbar-expand-sm">
                               <ul class="navbar-nav">
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#">Inicio</a>
+                                  <a class="nav-link" href="/">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#">Conocenos</a>
+                                  <a class="nav-link" href="/nosotros/">Conocenos</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" href="/lista_solicitudes">Oportunidades</a>
@@ -58,7 +60,7 @@
                                 </li>
                                 <div>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#">Ingresar</a>
+                                    <a class="nav-link crece-header-nav-ingresar" href="#">Ingresar</a>
                                   </li>
                                 </div>
                               </ul>
@@ -84,15 +86,15 @@
                   <!--SIGUENOS-->
                   <div class="crece-footer ">
                           <div class="container">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <div class="col">
-                                  <div class="crece-footer-redes">
-                                     <div>Siguenos en: </div>
+                                  <div class="crece-footer-redes row justify-content-center">
                                       <ul class="crece-footer-redes-lista">
-                                        <li><a href="#"><img src="{% static 'assets/fb.png' %}" id="crece-facebook"></a></li>
-                                        <li><a href="#"><img src="{% static 'assets/twitter.png' %}"></a></li>
-                                        <li><a href="#"><img src="{% static 'assets/linkedin.png' %}"></a></li>
-                                        <li><a href="#"><img src="{% static 'assets/instagram.png' %}"></a></li>
+                                        <li><div>Síguenos en: </div></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/CreceEC/"><img src="{% static 'assets/fb.png' %}" id="crece-facebook"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/creceec"><img src="{% static 'assets/twitter.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://ec.linkedin.com/company/creceec"><img src="{% static 'assets/linkedin.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/creceec/?hl=es-la"><img src="{% static 'assets/instagram.png' %}"></a></li>
                                       </ul>
                                   </div>
                                 </div>
@@ -104,7 +106,7 @@
                   <div class="crece-footer-about">
                     <div class="container">
                       <p>
-                        PROSPERA ECU S.A./CRECE ECUADOR se encuentre registrada ante la Superintendencia de Compañías, Valores y Seguros. Las operaciones de nanciación colaborativa o crowdfunding, crowdfunding
+                        PROSPERA ECU S.A./CRECE ECUADOR se encuentra registrada ante la Superintendencia de Compañías, Valores y Seguros. Las operaciones de nanciación colaborativa o crowdfunding, crowdfunding
                         de reembolso y sus diferentes categorías se encuentran reconocidas en la Ley Orgánica de Emprendimiento e Innovación en vigencia desde el 28 de marzo de 2020.
                       </p>
                     </div>
@@ -121,14 +123,23 @@
                         <div class="col-sm-5 col-lg-5 crece-footer-contenido-enlaces">
                               
                                 <ul>
-                                  <li><a href="#"><strong>Quienes Somos</strong></a></li>
-                                  <li><a href="#"><strong>Preguntas Frecuentes</strong></a></li>
+                                  <li><a href="/nosotros"><strong>Quienes Somos</strong></a></li>
+                                  <li><a href="/faq"><strong>Preguntas Frecuentes</strong></a></li>
                                   <li><a href="#"><strong>Terminos y condiciones</strong></a></li>
                                   <li><a href="#"><strong>Politicas de privacidad</strong></a></li>
                                 </ul>
                                 <div class="crece-inforacion">Mas informacion?
-                                  <div>Whatsapp: <span>+593-98-834-9088</span></div>
-                                  <div>Escríbenos: <span>info@creceecuador.com</span></div>
+                                  <div>
+                                    Whatsapp: 
+                                    <a target="_blank" rel="noopener noreferrer" href="https://wa.me/593988349088">
+                                      <span>+593-98-834-9088</span>
+                                    </a>
+                                  </div>
+                                  <div>Escríbenos: 
+                                    <a href="mailto: info@creceecuador.com">
+                                      <span>info@creceecuador.com</span>
+                                    </a>
+                                  </div>
                                 </div>
                                 
                               
@@ -162,8 +173,8 @@
                             <div class="col">
                               <div class="crece-footer-contenido-enlaces">
                                 <ul>
-                                  <li><a href="#"><strong>Quienes Somos</strong></a></li>
-                                  <li><a href="#"><strong>Preguntas Frecuentes</strong></a></li>
+                                  <li><a href="/nosotros/"><strong>Quienes Somos</strong></a></li>
+                                  <li><a href="/faq"><strong>Preguntas Frecuentes</strong></a></li>
                                   <li><a href="#"><strong>Terminos y condiciones</strong></a></li>
                                   <li><a href="#"><strong>Politicas de privacidad</strong></a></li>
                                    <li><a href="#"><strong>Manual para el inversionista</strong></a></li>
@@ -180,10 +191,12 @@
                                 Mas informacion?
                               </div>
                               <div>
-                                Whatsapp: +593-98-834-9088
+                                Whatsapp: <a href="https://wa.me/593988349088">+593-98-834-9088</a>
                               </div>
-                              <div>
-                                Escríbenos: info@creceecuador.com
+                              <div>Escríbenos: 
+                                <a href="mailto: info@creceecuador.com">
+                                  <span>info@creceecuador.com</span>
+                                </a>
                               </div>
                             </div>
                           </div>

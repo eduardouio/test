@@ -1,7 +1,8 @@
-header, section, aside, footer {
+section, aside, footer {
     margin: 0;
     padding: 16px;
     color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -16,8 +17,10 @@ ul {
 }
 
 header{
-  padding-top: 0;
-  padding-bottom: 0;
+  margin: 0;
+  padding: 0px 16px;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
 }
 
 nav a{
@@ -34,20 +37,28 @@ ul li{
   margin-right: 10px;}
 
 footer{
-  background: #287191;
+  background: #005B7A;
+  font-family: 'PT Sans', sans-serif;
 }
 
 /*Header*/
 .crece-header {
   top: 0;
   left: 0;
-  background: #287191;
+  background: #005B7A;
 }
 
 .crece-header-contenido-mobile{display: none;}
 
 .crece-header-nav{
   margin: auto;
+  font-size: 17.75px;
+  font-weight: 200;
+}
+
+.crece-header-nav-ingresar{
+  font-weight: 700;
+  margin: 0px 10px;
 }
 
 .crece-menu-toogle{
@@ -57,8 +68,9 @@ footer{
 
 
 /*Footer*/
-.footer {
-    background: #287191;
+.crece-footer-contenido-enlaces a{
+  color: #0099CD;
+  font-weight: 400;
 }
 
 .crece-footer-redes{
@@ -75,6 +87,11 @@ footer{
   border-bottom: 1px solid;
 }
 
+.crece-footer-about p{ 
+  margin: 20px 8px;
+  font-size: 12.91px;
+}
+
 .crece-footer-contenido-enlaces{
   padding: 0;
 }
@@ -87,19 +104,31 @@ footer{
 /*Dispositivos mayores a 992px*/
 @media screen and (min-width: 992px) {
 
+  /*Header*/
+  .navbar{
+    float: right;
+  }
+
 
   /*Footer*/
   
   .crece-footer-redes div{
-    font-size: 30px;
+    font-size: 34.29px;
   }
 
   .crece-footer-redes ul{
-    margin:auto;
+    margin: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 80%;
+    padding: 0px;
   }
 
   .crece-footer-redes-lista li{
-    margin-right: 50px;
+    display: block;
+    flex: 0 1 auto;
+    list-style-type: none;
   }
 
   .crece-footer-contenido-mobile{
@@ -223,29 +252,4 @@ footer{
     margin-top: 25px;
   }
 
-    
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

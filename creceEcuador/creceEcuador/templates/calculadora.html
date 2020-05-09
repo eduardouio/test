@@ -1,0 +1,232 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'css/calculadora.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}
+                <main class="crece-calculadora-solicitante">  
+
+                	<div class="crece-calculadora-solicitante-container container">
+
+                		<!--CaAPITAL-->
+                		<div class="row calculadora-solicitante-capital">
+                			<div class="col-sm-3">
+							  <b>Capital</b> 
+							  
+							</div>
+
+							<div class="col-sm-9 slidecontainer">
+								<input class="solicitante slider" type="range" min="2000" max="10000" value="5000" id="rango-capital" name="capital" step="100">
+								<span class="calculadora-valores">
+									$<b id="valor-capital"></b>
+								</span>
+							  
+							</div>
+
+						</div>
+
+
+						<!--PLAZO-->
+						<div class="row calculadora-solicitante-plazo">
+							<div class="col-sm-3">
+								  <b>Plazo</b>
+							</div>
+
+							<div class="col-sm-9 slidecontainer">
+								<input class="solicitante slider" type="range" min="1" max="18" value="12" id="rango-plazo" name="plazo">
+								  
+								   <span class="calculadora-valores" >
+								   		<b id="valor-plazo" ></b>
+								   		meses
+								   </span> 
+							</div>
+
+						</div>
+
+
+						<!--TASA-->
+						<div class="row calculadora-solicitante-tasa">
+							<div class="col-sm-3">
+								<b>Tasa</b>
+							</div>
+
+							<div class="col-sm-9 slidecontainer">
+								  <input  class="solicitante slider" type="range" min="14" max="30" value="24" id="rango-tasa" name="tasa">
+								   <span class="calculadora-valores">
+								   		<b id="valor-tasa"></b>%
+								   </span>
+							</div>
+
+						</div>
+
+
+						<!--CUOTA MENSUAL-->
+						<div class="row calculadora-solicitante-cuota">
+							<div class="col-sm-7">
+								  <b>Cuota mensual*:</b>
+							</div>
+							<div class="col-sm-5">
+								<div id="cuota-valor"> </div>
+							</div>
+						</div>
+
+
+						<!--BOTON SOLICITAR-->
+						<div class="row">
+							
+								<button id="calculadora-solicitar">Solicitar</button>
+							
+												
+                		</div>
+
+                	</div>
+
+	            </main>
+
+
+
+	            <!--CALCULADORA INVERSIONISTA-->
+	            <main class="crece-calculadora-inversionista">  
+
+                	<div class="crece-calculadora-inversionista-container container">
+
+                		<!--CaAPITAL-->
+                		<div class="row calculadora-inversionista-capital">
+                			<div class="col-sm-3">
+							  <b>Capital</b> 
+							  
+							</div>
+
+							<div class="col-sm-9 slidecontainer">
+								<input class="inversionista inversionista-slider" type="range" min="2000" max="10000" value="5000"  id="rango-capital'inversionista" name="capital" step="100">
+								<span class="calculadora-valores-inversionista">
+									$<b id="valor-capital-inversionista"></b>
+								</span>
+							  
+							</div>
+
+						</div>
+
+
+						<!--PLAZO-->
+						<div class="row calculadora-inversionista-plazo">
+							<div class="col-sm-3">
+								  <b>Plazo</b>
+							</div>
+
+							<div class="col-sm-9 slidecontainer">
+								<input class="inversionista inversionista-slider" type="range" min="1" max="18" value="12" id="rango-plazo'inversionista" name="plazo">
+								  
+								   <span class="calculadora-valores-inversionista" >
+								   		<b id="valor-plazo-inversionista" ></b>
+								   		meses
+								   </span> 
+							</div>
+
+						</div>
+
+
+
+
+
+						<!--CUOTA MENSUAL-->
+						<div class="row calculadora-inversionista-cuota">
+							<div class="col-sm-7">
+								  <b>Pago mensual*:</b>
+							</div>
+							<div class="col-sm-5">
+								<div id="cuota-valor-inversionista"></div>
+							</div>
+						</div>
+
+						<!--TASA INTERNA DE RETORNO-->
+						<div class="row calculadora-inversionista-tir">
+							<div class="col-sm-7">
+								  <b>Tasa interna de retorno:</b>
+							</div>
+							<div class="col-sm-5">
+								<div id="tir-valor-inversionista">16.62%</div>
+							</div>
+						</div>
+
+						<!--COMPARACIONES-->
+						<div class="calculadora-comparaciones container">
+							<span cla>Compara el rendimiento de tu inversion</span>
+							
+							<!--CRECE-->
+							<div class="row">
+								<!--TItulo Crece-->
+								<div class="col-sm-2">
+									CRECE
+								</div>
+
+								<!--Barra de Progreso-->
+								<div class="col">
+									<div class="progress ">
+									    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+									      <span class="sr-only">70% Complete</span>
+									    </div>
+									 </div>
+								</div>
+
+								<!--Valor-->
+								<div class="col-sm-3">
+									$5481.23
+								</div>
+							</div>
+
+							<!--BANCO-->
+							<div class="row">
+
+								<!--TItulo BANCO-->
+								<div class="col-sm-2">
+									Banco
+								</div>
+
+								<!--Barra de Progreso-->
+								<div class="col">
+									<div class="progress banco-progress">
+									    <div class="progress-bar banco-progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+									      
+									    </div>
+									 </div>
+								</div>
+
+								<!--Valor-->
+								<div class="col-sm-3">
+									$5250.00
+								</div>
+							</div>
+						</div>
+
+
+						<!--BOTON INVERTIR-->
+						<div class="row">
+							
+								<button id="calculadora-invertir">Invertir</button>
+							
+												
+                		</div>
+
+                	</div>
+
+	            </main>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+            <script src="{% static 'js/calculadora.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

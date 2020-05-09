@@ -1,4 +1,4 @@
-header, section, aside, footer {
+section, aside, footer {
     margin: 0;
     padding: 16px;
     color: #ffffff;
@@ -15,11 +15,6 @@ ul {
   list-style: none;
 }
 
-header{
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
 nav a{
   color: #ffffff;
 }
@@ -31,88 +26,87 @@ nav a.active {
 
 ul li{
   margin-left: 10px;
-  margin-right: 10px;}
-
-footer{
-  background: #287191;
+  margin-right: 10px;
 }
 
-/*Header*/
-.crece-header {
-  top: 0;
-  left: 0;
-  background: #287191;
-}
-
-.crece-header-contenido-mobile{display: none;}
-
-.crece-header-nav{
-  margin: auto;
-}
-
-.crece-menu-toogle{
-  margin: auto;
-  display: none;
-}
 
 /*Carrusel*/
 .crece-carrusel {
     background: #287191;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 0;
+    padding: 0;
 }
+
+.crece-carrusel-imagenes-movil{
+  display: none;
+}
+
 
 /*Main Mensaje*/
 .crece-main-mensaje {
     background: #fff;
-    color: #232323;
-  
+    color: #005B7A;
+    font-size: 23.84px;
+    padding-top: 42px;
+    padding-bottom: 42px;
 }
 
-.crece-main-mensaje i{
-  color: #287191;
-  margin: auto;
-}
-
-
-.crece-main-mensaje img:nth-child(2){
-  margin: auto;
-  width: 150px;
+.crece-main-mensaje p{
+  font-weight: 200;
+  margin-bottom: 0px;
 
 }
 
-.crece-main-mensaje img:nth-child(3){
-  float: left;
+
+
+.crece-main-mensaje-imagenes{
+  margin-top: 2em;
+}
+
+.crece-main-mensaje-imagenes img{
+  width: 100%;
+  height: auto;
 }
 
 /*SOlicitante inversionista*/
 .crece-solicitante-inversionista {
-    background: #63B1C6;
+    background: #1199AD;
+    padding-top: 32px;
+
+}
+
+.crece-solicitar-invertir{
+  font-weight: 700 !important;
+  font-size: 29.51px !important;
 }
 
 .crece-solicitar-invertir{
   display: flex;
   margin-right: auto;
   margin-left: auto; 
+  background-image: url("/static/assets/background_boton_solicitar_invertir.png");
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 99% 77%;
 }
 
+.crece-solicitar-text div{
+  margin-bottom: auto;
+  margin-top: auto;
+  font-weight: 500;
+}
 
 .crece-solicitar-invertir button{
-  background-color:   #287191;
-  color: #ffffff;
-  border-radius: 10px;
   padding: 10px 50px;
+  color: #ffffff;
 }
 
 
-.crece-solicitar-invertir button:focus{
-  background-color:   #63B1C6;
+.crece-solicitar-invertir-elegido{
+  background-color:   #3CACC4;
   color: #ffffff;
-  border-radius: 10px;
-  padding: 10px;
-  padding-right: 50px;
-  padding-left: 50px;
+  border-radius: 30px;
+  padding: 20px 160px !important;
 }
 
 .crece-invertir-contenido{
@@ -129,93 +123,217 @@ footer{
 
 
 
-/*Operaciones*/
-.crece-operaciones-mobile, .crece-operaciones {
-    background: #287191;
-    color: #ffffff;
+/* Seccion Oportunidades */
+
+.crece-oportunidades-contenedor {
+  background-color: white;
+  width: 332px;
+  height: 540px;
+  border-radius: 10px;
+  border: 1px solid #DEDEDE;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-.crece-operaciones-mobile img{
+.crece-oportunidades-contenedor:hover {
+  box-shadow: 0px 1px 3px #0000005D;
+}
+
+.crece-oportunidades-titulo {
+  color: #005B7A;
+  font-size: 26.62px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.crece-oportunidades-imagen {
+  width: 332px;
+  height: 162px;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  border-radius: 10px 10px 0px 0px;
+  padding: 0px;
+}
+
+.crece-oportunidades-imagen-gradiente {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005b7a+0,063240+100&1+0,0+100 */
+  background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b7a', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+  width: 332px;
+  height: 162px;
+  border-radius: 10px 10px 0px 0px;
+
+  display: flex;
+  align-items: center;
+}
+
+.crece-oportunidades-imagen-gradiente-texto span{
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 100px;
-  width: 100%;
+  font-size: 14px;
+  padding: 0.5px 0px;
 }
 
-.operacion-autor{
-  background: #DCCECC;
-  color: #000000;
+.crece-oportunidades-imagen-gradiente-texto{
+  padding-left: 32px;
 }
 
-.operacion-autor p:nth-child(1){
-  margin-bottom: -10px;
+.crece-oportunidades-imagen-gradiente-texto strong{
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.5px 0px;
 }
 
-.operacion-autor p:nth-child(2){
-  margin-bottom: 0;
+.crece-oportunidades-contenido-monto {
+  color: #005B7A;
+  margin-top: 10px;
 }
 
-.operacion-detalle-grid{
-  display: grid;
-  grid-template-columns: auto auto auto;
+.crece-oportunidades-contenido-monto p{
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-.operacion-detalle-grid>div{ 
-  border-right: 1px solid;
-  border-bottom: 1px solid;
+.crece-oportunidades-contenido-monto strong{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.crece-oportunidades-contenido-monto-texto {
+  padding: 0px;
+}
+
+.crece-oportunidades-contenido-monto-barra{
+  height: 3px;
+  width: 95%;
+  background-color: #DEDEDE;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 3px;
+}
+
+.crece-oportunidades-contenido-monto-barra-progreso{
+  height: 100%;
+  background-color: #005B7A;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.crece-oportunidades-contenido-informacion{
+  color: #005B7A;
+  font-size: 14px;
   text-align: center;
-  font-size: 10px;
+  margin-top: 15px;
 }
 
-.operacion-detalle-grid div.row1-col3{
-  border-right: none;
+.crece-oportunidades-contenido-informacion p{
+  font-weight: 300;
+  line-height: 1.3;
 }
 
-.operacion-detalle-grid div.row2-col1{
-  grid-column-start: 1;
-  grid-column-end: 3;
-  border-bottom: none;
+.crece-oportunidades-contenido-informacion strong{
+  font-weight: 600;
 }
 
-.operacion-detalle-grid div.row2-col2{
-  border-right: none;
-  border-bottom: none;
+.crece-oportunidades-contenido-solicitante {
+  color: #005B7A;
+  margin-top: 33px;
 }
 
-.operacion-historia-titulo{
-  background: #63B1C6;
-  font-size: 10px;
-  padding: 5px;
-  border-bottom: none !important;
-  border-right: none !important;
-  text-align: left !important;
-  grid-column-start: 1;
-  grid-column-end: 4;
+.crece-oportunidades-contenido-solicitante strong{
+  font: Bold 16px/29px Montserrat;
 }
 
-.operacion-historia-1, .operacion-historia-2{
-  border-bottom: none !important;
+.crece-oportunidades-contenido-solicitante p{
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
+  width: 271px;
+  height: 52px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  margin-bottom: 10px;
 }
 
-.operacion-historia-3{
-  border-bottom: none !important;
-  border-right: none !important;
-}
-
-
-
-.operacion-historia-financiado{
-  background: #ffffff;
-  color: #000000;
+.crece-oportunidades-contenido-historial{
+  color: #005B7A;
+  font-size: 14px;
   text-align: center;
 }
 
-.operacion-historia-enlace{
-  background: #63B1C6;
-  text-align: center;
+.crece-oportunidades-contenido-historial p{
+  font-weight: 300;
+  line-height: 1.3;
 }
 
+.crece-oportunidades-contenido-historial strong{
+  font-weight: 600;
+}
+
+.crece-oportunidades-contenido-historial-centro {
+  padding: 0px;
+}
+
+.crece-oportunidades-contenido-botones{
+  margin-top: 12px;
+}
+
+.crece-oportunidades-contenido-botones a{
+  display: inline-block;
+  width: 118px;
+  height: 29px;
+  text-align: center;
+  font-size: 13.2px;
+  font-weight: 700;
+  border-radius: 30px;
+  padding-top: 3px;
+}
+
+.crece-oportunidades-contenido-botones-blanco a{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #005B7A;
+  color: #005B7A;
+}
+
+.crece-oportunidades-contenido-botones-azul a{
+  background: #005B7A 0% 0% no-repeat padding-box;
+  border: 1px solid #005B7A;
+  color: white;
+}
+
+.crece-oportunidades-mas a {
+  background: #005B7A 0% 0% no-repeat padding-box;
+  border: 1px solid #005B7A;
+  color: white;
+
+  display: inline-block;
+  width: 225.5px;
+  height: 49.31px;
+  text-align: center;
+  font-size: 26.62px;
+  font-weight: 700;
+  border-radius: 30px;
+  padding-top: 3px;
+  margin-bottom: 5px;
+}
+
+.crece-oportunidades-mas a:hover,  
+.crece-oportunidades-contenido-botones-azul a:hover{
+  text-decoration: none;
+  background: rgba(0, 91, 122, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 91, 122, 0.8);
+}
+
+.crece-oportunidades-contenido-botones-blanco a:hover{
+  text-decoration: none;
+  color:#1199AD;
+  border: 1px solid #1199AD;
+}
 
 /*Reconocimientos*/
 .crece-reconocimientos {
@@ -228,30 +346,18 @@ footer{
 
 }
 
-/*Footer*/
-.footer {
-    background: #287191;
+.crece-reconocimientos-vista {
+  padding: 16px;
 }
 
-.crece-footer-redes{
-    display: flex;
+.crece-reconocimientos-vista-titulo{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25.91px !important;
+  font-weight: 700 !important;
 }
 
-.crece-footer-redes-lista li{
-    display: inline-block;
-}
-
-.crece-footer-about div{ 
-  margin-top: 15px;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-}
-
-.crece-footer-contenido-enlaces{
-  padding: 0;
-}
-.crece-footer-contenido-enlaces ul{
-  padding: 0;
+.reconocimiento-col2 div{
+  box-sizing: unset;
 }
 
 
@@ -264,18 +370,8 @@ footer{
     margin: auto;
   }
 
-  .crece-main-mensaje i{
-    font-size: 45px;
-  }
-
-  .crece-main-mensaje img:nth-child(2){
-    margin: auto;
-    width: 150px;
-
-  }
-
-  .crece-main-mensaje img:nth-child(3){
-    float: left;
+  .crece-main-mensaje-imagenes-movil{
+    display: none;
   }
 
   /*SOlicitante Inversionista*/
@@ -285,51 +381,30 @@ footer{
   }
 
   .crece-solicitar-contenido, .crece-invertir-contenido{
-    margin-left: 180px;
-    margin-top: 50px;
+    margin: 1.5em 0em;
+  }
+
+  .crece-solicitar-contenido-infografia-izquierda{
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .crece-solicitar-text{
+    font-size: 20.7px;
     margin-bottom: 25px;
   }
-
-  .crece-solicitar-invertir button:focus{
-    background-color:   #63B1C6;
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 10px 140px;
-    font-size: 25px;
+  .crece-solicitar-text div{
+    margin-bottom: auto;
+    margin-top: auto;
+    font-weight: 500;
   }
-
-  /*Operaciones*/
-  .crece-operaciones-mobile{
-    display: none;
-  }
-
-  .operacion-header img{
-    height: 100px;
-    width: 100%
-  }
-
-  .crece-operaciones-col:nth-child(1){
-    margin-left: auto;
-  }
-
-  .crece-operaciones-col:nth-child(3){
-    margin-right: auto;
-  }
-
 
   /*Reconocimientos*/
   .crece-reconocimientos-vista-mobile{
     display: none;
   }
   .crece-reconocimientos {
-    height: 730px;
-  }
-
-  .reconocimiento-col1{
-    margin-left: 150px;
+    height: 100%;
   }
 
   .reconocimiento-col2 div:not(:first-child){
@@ -339,44 +414,6 @@ footer{
 
   .reconocimiento-col1 div:nth-child(2), .reconocimiento-col2 div:nth-child(2){
     margin-top: 30px
-  }
-
-  /*Footer*/
-  
-  .crece-footer-redes div{
-    font-size: 30px;
-  }
-
-  .crece-footer-redes ul{
-    margin:auto;
-  }
-
-  .crece-footer-redes-lista li{
-    margin-right: 50px;
-  }
-
-  .crece-footer-contenido-mobile{
-    display: none;
-  }
-
-  .crece-footer-contenido{
-    margin-top: 50px;
-  }
-
-  .crece-footer-contenido-logo img{
-    
-  }
-
-  .crece-footer-contenido-enlaces{
-    font-size: 20px;
-  }
-
-  .crece-footer-contenido div.row{
-    margin-left: 100px;
-  }
-
-  .crece-footer-contenido-enlaces ul li{
-    margin:  0
   }
 
 }
@@ -401,35 +438,70 @@ footer{
     display: block;
   }
 
-  /*Main Mensaje*/
-  .crece-main-mensaje img{
-    margin: auto;
-    width: 150px;
-  }
-
-  .crece-main-mensaje i{
-    font-size: 25px;
-  }
-
-
-  /*Operaciones*/
-  .crece-operaciones-mobile{
+  /*main mensaje*/
+  .crece-main-mensaje-imagenes-movil{
     display: none;
   }
 
-  .operacion-header img{
-    height: 100px;
-    width: 100%
+  .crece-main-mensaje-imagenes img{
+    width: 90%;
   }
 
-  .crece-operaciones-col:nth-child(1){
-    margin-left: auto;
+
+  /*solicitante inversionista*/
+  .crece-solicitante-inversionista {
+    background: #1199AD;
+    padding-top: 32px;
+
   }
 
-  .crece-operaciones-col:nth-child(3){
+  .crece-solicitar-invertir{
+    font-weight: 700 !important;
+    font-size: 29.51px !important;
+  }
+
+  .crece-solicitar-text{
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .crece-solicitar-invertir{
+    display: flex;
     margin-right: auto;
+    margin-left: auto; 
+    background-image: url("/static/assets/background_boton_solicitar_invertir.png");
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95% 77%;
   }
 
+
+
+  .crece-solicitar-invertir button{
+    padding: 10px 50px;
+    color: #ffffff;
+  }
+
+
+  .crece-solicitar-invertir-elegido{
+    background-color:   #3CACC4;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 15px 65px !important;
+  }
+
+  .crece-invertir-contenido{
+    display: none;
+  }
+
+  .crece-solicitar-invertir-contenido{
+    margin-top: 20px;
+  }
+
+  .crece-solicitar-invertir-text{
+      display: inline-block;
+  }
 
   /*Reconocimientos*/
   .crece-reconocimientos-vista-mobile{
@@ -499,43 +571,40 @@ footer{
   }
 
   /*Carrusel*/
-  .crece-carrusel {
+  .crece-carrusel-imagenes {
     display:none;
   }
 
-  /*Main mensaje*/
-  .crece-main-mensaje img{
-    width: 90px;
+  .crece-carrusel-imagenes-movil {
+    display:block;
+  }
+  .crece-carrusel-imagenes-movil img{
+    display:block;
+    width: 100%;
+    height: auto;
   }
 
-  .crece-main-mensaje img:nth-child(3){
-    width: 130px;
-    margin: auto;
+
+  /* main mensaje */
+  .crece-main-mensaje-imagenes{
+    display: none;
+  }
+  .crece-main-mensaje-imagenes-movil{
+    margin: 10px 0px;
+    display: block;
+    width: 100%;
   }
 
-  .crece-main-mensaje img:nth-child(5){
-    margin-left: 5px;
+  .crece-main-mensaje-imagenes-movil img{
+    width: 80%;
+    height: auto;
   }
-
-  .crece-main-mensaje i {
-    font-size: 15px;
-}
-  
 
   /*Solicitante inversionista*/
   .crece-solicitar-contenido, .crece-invertir-contenido{
     margin-left: 0;
     margin-top: 25px;
   }
-  /*Operaciones*/
-  .crece-operaciones{
-    display: none;
-  }
-  .crece-operaciones-mobile{
-    display: block;
-  }
-
-  
 
   /*Reconocimientos*/
   .crece-reconocimientos-vista{
@@ -580,26 +649,3 @@ footer{
     
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include 
 from django.views.generic.base import TemplateView
+from rest_framework_simplejwt import views as jwt_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +28,20 @@ urlpatterns = [
     path('inversionista/', include('registro_inversionista.urls')),
     path('transferencia/', include('manager_archivos.urls')),
     path('registro/', include('fases_inversiones.urls')),
-    path('home/', TemplateView.as_view(template_name="index.html")),
+
+    path('', TemplateView.as_view(template_name="index.html")),
     path('lista_solicitudes/', TemplateView.as_view(template_name="solicitudes.html")),
-    path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html"))
+    path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html")),
+    path('calculadora/', TemplateView.as_view(template_name="calculadora.html")),
+    path('faq/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
+    path('nosotros/', TemplateView.as_view(template_name="nosotros.html")),
+    path('anunciar-solicitud/', TemplateView.as_view(template_name="anunciar_solicitud.html")),
+
+    # #para obtener Tokens
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,131 @@
+{% extends 'fases_inversiones/template_base_fases.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'fases_inversiones/styles.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                    
+
+
+
+                {% block content %}  
+
+
+            <main>
+                <!--CONFIRMA TU INVERSION-->
+                <div class="titulo">
+                    <strong>Confirma tu inversion</strong>
+                </div>
+
+                <!--PASOS (2)-->
+                    
+                        <div class="row fases-inversiones-pasos">
+
+                            <div class="col disabled">
+                                Paso 1
+                            </div>
+                            <div class="col active">
+                                Paso 2
+                            </div>
+                            <div class="col">
+                                Paso 3
+                            </div>
+                            <div class="col">
+                                Paso 4
+                            </div>
+                        </div>
+
+
+                <!--CONTENIDO-->
+                <div class="fase-2-container container">
+
+                  <div class="container">
+                        <!--HEADER (INVERSION, NOMBRE, PROGRESO)-->
+                        <div class="row fase-2-header">
+                            <div class="col inversion-container">
+                                <p><strong>Inversion:</strong></p> 
+                            </div>
+                            <div class="col informacion-container">
+                                <div class="row">
+                                    Mesias Pastuna
+                                </div>
+                                <div class="row progress">
+                                    
+                                        <div class="progress-bar" style="width:80%">80% completada</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DATOS DE LA TABLA-->
+                        <div class="row fase-2-body" id="fase-2-body-id">
+                            <div class="body-datos">
+                                <div>Monto a financiar:</div>
+                                <div>
+                                  <input type="text" name="monto" id="input-monto">
+                                    <button id="calcular" onclick="calcular_tabla_inversionista()">Calcular</button>
+                                </div>
+                                <div>Adjudicacion:</div>
+                                <div class="body-datos-calculados" id="adjudicacion">
+                                  
+                                </div>
+                                <div>Adjudicacion (IVA):</div>
+                                <div class="body-datos-calculados" id="adjudicacion-iva">
+                                      
+                                </div>
+                                <div>Inversion Total:</div>
+                                <div class="body-datos-calculados" id="inversion-total">
+                                      
+                                </div>
+                                <div>Ganancia Total:</div>
+                                 <div class="body-datos-calculados" id="ganancia-total">
+                                   
+                                 </div>
+                            </div>
+
+                            <!--TABLA AMORTIZACION-->
+                            <table class='tabla-amortizacion' id="tabla-amortizacion-id">
+                               <tr>
+                                   <th>Número de cuota</th>
+                                   <th>Pago</th>
+                                   <th>Comision</th>
+                                   <th>Comision: IVA</th>
+                                   <th>Ganancia</th>
+                               </tr> 
+                            </table>
+                            
+                          </div>
+
+                          <!--Footer (GUARDAR-SIGUIENTE)-->
+                          <div class="fase-2-footer" id="fase-2-footer-id">
+                              <button id="guardar-tabla" onclick="guardar_tabla()" disabled>Guardar</button>
+                              <button>Siguiente</button>
+                          </div> 
+
+
+
+                  </div>
+
+
+                </div>
+
+
+            <main>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+            <script src="{% static 'fases_inversiones/scripts.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

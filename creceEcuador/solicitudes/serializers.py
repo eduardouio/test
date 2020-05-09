@@ -18,6 +18,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'tipo_persona',
             'url',
             'imagen_url',
+            'historia',
             'monto',
             'moneda',
             'tir',

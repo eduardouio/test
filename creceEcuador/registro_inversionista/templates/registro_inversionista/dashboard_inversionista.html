@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <title>Crece Ecuador</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="icon" href="{% static 'assets/Logo_crece_pie.png' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="{% static 'registro_inversionista/dashboard.css' %}" rel="stylesheet" type="text/css">
+    {% block head_css_agregado %}{% endblock head_css_agregado %}
+  </head>
+  <body>
+
+
+    <div class="crece-botones" id="botones">
+      <div class="col-lg-6">
+
+                      <button><strong>Solicitante</strong></button>
+                  </div>
+                  <div class="col-lg-6">
+                     <button id="myButton" onClick="mostrar_inversionista()"><strong>Inversionista</strong></button>
+      </div>
+    </div>
+
+
+    <div class="dashboard" id="dashboard">
+        <section class='crece-dashboard-sidenav' id="secion-nav">
+          <div class='crece-usuario'>
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <div class="usuario-nombre" id='nombre-usuario'>
+              {{ usuario.nombres }} {{usuario.apellidos}}
+            </div>
+          </div>
+          <nav>
+            <a href="#" class="active"><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
+            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Oportunidades de inversion</a>
+            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Mis inversiones</a>
+            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Historial de inversiones</a>
+          </nav>
+        </section>
+
+        <header>
+          <div class="search_area">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" name="">
+          </div>
+
+          <div class="crece-header-logo" >
+            <a href="#">
+
+                <img src="{% static 'registro_inversionista/assets/logo.png' %}" alt="Logo crece">
+                Crece Ecuador
+
+            </a>
+            
+          </div>
+
+        </header>
+    </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'registro_inversionista/scripts.js' %}" ></script>
+  </body>
+</html>

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+from django.contrib.auth import authenticate
 
 from . import models
 
@@ -40,8 +41,20 @@ class SignupForm(ModelForm):
 
     class Meta:
         model = models.Usuario
-        fields = ( 'nombres', 'apellidos','usuario', 'email', 'tipo_persona', 'celular', 'ciudad' )
+        fields = ( 'nombres', 'apellidos','usuario', 'password', 'email', 'tipo_persona', 'celular', 'canton' )
         widgets = {'password': forms.PasswordInput()}
+    
+    def clean_usuario(self):
+        # cleaned_data = super().clean()
+
+        # username = cleaned_data.get("usuario")
+
+        username = self.cleaned_data['usuario']
+        if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
+            raise forms.ValidationError(u'Username "%s" is already in use.' % username)
+        return username
+
+    
 
 class Encuesta_form(forms.Form):
     """docstring for Encuesta_form"""
@@ -70,3 +83,18 @@ class Encuesta_form(forms.Form):
         choices=respuestas_pregunta_4,
     )
 
+class Login_form(forms.Form):
+    # TODO: Define form fields here
+    required_css_class = 'required'
+    username = forms.CharField(required=True,
+                                widget=forms.TextInput(attrs={'placeholder': 'usuario o correo electronico'}))
+    password = forms.CharField(required=True,
+                                widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get("username")
+        password = cleaned_data.get("password")
+        user = authenticate(username=username, password=password)
+        if not (user):
+            raise forms.ValidationError("Usuario o password incorrecto.")

@@ -1,32 +1,278 @@
-.crece-detalle-operaciones{
-    background-color: rgb(36, 48, 57);
+.crece-detalle-operaciones {
+    padding: 0px;
 }
 
-/* descripcion operaciones */
-.crece-detalle-operaciones-descripcion img{
+/* header detalle */
+
+.crece-detalle-operaciones-header {
+    height: 240px;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.crece-detalle-operaciones-header-gradiente {
+    height: 240px;
     width: 100%;
-    height: auto;
-    align-self: center;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005b7a+0,063240+100&1+0,0+100 */
+    background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b7a', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+    text-align: center;
 }
 
-.crece-detalle-operaciones-descripcion-img-container {
-    height: 200px;
-    overflow: hidden;
+.crece-detalle-operaciones-header-gradiente h1{
+    font-size: 40px;
+    font-weight: 600;
+    height: 240px;
     display: flex;
     justify-content: center;
+    /* align horizontal */
     align-items: center;
+    /* align vertical */
+    padding: 0px 10px;
 }
 
-/* cifras operacion */
-.crece-detalle-operaciones-cifras-cuadro-lateral {
-    background-color: white;
-    color: rgb(36, 48, 57);
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+/* Contenido */
+
+.crece-detalle-operaciones-contenido {
+    width: 100%;
+    margin: 25px 0px;
 }
-.crece-detalle-operaciones-cifras-cuadro-central {
-    background-color: rgb(44, 190, 199);
-    color: white;
+
+/*Barra Progreso */
+.crece-operaciones-contenido-monto-barra{
+    height: 6px;
+    width: 90%;
+    background-color: #DEDEDE;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 3px;
+  }
+  
+  .crece-operaciones-contenido-monto-barra-progreso{
     height: 100%;
+    background-color: #005B7A;
+    border-radius: 6px 0px 0px 6px;
+  }
+
+  /* Barra progreso Datos */
+
+  .crece-operaciones-contenido-datos-barra {
+      margin: 20px 0px;
+      color: #005B7A;
+  }
+
+  .crece-operaciones-contenido-datos-barra strong{
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.1em;
+}
+
+.crece-operaciones-contenido-datos-barra span{
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.crece-operaciones-contenido-datos-barra-objetivo{
+    text-align: right;
+}
+
+/* Informacion prestamo */
+.crece-operaciones-contenido-informacion{
+    color: #005B7A;
+    padding: 0px;
+}
+
+.crece-operaciones-contenido-informacion .row{
+    padding: 12px 15px;
+}
+
+.crece-operaciones-contenido-informacion h2{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.crece-operaciones-contenido-informacion strong{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.crece-operaciones-contenido-informacion span{
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: right;
+}
+
+/*historia*/
+
+.crece-operaciones-contenido-historia{
+    color: #005B7A;
+    padding: 0px;
+    margin-top: 15px;
+}
+
+.crece-operaciones-contenido-historia .row{
+    padding: 12px 15px;
+}
+
+.crece-operaciones-contenido-historia h2{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.crece-operaciones-contenido-historia p{
+    font-size: 13px;
+    font-weight: 300;
+    margin-bottom: 0px;
+    text-align: justify;
+}
+
+
+/* Invierte */
+
+.crece-detalle-operaciones-invierte{
+    color: #005B7A;
+    border: 1px solid #DEDEDE;
+    margin: 25px 0px;
+}
+
+.crece-detalle-operaciones-invierte > div{
+    padding: 25px 15px;
+}
+
+.crece-detalle-operaciones-invierte h3{
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.crece-detalle-operaciones-invierte p{
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.crece-detalle-operaciones-invierte-monto div{
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.crece-detalle-operaciones-invierte-monto div:focus{
+    border-bottom: 1px solid #005B7A;
+}
+
+.crece-detalle-operaciones-invierte-monto input{
+    width: 90%;
+    border: 0px;
+    color: #005B7A;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    line-height: 1.1em;
+    padding-left: 3px;
+}
+
+.crece-detalle-operaciones-invierte-monto label{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.1em;
+}
+
+.crece-detalle-operaciones-invierte-botones a{
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 30px;
+  }
+
+  .crece-detalle-operaciones-invierte-botones{
+    padding-top: 13px;
+}
+  .crece-detalle-operaciones-invierte-botones > div {
+      padding-top: 10px;
+  }
+  
+  .crece-detalle-operaciones-invierte-botones-blanco a{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #005B7A;
+    color: #005B7A;
+    font-size: 15px;
+    padding-top: 7px;
+  }
+  
+  .crece-detalle-operaciones-invierte-botones-azul a{
+    background: #005B7A 0% 0% no-repeat padding-box;
+    border: 1px solid #005B7A;
+    color: white;
+    font-size: 18px;
+    padding-top: 5px;
+  }
+
+  .crece-detalle-operaciones-invierte-botones-azul a:hover{
+    text-decoration: none;
+    background: rgba(0, 91, 122, 0.8) 0% 0% no-repeat padding-box;
+    border: 1px solid rgba(0, 91, 122, 0.8);
+  }
+  
+  .crece-detalle-operaciones-invierte-botones-blanco a:hover{
+    text-decoration: none;
+    color:#1199AD;
+    border: 1px solid #1199AD;
+  }
+
+  /* Historial*/
+
+.crece-detalle-operaciones-historial{
+    color: #005B7A;
+    border: 1px solid #DEDEDE;
+    margin: 0px 0px 25px 0px;
+}
+
+.crece-detalle-operaciones-historial-calificacion {
+    margin: 10px 0px 13px 0px;
+}
+
+.crece-detalle-operaciones-historial h3{
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin: 15px 0px 0px 0px;
+}
+
+.crece-detalle-operaciones-historial h5{
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.crece-detalle-operaciones-historial-datos{
+    padding: 10px;
+    margin-top: 19px;
+}
+
+.crece-detalle-operaciones-historial-datos div{
+    padding: 0px;
+}
+    
+.crece-detalle-operaciones-historial-datos h4{
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.crece-detalle-operaciones-historial-datos h5{
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+    padding-right: 30px;
+}
+
+.crece-detalle-operaciones-historial-datos .row{
+    padding-top: 14px;
 }

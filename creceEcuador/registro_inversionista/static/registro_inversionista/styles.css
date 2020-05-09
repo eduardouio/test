@@ -3,6 +3,10 @@ main{
 	font-family: Montserrat;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 form{
 	width: 100%;
 }
@@ -21,6 +25,23 @@ ul li{
 	font-size: 12.9px;
 }
 
+ul.errorlist {
+    margin: 0;
+    padding: 0;
+}
+.errorlist li {
+    border: 1px solid red;
+    color: red;
+    background: rgba(255, 0, 0, 0.15);
+    list-style-position: inside;
+    display: block;
+    font-size: 1.2em;
+    margin: 0 0 3px;
+    padding: 4px 5px;
+    text-align: center;    
+    border-radius: 3px;
+}
+
 button{
 	background-color: #287191;
 	color: #FFFFFF;
@@ -32,6 +53,7 @@ button{
 	display: block;
 }
 
+/*Tipos de ingresos como Facebook*/
 .tipos-ingresos{
 	margin-left: auto;
     margin-right: auto;
@@ -55,6 +77,8 @@ label.required::after {
     content: "*";
 }
 
+
+/*Formulario con datos personales y encuesta*/
 .datos_personales{
 	color: #287191;
 	display: flex;

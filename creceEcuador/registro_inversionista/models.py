@@ -11,10 +11,20 @@ class Conyuge(models.Model):
         verbose_name = "Conyuge"
         verbose_name_plural = "Conyuges"
 
+class Canton(models.Model):
+    nombre = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Canton"
+        verbose_name_plural = "Cantones"
+
 class Fuente_ingresos(models.Model):
     descripcion = models.TextField()
     direccion = models.CharField(max_length=200)
-    ciudad = models.CharField(max_length=50)
+    canton = models.ForeignKey(Canton, null=False, blank=False, on_delete=models.DO_NOTHING)
     ingresos_mensuales = models.FloatField()
     class Meta:
         verbose_name = "Fuente_ingresos"
@@ -77,13 +87,13 @@ class Usuario(models.Model):
     apellidos = models.CharField(max_length=100)
     usuario = models.CharField(max_length=50)
     password = models.CharField(max_length=50, blank=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     celular = models.CharField(max_length=10)
     tipo_persona = models.IntegerField(choices=opciones_tipo_persona)
     estado = models.IntegerField(choices=opciones_estado, default=0)
     direccion1 = models.CharField(max_length=50, blank= True)
     direccion2 = models.CharField(max_length=50, blank= True)
-    ciudad = models.CharField(max_length=50, blank=True)
+    canton = models.ForeignKey(Canton, blank=True, null=True, on_delete=models.DO_NOTHING)
     provincia = models.CharField(max_length=50, blank=True)
     pais = models.CharField(max_length=50, blank=True)
 
@@ -129,10 +139,3 @@ class Encuesta(models.Model):
 
     # def __str__(self):
     #     pass
-
-
-    
-
-
-    
-    

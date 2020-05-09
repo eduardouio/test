@@ -1,6 +1,5 @@
-let HOST = "http://localhost:8000/"
-let RUTA_SOLICITUDES = HOST+"solicitudes/"
-let RUTA_DETALLE_SOLICITUD = HOST+"detalle_solicitud/"
+let RUTA_SOLICITUDES = "/solicitudes/"
+let RUTA_DETALLE_SOLICITUD ="/detalle_solicitud/"
 let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 9;
 
@@ -8,10 +7,10 @@ $( document ).ready(function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
 
-$(".crece-operaciones-siguiente").click( function() {
+$(".crece-oportunidades-siguiente").click( function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
-$(".crece-operaciones-anterior").click( function() {
+$(".crece-oportunidades-anterior").click( function() {
     console.log("indice opcion antes" + indice_opcion_actual);
     if(indice_opcion_actual > CANTIDAD_OPCIONES_MOSTRADAS){
         indice_opcion_actual = indice_opcion_actual - CANTIDAD_OPCIONES_MOSTRADAS - CANTIDAD_OPCIONES_MOSTRADAS;
@@ -37,120 +36,142 @@ function obtenerOportunidadesInversion(inicio, cantidad_opciones){
 
 function crearCuadrosOportunidadesInversion(data){
     let string_operacion = "";
-    let string_operacion_mobile = "";
 
     $.each( data, function( indice, oportunidad ) {
         console.log( indice + ": " + oportunidad.id );
 
-        let inicio_operacion = '<div class="col-sm-4 col-lg-3 crece-operaciones-col">';
-
-        let inicio_operacion_mobile = '<div class="col crece-operaciones-col">';
-
-        // header de la operacion
-        let header_operacion = '<div class="operacion-header">';
-        let imagen_operacion = ' <img src="'+ oportunidad.imagen_url+ '">';
-        let cierre_header_operacion = '</div>';
-
-        let header = header_operacion + imagen_operacion + cierre_header_operacion;
-        
-        let inicio_autor_operacion = '<div class="operacion-autor">';
-        let nombre_autor_operacion = '<p><strong>' + oportunidad.autor + '</strong></p>';
-        let tipo_autor = '<p>'+oportunidad.tipo_persona+'</p>'
-        let cierre_autor_operacion = '</div>';
-
-        let autor = inicio_autor_operacion + nombre_autor_operacion + tipo_autor + cierre_autor_operacion;
-
-
-        //Detalle de la operacion
-        let inicio_operacion_detalle = '<div class="operacion-detalle"><div class="operacion-detalle-grid">';
-            
-        let inicio_detalle_id = '<div class="row1-col1"><div class="detalle-1"><strong>ID</strong></div>';
-        let detalle_id = '<div>' + oportunidad.id + '</div>';
-        let cierre_detalle_id = '</div>';
-
-        let id_autor = inicio_detalle_id + detalle_id + cierre_detalle_id;
-
-        let inicio_detalle_solicita = '<div class="row1-col2"><div class="detalle-3"><strong>Solicita</strong></div>';
-        let detalle_solicita = '<div>$' + oportunidad.monto + '</div>';
-        let cierre_detalle_solicita = '</div>';
-
-        let monto_solicita = inicio_detalle_solicita + detalle_solicita + cierre_detalle_solicita;
-
-        let inicio_detalle_tir = '<div class="row1-col3"><div class="detalle-4"><strong>Tasa (TIR)</strong></div>';
-        let detalle_tir = '<div>' + oportunidad.tir + '%</div>';
-        let cierre_tir = '</div>';
-
-        let tir = inicio_detalle_tir + detalle_tir + cierre_tir;
-
-        let inicio_detalle_cap_trabajo = '<div class="row2-col1"><div class="detalle-1"><strong>Tipo</strong></div>';
-        let detalle_cap_trabajo = '<div>'+ oportunidad.tipo_credito+'</div>';
-        let cierre_cap_trabajo = '</div>';
-
-        let cap_trabajo = inicio_detalle_cap_trabajo + detalle_cap_trabajo + cierre_cap_trabajo;
-
-        let inicio_detalle_industria = '<div class="row2-col2"><div class="detalle-1"><strong>Industria</strong></div>';
-        let detalle_industria = '<div>'+ oportunidad.categoria+'</div>';
-        let cierre_industria = '</div>';
-
-        let industria = inicio_detalle_industria + detalle_industria + cierre_industria;
-
-
-        let titulo_historial_solicitante = '<div class="operacion-historia-titulo"><strong>Historial del solicitante en CRECE</strong></div>';             
-        
-        let inicio_historial_pagados = '<div class="operacion-historia-1"><div><strong>Pagados</strong></div>';
-        let detalle_historial_pagados = '<div>1/3</div>'; 
-        let cierre_historial_pagados = '</div>';
-
-        let historial_pagado = titulo_historial_solicitante + inicio_historial_pagados + detalle_historial_pagados + cierre_historial_pagados;
-
-        let inicio_historial_vigentes = '<div class="operacion-historia-2"><div><strong>Vigentes</strong></div>';
-        let detalle_historial_vigentes = '<div>2/3</div>';
-        let cierre_historial_vigentes = '</div>';
-
-        let vigentes = inicio_historial_vigentes + detalle_historial_vigentes + cierre_historial_vigentes;
-
-        let inicio_historial_puntualidad = '<div class="operacion-historia-3"><div><strong>Puntualidad</strong></div>';
-        let detalle_historial_puntualidad = '<div>95%</div>';
-        let cierre_historial_puntualidad = '</div>';
-
-        let puntualidad = inicio_historial_puntualidad + detalle_historial_puntualidad + cierre_historial_puntualidad;
-
-        let cierre_detalle = '</div></div>';
-
-        let detalle = inicio_operacion_detalle + id_autor + monto_solicita + tir + cap_trabajo + industria + historial_pagado + vigentes + puntualidad + cierre_detalle; 
-
-
-        //progreso de la operacion
-        let inicio_progreso_operacion = '<div class="operacion-historia-progreso">';
-
-        let detalle_porcentaje = '<div class="operacion-historia-financiado">' + decimalAPorcentaje(oportunidad.porcentaje_financiado) + '% financiado</div>';
-
-        let enlace_mas_detalles = '<div class="operacion-historia-enlace"><a href="'+rutaDetalleSolicitud(oportunidad.id)+'">Ver</a></div>'; //TODO agregar enlace real
-
-        let cierre_progreso_operacion = '</div>';
-
-        let progreso_operacion = inicio_progreso_operacion + detalle_porcentaje + enlace_mas_detalles + cierre_progreso_operacion;
-
-        let cierre_operacion = '</div>';
-
-
-        //Operacion completa 
-        let operacion_completa = inicio_operacion + header + autor + detalle + progreso_operacion + cierre_operacion;
-        let operacion_completa_mobile = inicio_operacion_mobile + header + autor + detalle + progreso_operacion + cierre_operacion;
-
-        string_operacion += operacion_completa;
-        string_operacion_mobile += operacion_completa_mobile; 
+        string_operacion += stringSolicitud(oportunidad);
     });
 
-    $("#crece-operaciones-contenido .row").html(string_operacion);
-    $("#crece-operaciones-contenido-mobile .row").html(string_operacion_mobile);
+    $(".crece-oportunidades-container").html(string_operacion);
 
 }
 
-function decimalAPorcentaje(decimal){
-    return decimal.split(".")[1];
+function decimalAEntero(decimal){
+    return decimal.split(".")[0];
 }
 
 function rutaDetalleSolicitud(id){
     return RUTA_DETALLE_SOLICITUD+"?id="+id;
+}
+
+function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
+    total_financiado = parseFloat(monto)*(parseFloat(porcentaje_financiado)/100);
+    return Math.round( total_financiado );
+}
+
+function stringSolicitud(oportunidad){
+
+    var tarjeta_oportunidad = '<div class="col-xl-4 col-lg-6 col-12">'+
+    '                                    <div class="row justify-content-center">'+
+    '                                        <div class="crece-oportunidades-contenedor" onclick="window.location.href = \' '+rutaDetalleSolicitud(oportunidad.id)+'\';">'+
+    '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' '+oportunidad.imagen_url+ '\');">'+
+    '                                                <div class="crece-oportunidades-imagen-gradiente">'+
+    '                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
+    '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
+    '                                                        <strong>'+ oportunidad.autor +'</strong>'+
+    '                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
+    '                                                        <span>ID: '+oportunidad.id+'</span>'+
+    '                                                    </div>'+
+    '                                                </div>'+
+    '                                            </div>'+
+    '            '+
+    '                                            <div class="col-12">'+
+    '                                                <div class="crece-oportunidades-contenido">'+
+    '                                                    <div class="col-12 crece-oportunidades-contenido-monto">'+
+    '                                                        <div class="col-12 crece-oportunidades-contenido-monto-texto">'+
+    '                                                            <p>'+
+    '                                                                <strong>$'+decimalAEntero(oportunidad.monto)+'</strong><br>'+
+    '                                                                $'+calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado)+' recolectados de $'+decimalAEntero(oportunidad.monto)+ //TODO calcular porcentaje recolectado
+    '                                                            </p>'+
+    '                                                            '+
+    '                                                            <span></span>'+
+    '                                                        </div>'+
+    '                                                        <div class="col-12 crece-oportunidades-contenido-monto-barra">'+
+    '                                                            <div style="width:'+oportunidad.porcentaje_financiado+'%;" class="crece-oportunidades-contenido-monto-barra-progreso">'+
+    '            '+
+    '                                                            </div>'+
+    '                                                        </div>'+
+    '                                                    </div>'+
+    '        '+
+    '                                                    <div class="col-12 crece-oportunidades-contenido-informacion">'+
+    '                                                        <div class="row">'+
+    '                                                            <div class="col">'+
+    '                                                                <p>'+
+    '                                                                    <strong>Plazo</strong><br>'+
+    '                                                                    '+oportunidad.plazo+' Días'+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                            <div class="col">'+
+    '                                                                <p>'+
+    '                                                                    <strong>Industria</strong><br>'
+                                                                            +oportunidad.categoria+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                            <div class="col">'+
+    '                                                                <p>'+
+    '                                                                    <strong>Tasa(TIR)</strong><br>'+
+    '                                                                    '+ oportunidad.tir+'%'+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                        </div>'+
+    '                                                    </div>'+
+    '        '+
+    '                                                    <div class="col-12 crece-oportunidades-contenido-solicitante">'+
+    '                                                        <div class="row">'+
+    '                                                            <div class="col-12">'+
+    '                                                                <strong>'+ oportunidad.autor+' en CRECE</strong>'+
+    '                                                            </div>'+
+    '                                                            <div class="col-12">'+
+    '                                                                <p>'+
+                                                                        oportunidad.historia+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                        </div>'+
+    '                                                    </div>'+
+    '        '+
+    '                                                    <div class="col-12 crece-oportunidades-contenido-historial">'+
+    '                                                        <div class="row">'+
+    '                                                            <div class="col-4">'+
+    '                                                                <p>'+
+    '                                                                    <strong>Pagados</strong><br>'+
+    '                                                                    2/3'+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                            <div class="col-4 crece-oportunidades-contenido-historial-centro">'+
+    '                                                                <p>'+
+    '                                                                    <strong>Puntualidad</strong><br>'+
+    '                                                                    95%'+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                            <div class="col-4">'+
+    '                                                                <p>'+
+    '                                                                    <strong>Vigentes</strong><br>'+
+    '                                                                    1/3'+
+    '                                                                </p>'+
+    '                                                            </div>'+
+    '                                                        </div>'+
+    '                                                    </div>'+
+    '        '+
+    '                                                    <div class="col-12 crece-oportunidades-contenido-botones">'+
+    '                                                        <div class="row">'+
+    '                                                            <div class="col-6 crece-oportunidades-contenido-botones-blanco">'+
+    '                                                                <a href="'+rutaDetalleSolicitud(oportunidad.id)+'">Ver más</a>'+
+    '                                                            </div>'+
+    '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+    '                                                                <a href="#">Invertir</a>'+
+    '                                                            </div>'+
+    '                                                        </div>'+
+    '                                                    </div>'+
+    '        '+
+    '                                                </div>'+
+    '            '+
+    '                                            </div>'+
+    '                                        </div>'+
+    '                                    </div>'+
+    '                                    '+
+    '                                </div>';
+
+    return tarjeta_oportunidad;
+	
 }
