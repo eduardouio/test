@@ -178,7 +178,7 @@ def SignupView(request):
 
             cd = form.cleaned_data
 
-            r = requests.post('http://localhost:8000/inversionista/register_inversionista/', 
+            r = requests.post(request.headers['Origin']+'/inversionista/register_inversionista/', 
                                   data = {'usuario':cd.get('usuario'), 'password': cd.get('password'),
                                             'email':cd.get('email'),'nombres':cd.get('nombres'),
                                             'apellidos':cd.get('apellidos'), 'celular':cd.get('celular'),
@@ -218,7 +218,7 @@ def confirmar_email(request, uidb64, token):
         # return redirect('/')
 
         #return HttpResponse('Su usuario ha sido confirmado con!')
-        return redirect('http://localhost:8000/inversionista/login/')
+        return redirect('/inversionista/login/')
     else:
         return HttpResponse('Link de activación inválido!')
 
@@ -309,8 +309,8 @@ class Login_Users(generics.CreateAPIView):
         password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            
-            r = requests.post('http://localhost:8000/api/token/', data = {'username':username, 'password': password})
+            print(request.headers)
+            r = requests.post(request.headers['Origin']+'/api/token/', data = {'username':username, 'password': password})
             dic_tokens = r.json()
 
             usuario = serializers.UserSerializer(user,
@@ -387,7 +387,6 @@ def Dashboard(request):
         token_refresh = token.get('refresh')
         headers = {"Authorization": "Bearer "+token_access}
         decodedPayload = jwt.decode(token_access,None,None)
-        r = requests.get("http://localhost:8000/inversionista/bancos/", headers=headers)
 
         usuario = models.Usuario.objects.filter(user=request.user.id)[0]
 
