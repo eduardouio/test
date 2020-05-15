@@ -40,11 +40,29 @@ ul li{
   display: none;
 }
 
+.slick-prev:before, .slick-next:before { font-family: FontAwesome; font-size: 40px; line-height: 1; color: #f6f6f6; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }   
+
+.slick-prev:before { content: "\f053"; }
+[dir="rtl"] .slick-prev:before { content: "\f054"; }
+
+[dir="rtl"] .slick-next { left: -10px; top: 70px; right: auto; }
+.slick-next:before { content: "\f054"; }
+[dir="rtl"] .slick-next:before { content: "\f053"; }
+
+.slick-prev{ 
+  left: 20px;
+  z-index: 1100;
+}
+.slick-next{ 
+  right: 20px;
+  z-index: 1100;
+}
+
 
 /*Main Mensaje*/
 .crece-main-mensaje {
     background: #fff;
-    color: #005B7A;
+    color: #006B8D;
     font-size: 23.84px;
     padding-top: 42px;
     padding-bottom: 42px;
@@ -135,12 +153,8 @@ ul li{
   margin-bottom: 25px;
 }
 
-.crece-oportunidades-contenedor:hover {
-  box-shadow: 0px 1px 3px #0000005D;
-}
-
 .crece-oportunidades-titulo {
-  color: #005B7A;
+  color: #006B8D;
   font-size: 26.62px;
   font-weight: 700;
   margin-top: 10px;
@@ -156,11 +170,11 @@ ul li{
 }
 
 .crece-oportunidades-imagen-gradiente {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005b7a+0,063240+100&1+0,0+100 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#006B8D+0,063240+100&1+0,0+100 */
   background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b7a', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006B8D', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
   width: 332px;
   height: 162px;
   border-radius: 10px 10px 0px 0px;
@@ -187,7 +201,7 @@ ul li{
 }
 
 .crece-oportunidades-contenido-monto {
-  color: #005B7A;
+  color: #006B8D;
   margin-top: 10px;
 }
 
@@ -218,12 +232,12 @@ ul li{
 
 .crece-oportunidades-contenido-monto-barra-progreso{
   height: 100%;
-  background-color: #005B7A;
+  background-color: #006B8D;
   border-radius: 3px 0px 0px 3px;
 }
 
 .crece-oportunidades-contenido-informacion{
-  color: #005B7A;
+  color: #006B8D;
   font-size: 14px;
   text-align: center;
   margin-top: 15px;
@@ -239,7 +253,7 @@ ul li{
 }
 
 .crece-oportunidades-contenido-solicitante {
-  color: #005B7A;
+  color: #006B8D;
   margin-top: 33px;
 }
 
@@ -258,10 +272,11 @@ ul li{
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; 
   margin-bottom: 10px;
+  opacity: 0.7;
 }
 
 .crece-oportunidades-contenido-historial{
-  color: #005B7A;
+  color: #006B8D;
   font-size: 14px;
   text-align: center;
 }
@@ -290,43 +305,42 @@ ul li{
   text-align: center;
   font-size: 13.2px;
   font-weight: 700;
-  border-radius: 30px;
+  border-radius: 2px;
   padding-top: 3px;
 }
 
 .crece-oportunidades-contenido-botones-blanco a{
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #005B7A;
-  color: #005B7A;
+  border: 1px solid #006B8D;
+  color: #006B8D;
 }
 
 .crece-oportunidades-contenido-botones-azul a{
-  background: #005B7A 0% 0% no-repeat padding-box;
-  border: 1px solid #005B7A;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
   color: white;
 }
 
 .crece-oportunidades-mas a {
-  background: #005B7A 0% 0% no-repeat padding-box;
-  border: 1px solid #005B7A;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
   color: white;
 
   display: inline-block;
-  width: 225.5px;
-  height: 49.31px;
+  width: 192px;
+  height: 38px;
   text-align: center;
-  font-size: 26.62px;
+  font-size: 22px;
   font-weight: 700;
-  border-radius: 30px;
-  padding-top: 3px;
+  border-radius: 4px;
   margin-bottom: 5px;
 }
 
 .crece-oportunidades-mas a:hover,  
 .crece-oportunidades-contenido-botones-azul a:hover{
   text-decoration: none;
-  background: rgba(0, 91, 122, 0.8) 0% 0% no-repeat padding-box;
-  border: 1px solid rgba(0, 91, 122, 0.8);
+  background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 107, 141, 0.8);
 }
 
 .crece-oportunidades-contenido-botones-blanco a:hover{
@@ -420,23 +434,6 @@ ul li{
 
 /*Dispositivos como tablets o menores de 992 y mayores a 600*/
 @media screen and (max-width: 991px){
-  
-  /*Header*/
-  .crece-header-nav{
-    display: none;
-  }
-
-  .crece-header-contenido.mobile div.crece-header-nav{
-    display: block;
-    margin: 0;
-  }
-  .crece-menu-toogle{
-    display: block;
-  }
-
-  .crece-header-nav ul{
-    display: block;
-  }
 
   /*main mensaje*/
   .crece-main-mensaje-imagenes-movil{
@@ -520,55 +517,10 @@ ul li{
   .reconocimiento-col2 div:not(:first-child){
     margin-left: 28px;
   }
-
-  /*fOOTER*/
-
-  .crece-footer-redes-lista img#crece-facebook {
-    width: 14px;
-  }
-
-  .crece-footer-redes-lista img:first-child {
-    width: 25px;
-  }
-
-
-
-
-  /*Footer*/
-  .crece-footer-contenido-mobile{
-    display: none;
-  }
-}
-
-
-
-/*Para dispositivos moviles*/
-@media screen and (max-width: 600px) {
-  .crece-header-logo-imagen img{
-    height: 30px;
-  }
-
-  .crece-header-nav{
-    display: none;
-  }
-
-
-
-
-
 }
 
 
 @media screen and (max-width: 600px) {
-  /*Header*/
-  .crece-menu-toogle{
-    display: block;
-  }
-
-  .crece-header-contenido.mobile div.crece-header-nav{
-    display: block;
-    margin: 0;
-  }
 
   /*Carrusel*/
   .crece-carrusel-imagenes {
@@ -621,31 +573,5 @@ ul li{
   .crece-reconocimientos-vista-mobile div:not(:first-child){
     margin-top: 45px;
   }
-
-  /*FOOTER*/
-  .crece-footer-contenido-mobile{
-    display: block;
-  }
-
-  .crece-footer-redes-lista img:first-child{
-    width: 25px;
-  }
-  .crece-footer-redes-lista img#crece-facebook{
-    width: 14px;
-  }
-
-  .crece-footer-about p{
-    font-size: 10px;
-  }
-
-  .crece-footer-contenido{
-    display: none;
-  }
-
-  .crece-footer-contenido-mobile{
-    margin-top: 25px;
-  }
-
-    
 
 }

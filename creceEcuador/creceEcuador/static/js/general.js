@@ -51,6 +51,9 @@ function cargar_carrusel(){
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      fade: true,
 
 
     });
@@ -63,6 +66,9 @@ function cargar_carrusel(){
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      fade: true,
 
       // the magic
         responsive: [{
@@ -99,6 +105,27 @@ function crearCuadrosOportunidadesInversion(data){
   });
 
   $(".crece-oportunidades-container").html(string_operacion);
+  let links = $(".crece-oportunidades-contenido-solicitante-link");
+  $(".crece-oportunidades-contenido-solicitante-link").remove();
+  $(".crece-oportunidades-contenido-solicitante p").each( function(numSolicitante) {
+    var lines = lineWrapDetector.getLines(this);
+    let stringParrafo = "";
+    $.each(lines, function(numLinea, linea) {
+      if(numLinea<3){
+        $.each(linea, function(numPalabra, palabra) {
+          if (numLinea != 2 || numPalabra != linea.length -1){
+            stringParrafo += palabra.innerText+ " ";
+          }
+        });
+      }
+      else {
+        return false;
+      }
+    });
+
+    let linkSolicitante = links[numSolicitante].outerHTML
+    this.innerHTML = stringParrafo.slice(0,-1) + linkSolicitante;
+  });
 
 }
 
@@ -119,11 +146,17 @@ function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
   return Math.round( total_financiado );
 }
 
+function numeroConComas(x) {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
+
 function stringSolicitud(oportunidad){
 
   var tarjeta_oportunidad = '<div class="col-xl-4 col-lg-6 col-12">'+
   '                                    <div class="row justify-content-center">'+
-  '                                        <div class="crece-oportunidades-contenedor" onclick="window.location.href = \' '+rutaDetalleSolicitud(oportunidad.id)+'\';">'+
+  '                                        <div class="crece-oportunidades-contenedor">'+
   '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' '+oportunidad.imagen_url+ '\');">'+
   '                                                <div class="crece-oportunidades-imagen-gradiente">'+
   '                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
@@ -140,8 +173,8 @@ function stringSolicitud(oportunidad){
   '                                                    <div class="col-12 crece-oportunidades-contenido-monto">'+
   '                                                        <div class="col-12 crece-oportunidades-contenido-monto-texto">'+
   '                                                            <p>'+
-  '                                                                <strong>$'+decimalAEntero(oportunidad.monto)+'</strong><br>'+
-  '                                                                $'+calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado)+' recolectados de $'+decimalAEntero(oportunidad.monto)+ //TODO calcular porcentaje recolectado
+  '                                                                <strong>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</strong><br>'+
+  '                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+' ('+oportunidad.porcentaje_financiado+'%) recolectados'+
   '                                                            </p>'+
   '                                                            '+
   '                                                            <span></span>'+
@@ -184,7 +217,7 @@ function stringSolicitud(oportunidad){
   '                                                            <div class="col-12">'+
   '                                                                <p>'+
                                                                       oportunidad.historia+
-  '                                                                </p>'+
+  '                                                                </p><a class="crece-oportunidades-contenido-solicitante-link" href="'+rutaDetalleSolicitud(oportunidad.id)+'">...</a>'+
   '                                                            </div>'+
   '                                                        </div>'+
   '                                                    </div>'+
