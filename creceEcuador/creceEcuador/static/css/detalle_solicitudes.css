@@ -14,11 +14,11 @@
 .crece-detalle-operaciones-header-gradiente {
     height: 240px;
     width: 100%;
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005b7a+0,063240+100&1+0,0+100 */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#006B8D+0,063240+100&1+0,0+100 */
     background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b7a', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006B8D', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
     text-align: center;
 }
 
@@ -53,7 +53,7 @@
   
   .crece-operaciones-contenido-monto-barra-progreso{
     height: 100%;
-    background-color: #005B7A;
+    background-color: #006B8D;
     border-radius: 6px 0px 0px 6px;
   }
 
@@ -61,7 +61,7 @@
 
   .crece-operaciones-contenido-datos-barra {
       margin: 20px 0px;
-      color: #005B7A;
+      color: #006B8D;
   }
 
   .crece-operaciones-contenido-datos-barra strong{
@@ -83,7 +83,7 @@
 
 /* Informacion prestamo */
 .crece-operaciones-contenido-informacion{
-    color: #005B7A;
+    color: #006B8D;
     padding: 0px;
 }
 
@@ -111,7 +111,7 @@
 /*historia*/
 
 .crece-operaciones-contenido-historia{
-    color: #005B7A;
+    color: #006B8D;
     padding: 0px;
     margin-top: 15px;
 }
@@ -136,7 +136,7 @@
 /* Invierte */
 
 .crece-detalle-operaciones-invierte{
-    color: #005B7A;
+    color: #006B8D;
     border: 1px solid #DEDEDE;
     margin: 25px 0px;
 }
@@ -161,13 +161,13 @@
 }
 
 .crece-detalle-operaciones-invierte-monto div:focus{
-    border-bottom: 1px solid #005B7A;
+    border-bottom: 1px solid #006B8D;
 }
 
 .crece-detalle-operaciones-invierte-monto input{
     width: 90%;
     border: 0px;
-    color: #005B7A;
+    color: #006B8D;
     font-size: 15px;
     font-weight: 600;
     outline: none;
@@ -199,15 +199,15 @@
   
   .crece-detalle-operaciones-invierte-botones-blanco a{
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #005B7A;
-    color: #005B7A;
+    border: 1px solid #006B8D;
+    color: #006B8D;
     font-size: 15px;
     padding-top: 7px;
   }
   
   .crece-detalle-operaciones-invierte-botones-azul a{
-    background: #005B7A 0% 0% no-repeat padding-box;
-    border: 1px solid #005B7A;
+    background: #006B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #006B8D;
     color: white;
     font-size: 18px;
     padding-top: 5px;
@@ -215,8 +215,8 @@
 
   .crece-detalle-operaciones-invierte-botones-azul a:hover{
     text-decoration: none;
-    background: rgba(0, 91, 122, 0.8) 0% 0% no-repeat padding-box;
-    border: 1px solid rgba(0, 91, 122, 0.8);
+    background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+    border: 1px solid rgba(0, 107, 141, 0.8);
   }
   
   .crece-detalle-operaciones-invierte-botones-blanco a:hover{
@@ -228,7 +228,7 @@
   /* Historial*/
 
 .crece-detalle-operaciones-historial{
-    color: #005B7A;
+    color: #006B8D;
     border: 1px solid #DEDEDE;
     margin: 0px 0px 25px 0px;
 }

@@ -28,12 +28,12 @@
                   </section>
                   <section class="crece-main-mensaje justify-content-center text-center row">
                           <div class="container col-12 col-lg-7">
-                              <p>Creemos que la rentabilidad con impacto social es posible.
-                                                  Ponemos en contacto a pequeños y medianos emprendedores
-                                                  con inversionistas que conceden los recursos.</p>
+                              <p><strong>Creemos que la rentabilidad con impacto social es posible.</strong>
+                                Ponemos en contacto a pequeños y medianos emprendedores que necesitan 
+                                financiamiento con inversionistas que conceden los recursos.</p>
                               <p>
                                   Juntos definen las condiciones que los harán CRECER.
-                                  Nosotros nos encargamos del papeleo.</p>
+                                  Nosotros nos encargamos de hacerlo posible.</p>
                               <div class="row justify-content-center crece-main-mensaje-imagenes">
                                 <div>
                                     <img src="{% static 'assets/inversionistas_crece_solicitantes.png' %}">
@@ -416,6 +416,7 @@
 
 
         {% block footer_javascript_agregado %}
+        <script src="{% static 'js/line_wrap.js' %}"></script>
          <script src="{% static 'js/general.js' %}"></script>
          <script src="{% static 'js/calculadora.js' %}"></script>
         {% endblock footer_javascript_agregado %}

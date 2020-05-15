@@ -271,7 +271,7 @@ function crearDetalleInversion(oportunidad) {
 
     $('#monto_inversion').focus(
         function(){
-            $(this).parent('div').css('border-color','#005B7A');
+            $(this).parent('div').css('border-color','#006B8D');
         }).blur(
         function(){
             $(this).parent('div').css('border-color','#DEDEDE');

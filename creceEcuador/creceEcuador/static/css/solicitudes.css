@@ -16,7 +16,7 @@
 }
 
 .crece-oportunidades-titulo {
-  color: #005B7A;
+  color: #006B8D;
   font-size: 26.62px;
   font-weight: 700;
   margin-top: 10px;
@@ -32,11 +32,11 @@
 }
 
 .crece-oportunidades-imagen-gradiente {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#005b7a+0,063240+100&1+0,0+100 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#006B8D+0,063240+100&1+0,0+100 */
   background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005b7a', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006B8D', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
   width: 332px;
   height: 162px;
   border-radius: 10px 10px 0px 0px;
@@ -63,7 +63,7 @@
 }
 
 .crece-oportunidades-contenido-monto {
-  color: #005B7A;
+  color: #006B8D;
   margin-top: 10px;
 }
 
@@ -94,12 +94,12 @@
 
 .crece-oportunidades-contenido-monto-barra-progreso{
   height: 100%;
-  background-color: #005B7A;
+  background-color: #006B8D;
   border-radius: 3px 0px 0px 3px;
 }
 
 .crece-oportunidades-contenido-informacion{
-  color: #005B7A;
+  color: #006B8D;
   font-size: 14px;
   text-align: center;
   margin-top: 15px;
@@ -115,7 +115,7 @@
 }
 
 .crece-oportunidades-contenido-solicitante {
-  color: #005B7A;
+  color: #006B8D;
   margin-top: 33px;
 }
 
@@ -137,7 +137,7 @@
 }
 
 .crece-oportunidades-contenido-historial{
-  color: #005B7A;
+  color: #006B8D;
   font-size: 14px;
   text-align: center;
 }
@@ -172,19 +172,19 @@
 
 .crece-oportunidades-contenido-botones-blanco a{
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #005B7A;
-  color: #005B7A;
+  border: 1px solid #006B8D;
+  color: #006B8D;
 }
 
 .crece-oportunidades-contenido-botones-azul a{
-  background: #005B7A 0% 0% no-repeat padding-box;
-  border: 1px solid #005B7A;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
   color: white;
 }
 
 .crece-oportunidades-mas a {
-  background: #005B7A 0% 0% no-repeat padding-box;
-  border: 1px solid #005B7A;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
   color: white;
 
   display: inline-block;
@@ -201,8 +201,8 @@
 .crece-oportunidades-mas a:hover,  
 .crece-oportunidades-contenido-botones-azul a:hover{
   text-decoration: none;
-  background: rgba(0, 91, 122, 0.8) 0% 0% no-repeat padding-box;
-  border: 1px solid rgba(0, 91, 122, 0.8);
+  background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 107, 141, 0.8);
 }
 
 .crece-oportunidades-contenido-botones-blanco a:hover{
@@ -221,7 +221,7 @@
 .crece-oportunidades-siguiente{
   background: #FFFFFF 0% 0% no-repeat padding-box;
   border: 1px solid #ffffff;
-  color: #005B7A;
+  color: #006B8D;
 
   display: inline-block;
   width: 180.5px;
