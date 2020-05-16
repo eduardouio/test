@@ -4,6 +4,10 @@ let RUTA_DETALLE_SOLICITUD ="/detalle_solicitud/"
 let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 3;
 
+const color_calculadora_solicitante = "#08A7BA"
+const color_calculadora_inversionista = "#006B8D"
+
+
 $(".crece-menu-toogle").click(function(){
   var x = document.getElementById("crece-header-id");
    if (x.className === "container crece-header-contenido") {
@@ -17,18 +21,24 @@ $(".crece-menu-toogle").click(function(){
 $("div.crece-solicitar-invertir button").click(function(){
   var solicitar = $("#crece-solicitar-id");
   var invertir = $("#crece-invertir-id");
+  let section = document.getElementById("crece-solicitante-inversionista-id");
+  let infografia_inversionista = document.getElementById("crece-invertir-contenido-infografia-izquierda-id");
+  let footnote_calculadora_inversionista = document.getElementById("footnote-invertir-id")
   if(this.className == "btn crece-invertir-button"){
     solicitar.hide();
     invertir.css("display","flex");
     $(".crece-solicitar-button").removeClass("crece-solicitar-invertir-elegido");
     $(".crece-invertir-button").addClass("crece-solicitar-invertir-elegido");
 
+    section.style.backgroundColor = color_calculadora_solicitante
   }
   else{
     solicitar.css("display","flex");
     invertir.hide();
     $(".crece-solicitar-button").addClass("crece-solicitar-invertir-elegido");
     $(".crece-invertir-button").removeClass("crece-solicitar-invertir-elegido");
+
+    section.style.backgroundColor = color_calculadora_inversionista
   }
 });
 
