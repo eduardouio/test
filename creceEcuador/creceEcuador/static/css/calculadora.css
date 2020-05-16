@@ -1,13 +1,17 @@
 :root{
+  --calculadora-solicitar-bg-color:#08A7BA;
+  --calculadora-invertir-bg-color:#006B8D;
+  --calculadora-valores-inversionista-bg-color:#08a7ba;
   --cuota-total-color: #F3DD29;
   --letra-color:#5C5C5C;
   --boton-solicitar-color:#63B1C6;
   --range-bg-color: #157FA2;
-  --main-bg-inversionista-color: #157FA2;
   --calculadora-anchura-width: 433px;
-  --calculadora-altura-height: 418px;
+  --calculadora-altura-min-height: 457px;
   --valores-font-size: 13pt;
   --banco-bg-bar-color: #B16A71;
+  --footnote-color: #ffffff;
+  --bordes-calculadora-border-radius:20px;
 }
 
 
@@ -16,88 +20,93 @@
 input[type=range].solicitante {
   -webkit-appearance: none;
   width: 100%;
-  margin: 10.4px 0;
+  margin: 5.3px 0;
 }
 input[type=range].solicitante:focus {
   outline: none;
 }
 input[type=range].solicitante::-webkit-slider-runnable-track {
   width: 100%;
-  height: 3.2px;
+  height: 4.4px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #52bf4a;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border-radius: 25px;
+  border: 0px solid #000000;
 }
 input[type=range].solicitante::-webkit-slider-thumb {
-  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
-  border: 0px solid #129636;
-  height: 24px;
-  width: 24px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
   border-radius: 50px;
-  background: #1fbf4a;
+  background: #aecb6f;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -10.6px;
+  margin-top: -5.3px;
 }
 input[type=range].solicitante:focus::-webkit-slider-runnable-track {
-  background: #64c65d;
+  background: #b0cc73;
 }
 input[type=range].solicitante::-moz-range-track {
   width: 100%;
-  height: 3.2px;
+  height: 4.4px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #52bf4a;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border-radius: 25px;
+  border: 0px solid #000000;
 }
 input[type=range].solicitante::-moz-range-thumb {
-  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
-  border: 0px solid #129636;
-  height: 24px;
-  width: 24px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
   border-radius: 50px;
-  background: #1fbf4a;
+  background: #aecb6f;
   cursor: pointer;
 }
 input[type=range].solicitante::-ms-track {
   width: 100%;
-  height: 3.2px;
+  height: 4.4px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
 input[type=range].solicitante::-ms-fill-lower {
-  background: #46b13f;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #acca6b;
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
 }
 input[type=range].solicitante::-ms-fill-upper {
-  background: #52bf4a;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
 }
 input[type=range].solicitante::-ms-thumb {
-  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
-  border: 0px solid #129636;
-  height: 24px;
-  width: 24px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
   border-radius: 50px;
-  background: #1fbf4a;
+  background: #aecb6f;
   cursor: pointer;
-  height: 3.2px;
+  height: 4.4px;
 }
 input[type=range].solicitante:focus::-ms-fill-lower {
-  background: #52bf4a;
+  background: #aecb6f;
 }
 input[type=range].solicitante:focus::-ms-fill-upper {
-  background: #64c65d;
+  background: #b0cc73;
 }
+
+
+
+
+
 
 
 
@@ -108,26 +117,50 @@ input[type=range].solicitante:focus::-ms-fill-upper {
 
 /*Container*/
 .crece-calculadora-solicitante-container{
-  max-width: var(--calculadora-anchura-width);
-  max-height: var(--calculadora-altura-height);
-  background-color: #ffffff;
-  font-family: Monserrat;
-  border: solid 10px;
-  border-color: var(--main-bg-inversionista-color);
-  font-size: 18pt;
-  color: var(--letra-color);
+ position: relative;
+    min-height: var(--calculadora-altura-min-height);
+    max-width: var(--calculadora-anchura-width);
+    background-color: #ffffff;
+    font-family: Monserrat;
+    font-size: 18pt;
+    border-radius: var(--bordes-calculadora-border-radius);
+    color: var(--letra-color);
 }
 
+div.crece-instruccion-calculadora span{
+  font-size: 11pt;
+  border-radius: 5px;
+  text-align: center;
+}
 .crece-calculadora-solicitante-container div{
   margin-top: 5px;
 }
 
+.calculadora-solicitante-tasa{
+  position: relative;
+
+}
+
+i.fa-info-circle {
+  position: relative;
+  font-size: 11pt;
+}
+
+#slider-container-tasa-id{
+  padding-top: 4.3vh;
+}
+
+
+
+
+
 .calculadora-valores{
- background-color: var(--boton-solicitar-color);
- color: #ffffff;
- font-size: var(--valores-font-size);
- padding: 5px 10px;
- font-weight: bold;
+      background-color: var(--calculadora-valores-inversionista-bg-color);
+    color: #ffffff;
+    font-size: var(--valores-font-size);
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
 
 }
 
@@ -136,7 +169,7 @@ input[type=range].solicitante:focus::-ms-fill-upper {
 #cuota-valor{
   background-color: var(--cuota-total-color);
   text-align: center;
-  
+  border-radius: 8px;
   color: #000000;
   width: 100%;
   padding: 5px 30px;
@@ -145,17 +178,20 @@ input[type=range].solicitante:focus::-ms-fill-upper {
 }
 
 #calculadora-solicitar{
-  background-color: var(--boton-solicitar-color);
+  background-color: var(--calculadora-invertir-bg-color);
+  position: relative;
+  top: 1vh;
   color: #ffffff;
   font-weight: bold;
   font-family: none;
   float: left;
   margin-left: auto;
   margin-right: 30px;
-  margin-top: 20px;
+  margin-top: 2px;
   margin-bottom: 10px;
   padding: 5px 45px;
   text-align: center;
+  border-radius: 15px;
 
 }
 
@@ -168,96 +204,99 @@ input[type=range].solicitante:focus::-ms-fill-upper {
 input[type=range].inversionista {
   -webkit-appearance: none;
   width: 100%;
-  margin: 10.4px 0;
+  margin: 5.3px 0;
 }
 input[type=range].inversionista:focus {
   outline: none;
 }
 input[type=range].inversionista::-webkit-slider-runnable-track {
   width: 100%;
-  height: 3.2px;
+  height: 4.4px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #52bf4a;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border-radius: 25px;
+  border: 0px solid #000000;
 }
 input[type=range].inversionista::-webkit-slider-thumb {
-  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
-  border: 0px solid #129636;
-  height: 24px;
-  width: 24px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
   border-radius: 50px;
-  background: #1fbf4a;
+  background: #aecb6f;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -10.6px;
+  margin-top: -5.3px;
 }
 input[type=range].inversionista:focus::-webkit-slider-runnable-track {
-  background: #64c65d;
+  background: #b9d282;
 }
 input[type=range].inversionista::-moz-range-track {
   width: 100%;
-  height: 3.2px;
+  height: 4.4px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #52bf4a;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border-radius: 25px;
+  border: 0px solid #000000;
 }
 input[type=range].inversionista::-moz-range-thumb {
-  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
-  border: 0px solid #129636;
-  height: 24px;
-  width: 24px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
   border-radius: 50px;
-  background: #1fbf4a;
+  background: #aecb6f;
   cursor: pointer;
 }
 input[type=range].inversionista::-ms-track {
   width: 100%;
-  height: 3.2px;
+  height: 4.4px;
   cursor: pointer;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
 input[type=range].inversionista::-ms-fill-lower {
-  background: #46b13f;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #a3c45c;
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
 }
 input[type=range].inversionista::-ms-fill-upper {
-  background: #52bf4a;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
 }
 input[type=range].inversionista::-ms-thumb {
-  box-shadow: 0px 0px 4.7px #0000c5, 0px 0px 0px #0000df;
-  border: 0px solid #129636;
-  height: 24px;
-  width: 24px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
   border-radius: 50px;
-  background: #1fbf4a;
+  background: #aecb6f;
   cursor: pointer;
-  height: 3.2px;
+  height: 4.4px;
 }
 input[type=range].inversionista:focus::-ms-fill-lower {
-  background: #52bf4a;
+  background: #aecb6f;
 }
 input[type=range].inversionista:focus::-ms-fill-upper {
-  background: #64c65d;
+  background: #b9d282;
 }
 
+
+
+
 .crece-calculadora-inversionista-container{
-  background-color: var(--main-bg-inversionista-color);
+  background-color: var(--calculadora-invertir-bg-color);
   max-width: var(--calculadora-anchura-width);
-  max-height: var(--calculadora-altura-height);
   color: #ffffff;
   font-size: 15pt;
   font-family: Monserrat;
+  border-radius: var(--bordes-calculadora-border-radius);
 }
 
 .crece-calculadora-inversionista-container div{
@@ -270,24 +309,11 @@ input[type=range].inversionista:focus::-ms-fill-upper {
   font-size: var(--valores-font-size);
   padding: 5px 10px;
   font-weight: bold;
+  border-radius: 5px;
 }
 
-.calculadora-comparaciones{
-  font-size: 11pt;
-  background-color: #ffffff;
-  color: #000000;
-  font-weight: bold;
-  margin-top: 15px !important;
-}
-
-.calculadora-comparaciones div{
-  margin-top: 3px;
-}
-
-.calculadora-comparaciones span{
-  font-size: 10pt;
-  color: var(--main-bg-inversionista-color);
-  font-weight:bold;
+.calculadora-inversionista-tir{
+  position: relative;
 }
 
 #cuota-valor-inversionista, #tir-valor-inversionista{
@@ -297,19 +323,56 @@ input[type=range].inversionista:focus::-ms-fill-upper {
   width: 100%;
   padding: 5px 35px;
   font-weight: bold;
+  border-radius: 8px;
+}
+
+#tir-valor-inversionista{
+
+    position: relative;
+    top: 4vh;
+    border-radius: 8px;
+}
+/*Comparaciones*/
+.calculadora-comparaciones{
+  font-size: 11pt;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  margin-top: 15px !important;
+  border-radius: 8px;
+}
+
+.calculadora-comparaciones div{
+  margin-top: 3px;
+}
+
+.calculadora-comparaciones span{
+  font-size: 10pt;
+  color: var(--calculadora-invertir-bg-color);
+  font-weight:bold;
+}
+
+
+
+#crece-progress-bar-id{
+ width: 100%;
+ margin-top:0px ;
 }
 
 .banco-progress{
   background-color: #ffffff;
+  width: 50%
+
 }
 
 .banco-progress-bar{
   background-color: var(--banco-bg-bar-color) !important;
-  width: 60%;
+  width: 100%;
+  margin-top: 0px !important;
 }
 
 #calculadora-invertir{
-  background-color: var(--boton-solicitar-color);
+  background-color: var(--calculadora-solicitar-bg-color);
   color: #ffffff;
   font-weight: bold;
   font-family: none;
@@ -319,4 +382,34 @@ input[type=range].inversionista:focus::-ms-fill-upper {
   margin-bottom: 10px;
   padding: 5px 45px;
   text-align: center;
+  border-radius: 15px;
+}
+
+
+.crece-calculadora-footnote{
+  color: var(--footnote-color);
+  font-size: 10pt;
+  max-width: var(--calculadora-anchura-width);
+}
+
+
+@media screen and (max-width: 600px){
+  #slider-container-tasa-id{
+    padding-top: 0px;
+  }
+
+  #tir-valor-inversionista{
+    top: 0vh !important;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  #slider-container-tasa-id{
+    padding-top: 2.3vh;
+  }
+
+  #tir-valor-inversionista{
+    top: 2vh;
+  }
 }

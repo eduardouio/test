@@ -1,7 +1,16 @@
+:root{
+  --calculadora-solicitar-bg-color:#AECB6F;
+  --calculadora-invertir-bg-color:#006B8D;
+  --section-calculadoras-bg-color:#08A7BA;
+  --fuente-font-family: Monserrat;
+}
+/*#1199AD*/
+
 section, aside, footer {
     margin: 0;
     padding: 16px;
     color: #ffffff;
+    
 }
 * {
   box-sizing: border-box;
@@ -87,8 +96,9 @@ ul li{
 
 /*SOlicitante inversionista*/
 .crece-solicitante-inversionista {
-    background: #1199AD;
+    background: var(--calculadora-invertir-bg-color);
     padding-top: 32px;
+    font-family: var(--fuente-font-family);
 
 }
 
@@ -379,6 +389,12 @@ ul li{
 /*Dispositivos mayores a 992px*/
 @media screen and (min-width: 992px) {
 
+  @media screen and (max-width: 1333px) and (min-width: 1200px) {
+    .crece-solicitante-inversionista {
+    min-height: 655px !important;
+  }
+        
+  }
   /*Main Mensaje*/
   .crece-main-mensaje img{
     margin: auto;
@@ -389,6 +405,12 @@ ul li{
   }
 
   /*SOlicitante Inversionista*/
+  .crece-solicitante-inversionista {
+    padding-top: 32px;
+    padding-bottom: 0px;
+
+  }
+
   .crece-solicitar-invertir button{
     padding: 10px 140px;
     font-size: 25px;
@@ -433,7 +455,9 @@ ul li{
 }
 
 /*Dispositivos como tablets o menores de 992 y mayores a 600*/
+
 @media screen and (max-width: 991px){
+
 
   /*main mensaje*/
   .crece-main-mensaje-imagenes-movil{
@@ -447,9 +471,8 @@ ul li{
 
   /*solicitante inversionista*/
   .crece-solicitante-inversionista {
-    background: #1199AD;
     padding-top: 32px;
-
+    min-height: 859.781px;
   }
 
   .crece-solicitar-invertir{
@@ -553,8 +576,14 @@ ul li{
   }
 
   /*Solicitante inversionista*/
+  .crece-solicitante-inversionista {
+    padding-top: 32px;
+    max-height: none;
+
+  }
   .crece-solicitar-contenido, .crece-invertir-contenido{
     margin-left: 0;
+    margin-right: 0;
     margin-top: 25px;
   }
 
