@@ -455,9 +455,7 @@ ul li{
 }
 
 /*Dispositivos como tablets o menores de 992 y mayores a 600*/
-
 @media screen and (max-width: 991px){
-
 
   /*main mensaje*/
   .crece-main-mensaje-imagenes-movil{
