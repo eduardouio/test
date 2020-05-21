@@ -2,10 +2,16 @@ section, aside, footer {
     margin: 0;
     padding: 16px;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    
 }
+
+html{
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 main{
@@ -70,7 +76,7 @@ footer{
 
 .crece-header-nav{
   margin: auto;
-  font-size: 17.75px;
+  font-size: 17px;
   font-weight: 200;
 }
 
@@ -131,10 +137,14 @@ footer{
 }
 
 
+@media screen and (max-width: 1366px){
+  .crece-header-nav{
+    font-size: 15.9px !important; 
+  }
+}
 
-
-/*Dispositivos mayores a 992px*/
-@media screen and (min-width: 992px) {
+/*Dispositivos mayores a 1200px*/
+@media screen and (min-width: 1200px) {
 
   /*Header*/
   .navbar{
@@ -201,8 +211,8 @@ footer{
 
 }
 
-/*Dispositivos como tablets o menores de 992 y mayores a 600*/
-@media screen and (max-width: 991px){
+/*Dispositivos como tablets o menores de 1199 y mayores a 600*/
+@media screen and (max-width: 1199px){
   
   /*Header*/
   .crece-header-nav{

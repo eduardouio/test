@@ -312,7 +312,6 @@ input[type=range].inversionista:focus::-ms-fill-upper {
   min-height: var(--calculadora-altura-min-height);
   color: #ffffff;
   font-size: 15pt;
-
   border-radius: var(--bordes-calculadora-border-radius);
 }
 

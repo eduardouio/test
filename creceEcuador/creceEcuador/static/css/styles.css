@@ -372,8 +372,7 @@ ul li{
 
 /*Reconocimientos*/
 .crece-reconocimientos {
-  background-image: url('../assets/fondo_reconocimientos2.png');
-  height: 500px;
+  background-color: #08A7BA;
   background-position: center;
   background-size: cover;
   background-repeat:no-repeat;
@@ -395,6 +394,13 @@ ul li{
   box-sizing: unset;
 }
 
+.crece-reconocimientos-vista h2{
+  padding-bottom: 15px;
+}
+
+.crece-reconocimientos-vista-mobile h2{
+  padding: 15px 15px 0px 0px;
+}
 
 
 /*Dispositivos mayores a 992px*/
@@ -610,13 +616,17 @@ ul li{
   .crece-reconocimientos-vista-mobile{
     display: block;
   }
+
   .crece-reconocimientos img{
-    height: 150px;
+    width: 80%;
+    height: auto;
+    display: block;
     margin: auto;
   }
 
   .crece-reconocimientos-vista-mobile div:not(:first-child){
     margin-top: 45px;
+    padding-bottom: 27px;
   }
 
 }

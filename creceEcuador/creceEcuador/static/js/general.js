@@ -49,6 +49,11 @@ $(document).ready(function(){
       
   cargar_carrusel();
   obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
+  $.each( $('*'), function() { 
+    if( $(this).width() > $('body').width()) {
+        console.log("Wide Element: ", $(this), "Width: ", $(this).width()); 
+    } 
+});
   
 });
 
@@ -64,7 +69,7 @@ function cargar_carrusel(){
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 3000,
       fade: true,
 
 
@@ -79,7 +84,7 @@ function cargar_carrusel(){
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 3000,
       fade: true,
 
       // the magic
