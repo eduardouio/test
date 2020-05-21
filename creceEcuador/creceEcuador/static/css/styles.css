@@ -1,8 +1,11 @@
 :root{
-  --calculadora-solicitar-bg-color:#AECB6F;
+
+  --calculadora-solicitar-bg-color:#08A7BA;
   --calculadora-invertir-bg-color:#006B8D;
   --section-calculadoras-bg-color:#08A7BA;
-  --fuente-font-family: Monserrat;
+  --btn-sol-inv-bg-color:#AECB6F;
+  --fuente-font-family: Montserrat;
+
 }
 /*#1199AD*/
 
@@ -105,6 +108,7 @@ ul li{
 .crece-solicitar-invertir{
   font-weight: 700 !important;
   font-size: 29.51px !important;
+  font-family: Montserrat;
 }
 
 .crece-solicitar-invertir{
@@ -122,17 +126,24 @@ ul li{
   margin-bottom: auto;
   margin-top: auto;
   font-weight: 500;
+  font-size:21px;
 }
 
 .crece-solicitar-invertir button{
   padding: 10px 50px;
-  color: #ffffff;
+  color: var(--btn-sol-inv-bg-color);
+  font-family: var(--fuente-font-family);
+  font-size: 30px;
+}
+
+.crece-solicitar-invertir button:hover{
+  color: var(--btn-sol-inv-bg-color);
 }
 
 
 .crece-solicitar-invertir-elegido{
-  background-color:   #3CACC4;
-  color: #ffffff;
+  background-color:   var(--btn-sol-inv-bg-color);
+  color: #ffffff !important;
   border-radius: 30px;
   padding: 20px 160px !important;
 }
@@ -413,7 +424,6 @@ ul li{
 
   .crece-solicitar-invertir button{
     padding: 10px 140px;
-    font-size: 25px;
   }
 
   .crece-solicitar-contenido, .crece-invertir-contenido{
@@ -426,7 +436,7 @@ ul li{
   }
 
   .crece-solicitar-text{
-    font-size: 20.7px;
+
     margin-bottom: 25px;
   }
   .crece-solicitar-text div{
@@ -455,7 +465,9 @@ ul li{
 }
 
 /*Dispositivos como tablets o menores de 992 y mayores a 600*/
+
 @media screen and (max-width: 991px){
+
 
   /*main mensaje*/
   .crece-main-mensaje-imagenes-movil{
@@ -498,13 +510,10 @@ ul li{
 
   .crece-solicitar-invertir button{
     padding: 10px 50px;
-    color: #ffffff;
   }
 
 
   .crece-solicitar-invertir-elegido{
-    background-color:   #3CACC4;
-    color: #ffffff;
     border-radius: 30px;
     padding: 15px 65px !important;
   }
@@ -574,11 +583,20 @@ ul li{
   }
 
   /*Solicitante inversionista*/
+
   .crece-solicitante-inversionista {
     padding-top: 32px;
     max-height: none;
 
   }
+
+  .crece-solicitar-invertir button{
+  padding: 10px 50px;
+  color: var(--btn-sol-inv-bg-color);
+  font-family: var(--fuente-font-family);
+  font-size: 16px;
+}
+
   .crece-solicitar-contenido, .crece-invertir-contenido{
     margin-left: 0;
     margin-right: 0;

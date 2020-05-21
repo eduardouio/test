@@ -1,11 +1,12 @@
 :root{
 	--titulo-preguntas-frecuentes-color: #147285;
 	--preguntas-frecuentes-color:#296356;
-	--letra-font-family: Monserrat;
+	--letra-font-family: Montserrat;
 }
 
 .main-container{
 	    padding: 5vh 8vw;
+	    font-family: var(--letra-font-family)
 }
 
 .crece-header-preguntas-frecuentes{

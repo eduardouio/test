@@ -1,14 +1,18 @@
 :root{
-  --calculadora-solicitar-bg-color:#08A7BA;
-  --calculadora-invertir-bg-color:#006B8D;
+  --calculadora-invertir-bg-color:#08A7BA;
+  --calculadora-solicitar-bg-color:#006B8D;
   --calculadora-valores-inversionista-bg-color:#08a7ba;
+  --btn-calculadora-bg-color:#aecb6f;
+
   --cuota-total-color: #F3DD29;
-  --letra-color:#5C5C5C;
+  --letra-color:#ffffff;
   --boton-solicitar-color:#63B1C6;
   --range-bg-color: #157FA2;
   --calculadora-anchura-width: 433px;
-  --calculadora-altura-min-height: 457px;
-  --valores-font-size: 13pt;
+
+  --calculadora-altura-min-height: 414.31px;
+  --valores-font-size: 17px;
+
   --banco-bg-bar-color: #B16A71;
   --footnote-color: #ffffff;
   --bordes-calculadora-border-radius:20px;
@@ -21,9 +25,13 @@ input[type=range].solicitante {
   -webkit-appearance: none;
   width: 100%;
   margin: 5.3px 0;
+  position: relative;
+  top: -11.4px;
+
 }
 input[type=range].solicitante:focus {
   outline: none;
+  background: none;
 }
 input[type=range].solicitante::-webkit-slider-runnable-track {
   width: 100%;
@@ -114,14 +122,14 @@ input[type=range].solicitante:focus::-ms-fill-upper {
 
 
 
-
 /*Container*/
 .crece-calculadora-solicitante-container{
  position: relative;
     min-height: var(--calculadora-altura-min-height);
     max-width: var(--calculadora-anchura-width);
-    background-color: #ffffff;
-    font-family: Monserrat;
+
+    background-color: var(--calculadora-solicitar-bg-color);
+
     font-size: 18pt;
     border-radius: var(--bordes-calculadora-border-radius);
     color: var(--letra-color);
@@ -132,8 +140,9 @@ div.crece-instruccion-calculadora span{
   border-radius: 5px;
   text-align: center;
 }
-.crece-calculadora-solicitante-container div{
-  margin-top: 5px;
+
+.crece-calculadora-solicitante-container>div{
+  margin-top: 10px;
 }
 
 .calculadora-solicitante-tasa{
@@ -141,13 +150,21 @@ div.crece-instruccion-calculadora span{
 
 }
 
-i.fa-info-circle {
-  position: relative;
-  font-size: 11pt;
+.calculadora-solicitante-cuota{
+  color: var(--calculadora-solicitar-bg-color);
+  font-weight: bold;
+  font-size: 21px;
+  padding: 6.34px 0px;
+
+}
+
+.calculadora-solicitante-cuota div{
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 #slider-container-tasa-id{
-  padding-top: 4.3vh;
+
 }
 
 
@@ -155,43 +172,41 @@ i.fa-info-circle {
 
 
 .calculadora-valores{
-      background-color: var(--calculadora-valores-inversionista-bg-color);
-    color: #ffffff;
+
+    background-color: #ffffff;
+    color: var(--calculadora-solicitar-bg-color);
     font-size: var(--valores-font-size);
     padding: 5px 10px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 21px;
 
 }
 
 
 
 #cuota-valor{
-  background-color: var(--cuota-total-color);
-  text-align: center;
+
+ 
   border-radius: 8px;
-  color: #000000;
+
   width: 100%;
-  padding: 5px 30px;
   font-weight:bold;
   font-size: 15pt;
 }
 
 #calculadora-solicitar{
-  background-color: var(--calculadora-invertir-bg-color);
-  position: relative;
-  top: 1vh;
+
+  background-color: var(--btn-calculadora-bg-color);
+
   color: #ffffff;
   font-weight: bold;
-  font-family: none;
-  float: left;
-  margin-left: auto;
-  margin-right: 30px;
-  margin-top: 2px;
-  margin-bottom: 10px;
-  padding: 5px 45px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px 15px;
   text-align: center;
-  border-radius: 15px;
+  font-size: 22px;
+      border-radius: 8px;
+
 
 }
 
@@ -293,23 +308,26 @@ input[type=range].inversionista:focus::-ms-fill-upper {
 .crece-calculadora-inversionista-container{
   background-color: var(--calculadora-invertir-bg-color);
   max-width: var(--calculadora-anchura-width);
+
+  min-height: var(--calculadora-altura-min-height);
   color: #ffffff;
   font-size: 15pt;
-  font-family: Monserrat;
+
   border-radius: var(--bordes-calculadora-border-radius);
 }
 
-.crece-calculadora-inversionista-container div{
-  margin-top: 6px;
+.crece-calculadora-inversionista-container>div{
+  margin-top: 9px;
 }
 
 .calculadora-valores-inversionista{
   background-color: #ffffff;
-  color: #000000;
+  color: var(--calculadora-solicitar-bg-color);
   font-size: var(--valores-font-size);
   padding: 5px 10px;
+  border-radius: 21px;
   font-weight: bold;
-  border-radius: 5px;
+      border-radius: 21px;
 }
 
 .calculadora-inversionista-tir{
@@ -317,80 +335,146 @@ input[type=range].inversionista:focus::-ms-fill-upper {
 }
 
 #cuota-valor-inversionista, #tir-valor-inversionista{
+
+  position: relative;
   background-color: var(--cuota-total-color);
-  color: #000000;
+  color: var(--calculadora-solicitar-bg-color);
   text-align: center;
   width: 100%;
-  padding: 5px 35px;
+  padding: 3px 5px;
+  border-radius: 21px;
   font-weight: bold;
-  border-radius: 8px;
+  font-size: var(--valores-font-size);
 }
 
-#tir-valor-inversionista{
 
-    position: relative;
-    top: 4vh;
-    border-radius: 8px;
-}
+
 /*Comparaciones*/
 .calculadora-comparaciones{
   font-size: 11pt;
   background-color: #ffffff;
-  color: #000000;
+  color: var(--calculadora-solicitar-bg-color);
   font-weight: bold;
   margin-top: 15px !important;
   border-radius: 8px;
+  font-size: 21px
+
 }
 
 .calculadora-comparaciones div{
-  margin-top: 3px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .calculadora-comparaciones span{
-  font-size: 10pt;
-  color: var(--calculadora-invertir-bg-color);
+
+  font-size: 21px;
   font-weight:bold;
 }
 
-
-
-#crece-progress-bar-id{
- width: 100%;
- margin-top:0px ;
+.comparaciones-banco{
+  font-size: 10px;
 }
 
-.banco-progress{
-  background-color: #ffffff;
-  width: 50%
-
+.comparaciones-banco span{
+  font-size: 10px;
 }
 
-.banco-progress-bar{
-  background-color: var(--banco-bg-bar-color) !important;
-  width: 100%;
-  margin-top: 0px !important;
-}
 
 #calculadora-invertir{
-  background-color: var(--calculadora-solicitar-bg-color);
+  background-color: var(--btn-calculadora-bg-color);
+
   color: #ffffff;
   font-weight: bold;
-  font-family: none;
-  float: left;
-  margin-left: auto;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  padding: 5px 45px;
+  padding: 5px 15px;
+    margin-top: auto;
+  margin-bottom: auto;
   text-align: center;
-  border-radius: 15px;
+  font-size: 22px;
+      border-radius: 8px;
+
 }
 
+
+
+
+
+.calculadora-header-valor{
+  font-size: 17px;
+}
+
+.container-final-calculadora{
+  background-color: #ffffff;
+      border-radius: 8px;
+}
 
 .crece-calculadora-footnote{
   color: var(--footnote-color);
-  font-size: 10pt;
+  font-size: 8px;
   max-width: var(--calculadora-anchura-width);
+  font-weight: 100;
 }
+
+
+/*.slidecontainer-solicitante{
+  position: relative;
+  margin-top: 0px !important;
+}
+
+.slider-valores{
+  margin-top: 0px !important;
+  position: relative;
+}
+
+.range-labels {
+  list-style: none;
+  font-size: 11px;
+  position: absolute;
+  top: 25px;
+ padding-left: 0px;
+}
+
+.range-labels li {
+  position: relative;
+  float: left;
+  text-align: center;
+
+  cursor: pointer;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  left: 12.5%;
+}
+
+.range-labels li::before {
+  position: absolute;
+      top: -16.5px;
+  right: 0;
+  left: 0;
+  content: "";
+  margin: 0 auto;
+  width: 7.5px;
+  height: 7.5px;
+  background: #ffffff;
+  border-radius: 50%;
+
+}
+
+
+.range-labels .active {
+  color: #37adbf;
+}
+*/
+
+
+.range-labels .selected::before {
+  background: #37adbf;
+}
+.range-labels .active.selected::before {
+  display: none;
+}
+
+
 
 
 @media screen and (max-width: 600px){
@@ -399,17 +483,22 @@ input[type=range].inversionista:focus::-ms-fill-upper {
   }
 
   #tir-valor-inversionista{
-    top: 0vh !important;
+
+
+
   }
 }
 
 
 @media screen and (max-width: 1200px) {
   #slider-container-tasa-id{
-    padding-top: 2.3vh;
+
+
   }
 
   #tir-valor-inversionista{
-    top: 2vh;
   }
 }
+
+
+
