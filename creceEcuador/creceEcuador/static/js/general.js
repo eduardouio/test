@@ -90,7 +90,14 @@ function cargar_carrusel(){
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 3000,
-      fade: true
+      fade: true,
+
+      // the magic
+        responsive: [{
+            breakpoint: 600,
+            settings: "unslick" // destroys slick
+
+          }]
 
     });
   }

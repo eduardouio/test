@@ -156,9 +156,6 @@ footer{
   vertical-align: middle;
 }
 
-.crece-footer-redes-lista img#crece-twitter {
-  height: 38px;
-}
 
 @media screen and (max-width: 1366px){
   .crece-header-nav{
