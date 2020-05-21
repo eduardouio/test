@@ -4,8 +4,10 @@ let RUTA_DETALLE_SOLICITUD ="/detalle_solicitud/"
 let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 3;
 
-const color_calculadora_solicitante = "#08A7BA"
-const color_calculadora_inversionista = "#006B8D"
+
+const color_calculadora_inversionista = "#08A7BA"
+const color_calculadora_solicitante = "#006B8D"
+
 
 
 $(".crece-menu-toogle").click(function(){
@@ -22,8 +24,8 @@ $("div.crece-solicitar-invertir button").click(function(){
   var solicitar = $("#crece-solicitar-id");
   var invertir = $("#crece-invertir-id");
   let section = document.getElementById("crece-solicitante-inversionista-id");
-  let infografia_inversionista = document.getElementById("crece-invertir-contenido-infografia-izquierda-id");
-  let footnote_calculadora_inversionista = document.getElementById("footnote-invertir-id")
+
+
   if(this.className == "btn crece-invertir-button"){
     solicitar.hide();
     invertir.css("display","flex");

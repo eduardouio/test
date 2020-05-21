@@ -7,6 +7,9 @@
         {% block head_css_agregado %}
             <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'css/calculadora.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'css/bootstrap-slider.min.css' %}" rel="stylesheet" type="text/css">
+
+           
         {% endblock head_css_agregado %}
     </head>
     <body> 
@@ -49,9 +52,12 @@
   
   
                   <!-- Solicitante/Inversionista -->
-                  <section class="crece-solicitante-inversionista justify-content-center row" id="crece-solicitante-inversionista-id">
-  
-                    <div class="container col-sm-8 col-lg-12 col-xl-8">
+
+                  
+                  <section class="crece-solicitante-inversionista" id="crece-solicitante-inversionista-id">
+                    <div class="row">
+                    <div class="container  justify-content-center col-sm-8 col-lg-12 col-xl-9">
+
                       <div class="row">
                             <div class="crece-solicitar-invertir">
                               <button class="btn crece-solicitar-button crece-solicitar-invertir-elegido"><strong>Solicitar</strong></button>
@@ -107,89 +113,160 @@
 
                                       <div class="crece-calculadora-solicitante-container container">
                                             
-                                            <!--Instruccion como usar la calculadora-->
+
+                                            <!--Instruccion como usar la calculadora>
                                             <div class="crece-instruccion-calculadora">
                                              <i class="fa fa-info-circle"></i>  <span>Desliza los botones en las barras acorde a tu necesidad.</span>
-                                            </div>
+                                            </div-->
                                                     <!--CaAPITAL-->
                                             <div class="row calculadora-solicitante-capital">
-                                                  <div class="col-sm-3">
-                                                    <b>Capital:</b> 
+                                                  <div class="col">
+                                                    <span class="calculadora-header-valor">Capital:</span>
+
                                                   </div>
 
-                                              <div class="col-sm-9 slidecontainer">
-                                                <input class="solicitante slider" type="range" min="2000" max="10000" value="5000" id="rango-capital" name="capital" step="100">
+                                              <div class="col">
+                                                
                                                 <span class="calculadora-valores">
-                                                  <b id="valor-capital"></b>
+
+                                                  <span id="valor-capital"></span>
+
                                                 </span>
                                                 
                                               </div>
 
                                             </div>
 
+                                            <div class="row">
+                                              <div class="col-12 slidecontainer-solicitante">
+
+                                                  <!--input class="solicitante solicitante-slider" type="range" min="1000" max="10000" value="5000" id="rango-capital" name="capital" step="100" list="valores_capital"--> 
+
+
+                                                  <input 
+                                                  id="capital-solicitante"
+                                                  type="text"
+                                                  name="capital"
+                                                  data-slider-min="1000"
+                                                  data-slider-max="10000"
+                                                  data-slider-step="1000"
+                                                  data-slider-value="5000"
+                                                  
+                                                  />
+                                                  <!--ul class="range-labels">
+                                                  <li class="">US$2000</li>
+                                                  <li>US$4000</li>
+                                                  <li>US$6000</li>
+                                                  <li>US$8000</li>
+                                                </ul-->
+                                              </div>
+                                            </div>
+
 
                                               <!--PLAZO-->
                                               <div class="row calculadora-solicitante-plazo">
-                                                <div class="col-sm-3">
-                                                    <b>Plazo:</b>
+
+                                                <div class="col">
+                                                    <span class="calculadora-header-valor">Plazo:</span>
                                                 </div>
 
-                                                <div class="col-sm-9 slidecontainer">
-                                                  <input class="solicitante slider" type="range" min="3" max="18" value="12" id="rango-plazo" name="plazo">
-                                                    
+                                                <div class="col">
                                                      <span class="calculadora-valores" >
-                                                        <b id="valor-plazo" ></b>
+                                                        <span id="valor-plazo" ></span>
+
                                                        
                                                      </span> 
                                                 </div>
+                                              </div>
 
+                                              <div class="row">
+                                                <div class="col-12 slidecontainer-solicitante">
+                                                  <!--input class="solicitante solicitante-slider" type="range" min="3" max="18" value="12" id="rango-plazo" name="plazo"-->
+                                                  <input 
+                                                  id="plazo-solicitante"
+                                                  type="text"
+                                                  name="plazo"
+                                                  data-slider-min="3"
+                                                  data-slider-max="18"
+                                                  data-slider-step="1"
+                                                  data-slider-value="12"
+                                                  
+                                                  />
+                                                </div>
+                                                
                                               </div>
 
 
                                               <!--TASA-->
                                               <div class="row calculadora-solicitante-tasa">
-                                                <!--span id="calculadora-info-tasa">Tasa de Interés anual</span-->
-                                                <div class="col-sm-3">
-                                                  <b>Tasa Interés Anual:</b> <!--i class="fa fa-info-circle"></i--> 
+
+                                               
+                                                <div class="col">
+                                                  <span class="calculadora-header-valor">Tasa  de interés: </span>
                                                 </div>
 
-                                                <div class="col-sm-9 slidecontainer" id="slider-container-tasa-id">
-                                                    <input  class="solicitante slider" type="range" min="14" max="30" value="24" id="rango-tasa" name="tasa">
+                                                <div class="col" id="slider-container-tasa-id">
+                                                   
                                                      <span class="calculadora-valores">
-                                                        <b id="valor-tasa"></b>
+                                                        <span id="valor-tasa"></span>
+
                                                      </span>
                                                 </div>
 
                                               </div>
 
+                                              <div class="row">
+                                                <div class="col-12 slidecontainer-solicitante">
+                                                   <!--input  class="solicitante solicitante-slider" type="range" min="14" max="30" value="24" id="rango-tasa" name="tasa"-->
+                                                   <input 
+                                                  id="tasa-solicitante"
+                                                  type="text"
+                                                  name="tasa"
+                                                  data-slider-min="14"
+                                                  data-slider-max="30"
+                                                  data-slider-step="1"
+                                                  data-slider-value="24"
+
+                                                  
+                                                  />
+                                                </div>
+                                              </div>
+
 
                                               <!--CUOTA MENSUAL-->
-                                              <div class="row calculadora-solicitante-cuota">
-                                                <div class="col-sm-7">
-                                                    <b>Cuota mensual*:</b>
-                                                </div>
-                                                <div class="col-sm-5">
-                                                  <div id="cuota-valor"> </div>
-                                                </div>
-                                              </div>
+                                              <div class="container-final-calculadora container">
+                                                    <div class="row calculadora-solicitante-cuota" style="
+                                                                margin-top: 15px;">
+                                                      <div class="col-sm-7 col-lg-7">
+                                                          Cuota mensual*:
+                                                          <div id="cuota-valor"> </div>
+                                                      </div>
+                                                      <!--BOTON SOLICITAR-->
+                                                      <div class="col-sm-5 col-lg-5">
+                                                         <a href="anunciar-solicitud"><button id="calculadora-solicitar">Solicitar</button> </a>
+                                                      </div>
+                                                    </div>
 
 
-                                              <!--BOTON SOLICITAR-->
-                                              <div class="row">
-                                                  <button id="calculadora-solicitar">Solicitar</button> 
+                                                    
                                               </div>
+                                            <div class="row">
+                                               <!--FOOTNOTE-->
+                                                <div class="crece-calculadora-footnote container">
+                                                  *La cuota calculada es estimada y dependerá de factores como el plazo, interés
+                                                      pagado por el solicitante y cargos administrativos.
+                                                </div>
+
+                                                <!--FIN FOOTNOTE-->
+                                            </div>
 
                                       </div>
                                 <!--Fin calculadora de solicitante-->
                                 
 
-                                    <!--FOOTNOTE-->
-                                      <div class="crece-calculadora-footnote container">
-                                        *La cuota calculada es estimada y dependerá de factores como el plazo, interés
-                                            pagado por el solicitante y cargos administrativos.
-                                      </div>
 
-                                      <!--FIN FOOTNOTE-->
+                                   
+
                             </div> 
                           </div>
   
@@ -244,35 +321,73 @@
 
                                           <!--CAPITAL-->
                                           <div class="row calculadora-inversionista-capital">
-                                                <div class="col-sm-3">
-                                                  <b>Capital:</b> 
+
+                                                <div class="col">
+                                                  <span class="calculadora-header-valor">Monto a invertir:</span>
+
                                                 </div>
 
-                                              <div class="col-sm-9 slidecontainer">
-                                                <input class="inversionista inversionista-slider" type="range" min="2000" max="10000" value="5000"  id="rango-capital'inversionista" name="capital" step="100">
+                                              <div class="col slidecontainer">
+                                                
                                                 <span class="calculadora-valores-inversionista">
-                                                  <b id="valor-capital-inversionista"></b>
+
+                                                  <span id="valor-capital-inversionista"></span>
+
                                                 </span>
                                                 
                                               </div>
                                           </div>
+                                          <div class="row">
+                                            <div class="col-12 slidecontainer-inversionista">
+                                              <!--input class="inversionista inversionista-slider" type="range" min="2000" max="10000" value="5000"  id="rango-capital'inversionista" name="capital" step="100"-->
+
+                                              <input 
+                                                  id="capital-inversionista"
+                                                  type="text"
+                                                  name="capital"
+                                                  data-slider-min="2000"
+                                                  data-slider-max="10000"
+                                                  data-slider-step="1000"
+                                                  data-slider-value="5000"
+                                                  
+                                                  
+                                                  />
+                                            </div>
+                                          </div>
 
 
-                                            <!--PLAZO-->
-                                            <div class="row calculadora-inversionista-plazo">
-                                              <div class="col-sm-3">
-                                                  <b>Plazo:</b>
+
+                                            <div class="row calculadora-inversionista-plazo" style="margin-top: 18px;">
+                                              <div class="col">
+                                                  <span class="calculadora-header-valor">Plazo de la operación:</span>
                                               </div>
 
-                                              <div class="col-sm-9 slidecontainer">
-                                                <input class="inversionista inversionista-slider" type="range" min="3" max="18" value="12" id="rango-plazo'inversionista" name="plazo">
-                                                  
+                                              <div class="col slidecontainer" style="
+                                                              margin-top: auto;
+                                                              margin-bottom: auto;">
                                                    <span class="calculadora-valores-inversionista" >
-                                                      <b id="valor-plazo-inversionista" ></b>
+                                                      <span id="valor-plazo-inversionista" ></span>
+
 
                                                    </span> 
                                               </div>
 
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-12 slidecontainer-inversionista">
+                                                <!--input class="inversionista inversionista-slider" type="range" min="3" max="18" value="12" id="rango-plazo'inversionista" name="plazo"-->
+
+                                                 <input 
+                                                  id="plazo-inversionista"
+                                                  type="text"
+                                                  name="plazo"
+                                                  data-slider-min="3"
+                                                  data-slider-max="18"
+                                                  data-slider-step="1"
+                                                  data-slider-value="12"
+                                                  
+                                                  />
+                                              </div>
                                             </div>
 
                                             
@@ -280,108 +395,82 @@
                                             <!--TASA INTERNA DE RETORNO-->
                                             <div class="row calculadora-inversionista-tir">
                                               <div class="col-sm-7">
-                                                  <b>Rendimiento promedio anual (TIR) de operaciones CRECE:</b>
+
+                                                  <span class="calculadora-header-valor">Rendimiento referencial de operaciones similares*:</span>
                                               </div>
-                                              <div class="col-sm-5">
+                                              <div class="col-sm-5" style="
+                                                        margin-top: auto;
+                                                        margin-bottom: auto;">
+
                                                 <div id="tir-valor-inversionista"></div>
                                               </div>
                                             </div>
 
-                                            <!--CUOTA MENSUAL-->
-                                            <div class="row calculadora-inversionista-cuota">
+
+                                            <!--PAGO TOTAL-->
+                                            <div class="row calculadora-inversionista-cuota" style="
+                                                                                                    margin-top: 1px;
+                                                                                                ">
                                               <div class="col-sm-7">
-                                                  <b>Recibes en total*:</b>
+                                                  <span class="calculadora-header-valor">En total recibirás*:</span>
+
                                               </div>
                                               <div class="col-sm-5">
                                                 <div id="cuota-valor-inversionista"></div>
                                               </div>
                                             </div>
 
+
                                             <!--COMPARACIONES-->
                                             <div class="calculadora-comparaciones container">
-                                                  <span >Compara el rendimiento de tu inversion</span>
+
+                                             
                                                   
-                                                  <!--CRECE-->
-                                                  <div class="row">
-                                                    <!--TItulo Crece-->
-                                                    <div class="col-sm-2">
-                                                      CRECE
-                                                    </div>
-
-                                                    <!--Barra de Progreso-->
-                                                    <div class="col">
-                                                      <div class="progress " id="crece-progress-id">
-                                                          <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="crece-progress-bar-id">
-                                                            
-                                                          </div>
-                                                       </div>
-                                                    </div>
-
-                                                    <!--Valor-->
-                                                      <div class="col-sm-3" id="comparacion-crece">
-                                                        
+                                                   <div class="row">
+                                                      <div class="col">
+                                                        <span >Ganancia</span>
+                                                        <div id="comparacion-crece"></div>
+                                                        <div class="comparaciones-banco">Ganancia bancos°:  <span  id="comparacion-bancos"></span>
                                                       </div>
-                                                  </div>
+                                                      </div>
+                                                      <div class="col-5">
+                                                         <button id="calculadora-invertir">Invertir</button> 
 
-                                                  <!--BANCO-->
-                                                  <div class="row">
-
-                                                    <!--TItulo BANCO-->
-                                                    <div class="col-sm-2">
-                                                      Banco
+                                                      </div>
                                                     </div>
 
-                                                    <!--Barra de Progreso-->
-                                                    <div class="col">
-                                                      <div class="progress banco-progress" id="banco-progress-id">
-                                                          <div class="progress-bar banco-progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="banco-progress-bar-id">
-                                                            
-                                                          </div>
-                                                       </div>
-                                                    </div>
 
-                                                    <!--Valor-->
-                                                    <div class="col-sm-3" id="comparacion-bancos">
-                                                      
-                                                    </div>
-                                                  </div>
-                                          </div>
+                                                   
+                                            </div>
+
+                                          <!--FOOTNOTE-->
+                                            <div class="crece-calculadora-footnote row" id="footnote-invertir-id">
+                                                <div class="col">
+                                                  *El rendimiento se refiere a la TIR, y al igual que la ganancia, es una estimación en base a 
+                                                      operaciones similares. °La referencia de los bancos es un estimado en base a sus productos. 
+                                                </div>
+                                            </div>
 
 
-                                            <!--BOTON INVERTIR-->
-                                            <div class="row">
-                                              
-                                                <button id="calculadora-invertir">Invertir</button>
-                                              
-                                                        
-                                              </div>
+                                            <!--FIN FOOTNOTE-->
+
 
                                 </div>
 
                                 <!--Fin de calculadora de Inversionista-->
                                 
 
-                                  <!--FOOTNOTE-->
-                                  <div class="crece-calculadora-footnote container" id="footnote-invertir-id">
-                                    <div class="row">
-                                      <div class="col">
-                                        *La cuota y la TIR calculada es estimada y dependerá de factores como el plazo, interés
-                                        pagado por el solicitante y cargos administrativos.
-                                      </div>
-                                      
-                                    </div>
-                                    
-                                  </div>
 
-                                  <!--FIN FOOTNOTE-->
+                                  
+
                             </div> 
                           </div>
   
                       </div>
                </div>
-                        
+                       </div>
                   </section>
-  
+
                   <!-- Oportunidades -->
                   <section class="crece-oportunidades">
                       <div class="row justify-content-center">
@@ -448,6 +537,8 @@
         <script src="{% static 'js/line_wrap.js' %}"></script>
          <script src="{% static 'js/general.js' %}"></script>
          <script src="{% static 'js/calculadora.js' %}"></script>
+          <script src="{% static 'js/bootstrap-slider.min.js' %}"></script>
+          
         {% endblock footer_javascript_agregado %}
         
 
