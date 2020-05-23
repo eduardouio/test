@@ -8,7 +8,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="icon" href="{% static 'assets/Logo_crece_pie.png' %}">
+        <!-- ****** faviconit.com favicons ****** -->
+        <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}">
+        <link rel="icon" sizes="16x16 32x32 64x64" href="{% static 'assets/favicon.ico' %}">
+        <link rel="icon" type="image/png" sizes="196x196" href="{% static 'assets/favicon-192.png' %}">
+        <link rel="icon" type="image/png" sizes="160x160" href="{% static 'assets/favicon-160.png' %}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/favicon-96.png' %}">
+        <link rel="icon" type="image/png" sizes="64x64" href="{% static 'assets/favicon-64.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16.png' %}">
+        <link rel="apple-touch-icon" href="{% static 'assets/favicon-57.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/favicon-114.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/favicon-72.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/favicon-144.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/favicon-60.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/favicon-120.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/favicon-76.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/favicon-152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon-180.png' %}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="{% static 'assets/favicon-144.png' %}">
+        <meta name="msapplication-config" content="{% static 'assets/browserconfig.xml' %}">
+        <!-- ****** faviconit.com favicons ****** -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -25,50 +46,52 @@
     <body> 
     <!-- Main Content -->
             <main>
-                <header id="crece-header" class="crece-header">
-
-                    <div class="container crece-header-contenido col-xl-10" id="crece-header-id">
-                      <div class="row">
-                        <div class="col col-xl-4">
-                          <a class="logo navbar-brand" href="/">
-                              <div class="logo_container d-flex flex-row align-items-start justify-content-start">
-                                <div class="img-responsive"><img src="{% static 'assets/logo_color.png' %}"></div>
+                <header id="crece-header" class="crece-header row justify-content-center">
+                    <div class="col-xl-10">
+                      <div class="container crece-header-contenido" id="crece-header-id">
+                          <div class="row">
+                              <div class="col col-xl-4">
+                                <a class="logo navbar-brand" href="/">
+                                    <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                      <div class="img-responsive"><img src="{% static 'assets/logo_color.png' %}"></div>
+                                    </div>
+                                </a>
                               </div>
-                          </a>
-                        </div>
-                        <div class="crece-menu-toogle">
-                          <div>
-                            <i class="fa fa-bars"></i>
-                          </div>
-                        </div>
-
-
-                          <div class="crece-header-nav col-xl-8" >
-                            <nav class="navbar navbar-expand-sm">
-                              <ul class="navbar-nav">
-                                <li class="nav-item">
-                                  <a class="nav-link" href="/">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="/nosotros/">Conócenos</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="/lista_solicitudes">Invierte</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="/faq">Preguntas Frecuentes</a>
-                                </li>
+                              <div class="crece-menu-toogle">
                                 <div>
-                                  <li class="nav-item">
-                                    <a class="nav-link crece-header-nav-ingresar" href="#">Ingresar</a>
-                                  </li>
+                                  <i class="fa fa-bars"></i>
                                 </div>
-                              </ul>
-                            </nav>
-                            
-                          </div>
-                        
+                              </div>
+      
+      
+                                <div class="crece-header-nav col-xl-8" >
+                                  <nav class="navbar navbar-expand-sm">
+                                    <ul class="navbar-nav">
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="/">Inicio</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="/nosotros/">Conócenos</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="/lista_solicitudes">Invierte</a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="/faq">Preguntas Frecuentes</a>
+                                      </li>
+                                      <div>
+                                        <li class="nav-item">
+                                          <a class="nav-link crece-header-nav-ingresar" href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Ingresar</a>
+                                        </li>
+                                      </div>
+                                    </ul>
+                                  </nav>
+                                  
+                                </div>
+                              
+                            </div>
                       </div>
+                      
 
                     </div>
 
@@ -76,10 +99,12 @@
 
 
                 </header>
-                {% block content %}
+                  <div class="crece-contenedor-cuerpo">
+                      {% block content %}
 
 
-                {% endblock content %}
+                      {% endblock content %}
+                  </div>
                 <!-- Footer -->
                 <footer>
 
@@ -91,10 +116,10 @@
                                   <div class="crece-footer-redes row justify-content-center">
                                       <ul class="crece-footer-redes-lista">
                                         <li><div>Síguenos en: </div></li>
-                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/CreceEC/"><img src="{% static 'assets/fb.png' %}" id="crece-facebook"></a></li>
-                                        <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/creceec"><img src="{% static 'assets/twitter.png' %}"></a></li>
-                                        <li><a target="_blank" rel="noopener noreferrer" href="https://ec.linkedin.com/company/creceec"><img src="{% static 'assets/linkedin.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/creceec"><img src="{% static 'assets/twitter.png' %}" id="crece-twitter"></a></li>
                                         <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/creceec/?hl=es-la"><img src="{% static 'assets/instagram.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://ec.linkedin.com/company/creceec"><img src="{% static 'assets/linkedin.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/CreceEC/"><img src="{% static 'assets/fb.png' %}" id="crece-facebook"></a></li>
                                       </ul>
                                   </div>
                                 </div>
@@ -123,10 +148,10 @@
                         <div class="col-sm-5 col-lg-5 crece-footer-contenido-enlaces">
                               
                                 <ul>
-                                  <li><a href="/nosotros"><strong>Quiénes Somos</strong></a></li>
-                                  <li><a href="/faq"><strong>Preguntas Frecuentes</strong></a></li>
-                                  <li><a href="#"><strong>Términos y condiciones</strong></a></li>
-                                  <li><a href="#"><strong>Políticas de privacidad</strong></a></li>
+                                  <li><a href="/nosotros">Quiénes Somos</a></li>
+                                  <li><a href="/faq">Preguntas Frecuentes</a></li>
+                                  <li><a href="#">Términos y condiciones</a></li>
+                                  <li><a href="#">Políticas de privacidad</a></li>
                                 </ul>
                                 <div class="crece-inforacion">¿Más informacion?
                                   <div>
@@ -148,8 +173,8 @@
                         <div class="col-sm-4 col-lg-4 crece-footer-contenido-enlaces">
                               
                                 <ul>
-                                  <li><a href="#"><strong>Manual para el inversionista</strong></a></li>
-                                  <li><a href="#"><strong>Manual para el solicitante</strong></a></li>
+                                  <li><a href="#">Manual para el inversionista</a></li>
+                                  <li><a href="#">Manual para el solicitante</a></li>
 
                                 </ul>
                               
@@ -209,7 +234,7 @@
       
 
         {% block footer_javascript %}
-        <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         {% block footer_javascript_agregado %}{% endblock footer_javascript_agregado %}
         {% endblock footer_javascript %}

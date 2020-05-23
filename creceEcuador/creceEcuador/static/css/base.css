@@ -9,6 +9,10 @@ html{
   overflow-x: hidden;
 }
 
+.slick-initialized {
+  overflow: hidden;
+  }
+
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
@@ -27,6 +31,10 @@ header{
   padding: 0px 16px;
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
+}
+
+.crece-header {
+  zoom: 100%;
 }
 
 nav a{
@@ -76,19 +84,24 @@ footer{
 
 .crece-header-nav{
   margin: auto;
-  font-size: 17px;
+  font-size: 16.5px;
   font-weight: 200;
 }
 
 .crece-header-nav-ingresar{
   font-weight: 700;
-  margin: 0px 10px;
+  margin: 0px 0px 0px 10px;
 }
 
 .crece-menu-toogle{
   margin: auto;
   display: none;
   color: #006b8d;
+}
+
+/*body */
+.crece-contenedor-cuerpo{
+  overflow-x: hidden;
 }
 
 
@@ -136,6 +149,16 @@ footer{
   padding: 0px;
 }
 
+.crece-footer-redes-lista img{
+  height: 40px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.crece-footer-redes-lista img#crece-twitter {
+  height: 38px;
+}
 
 @media screen and (max-width: 1366px){
   .crece-header-nav{
@@ -149,6 +172,7 @@ footer{
   /*Header*/
   .navbar{
     float: right;
+    padding-right: 0px;
   }
   .crece-header {
     padding: 9px 16px;
@@ -209,6 +233,15 @@ footer{
     margin:  0
   }
 
+  .crece-footer-redes ul{
+    margin: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 80%;
+    padding: 0px;
+  }
+
 }
 
 /*Dispositivos como tablets o menores de 1199 y mayores a 600*/
@@ -222,6 +255,10 @@ footer{
   .crece-header-contenido.mobile div.crece-header-nav{
     display: block;
     margin: 0;
+  }
+
+  .crece-header .col-xl-4{
+    padding: 0px;
   }
 
   .crece-header-nav-ingresar{
@@ -240,15 +277,36 @@ footer{
 
   /*fOOTER*/
 
-  .crece-footer-redes-lista img#crece-facebook {
-    width: 14px;
+  .crece-footer-redes-lista img#crece-twitter {
+    height: 23px;
   }
 
   .crece-footer-redes-lista img:first-child {
-    width: 25px;
+    height: 25px;
+    width: auto;
   }
 
 
+  .crece-footer-redes ul{
+    margin: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 80%;
+    padding: 0px;
+  }
+
+  .crece-footer-redes div {
+    font-size: 25px;
+  }
+
+  .crece-footer-contenido {
+    margin-top: 15px;
+  }
+
+  .fa-bars{
+    font-size: 28px;
+  }
 
 
   /*Footer*/
@@ -293,10 +351,8 @@ footer{
   }
 
   .crece-footer-redes-lista img:first-child{
-    width: 25px;
-  }
-  .crece-footer-redes-lista img#crece-facebook{
-    width: 14px;
+    height: 25px;
+    width: auto;
   }
 
   .crece-footer-about p{
@@ -309,6 +365,19 @@ footer{
 
   .crece-footer-contenido-mobile{
     margin-top: 25px;
+  }
+
+  .crece-footer-redes ul{
+    margin: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px;
+  }
+
+  .crece-footer-redes div {
+    font-size: 20px;
   }
 
 }

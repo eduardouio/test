@@ -18,7 +18,6 @@
                 <!-- Carrusel -->
                 <section class="crece-carrusel">
                     <div class="crece-carrusel-imagenes">
-  
                       <img src="{% static 'assets/Copy of Header conto.jpg' %}" alt="imagen 1">
                       <img src="{% static 'assets/Copy of header 5.jpg' %}" alt="imagen 2">
                       <img src="{% static 'assets/Copy of Header Yanes.jpg' %}" alt="imagen 3">
@@ -560,10 +559,11 @@
 
 
         {% block footer_javascript_agregado %}
+        <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
         <script src="{% static 'js/line_wrap.js' %}"></script>
-         <script src="{% static 'js/general.js' %}"></script>
-         <script src="{% static 'js/calculadora.js' %}"></script>
-          <script src="{% static 'js/bootstrap-slider.min.js' %}"></script>
+        <script src="{% static 'js/general.js' %}"></script>
+        <script src="{% static 'js/calculadora.js' %}"></script>
+        <script src="{% static 'js/bootstrap-slider.min.js' %}"></script>
           
         {% endblock footer_javascript_agregado %}
         

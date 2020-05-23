@@ -61,13 +61,18 @@ ul li{
 .slick-next:before { content: "\f054"; }
 [dir="rtl"] .slick-next:before { content: "\f053"; }
 
+.slick-prev,
+.slick-next {
+  z-index: 1100;
+  width: 29px;
+  height: 41px;
+}
+
 .slick-prev{ 
   left: 20px;
-  z-index: 1100;
 }
 .slick-next{ 
   right: 20px;
-  z-index: 1100;
 }
 
 
@@ -76,8 +81,8 @@ ul li{
     background: #fff;
     color: #006B8D;
     font-size: 23.84px;
-    padding-top: 42px;
-    padding-bottom: 42px;
+    padding: 42px 0px;
+    margin: 0px;
 }
 
 .crece-main-mensaje p{
@@ -565,6 +570,7 @@ ul li{
 
   .crece-carrusel-imagenes-movil {
     display:block;
+    overflow-x: hidden;
   }
   .crece-carrusel-imagenes-movil img{
     display:block;

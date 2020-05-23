@@ -5,19 +5,8 @@ let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 3;
 
 
-const color_calculadora_inversionista = "#08A7BA"
-const color_calculadora_solicitante = "#006B8D"
-
-
-
-$(".crece-menu-toogle").click(function(){
-  var x = document.getElementById("crece-header-id");
-   if (x.className === "container crece-header-contenido") {
-      x.className += " mobile";
-    } else {
-      x.className = "container crece-header-contenido";
-    }
-});
+const color_calculadora_inversionista = "#08A7BA";
+const color_calculadora_solicitante = "#006B8D";
 
 
 $("div.crece-solicitar-invertir button").click(function(){
@@ -46,6 +35,10 @@ $("div.crece-solicitar-invertir button").click(function(){
 
 
 $(document).ready(function(){
+
+  $(window).on('resize orientationchange', function() {
+    resize_carrusel();
+  });
       
   cargar_carrusel();
   obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
@@ -53,12 +46,24 @@ $(document).ready(function(){
     if( $(this).width() > $('body').width()) {
         console.log("Wide Element: ", $(this), "Width: ", $(this).width()); 
     } 
-});
+  });
   
 });
 
+function resize_carrusel() {
+  
+  if($(".crece-carrusel-imagenes").hasClass('slick-initialized')){
+    $(".crece-carrusel-imagenes").slick('unslick');
+  }
+
+  if($(".crece-carrusel-imagenes-movil").hasClass('slick-initialized')){
+    $(".crece-carrusel-imagenes-movil").slick('unslick');
+  }
+
+  cargar_carrusel()
+}
 function cargar_carrusel(){
-  var celular = window.matchMedia("(max-width: 600px)")
+  var celular = window.matchMedia("(max-width: 600px)");
 
   if(celular.matches){
     $(".crece-carrusel-imagenes-movil").slick({
@@ -85,14 +90,7 @@ function cargar_carrusel(){
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 3000,
-      fade: true,
-
-      // the magic
-        responsive: [{
-            breakpoint: 600,
-            settings: "unslick" // destroys slick
-
-          }]
+      fade: true
 
     });
   }
