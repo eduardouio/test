@@ -66,7 +66,7 @@
                             
                       </div>
   
-                      <div class="row crece-solicitar-contenido justify-content-center" id="crece-solicitar-id">
+                      <div class="row crece-solicitar-contenido justify-content-center" id="crece-solicitar-id" style="margin-top: 24px;">
   
                           <div class="col-lg-5 col-12 crece-solicitar-contenido-infografia-izquierda">
                             <div class="row crece-solicitar-text">
@@ -74,7 +74,7 @@
                                 <div class="col-lg-2 col-auto">
                                   <img src="{% static 'assets/Paso1_calcula.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-auto col-8">
                                   1. Calcula tu cuota
                                 </div> 
                             </div>
@@ -83,7 +83,7 @@
                                 <div class="col-lg-2 col-auto">
                                   <img src="{% static 'assets/Paso2_llena.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-auto col-8">
                                   2. Llena la solicitud
                                 </div>
                             </div>
@@ -92,16 +92,16 @@
                                 <div class="col-lg-2 col-auto">
                                   <img src="{% static 'assets/Paso3_envia.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-auto col-8">
                                   3. Envía tu información financiera
                                 </div>
                             </div>
   
                             <div class="row crece-solicitar-text">
-                                <div class="col-lg-2 col-auto">
+                                <div class="col-lg-2 col-md-auto col-auto">
                                   <img src="{% static 'assets/Paso4_acepta.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-8 col-8">
                                   4. Acepta las condiciones de financiamiento
                                 </div>
                             </div>
@@ -147,10 +147,11 @@
                                                   id="capital-solicitante"
                                                   type="text"
                                                   name="capital"
-                                                  data-slider-min="1000"
+                                                  data-slider-min="2000"
                                                   data-slider-max="10000"
-                                                  data-slider-step="1000"
+                                                  data-slider-step="100"
                                                   data-slider-value="5000"
+
                                                   
                                                   />
                                                   <!--ul class="range-labels">
@@ -237,12 +238,12 @@
                                               <div class="container-final-calculadora container">
                                                     <div class="row calculadora-solicitante-cuota" style="
                                                                 margin-top: 15px;">
-                                                      <div class="col-sm-7 col-lg-7">
+                                                      <div class="col-7 col-sm-7 col-md-7 col-lg-7">
                                                           Cuota mensual*:
                                                           <div id="cuota-valor"> </div>
                                                       </div>
                                                       <!--BOTON SOLICITAR-->
-                                                      <div class="col-sm-5 col-lg-5">
+                                                      <div class="col-5 col-sm-5 col-md-5 col-lg-5" style="text-align: center;">
                                                          <a href="anunciar-solicitud"><button id="calculadora-solicitar">Solicitar</button> </a>
                                                       </div>
                                                     </div>
@@ -272,7 +273,7 @@
   
                       </div>
                       
-                      <div class="row crece-invertir-contenido justify-content-center" id="crece-invertir-id">
+                      <div class="row crece-invertir-contenido justify-content-center" id="crece-invertir-id" style="margin-top: 24px;">
   
                           <div class="col-lg-5 crece-solicitar-contenido-infografia-izquierda" id="crece-invertir-contenido-infografia-izquierda-id">
                             <div class="row crece-solicitar-text">
@@ -280,7 +281,7 @@
                                 <div class="col-lg-2 col-auto">
                                   <img src="{% static 'assets/Paso1_calcula.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-auto col-8">
                                   1. Calcula tu retorno
                                 </div> 
                             </div>
@@ -289,7 +290,7 @@
                                 <div class="col-lg-2 col-auto">
                                   <img src="{% static 'assets/Paso2_crea_usuario.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-auto col-8">
                                   2. Crea tu usuario e inicia sesión
                                 </div>
                             </div>
@@ -298,16 +299,16 @@
                                 <div class="col-lg-2 col-auto">
                                   <img src="{% static 'assets/Paso3_monto.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-auto col-8">
                                   3. Define el monto de tu inversión
                                 </div>
                             </div>
   
                             <div class="row crece-solicitar-text">
-                                <div class="col-lg-2 col-auto">
+                                <div class="col-lg-2 col-md-auto col-auto">
                                   <img src="{% static 'assets/Paso2_llena.png' %}">
                                 </div>
-                                <div class="col-lg-10 col-md-auto col-9">
+                                <div class="col-lg-10 col-md-8 col-8">
                                   <span>4. Completa tus datos y haz la transferencia</span>
                                 </div>
                             </div>
@@ -345,9 +346,9 @@
                                                   id="capital-inversionista"
                                                   type="text"
                                                   name="capital"
-                                                  data-slider-min="2000"
-                                                  data-slider-max="10000"
-                                                  data-slider-step="1000"
+                                                  data-slider-min="500"
+                                                  data-slider-max="12000"
+                                                  data-slider-step="100"
                                                   data-slider-value="5000"
                                                   
                                                   
@@ -392,7 +393,7 @@
                                             
 
                                             <!--TASA INTERNA DE RETORNO-->
-                                            <div class="row calculadora-inversionista-tir">
+                                            <div class="row calculadora-inversionista-tir" >
                                               <div class="col-sm-7">
 
                                                   <span class="calculadora-header-valor">Rendimiento referencial de operaciones similares*:</span>
@@ -408,7 +409,7 @@
 
                                             <!--PAGO TOTAL-->
                                             <div class="row calculadora-inversionista-cuota" style="
-                                                                                                    margin-top: 1px;
+                                                                                                    margin-top: 9px;
                                                                                                 ">
                                               <div class="col-sm-7">
                                                   <span class="calculadora-header-valor">En total recibirás*:</span>
@@ -426,14 +427,14 @@
                                              
                                                   
                                                    <div class="row">
-                                                      <div class="col">
+                                                      <div class="col-7 col-sm-7 col-md-7 col-lg-7">
                                                         <span >Ganancia</span>
                                                         <div id="comparacion-crece"></div>
                                                         <div class="comparaciones-banco">Ganancia bancos°:  <span  id="comparacion-bancos"></span>
                                                       </div>
                                                       </div>
-                                                      <div class="col-5">
-                                                         <button id="calculadora-invertir">Invertir</button> 
+                                                      <div class="col-5 col-sm-5 col-md-5 col-lg-5" style="text-align:center;">
+                                                         <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login"><button id="calculadora-invertir">Invertir</button> </a>
 
                                                       </div>
                                                     </div>

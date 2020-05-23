@@ -268,7 +268,7 @@ function stringSolicitud(oportunidad){
   '                                                                <a href="'+rutaDetalleSolicitud(oportunidad.id)+'">Ver más</a>'+
   '                                                            </div>'+
   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-  '                                                                <a href="#">Invertir</a>'+
+  '                                                                <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Invertir</a>'+
   '                                                            </div>'+
   '                                                        </div>'+
   '                                                    </div>'+

@@ -26,15 +26,15 @@ const FORMAT_PERCENT = new Intl.NumberFormat('en-US', {
 $(document).ready(function(){
 
 	  let slider_capital_solicitante = $("#capital-solicitante").slider({
-														  	min: 1000,
+														  	min: 2000,
 														    max: 10000,
 														    value: 5000,
 														    name: "capital",
-														    step:1000,
-														    ticks: [1000,2000,4000,6000,8000,10000],
-													    	ticks_labels: ['','US$2000', 'US$4000', 'US$6000', 'US$8000', ''],
-													    	
-													    	ticks_positions: [0,10,30,55,80,100],
+														    step:100,
+														    ticks: [2000,4000,6000,8000,10000],
+													    	ticks_labels: ['', 'US$4000', 'US$6000', 'US$8000', ''],
+													    	ticks_snap_bounds: 50,
+													    	ticks_positions: [0,25,50,75,100],
 													    	ticks_tooltip: true,
 													    	tooltip: 'show',
 										});
@@ -100,16 +100,18 @@ $(document).ready(function(){
 	  
 
 	  //Inversionista
+	  /*ticks: [500,1000,3000,6000,9000,12000],
+													    	ticks_labels: ['','US$1000', 'US$3000', 'US$6000', 'US$9000', ''],*/
 	   let slider_capital_inversionista = $("#capital-inversionista").slider({
-														  	min: 1000,
-														    max: 10000,
+														  	min: 500,
+														    max: 12000,
 														    value: 5000,
 														    name: "capital",
-														    step:1000,
-														    ticks: [1000,2000,4000,6000,8000,10000],
-													    	ticks_labels: ['','US$2000', 'US$4000', 'US$6000', 'US$8000', ''],
-													    	
-													    	ticks_positions: [0,10,30,55,80,100],
+														    step:100,
+														    ticks: [500,3000,6000,9000,12000],
+														    ticks_labels: ['','US$3000','US$6000','US$9000',''],
+													    	natural_arrow_keys:true,
+													    	ticks_positions: [0,21.74,47.82,73.91,100],
 													    	ticks_tooltip: true,
 													    	tooltip: 'show',
 										});

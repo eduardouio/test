@@ -191,7 +191,6 @@ div.crece-instruccion-calculadora span{
 
   width: 100%;
   font-weight:bold;
-  font-size: 15pt;
 }
 
 #calculadora-solicitar{
@@ -332,6 +331,7 @@ input[type=range].inversionista:focus::-ms-fill-upper {
 
 .calculadora-inversionista-tir{
   position: relative;
+  line-height: initial;
 }
 
 #cuota-valor-inversionista, #tir-valor-inversionista{
@@ -479,11 +479,80 @@ input[type=range].inversionista:focus::-ms-fill-upper {
     padding-top: 0px;
   }
 
-  #tir-valor-inversionista{
+  
+  .calculadora-solicitante-cuota{
 
-
-
+    font-size: 17.5px;
+    
   }
+
+  #calculadora-solicitar{
+    font-size: 17.5px;
+  }
+
+  
+
+  /*Inversionista*/
+  .calculadora-inversionista-tir {
+  
+      line-height: unset !important;
+    }
+  .calculadora-comparaciones{
+    padding-bottom: 6.34px;
+    font-size: 17.5px;
+  }
+  .calculadora-comparaciones span {
+        font-size: 17.5px;
+    }
+
+    #calculadora-invertir{
+      font-size: 17.5px;
+    }
+
+    .comparaciones-banco {
+        font-size: 9px;
+    }
+    .comparaciones-banco span {
+      font-size: 9px !important;
+    }
+ 
+
+  @media screen and (min-width: 320px) and (max-width: 372px){
+
+    .calculadora-solicitante-cuota{
+
+      font-size: 14px;
+    }
+
+    #calculadora-solicitar {
+      font-size: 13px;
+    }
+
+    
+
+    
+
+    .calculadora-comparaciones{
+      font-size: 14px;
+    }
+    
+    #calculadora-invertir{
+      font-size: 13px;
+    }
+
+    .calculadora-comparaciones span {
+        font-size: 14px;
+    }
+
+    .comparaciones-banco span {
+      font-size: 7.5px !important;
+    }
+
+    .comparaciones-banco {
+        font-size: 7.5px !important;
+    }
+    
+
 }
 
 
