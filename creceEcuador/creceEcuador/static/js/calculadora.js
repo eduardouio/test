@@ -8,6 +8,7 @@ const ROL_SOLICITANTE = "SOLICITANTE"
 
 const LIST_TIR_ANUAL = [0.178, 0.206, 0.215, 0.221, 0.226, 0.229, 0.232, 0.235, 0.237, 0.238, 0.240, 0.241, 0.242, 0.243, 0.244, 0.245]
 const LIST_TASA = [0.0391, 0.0491, 0.0592, 0.0693, 0.0795, 0.0898, 0.1002, 0.1106, 0.1212, 0.1318, 0.1424, 0.1532, 0.1640, 0.1749, 0.1859, 0.1970]
+const INTERESES_BANCO_FACTOR = 0.0042
 
 
 const FORMAT_CURRENCY = new Intl.NumberFormat('en-US', {
@@ -23,8 +24,45 @@ const FORMAT_PERCENT = new Intl.NumberFormat('en-US', {
 })
 
 
+function intercambiar_mobile() {
+	// body...
+	
+	    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+	    let infografia_solictante = document.getElementById("crece-solicitar-contenido-infografia-izquierda-id")
+    	let infografia_inversionista = document.getElementById("crece-invertir-contenido-infografia-izquierda-id")
+    	let solicitar_contenido = document.getElementById("crece-solicitar-id");
+    	let invertir_contenido = document.getElementById("crece-invertir-id");
+	    
+	    if(vw<=615){
+	    	
+
+	    	
+
+	    	solicitar_contenido.removeChild(infografia_solictante)
+	    	solicitar_contenido.appendChild(infografia_solictante)
+	    	infografia_solictante.style.marginTop = "25px";
+	
+	    	invertir_contenido.removeChild(infografia_inversionista)
+	    	invertir_contenido.appendChild(infografia_inversionista)
+	    	infografia_inversionista.style.marginTop = "25px";
+
+	    }else{
+	    	solicitar_contenido.removeChild(infografia_solictante)
+	    	solicitar_contenido.insertBefore(infografia_solictante, solicitar_contenido.firstChild)
+	    	infografia_solictante.style.marginTop = "0px";
+
+	    	invertir_contenido.removeChild(infografia_inversionista)
+	    	invertir_contenido.insertBefore(infografia_inversionista, invertir_contenido.firstChild)
+	    	infografia_inversionista.style.marginTop = "0px";
+	    }
+	
+}
+
 $(document).ready(function(){
 
+	intercambiar_mobile()
+	window.onresize = () => intercambiar_mobile()
+		
 	  let slider_capital_solicitante = $("#capital-solicitante").slider({
 														  	min: 2000,
 														    max: 10000,
@@ -307,21 +345,23 @@ function calcular_valor_final_inversionista() {
 
 
 	
-	base = (1 + (0.045 / plazo_inversionista) ) 
-	let exponent = plazo_inversionista
+	//base = (1 + (0.045 / plazo_inversionista) ) 
+	//let exponent = plazo_inversionista
 
-	let valor_final_bancos = capital_inversionista * [ Math.pow( base, exponent ) ]
+	//let valor_final_bancos = capital_inversionista * [ Math.pow( base, exponent ) ]
+	let valor_final_bancos = capital_inversionista * INTERESES_BANCO_FACTOR*plazo_inversionista
 
 	let valor_final_bancos_formatted = FORMAT_CURRENCY.format(valor_final_bancos)
 	let div_comparacion_banco = document.getElementById("comparacion-bancos")
 
-	let ganancia_bancos = FORMAT_CURRENCY.format(valor_final_bancos - capital_inversionista)
+	//let ganancia_bancos = FORMAT_CURRENCY.format()
 
-	div_comparacion_banco.innerHTML = "US"+ ganancia_bancos
+	div_comparacion_banco.innerHTML = "US"+ valor_final_bancos_formatted
 
 	//render_progress_bar(valor_final_inversionista, valor_final_bancos)
 
 }
+
 
 /*
 $(document).ready(function(){

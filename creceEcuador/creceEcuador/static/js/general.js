@@ -1,6 +1,6 @@
 
 let RUTA_SOLICITUDES = "/solicitudes/"
-let RUTA_DETALLE_SOLICITUD ="/detalle_solicitud/"
+let RUTA_DETALLE_SOLICITUD ="/invertir/detalle/"
 let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 3;
 
@@ -249,19 +249,19 @@ function stringSolicitud(oportunidad){
   '                                                            <div class="col-4">'+
   '                                                                <p>'+
   '                                                                    <strong>Pagados</strong><br>'+
-  '                                                                    2/3'+
+  '                                                                    '+oportunidad.solicitudes_pagadas+
   '                                                                </p>'+
   '                                                            </div>'+
   '                                                            <div class="col-4 crece-oportunidades-contenido-historial-centro">'+
   '                                                                <p>'+
   '                                                                    <strong>Puntualidad</strong><br>'+
-  '                                                                    95%'+
+  '                                                                    '+decimalAEntero(oportunidad.puntualidad_autor)+'%'+
   '                                                                </p>'+
   '                                                            </div>'+
   '                                                            <div class="col-4">'+
   '                                                                <p>'+
   '                                                                    <strong>Vigentes</strong><br>'+
-  '                                                                    1/3'+
+  '                                                                    '+oportunidad.solicitudes_vigentes+
   '                                                                </p>'+
   '                                                            </div>'+
   '                                                        </div>'+

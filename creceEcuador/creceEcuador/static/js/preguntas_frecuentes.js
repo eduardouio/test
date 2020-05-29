@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function(){
 
 	let preguntas_container = document.getElementsByClassName("pregunta-frecuente");
@@ -44,4 +47,11 @@ function mostrar_respuesta(pregunta) {
 	}
 
 	
+}
+
+
+function agregar_pregunta_frecuente() {
+	// body...
+
+
 }

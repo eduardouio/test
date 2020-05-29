@@ -30,8 +30,8 @@ urlpatterns = [
     path('registro/', include('fases_inversiones.urls')),
 
     path('', TemplateView.as_view(template_name="index.html")),
-    path('lista_solicitudes/', TemplateView.as_view(template_name="solicitudes.html")),
-    path('detalle_solicitud/', TemplateView.as_view(template_name="detalle_solicitud.html")),
+    path('invertir/', TemplateView.as_view(template_name="solicitudes.html")),
+    path('invertir/detalle/', TemplateView.as_view(template_name="detalle_solicitud.html")),
     path('calculadora/', TemplateView.as_view(template_name="calculadora.html")),
     path('faq/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
     path('nosotros/', TemplateView.as_view(template_name="nosotros.html")),

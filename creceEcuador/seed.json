@@ -208,35 +208,19 @@
   }
 },
 {
-  "model": "sessions.session",
-  "pk": "im0x7dr1o8wtgeew3w5ep0a110mf4ic4",
+  "model": "contenttypes.contenttype",
+  "id": 27,
   "fields": {
-    "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
-    "expire_date": "2020-05-09T23:53:32.913Z"
+    "app_label": "solicitudes",
+    "model": "calificacionsolicitante"
   }
 },
 {
   "model": "sessions.session",
-  "pk": "m7uxw1es1vcpge4xyel3p5d9u62y5lnm",
+  "pk": "w55lcewkk48hebf0w3177kbkzeg5htkf",
   "fields": {
     "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
-    "expire_date": "2020-05-09T07:12:58.478Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "qltf1uys1a1f9hl435ymf9wnct3s3s9q",
-  "fields": {
-    "session_data": "MDIzNGViMTJiNTU0N2UwNmM1ZjU3NDcwZTQ1ODAxYWY0Nzk1NGQ5Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoicmVnaXN0cm9faW52ZXJzaW9uaXN0YS5hdXRoZW50aWNhdGlvbi5FbWFpbE9yVXNlcm5hbWVNb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
-    "expire_date": "2020-05-19T22:26:56.954Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "yncf3hlvy1f0yfq4nkiqhintx4tca62e",
-  "fields": {
-    "session_data": "ZWY1YzRjMTJhNWZhZjAxYWNkMWFlNmYxMWUxMDE2OTgzZmNhYzJjYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwYTUxZjExZmJkNDc2MTU1MTU2ZWNkMWJkYzE2M2VkNjNkNTZkMjEwIn0=",
-    "expire_date": "2020-05-05T05:47:12.832Z"
+    "expire_date": "2020-06-10T22:23:40.996Z"
   }
 },
 {
@@ -3764,14 +3748,16 @@
   "model": "solicitudes.categoriasolicitud",
   "pk": 1,
   "fields": {
-    "nombre": "Tec"
+    "nombre": "Tec",
+    "imagen_categoria": "categoria_solicitud/1038322.jpg"
   }
 },
 {
   "model": "solicitudes.categoriasolicitud",
   "pk": 2,
   "fields": {
-    "nombre": "Agro"
+    "nombre": "Agro",
+    "imagen_categoria": "https://www.bkd.com/sites/default/files/2018-06/CRE-19625421_Large.jpg"
   }
 },
 {
@@ -3802,7 +3788,8 @@
     "fecha_expiracion": "2020-04-13",
     "id_autor": 1,
     "id_categoria": 1,
-    "id_tipo_credito": 1
+    "id_tipo_credito": 1,
+    "id_calificacion_solicitante": 1
   }
 },
 {
@@ -3826,7 +3813,8 @@
     "fecha_expiracion": "2020-04-28",
     "id_autor": 1,
     "id_categoria": 1,
-    "id_tipo_credito": 1
+    "id_tipo_credito": 1,
+    "id_calificacion_solicitante": 1
   }
 },
 {
@@ -3850,7 +3838,8 @@
     "fecha_expiracion": "2020-04-12",
     "id_autor": 1,
     "id_categoria": 1,
-    "id_tipo_credito": 1
+    "id_tipo_credito": 1,
+    "id_calificacion_solicitante": 1
   }
 },
 {
@@ -3874,133 +3863,30 @@
     "fecha_expiracion": "2020-04-30",
     "id_autor": 2,
     "id_categoria": 2,
-    "id_tipo_credito": 1
+    "id_tipo_credito": 1,
+    "id_calificacion_solicitante": 2
   }
 },
 {
-  "model": "fases_inversiones.inversion",
+  "model": "solicitudes.calificacionsolicitante",
   "pk": 1,
   "fields": {
-    "id_user": 1,
-    "id_solicitud": 1,
-    "monto": 100.0,
-    "adjudicacion": 10.0,
-    "adjudicacion_iva": 12.0,
-    "inversion_total": 112.0,
-    "ganancia_total": 12.0,
-    "estado": 1
+    "solicitudes_totales": 5,
+    "solicitudes_pagadas": 2,
+    "solicitudes_vigentes": 3,
+    "puntualidad": "96.80",
+    "id_autor": 1
   }
 },
 {
-  "model": "fases_inversiones.inversion",
+  "model": "solicitudes.calificacionsolicitante",
   "pk": 2,
   "fields": {
-    "id_user": 1,
-    "id_solicitud": 3,
-    "monto": 1002.0,
-    "adjudicacion": 120.0,
-    "adjudicacion_iva": 123.0,
-    "inversion_total": 123.0,
-    "ganancia_total": 122.0,
-    "estado": 1
-  }
-},
-{
-  "model": "fases_inversiones.inversion",
-  "pk": 3,
-  "fields": {
-    "id_user": 1,
-    "id_solicitud": 2,
-    "monto": 1239.0,
-    "adjudicacion": 233.0,
-    "adjudicacion_iva": 233.0,
-    "inversion_total": 23.0,
-    "ganancia_total": 24.0,
-    "estado": 0
-  }
-},
-{
-  "model": "fases_inversiones.pago_detalle",
-  "pk": 1,
-  "fields": {
-    "id_inversion": 1,
-    "orden": 1,
-    "fecha": "2020-04-22",
-    "pago": 11.0,
-    "comision": 1.0,
-    "comision_iva": 1.0,
-    "ganancia": 1.0,
-    "estado": 1
-  }
-},
-{
-  "model": "fases_inversiones.pago_detalle",
-  "pk": 2,
-  "fields": {
-    "id_inversion": 1,
-    "orden": 1,
-    "fecha": "2020-04-22",
-    "pago": 120.0,
-    "comision": 2.0,
-    "comision_iva": 3.0,
-    "ganancia": 12.0,
-    "estado": 1
-  }
-},
-{
-  "model": "fases_inversiones.pago_detalle",
-  "pk": 3,
-  "fields": {
-    "id_inversion": 1,
-    "orden": 1,
-    "fecha": "2020-04-22",
-    "pago": 12.0,
-    "comision": 2.0,
-    "comision_iva": 2.0,
-    "ganancia": 122.0,
-    "estado": 1
-  }
-},
-{
-  "model": "fases_inversiones.pago_detalle",
-  "pk": 4,
-  "fields": {
-    "id_inversion": 2,
-    "orden": 1,
-    "fecha": "2020-04-22",
-    "pago": 15.0,
-    "comision": 12.0,
-    "comision_iva": 2.0,
-    "ganancia": 23.0,
-    "estado": 1
-  }
-},
-{
-  "model": "fases_inversiones.pago_detalle",
-  "pk": 5,
-  "fields": {
-    "id_inversion": 2,
-    "orden": 1,
-    "fecha": "2020-04-22",
-    "pago": 122.0,
-    "comision": 3.0,
-    "comision_iva": 3.0,
-    "ganancia": 3.0,
-    "estado": 1
-  }
-},
-{
-  "model": "fases_inversiones.pago_detalle",
-  "pk": 6,
-  "fields": {
-    "id_inversion": 3,
-    "orden": 2,
-    "fecha": "2020-04-22",
-    "pago": 2234.0,
-    "comision": 23.0,
-    "comision_iva": 24.0,
-    "ganancia": 23.0,
-    "estado": 1
+    "solicitudes_totales": 4,
+    "solicitudes_pagadas": 3,
+    "solicitudes_vigentes": 1,
+    "puntualidad": "100.00",
+    "id_autor": 2
   }
 },
 {
@@ -5336,11 +5222,47 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 149,
+  "fields": {
+    "name": "Can add calificacion solicitante",
+    "content_type": 27,
+    "codename": "add_calificacionsolicitante"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 150,
+  "fields": {
+    "name": "Can change calificacion solicitante",
+    "content_type": 27,
+    "codename": "change_calificacionsolicitante"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 151,
+  "fields": {
+    "name": "Can delete calificacion solicitante",
+    "content_type": 27,
+    "codename": "delete_calificacionsolicitante"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 152,
+  "fields": {
+    "name": "Can view calificacion solicitante",
+    "content_type": 27,
+    "codename": "view_calificacionsolicitante"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$180000$Q63TRwPmRjc5$TMla6OLOXrCSOHqjs7H3pggNNthLHopx0D5W1k9+Ny0=",
-    "last_login": "2020-05-05T22:26:56.951Z",
+    "last_login": "2020-05-27T22:23:40.993Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -5494,761 +5416,81 @@
   }
 },
 {
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 1,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "transferencia/banner.png",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 2,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "transferencia/banner_zRA2V5r.png",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 3,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "transferencia/AmazonCloudFront.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 4,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "transferencia/AmazonCloudFront_rd3oSuN.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 5,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "media/transferencia/AmazonCloudFront_uoTbTEl.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 6,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "media/transferencia/AmazonCloudFront_5lW37ef.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 7,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "media/transferencia/AmazonCloudFront_pBwVGC1.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 8,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "media/transferencia/25866338.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
-  "model": "manager_archivos.transferenciainversion",
-  "pk": 9,
-  "fields": {
-    "id_inversion": 1,
-    "url_documento": "media/transferencia/25866338.pdf",
-    "fecha_creacion": "2020-04-28",
-    "fecha_aprobacion": null,
-    "usuario_aprobacion": null,
-    "estado": 0
-  }
-},
-{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
-    "action_time": "2020-04-21T05:47:28.399Z",
-    "user": 1,
-    "content_type": 16,
-    "object_id": "1",
-    "object_repr": "CategoriaSolicitud object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 2,
-  "fields": {
-    "action_time": "2020-04-21T05:47:32.171Z",
-    "user": 1,
-    "content_type": 16,
-    "object_id": "2",
-    "object_repr": "CategoriaSolicitud object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 3,
-  "fields": {
-    "action_time": "2020-04-21T20:15:21.293Z",
-    "user": 1,
-    "content_type": 14,
-    "object_id": "1",
-    "object_repr": "Usuario object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 4,
-  "fields": {
-    "action_time": "2020-04-21T20:15:37.858Z",
+    "action_time": "2020-05-27T22:24:38.517Z",
     "user": 1,
     "content_type": 17,
     "object_id": "1",
-    "object_repr": "TipoCredito object (1)",
+    "object_repr": "Tec",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen categoria\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2020-05-27T23:18:41.398Z",
+    "user": 1,
+    "content_type": 27,
+    "object_id": "1",
+    "object_repr": "Calificacion: Juan F Laso",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2020-05-27T23:19:22.472Z",
+    "user": 1,
+    "content_type": 27,
+    "object_id": "2",
+    "object_repr": "Calificacion: Jose Perez",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2020-05-27T23:26:51.271Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "4",
+    "object_repr": "Solicitud object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Id calificacion solicitante\"]}}]"
   }
 },
 {
   "model": "admin.logentry",
   "pk": 5,
   "fields": {
-    "action_time": "2020-04-21T20:16:48.083Z",
+    "action_time": "2020-05-27T23:33:35.600Z",
     "user": 1,
-    "content_type": 18,
+    "content_type": 27,
     "object_id": "1",
-    "object_repr": "Solicitud object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
+    "object_repr": "Calificacion: Juan F Laso",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Solicitudes totales\", \"Solicitudes vigentes\"]}}]"
   }
 },
 {
   "model": "admin.logentry",
   "pk": 6,
   "fields": {
-    "action_time": "2020-04-21T20:19:07.749Z",
+    "action_time": "2020-05-27T23:34:05.167Z",
     "user": 1,
-    "content_type": 18,
+    "content_type": 27,
     "object_id": "2",
-    "object_repr": "Solicitud object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 7,
-  "fields": {
-    "action_time": "2020-04-22T00:25:42.954Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 8,
-  "fields": {
-    "action_time": "2020-04-22T00:26:35.190Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "2",
-    "object_repr": "Solicitud object (2)",
+    "object_repr": "Calificacion: Jose Perez",
     "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Imagen url\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 9,
-  "fields": {
-    "action_time": "2020-04-22T00:28:16.606Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "1",
-    "object_repr": "Solicitud object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Url\", \"Imagen url\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 10,
-  "fields": {
-    "action_time": "2020-04-22T00:53:50.511Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 11,
-  "fields": {
-    "action_time": "2020-04-22T05:17:15.869Z",
-    "user": 1,
-    "content_type": 20,
-    "object_id": "1",
-    "object_repr": "Inversion object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 12,
-  "fields": {
-    "action_time": "2020-04-22T05:22:52.374Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "1",
-    "object_repr": "Pago_detalle object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 13,
-  "fields": {
-    "action_time": "2020-04-22T05:26:49.877Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "2",
-    "object_repr": "Pago_detalle object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 14,
-  "fields": {
-    "action_time": "2020-04-22T05:29:00.314Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "3",
-    "object_repr": "Pago_detalle object (3)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 15,
-  "fields": {
-    "action_time": "2020-04-22T05:32:51.913Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "3",
-    "object_repr": "Pago_detalle object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 16,
-  "fields": {
-    "action_time": "2020-04-22T05:34:25.174Z",
-    "user": 1,
-    "content_type": 20,
-    "object_id": "2",
-    "object_repr": "Inversion object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 17,
-  "fields": {
-    "action_time": "2020-04-22T05:34:49.064Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "4",
-    "object_repr": "Pago_detalle object (4)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 18,
-  "fields": {
-    "action_time": "2020-04-22T05:35:05.558Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "4",
-    "object_repr": "Pago_detalle object (4)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 19,
-  "fields": {
-    "action_time": "2020-04-22T05:35:34.616Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "5",
-    "object_repr": "Pago_detalle object (5)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 20,
-  "fields": {
-    "action_time": "2020-04-22T05:35:52.026Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "5",
-    "object_repr": "Pago_detalle object (5)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 21,
-  "fields": {
-    "action_time": "2020-04-22T05:36:23.238Z",
-    "user": 1,
-    "content_type": 20,
-    "object_id": "3",
-    "object_repr": "Inversion object (3)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 22,
-  "fields": {
-    "action_time": "2020-04-22T05:36:35.639Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "6",
-    "object_repr": "Pago_detalle object (6)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 23,
-  "fields": {
-    "action_time": "2020-04-22T05:36:45.869Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "6",
-    "object_repr": "Pago_detalle object (6)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 24,
-  "fields": {
-    "action_time": "2020-04-22T05:36:55.619Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "5",
-    "object_repr": "Pago_detalle object (5)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 25,
-  "fields": {
-    "action_time": "2020-04-22T06:00:49.924Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "1",
-    "object_repr": "Solicitud object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 26,
-  "fields": {
-    "action_time": "2020-04-22T06:01:02.345Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "2",
-    "object_repr": "Solicitud object (2)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 27,
-  "fields": {
-    "action_time": "2020-04-22T06:01:13.357Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 28,
-  "fields": {
-    "action_time": "2020-04-22T06:01:28.815Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 29,
-  "fields": {
-    "action_time": "2020-04-22T06:23:54.723Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 30,
-  "fields": {
-    "action_time": "2020-04-22T06:24:19.834Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "1",
-    "object_repr": "Solicitud object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 31,
-  "fields": {
-    "action_time": "2020-04-22T06:24:59.514Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "2",
-    "object_repr": "Pago_detalle object (2)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 32,
-  "fields": {
-    "action_time": "2020-04-22T06:32:36.293Z",
-    "user": 1,
-    "content_type": 14,
-    "object_id": "2",
-    "object_repr": "Usuario object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 33,
-  "fields": {
-    "action_time": "2020-04-22T06:34:46.790Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "4",
-    "object_repr": "Solicitud object (4)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 34,
-  "fields": {
-    "action_time": "2020-04-22T07:24:00.347Z",
-    "user": 1,
-    "content_type": 18,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Fecha expiracion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 35,
-  "fields": {
-    "action_time": "2020-04-22T07:24:24.997Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "6",
-    "object_repr": "Pago_detalle object (6)",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 36,
-  "fields": {
-    "action_time": "2020-04-22T07:24:29.775Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "5",
-    "object_repr": "Pago_detalle object (5)",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 37,
-  "fields": {
-    "action_time": "2020-04-22T07:34:01.945Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "4",
-    "object_repr": "Pago_detalle object (4)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 38,
-  "fields": {
-    "action_time": "2020-04-22T07:34:14.042Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "6",
-    "object_repr": "Pago_detalle object (6)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 39,
-  "fields": {
-    "action_time": "2020-04-22T07:34:36.203Z",
-    "user": 1,
-    "content_type": 21,
-    "object_id": "6",
-    "object_repr": "Pago_detalle object (6)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 40,
-  "fields": {
-    "action_time": "2020-04-25T07:14:28.384Z",
-    "user": 1,
-    "content_type": 14,
-    "object_id": "1",
-    "object_repr": "Usuario object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Cedula\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 41,
-  "fields": {
-    "action_time": "2020-05-05T22:27:51.203Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "4",
-    "object_repr": "Solicitud object (4)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Historia\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 42,
-  "fields": {
-    "action_time": "2020-05-05T22:27:57.327Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Operacion\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 43,
-  "fields": {
-    "action_time": "2020-05-05T22:28:38.789Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Operacion\", \"Historia\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 44,
-  "fields": {
-    "action_time": "2020-05-05T22:29:29.618Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "2",
-    "object_repr": "Solicitud object (2)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Historia\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 45,
-  "fields": {
-    "action_time": "2020-05-05T22:30:16.600Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "1",
-    "object_repr": "Solicitud object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Historia\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 46,
-  "fields": {
-    "action_time": "2020-05-05T22:53:06.687Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "3",
-    "object_repr": "Solicitud object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 47,
-  "fields": {
-    "action_time": "2020-05-05T22:53:16.710Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "2",
-    "object_repr": "Solicitud object (2)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 48,
-  "fields": {
-    "action_time": "2020-05-05T22:53:28.108Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "1",
-    "object_repr": "Solicitud object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 49,
-  "fields": {
-    "action_time": "2020-05-05T23:02:03.046Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "4",
-    "object_repr": "Solicitud object (4)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 50,
-  "fields": {
-    "action_time": "2020-05-05T23:02:30.247Z",
-    "user": 1,
-    "content_type": 19,
-    "object_id": "4",
-    "object_repr": "Solicitud object (4)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Porcentaje financiado\"]}}]"
+    "change_message": "[{\"changed\": {\"fields\": [\"Solicitudes pagadas\", \"Solicitudes vigentes\"]}}]"
   }
 }
 ]

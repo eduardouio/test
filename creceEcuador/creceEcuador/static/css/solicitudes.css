@@ -1,5 +1,9 @@
 /* Seccion Oportunidades */
 
+.crece-oportunidades{
+  background-color: #e9ebee;
+}
+
 .crece-oportunidades-contenedor {
   background-color: white;
   width: 332px;
@@ -8,11 +12,6 @@
   border: 1px solid #DEDEDE;
   margin-top: 25px;
   margin-bottom: 25px;
-  cursor: pointer;
-}
-
-.crece-oportunidades-contenedor:hover {
-  box-shadow: 0px 1px 3px #0000005D;
 }
 
 .crece-oportunidades-titulo {
@@ -134,6 +133,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; 
   margin-bottom: 10px;
+  opacity: 0.7;
 }
 
 .crece-oportunidades-contenido-historial{
@@ -166,7 +166,7 @@
   text-align: center;
   font-size: 13.2px;
   font-weight: 700;
-  border-radius: 30px;
+  border-radius: 2px;
   padding-top: 3px;
 }
 
@@ -188,13 +188,12 @@
   color: white;
 
   display: inline-block;
-  width: 225.5px;
-  height: 49.31px;
+  width: 192px;
+  height: 38px;
   text-align: center;
-  font-size: 26.62px;
+  font-size: 22px;
   font-weight: 700;
-  border-radius: 30px;
-  padding-top: 3px;
+  border-radius: 4px;
   margin-bottom: 5px;
 }
 
@@ -219,8 +218,8 @@
 
 .crece-oportunidades-anterior,
 .crece-oportunidades-siguiente{
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #ffffff;
+  background: #e9ebee 0% 0% no-repeat padding-box;
+  border: 1px solid #e9ebee;
   color: #006B8D;
 
   display: inline-block;

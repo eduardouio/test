@@ -169,6 +169,10 @@ ul li{
 
 /* Seccion Oportunidades */
 
+.crece-oportunidades{
+  background-color: #e9ebee;
+}
+
 .crece-oportunidades-contenedor {
   background-color: white;
   width: 332px;

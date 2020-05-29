@@ -7,6 +7,10 @@ class Conyuge(models.Model):
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
     cedula = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.cedula +", " + self.nombres + " "  + self.apellidos
+
     class Meta:
         verbose_name = "Conyuge"
         verbose_name_plural = "Conyuges"
@@ -58,6 +62,13 @@ class Cuenta_bancaria(models.Model):
     banco = models.ForeignKey(Banco,null=True, on_delete=models.CASCADE)
 
 
+    def __str__(self):
+        tipo_cuenta_str = "Cuenta Ahorros"
+        if (self.tipo_cuenta == 1):
+            tipo_cuenta_str = "Cuenta Corriente"
+
+        return self.numero_cuenta + ", " + tipo_cuenta_str + ", " + self.banco.nombre   
+
     class Meta:
         verbose_name = "Cuenta_bancaria"
         verbose_name_plural = "Cuenta_bancarias"
@@ -107,6 +118,9 @@ class Usuario(models.Model):
     telefono_domicilio =  models.CharField(blank=True, null=True, max_length=30)
     ingresos = models.ForeignKey(Fuente_ingresos, blank=True, null=True, on_delete=models.CASCADE)
     cuenta_bancaria = models.ForeignKey(Cuenta_bancaria, blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__ (self):
+        return self.nombres + " " + self.apellidos + ", " + self.cedula
 
 
 

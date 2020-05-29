@@ -47,14 +47,29 @@ function obtenerDetallesOportunidadInversion(id_oportunidad){
 
 
 function crearDetalleInversion(oportunidad) {
-    var html_string = '<div class="row justify-content-center crece-detalle-operaciones-header" style="background-image: url(\' '+oportunidad.imagen_url+'\');">'+
+    var html_string = '<div class="row justify-content-center crece-detalle-operaciones-header">'+
+'                        <div class="crece-detalle-operaciones-header-imagen-blur" style="background-image: url(\' '+oportunidad.imagen_categoria+'\');">'+
+'                        </div>'+
 '                        <div class="crece-detalle-operaciones-header-gradiente" >'+
-'                            <h1>'+oportunidad.autor+', '+oportunidad.categoria+'</h1>'+
+'                           <div class="row justify-content-center crece-detalle-operaciones-header-gradiente-imagen" >'+
+'                               <div class="col-auto" >'+
+'                                   <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' '+oportunidad.imagen_url+'\');">'+
+'                                   </div>'+
+'                               </div>'+
+'                               <div class="col-auto" >'+
+'                                   <div class="row" >'+
+'                                       <h1>'+oportunidad.autor+'</h1>'+
+'                                   </div>'+
+'                                   <div class="row" >'+
+'                                       <h2>'+oportunidad.categoria+'</h2>'+
+'                                   </div>'+
+'                               </div>'+
+'                           </div>'+
 '                        </div>'+
 '                    </div>'+
 ''+
-'                    <div class="row justify-content-center">'+
-'                        <div class="col-xl-8 col-lg-10 col-11">'+
+'                    <div class="row justify-content-center fondo-gris">'+
+'                        <div class="col-xl-8 col-lg-10 col-11 fondo-blanco">'+
 '                            <div class="row justify-content-center">'+
 '                                <!--Contenido izquierda-->'+
 '                                <div class="col-lg-8 col-12">'+
@@ -74,13 +89,13 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">'+
 '                                                            <strong>'+
-'                                                                $'+calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado)+
+'                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+
 '                                                            </strong>'+
 '                                                            <span>'+ oportunidad.porcentaje_financiado+'% recolectado</span>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-objetivo">'+
 '                                                            <strong>'+
-'                                                                $'+decimalAEntero(oportunidad.monto)+
+'                                                                $'+numeroConComas(decimalAEntero(oportunidad.monto))+
 '                                                            </strong>'+
 '                                                            <span>Objetivo</span>'+
 '                                                        </div>'+
@@ -89,44 +104,44 @@ function crearDetalleInversion(oportunidad) {
 '        '+
 '                                                <!-- Informacion -->'+
 '                                                <div class="col-10 crece-operaciones-contenido-informacion">'+
-'                                                    <h2>Información del Préstamo</h2>'+
+'                                                    <h2>Información del Financiamiento</h2>'+
 '        '+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Monto</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-6">'+
-'                                                            <span>$'+decimalAEntero(oportunidad.monto)+'</span>'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <span>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Plazo</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+oportunidad.plazo+' Días</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Tir</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+ oportunidad.tir+'%</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Tipo de Financiamiento</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+oportunidad.tipo_credito+'</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
@@ -136,7 +151,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                        <div class="col-6">'+
 '                                                            <strong>Categoría del Negocio</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-3">'+
 '                                                            <span>'+oportunidad.categoria+'</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
@@ -187,7 +202,7 @@ function crearDetalleInversion(oportunidad) {
 ''+
 '                                                    <div class="crece-detalle-operaciones-invierte-botones-azul">'+
 '                                                        <div class="row justify-content-center">'+
-'                                                            <a href="#">Invertir</a>'+
+'                                                            <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Invertir</a>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '                                                        '+
@@ -201,57 +216,47 @@ function crearDetalleInversion(oportunidad) {
 '                                            <div class="row justify-content-center">'+
 '                                                <h3>Sobre el Solicitante</h3>'+
 '                                            </div>'+
-'                                            <!--radial progress-->'+
-'                                            <div class="row justify-content-center crece-detalle-operaciones-historial-calificacion">'+
-'                                                <div class="progress-radial progress-75">'+
-'                                                    <div class="overlay">75%</div>'+
-'                                                </div>'+
-'                                            </div>'+
-'                                            <!--Label radial progress bar-->'+
-'                                            <div class="row justify-content-center">'+
-'                                                <h5>Calificación</h5>'+
-'                                            </div>'+
 '                                            <!-- datos historial-->'+
 '                                            <div class="row justify-content-center crece-detalle-operaciones-historial-datos">'+
 '                                                <div class="col-12">'+
 '                                                    <!-- Item datos-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-10">'+
+'                                                        <div class="col-9">'+
 '                                                            <h4>'+
-'                                                                Solicitudes Totales'+
+'                                                                Solicitudes Vigentes'+
 '                                                            </h4>'+
 '                                                        </div>'+
-'                                                        <div class="col-2">'+
+'                                                        <div class="col-3">'+
 '                                                            <h5>'+
-'                                                                2'+
+'                                                                '+oportunidad.solicitudes_vigentes+
 '                                                            </h5>'+
 '                                                        </div>'+
 '                                                    </div>'+
 ''+
 '                                                     <!-- Item datos-->'+
 '                                                     <div class="row">'+
-'                                                        <div class="col-10">'+
+'                                                        <div class="col-9">'+
 '                                                            <h4>'+
-'                                                                Opreaciones Terminadas'+
+'                                                                Solicitudes Pagadas'+
 '                                                            </h4>'+
 '                                                        </div>'+
-'                                                        <div class="col-2">'+
+'                                                        <div class="col-3">'+
 '                                                            <h5>'+
-'                                                                1'+
+'                                                                '+oportunidad.solicitudes_pagadas+
 '                                                            </h5>'+
 '                                                        </div>'+
 '                                                    </div>'+
 ''+
 '                                                     <!-- Item datos-->'+
 '                                                     <div class="row">'+
-'                                                        <div class="col-10">'+
+'                                                        <div class="col-9">'+
 '                                                            <h4>'+
-'                                                                Días de Mora'+
+'                                                                Puntualidad'+
 '                                                            </h4>'+
 '                                                        </div>'+
-'                                                        <div class="col-2">'+
+'                                                        <div class="col-3">'+
 '                                                            <h5>'+
-'                                                                0'+
+'                                                                '+decimalAEntero(oportunidad.puntualidad_autor)+'%'+
 '                                                            </h5>'+
 '                                                        </div>'+
 '                                                    </div>'+
@@ -298,6 +303,11 @@ function crearDetalleInversion(oportunidad) {
 
 }
 
+function numeroConComas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+  }
 
 function decimalAPorcentaje(decimal){
     return decimal.split(".")[1];
