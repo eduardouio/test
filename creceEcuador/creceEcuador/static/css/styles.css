@@ -339,7 +339,18 @@ ul li{
   padding-top: 3px;
 }
 
-.crece-oportunidades-contenido-botones-blanco a{
+.crece-oportunidades-contenido-botones button{
+  display: inline-block;
+  width: 118px;
+  height: 29px;
+  text-align: center;
+  font-size: 13.2px;
+  font-weight: 700;
+  border-radius: 2px;
+  padding-top: 3px;
+}
+
+.crece-oportunidades-contenido-botones-blanco button{
   background: #FFFFFF 0% 0% no-repeat padding-box;
   border: 1px solid #006B8D;
   color: #006B8D;
@@ -373,7 +384,7 @@ ul li{
   border: 1px solid rgba(0, 107, 141, 0.8);
 }
 
-.crece-oportunidades-contenido-botones-blanco a:hover{
+.crece-oportunidades-contenido-botones-blanco button:hover{
   text-decoration: none;
   color:#1199AD;
   border: 1px solid #1199AD;
@@ -639,4 +650,478 @@ ul li{
     padding-bottom: 27px;
   }
 
+}
+
+
+
+
+
+/*
+
+
+
+
+        SECCION MODAL DETALLE SOLICITUD
+
+
+
+
+
+*/
+
+
+.crece-detalle-operaciones {
+  padding: 0px;
+}
+
+.fondo-gris{
+  background-color: #e9ebee;
+}
+
+.fondo-blanco{
+  background-color: white;
+}
+
+/* header detalle */
+
+.crece-detalle-operaciones-header {
+  height: 240px;
+  width: calc(100% + 30px); /*compensa -15px de margin */
+  overflow-x: hidden;
+  text-align:center;
+  position:relative;
+  margin: 0px -15px;
+}
+
+.crece-detalle-operaciones-header-gradiente {
+  height: 240px;
+  width: calc(100% + 30px); /*compensa -15px de margin */
+  overflow-x: hidden;
+  margin: 0px -15px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#006B8D+0,063240+100&1+0,0+100 */
+  background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006B8D', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+  text-align: center;
+  position:relative;
+  position:absolute;
+  z-index:9999;
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+}
+
+.crece-detalle-operaciones-header-gradiente-imagen{
+  height: 240px;
+
+}
+
+.crece-detalle-operaciones-header-imagen{
+  overflow-x: hidden;
+  padding: 0px;
+}
+
+.crece-detalle-operaciones-header-imagen-blur{
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+  position:absolute;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  width: 100%; /*compensa -15px de margin */
+  overflow-x: hidden;
+  height: 240px;
+  transform: scale(1.03);
+}
+
+.crece-detalle-operaciones-header-gradiente-imagen-autor{
+  margin-top: 36px;
+  height: 165px;
+  width: 165px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.72);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.crece-detalle-operaciones-header-gradiente h1{
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 600;
+  justify-content: center;
+  /* align horizontal */
+  align-items: center;
+  /* align vertical */
+  padding: 0px 10px;
+  margin-top: 71.5px;
+}
+.crece-detalle-operaciones-header-gradiente h2{
+  display: inline-block;
+  font-size: 35px;
+  font-weight: 500;
+  justify-content: left;
+  /* align horizontal */
+  align-items: center;
+  /* align vertical */
+  padding: 0px 10px;
+}
+
+/* Contenido */
+
+.crece-detalle-operaciones-contenido {
+  width: 100%;
+  margin: 25px 0px;
+}
+
+/*Barra Progreso */
+.crece-operaciones-contenido-monto-barra{
+  height: 6px;
+  width: 90%;
+  background-color: #DEDEDE;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 3px;
+}
+
+.crece-operaciones-contenido-monto-barra-progreso{
+  height: 100%;
+  background-color: #006B8D;
+  border-radius: 6px 0px 0px 6px;
+}
+
+/* Barra progreso Datos */
+
+.crece-operaciones-contenido-datos-barra {
+    margin: 20px 0px;
+    color: #006B8D;
+}
+
+.crece-operaciones-contenido-datos-barra strong{
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1em;
+}
+
+.crece-operaciones-contenido-datos-barra span{
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.crece-operaciones-contenido-datos-barra-objetivo{
+  text-align: right;
+}
+
+/* Informacion prestamo */
+.crece-operaciones-contenido-informacion{
+  color: #006B8D;
+  padding: 0px;
+}
+
+.crece-operaciones-contenido-informacion .row{
+  padding: 0px 27px;
+}
+
+.crece-operaciones-contenido-informacion-subrayado{
+  border-bottom: 1px solid #DEDEDE
+}
+
+.crece-operaciones-contenido-informacion div.col-6,
+.crece-operaciones-contenido-informacion div.col-3{
+  padding: 12px 0px;
+}
+
+.crece-operaciones-contenido-informacion div.col-auto{
+  padding: 12px 0px;
+  border-bottom: 1px solid #DEDEDE
+}
+
+.crece-operaciones-contenido-informacion h2{
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.crece-operaciones-contenido-informacion strong{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.crece-operaciones-contenido-informacion span{
+  display: block;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: left;
+}
+
+/*historia*/
+
+.crece-operaciones-contenido-historia{
+  color: #006B8D;
+  padding: 0px;
+  margin-top: 15px;
+}
+
+.crece-operaciones-contenido-historia .row{
+  padding: 12px 15px;
+}
+
+.crece-operaciones-contenido-historia h2{
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.crece-operaciones-contenido-historia p{
+  font-size: 13px;
+  font-weight: 300;
+  margin-bottom: 0px;
+  text-align: justify;
+}
+
+
+/* Invierte */
+
+.crece-detalle-operaciones-invierte{
+  color: #006B8D;
+  border: 1px solid #DEDEDE;
+  margin: 25px 0px;
+}
+
+.crece-detalle-operaciones-invierte > div{
+  padding: 25px 15px;
+}
+
+.crece-detalle-operaciones-invierte h3{
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.crece-detalle-operaciones-invierte p{
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.crece-detalle-operaciones-invierte-monto div{
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.crece-detalle-operaciones-invierte-monto div:focus{
+  border-bottom: 1px solid #006B8D;
+}
+
+.crece-detalle-operaciones-invierte-monto input{
+  width: 90%;
+  border: 0px;
+  color: #006B8D;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  line-height: 1.1em;
+  padding-left: 3px;
+}
+
+.crece-detalle-operaciones-invierte-monto label{
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.1em;
+}
+
+.crece-detalle-operaciones-invierte-botones a{
+  display: inline-block;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.crece-detalle-operaciones-invierte-botones{
+  padding-top: 13px;
+}
+.crece-detalle-operaciones-invierte-botones > div {
+    padding-top: 10px;
+}
+
+.crece-detalle-operaciones-invierte-botones-blanco a{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
+  color: #006B8D;
+  font-size: 15px;
+  padding-top: 7px;
+}
+
+.crece-detalle-operaciones-invierte-botones-azul a{
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
+  color: white;
+  font-size: 18px;
+  padding-top: 5px;
+}
+
+.crece-detalle-operaciones-invierte-botones-azul a:hover{
+  text-decoration: none;
+  background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 107, 141, 0.8);
+}
+
+.crece-detalle-operaciones-invierte-botones-blanco a:hover{
+  text-decoration: none;
+  color:#1199AD;
+  border: 1px solid #1199AD;
+}
+
+/* Historial*/
+
+.crece-detalle-operaciones-historial{
+  color: #006B8D;
+  border: 1px solid #DEDEDE;
+  margin: 0px 0px 25px 0px;
+}
+
+.crece-detalle-operaciones-historial-calificacion {
+  margin: 10px 0px 13px 0px;
+}
+
+.crece-detalle-operaciones-historial h3{
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  margin: 15px 0px 0px 0px;
+}
+
+.crece-detalle-operaciones-historial h5{
+  font-size: 12px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.crece-detalle-operaciones-historial-datos{
+  padding: 10px;
+}
+
+.crece-detalle-operaciones-historial-datos div{
+  padding: 0px;
+}
+  
+.crece-detalle-operaciones-historial-datos h4{
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.crece-detalle-operaciones-historial-datos h5{
+  font-size: 12px;
+  font-weight: 200;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.crece-detalle-operaciones-historial-datos .row{
+  padding-top: 14px;
+}
+
+@media screen and (max-width: 600px) {
+  .crece-detalle-operaciones-header-gradiente-imagen-autor{
+      margin-top: 59px;
+      height: 120px;
+      width: 120px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.72);
+      background-position: center; /* Center the image */
+      background-repeat: no-repeat; /* Do not repeat the image */
+      background-size: cover; /* Resize the background image to cover the entire container */
+  }
+  
+  .crece-detalle-operaciones-header-gradiente h1{
+      display: inline-block;
+      font-size: 30px;
+      font-weight: 600;
+      justify-content: center;
+      /* align horizontal */
+      align-items: center;
+      /* align vertical */
+      padding: 0px 10px;
+      margin-top: 81.5px;
+  }
+  .crece-detalle-operaciones-header-gradiente h2{
+      display: inline-block;
+      font-size: 25px;
+      font-weight: 500;
+      justify-content: left;
+      /* align horizontal */
+      align-items: center;
+      /* align vertical */
+      padding: 0px 10px;
+  }
+
+  .crece-detalle-operaciones-header-gradiente-imagen {
+      padding-left: 5%;
+  }
+
+  .crece-operaciones-contenido-informacion-subrayado{
+      border-bottom: 0px;
+  }
+}
+
+
+/* Modal */
+
+.crece-modal{
+  display: none;
+  padding: 0px;
+
+  position: fixed;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 999999;
+
+  background-color: rgba(0,0,0,0.85);
+  /*   Estas propiedades se agregan en el js cuando el
+        vh es mayor que el modal
+
+  justify-content: center;
+  align-items: center;
+  */
+}
+
+.crece-modal-container{
+}
+
+.crece-detalle-operaciones-header-gradiente-imagen,
+.crece-detalle-operaciones-header-gradiente{
+  margin: 0px;
+
+}
+
+.crece-detalle-operaciones-header{
+  position: relative;
+}
+
+.crece-detalle-operaciones-header svg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.crece-detalle-operaciones-header-gradiente-cerrar:hover, 
+.crece-detalle-operaciones-header-gradiente-cerrar *:hover{
+  cursor: pointer;
+  fill: rgba(255,255,255,0.8);
 }

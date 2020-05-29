@@ -20,6 +20,7 @@ from django.views.generic.base import TemplateView
 from rest_framework_simplejwt import views as jwt_views
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 
 urlpatterns = [
@@ -36,6 +37,8 @@ urlpatterns = [
     path('faq/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
     path('nosotros/', TemplateView.as_view(template_name="nosotros.html")),
     path('anunciar-solicitud/', TemplateView.as_view(template_name="anunciar_solicitud.html")),
+
+    path('terminos-legales/', views.pdf_view_terminos_legales),
 
     # #para obtener Tokens
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
