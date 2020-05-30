@@ -46,10 +46,12 @@ ul li{
 .crece-carrusel {
     background: #287191;
     padding: 0;
+    position: relative;
 }
 
 .crece-carrusel-imagenes-movil{
   display: none;
+  position: relative;
 }
 
 .slick-prev:before, .slick-next:before { font-family: FontAwesome; font-size: 40px; line-height: 1; color: #f6f6f6; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }   
@@ -75,6 +77,25 @@ ul li{
   right: 20px;
 }
 
+#ingresar-boton-imagen-0{
+  /*font-size: 50px;*/
+  position: absolute;
+  top: 55%;
+    left: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+}
+
+.crece-carrusel-boton-ingresar-imagen a{
+
+    background-color: #08a7ba;
+    color: white !important;
+    text-align: center;
+    font-weight: 700;
+    padding: 10px 20px;
+    /*font-size: 40px;*/
+}
 
 /*Main Mensaje*/
 .crece-main-mensaje {
@@ -494,6 +515,21 @@ ul li{
 
 @media screen and (max-width: 991px){
 
+  /*Carrusel*/
+  .crece-carrusel-boton-ingresar-imagen a{
+
+         padding: 1.159vw 2.218vw;
+
+        font-size: 12px;
+    }
+
+
+    #ingresar-boton-imagen-0{
+
+    top: 56%;
+   
+
+    }
 
   /*main mensaje*/
   .crece-main-mensaje-imagenes-movil{
@@ -593,6 +629,11 @@ ul li{
     height: auto;
   }
 
+  .crece-carrusel-boton-ingresar-imagen a{
+      padding: 9px 18px;
+      font-size: 12px;
+  } 
+
 
   /* main mensaje */
   .crece-main-mensaje-imagenes{
@@ -651,6 +692,25 @@ ul li{
   }
 
 }
+
+
+
+
+@media screen and (max-width: 601px) and (min-width: 300px){
+
+  .crece-carrusel-boton-ingresar-imagen a{
+      padding: 8px 16px;
+      font-size: 9px;
+  }
+
+
+  #ingresar-boton-imagen-0{
+
+    top: 56.5%;
+      left: 85%;
+ 
+
+  }
 
 
 
@@ -1124,4 +1184,5 @@ ul li{
 .crece-detalle-operaciones-header-gradiente-cerrar *:hover{
   cursor: pointer;
   fill: rgba(255,255,255,0.8);
+
 }

@@ -292,6 +292,17 @@ function stringSolicitud(oportunidad){
 
 
 
+let section_carrusel = document.getElementById("crece-carrusel-id")
+let ingresar_boton_imagen_1 = document.createElement("div")
+ingresar_boton_imagen_1.className = "crece-carrusel-boton-ingresar-imagen"
+ingresar_boton_imagen_1.innerHTML = `<a class="" href="anunciar-solicitud/">
+                                Solicitar
+                                </a>`
+ingresar_boton_imagen_1.setAttribute("id", "ingresar-boton-imagen-0")
+
+section_carrusel.appendChild(ingresar_boton_imagen_1)
+
+
 
 // SECCION DETALLE DE LA SOLICITUD
 
@@ -653,4 +664,5 @@ function calcularPorcentajeFinanciadoFloat(monto, porcentaje_financiado){
   total_financiado = parseFloat(monto)*(parseFloat(porcentaje_financiado)/100);
   return total_financiado;
 }
+
 

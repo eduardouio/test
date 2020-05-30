@@ -8,7 +8,7 @@
             <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'css/calculadora.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'css/bootstrap-slider.min.css' %}" rel="stylesheet" type="text/css">
-
+           
            
         {% endblock head_css_agregado %}
     </head>
@@ -16,16 +16,16 @@
 
                 {% block content %}  
                 <!-- Carrusel -->
-                <section class="crece-carrusel">
+                <section class="crece-carrusel" id="crece-carrusel-id">
                     <div class="crece-carrusel-imagenes">
-                      <img src="{% static 'assets/Copy of Header conto.jpg' %}" alt="imagen 1">
-                      <img src="{% static 'assets/Copy of header 5.jpg' %}" alt="imagen 2">
-                      <img src="{% static 'assets/Copy of Header Yanes.jpg' %}" alt="imagen 3">
+                      <img src="{% static 'assets/conto.jpg' %}" alt="imagen 1">
+                      <img src="{% static 'assets/Orellana.jpg' %}" alt="imagen 2">
+                      <img src="{% static 'assets/Yanez.jpg' %}" alt="imagen 3">
                     </div>
                     <div class="crece-carrusel-imagenes-movil">
-                      <img src="{% static 'assets/carrusel_movil_1.jpg' %}" alt="imagen 1">
-                      <img src="{% static 'assets/carrusel_movil_2.jpg' %}" alt="imagen 2">
-                      <img src="{% static 'assets/carrusel_movil_3.jpg' %}" alt="imagen 3">
+                      <img src="{% static 'assets/conto_movil.jpg' %}" alt="imagen 1">
+                      <img src="{% static 'assets/Orellana_movil.jpg' %}" alt="imagen 2">
+                      <img src="{% static 'assets/Yanez_movil.jpg' %}" alt="imagen 3">
                     </div>
                   </section>
                   <section class="crece-main-mensaje justify-content-center text-center row">
@@ -573,7 +573,6 @@
         <script src="{% static 'js/general.js' %}"></script>
         <script src="{% static 'js/calculadora.js' %}"></script>
         <script src="{% static 'js/bootstrap-slider.min.js' %}"></script>
-          
         {% endblock footer_javascript_agregado %}
         
 

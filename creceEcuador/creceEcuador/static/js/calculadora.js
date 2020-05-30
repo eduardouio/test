@@ -49,11 +49,11 @@ function intercambiar_mobile() {
 	    }else{
 	    	solicitar_contenido.removeChild(infografia_solictante)
 	    	solicitar_contenido.insertBefore(infografia_solictante, solicitar_contenido.firstChild)
-	    	infografia_solictante.style.marginTop = "0px";
+	    	infografia_solictante.style.marginTop = "auto";
 
 	    	invertir_contenido.removeChild(infografia_inversionista)
 	    	invertir_contenido.insertBefore(infografia_inversionista, invertir_contenido.firstChild)
-	    	infografia_inversionista.style.marginTop = "0px";
+	    	infografia_inversionista.style.marginTop = "auto";
 	    }
 	
 }

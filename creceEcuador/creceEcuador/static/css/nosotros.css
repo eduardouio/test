@@ -8,7 +8,7 @@
 .crece-nosotros-banner-imagen {
     background-color: #36656D;
     width: 100%;
-    height: 526px;
+    height: 50vw;
     background-image: url('/static/assets/foto_equipo.jpg');
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -156,6 +156,17 @@
         margin: 0px 5px;
         width: 45%;
     }
+
+    /*.crece-nosotros-banner-imagen {
+    background-color: #36656D;
+        width: 100%;
+        height: 526px;
+        background-image: url('/static/assets/foto_equipo.jpg');
+        background-position: center; /* Center the image */
+        /*background-repeat: no-repeat; /* Do not repeat the image */
+        /*background-size: cover; /* Resize the background image to cover the entire container */
+
+    }*/
 
 
 }
