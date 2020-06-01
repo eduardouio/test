@@ -78,11 +78,12 @@ ul li{
 }
 
 #ingresar-boton-imagen-0{
-  /*font-size: 50px;*/
-  position: absolute;
-  top: 55%;
-    left: 70%;
-  transform: translate(-50%, -50%);
+      font-size: 2vw;
+
+    position: absolute;
+    top: 72%;
+    left: 47%;
+      transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 
 }
@@ -102,7 +103,7 @@ ul li{
     background: #fff;
     color: #006B8D;
     font-size: 23.84px;
-    padding: 42px 0px;
+    padding: 0px 0px;
     margin: 0px;
 }
 
@@ -520,13 +521,14 @@ ul li{
 
          padding: 1.159vw 2.218vw;
 
-        font-size: 12px;
+        font-size: 17px;
     }
 
 
     #ingresar-boton-imagen-0{
 
-    top: 56%;
+        top: 71%;
+    left: 48%;
    
 
     }
@@ -699,15 +701,16 @@ ul li{
 @media screen and (max-width: 601px) and (min-width: 300px){
 
   .crece-carrusel-boton-ingresar-imagen a{
-      padding: 8px 16px;
+      
       font-size: 9px;
   }
 
 
   #ingresar-boton-imagen-0{
 
-    top: 56.5%;
-      left: 85%;
+    
+      left: 58%;
+    top: 73%;
  
 
   }
