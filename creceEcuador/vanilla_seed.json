@@ -1,0 +1,1570 @@
+[
+{
+      "model": "registro_inversionista.canton",
+      "pk": 101,
+      "fields": {
+            "nombre": "CUENCA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 102,
+      "fields": {
+            "nombre": "GIRON"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 103,
+      "fields": {
+            "nombre": "GUALACEO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 104,
+      "fields": {
+            "nombre": "NABON"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 105,
+      "fields": {
+            "nombre": "PAUTE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 106,
+      "fields": {
+            "nombre": "PUCARA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 107,
+      "fields": {
+            "nombre": "SAN FERNANDO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 108,
+      "fields": {
+            "nombre": "SANTA ISABEL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 109,
+      "fields": {
+            "nombre": "SIGSIG"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 110,
+      "fields": {
+            "nombre": "O\u00d1A"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 111,
+      "fields": {
+            "nombre": "CHORDELEG"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 112,
+      "fields": {
+            "nombre": "EL PAN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 113,
+      "fields": {
+            "nombre": "SEVILLA DE ORO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 114,
+      "fields": {
+            "nombre": "GUACHAPALA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 115,
+      "fields": {
+            "nombre": "CAMILO PONCE ENRIQUEZ"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 201,
+      "fields": {
+            "nombre": "GUARANDA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 202,
+      "fields": {
+            "nombre": "CHILLANES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 203,
+      "fields": {
+            "nombre": "SAN JOSE DE CHIMBO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 204,
+      "fields": {
+            "nombre": "ECHEANDIA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 205,
+      "fields": {
+            "nombre": "SAN MIGUEL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 206,
+      "fields": {
+            "nombre": "CALUMA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 207,
+      "fields": {
+            "nombre": "LAS NAVES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 301,
+      "fields": {
+            "nombre": "AZOGUES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 302,
+      "fields": {
+            "nombre": "BIBLIAN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 303,
+      "fields": {
+            "nombre": "CA\u00d1AR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 304,
+      "fields": {
+            "nombre": "LA TRONCAL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 305,
+      "fields": {
+            "nombre": "EL TAMBO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 306,
+      "fields": {
+            "nombre": "DELEG"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 307,
+      "fields": {
+            "nombre": "SUSCAL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 401,
+      "fields": {
+            "nombre": "TULCAN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 402,
+      "fields": {
+            "nombre": "BOLIVAR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 403,
+      "fields": {
+            "nombre": "ESPEJO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 404,
+      "fields": {
+            "nombre": "MIRA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 405,
+      "fields": {
+            "nombre": "MONTUFAR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 406,
+      "fields": {
+            "nombre": "SAN PEDRO DE HUACA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 501,
+      "fields": {
+            "nombre": "LATACUNGA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 502,
+      "fields": {
+            "nombre": "LA MANA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 503,
+      "fields": {
+            "nombre": "PANGUA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 504,
+      "fields": {
+            "nombre": "PUJILI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 505,
+      "fields": {
+            "nombre": "SALCEDO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 506,
+      "fields": {
+            "nombre": "SAQUISILI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 507,
+      "fields": {
+            "nombre": "SIGCHOS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 601,
+      "fields": {
+            "nombre": "RIOBAMBA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 602,
+      "fields": {
+            "nombre": "ALAUSI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 603,
+      "fields": {
+            "nombre": "COLTA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 604,
+      "fields": {
+            "nombre": "CHAMBO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 605,
+      "fields": {
+            "nombre": "CHUNCHI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 606,
+      "fields": {
+            "nombre": "GUAMOTE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 607,
+      "fields": {
+            "nombre": "GUANO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 608,
+      "fields": {
+            "nombre": "PALLATANGA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 609,
+      "fields": {
+            "nombre": "PENIPE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 610,
+      "fields": {
+            "nombre": "CUMANDA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 701,
+      "fields": {
+            "nombre": "MACHALA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 702,
+      "fields": {
+            "nombre": "ARENILLAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 703,
+      "fields": {
+            "nombre": "ATAHUALPA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 704,
+      "fields": {
+            "nombre": "BALSAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 705,
+      "fields": {
+            "nombre": "CHILLA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 706,
+      "fields": {
+            "nombre": "EL GUABO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 707,
+      "fields": {
+            "nombre": "HUAQUILLAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 708,
+      "fields": {
+            "nombre": "MARCABELI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 709,
+      "fields": {
+            "nombre": "PASAJE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 710,
+      "fields": {
+            "nombre": "PI\u00d1AS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 711,
+      "fields": {
+            "nombre": "PORTOVELO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 712,
+      "fields": {
+            "nombre": "SANTA ROSA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 713,
+      "fields": {
+            "nombre": "ZARUMA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 714,
+      "fields": {
+            "nombre": "LAS LAJAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 801,
+      "fields": {
+            "nombre": "ESMERALDAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 802,
+      "fields": {
+            "nombre": "ELOY ALFARO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 803,
+      "fields": {
+            "nombre": "MUISNE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 804,
+      "fields": {
+            "nombre": "QUININDE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 805,
+      "fields": {
+            "nombre": "SAN LORENZO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 806,
+      "fields": {
+            "nombre": "ATACAMES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 807,
+      "fields": {
+            "nombre": "RIOVERDE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 808,
+      "fields": {
+            "nombre": "LA CONCORDIA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 901,
+      "fields": {
+            "nombre": "GUAYAQUIL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 902,
+      "fields": {
+            "nombre": "ALFREDO BAQUERIZO MORENO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 903,
+      "fields": {
+            "nombre": "BALAO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 904,
+      "fields": {
+            "nombre": "BALZAR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 905,
+      "fields": {
+            "nombre": "COLIMES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 906,
+      "fields": {
+            "nombre": "DAULE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 907,
+      "fields": {
+            "nombre": "DURAN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 908,
+      "fields": {
+            "nombre": "EL EMPALME"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 909,
+      "fields": {
+            "nombre": "EL TRIUNFO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 910,
+      "fields": {
+            "nombre": "MILAGRO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 911,
+      "fields": {
+            "nombre": "NARANJAL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 912,
+      "fields": {
+            "nombre": "NARANJITO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 913,
+      "fields": {
+            "nombre": "PALESTINA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 914,
+      "fields": {
+            "nombre": "PEDRO CARBO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 916,
+      "fields": {
+            "nombre": "SAMBORONDON"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 918,
+      "fields": {
+            "nombre": "SANTA LUCIA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 919,
+      "fields": {
+            "nombre": "URBINA JADO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 920,
+      "fields": {
+            "nombre": "YAGUACHI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 921,
+      "fields": {
+            "nombre": "PLAYAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 922,
+      "fields": {
+            "nombre": "SIMON BOLIVAR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 923,
+      "fields": {
+            "nombre": "CORONEL MARCELINO MARIDUE\u00d1A"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 924,
+      "fields": {
+            "nombre": "LOMAS DE SARGENTILLO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 925,
+      "fields": {
+            "nombre": "NOBOL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 927,
+      "fields": {
+            "nombre": "GENERAL ANTONIO ELIZALDE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 928,
+      "fields": {
+            "nombre": "ISIDRO AYORA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1001,
+      "fields": {
+            "nombre": "IBARRA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1002,
+      "fields": {
+            "nombre": "ANTONIO ANTE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1003,
+      "fields": {
+            "nombre": "COTACACHI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1004,
+      "fields": {
+            "nombre": "OTAVALO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1005,
+      "fields": {
+            "nombre": "PIMAMPIRO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1006,
+      "fields": {
+            "nombre": "SAN MIGUEL DE URCUQUI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1101,
+      "fields": {
+            "nombre": "LOJA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1102,
+      "fields": {
+            "nombre": "CALVAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1103,
+      "fields": {
+            "nombre": "CATAMAYO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1104,
+      "fields": {
+            "nombre": "CELICA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1105,
+      "fields": {
+            "nombre": "CHAGUARPAMBA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1106,
+      "fields": {
+            "nombre": "ESPINDOLA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1107,
+      "fields": {
+            "nombre": "GONZANAMA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1108,
+      "fields": {
+            "nombre": "MACARA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1109,
+      "fields": {
+            "nombre": "PALTAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1110,
+      "fields": {
+            "nombre": "PUYANGO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1111,
+      "fields": {
+            "nombre": "SARAGURO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1112,
+      "fields": {
+            "nombre": "SOZORANGA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1113,
+      "fields": {
+            "nombre": "ZAPOTILLO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1114,
+      "fields": {
+            "nombre": "PINDAL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1115,
+      "fields": {
+            "nombre": "QUILANGA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1116,
+      "fields": {
+            "nombre": "OLMEDO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1201,
+      "fields": {
+            "nombre": "BABAHOYO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1202,
+      "fields": {
+            "nombre": "BABA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1203,
+      "fields": {
+            "nombre": "MONTALVO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1204,
+      "fields": {
+            "nombre": "PUEBLOVIEJO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1205,
+      "fields": {
+            "nombre": "QUEVEDO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1206,
+      "fields": {
+            "nombre": "URDANETA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1207,
+      "fields": {
+            "nombre": "VENTANAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1208,
+      "fields": {
+            "nombre": "VINCES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1209,
+      "fields": {
+            "nombre": "PALENQUE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1210,
+      "fields": {
+            "nombre": "BUENA FE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1211,
+      "fields": {
+            "nombre": "VALENCIA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1212,
+      "fields": {
+            "nombre": "MOCACHE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1213,
+      "fields": {
+            "nombre": "QUINSALOMA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1301,
+      "fields": {
+            "nombre": "PORTOVIEJO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1302,
+      "fields": {
+            "nombre": "BOLIVAR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1303,
+      "fields": {
+            "nombre": "CHONE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1304,
+      "fields": {
+            "nombre": "EL CARMEN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1305,
+      "fields": {
+            "nombre": "FLAVIO ALFARO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1306,
+      "fields": {
+            "nombre": "JIPIJAPA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1307,
+      "fields": {
+            "nombre": "JUNIN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1308,
+      "fields": {
+            "nombre": "MANTA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1309,
+      "fields": {
+            "nombre": "MONTECRISTI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1310,
+      "fields": {
+            "nombre": "PAJAN"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1311,
+      "fields": {
+            "nombre": "PICHINCHA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1312,
+      "fields": {
+            "nombre": "ROCAFUERTE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1313,
+      "fields": {
+            "nombre": "SANTA ANA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1314,
+      "fields": {
+            "nombre": "SUCRE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1315,
+      "fields": {
+            "nombre": "TOSAGUA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1316,
+      "fields": {
+            "nombre": "24 DE MAYO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1317,
+      "fields": {
+            "nombre": "PEDERNALES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1318,
+      "fields": {
+            "nombre": "OLMEDO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1319,
+      "fields": {
+            "nombre": "PUERTO LOPEZ"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1320,
+      "fields": {
+            "nombre": "JAMA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1321,
+      "fields": {
+            "nombre": "JARAMIJO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1322,
+      "fields": {
+            "nombre": "SAN VICENTE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1401,
+      "fields": {
+            "nombre": "MORONA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1402,
+      "fields": {
+            "nombre": "GUALAQUIZA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1403,
+      "fields": {
+            "nombre": "LIMON INDANZA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1404,
+      "fields": {
+            "nombre": "PALORA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1405,
+      "fields": {
+            "nombre": "SANTIAGO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1406,
+      "fields": {
+            "nombre": "SUCUA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1407,
+      "fields": {
+            "nombre": "HUAMBOYA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1408,
+      "fields": {
+            "nombre": "SAN JUAN BOSCO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1409,
+      "fields": {
+            "nombre": "TAISHA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1410,
+      "fields": {
+            "nombre": "LOGRO\u00d1O"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1411,
+      "fields": {
+            "nombre": "PABLO VI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1412,
+      "fields": {
+            "nombre": "TIWINTZA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1501,
+      "fields": {
+            "nombre": "TENA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1503,
+      "fields": {
+            "nombre": "ARCHIDONA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1504,
+      "fields": {
+            "nombre": "EL CHACO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1507,
+      "fields": {
+            "nombre": "QUIJOS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1509,
+      "fields": {
+            "nombre": "CARLOS JULIO AROSEMENA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1601,
+      "fields": {
+            "nombre": "PASTAZA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1602,
+      "fields": {
+            "nombre": "MERA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1603,
+      "fields": {
+            "nombre": "SANTA CLARA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1604,
+      "fields": {
+            "nombre": "ARAJUNO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1701,
+      "fields": {
+            "nombre": "QUITO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1702,
+      "fields": {
+            "nombre": "CAYAMBE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1703,
+      "fields": {
+            "nombre": "MEJIA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1704,
+      "fields": {
+            "nombre": "PEDRO MONCAYO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1705,
+      "fields": {
+            "nombre": "RUMI\u00d1AHUI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1707,
+      "fields": {
+            "nombre": "SAN MIGUEL DE LOS BANCOS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1708,
+      "fields": {
+            "nombre": "PEDRO VICENTE MALDONADO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1709,
+      "fields": {
+            "nombre": "PUERTO QUITO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1801,
+      "fields": {
+            "nombre": "AMBATO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1802,
+      "fields": {
+            "nombre": "BA\u00d1OS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1803,
+      "fields": {
+            "nombre": "CEVALLOS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1804,
+      "fields": {
+            "nombre": "MOCHA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1805,
+      "fields": {
+            "nombre": "PATATE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1806,
+      "fields": {
+            "nombre": "QUERO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1807,
+      "fields": {
+            "nombre": "SAN PEDRO DE PELILEO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1808,
+      "fields": {
+            "nombre": "SANTIAGO DE PILLARO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1809,
+      "fields": {
+            "nombre": "TISALEO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1901,
+      "fields": {
+            "nombre": "ZAMORA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1902,
+      "fields": {
+            "nombre": "CHINCHIPE"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1903,
+      "fields": {
+            "nombre": "NANGARITZA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1904,
+      "fields": {
+            "nombre": "YACUAMBI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1905,
+      "fields": {
+            "nombre": "YANTZAZA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1906,
+      "fields": {
+            "nombre": "EL PANGUI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1907,
+      "fields": {
+            "nombre": "CENTINELA DEL CONDOR"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1908,
+      "fields": {
+            "nombre": "PALANDA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 1909,
+      "fields": {
+            "nombre": "PAQUISHA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2001,
+      "fields": {
+            "nombre": "SAN CRISTOBAL"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2002,
+      "fields": {
+            "nombre": "ISABELA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2003,
+      "fields": {
+            "nombre": "SANTA CRUZ"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2101,
+      "fields": {
+            "nombre": "LAGO AGRIO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2102,
+      "fields": {
+            "nombre": "GONZALO PIZARRO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2103,
+      "fields": {
+            "nombre": "PUTUMAYO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2104,
+      "fields": {
+            "nombre": "SHUSHUFINDI"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2105,
+      "fields": {
+            "nombre": "SUCUMBIOS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2106,
+      "fields": {
+            "nombre": "CASCALES"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2107,
+      "fields": {
+            "nombre": "CUYABENO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2201,
+      "fields": {
+            "nombre": "ORELLANA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2202,
+      "fields": {
+            "nombre": "AGUARICO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2203,
+      "fields": {
+            "nombre": "LA JOYA DE LOS SACHAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2204,
+      "fields": {
+            "nombre": "LORETO"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2301,
+      "fields": {
+            "nombre": "SANTO DOMINGO DE LOS TSACHILAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2401,
+      "fields": {
+            "nombre": "SANTA ELENA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2402,
+      "fields": {
+            "nombre": "LIBERTAD"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 2403,
+      "fields": {
+            "nombre": "SALINAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 9001,
+      "fields": {
+            "nombre": "LAS GOLONDRINAS"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 9003,
+      "fields": {
+            "nombre": "MANGA DEL CURA"
+      }
+},
+{
+      "model": "registro_inversionista.canton",
+      "pk": 9004,
+      "fields": {
+            "nombre": "EL PIEDRERO"
+      }
+}
+]

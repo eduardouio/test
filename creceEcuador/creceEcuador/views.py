@@ -10,3 +10,10 @@ def pdf_view_terminos_legales(request):
         return FileResponse(open('creceEcuador/static/assets/terminos_legales.pdf', 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404()
+
+@require_http_methods(["GET"])
+def pdf_view_privacidad_proteccion_datos(request):
+    try:
+        return FileResponse(open('creceEcuador/static/assets/privacidad_proteccion_datos.pdf', 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()

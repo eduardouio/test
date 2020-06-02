@@ -90,7 +90,7 @@ function stringSolicitud(oportunidad){
     var tarjeta_oportunidad = '<div class="col-xl-4 col-lg-6 col-12">'+
   '                                    <div class="row justify-content-center">'+
   '                                        <div class="crece-oportunidades-contenedor">'+
-  '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' '+oportunidad.imagen_url+ '\');">'+
+  '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' /'+oportunidad.imagen_url+ '\');">'+
   '                                                <div class="crece-oportunidades-imagen-gradiente">'+
   '                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
   '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
@@ -251,7 +251,7 @@ function crearDetalleInversion(oportunidad) {
 '                           </svg>'+
 '                           <div class="row justify-content-center crece-detalle-operaciones-header-gradiente-imagen" >'+
 '                               <div class="col-auto" >'+
-'                                   <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' '+oportunidad.imagen_url+'\');">'+
+'                                   <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /'+oportunidad.imagen_url+'\');">'+
 '                                   </div>'+
 '                               </div>'+
 '                               <div class="col-auto" >'+
@@ -382,19 +382,20 @@ function crearDetalleInversion(oportunidad) {
 '                                            <div class="row justify-content-center">'+
 '                                                <h3>Invierte en el Solicitante</h3>'+
 '                                                <p>'+
-'                                                    Al invertir estás contribuyendo al crecimiento de las PYMES de nuestro país.'+
+'                                                    Ingresa a la plataforma, calcula tu retorno y haz tu compromiso de inversión. <br> Si estás registrado, da clic en Invertir. Si no te has registrado crea tu usuario ahora.'+
 '                                                </p>'+
+/*
 '                                                <!-- input invierte-->'+
 '                                                <div class="crece-detalle-operaciones-invierte-monto col-12">'+
 '                                                    <div>'+
-'                                                        <label for="monto">$</label><input id="monto_inversion" name="monto" type="text" min="0" max="3700">'+
+'                                                        <label for="monto">$</label><input id="monto_inversion" name="monto" type="text" min="0">'+
 '                                                    </div>'+
-'                                                </div>'+
+'                                                </div>'+*/
 ''+
 '                                                <div class="crece-detalle-operaciones-invierte-botones">'+
 '                                                    <div class="crece-detalle-operaciones-invierte-botones-blanco">'+
 '                                                        <div class="row justify-content-center">'+
-'                                                            <a href="#">Simular Inversión</a>'+
+'                                                            <a href="https://www.creceecuador.com/aplicar-para-ser-inversionista">Crear Usuario</a>'+
 '                                                        </div>'+
 '                                                    </div>'+
 ''+
