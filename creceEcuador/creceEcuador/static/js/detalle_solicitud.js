@@ -122,7 +122,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                            <strong>Plazo</strong>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <span>'+oportunidad.plazo+' Días</span>'+
+'                                                            <span>'+oportunidad.plazo+' Meses</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+

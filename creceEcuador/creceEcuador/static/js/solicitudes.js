@@ -40,6 +40,8 @@ function crearCuadrosOportunidadesInversion(data){
     $.each( data, function( indice, oportunidad ) {
         string_operacion += stringSolicitud(oportunidad);
     });
+
+    console.log("test");
   
     $(".crece-oportunidades-container").html(string_operacion);
     let links = $(".crece-oportunidades-contenido-solicitante-link");
@@ -62,6 +64,68 @@ function crearCuadrosOportunidadesInversion(data){
   
       let linkSolicitante = links[numSolicitante].outerHTML
       this.innerHTML = stringParrafo.slice(0,-1) + linkSolicitante;
+    });
+
+    //Agregar elipsis en Titulo de historia
+    $(".crece-oportunidades-contenido-solicitante strong").each( function(numSolicitante) {
+      var lines = lineWrapDetector.getLines(this);
+      let stringParrafo = "";
+      console.log(lines.length);
+      $.each(lines, function(numLinea, linea) {
+        if(numLinea<1){
+          $.each(linea, function(numPalabra, palabra) {
+            stringParrafo += palabra.innerText+ " ";
+          });
+        }
+        else {
+          return false;
+        }
+      });
+  
+      let linkSolicitante = links[numSolicitante].outerHTML
+      this.innerHTML = stringParrafo.slice(0,-1) + linkSolicitante;
+    });
+
+    //Agregar elipsis en industria
+    $(".crece-oportunidades-contenido-informacion-industria p").each( function(numSolicitante) {
+      var lines = lineWrapDetector.getLines(this);
+      let stringParrafo = "";
+      console.log(lines.length);
+      console.log(lines);
+
+      $.each(lines, function(numLinea, linea) {
+        if(numLinea<2){
+          //Agregar los tags strong y br al título
+          if(numLinea == 0){
+            stringParrafo += "<strong>";
+            $.each(linea, function(numPalabra, palabra) {
+              stringParrafo += palabra.innerText+ " ";
+            });
+            stringParrafo += "</strong><br>";
+          }
+          else {
+            $.each(linea, function(numPalabra, palabra) {
+              let palabraSubstr = "";
+              if(palabra.innerText.length > 9){
+                console.log(palabra.innerText.length)
+                palabraSubstr = palabra.innerText.substring(0,9);
+                let linkSolicitante = links[numSolicitante].outerHTML;
+                palabraSubstr += linkSolicitante;
+              }
+              else {
+                palabraSubstr = palabra.innerText;
+              }
+              
+              stringParrafo += palabraSubstr
+            });
+          }
+        }
+        else {
+          return false;
+        }
+      });
+
+      this.innerHTML = stringParrafo;
     });
   
   }
@@ -96,7 +160,6 @@ function stringSolicitud(oportunidad){
   '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
   '                                                        <strong>'+ oportunidad.autor +'</strong>'+
   '                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
-  '                                                        <span>ID: '+oportunidad.id+'</span>'+
   '                                                    </div>'+
   '                                                </div>'+
   '                                            </div>'+
@@ -121,19 +184,19 @@ function stringSolicitud(oportunidad){
   '        '+
   '                                                    <div class="col-12 crece-oportunidades-contenido-informacion">'+
   '                                                        <div class="row">'+
-  '                                                            <div class="col">'+
+  '                                                            <div class="col-4">'+
   '                                                                <p>'+
   '                                                                    <strong>Plazo</strong><br>'+
-  '                                                                    '+oportunidad.plazo+' Días'+
+  '                                                                    '+oportunidad.plazo+' Meses'+
   '                                                                </p>'+
   '                                                            </div>'+
-  '                                                            <div class="col">'+
+  '                                                            <div class="col-4 crece-oportunidades-contenido-informacion-industria">'+
   '                                                                <p>'+
   '                                                                    <strong>Industria</strong><br>'
                                                                           +oportunidad.categoria+
   '                                                                </p>'+
   '                                                            </div>'+
-  '                                                            <div class="col">'+
+  '                                                            <div class="col-4">'+
   '                                                                <p>'+
   '                                                                    <strong>Tasa(TIR)</strong><br>'+
   '                                                                    '+ oportunidad.tir+'%'+
@@ -320,7 +383,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                            <strong>Plazo</strong>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <span>'+oportunidad.plazo+' Días</span>'+
+'                                                            <span>'+oportunidad.plazo+' Meses</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+

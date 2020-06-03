@@ -222,11 +222,7 @@ ul li{
 }
 
 .crece-oportunidades-imagen-gradiente {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#006B8D+0,063240+100&1+0,0+100 */
-  background: -moz-linear-gradient(left,  rgba(0,91,122,0.50) 0%, rgba(6,50,64,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right,  rgba(0,91,122,0.50) 0%,rgba(6,50,64,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006B8D', endColorstr='#00063240',GradientType=1 ); /* IE6-9 */
+  background-color: rgba(0,91,122,0.5);
   width: 332px;
   height: 162px;
   border-radius: 10px 10px 0px 0px;
@@ -788,11 +784,11 @@ ul li{
 }
 
 .crece-detalle-operaciones-header-imagen-blur{
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
   position:absolute;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
