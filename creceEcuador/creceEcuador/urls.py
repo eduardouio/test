@@ -40,6 +40,7 @@ urlpatterns = [
 
     path('terminos-legales/', views.pdf_view_terminos_legales),
     path('privacidad-proteccion-datos/', views.pdf_view_privacidad_proteccion_datos),
+    path('manual-solicitante/', views.pdf_view_manual_solicitante),
 
     # #para obtener Tokens
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

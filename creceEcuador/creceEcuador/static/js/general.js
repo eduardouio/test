@@ -168,7 +168,7 @@ function crearCuadrosOportunidadesInversion(data){
 
     if(lines.length > 1){
       let linkSolicitante = links[numSolicitante].outerHTML
-      this.innerHTML = stringParrafo.slice(0,-1) + linkSolicitante;
+      this.innerHTML = stringParrafo.slice(0,-5) + linkSolicitante;
     }
     else{
       this.innerHTML = stringParrafo;
