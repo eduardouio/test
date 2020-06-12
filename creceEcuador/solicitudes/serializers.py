@@ -15,7 +15,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
         model = Solicitud
         fields = [
             'id',
-            'titulo',
+            'ticket',
             'operacion',
             'plazo',
             'autor',

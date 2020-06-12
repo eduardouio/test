@@ -57,10 +57,10 @@ function crearDetalleInversion(oportunidad) {
 '                                   </div>'+
 '                               </div>'+
 '                               <div class="col-auto" >'+
-'                                   <div class="row" >'+
+'                                   <div class="row justify-content-center" >'+
 '                                       <h1>'+oportunidad.autor+'</h1>'+
 '                                   </div>'+
-'                                   <div class="row" >'+
+'                                   <div class="row justify-content-center" >'+
 '                                       <h2>'+oportunidad.categoria+'</h2>'+
 '                                   </div>'+
 '                               </div>'+
@@ -148,13 +148,24 @@ function crearDetalleInversion(oportunidad) {
 '        '+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Categoría del Negocio</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-3">'+
+'                                                        <div class="col-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+oportunidad.categoria+'</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
+'        '+
+'                                                    <!-- Item informacion-->'+
+'                                                    <div class="row">'+
+'                                                        <div class="col-6">'+
+'                                                            <strong>Ticker</strong>'+
+'                                                        </div>'+
+'                                                        <div class="col-3">'+
+'                                                            <span>'+oportunidad.ticket+'</span>'+
+'                                                        </div>'+
+'                                                    </div>'+
+'        '+
 '                                                </div>'+
 '        '+
 '                                                <!-- Historia -->'+

@@ -42,7 +42,8 @@ def get_solicitudes(request):
     final = inicio + cantidad
 
     #Se obtiene el queryset y se lo convierte a json
-    queryset = Solicitud.objects.all().order_by('fecha_publicacion')[inicio:final]
+    #Se agrega el - antes del atributo para ordenarlo descendientemente
+    queryset = Solicitud.objects.all().order_by('-fecha_publicacion')[inicio:final]
     serializer = SolicitudSerializer(queryset, many=True)
 
     #Se crea el diccionario de respuesta

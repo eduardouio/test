@@ -29,7 +29,7 @@ class TipoCredito(models.Model):
 
 class Solicitud(models.Model):
     #Modelo Solicitud
-    titulo = models.CharField(max_length=200, blank=False)
+    ticket = models.CharField(max_length=200, blank=False)
     operacion = models.TextField(blank=False)
     historia = models.TextField(blank=False)
     plazo = models.IntegerField(blank=False)
@@ -85,7 +85,7 @@ class Solicitud(models.Model):
         return "Persona Natural"
 
     def __str__(self):
-        return self.titulo + ", "+ self.autor
+        return self.ticket + ", "+ self.autor
 
     class Meta:
         verbose_name = "Solicitud"

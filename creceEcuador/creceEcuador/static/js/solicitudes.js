@@ -165,6 +165,7 @@ function stringSolicitud(oportunidad){
   '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
   '                                                        <strong>'+ oportunidad.autor +'</strong>'+
   '                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
+  '                                                        <span>'+ oportunidad.ticket +'</span>'+
   '                                                    </div>'+
   '                                                </div>'+
   '                                            </div>'+
@@ -414,13 +415,24 @@ function crearDetalleInversion(oportunidad) {
 '        '+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
-'                                                        <div class="col-6">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Categoría del Negocio</strong>'+
 '                                                        </div>'+
-'                                                        <div class="col-3">'+
+'                                                        <div class="col-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+oportunidad.categoria+'</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
+'        '+
+'                                                    <!-- Item informacion-->'+
+'                                                    <div class="row">'+
+'                                                        <div class="col-6">'+
+'                                                            <strong>Ticker</strong>'+
+'                                                        </div>'+
+'                                                        <div class="col-3">'+
+'                                                            <span>'+oportunidad.ticket+'</span>'+
+'                                                        </div>'+
+'                                                    </div>'+
+'        '+
 '                                                </div>'+
 '        '+
 '                                                <!-- Historia -->'+
