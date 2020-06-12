@@ -37,6 +37,7 @@ urlpatterns = [
     path('faq/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
     path('nosotros/', TemplateView.as_view(template_name="nosotros.html")),
     path('anunciar-solicitud/', TemplateView.as_view(template_name="anunciar_solicitud.html")),
+    path('aplicar-inversionista/', TemplateView.as_view(template_name="aplicar-para-ser-inversionista.html")),
 
     path('terminos-legales/', views.pdf_view_terminos_legales),
     path('privacidad-proteccion-datos/', views.pdf_view_privacidad_proteccion_datos),
