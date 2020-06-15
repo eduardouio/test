@@ -18,3 +18,12 @@ class TransferenciaInversionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TransferenciaInversion
         fields = "__all__"
+    
+class TransferenciaInversionArchivoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TransferenciaInversion
+        fields = [
+            'id_inversion',
+            'url_documento'
+        ]

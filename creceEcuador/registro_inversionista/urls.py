@@ -27,6 +27,8 @@ urlpatterns = [
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),
     path('completa_datos/', views.completar_datos_financieros_view, name="completa_datos"),
+    url(r'^comprobante_transferencia/(?P<filename>[^/]+)$', views.SubirTransferenciaView.as_view()),
+    path('subir_transferencia/', views.subir_transferencia_view, name="subir_transferencia"),
 
     path('login/', views.LoginView, name="login"),
     path('bancos/', views.Bancos_list.as_view(), name="bancos-all"),

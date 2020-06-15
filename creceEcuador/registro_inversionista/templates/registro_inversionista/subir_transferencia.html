@@ -1,0 +1,43 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                    <section class="crece-confirmar-transferencia-formulario">
+                        <div class="col-6">
+                            <form>
+                                <div class="form-group">
+                                    <label>Comprobante transferencia:</label>
+                                    <input 
+                                        required
+                                        type="file"
+                                        accept="image/png, image/jpeg, application/pdf"
+                                        class="form-control"
+                                        name="comprobante_transferencia"
+                                        id="comprobante_transferencia"
+                                        data-valueMissing="Suba el comprobante de la transferencia"                                        />
+                                </div>
+    
+                                <button id="enviar_transferencia"> Enviar</button>
+                            </form>
+                        </div>
+                    </section>
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        <script src="{% static 'registro_inversionista/js/subir_transferencia.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

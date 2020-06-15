@@ -14,6 +14,7 @@ from rest_framework.views import APIView
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
+from manager_archivos.serializers import TransferenciaInversionArchivoSerializer
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
@@ -374,6 +375,36 @@ class ImagenCedulaView(APIView):
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
 
+class SubirTransferenciaView(APIView):        
+    parser_classes = (MultiPartParser, )
+    def post(self, request, filename, format=None):
+        try: 
+            transferencia_serializer = TransferenciaInversionArchivoSerializer(data=request.data)
+            print(transferencia_serializer)
+            if transferencia_serializer.is_valid():
+                transferencia = transferencia_serializer.save()
+                print(transferencia.url_documento)
+                transferencia.url_documento = settings.MEDIA_URL + str(transferencia.url_documento)
+                transferencia.save()
+                print(transferencia.url_documento)
+                diccionario_respuesta = {
+                    'status': status.HTTP_200_OK,
+                    'mensaje': "Archivo guardado"
+                }
+
+                return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+            else:
+                raise Exception(transferencia_serializer.errors)
+
+        except Exception as e:
+            diccionario_respuesta = {
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': str(e),
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
+
+
 @login_required
 def Dashboard(request):
     
@@ -430,3 +461,7 @@ def LoginView(request):
 def completar_datos_financieros_view(request):
     if request.method == 'GET': 
         return render(request, 'registro_inversionista/completa_datos.html')
+
+def subir_transferencia_view(request):
+    if request.method == 'GET': 
+        return render(request, 'registro_inversionista/subir_transferencia.html')
