@@ -56,7 +56,7 @@ function crearDetalleInversion(oportunidad) {
 '                                   <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /'+oportunidad.imagen_url+'\');">'+
 '                                   </div>'+
 '                               </div>'+
-'                               <div class="col-auto" >'+
+'                               <div class="col-12 col-sm-auto" >'+
 '                                   <div class="row justify-content-center" >'+
 '                                       <h1>'+oportunidad.autor+'</h1>'+
 '                                   </div>'+
