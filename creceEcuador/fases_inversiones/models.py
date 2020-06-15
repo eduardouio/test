@@ -25,8 +25,13 @@ class Inversion(models.Model):
         verbose_name = "Inversion"
         verbose_name_plural = "Inversiones"
 
-    # def __str__(self):
-    #     pass
+    def __str__(self):
+        usuario = self.id_user
+        solicitud = self.id_solicitud
+        if (self.estado == 1):
+            return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", Confirmado: $" + str(self.monto) 
+        else:
+            return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", No confirmado: $" + str(self.monto)  
                 
 class Pago_detalle(models.Model):
     estado_pagado = 1
