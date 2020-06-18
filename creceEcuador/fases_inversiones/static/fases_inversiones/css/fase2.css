@@ -1,0 +1,131 @@
+:root{
+	--main-bg-color:#2E333B;
+
+}
+
+
+/*Titulo*/
+.titulo{
+	color: #ffffff;
+	text-align: center;
+	font-size: 30px;
+	background-color: #99B6C3;
+}
+
+
+.fase-2-container{
+	background-color: var(--main-bg-color);
+	color: #ffffff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 50px;
+	padding: 50px;
+	/*max-width: 600px;*/
+
+}
+
+/*Contenido Header*/
+.inversion-container{
+	background-color: #47717F;
+	max-width: 200px;
+	height: 75px;
+	    border-radius: .25rem;
+}
+
+.inversion-container p{
+	text-align: right;
+	position: relative;
+	top:35px;
+	font-size: 25px;
+}
+
+.informacion-container{
+	margin-left: 15px;
+	padding-top: 20px; 
+}
+
+.progress-bar{
+	color: #000000;
+}
+
+/*Contenido Body*/
+.fase-2-body{
+	display: block;
+	text-align: center;
+}
+
+.body-datos{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#calcular{
+	background-color: #71BDC5;
+}
+
+
+
+.tabla-amortizacion{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+/*Tabla de inversionista*/
+.crece-tabla-inversionista {
+  display: grid;
+  grid-template-columns: 25px auto auto auto auto;
+  background-color: #ffffff;
+  color: #000000;
+  
+}
+
+.tabla-headers {
+  color: #ffffff;
+  background-color: var(--main-bg-color);
+  font-weight: bold;
+
+}
+
+/*.tabla-contenido-container{
+	grid-column-start: 1;
+  	grid-column-end: 6;
+}
+
+.tabla-contenido-datos{
+	display: grid;
+	grid-template-columns: 10px auto auto auto auto;
+	background-color: #ffffff;
+  color: #000000;
+  grid-column-gap: 2px;
+}*/
+
+.tabla-items{
+	color: #000000;
+	background-color: #B7B8B8;
+	border-bottom: 10px solid #ffffff;
+	border-right: 10px solid #ffffff;
+	text-align: end;
+	padding-right: 10px;
+
+}
+
+.tabla-items-row1{
+	border-top: 15px solid #ffffff;
+}
+
+.tabla-num-pago{
+	background-color: #ffffff;
+	    padding: 0px 4px;
+    text-align: center;
+    border-right: 0px;
+}
+
+.tabla-ganancias{
+	background-color: #47717F;
+}

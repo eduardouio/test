@@ -1,13 +1,27 @@
 let MONTO_SOLICITANTE = 7000;
-let TASA_INTERES_ANUAL = 0.22;
+let TASA_INTERES_ANUAL = 0.25;
 let PLAZO = 12;
 let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004;
 let IVA = 0.12
-let COMISION_ADJUDICACION = MONTO_SOLICITANTE * 0.008;
+let COMISION_ADJUDICACION = MONTO_SOLICITANTE * 0.006;
 let ADJUDICACION_FACTOR = 1.12
 let COlUMNAS_TABLA_INVERSIOMISTA = 5
 
 let RUTA_FASE_2 = "/registro/fase2/"
+
+
+const FORMAT_CURRENCY = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
+
+const FORMAT_PERCENT = new Intl.NumberFormat('en-US', {
+	style: 'percent',
+	minimumFractionDigits: 0,
+   	maximumFractionDigits: 2
+})
+
 
 
 /*Calcula valores de las cuotas y llena la tabla de inversion*/
@@ -16,6 +30,7 @@ function calcular_tabla_inversionista() {
 
 	
 	let tabla = document.getElementById("tabla-amortizacion-id");
+	let tabla_inversionista_grid = document.getElementById("crece-tabla-inversionista-id");
 
 	/*Verificando que ya exista la tabla*/
 	if (tabla.children.length > 1) {
@@ -83,6 +98,38 @@ function calcular_tabla_inversionista() {
 		
 		fila.innerHTML= html_fila;
 		tabla.appendChild(fila)
+
+		// /*Usando grid*/
+		// let num_pago_grid = document.createElement("div");
+		// let pago_grid = document.createElement("div")
+		// let comision_grid = document.createElement("div")
+		// let comision_iva_grid = document.createElement("div")
+		// let ganancia_grid = document.createElement("div")
+		// num_pago_grid.setAttribute("class", "tabla-items tabla-num-pago")
+		// 	comision_grid.setAttribute("class", "tabla-items")
+		// 	comision_iva_grid.setAttribute("class", "tabla-items")
+		// 	pago_grid.setAttribute("class", "tabla-items")
+		// 	ganancia_grid.setAttribute("class", "tabla-items tabla-ganancias")
+		// if( i === 0){
+		// 	num_pago_grid.setAttribute("class", "tabla-items tabla-items-row1 tabla-num-pago")
+		// 	comision_grid.setAttribute("class", "tabla-items tabla-items-row1")
+		// 	comision_iva_grid.setAttribute("class", "tabla-items tabla-items-row1")
+		// 	pago_grid.setAttribute("class", "tabla-items tabla-items-row1")
+		// 	ganancia_grid.setAttribute("class", "tabla-items tabla-items-row1 tabla-ganancias")
+		// }
+		
+
+		// num_pago_grid.innerHTML = i+1
+		// pago_grid.innerHTML = FORMAT_CURRENCY.format(pago_i)
+		// comision_grid.innerHTML = FORMAT_CURRENCY.format(comision_i)
+		// comision_iva_grid.innerHTML = FORMAT_CURRENCY.format(comision_iva_i)
+		// ganancia_grid.innerHTML = FORMAT_CURRENCY.format(ganancia_i)
+		// tabla_inversionista_grid.appendChild(num_pago_grid)
+		// tabla_inversionista_grid.appendChild(pago_grid)
+		// tabla_inversionista_grid.appendChild(comision_grid)
+		// tabla_inversionista_grid.appendChild(comision_iva_grid)
+		// tabla_inversionista_grid.appendChild(ganancia_grid)
+
 	}
 
 	/*Llenando la fila de totales
@@ -134,15 +181,56 @@ function calcular_tabla_inversionista() {
 /*Crea tabla de amortizacion del solicitante*/
 function hacer_tabla_amortizacion() {
 	// body...
-	let tasa_diaria = TASA_INTERES_ANUAL/360 ; // tasa diaria
-
-	let tasa_mensual = [ Math.pow((1 + tasa_diaria),(360/12)) ] - 1 ;
-
+	let date = new Date(2020,5,26)
+	let next_date = new Date(2020,6,26)
+	let date_tmp = new Date(2020,5,26)
+	
+	let fechas = []
+	let dias = []
 	
 
+	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
+	let dias_transcurridos = getDuration(date-date).value
+	fechas.push(fecha_pago)
+	dias.push(dias_transcurridos)
+	for (var i = 0; i < PLAZO; i++) {
+		
+		
+		if(next_date.getDay() == 0){
+			
+			next_date.setDate(next_date.getDate() + 1) //lunes
+			dias_transcurridos = getDuration(next_date-date).value
+			date.setDate(next_date.getDate())
+			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
+			next_date.setDate(next_date.getDate()-1)
+		}
+		else if(next_date.getDay() == 6){
+			next_date.setDate(next_date.getDate() + 2) //lunes
+			dias_transcurridos = getDuration(next_date-date).value
+			date.setDate(next_date.getDate())
+			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
+			next_date.setDate(next_date.getDate()-2)
+		}else{
+			dias_transcurridos = getDuration(next_date-date).value
+			date.setDate(next_date.getDate())
+			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
+		}
+		
+		dias.push(dias_transcurridos)
+		date.setMonth(date.getMonth()+1)
+		next_date.setMonth(next_date.getMonth()+1)
+		fechas.push(fecha_pago)
+		
+	}
+
+
+	let plazo_dias = dias.reduce((a, b) => a + b, 0)
+
+	let tasa_diaria = (1+TASA_INTERES_ANUAL/plazo_dias)-1 ; // tasa diaria
+
+	let tasa_mensual = [ Math.pow((1 + tasa_diaria),(plazo_dias/12)) ] - 1 ;
 	let cuota_mensual = PMT(tasa_mensual, PLAZO, MONTO_SOLICITANTE)*-1
-
-
+	
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let capital_por_pagar_n = MONTO_SOLICITANTE
 	let cuota_n = cuota_mensual 
@@ -151,17 +239,21 @@ function hacer_tabla_amortizacion() {
 	let cuota_TOTAL = 0
 	let intereses_TOTAL = 0
 
-	let lista_capital_insoluto = [7000]
+	let lista_capital_insoluto = [MONTO_SOLICITANTE]
 	let lista_cuotas = []
 	let lista_intereses = []
 	let lista_capitales = []
 
 	for (var i = 0; i < PLAZO; i++) {
-		let fila = document.createElement("tr")
+		//let fila = document.createElement("tr")
 		
 		
 		/*Intereses mensual*/
+		let dias_transcurridos = dias[i+1]
+
+		tasa_mensual = [ Math.pow((1 + tasa_diaria),dias_transcurridos) ] - 1
 		intereses_n = capital_por_pagar_n*tasa_mensual
+		
 		intereses_TOTAL += intereses_n
 		lista_intereses.push(intereses_n)
 
@@ -174,7 +266,7 @@ function hacer_tabla_amortizacion() {
 			cuota_n = capital_n + intereses_n //cuota a pagar
 			
 		}
-
+		console.log(cuota_n)
 		/*Capital total y llenando la lista de capital mensual*/
 		capital_TOTAL += capital_n
 		lista_capitales.push(capital_n)
@@ -251,16 +343,25 @@ function guardar_tabla(argument) {
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let tabla_childrens = tabla.children
 
+	//let tabla_inversionista_grid = document.getElementById("crece-tabla-inversionista-id")
+	//console.log(new Intl.NumberFormat().format(tabla_inversionista_grid.children[6].textContent))
 
+	//tabla_childrens = tabla_inversionista_grid.children
 	for (var i = 0; i < PLAZO; i++) {
 
 		let fila_i = tabla_childrens[i+1];
 		let fila_i_childrens = fila_i.children;
 
+
 		let pago = fila_i_childrens[1].textContent;
 		let comision = fila_i_childrens[2].textContent;
 		let comision_iva = fila_i_childrens[3].textContent;
 		let ganancia = fila_i_childrens[4].textContent;
+
+		// let pago = tabla_childrens[(5*i)+6].textContent;
+		// let comision = tabla_childrens[(5*i)+7].textContent;
+		// let comision_iva = tabla_childrens[(5*i)+8].textContent;
+		// let ganancia = tabla_childrens[(5*i)+9].textContent;
 		
 
 		
@@ -427,3 +528,29 @@ function PMT(rate_per_period, number_of_payments, present_value, future_value, t
 
 	return 0;
 }
+
+
+function crear_fila(fila) {
+	// body...
+	let num_pago = document.createElement("div");
+
+	if( fila === 1){
+		num_pago.ClassName = "tabla-items tabla-items-row1 tabla-num-pago"
+	}
+	
+	num_pago.innerHTML = fila
+}
+
+
+
+function getDuration(milli){
+  let minutes = Math.floor(milli / 60000);
+  let hours = Math.round(minutes / 60);
+  let days = Math.round(hours / 24);
+
+  return (
+    (days && {value: days, unit: 'days'}) ||
+    (hours && {value: hours, unit: 'hours'}) ||
+    {value: minutes, unit: 'minutes'}
+  )
+};

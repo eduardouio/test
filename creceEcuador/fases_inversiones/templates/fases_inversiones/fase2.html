@@ -3,11 +3,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang='en'>
-    <head>
-        {% block head_css_agregado %}
-            <link href="{% static 'fases_inversiones/styles.css' %}" rel="stylesheet" type="text/css">
-        {% endblock head_css_agregado %}
-    </head>
+
     <body> 
 
                     
@@ -92,13 +88,35 @@
                             <!--TABLA AMORTIZACION-->
                             <table class='tabla-amortizacion' id="tabla-amortizacion-id">
                                <tr>
-                                   <th>Número de cuota</th>
+                                   <th></th>
                                    <th>Pago</th>
                                    <th>Comision</th>
                                    <th>Comision: IVA</th>
                                    <th>Ganancia</th>
                                </tr> 
                             </table>
+
+                            <!--div class="crece-tabla-inversionista" id="crece-tabla-inversionista-id">
+                              <div class="tabla-headers"></div>
+                              <div class="tabla-headers">Pago</div>
+                              <div class="tabla-headers">Comisión</div>  
+                              <div class="tabla-headers">Comisión IVA</div>
+                              <div class="tabla-headers">Ganancias</div>
+
+                                  <div class="tabla-items tabla-items-row1 tabla-num-pago" >1</div>
+                                  <div class="tabla-items tabla-items-row1">96.17</div>
+                                  <div class="tabla-items tabla-items-row1">0.95</div>  
+                                  <div class="tabla-items tabla-items-row1">1</div>
+                                  <div class="tabla-items tabla-items-row1 tabla-ganancias">500</div>
+                                  <div class="tabla-items tabla-num-pago" >1</div>
+                                  <div class="tabla-items">96.17</div>
+                                  <div class="tabla-items" >0.85</div>
+                                  <div class="tabla-items" >1</div>
+                                  <div class="tabla-items tabla-ganancias">500</div>
+
+                              
+                            </div-->
+
                             
                           </div>
 
@@ -122,10 +140,7 @@
       
 
 
-        {% block footer_javascript_agregado %}
-            <script src="{% static 'fases_inversiones/scripts.js' %}"></script>
-        {% endblock footer_javascript_agregado %}
-        
+
 
     </body>
 </html>

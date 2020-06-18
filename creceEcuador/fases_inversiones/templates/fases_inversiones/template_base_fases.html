@@ -4,25 +4,37 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
-        {% block head_css %}
-            <link href="{% static 'fases_inversiones/styles.css' %}" rel="stylesheet" type="text/css">
-        {% endblock head_css %}
+        {% block head_css_agregado %}
+                 <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
+                 <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">    
+        {% endblock head_css_agregado %}
     </head>
     <body>      
 
+        {% block content %}
+            <!--PASOS (2)-->
+                    
+                        <div class="row fases-inversiones-pasos">
 
-                {% block content %}  
+                            <div class="col disabled">
+                                Paso 1
+                            </div>
+                            <div class="col active">
+                                Paso 2
+                            </div>
+                            <div class="col">
+                                Paso 3
+                            </div>
+                            <div class="col">
+                                Paso 4
+                            </div>
+                        </div>
 
-                
-
-                {% endblock content %}
-      
-
+        {% endblock content %}
 
         {% block footer_javascript_agregado %}
-            <script src="{% static 'fases_inversiones/scripts.js' %}"></script>
-        {% endblock footer_javascript_agregado %}
+        <script type="text/javascript" src="{% static 'fases_inversiones/js/scripts.js' %}"></script>
         
-
+        {% endblock footer_javascript_agregado %}
     </body>
 </html>

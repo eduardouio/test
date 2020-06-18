@@ -1,0 +1,29 @@
+/* Pasos*/
+.fases-inversiones-pasos{
+	margin-top: 5px;
+}
+
+.fases-inversiones-pasos div{
+	background-color: #B7B8B8;
+	color: #ffffff;
+	text-align: center;
+	padding: 2px 15px;
+	text-decoration: none;	
+}
+
+.fases-inversiones-pasos div:not(:last-child){
+	margin-right: 5px;
+}
+
+.fases-inversiones-pasos div:first-child{
+	margin-left: 5px;
+}
+
+.fases-inversiones-pasos div.active{
+	background-color: #71BDC5;
+}
+
+.fases-inversiones-pasos div.disabled{
+	background-color: #E3E4E3;
+	cursor: not-allowed;
+}
