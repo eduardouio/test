@@ -443,7 +443,7 @@ def LoginView(request):
             cd = form.cleaned_data
             
 
-            r = requests.post('http://127.0.0.1:8000/inversionista/login_inversionista/', 
+            r = requests.post('http://127.0.0.1:8000/inversionista/login/', 
                                 data = {'username':cd.get('username'), 'password': cd.get('password')})
             print(r.json())
             dic_tokens = r.json().get('auth_token')

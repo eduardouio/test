@@ -202,7 +202,7 @@ SIMPLE_JWT = {
 }
 
 
-LOGIN_URL = '/inversionista/login_inversionista/'
+LOGIN_URL = '/inversionista/login/'
 
 
 #SESSION_ENGINE =  'django.contrib.sessions.backends.signed_cookies'

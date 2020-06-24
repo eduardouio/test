@@ -14,374 +14,402 @@
 
                 {% block content %}  
                 <section class="crece-completar-datos-formulario">
-                    <div class="col-6">
-                        <form method="POST">
-
-                            <div class="form-group">
-                                <label>Nombre:</label>
-                                <input 
-                                    required
-                                    class="form-control"
-                                    name="nombre"
-                                    id="nombre"
-                                    data-valueMissing="Ingrese un nombre"
-                                    />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Apellidos:</label>
-                                <input 
-                                    required
-                                    class="form-control"
-                                    name="apellidos"
-                                    id="apellidos"
-                                    data-valueMissing="Ingrese su apellido"
-                                    />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Cédula:</label>
-                                <input 
-                                    required
-                                    type="number"
-                                    class="form-control"
-                                    name="cedula"
-                                    id="cedula"
-                                    data-valueMissing="Ingrese su número de cédula"
-                                    />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Celular:</label>
-                                <input 
-                                    required
-                                    type="number"
-                                    class="form-control"
-                                    name="celular"
-                                    id="celular"
-                                    data-valueMissing="Ingrese su número de celular"
-                                    />
-                            </div>
-
-                            <div class="form-group crece-completar-datos-formulario-radio">
-                                <label>Cónyugue:</label>
-                                <input 
-                                    id="conyugue-si"
-                                    type="radio"
-                                    name="conyugue"
-                                    value="1"
-                                    >
-                                <label for="conyugue-si">Sí</label>
-                                <input 
-                                    id="conyugue-no"
-                                    type="radio"
-                                    name="conyugue"
-                                    value="0"
-                                    >
-                                <label for="conyugue-no">No</label>
-                            </div>
-
-                            <div class="crece-completar-datos-formulario-conyugue">
-                                    <div class="form-group">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 crece-completar-datos-formulario-wrapper">
+                            <form method="POST">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2>Datos del inversionista</h2>
+                                    </div>
+                                    <div class="form-group col-lg-6">
                                         <label>Nombre:</label>
                                         <input 
-                                            
+                                            required
                                             class="form-control"
-                                            name="nombre_conyugue"
-                                            id="nombre_conyugue"
-                                            data-valueMissing="Ingrese el nombre de su cónyugue"
+                                            name="nombre"
+                                            id="nombre"
+                                            data-valueMissing="Ingrese un nombre"
                                             />
                                     </div>
         
-                                    <div class="form-group">
+                                    <div class="form-group col-lg-6">
                                         <label>Apellidos:</label>
                                         <input 
-                                            
+                                            required
                                             class="form-control"
-                                            name="apellidos_conyugue"
-                                            id="apellidos_conyugue"
-                                            data-valueMissing="Ingrese el apellido de su cónyugue"
+                                            name="apellidos"
+                                            id="apellidos"
+                                            data-valueMissing="Ingrese su apellido"
                                             />
                                     </div>
         
-                                    <div class="form-group">
+                                    <div class="form-group col-lg-6">
                                         <label>Cédula:</label>
                                         <input 
-                                            
+                                            required
                                             type="number"
                                             class="form-control"
-                                            name="cedula_conyugue"
-                                            id="cedula_conyugue"
-                                            data-valueMissing="Ingrese el número de cédula de su cónyugue"
+                                            name="cedula"
+                                            id="cedula"
+                                            data-valueMissing="Ingrese su número de cédula"
                                             />
                                     </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Dirección de domicilio:</label>
-                                <input 
-                                    required
-                                    class="form-control"
-                                    name="direccion"
-                                    id="direccion"
-                                    data-valueMissing="Ingrese su dirección de domicilio"
-                                    />
-                            </div>
+        
+                                    <div class="form-group col-lg-6">
+                                        <label>Celular:</label>
+                                        <input 
+                                            required
+                                            type="number"
+                                            class="form-control"
+                                            name="celular"
+                                            id="celular"
+                                            data-valueMissing="Ingrese su número de celular"
+                                            />
+                                    </div>
+                                    <div class="col-12">
+                                        <h2>Cónyugue</h2>
+                                    </div>
+                                    <div class="form-group col-lg-12 crece-completar-datos-formulario-radio">
+                                        <label>Cónyugue:</label>
+                                        <input 
+                                            id="conyugue-si"
+                                            type="radio"
+                                            name="conyugue"
+                                            value="1"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="conyugue-si">Sí</label>
+                                        <input 
+                                            id="conyugue-no"
+                                            type="radio"
+                                            name="conyugue"
+                                            value="0"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="conyugue-no">No</label>
+                                    </div>
+        
+                                    <div class="crece-completar-datos-formulario-conyugue col-lg-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>Nombre:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="nombre_conyugue"
+                                                    id="nombre_conyugue"
+                                                    data-valueMissing="Ingrese el nombre de su cónyugue"
+                                                    />
+                                            </div>
+                
+                                            <div class="form-group col-lg-6">
+                                                <label>Apellidos:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="apellidos_conyugue"
+                                                    id="apellidos_conyugue"
+                                                    data-valueMissing="Ingrese el apellido de su cónyugue"
+                                                    />
+                                            </div>
+                
+                                            <div class="form-group col-lg-6">
+                                                <label>Cédula:</label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="cedula_conyugue"
+                                                    id="cedula_conyugue"
+                                                    data-valueMissing="Ingrese el número de cédula de su cónyugue"
+                                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <h2>Domicilio</h2>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Dirección de domicilio:</label>
+                                        <input 
+                                            required
+                                            class="form-control"
+                                            name="direccion"
+                                            id="direccion"
+                                            data-valueMissing="Ingrese su dirección de domicilio"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-6">
+                                        <label>Provincia:</label>
+                                        <input 
+                                            required
+                                            class="form-control typeahead"
+                                            name="provincia"
+                                            id="provincia"
+                                            data-valueMissing="Ingrese su provincia de residencia"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-6">
+                                        <label>Canton:</label>
+                                        <input 
+                                            required
+                                            class="form-control typeahead"
+                                            name="canton"
+                                            id="canton"
+                                            data-valueMissing="Ingrese su canton de residencia"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-6">
+                                        <label>Teléfono domicilio:</label>
+                                        <input 
+                                            required
+                                            type="number"
+                                            class="form-control"
+                                            name="telf_domicilio"
+                                            id="telf_domicilio"
+                                            data-valueMissing="Ingrese el número de teléfono de su domicilio"
+                                            />
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <h2>Fuentes de Ingresos</h2>
+                                    </div>
+                                    <div class="form-group col-lg-12 crece-completar-datos-formulario-radio">
+                                        <label>Principal fuente de ingresos:</label>
+                                        <input 
+                                            id="fuente-ingresos-relacion-dependencia"
+                                            type="radio"
+                                            name="fuente-ingresos"
+                                            value="1"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="fuente-ingresos-relacion-dependencia">Relación de dependencia</label>
+        
+                                        <input 
+                                            id="fuente-ingresos-profesional-independiente"
+                                            type="radio"
+                                            name="fuente-ingresos"
+                                            value="2"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="fuente-ingresos-profesional-independiente">Profesional independiente</label>
+        
+                                        <input 
+                                            id="fuente-ingresos-auto-empleado"
+                                            type="radio"
+                                            name="fuente-ingresos"
+                                            value="3"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="fuente-ingresos-auto-empleado">Auto empleado</label>
+        
+                                    </div>
+        
+                                    <div class="crece-completar-datos-formulario-relacion-dependencia col-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>Empresa:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="empresa_relacion_dependencia"
+                                                    id="empresa_relacion_dependencia"
+                                                    data-valueMissing="Ingrese el nombre de la empresa donde trabaja"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Cargo:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="cargo_relacion_dependencia"
+                                                    id="cargo_relacion_dependencia"
+                                                    data-valueMissing="Ingrese el cargo que desempeña en su empresa"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Años en el puesto:</label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="anios_relacion_dependencia"
+                                                    id="anios_relacion_dependencia"
+                                                    data-valueMissing="Ingrese el número de años que lleva en la empresa"
+                                                    />
+                                            </div>
 
-                            <div class="form-group">
-                                <label>Provincia:</label>
-                                <input 
-                                    required
-                                    class="form-control typeahead"
-                                    name="provincia"
-                                    id="provincia"
-                                    data-valueMissing="Ingrese su provincia de residencia"
-                                    />
-                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="crece-completar-datos-formulario-profesional-independiente col-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>RUC:</label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="ruc_profesional_independiente"
+                                                    id="ruc_profesional_independiente"
+                                                    data-valueMissing="Ingrese su RUC"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Actividad:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="actividad_profesional_independiente"
+                                                    id="actividad_profesional_independiente"
+                                                    data-valueMissing="Ingrese el nombre de su actividad"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Años en la actividad:</label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="anios_profesional_independiente"
+                                                    id="anios_profesional_independiente"
+                                                    data-valueMissing="Ingrese el número de años que ha desempeñado la actividad"
+                                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="crece-completar-datos-formulario-auto-empleado col-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>Empresa:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="empresa_auto_empleado"
+                                                    id="empresa_auto_empleado"
+                                                    data-valueMissing="Ingrese el nombre de la empresa"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>RUC:</label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="ruc_auto_empleado"
+                                                    id="ruc_auto_empleado"
+                                                    data-valueMissing="Ingrese el RUC"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Actividades:</label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="actividad_auto_empleado"
+                                                    id="actividad_auto_empleado"
+                                                    data-valueMissing="Ingrese sus actividades"
+                                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="form-group col-lg-6">
+                                        <label>Dirección:</label>
+                                        <input 
+                                            required
+                                            class="form-control"
+                                            name="direccion_empresa"
+                                            id="direccion_empresa"
+                                            data-valueMissing="Ingrese la dirección de su lugar de trabajo"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-6">
+                                        <label>Canton:</label>
+                                        <input 
+                                            required
+                                            class="form-control typeahead"
+                                            name="canton_empresa"
+                                            id="canton_empresa"
+                                            data-valueMissing="Ingrese su canton de trabajo"
+                                            />
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Ingresos aproximados:</label>
+                                        <input 
+                                            required
+                                            type="number"
+                                            class="form-control"
+                                            name="ingresos_aproximados"
+                                            id="ingresos_aproximados"
+                                            data-valueMissing="Ingrese sus ingresos aproximados"
+                                            />
+                                    </div>
 
-                            <div class="form-group">
-                                <label>Canton:</label>
-                                <input 
-                                    required
-                                    class="form-control typeahead"
-                                    name="canton"
-                                    id="canton"
-                                    data-valueMissing="Ingrese su canton de residencia"
-                                    />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Teléfono domicilio:</label>
-                                <input 
-                                    required
-                                    type="number"
-                                    class="form-control"
-                                    name="telf_domicilio"
-                                    id="telf_domicilio"
-                                    data-valueMissing="Ingrese el número de teléfono de su domicilio"
-                                    />
-                            </div>
-
-                            <div class="form-group crece-completar-datos-formulario-radio">
-                                <label>Principal fuente de ingresos:</label>
-                                <input 
-                                    id="fuente-ingresos-relacion-dependencia"
-                                    type="radio"
-                                    name="fuente-ingresos"
-                                    value="1"
-                                    >
-                                <label for="fuente-ingresos-relacion-dependencia">Relación de dependencia</label>
-
-                                <input 
-                                    id="fuente-ingresos-profesional-independiente"
-                                    type="radio"
-                                    name="fuente-ingresos"
-                                    value="2"
-                                    >
-                                <label for="fuente-ingresos-profesional-independiente">Profesional independiente</label>
-
-                                <input 
-                                    id="fuente-ingresos-auto-empleado"
-                                    type="radio"
-                                    name="fuente-ingresos"
-                                    value="3"
-                                    >
-                                <label for="fuente-ingresos-auto-empleado">Auto empleado</label>
-
-                            </div>
-
-                            <div class="crece-completar-datos-formulario-relacion-dependencia">
-                                <div class="form-group">
-                                    <label>Empresa:</label>
-                                    <input 
-                                        
-                                        class="form-control"
-                                        name="empresa_relacion_dependencia"
-                                        id="empresa_relacion_dependencia"
-                                        data-valueMissing="Ingrese el nombre de la empresa donde trabaja"
-                                        />
+                                    <div class="col-12">
+                                        <h2>Registra tu cuenta bancaria donde recibirás tus ganancias</h2>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Banco:</label>
+                                        <input 
+                                            required
+                                            class="form-control typeahead"
+                                            name="banco"
+                                            id="banco"
+                                            data-valueMissing="Ingrese el nombre de su banco"
+                                            />
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Número de cuenta:</label>
+                                        <input 
+                                            required
+                                            type="number"
+                                            class="form-control"
+                                            name="numero_cuenta"
+                                            id="numero_cuenta"
+                                            data-valueMissing="Ingrese su número de cuenta"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-12 crece-completar-datos-formulario-radio">
+                                        <label>Tipo de cuenta:</label>
+                                        <input 
+                                            id="ahorros"
+                                            type="radio"
+                                            name="tipo_cuenta"
+                                            value="0"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="ahorros">Ahorros</label>
+                                        <input 
+                                            id="corriente"
+                                            type="radio"
+                                            name="tipo_cuenta"
+                                            value="1"
+                                            >
+                                        <label class="crece-completar-datos-formulario-radio-label" for="corriente">Corriente</label>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                            <label>Foto cédula:</label>
+                                            <input 
+                                                required
+                                                type="file"
+                                                accept="image/png, image/jpeg"
+                                                class="form-control"
+                                                name="foto_cedula"
+                                                id="foto_cedula"
+                                                data-valueMissing="Suba la imagen de su cédula"
+                                                />
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <button id="guardar_respuestas"> Guardar</button>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Cargo:</label>
-                                    <input 
-                                        
-                                        class="form-control"
-                                        name="cargo_relacion_dependencia"
-                                        id="cargo_relacion_dependencia"
-                                        data-valueMissing="Ingrese el cargo que desempeña en su empresa"
-                                        />
-                                </div>
-                                <div class="form-group">
-                                    <label>Años en el puesto:</label>
-                                    <input 
-                                        
-                                        type="number"
-                                        class="form-control"
-                                        name="anios_relacion_dependencia"
-                                        id="anios_relacion_dependencia"
-                                        data-valueMissing="Ingrese el número de años que lleva en la empresa"
-                                        />
-                                </div>
-                            </div>
-
-                            <div class="crece-completar-datos-formulario-profesional-independiente">
-                                <div class="form-group">
-                                    <label>RUC:</label>
-                                    <input 
-                                        
-                                        type="number"
-                                        class="form-control"
-                                        name="ruc_profesional_independiente"
-                                        id="ruc_profesional_independiente"
-                                        data-valueMissing="Ingrese su RUC"
-                                        />
-                                </div>
-                                <div class="form-group">
-                                    <label>Actividad:</label>
-                                    <input 
-                                        
-                                        class="form-control"
-                                        name="actividad_profesional_independiente"
-                                        id="actividad_profesional_independiente"
-                                        data-valueMissing="Ingrese el nombre de su actividad"
-                                        />
-                                </div>
-                                <div class="form-group">
-                                    <label>Años en la actividad:</label>
-                                    <input 
-                                        
-                                        type="number"
-                                        class="form-control"
-                                        name="anios_profesional_independiente"
-                                        id="anios_profesional_independiente"
-                                        data-valueMissing="Ingrese el número de años que ha desempeñado la actividad"
-                                        />
-                                </div>
-                            </div>
-
-                            <div class="crece-completar-datos-formulario-auto-empleado">
-                                <div class="form-group">
-                                    <label>Empresa:</label>
-                                    <input 
-                                        
-                                        class="form-control"
-                                        name="empresa_auto_empleado"
-                                        id="empresa_auto_empleado"
-                                        data-valueMissing="Ingrese el nombre de la empresa"
-                                        />
-                                </div>
-                                <div class="form-group">
-                                    <label>RUC:</label>
-                                    <input 
-                                        
-                                        type="number"
-                                        class="form-control"
-                                        name="ruc_auto_empleado"
-                                        id="ruc_auto_empleado"
-                                        data-valueMissing="Ingrese el RUC"
-                                        />
-                                </div>
-                                <div class="form-group">
-                                    <label>Actividades:</label>
-                                    <input 
-                                        
-                                        class="form-control"
-                                        name="actividad_auto_empleado"
-                                        id="actividad_auto_empleado"
-                                        data-valueMissing="Ingrese sus actividades"
-                                        />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Dirección:</label>
-                                <input 
-                                    required
-                                    class="form-control"
-                                    name="direccion_empresa"
-                                    id="direccion_empresa"
-                                    data-valueMissing="Ingrese la dirección de su lugar de trabajo"
-                                    />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Canton:</label>
-                                <input 
-                                    required
-                                    class="form-control typeahead"
-                                    name="canton_empresa"
-                                    id="canton_empresa"
-                                    data-valueMissing="Ingrese su canton de trabajo"
-                                    />
-                            </div>
-                            <div class="form-group">
-                                <label>Ingresos aproximados:</label>
-                                <input 
-                                    required
-                                    type="number"
-                                    class="form-control"
-                                    name="ingresos_aproximados"
-                                    id="ingresos_aproximados"
-                                    data-valueMissing="Ingrese sus ingresos aproximados"
-                                    />
-                            </div>
-                            <h2>Registra tu cuenta bancaria donde recibirás tus ganancias</h2>
-                            <div class="form-group">
-                                <label>Banco:</label>
-                                <input 
-                                    required
-                                    class="form-control typeahead"
-                                    name="banco"
-                                    id="banco"
-                                    data-valueMissing="Ingrese el nombre de su banco"
-                                    />
-                            </div>
-                            <div class="form-group">
-                                <label>Número de cuenta:</label>
-                                <input 
-                                    required
-                                    type="number"
-                                    class="form-control"
-                                    name="numero_cuenta"
-                                    id="numero_cuenta"
-                                    data-valueMissing="Ingrese su número de cuenta"
-                                    />
-                            </div>
-
-                            <div class="form-group crece-completar-datos-formulario-radio">
-                                <label>Tipo de cuenta:</label>
-                                <input 
-                                    id="ahorros"
-                                    type="radio"
-                                    name="tipo_cuenta"
-                                    value="0"
-                                    >
-                                <label for="ahorros">Ahorros</label>
-                                <input 
-                                    id="corriente"
-                                    type="radio"
-                                    name="tipo_cuenta"
-                                    value="1"
-                                    >
-                                <label for="corriente">Corriente</label>
-                            </div>
-                            <div class="form-group">
-                                    <label>Foto cédula:</label>
-                                    <input 
-                                        required
-                                        type="file"
-                                        accept="image/png, image/jpeg"
-                                        class="form-control"
-                                        name="foto_cedula"
-                                        id="foto_cedula"
-                                        data-valueMissing="Suba la imagen de su cédula"
-                                        />
-                                </div>
-
-                            <button id="guardar_respuestas"> Guardar</button>
-    
-                        </form>
+                            </form>
+                        </div>
                     </div>
+                </section>
 
                 {% endblock content %}
       

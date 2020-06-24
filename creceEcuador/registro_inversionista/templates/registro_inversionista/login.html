@@ -1,36 +1,47 @@
-{% extends 'registro_inversionista/base.html' %}
+{% extends 'template_base.html' %}
 {% load static %}
 
 {% block head_css_agregado %}
-            <link href="{% static 'registro_inversionista/login.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'registro_inversionista/css/login.css' %}" rel="stylesheet" type="text/css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         {% endblock head_css_agregado %}
 {% block content %}
   <main id="main-id">
     <div class="container">
             <!--Formulario para Login-->
-            <div class="row">
+            <div class="row justify-content-center">
+              <div class="col-lg-5 col-md-8 col-11 crece-login-container">
+                <div class="row justify-content-center crece-login-container-form-wrapper">
+                  <div class="col-12 crece-login-container-form-wrapper-titulo">
+                    <h2>Iniciar Sesión</h2>
+                  </div>
+                  <div class="col-lg-9 crece-login-container-form-wrapper-usuario">
+                    <input type="text" name="" id="id_username" placeholder="Usuario">
+                    
+                  </div>
+                  <div class="col-lg-9 crece-login-container-form-wrapper-pass">
+                    <input type="password" name="" id="id_password" placeholder="Contraseña">
+                  </div>
+                  <div class="col-lg-9 crece-login-container-form-wrapper-error">
+                    <label id="label_error">
 
+                    </label>
+                  </div>
+                  <div class="col-lg-8 crece-login-container-form-wrapper-boton-ingresar">
 
-                    <div>
-                      Username
-                      <input type="text" name="" id="id_username">
-                      
-                    </div>
-                    <div>
-                      Password
-                      <input type="password" name="" id="id_password">
-                    </div>
-                    <div>
+                    <button onclick="login()">Ingresar</button>
 
-                      <button onclick="login()"><strong>Ingresar</strong></button>
-
-                    </div>
-
-
+                  </div>
+                  <div class="col-12 crece-login-container-form-wrapper-texto">
+                    <p>
+                      ¿No tienes cuenta? <a href="/inversionista/registro/">Regístrate</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!--Tipos de ingreso-->
+            <!--Tipos de ingreso
             <div class="row">
                 <div class="tipos-ingresos">
                   <div>
@@ -39,7 +50,7 @@
                     <a href="#"><img src="{% static 'registro_inversionista/assets/twitter-ingreso.png' %}"></a>
                   </div>
                 </div>
-            </div>
+            </div>-->
 
 
     </div>

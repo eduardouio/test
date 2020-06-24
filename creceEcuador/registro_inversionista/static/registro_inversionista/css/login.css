@@ -1,0 +1,111 @@
+main{
+	background-color: #E9EBEE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.crece-login-container-form-wrapper{
+    
+}
+
+.crece-login-container-form-wrapper-titulo h2{
+    font-size: 26px;
+    color: #006B8D;
+    font-weight: 700;
+    text-align: center;
+    padding: 30px 0px;
+    margin: 0px;
+}
+
+.crece-login-container{
+    background-color: white;
+    border: 1px solid #DEDEDE;
+    margin: 100px 0px;
+}
+
+.crece-login-container-form-wrapper input{
+    width: 100%;
+    margin-bottom: 17px;
+    font-size: 14px;
+    padding: 8px 5px;
+}
+
+.crece-login-container-form-wrapper-texto p{
+    color: #006B8D;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.crece-login-container-form-wrapper-texto p > a {
+    color: #006B8D;
+    text-decoration-line: underline;
+}
+
+button{
+    margin-right: auto;
+	margin-left: auto;
+	display: block;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 30px;
+    
+    background: #006B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #006B8D;
+    color: white;
+    font-size: 18px;
+
+    margin-top: 3px;
+}
+
+.crece-login-container-form-wrapper-error{
+    display: none;
+}
+
+.crece-login-container-form-wrapper-error label{
+    color: #e03e46;
+    font-size: 12px;
+}
+
+ul.errorlist {
+    margin: 0;
+    padding: 0;
+}
+.errorlist li {
+    border: 1px solid red;
+    color: red;
+    background: rgba(255, 0, 0, 0.15);
+    list-style-position: inside;
+    display: block;
+    font-size: 1.2em;
+    margin: 0 0 3px;
+    padding: 4px 5px;
+    text-align: center;    
+    border-radius: 3px;
+}
+
+label.required::after {
+    content: "*";
+}
+
+
+/*Tipos de ingresos como Facebook*/
+.tipos-ingresos{
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    display: block;
+}
+
+
+.tipos-ingresos img:first-child{
+	margin-right: 23.24px;
+}
+
+.tipos-ingresos img:last-child{
+	margin-left: 23.24px;
+}
+

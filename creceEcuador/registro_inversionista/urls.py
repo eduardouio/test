@@ -17,11 +17,11 @@ urlpatterns = [
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('register_inversionista/', views.RegisterUsers.as_view(), name="inversionista_register"),
-    path('register/', views.SignupView, name="register"),
+    path('registro/', views.SignupView, name="registro"),
     url(r'^confirmar_email/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.confirmar_email, name='confirmar_email'),
     url(r'fase1/', views.Proceso_formulario_inversion.as_view(), name="formulario-inversion"),
-    path('login_inversionista/', views.Login_Users.as_view(), name="inversionista_login"),
+    path('login/', views.Login_Users.as_view(), name="inversionista_login"),
     path('dashboard/', views.Dashboard, name='dashboard'),
    
 

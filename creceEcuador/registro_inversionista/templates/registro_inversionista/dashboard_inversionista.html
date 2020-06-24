@@ -1,30 +1,27 @@
+{% extends 'template_base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset="utf-8">
-    <title>Crece Ecuador</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="icon" href="{% static 'assets/Logo_crece_pie.png' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="{% static 'registro_inversionista/dashboard.css' %}" rel="stylesheet" type="text/css">
-    {% block head_css_agregado %}{% endblock head_css_agregado %}
-  </head>
+{% block head_css_agregado %}
+  <link href="{% static 'registro_inversionista/dashboard.css' %}" rel="stylesheet" type="text/css">
+{% endblock head_css_agregado %}
+{% block content %}
   <body>
-
-
-    <div class="crece-botones" id="botones">
-      <div class="col-lg-6">
-
-                      <button><strong>Solicitante</strong></button>
-                  </div>
-                  <div class="col-lg-6">
-                     <button id="myButton" onClick="mostrar_inversionista()"><strong>Inversionista</strong></button>
+    <div class="crece-dashboard-botones" id="botones">
+      <div class="row justify-content-center">
+        <div class="col-xl-4 col-lg-5 col-md-8 col-10 crece-dashboard-botones-wrapper">
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <h2>
+                  ¿De qué forma deseas ingresar?
+                </h2>
+              </div>
+              <div class="col-12 col-md-6">
+                <button>Solicitante</button>
+              </div>
+              <div class="col-12 col-md-6">
+                <button id="myButton" onClick="mostrar_inversionista()">Inversionista</button>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
 
@@ -32,8 +29,8 @@
     <div class="dashboard" id="dashboard">
         <section class='crece-dashboard-sidenav' id="secion-nav">
           <div class='crece-usuario'>
-            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-            <div class="usuario-nombre" id='nombre-usuario'>
+            <i class="crece-usuario-imagen fa fa-user-circle-o" aria-hidden="true"></i>
+            <div class="crece-usuario-nombre" id='nombre-usuario'>
               {{ usuario.nombres }} {{usuario.apellidos}}
             </div>
           </div>
@@ -63,10 +60,9 @@
 
         </header>
     </div>
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="{% static 'registro_inversionista/scripts.js' %}" ></script>
   </body>
-</html>
+{% endblock content %}
+
+{% block footer_javascript_agregado %}
+<script type="text/javascript" src="{% static 'registro_inversionista/scripts.js' %}" ></script>
+{% endblock footer_javascript_agregado %}

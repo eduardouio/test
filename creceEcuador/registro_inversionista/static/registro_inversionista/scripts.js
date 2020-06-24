@@ -61,14 +61,12 @@ function login(argument) {
         }else if(this.status == 401 && this.readyState == 4){
             console.log(this)
 
-            let main = document.getElementById("main-id")
-            let mensaje = document.createElement("p")
-            mensaje.innerHTML = "Usuario incorrecto o contraseña incorrectos"
-
-            main.appendChild(mensaje)
+            let label_error = document.getElementById("label_error")
+            label_error.innerHTML = "Usuario o contraseña incorrectos"
+            $(".crece-login-container-form-wrapper-error").show()
         }
     };
-    xhttp.open("POST", "/inversionista/login_inversionista/", true);
+    xhttp.open("POST", "/inversionista/login/", true);
     xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
     xhttp.send(JSON.stringify({
                                 "username": usuario,
@@ -88,6 +86,9 @@ function mostrar_inversionista(argument) {
     let dashboard = document.getElementById("dashboard")
 
     dashboard.style.display = 'block'
+
+    $("header").hide();
+    $("footer").hide()
 }
 
 
