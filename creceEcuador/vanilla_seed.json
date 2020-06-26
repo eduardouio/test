@@ -1566,5 +1566,140 @@
       "fields": {
             "nombre": "EL PIEDRERO"
       }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 1,
+      "fields": {
+            "texto": "¿En cuánto tiempo esperas recuperar tus inversiones?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 101,
+      "fields": {
+            "texto": "3 a 6 meses"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 102,
+      "fields": {
+            "texto": "6 a 12 meses"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 103,
+      "fields": {
+            "texto": "m\u00e1s de 12 meses"
+      }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 2,
+      "fields": {
+            "texto": "¿Cuánto esperas invertir a través de CRECE?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 201,
+      "fields": {
+            "texto": "500 a 1000"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 202,
+      "fields": {
+            "texto": "1000 a 3000"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 203,
+      "fields": {
+            "texto": "3000 a 5000"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 204,
+      "fields": {
+            "texto": "m\u00e1s de 5000"
+      }
+},
+
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 3,
+      "fields": {
+            "texto": "¿Qué nivel de riesgo se ajusta a tu perfil?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 301,
+      "fields": {
+            "texto": "Bajo"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 302,
+      "fields": {
+            "texto": "Medio"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 303,
+      "fields": {
+            "texto": "Altisimo"
+      }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 4,
+      "fields": {
+            "texto": "¿Cómo conociste a CRECE?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 401,
+      "fields": {
+            "texto": "Familiar o amigo"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 402,
+      "fields": {
+            "texto": "Charla o conferencia"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 403,
+      "fields": {
+            "texto": "Redes sociales"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 404,
+      "fields": {
+            "texto": "Buscando en Google"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 405,
+      "fields": {
+            "texto": "Volante"
+      }
 }
+
 ]

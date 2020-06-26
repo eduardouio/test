@@ -1,7 +1,8 @@
 """"Modulo para crear modelos de la DB"""
 from django.db import models
 from django.conf import settings
-
+import json
+import jwt
 
 class Conyuge(models.Model):
     nombres = models.CharField(max_length=100)
@@ -122,7 +123,18 @@ class Usuario(models.Model):
     def __str__ (self):
         return self.nombres + " " + self.apellidos + ", " + self.cedula
 
+    @staticmethod
+    def get_usuario(request):
+        token_dic = request.COOKIES.get('auth_token')
 
+        token = json.loads(token_dic)
+
+        token_access = token.get('access')
+        token_refresh = token.get('refresh')
+        headers = {"Authorization": "Bearer "+token_access}
+        decodedPayload = jwt.decode(token_access,None,None)
+        usuario = Usuario.objects.filter(user=decodedPayload["user_id"])[0]
+        return usuario
 
 class Pregunta(models.Model):
     texto = models.CharField(max_length=50)

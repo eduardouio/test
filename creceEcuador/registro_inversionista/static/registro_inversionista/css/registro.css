@@ -1,0 +1,77 @@
+main{
+	background-color: #E9EBEE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.crece-registro-exitoso{
+    display: none;
+}
+
+.crece-registro-container{
+    color: #006B8D;
+    background-color: white;
+    border: 1px solid #DEDEDE;
+    margin: 50px 0px;
+}
+
+.crece-registro-container-tipos-ingreso-wrapper{
+    text-align: center;
+}
+
+.crece-registro-form-wrapper{
+    margin-bottom: 1rem;
+}
+
+
+
+.crece-registro-container-form-wrapper{
+    margin-top: 0.5rem;
+}
+
+.crece-registro-form-label{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.crece-registro-form-input-tipo-persona{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+#crece-registrarse{
+    opacity: 0.5;
+    margin-bottom:10px;
+}
+
+.crece-registro-container-form-wrapper-error label{
+    color: #e03e46;
+    font-size: 12px;
+}
+
+button{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 30px;
+    
+    background: #006B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #006B8D;
+    color: white;
+    font-size: 18px;
+
+    margin-top: 3px;
+}
+
+
+
+.crece-span-acuerdos-contratos:hover{
+    cursor: pointer;
+}
+

@@ -25,6 +25,20 @@ class BancoSerializer(serializers.ModelSerializer):
         model = models.Banco
         fields = '__all__'
 
+class CantonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Canton
+        fields = ('nombre',)
+
+class PreguntaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Pregunta
+        fields = ('texto',)
+
+class RespuestaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Respuesta
+        fields =  '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
     """Clase para serializar al modelo User dado por DJANGO"""

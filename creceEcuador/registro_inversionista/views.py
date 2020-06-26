@@ -3,7 +3,7 @@ from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 from rest_framework.decorators import api_view
@@ -18,6 +18,7 @@ from manager_archivos.serializers import TransferenciaInversionArchivoSerializer
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
+from django.views.decorators.http import require_http_methods
 
 
 
@@ -25,7 +26,6 @@ from . import models
 from . import serializers
 
 #confirmacion de email
-from django.http import HttpResponse
 from .forms import SignupForm, Encuesta_form, Login_form
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -35,13 +35,17 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 
 import json
-import jwt
+import io
+import datetime
+from .creacion_contrato import hacer_contrato_uso_sitio, current_date_format
+from reportlab.platypus import SimpleDocTemplate
+from reportlab.lib.pagesizes import letter
 
 # Get the JWT settings, add these lines after the import/from lines
 # from rest_framework_jwt.settings import api_settings
 # jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 # jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-
+# PROTOCOLO = "http://"
 
 class UsuariosViewSet(viewsets.ModelViewSet):
     """API endpoint that allows users to be viewed or edited."""
@@ -49,6 +53,29 @@ class UsuariosViewSet(viewsets.ModelViewSet):
     queryset = models.Usuario.objects.all()
     serializer_class = serializers.UsuarioSerializer
 
+class CantonViewSet(viewsets.ModelViewSet):
+    """API endpoint that allows cantones to be viewed or edited."""
+    #permission_classes =[permissions.IsAuthenticated]
+    queryset = models.Canton.objects.all()
+    serializer_class = serializers.CantonSerializer
+
+class PreguntaViewSet(viewsets.ModelViewSet):
+    """API endpoint that allows cantones to be viewed or edited."""
+    #permission_classes =[permissions.IsAuthenticated]
+    queryset = models.Pregunta.objects.all()
+    serializer_class = serializers.PreguntaSerializer
+
+class RespuestaViewSet(viewsets.ModelViewSet):
+    """API endpoint that allows cantones to be viewed or edited."""
+    #permission_classes =[permissions.IsAuthenticated]
+    queryset = models.Respuesta.objects.all()
+    serializer_class = serializers.RespuestaSerializer
+
+class EncuestaViewSet(viewsets.ModelViewSet):
+    """API endpoint that allows users to be viewed or edited."""
+    # permission_classes =[permissions.IsAuthenticated]
+    queryset = models.Encuesta.objects.all()
+    serializer_class = serializers.EncuestaSerializer
 
 @api_view(['GET'])
 def get_usuario(request, username):
@@ -84,6 +111,8 @@ class Bancos_list(generics.ListAPIView):
     serializer_class = serializers.BancoSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+
+
 class RegisterUsers(generics.CreateAPIView):
     """
     inversionista/register/
@@ -93,106 +122,106 @@ class RegisterUsers(generics.CreateAPIView):
     serializer_class = serializers.UsuarioSerializer
 
     def post(self, request, *args, **kwargs):
-        queryset = User.objects.all()
-    permission_classes = [permissions.AllowAny]
-    serializer_class = serializers.UsuarioSerializer
-
-    def post(self, request, *args, **kwargs):
         usuario = request.data.get("usuario", "")
         password = request.data.get("password", "")
         email = request.data.get("email", "")
-        nombres = request.data.get("nombres")
-        apellidos = request.data.get("apellidos")
+        nombres = request.data.get("nombres").title()
+        apellidos = request.data.get("apellidos").title()
         celular = request.data.get("celular")
         tipo_persona = request.data.get("tipo_persona")
+        nombre_canton = request.data.get("canton")
+        cedula = request.data.get("cedula")
 
+        encuesta = request.data.get("encuesta")
 
-        new_user = User( username=usuario, password=password, 
-                            email=email, first_name=nombres, last_name=apellidos,
-                        )
-        new_user.set_password(password)
-        new_user.is_active = False
-        new_user.save()
+        preguntas = encuesta.get("preguntas")
+        respuestas = encuesta.get("respuestas")
 
-        new_usuario = models.Usuario(usuario=usuario, nombres=nombres, apellidos=apellidos, 
-                                        email=email, celular=celular, tipo_persona=tipo_persona, user=new_user)
-        new_usuario.save()
-        current_site = get_current_site(request)
-        mail_subject = 'Activa tu cuenta de Crece Ecuador'
-        message = render_to_string('registro_inversionista/acc_active_email.html', {
-            'usuario': new_usuario,
-            'domain': current_site.domain,
-            'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
-            'token':account_activation_token.make_token(new_user),
-        })
-        to_email = email
-        email = EmailMessage(
-                    mail_subject, message, to=[to_email]
-        )
-        email.send()
+        date = datetime.datetime.now()
 
+        canton = models.Canton.objects.get(nombre=nombre_canton)
 
-        return Response(status=status.HTTP_200_OK)
+        if User.objects.filter(username=usuario).exists():
+            data_response = {
+                                "mensaje": "Usuario "+ usuario +" ya existe"
+                            }
 
-    #     form = SignupForm(request.POST)
-    #     if form.is_valid():
+            return Response(data_response, status=status.HTTP_400_BAD_REQUEST)
+        elif models.Usuario.objects.filter(email= email):
+            data_response = {
+                                "mensaje": "Email "+ email +" ya existe"
+                            }
 
-    #         signup(request, form)
-    #         usuario = request.data.get("usuario", "")
-    #         password = request.data.get("password", "")
-    #         email = request.data.get("email", "")
-    #         nombres = request.data.get("nombres")
-    #         apellidos = request.data.get("apellidos")
-    #         celular = request.data.get("celular")
-    #         tipo_persona = request.data.get("tipo_persona")
-    #         new_user = User.objects.filter(username=usuario)[0]
-    #         models.Usuario.objects.create(usuario=usuario, nombres=nombres, apellidos=apellidos, email=email, celular=celular, tipo_persona=tipo_persona, user=new_user)
-    #         return HttpResponseRedirect('?submitted=True')
-    #     submitted = False
-    #     encuesta_form = Encuesta_form()
-    #     return render(request, 'registro_inversionista/signup.html', {'form': form, 'encuesta_form': encuesta_form, 'submitted': submitted})
+            return Response(data_response, status=status.HTTP_400_BAD_REQUEST)
 
-    # def get(self, request, *args, **kwargs):
-    #     submitted = False
-    #     form = SignupForm()
-    #     encuesta_form = Encuesta_form()
-    #     if 'submitted' in request.GET:
-    #         submitted = True
-    #     return render(request, 'registro_inversionista/signup.html', {'form': form, 'encuesta_form': encuesta_form, 'submitted': submitted})
+        else:
 
+            new_user = User( username=usuario, password=password, 
+                                email=email, first_name=nombres, last_name=apellidos,
+                            )
+            new_user.set_password(password)
+            new_user.is_active = False
+            new_user.save()
 
-class EncuestaViewSet(viewsets.ModelViewSet):
-    """API endpoint that allows users to be viewed or edited."""
-    permission_classes =[permissions.IsAuthenticated]
-    queryset = models.Encuesta.objects.all()
-    serializer_class = serializers.EncuestaSerializer
+            new_usuario = models.Usuario(usuario=usuario, nombres=nombres, apellidos=apellidos, 
+                                            email=email, celular=celular, tipo_persona=tipo_persona, 
+                                            canton=canton, cedula=cedula, user=new_user)
+            new_usuario.save()
+
+            #guardando encuesta
+            for i in range(len(preguntas)):
+                pregunta = models.Pregunta.objects.filter(texto=preguntas[i])[0]
+                respuesta = models.Respuesta.objects.filter(texto=respuestas[i])[0]
+                encuesta = models.Encuesta(id_pregunta= pregunta, id_respuesta=respuesta, id_usuario=new_usuario, fecha=date)
+                encuesta.save()
+
+            current_site = get_current_site(request)
+            mail_subject = 'Activa tu cuenta de Crece Ecuador'
+            message = render_to_string('registro_inversionista/acc_active_email.html', {
+                'usuario': new_usuario,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
+                'token':account_activation_token.make_token(new_user),
+            })
+            to_email = email
+            email = EmailMessage(
+                        mail_subject, message, to=[to_email]
+            )
+            email.send()
+            data_response = {
+                                "mensaje": "Gracias por registrarse "+nombres+" "+apellidos+". Por favor confirme su email"
+                            }
+
+            return Response(data_response, status=status.HTTP_200_OK)
+    def get(self, request, *args, **kwargs):
+        return render(request, 'registro_inversionista/registro.html')
 
     
-def SignupView(request):
-    submitted = False
-    encuesta_form = Encuesta_form()
-    if request.method == 'POST':
+# def SignupView(request):
+#     submitted = False
+#     encuesta_form = Encuesta_form()
+#     if request.method == 'POST':
 
-        form = SignupForm(request.POST)
+#         form = SignupForm(request.POST)
 
-        if form.is_valid():
+#         if form.is_valid():
 
-            cd = form.cleaned_data
+#             cd = form.cleaned_data
 
-            r = requests.post(request.headers['Origin']+'/inversionista/register_inversionista/', 
-                                  data = {'usuario':cd.get('usuario'), 'password': cd.get('password'),
-                                            'email':cd.get('email'),'nombres':cd.get('nombres'),
-                                            'apellidos':cd.get('apellidos'), 'celular':cd.get('celular'),
-                                            'tipo_persona':cd.get('tipo_persona')})
-            return HttpResponseRedirect('?submitted=True')
+#             r = requests.post(request.headers['Origin']+'/inversionista/register_inversionista/', 
+#                                   data = {'usuario':cd.get('usuario'), 'password': cd.get('password'),
+#                                             'email':cd.get('email'),'nombres':cd.get('nombres'),
+#                                             'apellidos':cd.get('apellidos'), 'celular':cd.get('celular'),
+#                                             'tipo_persona':cd.get('tipo_persona')})
+#             return HttpResponseRedirect('?submitted=True')
             
-    else:
-        encuesta_form = Encuesta_form()
-        form = SignupForm()
-        if 'submitted' in request.GET:
-             submitted = True
+#     else:
+#         encuesta_form = Encuesta_form()
+#         form = SignupForm()
+#         if 'submitted' in request.GET:
+#              submitted = True
  
-    return render(request, 'registro_inversionista/signup.html', {'form': form, 'submitted': submitted, 'encuesta_form': encuesta_form})
+#     return render(request, 'registro_inversionista/signup.html', {'form': form, 'submitted': submitted, 'encuesta_form': encuesta_form})
 
 
 
@@ -211,14 +240,6 @@ def confirmar_email(request, uidb64, token):
 
         username = user.username
 
-        # r = requests.post('http://localhost:8000/inversionista/login_inversionista/', 
-        #                          data = {'username': username, 'password': password})        
-        # return render(request, 'http://127.0.0.1:8000/inversionista/dashboard/', 
-        #                             {'user': user.username})
-        #login(request, user)
-        # return redirect('/')
-
-        #return HttpResponse('Su usuario ha sido confirmado con!')
         return redirect('/inversionista/login/')
     else:
         return HttpResponse('Link de activación inválido!')
@@ -310,7 +331,6 @@ class Login_Users(generics.CreateAPIView):
         password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            print(request.headers)
             r = requests.post(request.headers['Origin']+'/api/token/', data = {'username':username, 'password': password})
             dic_tokens = r.json()
 
@@ -407,21 +427,8 @@ class SubirTransferenciaView(APIView):
 
 @login_required
 def Dashboard(request):
-    
-
-    if request.user.is_authenticated:
-        token_dic = request.COOKIES.get('auth_token')
-
-        token = json.loads(token_dic)
-
-        token_access = token.get('access')
-        token_refresh = token.get('refresh')
-        headers = {"Authorization": "Bearer "+token_access}
-        decodedPayload = jwt.decode(token_access,None,None)
-
-        usuario = models.Usuario.objects.filter(user=request.user.id)[0]
-
-        return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
+    usuario = models.Usuario.get_usuario(request)
+    return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
 
 
         
@@ -465,3 +472,51 @@ def completar_datos_financieros_view(request):
 def subir_transferencia_view(request):
     if request.method == 'GET': 
         return render(request, 'registro_inversionista/subir_transferencia.html')
+
+
+def aceptar_condiciones_view(request):
+    if request.method == 'GET':
+        return render(request, 'registro_inversionista/aceptar_condiciones.html')
+
+
+
+
+
+@require_http_methods(["GET"])
+def pdf_view_terminos_legales(request):
+    try:
+        return FileResponse(open('creceEcuador/static/assets/terminos_legales.pdf', 'rb'),as_attachment=True, content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
+
+@require_http_methods(["GET"])
+def pdf_view_privacidad_proteccion_datos(request):
+    try:
+        return FileResponse(open('creceEcuador/static/assets/privacidad_proteccion_datos.pdf', 'rb'),as_attachment=True,  content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
+
+
+class pdf_acuerdo_uso_sitio(generics.CreateAPIView):
+
+    #permission_classes =[permissions.IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        nombres = request.data.get('nombres').title()
+        apellidos = request.data.get('apellidos').title(    )
+        cedula = request.data.get('cedula')
+        usuario = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
+        date = datetime.datetime.now()
+        fecha = current_date_format(date)
+        buffer = io.BytesIO()
+
+
+        doc = SimpleDocTemplate(buffer,pagesize=letter,
+                        rightMargin=72,leftMargin=72,
+                        topMargin=72,bottomMargin=18)
+        hacer_contrato_uso_sitio(doc, usuario, fecha, date)
+
+        buffer.seek(0)
+        return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+    
+
