@@ -173,7 +173,8 @@ function stringSolicitud(oportunidad){
   '                                            <div class="col-12">'+
   '                                                <div class="crece-oportunidades-contenido">'+
   '                                                    <div class="col-12 crece-oportunidades-contenido-monto">'+
-  '                                                        <div class="col-12 crece-oportunidades-contenido-monto-texto">'+
+  '                                                      <div class="row justify-content-center">'+
+  '                                                        <div class="col-9 crece-oportunidades-contenido-monto-texto">'+
   '                                                            <p>'+
   '                                                                <strong>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</strong><br>'+
   '                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+' ('+oportunidad.porcentaje_financiado+'%) recolectados'+
@@ -181,11 +182,16 @@ function stringSolicitud(oportunidad){
   '                                                            '+
   '                                                            <span></span>'+
   '                                                        </div>'+
+  '                                                        <div class="col-3 crece-oportunidades-contenido-monto-img-wrapper">'+
+  '                                                             <img compartir="'+rutaDetalleSolicitud(oportunidad.id)+'" src="/static/assets/compartir.png" role="button" onclick="copyToClipboard(this)" alt="Compartir" width="20" height="20">'+
+  '                                                            <span class="crece-oportunidades-contenido-monto-img-wrapper-link">'+rutaDetalleSolicitud(oportunidad.id)+'</span>'+
+  '                                                        </div>'+
   '                                                        <div class="col-12 crece-oportunidades-contenido-monto-barra">'+
   '                                                            <div style="width:'+oportunidad.porcentaje_financiado+'%;" class="crece-oportunidades-contenido-monto-barra-progreso">'+
   '            '+
   '                                                            </div>'+
   '                                                        </div>'+
+  '                                                       </div>'+
   '                                                    </div>'+
   '        '+
   '                                                    <div class="col-12 crece-oportunidades-contenido-informacion">'+
@@ -648,3 +654,19 @@ function calcularPorcentajeFinanciadoFloat(monto, porcentaje_financiado){
   return total_financiado;
 }
 
+function copyToClipboard(element) {
+  let host = "";
+  if(document.location.port){
+    host = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
+  }
+  else{
+    host = window.location.protocol + "//" + window.location.hostname
+  }
+  const link = host + element.getAttribute('compartir');
+  console.log(window.location.port)
+  navigator.clipboard.writeText(link).then(() => {
+    alert(`Link a Solicitud copiado en tu portapapeles.`);
+  }, () => {
+    alert(`El link no se pudo copiar automaticamente. Obtenlo de esta alerta: `+ link);
+  })
+}

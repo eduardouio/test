@@ -62,6 +62,24 @@
   margin-top: 10px;
 }
 
+.crece-oportunidades-contenido-monto > div {
+  padding: 0px 15px;
+}
+
+.crece-oportunidades-contenido-monto-img-wrapper img {
+  float: right;
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+.crece-oportunidades-contenido-monto-img-wrapper {
+  padding: 0px;
+}
+
+.crece-oportunidades-contenido-monto-img-wrapper span {
+  display: none;
+}
+
 .crece-oportunidades-contenido-monto p{
   font-size: 14px;
   font-weight: 300;
