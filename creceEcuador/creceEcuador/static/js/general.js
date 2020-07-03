@@ -271,8 +271,9 @@ function stringSolicitud(oportunidad){
   '                                                            <span></span>'+
   '                                                        </div>'+
   '                                                        <div class="col-3 crece-oportunidades-contenido-monto-img-wrapper">'+
-  '                                                             <img compartir="'+rutaDetalleSolicitud(oportunidad.id)+'" src="/static/assets/compartir.png" role="button" onclick="copyToClipboard(this)" alt="Compartir" width="20" height="20">'+
-  '                                                            <span class="crece-oportunidades-contenido-monto-img-wrapper-link">'+rutaDetalleSolicitud(oportunidad.id)+'</span>'+
+  '                                                             <button class="copyButton" data-toggle="tooltip" data-placement="bottom" data-trigger="click" delay: { "show": 0, "hide": 100 } data-clipboard-text="'+rutaDetalleSolicitud(oportunidad.id)+'" alt="Compartir" width="20" height="20">'+
+  '                                                                 <img src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
+  '                                                             </button>'+
   '                                                        </div>'+
   '                                                        <div class="col-12 crece-oportunidades-contenido-monto-barra">'+
   '                                                            <div style="width:'+oportunidad.porcentaje_financiado+'%;" class="crece-oportunidades-contenido-monto-barra-progreso">'+
@@ -751,20 +752,3 @@ function calcularPorcentajeFinanciadoFloat(monto, porcentaje_financiado){
   return total_financiado;
 }
 
-
-function copyToClipboard(element) {
-  var host = "";
-  if(document.location.port){
-    host = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
-  }
-  else{
-    host = window.location.protocol + "//" + window.location.hostname
-  }
-  const link = host + element.getAttribute('compartir');
-  console.log(window.location.port)
-  navigator.clipboard.writeText(link).then(() => {
-    alert(`Link a Solicitud copiado en tu portapapeles.`);
-  }, () => {
-    alert(`El link no se pudo copiar automaticamente. Obtenlo de esta alerta: `+ link);
-  })
-}

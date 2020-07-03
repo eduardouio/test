@@ -104,6 +104,24 @@ footer{
   overflow-x: hidden;
 }
 
+.tooltip-inner {
+  background-color: #006B8D;
+  color: white;
+}
+
+.bs-tooltip-auto[x-placement^=bottom], .bs-tooltip-bottom {
+  padding: .2rem 0 !important;
+}
+
+.bs-tooltip-auto[x-placement^=top] .arrow::before, .bs-tooltip-top .arrow::before {
+  border-top-color: #006B8D;
+}
+
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .bs-tooltip-bottom .arrow::before {
+  bottom: .2rem;
+  border-bottom-color: #006B8D;
+}
+
 
 /*Footer*/
 .crece-footer-contenido-enlaces a{

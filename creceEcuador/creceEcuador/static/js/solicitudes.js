@@ -7,6 +7,9 @@ $( document ).ready(function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
 
+
+
+
 $(".crece-oportunidades-siguiente").click( function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
@@ -159,7 +162,7 @@ function stringSolicitud(oportunidad){
     var tarjeta_oportunidad = '<div class="col-xl-4 col-lg-6 col-12">'+
   '                                    <div class="row justify-content-center">'+
   '                                        <div class="crece-oportunidades-contenedor">'+
-  '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' /'+oportunidad.imagen_url+ '\');">'+
+  '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
   '                                                <div class="crece-oportunidades-imagen-gradiente">'+
   '                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
   '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
@@ -183,7 +186,9 @@ function stringSolicitud(oportunidad){
   '                                                            <span></span>'+
   '                                                        </div>'+
   '                                                        <div class="col-3 crece-oportunidades-contenido-monto-img-wrapper">'+
-  '                                                             <img compartir="'+rutaDetalleSolicitud(oportunidad.id)+'" src="/static/assets/compartir.png" role="button" onclick="copyToClipboard(this)" alt="Compartir" width="20" height="20">'+
+  '                                                             <button class="copyButton" data-toggle="tooltip" data-placement="bottom" data-trigger="click" delay: { "show": 0, "hide": 100 } data-clipboard-text="'+rutaDetalleSolicitud(oportunidad.id)+'" alt="Compartir" width="20" height="20">'+
+  '                                                                 <img src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
+  '                                                             </button>'+
   '                                                            <span class="crece-oportunidades-contenido-monto-img-wrapper-link">'+rutaDetalleSolicitud(oportunidad.id)+'</span>'+
   '                                                        </div>'+
   '                                                        <div class="col-12 crece-oportunidades-contenido-monto-barra">'+
@@ -652,21 +657,4 @@ function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
 function calcularPorcentajeFinanciadoFloat(monto, porcentaje_financiado){
   total_financiado = parseFloat(monto)*(parseFloat(porcentaje_financiado)/100);
   return total_financiado;
-}
-
-function copyToClipboard(element) {
-  let host = "";
-  if(document.location.port){
-    host = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
-  }
-  else{
-    host = window.location.protocol + "//" + window.location.hostname
-  }
-  const link = host + element.getAttribute('compartir');
-  console.log(window.location.port)
-  navigator.clipboard.writeText(link).then(() => {
-    alert(`Link a Solicitud copiado en tu portapapeles.`);
-  }, () => {
-    alert(`El link no se pudo copiar automaticamente. Obtenlo de esta alerta: `+ link);
-  })
 }

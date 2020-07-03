@@ -260,7 +260,15 @@ ul li{
 .crece-oportunidades-contenido-monto-img-wrapper img {
   float: right;
   padding: 0px;
-  margin: 5px 0px;
+  margin: 1px 0px;
+}
+
+.copyButton {
+  background-color: white;
+  border-color: white;
+  border-width: 0px;
+  border-style: none;
+  float: right;
 }
 
 .crece-oportunidades-contenido-monto-img-wrapper {

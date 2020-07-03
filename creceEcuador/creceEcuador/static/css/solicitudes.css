@@ -69,7 +69,7 @@
 .crece-oportunidades-contenido-monto-img-wrapper img {
   float: right;
   padding: 0px;
-  margin: 5px 0px;
+  margin: 1px 0px;
 }
 
 .crece-oportunidades-contenido-monto-img-wrapper {
@@ -109,6 +109,14 @@
   height: 100%;
   background-color: #006B8D;
   border-radius: 3px 0px 0px 3px;
+}
+
+.copyButton {
+  background-color: white;
+  border-color: white;
+  border-width: 0px;
+  border-style: none;
+  float: right;
 }
 
 .crece-oportunidades-contenido-informacion{
