@@ -262,7 +262,7 @@ function stringSolicitud(oportunidad){
   '                                                <div class="crece-oportunidades-contenido">'+
   '                                                    <div class="col-12 crece-oportunidades-contenido-monto">'+
   '                                                      <div class="row justify-content-center">'+
-  '                                                        <div class="col-9 crece-oportunidades-contenido-monto-texto">'+
+  '                                                        <div class="col-11 crece-oportunidades-contenido-monto-texto">'+
   '                                                            <p>'+
   '                                                                <strong>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</strong><br>'+
   '                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+' ('+oportunidad.porcentaje_financiado+'%) recolectados'+
@@ -270,7 +270,7 @@ function stringSolicitud(oportunidad){
   '                                                            '+
   '                                                            <span></span>'+
   '                                                        </div>'+
-  '                                                        <div class="col-3 crece-oportunidades-contenido-monto-img-wrapper">'+
+  '                                                        <div class="col-1 crece-oportunidades-contenido-monto-img-wrapper">'+
   '                                                             <button class="copyButton" data-toggle="tooltip" data-placement="bottom" data-trigger="click" delay: { "show": 0, "hide": 100 } data-clipboard-text="'+rutaDetalleSolicitud(oportunidad.id)+'" alt="Compartir" width="20" height="20">'+
   '                                                                 <img src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
   '                                                             </button>'+
