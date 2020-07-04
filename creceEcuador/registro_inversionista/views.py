@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.files.storage import FileSystemStorage
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
@@ -36,7 +37,9 @@ from django.core.mail import EmailMessage
 
 import json
 import io
+import os
 import datetime
+from reportlab.pdfgen import canvas
 from .creacion_contrato import hacer_contrato_uso_sitio, current_date_format
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.lib.pagesizes import letter
@@ -139,7 +142,7 @@ class RegisterUsers(generics.CreateAPIView):
 
         date = datetime.datetime.now()
 
-        canton = models.Canton.objects.get(nombre=nombre_canton)
+        canton = models.Canton.objects.get(nombre=nombre_canton.upper())
 
         if User.objects.filter(username=usuario).exists():
             data_response = {
@@ -167,6 +170,20 @@ class RegisterUsers(generics.CreateAPIView):
                                             email=email, celular=celular, tipo_persona=tipo_persona, 
                                             canton=canton, cedula=cedula, user=new_user)
             new_usuario.save()
+
+            #Guardar archivo pdf en nuestro servidor
+            out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+".pdf"
+            out_filedir = './creceEcuador/static/tmp/'
+            out_filepath = os.path.join( out_filedir, out_filename )
+            file_open = open(out_filepath, 'w')
+            file_open.close()
+            date = datetime.datetime.now()
+            fecha = current_date_format(date)
+            usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
+            doc = SimpleDocTemplate(out_filepath,pagesize=letter,
+                        rightMargin=72,leftMargin=72,
+                        topMargin=72,bottomMargin=18)
+            hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
 
             #guardando encuesta
             for i in range(len(preguntas)):
@@ -196,32 +213,6 @@ class RegisterUsers(generics.CreateAPIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'registro_inversionista/registro.html')
 
-    
-# def SignupView(request):
-#     submitted = False
-#     encuesta_form = Encuesta_form()
-#     if request.method == 'POST':
-
-#         form = SignupForm(request.POST)
-
-#         if form.is_valid():
-
-#             cd = form.cleaned_data
-
-#             r = requests.post(request.headers['Origin']+'/inversionista/register_inversionista/', 
-#                                   data = {'usuario':cd.get('usuario'), 'password': cd.get('password'),
-#                                             'email':cd.get('email'),'nombres':cd.get('nombres'),
-#                                             'apellidos':cd.get('apellidos'), 'celular':cd.get('celular'),
-#                                             'tipo_persona':cd.get('tipo_persona')})
-#             return HttpResponseRedirect('?submitted=True')
-            
-#     else:
-#         encuesta_form = Encuesta_form()
-#         form = SignupForm()
-#         if 'submitted' in request.GET:
-#              submitted = True
- 
-#     return render(request, 'registro_inversionista/signup.html', {'form': form, 'submitted': submitted, 'encuesta_form': encuesta_form})
 
 
 
@@ -497,26 +488,33 @@ def pdf_view_privacidad_proteccion_datos(request):
         raise Http404()
 
 
+from django.core.files.storage import FileSystemStorage
 class pdf_acuerdo_uso_sitio(generics.CreateAPIView):
 
     #permission_classes =[permissions.IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
+        
         nombres = request.data.get('nombres').title()
         apellidos = request.data.get('apellidos').title(    )
         cedula = request.data.get('cedula')
         usuario = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
         date = datetime.datetime.now()
         fecha = current_date_format(date)
+        out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+".pdf"
+        out_filedir = './creceEcuador/static/tmp/'
+        out_filepath = os.path.join( out_filedir, out_filename )
         buffer = io.BytesIO()
 
-
+        # file_open = open(out_filepath, 'w')
+        # file_open.close()
         doc = SimpleDocTemplate(buffer,pagesize=letter,
                         rightMargin=72,leftMargin=72,
                         topMargin=72,bottomMargin=18)
         hacer_contrato_uso_sitio(doc, usuario, fecha, date)
 
+
         buffer.seek(0)
-        return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+        return FileResponse(buffer, as_attachment=True, filename='Acuerdo uso de Sitio.pdf')
     
 

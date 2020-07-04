@@ -6,6 +6,10 @@ main{
   box-sizing: border-box;
 }
 
+#crece-header{
+    display: none;
+}
+
 .crece-login-container-form-wrapper{
     
 }
@@ -30,6 +34,14 @@ main{
     margin-bottom: 17px;
     font-size: 14px;
     padding: 8px 5px;
+}
+
+.crece-login-container-logo img{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 1rem;
+
 }
 
 .crece-login-container-form-wrapper-texto p{

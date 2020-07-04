@@ -6,67 +6,11 @@ let RUTA_PREGUNTAS = "/inversionista/preguntas/"
 let RUTA_RESPUESTAS = "/inversionista/respuestas/"
 
 $(document).ready(function(){
-    let select_canton = document.getElementById("id_canton")
-
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let cantones = JSON.parse(this.response)
-
-            for (var i = 0; i < cantones.length; i++) {
-                let canton = cantones[i].nombre
-                let opcion = document.createElement("option")
-                opcion.value = canton
-                opcion.innerHTML = canton
-                select_canton.appendChild(opcion) 
-            }
-            
-
-
-        }else if(this.status == 401 && this.readyState == 4){
-            console.log(this)
-
-        }
-    };
-    xhttp.open("GET", RUTA_CANTONES, true);
-    xhttp.send();
 
 
 
     let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
 
-    // var xhttp2 = new XMLHttpRequest();
-    // let html_pregunta = 
-    // xhttp2.onreadystatechange = function() {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         let preguntas = JSON.parse(this.response)
-
-    //         for (var i = 0; i < preguntas.length; i++) {
-    //             let pregunta = preguntas[i].texto
-    //             let html_pregunta = `<div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta crece-registro-container-form-wrapper" id="pregunta-container-`+(i+1)+`">
-    //                                     <div class="row">
-    //                                       <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-`+(i+1)+`"> <strong>`
-    //                                       +pregunta+`</strong>
-    //                                       </div>
-    //                                     </div>
-                                        
-    //                                 </div>`
-                
-    //             encuesta_container.innerHTML += html_pregunta
-               
-
-    //         }
-            
-
-
-    //     }else if(this.status == 401 && this.readyState == 4){
-    //         console.log(this)
-
-    //     }
-    // };
-    // xhttp2.open("GET", RUTA_PREGUNTAS)
-    // xhttp2.send()
 
 
     var xhttp3 = new XMLHttpRequest();
@@ -115,15 +59,15 @@ $(document).ready(function(){
 function registrar(argument) {
     // body...
 
-    let usuario = document.getElementById("id_usuario").value
+    let usuario = document.getElementById("id_email").value
     let password = document.getElementById("id_password").value
     let nombres = document.getElementById("id_nombres").value
     let apellidos = document.getElementById("id_apellidos").value
     let email = document.getElementById("id_email").value
     let celular = document.getElementById("id_celular").value
     let cedula = document.getElementById('id_cedula').value
-    let tipo_persona = document.getElementById("id_tipo_persona").value
-    tipo_persona = parse_tipo_persona(tipo_persona)
+
+    let tipo_persona = 1 
     let canton = document.getElementById("id_canton").value
 
     let lista_preguntas = ["¿En cuánto tiempo esperas recuperar tus inversiones?", "¿Cuánto esperas invertir a través de CRECE?",
@@ -167,20 +111,20 @@ function registrar(argument) {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
 
-                let registro_container = document.getElementById("crece-registro-container-id")
+                let registro_container = document.getElementById("crece-registro-form-id")
                 registro_container.style.display = 'none'
+                let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
+                encuesta_container.style.display = 'none'
+                let registrarse_container = document.getElementById("crece-registro-check-acepto-registrarse-id")
+                registrarse_container.style.display = 'none'
+                let contratos_container = document.getElementById("crece-contratos-texto-id")
+                contratos_container.style.display = 'none'
                 let mensaje = JSON.parse(this.response)
                 let registro_exitoso = document.getElementById('crece-registro-exitoso-id')
                 registro_exitoso.style.display = 'block'
-                registro_exitoso.innerHTML = mensaje.mensaje
+                registro_exitoso.innerHTML = "Hemos enviado un correo a tu dirección electrónica. Da clic en Activar cuenta y comienza a invertir."
 
-                // var next = getParameterByName('next')
-                // if(next){
-                //     window.location.href = next
-                // }
-                // else{
-                //     window.location.href = RUTA_DASHBOARD
-                // }
+              
 
 
             }else if(this.status == 400 && this.readyState == 4){

@@ -11,37 +11,27 @@
           
            
             <div class="row justify-content-center">
-              <!--Luego de registro exitoso-->
-                  <div class="col-xl-9 col-lg-9 col-md-12 col-12 crece-registro-container crece-registro-exitoso" id="crece-registro-exitoso-id">
-                    <h2>Por favor confirme su email</h2>
-                  </div>
+             
 
               <div class="col-xl-9 col-lg-9 col-md-12 col-12 crece-registro-container" id="crece-registro-container-id">
-                  <div class="col-12 crece-registro-container-tipos-ingreso-wrapper">
-                    <!--Formas de registro como facebook-->
-                        <div>
-                          Ingresa con
-                            <div>
-                              <a href="#"><img src="{% static 'registro_inversionista/assets/facebook-ingreso.png' %}"></a>
-                              <a href="#"><img src="{% static 'registro_inversionista/assets/google-ingreso.png' %}"></a>
-                              <a href="#"><img src="{% static 'registro_inversionista/assets/twitter-ingreso.png' %}"></a>
-                            </div>
-                            O registrate aqui:
-                        </div>
-                          
+                    <div class="col-12 crece-login-container-form-wrapper-titulo">
+                      <div class="crece-registro-container-logo"><img src="{% static 'assets/logo_color.png' %}"></div>
                     </div>
 
-                  
-
+                     <div class="col-12 crece-registro-container-form-wrapper-titulo">
+                        <h2>Registro</h2>
+                      </div>
+                       <!--Luego de registro exitoso-->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12 crece-registro-exitoso" id="crece-registro-exitoso-id">
+                      <h2>Por favor confirme su email</h2>
+                    </div>
 
                   <!--Formulario para Registro-->
-                <div class="row justify-content-center crece-registro-form-wrapper">
+                <div class="row justify-content-center crece-registro-form-wrapper" id="crece-registro-form-id">
                   
-                  <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
+                  <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
                     <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Nombres
-                      </div>
+                      
                       <div class="col">
                         <input type="text" name="" id="id_nombres" placeholder="nombres">
                       </div>
@@ -49,58 +39,49 @@
                         
                   </div>
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-pass crece-registro-container-form-wrapper">
+                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
                     <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Contraseña
-                      </div>
-                      <div class="col">
-                        <input type="password" name="" id="id_password" placeholder="Contraseña">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
-                    <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Apellidos
-                      </div>
+                      
                       <div class="col">
                         <input type="text" name="" id="id_apellidos" placeholder="apellidos">
                       </div>
                     </div>
-                    
                   </div>
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
+                   <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
                     <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Usuario
-                      </div>
+                      
                       <div class="col">
-                        <input type="text" name="" id="id_usuario" placeholder="usuario">
+                        <input type="text" name="" id="id_cedula" placeholder="cédula">
                       </div>
-                    </div>
-                    
+                    </div> 
                   </div>
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
+                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
                     <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Email
-                      </div>
+                      
                       <div class="col">
                         <input type="text" name="" id="id_email" placeholder="email">
                       </div>
                     </div>
-                    
                   </div>
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
+                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-pass crece-registro-container-form-wrapper">
                     <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Celular
+                      
+                      <div class="col">
+                        <input type="password" name="" id="id_password" placeholder="contraseña">
                       </div>
+                    </div>
+                  </div>
+
+                  
+
+                  
+
+                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
+                    <div class="row">
+                      
                       <div class="col">
                         <input type="text" name="" id="id_celular" placeholder="celular">
                       </div>
@@ -108,45 +89,27 @@
                     
                   </div>
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-tipo-persona crece-registro-container-form-wrapper">
-                    <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Tipo de Persona
-                      </div>
-                      <div class="col crece-registro-form-input-tipo-persona">
-                        <select id="id_tipo_persona" name="tipo_persona">
-                          <option value="persona natural">Persona Natural</option>
-                          <option value="persona juridica">Persona Juridica</option>
-                        </select>
-                      </div>
-                    </div> 
-                  </div>
+                  
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
-                    <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Cédula
-                      </div>
-                      <div class="col">
-                        <input type="text" name="" id="id_cedula" placeholder="cédula">
-                      </div>
-                    </div>
-                    
-                  </div>
+                 
 
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
+                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
                     <div class="row">
                       <div class="col-3 crece-registro-form-label">
-                        Canton
-                      </div>
-                      <div class="col-12 col-md-9 col-sm-12 col-lg-9 ">
+                        Ciudad
+                      </div> 
+                      <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
                         <select id="id_canton" name="canton">
-
+                          <option value="Guayaquil">Guayaquil</option>
+                          <option value="Quito">Quito</option>
+                          <option value="Cuenca">Cuenca</option>
+                          <option value="Manta">Manta</option>
+                          <option value="Machala">Machala</option>
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
+                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
                     <div class="row">
                       <div class="col-3 crece-registro-form-label">
                         
@@ -167,7 +130,7 @@
 
               <!--Encuesta-->
               <div class="row justify-content-center crece-registro-encuesta-container" id="crece-registro-encuesta-container-id">
-                <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta crece-registro-container-form-wrapper" id="pregunta-container-1">
+                <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-1">
                   <div class="row">
                     <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-1"> 
                       <strong>¿En cuánto tiempo esperas recuperar tus inversiones? </strong>
@@ -175,7 +138,7 @@
                   </div>
                                         
                 </div>
-                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta crece-registro-container-form-wrapper" id="pregunta-container-2">
+                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-2">
                   <div class="row">
                     <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-2"> 
                       <strong>¿Cuánto esperas invertir a través de CRECE? </strong>
@@ -183,7 +146,7 @@
                   </div>
                                         
                 </div>
-                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta crece-registro-container-form-wrapper" id="pregunta-container-3">
+                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-3">
                   <div class="row">
                     <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-3"> 
                       <strong>¿Qué nivel de riesgo se ajusta a tu perfil? </strong>
@@ -191,7 +154,7 @@
                   </div>
                                         
                 </div>
-                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta crece-registro-container-form-wrapper" id="pregunta-container-4">
+                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-4">
                   <div class="row">
                     <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-4"> 
                       <strong>¿Cómo conociste a CRECE? </strong>
@@ -199,7 +162,7 @@
                   </div>
                                         
                 </div>
-                <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-encuesta crece-registro-container-form-wrapper">
+                <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-encuesta ">
                     <label id="label_error_encuesta">
 
                     </label>
@@ -207,40 +170,33 @@
               </div>
 
               <!--Aceptacion de contratos-->
-              <div class="crece-contratos-texto">
+              <div class="crece-contratos-texto" id="crece-contratos-texto-id">
                 <p>
-                  Acepto los <span id='span-terminos-condiciones' class='crece-span-acuerdos-contratos'><strong>Términos y Condiciones</strong></span> y las <span id='span-politicas-privacidad' class='crece-span-acuerdos-contratos'><strong>Politicas de privacidad</strong></span> del sitio.<br>
-                  Acepto el <span id='span-acuerdo-uso-sitio' class='crece-span-acuerdos-contratos'><strong>Acuerdo de Uso del Sitio</strong></span> como usuario inversionista
+                  Al dar clic en "Registrarse", aceptas los <span id='span-terminos-condiciones' class='crece-span-acuerdos-contratos'><strong>Términos y condiciones</strong></span> generales, <span id='span-politicas-privacidad' class='crece-span-acuerdos-contratos'><strong>Políticas de privacidad</strong></span> y <span id='span-acuerdo-uso-sitio' class='crece-span-acuerdos-contratos'><strong>Acuerdos específicos de uso del sitio web</strong></span> como usuario inversionista de CRECE ECUADOR.
                 </p>
-              </div>
-              <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-acuerdo-sitio crece-registro-container-form-wrapper">
+                <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-acuerdo-sitio crece-registro-container-form-wrapper">
                     <label id="label_error_acuerdo_sitio">
 
                     </label>
+                </div>
               </div>
+              
+              <div class="crece-registro-check-acepto-registrarse" id="crece-registro-check-acepto-registrarse-id">
+                <div class="col-6">
+                    <input type="checkbox" name="acepto-contrato" id="crece-acepto-contratos"> Acepto
+                </div>
+                <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
 
-              <div class="col-6">
-                  <input type="checkbox" name="acepto-contrato" id="crece-acepto-contratos"> Acepto
+                      <button onclick="registrar()" id="crece-registrarse" disabled>Registrarse</button>
+                </div>
               </div>
-              <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
-
-                    <button onclick="registrar()" id="crece-registrarse" disabled>registrar</button>
-              </div>
+                
 
 
               </div>
             </div>
 
-            <!--Tipos de ingreso
-            <div class="row">
-                <div class="tipos-ingresos">
-                  <div>
-                    <a href="#"><img src="{% static 'registro_inversionista/assets/facebook-ingreso.png' %}"></a>
-                    <a href="#"><img src="{% static 'registro_inversionista/assets/google-ingreso.png' %}"></a>
-                    <a href="#"><img src="{% static 'registro_inversionista/assets/twitter-ingreso.png' %}"></a>
-                  </div>
-                </div>
-            </div>-->
+            
 
 
     </div>
