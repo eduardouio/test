@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'fase1/', views.Proceso_formulario_inversion.as_view(), name="formulario-inversion"),
     path('login/', views.Login_Users.as_view(), name="inversionista_login"),
     path('dashboard/', views.Dashboard, name='dashboard'),
+    path('ingresa/', views.ingresar_como, name='ingresar_como'),
    
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),

@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .crece-dashboard-botones-wrapper a{
+      background-color: #287191;
+      color: #FFFFFF;
+      border-radius: 9.58px;
+      padding: 5px 25px;
+      font-size: 15.82px;
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+  }
+  
+  .crece-dashboard-botones{
+      padding: 200px 0px;
+      background-color: #E9EBEE;
+  }
+  
+  .crece-dashboard-botones-wrapper{
+      padding-bottom: 50px;
+      background-color: white;
+      border: 1px solid #DEDEDE;
+  }
+  
+  .crece-dashboard-botones-wrapper h2 {
+      font-size: 22px;
+      color: #006B8D;
+      font-weight: 700;
+      text-align: center;
+      padding: 30px 0px;
+      margin: 0px;
+  }
+  
+  .crece-dashboard-botones-wrapper a{
+      padding-top: 5px !important;
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+      width: 160px;
+      height: 40px;
+      text-align: center;
+      font-weight: 700;
+      border-radius: 30px;
+      
+      background: #006B8D 0% 0% no-repeat padding-box;
+      border: 1px solid #006B8D;
+      color: white;
+      font-size: 18px;
+  
+      margin-top: 3px;
+      padding: 0px;
+  }
+
+  .crece-dashboard-botones-wrapper a:hover{
+    text-decoration-line: none;
+    color: white;
+    background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+    border: 1px solid rgba(0, 107, 141, 0.8);
+}

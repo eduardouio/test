@@ -231,7 +231,7 @@ def confirmar_email(request, uidb64, token):
 
         username = user.username
 
-        return redirect('/inversionista/login/')
+        return redirect('/inversionista/dashboard/')
     else:
         return HttpResponse('Link de activación inválido!')
 
@@ -420,6 +420,10 @@ class SubirTransferenciaView(APIView):
 def Dashboard(request):
     usuario = models.Usuario.get_usuario(request)
     return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
+
+@login_required
+def ingresar_como(request):
+    return render(request, 'registro_inversionista/ingresar_como.html', {})
 
 
         
