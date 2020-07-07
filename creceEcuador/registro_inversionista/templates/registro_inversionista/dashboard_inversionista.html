@@ -6,38 +6,73 @@
 {% block content %}
   <body>
     <div class="dashboard" id="dashboard">
-        <section class='crece-dashboard-sidenav' id="secion-nav">
-          <div class='crece-usuario'>
-            <i class="crece-usuario-imagen fa fa-user-circle-o" aria-hidden="true"></i>
-            <div class="crece-usuario-nombre" id='nombre-usuario'>
-              {{ usuario.nombres }} {{usuario.apellidos}}
-            </div>
+
+      <nav id="sidebar">
+          <div class="sidebar-header">
+              <div class='crece-usuario'>
+                <i class="crece-usuario-imagen fa fa-user-circle-o" aria-hidden="true"></i>
+                <div class="crece-usuario-nombre" id='nombre-usuario'>
+                  {{ usuario.nombres }} {{usuario.apellidos}}
+                </div>
+                <div class="crece-usuario-ver-perfil"> 
+                  <h6>
+                    <a href="#">
+                      Ver Perfil
+                    </a>
+                  </h6>
+                </div>
+              </div>
           </div>
-          <nav>
-            <a href="#" class="active"><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
-            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Oportunidades de inversion</a>
-            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Mis inversiones</a>
-            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Historial de inversiones</a>
-          </nav>
-        </section>
+          
+          
+          <ul class="list-unstyled components">          
+            <li class="active">
+              <a href="#"><span>Oportunidades de<br> Inversion</span></a>
+            </li>
+            <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis Inversiones</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                  <a href="#">Pendientes</a>
+                </li>
+                <li>
+                  <a href="#">Por fondear</a>
+                </li>
+                <li>
+                  <a href="#">Vigentes</a>
+                </li>
+                <li>
+                  <a href="#">Terminadas</a>
+                </li>
+              </ul> 
+            </li>
+            <li>
+              <a href="#">Historial de inversiones</a>
+            </li>
+          </ul>
+      </nav>
 
-        <header>
-          <div class="search_area">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="text" name="">
-          </div>
+      <div class="content">
+          <header>
+            <!-- 
+              <div class="search_area">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" name="">
+              </div>-->
+    
+              <div class="crece-header-logo" >
+                <a href="#">
+    
+                    <img src="{% static 'registro_inversionista/assets/logo.png' %}" alt="Logo crece">
+                    Crece Ecuador
+    
+                </a>
+                
+              </div>
+    
+            </header>
+      </div>
 
-          <div class="crece-header-logo" >
-            <a href="#">
-
-                <img src="{% static 'registro_inversionista/assets/logo.png' %}" alt="Logo crece">
-                Crece Ecuador
-
-            </a>
-            
-          </div>
-
-        </header>
     </div>
   </body>
 {% endblock content %}
