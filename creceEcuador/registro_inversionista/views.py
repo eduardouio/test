@@ -34,6 +34,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
 
 import json
 import io
@@ -200,10 +201,12 @@ class RegisterUsers(generics.CreateAPIView):
                 'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
                 'token':account_activation_token.make_token(new_user),
             })
+            plain_message = strip_tags(message)
             to_email = email
             email = EmailMessage(
                         mail_subject, message, to=[to_email]
             )
+            email.content_subtype = "html"
             email.send()
             data_response = {
                                 "mensaje": "Gracias por registrarse "+nombres+" "+apellidos+". Por favor confirme su email"
