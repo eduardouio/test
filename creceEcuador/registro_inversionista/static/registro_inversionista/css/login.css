@@ -34,7 +34,26 @@ main{
     margin-bottom: 17px;
     font-size: 14px;
     padding: 8px 5px;
+    position: relative;
 }
+
+#crece-show-hide-password   {
+    position: absolute;
+    right: 30px;
+    top: 13px;
+    color: #006B8D;
+    font-weight: bold;
+    font-size: 10px;
+
+}
+
+#crece-show-hide-password:hover   {
+    cursor: pointer;
+
+}
+
+
+
 
 .crece-login-container-logo img{
     margin-right: auto;

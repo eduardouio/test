@@ -3,6 +3,36 @@ let RUTA_DASHBOARD = "/inversionista/dashboard/"
 
 
 
+function ingresar_enter(event) {
+    // body...
+    if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("btn_ingresar").click();
+      }
+}
+
+function switch_mostrar_ocultar_password() {
+    // body...
+    let input_password = document.getElementById("id_password");
+    let div_text = document.getElementById("crece-show-hide-password")
+      if (input_password.type === "password") {
+        input_password.type = "text";
+        div_text.innerHTML = "OCULTAR"
+      } else {
+        input_password.type = "password";
+        div_text.innerHTML = "MOSTRAR"
+      }
+}
+
+function focus_password(event) {
+    // body...
+     if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("id_password").focus();
+      }
+    
+}
+
 function go_to_dashboard(user) {
 	// body...
 	usuario = user

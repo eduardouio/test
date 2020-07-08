@@ -18,23 +18,29 @@
                   <div class="col-12 crece-login-container-form-wrapper-titulo">
                     <h2>Iniciar Sesión</h2>
                   </div>
-                  <div class="col-lg-9 crece-login-container-form-wrapper-usuario">
-                    <input type="text" name="" id="id_username" placeholder="Usuario">
-                    
-                  </div>
-                  <div class="col-lg-9 crece-login-container-form-wrapper-pass">
-                    <input type="password" name="" id="id_password" placeholder="Contraseña">
-                  </div>
-                  <div class="col-lg-9 crece-login-container-form-wrapper-error">
-                    <label id="label_error">
+                  
+                          <div class="col-lg-9 crece-login-container-form-wrapper-usuario">
+                            <input type="text" name="" id="id_username" placeholder="Usuario" onkeyup="focus_password(event)">
+                          </div>
+                          <div class="col-lg-9 crece-login-container-form-wrapper-pass">
+                            <input type="password" name="" id="id_password" placeholder="Contraseña" onkeyup="ingresar_enter(event)">
+                            <div id="crece-show-hide-password" onclick="switch_mostrar_ocultar_password()">MOSTRAR</div>
+                          </div>
+                          <div class="col-lg-9 crece-login-container-form-wrapper-error">
+                            <label id="label_error">
 
-                    </label>
-                  </div>
-                  <div class="col-lg-8 crece-login-container-form-wrapper-boton-ingresar">
+                            </label>
+                          </div>
+                          <div class="col-lg-8 crece-login-container-form-wrapper-boton-ingresar">
 
-                    <button onclick="login()">Ingresar</button>
+                            <button onclick="login()" id="btn_ingresar">Ingresar</button>
 
-                  </div>
+                          </div>
+
+
+
+                  
+                          
                   <div class="col-12 crece-login-container-form-wrapper-texto">
                     <p>
                       ¿No tienes cuenta? <a href="/inversionista/registro/">Regístrate</a>
