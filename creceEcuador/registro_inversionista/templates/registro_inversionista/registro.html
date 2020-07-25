@@ -19,117 +19,166 @@
                     </div>
 
                      <div class="col-12 crece-registro-container-form-wrapper-titulo">
-                        <h2>Registro</h2>
+                        <h2>¡Estás a solo unos pasos de convertirte en un inversionista CRECE!</h2>
                       </div>
                        <!--Luego de registro exitoso-->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-12 crece-registro-exitoso" id="crece-registro-exitoso-id">
-                      <h2>Por favor confirme su email</h2>
+                      <h2 style="font-size: 15px;">Gracias por registrarte en CRECE. Por favor activa tu cuenta desde el enlance que enviamos a tu correo electrónico.</h2>
                     </div>
 
                   <!--Formulario para Registro-->
                 <div class="row justify-content-center crece-registro-form-wrapper" id="crece-registro-form-id">
-                  
-                  <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
-                    <div class="row">
-                      
-                      <div class="col">
-                        <input type="text" name="" id="id_nombres" placeholder="nombres">
+                  <!--form id="crece-form-registro-id" method="POST"-->
+                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Nombres
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="nombres" class="crece-form-input" id="id_nombres" required>
+                          <i class="fa fa-check" aria-hidden="true" id="check-nombres-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombres-id"></i>
+                          <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombres">
+                            Ingrese sus Nombres
+                          </div>
+                        </div>
+                      </div>
+                          
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Apellidos
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="apellidos" class="crece-form-input" id="id_apellidos" required="">
+                          <i class="fa fa-check" aria-hidden="true" id="check-apellidos-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-apellidos-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-apellidos">
+                            Ingrese sus Apellidos
+                          </div>
+                        </div>
                       </div>
                     </div>
-                        
-                  </div>
 
-                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
-                    <div class="row">
-                      
-                      <div class="col">
-                        <input type="text" name="" id="id_apellidos" placeholder="apellidos">
-                      </div>
-                    </div>
-                  </div>
+                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Cédula
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
+                          <i class="fa fa-check" aria-hidden="true" id="check-cedula-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
+                            Ingrese su Cédula
+                          </div>
 
-                   <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
-                    <div class="row">
-                      
-                      <div class="col">
-                        <input type="text" name="" id="id_cedula" placeholder="cédula">
-                      </div>
-                    </div> 
-                  </div>
-
-                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
-                    <div class="row">
-                      
-                      <div class="col">
-                        <input type="text" name="" id="id_email" placeholder="email">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-pass crece-registro-container-form-wrapper">
-                    <div class="row">
-                      
-                      <div class="col">
-                        <input type="password" name="" id="id_password" placeholder="contraseña">
-                      </div>
-                    </div>
-                  </div>
-
-                  
-
-                  
-
-                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
-                    <div class="row">
-                      
-                      <div class="col">
-                        <input type="text" name="" id="id_celular" placeholder="celular">
-                      </div>
-                    </div>
-                    
-                  </div>
-
-                  
-
-                 
-
-                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
-                    <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        Ciudad
+                        </div>
                       </div> 
-                      <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
-                        <select id="id_canton" name="canton">
-                          <option value="Guayaquil">Guayaquil</option>
-                          <option value="Quito">Quito</option>
-                          <option value="Cuenca">Cuenca</option>
-                          <option value="Manta">Manta</option>
-                          <option value="Machala">Machala</option>
-                        </select>
-                      </div>
                     </div>
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
-                    <div class="row">
-                      <div class="col-3 crece-registro-form-label">
-                        
-                      </div>
-                      <div class="col">
-                        
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper">
-                    <label id="label_error">
 
-                    </label>
-                  </div>
-                  
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Correo electrónico
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="email" class="crece-form-input" id="id_email" required>
+                          <i class="fa fa-check" aria-hidden="true" id="check-email-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-email-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-email">
+                            Ingrese su correo electrónico
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-pass crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Contraseña
+                        </div> 
+                        <div class="col">
+                          <input type="password" name="password" class="crece-form-input" id="id_password" required="">
+                          <div class="show-hide-password" id="crece-show-hide-password" onclick="switch_mostrar_ocultar_password()">MOSTRAR</div>
+                          <i class="fa fa-check fa-confirmar-password" aria-hidden="true" id="check-password-id"></i>
+                          <i class="fa fa-exclamation-circle fa-confirmar-password" aria-hidden="true" id="times-password-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-password">
+                             Ingrese su contraseña
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-confirmar-pass crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Confirmar contraseña
+                        </div> 
+                        <div class="col">
+                          <input type="password" name="confirmar-password" class="crece-form-input" id="id_confirmar_password">
+                          <div class="show-hide-password" id="crece-show-hide-confirmar-password" onclick="switch_mostrar_ocultar_password('confirmar')">MOSTRAR</div>
+                          <i class="fa fa-check fa-confirmar-password" aria-hidden="true" id="check-confirmar-password-id"></i>
+                          <i class="fa fa-exclamation-circle fa-confirmar-password" aria-hidden="true" id="times-confirmar-password-id">
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-confirmar-password">
+                            </i>Confirma tu contraseña
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Celular
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="celular" class="crece-form-input" id="id_celular" required="">
+                          <i class="fa fa-check" aria-hidden="true" id="check-celular-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-celular-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-celular">
+                            Ingrese su celular
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Ciudad
+                        </div> 
+                        <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
+                          <select id="id_canton" name="canton">
+                            <option value="Guayaquil">Guayaquil</option>
+                            <option value="Quito">Quito</option>
+                            <option value="Cuenca">Cuenca</option>
+                            <option value="Manta">Manta</option>
+                            <option value="Machala">Machala</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-3 crece-registro-form-label">
+                          
+                        </div>
+                        <div class="col">
+                          
+                        </div>
+                      </div>
+                    </div>
+
+                  <!--/form-->
+
                 </div>
 
               <!--Encuesta-->
-              <div class="row justify-content-center crece-registro-encuesta-container" id="crece-registro-encuesta-container-id">
+              <div tabindex="-1" class="row justify-content-center crece-registro-encuesta-container" id="crece-registro-encuesta-container-id">
                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-1">
                   <div class="row">
                     <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-1"> 
@@ -149,7 +198,7 @@
                  <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-3">
                   <div class="row">
                     <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-3"> 
-                      <strong>¿Qué nivel de riesgo se ajusta a tu perfil? </strong>
+                      <strong>¿Qué nivel de riesgo se ajusta a su perfil? </strong>
                     </div>
                   </div>
                                         
@@ -163,10 +212,11 @@
                                         
                 </div>
                 <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-encuesta ">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-encuesta-id"></i>
                     <label id="label_error_encuesta">
 
                     </label>
-              </div>
+                </div>
               </div>
 
               <!--Aceptacion de contratos-->
@@ -174,23 +224,21 @@
                 <p>
                   Al dar clic en "Registrarse", aceptas los <span id='span-terminos-condiciones' class='crece-span-acuerdos-contratos'><strong>Términos y condiciones</strong></span> generales, <span id='span-politicas-privacidad' class='crece-span-acuerdos-contratos'><strong>Políticas de privacidad</strong></span> y <span id='span-acuerdo-uso-sitio' class='crece-span-acuerdos-contratos'><strong>Acuerdos específicos de uso del sitio web</strong></span> como usuario inversionista de CRECE ECUADOR.
                 </p>
-                <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-acuerdo-sitio crece-registro-container-form-wrapper">
-                    <label id="label_error_acuerdo_sitio">
-
-                    </label>
-                </div>
               </div>
               
               <div class="crece-registro-check-acepto-registrarse" id="crece-registro-check-acepto-registrarse-id">
-                <div class="col-6">
-                    <input type="checkbox" name="acepto-contrato" id="crece-acepto-contratos"> Acepto
-                </div>
                 <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
 
-                      <button onclick="registrar()" id="crece-registrarse" disabled>Registrarse</button>
+                      <button type="submit" form="crece-form-registro-id" onclick="registrar()" id="crece-registrarse" >Registrarse</button>
                 </div>
               </div>
-                
+
+
+              <div class="col-12 crece-login-container-form-wrapper-texto" id="crece-login-container-form-wrapper-texto-id">
+                    <p>
+                      ¿Estás registrado? Inicia sesión <a href="/inversionista/login/">aquí</a>
+                    </p>
+              </div>  
 
 
               </div>

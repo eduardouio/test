@@ -1635,28 +1635,28 @@
       "model": "registro_inversionista.pregunta",
       "pk": 3,
       "fields": {
-            "texto": "¿Qué nivel de riesgo se ajusta a tu perfil?"
+            "texto": "¿Qué nivel de riesgo se ajusta a su perfil?"
       }
 },
 {
       "model": "registro_inversionista.respuesta",
       "pk": 301,
       "fields": {
-            "texto": "Bajo"
+            "texto": "Medio"
       }
 },
 {
       "model": "registro_inversionista.respuesta",
       "pk": 302,
       "fields": {
-            "texto": "Medio"
+            "texto": "Alto"
       }
 },
 {
       "model": "registro_inversionista.respuesta",
       "pk": 303,
       "fields": {
-            "texto": "Altisimo"
+            "texto": "Altísimo"
       }
 },
 {

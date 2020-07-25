@@ -45,11 +45,6 @@ from .creacion_contrato import hacer_contrato_uso_sitio, current_date_format
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.lib.pagesizes import letter
 
-# Get the JWT settings, add these lines after the import/from lines
-# from rest_framework_jwt.settings import api_settings
-# jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-# jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-# PROTOCOLO = "http://"
 
 class UsuariosViewSet(viewsets.ModelViewSet):
     """API endpoint that allows users to be viewed or edited."""
@@ -117,6 +112,9 @@ class Bancos_list(generics.ListAPIView):
 
 
 
+  
+    
+
 class RegisterUsers(generics.CreateAPIView):
     """
     inversionista/register/
@@ -147,13 +145,8 @@ class RegisterUsers(generics.CreateAPIView):
 
         if User.objects.filter(username=usuario).exists():
             data_response = {
-                                "mensaje": "Usuario "+ usuario +" ya existe"
-                            }
-
-            return Response(data_response, status=status.HTTP_400_BAD_REQUEST)
-        elif models.Usuario.objects.filter(email= email):
-            data_response = {
-                                "mensaje": "Email "+ email +" ya existe"
+                                "mensaje": "El Correo electrónico "+ usuario +" ya existe",
+                                "email": "email",
                             }
 
             return Response(data_response, status=status.HTTP_400_BAD_REQUEST)
@@ -171,20 +164,8 @@ class RegisterUsers(generics.CreateAPIView):
                                             email=email, celular=celular, tipo_persona=tipo_persona, 
                                             canton=canton, cedula=cedula, user=new_user)
             new_usuario.save()
+            guardar_contratos(nombres,apellidos,cedula)
 
-            #Guardar archivo pdf en nuestro servidor
-            out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+".pdf"
-            out_filedir = './creceEcuador/static/tmp/'
-            out_filepath = os.path.join( out_filedir, out_filename )
-            file_open = open(out_filepath, 'w')
-            file_open.close()
-            date = datetime.datetime.now()
-            fecha = current_date_format(date)
-            usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
-            doc = SimpleDocTemplate(out_filepath,pagesize=letter,
-                        rightMargin=72,leftMargin=72,
-                        topMargin=72,bottomMargin=18)
-            hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
 
             #guardando encuesta
             for i in range(len(preguntas)):
@@ -194,7 +175,7 @@ class RegisterUsers(generics.CreateAPIView):
                 encuesta.save()
 
             current_site = get_current_site(request)
-            mail_subject = 'Activa tu cuenta de Crece Ecuador'
+            mail_subject = 'Activa tu cuenta de CRECE'
             message = render_to_string('registro_inversionista/acc_active_email.html', {
                 'usuario': new_usuario,
                 'domain': current_site.domain,
@@ -208,16 +189,33 @@ class RegisterUsers(generics.CreateAPIView):
             )
             email.content_subtype = "html"
             email.send()
-            data_response = {
-                                "mensaje": "Gracias por registrarse "+nombres+" "+apellidos+". Por favor confirme su email"
-                            }
 
-            return Response(data_response, status=status.HTTP_200_OK)
+
+
+            response = HttpResponse(status=status.HTTP_200_OK)   
+
+            return response
     def get(self, request, *args, **kwargs):
         return render(request, 'registro_inversionista/registro.html')
 
 
-
+def guardar_contratos(nombres,apellidos,cedula):
+    #Guardar archivo pdf en nuestro servidor
+    out_filedir = './creceEcuador/static/contratos/'
+    if not os.path.exists(out_filedir):
+        os.makedirs(out_filedir)
+    out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+".pdf"
+    out_filedir = './creceEcuador/static/contratos/'
+    out_filepath = os.path.join( out_filedir, out_filename )
+    file_open = open(out_filepath, 'w')
+    file_open.close()
+    date = datetime.datetime.now()
+    fecha = current_date_format(date)
+    usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
+    doc = SimpleDocTemplate(out_filepath,pagesize=letter,
+                rightMargin=72,leftMargin=72,
+                topMargin=72,bottomMargin=18)
+    hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
 
 def confirmar_email(request, uidb64, token):
     try:
@@ -231,8 +229,7 @@ def confirmar_email(request, uidb64, token):
         inversionista = models.Usuario.objects.filter(user=user.id)[0]
         inversionista.estado = 1
         inversionista.save()
-
-        username = user.username
+        login(request, user)
 
         return redirect('/inversionista/dashboard/')
     else:
@@ -421,8 +418,9 @@ class SubirTransferenciaView(APIView):
 
 @login_required
 def Dashboard(request):
-    usuario = models.Usuario.get_usuario(request)
-    return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
+    if request.user.is_authenticated:
+        usuario = models.Usuario.objects.filter(user=request.user)[0]
+        return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
 
 @login_required
 def ingresar_como(request):
@@ -494,34 +492,13 @@ def pdf_view_privacidad_proteccion_datos(request):
     except FileNotFoundError:
         raise Http404()
 
-
-from django.core.files.storage import FileSystemStorage
-class pdf_acuerdo_uso_sitio(generics.CreateAPIView):
-
-    #permission_classes =[permissions.IsAuthenticated]
-
-    def post(self, request, *args, **kwargs):
-        
-        nombres = request.data.get('nombres').title()
-        apellidos = request.data.get('apellidos').title(    )
-        cedula = request.data.get('cedula')
-        usuario = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
-        date = datetime.datetime.now()
-        fecha = current_date_format(date)
-        out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+".pdf"
-        out_filedir = './creceEcuador/static/tmp/'
-        out_filepath = os.path.join( out_filedir, out_filename )
-        buffer = io.BytesIO()
-
-        # file_open = open(out_filepath, 'w')
-        # file_open.close()
-        doc = SimpleDocTemplate(buffer,pagesize=letter,
-                        rightMargin=72,leftMargin=72,
-                        topMargin=72,bottomMargin=18)
-        hacer_contrato_uso_sitio(doc, usuario, fecha, date)
+@require_http_methods(["GET"])
+def pdf_acuerdo_uso_sitio(request):
+    try:
+        return FileResponse(open('creceEcuador/static/assets/ACUERDOS_ESPECIFICOS_INVERSIONISTAS.pdf', 'rb'),as_attachment=True,  content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
 
 
-        buffer.seek(0)
-        return FileResponse(buffer, as_attachment=True, filename='Acuerdo uso de Sitio.pdf')
     
 

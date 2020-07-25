@@ -34,7 +34,7 @@ urlpatterns = [
     path('subir_transferencia/', views.subir_transferencia_view, name="subir_transferencia"),
     path('registro/terminos_legales/', views.pdf_view_terminos_legales),
     path('registro/politicas_privacidad/', views.pdf_view_privacidad_proteccion_datos),
-    path('registro/acuerdo_uso_sitio/', views.pdf_acuerdo_uso_sitio.as_view(), name="acuerdo-uso-sitio"),
+    path('registro/acuerdo_uso_sitio/', views.pdf_acuerdo_uso_sitio, name="acuerdo-uso-sitio"),
 
     #path('registro/', views.SignupView, name="registro"),
     # path('login/', views.LoginView, name="login"),

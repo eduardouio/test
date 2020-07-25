@@ -56,9 +56,35 @@ $(document).ready(function(){
 });
 
 
+function switch_mostrar_ocultar_password(confirmar) {
+    // body...
+    if (confirmar === "confirmar"){
+        let input_password = document.getElementById("id_confirmar_password");
+        let div_text = document.getElementById("crece-show-hide-confirmar-password")
+          if (input_password.type === "password") {
+            input_password.type = "text";
+            div_text.innerHTML = "OCULTAR"
+          } else {
+            input_password.type = "password";
+            div_text.innerHTML = "MOSTRAR"
+          }
+    }else{
+        let input_password = document.getElementById("id_password");
+        let div_text = document.getElementById("crece-show-hide-password")
+          if (input_password.type === "password") {
+            input_password.type = "text";
+            div_text.innerHTML = "OCULTAR"
+          } else {
+            input_password.type = "password";
+            div_text.innerHTML = "MOSTRAR"
+          }
+    }
+    
+}
+
+
 function registrar(argument) {
     // body...
-
     let usuario = document.getElementById("id_email").value
     let password = document.getElementById("id_password").value
     let nombres = document.getElementById("id_nombres").value
@@ -67,11 +93,12 @@ function registrar(argument) {
     let celular = document.getElementById("id_celular").value
     let cedula = document.getElementById('id_cedula').value
 
+
     let tipo_persona = 1 
     let canton = document.getElementById("id_canton").value
 
     let lista_preguntas = ["¿En cuánto tiempo esperas recuperar tus inversiones?", "¿Cuánto esperas invertir a través de CRECE?",
-                            "¿Qué nivel de riesgo se ajusta a tu perfil?","¿Cómo conociste a CRECE?"]
+                            "¿Qué nivel de riesgo se ajusta a su perfil?","¿Cómo conociste a CRECE?"]
     let lista_respuestas = []
     let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
 
@@ -95,16 +122,8 @@ function registrar(argument) {
 
     }
 
-    if(lista_respuestas.length != 4){
-            let mensaje = "LLenar la encuesta"
-
-                let label_error = document.getElementById("label_error_encuesta")
-                label_error.innerHTML = mensaje
-                $(".crece-login-container-form-wrapper-error-encuesta").show()
-    }
-    
-
-    else if(usuario && password && nombres && apellidos && email && celular && cedula && tipo_persona && canton){
+    let inputs_validos = validar_form()
+    if (inputs_validos === 7 && lista_respuestas.length === 4){
         let encuesta_dic = {"preguntas":lista_preguntas, "respuestas":lista_respuestas}
         var xhttp = new XMLHttpRequest();
 
@@ -119,21 +138,31 @@ function registrar(argument) {
                 registrarse_container.style.display = 'none'
                 let contratos_container = document.getElementById("crece-contratos-texto-id")
                 contratos_container.style.display = 'none'
-                let mensaje = JSON.parse(this.response)
+                let texto_container = document.getElementById("crece-login-container-form-wrapper-texto-id")
+                texto_container.style.display = 'none'
+
                 let registro_exitoso = document.getElementById('crece-registro-exitoso-id')
                 registro_exitoso.style.display = 'block'
-                registro_exitoso.innerHTML = "Hemos enviado un correo a tu dirección electrónica. Da clic en Activar cuenta y comienza a invertir."
 
               
 
 
             }else if(this.status == 400 && this.readyState == 4){
 
-                let mensaje = JSON.parse(this.response)
-
-                let label_error = document.getElementById("label_error")
-                label_error.innerHTML = mensaje.mensaje
-                $(".crece-login-container-form-wrapper-error").show()
+                let response = JSON.parse(this.response)
+                let mensaje = response.mensaje
+                let email = response.email
+                let id_input_email = "id_email"
+                let input_email = document.getElementById(id_input_email)
+                mostrar_times(input_email)
+                let id_error = "crece-mensaje-invalid-input-"+email
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = mensaje
+                input_email.focus()
+                // let label_error = document.getElementById("label_error")
+                // label_error.innerHTML = mensaje.mensaje
+                // $(".crece-login-container-form-wrapper-error").show()
             }
         };
         xhttp.open("POST", "/inversionista/registro/", true);
@@ -151,10 +180,14 @@ function registrar(argument) {
                                     "encuesta": encuesta_dic,
                                 })
                     );
-    }else{
-        let label_error = document.getElementById("label_error")
-                label_error.innerHTML = "Datos incompletos"
-                $(".crece-login-container-form-wrapper-error").show()
+    }else if(inputs_validos === 7 && lista_respuestas.length != 4){
+            let mensaje = "Debe lLenar la encuesta"
+                
+                document.getElementById('crece-registro-encuesta-container-id').focus();
+                
+                let label_error = document.getElementById("label_error_encuesta")
+                label_error.innerHTML = mensaje
+                $(".crece-login-container-form-wrapper-error-encuesta").show()
     }
     
 }
@@ -171,20 +204,7 @@ function parse_tipo_persona(texto) {
 
 
 
-let aceptar = document.getElementById("crece-acepto-contratos");
 let span_acuerto_sitio = document.getElementById('span-acuerdo-uso-sitio') 
-aceptar.addEventListener("input", function () {
-    // body...
-    let registrar = document.getElementById('crece-registrarse');
-        registrar.disabled = !registrar.disabled
-        if(registrar.style.opacity === "1"){
-
-            registrar.style.opacity = "0.5"
-        }else{
-            registrar.style.opacity = "1"
-        }
-        
-})
 
 span_acuerto_sitio.addEventListener("click", function () {
     // body...
@@ -194,45 +214,28 @@ span_acuerto_sitio.addEventListener("click", function () {
 
 
 function descargar_acuerdo_uso_sitio() {
-    // body....
-    let aceptar = document.getElementById("crece-acepto-contratos");
-    let nombres = document.getElementById("id_nombres").value
-    let apellidos = document.getElementById("id_apellidos").value
-    let cedula = document.getElementById('id_cedula').value
-
-    if (nombres  && apellidos && cedula){
-            var xhttp = new XMLHttpRequest();
+ 
+    var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this)
                     var file = new Blob([this.response], { 
                                             type: 'application/pdf' 
                     });
 
                     var link = document.createElement("a");
                     link.href = window.URL.createObjectURL(file);
-                    link.download = "Acuerdo de Uso del Sitio.pdf";
+                    link.download = "Acuerdo Uso de Sitio - Inversionistas.pdf";
                     document.body.appendChild(link);
                     link.click()
 
                 }
             };
-            //xhttp.open("POST", RUTA_FASE_3, true);
-            xhttp.open('POST', RUTA_ACUERDO_SITIO_PDF, true)
-            xhttp.setRequestHeader("Content-type", "application/json");
+
+            xhttp.open('GET', RUTA_ACUERDO_SITIO_PDF, true)
+
             xhttp.responseType = "blob"
-            xhttp.send(JSON.stringify({
-                                        "nombres": nombres,
-                                        'apellidos': apellidos,
-                                        "cedula": cedula,
-                                    })
-                        );
-    }else{
-        let label_error_acuerdo_sitio = document.getElementById("label_error_acuerdo_sitio")
-            label_error_acuerdo_sitio.innerHTML = "Debe llenar los campos de Nombres, Apellidos y Cédula"
-            $(".crece-registro-container-form-wrapper-error-acuerdo-sitio").show()   
-    }
-    
+            xhttp.send()
+
     
 }
 
@@ -260,9 +263,9 @@ function descargar_terminos_condiciones() {
 
                 }
             };
-            //xhttp.open("POST", RUTA_FASE_3, true);
+
             xhttp.open('GET', RUTA_TERMINOS_LEGALES, true)
-            //xhttp.setRequestHeader("Content-type", "application/json");
+
             xhttp.responseType = "blob"
             xhttp.send()
 }
@@ -292,9 +295,9 @@ function descargar_politicas_privacidad() {
 
                 }
             };
-            //xhttp.open("POST", RUTA_FASE_3, true);
+
             xhttp.open('GET', RUTA_POLITICAS_PRIVACIDAD, true)
-            //xhttp.setRequestHeader("Content-type", "application/json");
+
             xhttp.responseType = "blob"
             xhttp.send()
 }
@@ -305,4 +308,238 @@ function sleep(milliseconds) {
   do {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
+}
+
+
+
+
+function validar_cedula(textbox){
+  
+  /**
+     * Algoritmo para validar cedulas de Ecuador
+     * @Author : Victor Diaz De La Gasca.
+     * @Fecha  : Quito, 15 de Marzo del 2013 
+     * @Email  : vicmandlagasca@gmail.com
+     * @Pasos  del algoritmo
+     * 1.- Se debe validar que tenga 10 numeros
+     * 2.- Se extrae los dos primero digitos de la izquierda y compruebo que existan las regiones
+     * 3.- Extraigo el ultimo digito de la cedula
+     * 4.- Extraigo Todos los pares y los sumo
+     * 5.- Extraigo Los impares los multiplico x 2 si el numero resultante es mayor a 9 le restamos 9 al resultante
+     * 6.- Extraigo el primer Digito de la suma (sumaPares + sumaImpares)
+     * 7.- Conseguimos la decena inmediata del digito extraido del paso 6 (digito + 1) * 10
+     * 8.- restamos la decena inmediata - suma / si la suma nos resulta 10, el decimo digito es cero
+     * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.     
+     */
+     let cedula = textbox.value
+     let times_cedula = document.getElementById("times-cedula-id")
+     let check_cedula = document.getElementById("check-cedula-id")
+     //Preguntamos si la cedula consta de 10 digitos
+     if(cedula.length == 10){
+        
+        //Obtenemos el digito de la region que sonlos dos primeros digitos
+        var digito_region = cedula.substring(0,2);
+        
+        //Pregunto si la region existe ecuador se divide en 24 regiones
+        if( digito_region >= 1 && digito_region <=24 ){
+          
+          // Extraigo el ultimo digito
+          var ultimo_digito   = cedula.substring(9,10);
+
+          //Agrupo todos los pares y los sumo
+          var pares = parseInt(cedula.substring(1,2)) + parseInt(cedula.substring(3,4)) + parseInt(cedula.substring(5,6)) + parseInt(cedula.substring(7,8));
+
+          //Agrupo los impares, los multiplico por un factor de 2, si la resultante es > que 9 le restamos el 9 a la resultante
+          var numero1 = cedula.substring(0,1);
+          var numero1 = (numero1 * 2);
+          if( numero1 > 9 ){ var numero1 = (numero1 - 9); }
+
+          var numero3 = cedula.substring(2,3);
+          var numero3 = (numero3 * 2);
+          if( numero3 > 9 ){ var numero3 = (numero3 - 9); }
+
+          var numero5 = cedula.substring(4,5);
+          var numero5 = (numero5 * 2);
+          if( numero5 > 9 ){ var numero5 = (numero5 - 9); }
+
+          var numero7 = cedula.substring(6,7);
+          var numero7 = (numero7 * 2);
+          if( numero7 > 9 ){ var numero7 = (numero7 - 9); }
+
+          var numero9 = cedula.substring(8,9);
+          var numero9 = (numero9 * 2);
+          if( numero9 > 9 ){ var numero9 = (numero9 - 9); }
+
+          var impares = numero1 + numero3 + numero5 + numero7 + numero9;
+
+          //Suma total
+          var suma_total = (pares + impares);
+
+          //extraemos el primero digito
+          var primer_digito_suma = String(suma_total).substring(0,1);
+
+          //Obtenemos la decena inmediata
+          var decena = (parseInt(primer_digito_suma) + 1)  * 10;
+
+          //Obtenemos la resta de la decena inmediata - la suma_total esto nos da el digito validador
+          var digito_validador = decena - suma_total;
+
+          //Si el digito validador es = a 10 toma el valor de 0
+          if(digito_validador == 10)
+            var digito_validador = 0;
+
+          //Validamos que el digito validador sea igual al de la cedula
+          if(digito_validador == ultimo_digito){
+            console.log('la cedula:' + cedula + ' es correcta');
+            check_cedula.style.display = 'block'
+            times_cedula.style.display = 'none'
+            textbox.className = 'crece-form-input crece-form-valid-input'
+            return true
+          }else{
+            console.log('la cedula:' + cedula + ' es incorrecta');
+            times_cedula.style.display = 'block'
+            check_cedula.style.display = 'none'
+            textbox.className = 'crece-form-input crece-form-invalid-input'
+            return false
+          }
+          
+        }else{
+          // imprimimos en consola si la region no pertenece
+          console.log('Esta cedula no pertenece a ninguna region');
+          times_cedula.style.display = 'block'
+            check_cedula.style.display = 'none'
+            return false
+        }
+     }else{
+        //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
+        console.log('Esta cedula tiene menos de 10 Digitos');
+        check_cedula.style.display = 'none'
+        times_cedula.style.display = "none"
+        return false
+
+     }    
+  
+}
+
+
+
+
+
+
+
+
+function confirmar_password() {
+    // body...
+    let check_confirmar_password = document.getElementById("check-confirmar-password-id")
+    let times_confirmar_password = document.getElementById("times-confirmar-password-id")
+    let input_confirmar_password = document.getElementById("id_confirmar_password")
+    let input_password = document.getElementById("id_password")
+
+    if (!input_confirmar_password.value && !input_password.value){
+        check_confirmar_password.style.display = 'none'
+        times_confirmar_password.style.display = 'none'
+    }
+    else if( input_confirmar_password.value === input_password.value){
+        check_confirmar_password.style.display = 'block'
+        times_confirmar_password.style.display = 'none'
+        return true
+    }else{
+        check_confirmar_password.style.display = 'none'
+        times_confirmar_password.style.display = 'block'
+        return false
+    }
+}
+
+
+
+
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+
+
+function validar_form() {
+    // body...
+    let inputs = document.getElementsByClassName("crece-form-input")
+
+    for (var i = inputs.length - 1; i >= 0; i--) {
+        let input = inputs[i]
+        if(!input.value){
+
+            input.className = 'crece-form-input crece-form-invalid-input'
+            input.focus()
+            mostrar_times(input)
+
+        }else{
+            if(input.name === 'email' && !validateEmail(input.value)){
+                
+                mostrar_times(input)
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = "Ingrese un correo electrónico válido"
+
+            }else if (input.name === 'cedula' && !validar_cedula(input)){
+                mostrar_times(input)
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = "Ingrese una cédula válida"
+
+                
+            }else if (input.name === 'confirmar-password' && !confirmar_password()){
+                mostrar_times(input)
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = "Las contraseñas no coinciden"
+
+            }
+            else{
+                
+                mostrar_check(input)
+
+                 
+            }
+            
+        }
+    }
+
+    let inputs_validos = document.getElementsByClassName("crece-form-valid-input")
+
+    return inputs_validos.length
+
+}
+
+function mostrar_check(input) {
+    // body...
+    input.className = 'crece-form-input crece-form-valid-input'
+    let id_check_fa = "check-"+input.name+"-id"
+                let check_fa = document.getElementById(id_check_fa)
+                check_fa.style.display = 'block'
+                let id_times_fa = "times-"+input.name+"-id"
+                let times_fa = document.getElementById(id_times_fa)
+                times_fa.style.display = 'none'
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+            let label_error = document.getElementById(id_error)
+            label_error.style.display = "none"
+}
+
+
+function mostrar_times(input) {
+    // body...
+    input.className = 'crece-form-input crece-form-invalid-input'
+            let id_times_fa = "times-"+input.name+"-id"
+            let times_fa = document.getElementById(id_times_fa)
+            times_fa.style.display = 'block'
+            let id_check_fa = "check-"+input.name+"-id"
+            let check_fa = document.getElementById(id_check_fa)
+            check_fa.style.display = 'none'
+
+            let id_error = "crece-mensaje-invalid-input-"+input.name
+            let label_error = document.getElementById(id_error)
+            label_error.style.display = "block"
+            input.focus()
 }
