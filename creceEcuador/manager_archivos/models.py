@@ -1,8 +1,9 @@
 from django.db import models
 from django.conf import settings
 from fases_inversiones.models import Inversion
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 from django.core.exceptions import ValidationError
+from django_fsm import TransitionNotAllowed
 
 class TransferenciaInversion(models.Model):
     id_transferencia = models.AutoField(primary_key=True)
@@ -51,9 +52,28 @@ def setear_porcentaje_en_solicitud_cambiar_estado_inversion(sender, instance, **
 
         #Cambiar estado de inversion
         inversion.estado = 1
+
+        try:
+            inversion.approve_transfer()
+        except TransitionNotAllowed:
+            print("Estado no se puede cambiar")
+
         inversion.save()
     else:
         print("no confirmado")
 
+#Signals
+def cambiar_estado_inversion_transferencia_creada(sender, instance, created, **kwargs):
+    if(created):
+        inversion = instance.id_inversion
+        
+        try:
+            inversion.transfer_sent()
+        except TransitionNotAllowed:
+            print("Estado no se puede cambiar")
+        
+        inversion.save()
+
 # Se conecta la señal con el modelo TransferenciaInversion
 pre_save.connect(setear_porcentaje_en_solicitud_cambiar_estado_inversion, sender=TransferenciaInversion) 
+post_save.connect(cambiar_estado_inversion_transferencia_creada, sender=TransferenciaInversion)
