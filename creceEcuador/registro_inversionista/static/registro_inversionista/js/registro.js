@@ -46,7 +46,7 @@ $(document).ready(function(){
 
 
         }else if(this.status == 401 && this.readyState == 4){
-            console.log(this)
+            
 
         }
     };
@@ -80,6 +80,25 @@ function switch_mostrar_ocultar_password(confirmar) {
           }
     }
     
+}
+
+function insertar_timestamps(email){
+  let timestamp_span = document.getElementById("span-hora-email-id")
+  let date = new Date()
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  let strTime = hours + ':' + minutes +" "+ ampm;
+  let timestamp = date.toISOString().split('T')[0] +" "+ strTime 
+  timestamp_span.innerHTML = timestamp
+
+  let timestamp_email_span = document.getElementById("span-send-to-id")
+  timestamp_email_span.innerHTML = "Hemos enviado un correo a "+email
+
+
 }
 
 
@@ -129,20 +148,16 @@ function registrar(argument) {
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+                insertar_timestamps(email)
 
-                let registro_container = document.getElementById("crece-registro-form-id")
-                registro_container.style.display = 'none'
-                let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
-                encuesta_container.style.display = 'none'
-                let registrarse_container = document.getElementById("crece-registro-check-acepto-registrarse-id")
-                registrarse_container.style.display = 'none'
-                let contratos_container = document.getElementById("crece-contratos-texto-id")
-                contratos_container.style.display = 'none'
-                let texto_container = document.getElementById("crece-login-container-form-wrapper-texto-id")
-                texto_container.style.display = 'none'
+                let super_container = document.getElementById("crece-registro-super-container")
+                super_container.style.display = 'none'
 
-                let registro_exitoso = document.getElementById('crece-registro-exitoso-id')
-                registro_exitoso.style.display = 'block'
+                let logo_registro_exitoso = document.getElementById("crece-logo-registro-exitoso")
+                logo_registro_exitoso.style.display = 'block'
+                let container_after_registro  = document.getElementById("crece-wrapper-id")
+                container_after_registro.style.display = 'block'
+
 
               
 
@@ -181,8 +196,9 @@ function registrar(argument) {
                                 })
                     );
     }else if(inputs_validos === 7 && lista_respuestas.length != 4){
-            let mensaje = "Debe lLenar la encuesta"
-                
+            let mensaje = "Debe Llenar la encuesta"
+                let times_encuesta = document.getElementById("times-encuesta-id")
+                times_encuesta.style.display = "inline-block"
                 document.getElementById('crece-registro-encuesta-container-id').focus();
                 
                 let label_error = document.getElementById("label_error_encuesta")
@@ -390,13 +406,11 @@ function validar_cedula(textbox){
 
           //Validamos que el digito validador sea igual al de la cedula
           if(digito_validador == ultimo_digito){
-            console.log('la cedula:' + cedula + ' es correcta');
             check_cedula.style.display = 'block'
             times_cedula.style.display = 'none'
             textbox.className = 'crece-form-input crece-form-valid-input'
             return true
           }else{
-            console.log('la cedula:' + cedula + ' es incorrecta');
             times_cedula.style.display = 'block'
             check_cedula.style.display = 'none'
             textbox.className = 'crece-form-input crece-form-invalid-input'
@@ -405,14 +419,12 @@ function validar_cedula(textbox){
           
         }else{
           // imprimimos en consola si la region no pertenece
-          console.log('Esta cedula no pertenece a ninguna region');
           times_cedula.style.display = 'block'
             check_cedula.style.display = 'none'
             return false
         }
      }else{
         //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
-        console.log('Esta cedula tiene menos de 10 Digitos');
         check_cedula.style.display = 'none'
         times_cedula.style.display = "none"
         return false

@@ -9,22 +9,22 @@
   <main id="main-id">
     <div class="container">
           
-           
-            <div class="row justify-content-center">
-             
+            
 
+            <div class="row justify-content-center" id="crece-registro-super-container">
+
+
+
+                <!--Cuadro de registro-->
               <div class="col-xl-9 col-lg-9 col-md-12 col-12 crece-registro-container" id="crece-registro-container-id">
                     <div class="col-12 crece-login-container-form-wrapper-titulo">
                       <div class="crece-registro-container-logo"><img src="{% static 'assets/logo_color.png' %}"></div>
                     </div>
 
-                     <div class="col-12 crece-registro-container-form-wrapper-titulo">
+                     <div class="col-12 crece-registro-container-form-wrapper-titulo" id="crece-registro-titulo-id">
                         <h2>¡Estás a solo unos pasos de convertirte en un inversionista CRECE!</h2>
                       </div>
-                       <!--Luego de registro exitoso-->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-12 crece-registro-exitoso" id="crece-registro-exitoso-id">
-                      <h2 style="font-size: 15px;">Gracias por registrarte en CRECE. Por favor activa tu cuenta desde el enlance que enviamos a tu correo electrónico.</h2>
-                    </div>
+
 
                   <!--Formulario para Registro-->
                 <div class="row justify-content-center crece-registro-form-wrapper" id="crece-registro-form-id">
@@ -42,8 +42,7 @@
                             Ingrese sus Nombres
                           </div>
                         </div>
-                      </div>
-                          
+                      </div>   
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
@@ -121,9 +120,9 @@
                           <input type="password" name="confirmar-password" class="crece-form-input" id="id_confirmar_password">
                           <div class="show-hide-password" id="crece-show-hide-confirmar-password" onclick="switch_mostrar_ocultar_password('confirmar')">MOSTRAR</div>
                           <i class="fa fa-check fa-confirmar-password" aria-hidden="true" id="check-confirmar-password-id"></i>
-                          <i class="fa fa-exclamation-circle fa-confirmar-password" aria-hidden="true" id="times-confirmar-password-id">
+                          <i class="fa fa-exclamation-circle fa-confirmar-password" aria-hidden="true" id="times-confirmar-password-id"></i>
                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-confirmar-password">
-                            </i>Confirma tu contraseña
+                            Confirme su contraseña
                           </div>
                         </div>
                       </div>
@@ -143,7 +142,6 @@
                           </div>
                         </div>
                       </div>
-                      
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
@@ -162,16 +160,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
-                      <div class="row">
-                        <div class="col-3 crece-registro-form-label">
-                          
-                        </div>
-                        <div class="col">
-                          
-                        </div>
-                      </div>
-                    </div>
+
 
                   <!--/form-->
 
@@ -220,31 +209,74 @@
               </div>
 
               <!--Aceptacion de contratos-->
-              <div class="crece-contratos-texto" id="crece-contratos-texto-id">
-                <p>
-                  Al dar clic en "Registrarse", aceptas los <span id='span-terminos-condiciones' class='crece-span-acuerdos-contratos'><strong>Términos y condiciones</strong></span> generales, <span id='span-politicas-privacidad' class='crece-span-acuerdos-contratos'><strong>Políticas de privacidad</strong></span> y <span id='span-acuerdo-uso-sitio' class='crece-span-acuerdos-contratos'><strong>Acuerdos específicos de uso del sitio web</strong></span> como usuario inversionista de CRECE ECUADOR.
-                </p>
-              </div>
-              
-              <div class="crece-registro-check-acepto-registrarse" id="crece-registro-check-acepto-registrarse-id">
-                <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
-
-                      <button type="submit" form="crece-form-registro-id" onclick="registrar()" id="crece-registrarse" >Registrarse</button>
-                </div>
-              </div>
-
-
-              <div class="col-12 crece-login-container-form-wrapper-texto" id="crece-login-container-form-wrapper-texto-id">
+                  <div class="crece-contratos-texto" id="crece-contratos-texto-id">
                     <p>
-                      ¿Estás registrado? Inicia sesión <a href="/inversionista/login/">aquí</a>
+                      Al dar clic en "Registrarse", aceptas los <span id='span-terminos-condiciones' class='crece-span-acuerdos-contratos'><strong>Términos y condiciones</strong></span> generales, <span id='span-politicas-privacidad' class='crece-span-acuerdos-contratos'><strong>Políticas de privacidad</strong></span> y <span id='span-acuerdo-uso-sitio' class='crece-span-acuerdos-contratos'><strong>Acuerdos específicos de uso del sitio web</strong></span> como usuario inversionista de CRECE ECUADOR.
                     </p>
-              </div>  
+                  </div>
+                  
+                  <div class="crece-registro-check-acepto-registrarse" id="crece-registro-check-acepto-registrarse-id">
+                    <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
+
+                          <button type="submit" form="crece-form-registro-id" onclick="registrar()" id="crece-registrarse" >Registrarse</button>
+                    </div>
+                  </div>
+
+
+                  <div class="col-12 crece-login-container-form-wrapper-texto" id="crece-login-container-form-wrapper-texto-id">
+                        <p>
+                          ¿Estás registrado? Inicia sesión <a href="/inversionista/login/">aquí</a>
+                        </p>
+                  </div>
+
+                  <div class="crece-registro-footer row justify-content-center">
+                                      <ul class="crece-footer-redes-lista"> 
+                                        <li><div>Síguenos en: </div></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/creceec"><img src="{% static 'assets/twitter.png' %}" id="crece-twitter"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/creceec/?hl=es-la"><img src="{% static 'assets/instagram.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://ec.linkedin.com/company/creceec"><img src="{% static 'assets/linkedin.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/CreceEC/"><img src="{% static 'assets/fb.png' %}" id="crece-facebook"></a></li>
+                                      </ul>
+                        <!--div class="crece-inforacion">¿Más información?
+                                  <div>
+                                    Whatsapp: 
+                                    <a target="_blank" rel="noopener noreferrer" href="https://wa.me/593988349088">
+                                      <span style="    color: #08A7BA;">+593-98-834-9088</span>
+                                    </a>
+                                  </div>
+                                  <div>Escríbenos: 
+                                    <a href="mailto: info@creceecuador.com">
+                                      <span style="    color: #08A7BA;">info@creceecuador.com</span>
+                                    </a>
+                                  </div>
+                                </div-->
+                  </div>
 
 
               </div>
             </div>
+            <div class="col-12 crece-login-container-form-wrapper-titulo">
+                      <div class="crece-registro-container-logo" id="crece-logo-registro-exitoso"><img src="{% static 'assets/logo_color.png' %}"></div>
+            </div>
+            <div class="wrapper" id="crece-wrapper-id">
+              
+              <i class="fa fa-check" aria-hidden="true" id="check-timelime-email-id"></i>
+              <div class="timeline">
 
-            
+
+                <dl class="timeline--entry">
+                  
+                  <dt class="timeline--entry__title"><i class="fa fa-envelope" aria-hidden="true" id="crece-registro-icon-email-id"></i>  <span id="span-hora-email-id">hora</span></dt>
+                  <dd class="timeline--entry__detail"><span id="span-send-to-id"></span></dd>
+                </dl>
+                <dl class="timeline--entry">
+                  <dt class="timeline--entry__title">Ahora activa tu cuenta</dt>
+                  <dd class="timeline--entry__detail">Gracias por registrarte en CRECE. Ahora debes activar tu cuenta desde el enlace que enviamos a tu correo electrónico.</dd>
+                </dl>
+                
+                
+              </div>
+            </div>
 
 
     </div>

@@ -6,8 +6,37 @@ main{
   box-sizing: border-box;
 }
 
+footer{
+    display: none;
+}
+
 #crece-header{
     display: none;
+}
+
+#main-id{
+    height: 100vh
+}
+
+.crece-registro-footer{
+        color: white;
+    background-color: #006B8D;
+    display: block;
+
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+.crece-footer-redes-lista li {
+    display: inline-block;
+}
+.crece-footer-redes-lista img {
+    height: 25px !important;
+}
+
+.crece-footer-redes-lista img#crece-twitter {
+    height: 23px !important;
 }
 
 .crece-login-container-form-wrapper{
