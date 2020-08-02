@@ -6,7 +6,7 @@ from django_fsm import TransitionNotAllowed
 from django.db.models.signals import pre_save
 # Create your models here.
 
-FASES_INVERSION = ('Open', 'In Progress', 'Waiting for Approval', 'Pending Transfer', 'Transfer Sent', 'Waiting to be Fund', 'Valid', 'Finished', 'Declined')
+FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
 FASES_INVERSION = list(zip(FASES_INVERSION, FASES_INVERSION))
 class Inversion(models.Model):
     estado_confirmada = 1
@@ -26,44 +26,45 @@ class Inversion(models.Model):
     estado = models.IntegerField(choices=opciones_estado, default=0)
     fase_inversion = FSMField(default=FASES_INVERSION[0][0], choices=FASES_INVERSION)
 
-    @transition(field=fase_inversion, source='Open', target='In Progress')
+    @transition(field=fase_inversion, source='OPEN', target='FILL_INFO')
     def start(self):
 
         pass
-
-    @transition(field=fase_inversion, source='In Progress', target='Waiting for Approval')
-    def esperar_approval(self):
-            
+    #FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
+    @transition(field=fase_inversion, source='FILL_INFO', target='CONFIRM_INVESTMENT')
+    def step_two(self):
         pass
 
-    @transition(field=fase_inversion, source='Waiting for Approval', target='Declined')
-    def decline(self):
-            
+    @transition(field=fase_inversion, source='CONFIRM_INVESTMENT', target='ORIGIN_MONEY')
+    def step_three(self):
         pass
 
-    @transition(field=fase_inversion, source='Waiting for Approval', target='Pending Transfer')
-    def approve_investment(self):
-            
+    @transition(field=fase_inversion, source='ORIGIN_MONEY', target='PENDING_TRANSFER')
+    def step_four(self):
         pass
 
-    @transition(field=fase_inversion, source='Pending Transfer', target='Transfer Sent')
-    def transfer_sent(self):
-            
+    @transition(field=fase_inversion, source='PENDING_TRANSFER', target='TRANSFER_SUBMITED')
+    def validate_transfer(self):
         pass
-    
-    @transition(field=fase_inversion, source='Transfer Sent', target='Waiting to be Fund')
+
+    @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='DECLINED')
+    def decline_transfer(self):
+        pass
+
+    @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='TO_BE_FUND')
     def approve_transfer(self):
-            
         pass
 
-    @transition(field=fase_inversion, source='Waiting to be Fund', target='Valid')
+    @transition(field=fase_inversion, source='TO_BE_FUND', target='ABANDONED')
+    def invalid_project(self):
+        pass
+
+    @transition(field=fase_inversion, source='TO_BE_FUND', target='GOING')
     def validate(self):
-            
         pass
 
-    @transition(field=fase_inversion, source='Valid', target='Finished')
+    @transition(field=fase_inversion, source='GOING', target='FINISHED')
     def finish(self):
-            
         pass
 
     class Meta:
@@ -110,7 +111,7 @@ class Pago_detalle(models.Model):
 def cambiar_estado_inversion_aprovada(sender, instance, **kwargs):
     if(instance.estado == 1):
         try:
-            instance.approve_investment()
+            instance.validate_transfer()
         except TransitionNotAllowed:
             print("Estado no se puede cambiar")
         

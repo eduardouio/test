@@ -100,7 +100,6 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
                                         adjudicacion=adjudicacion, adjudicacion_iva=adjudicacion_iva,
                                         inversion_total=inversion_total, ganancia_total=ganancia_total)
         new_inversion.start()
-        new_inversion.esperar_approval()
         new_inversion.save()
 
         #pago_detalle

@@ -68,7 +68,7 @@ def cambiar_estado_inversion_transferencia_creada(sender, instance, created, **k
         inversion = instance.id_inversion
         
         try:
-            inversion.transfer_sent()
+            inversion.validate_transfer()
         except TransitionNotAllowed:
             print("Estado no se puede cambiar")
         
