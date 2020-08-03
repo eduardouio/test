@@ -1,0 +1,28 @@
+#crece-registro-super-container{
+    width: 100%;
+}
+
+#crece-perfil-lista{
+    margin: 15px 0px;
+}
+
+.crece-perfil-seleccionar {
+    background-color: white;
+    color: #006B8D;
+    margin-right: 30px;
+    margin-top: 50px;
+    padding: 0px;
+    display: inline-block;
+    height: 305px;
+}
+
+.crece-perfil-seleccionar li{
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.crece-perfil-seleccionar li.active{
+    color: #fff;
+    background: #08a7ba;
+}

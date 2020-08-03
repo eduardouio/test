@@ -38,6 +38,9 @@ footer{
 	margin-left: auto;
 	display: block;
 	color: #71BDC5;
+	position: relative;
+	top: 0px;
+	right: 0px;
 }
 
 .crece-usuario div{
@@ -57,13 +60,15 @@ footer{
 	top: 0;
 	bottom: 0;
 	padding: 15px 0px;
-
 }
 
 #sidebar {
 	position: absolute;
 	top: 0;
 	bottom: 0;
+	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+	z-index: 1; /* Stay on top */
+	left: 0;
 }
 
 
@@ -96,7 +101,6 @@ footer{
 /*Header*/
 
 header{
-	margin-left:250px; 
 	padding: 20px;
 }
 
@@ -235,6 +239,14 @@ ul.CTAs a {
 
 ul li {
 	margin: 0px !important;
+}
+
+.content {
+	padding-left: 250px;
+}
+
+.crece-perfil {
+	display: none;
 }
 
 @media(max-width:768px){

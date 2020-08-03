@@ -2,6 +2,8 @@
 {% load static %}
 {% block head_css_agregado %}
   <link href="{% static 'registro_inversionista/dashboard.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'registro_inversionista/css/solicitudes-dashboard.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'registro_inversionista/css/dashboard_perfil.css' %}" rel="stylesheet" type="text/css">
 {% endblock head_css_agregado %}
 {% block content %}
   <body>
@@ -16,8 +18,13 @@
                 </div>
                 <div class="crece-usuario-ver-perfil"> 
                   <h6>
-                    <a href="#">
+                    <a id="ver_perfil" href="#perfil">
                       Ver Perfil
+                    </a>
+                  </h6>
+                  <h6>
+                    <a href="#">
+                      Cerrar Sesión
                     </a>
                   </h6>
                 </div>
@@ -26,27 +33,27 @@
           
           
           <ul class="list-unstyled components">          
-            <li class="active">
+            <li class="active selectable" data-fase-inversion="">
               <a href="#"><span>Oportunidades de<br> Inversion</span></a>
             </li>
             <li>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis Inversiones</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li>
+                <li class="selectable" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
                   <a href="#">Pendientes</a>
                 </li>
-                <li>
+                <li class="selectable" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
                   <a href="#">Por fondear</a>
                 </li>
-                <li>
+                <li class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
                   <a href="#">Vigentes</a>
                 </li>
-                <li>
+                <li class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
                   <a href="#">Terminadas</a>
                 </li>
               </ul> 
             </li>
-            <li>
+            <li class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
               <a href="#">Historial de inversiones</a>
             </li>
           </ul>
@@ -70,7 +77,178 @@
                 
               </div>
     
-            </header>
+          </header>
+            
+          <section class="crece-perfil">
+              <div class="row justify-content-center" id="crece-registro-super-container">
+
+                <div class="col-xl-3 col-lg-3 crece-perfil-seleccionar">
+                  <ul class="list-unstyled" id="crece-perfil-lista">
+                    <li class="active" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
+                      <a href="#">Información Personal</a>
+                    </li>
+                    <li class="" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
+                      <a href="#">Información Laboral</a>
+                    </li>
+                    <li class="" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
+                      <a href="#">Cuenta Bancaria</a>
+                    </li>
+                    <li class="" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
+                      <a href="#">Contratos Aceptados</a>
+                    </li>
+                    <li class="" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
+                      <a href="#">Cambiar Contraseña</a>
+                    </li>
+                  </ul> 
+                </div>
+
+                  <!--Cuadro de registro-->
+                <div class="col-xl-7 col-lg-7 col-md-12 col-12 crece-registro-container" id="crece-registro-container-id">
+                      <div class="col-12 crece-login-container-form-wrapper-titulo">
+                        <div class="crece-registro-container-logo"><img src="{% static 'assets/logo_color.png' %}"></div>
+                      </div>
+  
+                       <div class="col-12 crece-registro-container-form-wrapper-titulo" id="crece-registro-titulo-id">
+                          <h2>Modificar datos</h2>
+                        </div>
+  
+  
+                    <!--Formulario para Registro-->
+                  <div class="row justify-content-center crece-registro-form-wrapper" id="crece-registro-form-id">
+                    <!--form id="crece-form-registro-id" method="POST"-->
+                      <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
+                        <div class="row">
+                          <div class="col-12 crece-registro-form-label">
+                            Nombres
+                          </div> 
+                          <div class="col">
+                            <input type="text" name="nombres" class="crece-form-input" value="{{ usuario.nombres }}" id="id_nombres" required disabled>
+                            <i class="fa fa-check" aria-hidden="true" id="check-nombres-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombres-id"></i>
+                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombres">
+                              Ingrese sus Nombres
+                            </div>
+                          </div>
+                        </div>   
+                      </div>
+  
+                      <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
+                        <div class="row">
+                          <div class="col-12 crece-registro-form-label">
+                            Apellidos
+                          </div> 
+                          <div class="col">
+                            <input type="text" name="apellidos" class="crece-form-input" value="{{ usuario.apellidos }}" id="id_apellidos" required="" disabled>
+                            <i class="fa fa-check" aria-hidden="true" id="check-apellidos-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-apellidos-id"></i>
+                             <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-apellidos">
+                              Ingrese sus Apellidos
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                       <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
+                        <div class="row">
+                          <div class="col-12 crece-registro-form-label">
+                            Cédula
+                          </div> 
+                          <div class="col">
+                            <input type="text" name="cedula" class="crece-form-input" id="id_cedula" value="{{ usuario.cedula }}" maxlength="10"  disabled/>
+                            <i class="fa fa-check" aria-hidden="true" id="check-cedula-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
+                             <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
+                              Ingrese su Cédula
+                            </div>
+  
+                          </div>
+                        </div> 
+                      </div>
+  
+                      <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
+                        <div class="row">
+                          <div class="col-12 crece-registro-form-label">
+                            Celular
+                          </div> 
+                          <div class="col">
+                            <input type="text" name="celular" class="crece-form-input" id="id_celular" required="" value="{{ usuario.celular }}">
+                            <i class="fa fa-check" aria-hidden="true" id="check-celular-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-celular-id"></i>
+                             <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-celular">
+                              Ingrese su celular
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-canton crece-registro-container-form-wrapper">
+                        <div class="row">
+                          <div class="col-12 crece-registro-form-label">
+                            Ciudad
+                          </div> 
+                          <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
+                            <select id="id_canton" name="canton" data-canton="{{ usuario.canton.nombre }}">
+                              <option value="Guayaquil">Guayaquil</option>
+                              <option value="Quito">Quito</option>
+                              <option value="Cuenca">Cuenca</option>
+                              <option value="Manta">Manta</option>
+                              <option value="Machala">Machala</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+  
+  
+                    <!--/form-->
+  
+                  </div>
+  
+  
+                <!--Aceptacion de contratos-->
+                    <div class="crece-registro-check-acepto-registrarse" id="crece-registro-check-acepto-registrarse-id">
+                      <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
+  
+                            <button type="submit" form="crece-form-registro-id" onclick="guardarCambiosPerfil( '{{ usuario.pk }}' ) " id="crece-registrarse" >Guardar</button>
+                      </div>
+                    </div>
+  
+  
+                </div>
+              </div>
+          </section>
+          <section class="crece-oportunidades">
+            <div class="row justify-content-center">
+                <div class="container col-lg-12">
+                    <div class="col-12">
+                        <h2 class="crece-oportunidades-titulo">Oportunidades de Inversión</h2>
+                    </div>
+                    <div class="row justify-content-center crece-oportunidades-container"> 
+                    </div>                                              
+                </div>
+            </div>
+            <div id="crece-botones-pag" class="row justify-content-center">
+                <div class="col-lg-10">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="row justify-content-center">
+                          <button class="crece-oportunidades-anterior">
+                              <i class="fa fa-caret-left" aria-hidden="true"></i>
+                              <span>Anterior</span>
+                          </button>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row justify-content-center">
+                          <button class="crece-oportunidades-siguiente">
+                            <span>Siguiente</span> 
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                          </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </section>
       </div>
 
     </div>
@@ -78,5 +256,10 @@
 {% endblock content %}
 
 {% block footer_javascript_agregado %}
+<script src="{% static 'js/line_wrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'registro_inversionista/scripts.js' %}" ></script>
+<script type="text/javascript" src="{% static 'registro_inversionista/js/dashboard_solicitudes.js' %}" ></script>
+<script type="text/javascript" src="{% static 'registro_inversionista/js/dashboard_perfil.js' %}" ></script>
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+<script src="{% static 'js/tooltip-crece.js' %}"></script>
 {% endblock footer_javascript_agregado %}

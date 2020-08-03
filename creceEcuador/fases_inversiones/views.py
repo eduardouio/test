@@ -2,11 +2,13 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.http import HttpResponse
+from rest_framework.decorators import api_view
 
-
+from .serializers import InversionSerializer
 from . import models
 from registro_inversionista.models import Usuario
 from solicitudes.models import Solicitud
+import json
 
 
 #ibrerias para crear pdf
@@ -17,6 +19,8 @@ from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.units import inch
 from reportlab.rl_config import defaultPageSize
 from reportlab.lib import colors
+
+from .types import INICIO_DEFAULT, INICIO_KEY, CANTIDAD_DEFAULT, CANTIDAD_KEY, FASE_KEY, FASES_INVERSION, MENSAJE_BAD_REQUEST, INVERSIONISTA_KEY
 
 
 
@@ -128,3 +132,63 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
 
     def get(self, request, *args, **kwargs):
         return render(request,"fases_inversiones/fase2.html")
+
+
+@api_view(['GET'])
+def get_inversiones(request):
+    #obtener la data del request
+    request_data = request.GET
+    print(request.GET)
+    #Setear la data del request si se encuentra
+    #Si no se encuentra setear el default
+    if FASE_KEY in request_data and INVERSIONISTA_KEY in request_data:
+
+        fase_request = request_data[FASE_KEY]
+        inversionista = request_data[INVERSIONISTA_KEY]
+
+        inicio = INICIO_DEFAULT
+        if INICIO_KEY in request_data:
+            if int(request_data[INICIO_KEY]) >= 0 :
+                inicio = int(request_data[INICIO_KEY])
+
+        cantidad = CANTIDAD_DEFAULT    
+        if CANTIDAD_KEY in request_data:
+            if int(request_data[CANTIDAD_KEY]) >= 0 :
+                cantidad = int(request_data[CANTIDAD_KEY])   
+
+        #Se obtiene el queryset y se lo convierte a json
+        #Se agrega el - antes del atributo para ordenarlo descendientemente
+        try:
+
+            if cantidad>0:
+                #Se setea el indice del ultimo registro
+                final = inicio + cantidad 
+                queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')[inicio:final]
+            else:
+                queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')
+        except KeyError:
+            diccionario_respuesta = {
+            'status': status.HTTP_400_BAD_REQUEST,
+            'message': MENSAJE_BAD_REQUEST,
+            'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
+
+        serializer = InversionSerializer(queryset, many=True)
+
+        #Se crea el diccionario de respuesta
+        diccionario_respuesta = {
+            'inicio': 0,
+            'cantidad': 10,
+            'data': serializer.data
+        }
+
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    else:
+        diccionario_respuesta = {
+            'status': status.HTTP_400_BAD_REQUEST,
+            'message': MENSAJE_BAD_REQUEST,
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)

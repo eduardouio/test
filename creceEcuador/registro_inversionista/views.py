@@ -423,6 +423,44 @@ def Dashboard(request):
         return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
 
 @login_required
+def DashboardPerfil(request):
+    if request.user.is_authenticated:
+        usuario = models.Usuario.objects.filter(user=request.user)[0]
+        return render(request, 'registro_inversionista/dashboard_perfil.html', {"usuario":usuario})
+
+@api_view(['POST'])
+def DashboardPerfilUpdate(request, pk):
+    try:
+        usuario = models.Usuario.objects.get(pk=pk) #get_object_or_404(Solicitud, pk=pk)
+
+        nombre_canton = request.data.get("canton")
+        celular = request.data.get("celular")  
+
+        usuario.celular = celular    
+
+        canton = models.Canton.objects.get(nombre=nombre_canton.upper())
+        usuario.canton = canton
+
+        usuario.save()  
+
+        serializer = serializers.UsuarioSerializer(instance=usuario)
+
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+            'data': serializer.data
+        }
+
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    except models.Usuario.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': MENSAJE_NOT_FOUND,
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+
+@login_required
 def ingresar_como(request):
     return render(request, 'registro_inversionista/ingresar_como.html', {})
 

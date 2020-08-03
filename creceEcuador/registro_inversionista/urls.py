@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'fase1/', views.Proceso_formulario_inversion.as_view(), name="formulario-inversion"),
     path('login/', views.Login_Users.as_view(), name="inversionista_login"),
     path('dashboard/', views.Dashboard, name='dashboard'),
+    path('dashboard/perfil', views.DashboardPerfil, name='dashboard_perfil'),
     path('ingresa/', views.ingresar_como, name='ingresar_como'),
    
 
@@ -40,6 +41,7 @@ urlpatterns = [
     # path('login/', views.LoginView, name="login"),
     path('bancos/', views.Bancos_list.as_view(), name="bancos-all"),
     path('<str:username>/', views.get_usuario, name='get_usuario'),
+    path('modificar/<int:pk>/', views.DashboardPerfilUpdate, name='update_usuario_dashboard'),
     
 # Wire up our API using automatic URL routing.
 ]

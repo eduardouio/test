@@ -4,6 +4,7 @@ from registro_inversionista.models import Usuario
 from django_fsm import FSMField, transition
 from django_fsm import TransitionNotAllowed
 from django.db.models.signals import pre_save
+from django.conf import settings
 # Create your models here.
 
 FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
