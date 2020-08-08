@@ -29,7 +29,7 @@ class TipoCredito(models.Model):
 
 class Solicitud(models.Model):
     #Modelo Solicitud
-    ticket = models.CharField(max_length=200, blank=False)
+    ticket = models.CharField(max_length=200, blank=True)
     operacion = models.TextField(blank=False)
     historia = models.TextField(blank=False)
     plazo = models.IntegerField(blank=False)
@@ -87,6 +87,14 @@ class Solicitud(models.Model):
     def __str__(self):
         return self.ticket + ", "+ self.autor
 
+    def save(self, *args, **kwargs):
+        
+        self.ticket = generar_ticker(self.id_categoria)
+        super(Solicitud, self).save(*args, **kwargs)
+        
+
+
+
     class Meta:
         verbose_name = "Solicitud"
         verbose_name_plural = "Solicitudes"
@@ -116,3 +124,15 @@ class CalificacionSolicitante(models.Model):
     class Meta:
         verbose_name = "Calificación del Solicitante"
         verbose_name_plural = "Calificaciónes de los Solicitantes"
+
+
+
+def generar_ticker(categoria):
+    categoria_slice = categoria.nombre[0:3].upper()
+    last_ticker_categoria = Solicitud.objects.filter(ticket__startswith=categoria_slice).order_by('ticket').last()
+    if not last_ticker_categoria:
+        return categoria_slice.upper()+"001"
+    categoria_no = last_ticker_categoria.ticket
+    new_categoria_no = str(int(categoria_no[3:]) + 1)
+    new_categoria_no = categoria_no[0:-(len(new_categoria_no))] + new_categoria_no
+    return new_categoria_no
