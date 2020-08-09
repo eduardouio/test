@@ -6,6 +6,44 @@
 .crece-completar-datos-formulario-wrapper{
   background-color: white;
   border: 1px solid #DEDEDE;
+  padding: 0px 45px;
+}
+
+.crece-completar-datos-formulario-wrapper-required{
+  color: red;
+}
+
+.crece-completar-datos-formulario-wrapper-boton-subir-doc{ 
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 160px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: 600 !important;
+  border-radius: 30px;
+  padding: 0px 10px;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
+  color: white;
+  font-size: 14px !important;
+  margin-bottom: 0px;
+}
+
+.crece-completar-datos-formulario-wrapper-boton-subir-doc:hover {
+  cursor: pointer;
+}
+
+#foto_cedula {
+  display: none;
+}
+
+.crece-completar-datos-formulario-wrapper-boton-subir-label{
+  font-weight: 300 !important;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 label {

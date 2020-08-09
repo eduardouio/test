@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 import requests
 from rest_framework.parsers import MultiPartParser
-from .types import MENSAJE_NOT_FOUND
+from .types import MENSAJE_NOT_FOUND, CASADO, UNION_LIBRE
 from rest_framework.views import APIView
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -246,12 +246,13 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
     serializer_class = serializers.UsuarioSerializer
 
     def post(self, request, *args, **kwargs):
+        print(request.data)
         #Invesionista
         nombre = request.data.get("nombre")
         apellidos = request.data.get("apellidos")
         cedula = request.data.get("cedula")
         celular = request.data.get("celular")
-        conyuge = request.data.get("conyuge")
+        estado_civil = request.data.get("estado_civil")
         direccion_domicilio = request.data.get("direccion_domicilio")
         nombre_canton = request.data.get("canton")
         canton = models.Canton.objects.get(nombre=nombre_canton)
@@ -272,10 +273,14 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         tipo_cuenta = request.data.get("tipo_cuenta")
 
         descripcion_ingresos = json.dumps(fuente_ingresos).upper()
+        print(fuente_ingresos)
         #inversionista ****Revisar
         inversionista = models.Usuario.objects.filter(cedula=cedula)[0]
 
-        if conyuge:
+        #estado civil
+        inversionista.estado_civil = estado_civil
+        if estado_civil == CASADO or estado_civil == UNION_LIBRE:
+            
             nombres_conyuge = request.data.get("nombres_conyuge")
             apellidos_conyuge = request.data.get("apellidos_conyuge")
             cedula_conyuge = request.data.get("cedula_conyuge")
@@ -283,6 +288,8 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
             new_conyuge.save()
 
             inversionista.conyuge_id = new_conyuge
+
+        print(descripcion_ingresos)
         
         new_ingresos = models.Fuente_ingresos(descripcion= descripcion_ingresos, direccion= direccion_fuente_ingresos,
                                                 canton= canton_fuentes_ingresos, ingresos_mensuales=ingresos_mensuales)
@@ -296,8 +303,10 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         
 
         #agregando al inversionista respectivo
-        inversionista.ciudad = canton
+        inversionista.celular = celular
+        inversionista.canton = canton
         inversionista.provincia = provincia
+        inversionista.direccion1 = direccion_domicilio
         inversionista.telefono_domicilio = telefono_domicilio
         inversionista.ingresos = new_ingresos
         inversionista.cuenta_bancaria = new_cuenta_bancaria
@@ -498,10 +507,6 @@ def LoginView(request):
              submitted = True
  
     return render(request, 'registro_inversionista/login.html', {'form': form, 'submitted': submitted})
-
-def completar_datos_financieros_view(request):
-    if request.method == 'GET': 
-        return render(request, 'registro_inversionista/completa_datos.html')
 
 def subir_transferencia_view(request):
     if request.method == 'GET': 

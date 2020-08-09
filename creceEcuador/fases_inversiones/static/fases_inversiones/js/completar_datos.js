@@ -1,5 +1,16 @@
-$("input[name='conyugue']").change(function(){
-    if ($(this).val() == 1) {
+$(document).ready( function(){
+  $(".crece-completar-datos-formulario-relacion-dependencia").show();
+  hacerRequired(".crece-completar-datos-formulario-relacion-dependencia input");
+
+  $(".crece-completar-datos-formulario-profesional-independiente").hide();
+  hacerNoRequired(".crece-completar-datos-formulario-profesional-independiente input");
+
+  $(".crece-completar-datos-formulario-auto-empleado").hide();
+  hacerNoRequired(".crece-completar-datos-formulario-auto-empleado input");
+});
+
+$("#selectEstadoCivil").change(function(){
+    if (this.value === "casado" || this.value === "union libre") {
         $(".crece-completar-datos-formulario-conyugue").show();
         hacerRequired(".crece-completar-datos-formulario-conyugue input");
     }
@@ -9,8 +20,8 @@ $("input[name='conyugue']").change(function(){
     }
 });
 
-$("input[name='fuente-ingresos']").change(function(){
-    if ($(this).val() == 1) {
+$("#selectTrabajo").change(function(){
+    if (this.value == 1) {
         $(".crece-completar-datos-formulario-relacion-dependencia").show();
         hacerRequired(".crece-completar-datos-formulario-relacion-dependencia input");
 
@@ -20,7 +31,7 @@ $("input[name='fuente-ingresos']").change(function(){
         $(".crece-completar-datos-formulario-auto-empleado").hide();
         hacerNoRequired(".crece-completar-datos-formulario-auto-empleado input");
     }
-    else if($(this).val() == 2){
+    else if(this.value == 2){
         $(".crece-completar-datos-formulario-relacion-dependencia").hide();
         hacerNoRequired(".crece-completar-datos-formulario-relacion-dependencia input");
 
@@ -30,7 +41,7 @@ $("input[name='fuente-ingresos']").change(function(){
         $(".crece-completar-datos-formulario-auto-empleado").hide();
         hacerNoRequired(".crece-completar-datos-formulario-auto-empleado input");
     }
-    else {
+    else if(this.value == 3){
         $(".crece-completar-datos-formulario-relacion-dependencia").hide();
         hacerNoRequired(".crece-completar-datos-formulario-relacion-dependencia input");
 
@@ -40,6 +51,21 @@ $("input[name='fuente-ingresos']").change(function(){
         $(".crece-completar-datos-formulario-auto-empleado").show();
         hacerRequired(".crece-completar-datos-formulario-auto-empleado input");
     }
+
+    else {
+        $(".crece-completar-datos-formulario-relacion-dependencia").hide();
+        hacerNoRequired(".crece-completar-datos-formulario-relacion-dependencia input");
+
+        $(".crece-completar-datos-formulario-profesional-independiente").hide();
+        hacerNoRequired(".crece-completar-datos-formulario-profesional-independiente input");
+
+        $(".crece-completar-datos-formulario-auto-empleado").hide();
+        hacerNoRequired(".crece-completar-datos-formulario-auto-empleado input");
+    }
+});
+
+$("#foto_cedula").on('change', function() {
+  $(".crece-completar-datos-formulario-wrapper-boton-subir-label").html(this.files[0].name);
 });
 
 $('.crece-completar-datos-formulario form').submit(function(e){
@@ -160,10 +186,10 @@ var substringMatcher = function(strs) {
       dictRespuestas.cedula = $("#cedula").val();
       dictRespuestas.celular = $("#celular").val();
 
-      var conyuge = $("input[name='conyugue']:checked").val();
+      var estado_civil = $("#selectEstadoCivil").children("option:selected").val();
 
-      if(conyuge === "1"){
-        dictRespuestas.conyuge = conyuge;
+      dictRespuestas.estado_civil = estado_civil;
+      if(estado_civil === "casado" || estado_civil === "union libre"){
         dictRespuestas.nombres_conyuge = $("#nombre_conyugue").val();
         dictRespuestas.apellidos_conyuge = $("#apellidos_conyugue").val();
         dictRespuestas.cedula_conyuge = $("#cedula_conyugue").val();
@@ -175,7 +201,7 @@ var substringMatcher = function(strs) {
       dictRespuestas.canton = $("#canton").val();
       dictRespuestas.telefono_domicilio = $("#telf_domicilio").val();
 
-      var fuente_ingresos = $("input[name='fuente-ingresos']:checked").val()
+      var fuente_ingresos = $("#selectTrabajo").children("option:selected").val();
 
       var dictFuenteIngresos = {};
     
@@ -195,45 +221,76 @@ var substringMatcher = function(strs) {
         dictFuenteIngresos.actividad_auto_empleado = $("#actividad_auto_empleado").val();
       }
 
-      dictRespuestas.fuente_ingresos = dictFuenteIngresos;
+      dictRespuestas.fuente_ingresos = JSON.stringify(dictFuenteIngresos);
 
 
       dictRespuestas.direccion_fuente_ingresos = $("#direccion_empresa").val();
       dictRespuestas.canton_fuentes_ingresos = $("#canton_empresa").val();
       dictRespuestas.ingresos_mensuales = $("#ingresos_aproximados").val();
 
-      dictRespuestas.banco = $("#banco").val();
+      dictRespuestas.banco = $("#selectBanco").children("option:selected").val();
       dictRespuestas.numero_cuenta = $("#numero_cuenta").val();
-      dictRespuestas.tipo_cuenta = $("input[name='tipo_cuenta']:checked").val();
-
+      dictRespuestas.tipo_cuenta = $("#selectTipoCuenta").children("option:selected").val();
+      
+      console.log(dictRespuestas);
       return dictRespuestas;
   }
 
   function checkInputs() {
     var es_valido = true;
     $('input').filter('[required]').each(function() {
-      if ($(this).val() === '') {
+
+      if (this.name === 'foto_cedula' && this.files.length == 0) {
+        alert("Suba una foto de su cédula");
+        es_valido = false;
+        return false;
+      }
+      else if ($(this).val() === '') {
         alert("llene todos los campos");
         es_valido = false;
         return false;
       }
+      else {
+        if (this.name === 'cedula' && !validar_cedula(this)){
+          alert("Ingrese su cédula correctamente");
+          es_valido = false;
+          return false;
+
+        }
+        else if (this.name === 'cedula_conyugue' && !validar_cedula(this)){
+          alert("Ingrese la cédula de su cónyugue correctamente");
+          es_valido = false;
+          return false;
+
+        }
+
+        else if(this.name === 'canton' && !cantones.includes(this.value)) {
+          alert("Ingrese un cantón válido");
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+
+        else if(this.name === 'canton_empresa' && !cantones.includes(this.value)) {
+          alert("Ingrese un cantón válido");
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+        else if(this.name === 'provincia' && !provincias.includes(this.value)) {
+          alert("Ingrese una provincia válida");
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+        else if(this.name === 'celular' && this.value.length != 10) {
+          alert("Ingrese un celular válido");
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+      }
     });
-
-    if(!$("input[name='conyugue']:checked").val()){
-        alert("Seleccione si tiene cónyugue");
-        return false;
-    }
-
-    if(!$("input[name='fuente-ingresos']:checked").val()){
-        alert("Seleccione su fuente de ingresos");
-        return false;
-    }
-
-    if(!$("input[name='tipo_cuenta']:checked").val()){
-        alert("Seleccione el tipo de su cuenta bancaria");
-        return false;
-    }
-
     return es_valido;
   }
 
@@ -288,4 +345,101 @@ function renombrarArchivo(nombre_nuevo, nombre_anterior_con_extension){
     var arreglo_nombre = nombre_anterior_con_extension.split(".");
     var extension = arreglo_nombre[arreglo_nombre.length - 1];
     return nombre_nuevo + "." + extension;
+}
+
+function validar_cedula(textbox){
+  
+  /**
+     * Algoritmo para validar cedulas de Ecuador
+     * @Author : Victor Diaz De La Gasca.
+     * @Fecha  : Quito, 15 de Marzo del 2013 
+     * @Email  : vicmandlagasca@gmail.com
+     * @Pasos  del algoritmo
+     * 1.- Se debe validar que tenga 10 numeros
+     * 2.- Se extrae los dos primero digitos de la izquierda y compruebo que existan las regiones
+     * 3.- Extraigo el ultimo digito de la cedula
+     * 4.- Extraigo Todos los pares y los sumo
+     * 5.- Extraigo Los impares los multiplico x 2 si el numero resultante es mayor a 9 le restamos 9 al resultante
+     * 6.- Extraigo el primer Digito de la suma (sumaPares + sumaImpares)
+     * 7.- Conseguimos la decena inmediata del digito extraido del paso 6 (digito + 1) * 10
+     * 8.- restamos la decena inmediata - suma / si la suma nos resulta 10, el decimo digito es cero
+     * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.     
+     */
+     let cedula = textbox.value
+     let times_cedula = document.getElementById("times-cedula-id")
+     let check_cedula = document.getElementById("check-cedula-id")
+     //Preguntamos si la cedula consta de 10 digitos
+     if(cedula.length == 10){
+        
+        //Obtenemos el digito de la region que sonlos dos primeros digitos
+        var digito_region = cedula.substring(0,2);
+        
+        //Pregunto si la region existe ecuador se divide en 24 regiones
+        if( digito_region >= 1 && digito_region <=24 ){
+          
+          // Extraigo el ultimo digito
+          var ultimo_digito   = cedula.substring(9,10);
+
+          //Agrupo todos los pares y los sumo
+          var pares = parseInt(cedula.substring(1,2)) + parseInt(cedula.substring(3,4)) + parseInt(cedula.substring(5,6)) + parseInt(cedula.substring(7,8));
+
+          //Agrupo los impares, los multiplico por un factor de 2, si la resultante es > que 9 le restamos el 9 a la resultante
+          var numero1 = cedula.substring(0,1);
+          var numero1 = (numero1 * 2);
+          if( numero1 > 9 ){ var numero1 = (numero1 - 9); }
+
+          var numero3 = cedula.substring(2,3);
+          var numero3 = (numero3 * 2);
+          if( numero3 > 9 ){ var numero3 = (numero3 - 9); }
+
+          var numero5 = cedula.substring(4,5);
+          var numero5 = (numero5 * 2);
+          if( numero5 > 9 ){ var numero5 = (numero5 - 9); }
+
+          var numero7 = cedula.substring(6,7);
+          var numero7 = (numero7 * 2);
+          if( numero7 > 9 ){ var numero7 = (numero7 - 9); }
+
+          var numero9 = cedula.substring(8,9);
+          var numero9 = (numero9 * 2);
+          if( numero9 > 9 ){ var numero9 = (numero9 - 9); }
+
+          var impares = numero1 + numero3 + numero5 + numero7 + numero9;
+
+          //Suma total
+          var suma_total = (pares + impares);
+
+          //extraemos el primero digito
+          var primer_digito_suma = String(suma_total).substring(0,1);
+
+          //Obtenemos la decena inmediata
+          var decena = (parseInt(primer_digito_suma) + 1)  * 10;
+
+          //Obtenemos la resta de la decena inmediata - la suma_total esto nos da el digito validador
+          var digito_validador = decena - suma_total;
+
+          //Si el digito validador es = a 10 toma el valor de 0
+          if(digito_validador == 10)
+            var digito_validador = 0;
+
+          //Validamos que el digito validador sea igual al de la cedula
+          if(digito_validador == ultimo_digito){
+            return true
+          }else{
+            textbox.classList.add("invalid");
+            return false
+          }
+          
+        }else{
+          // imprimimos en consola si la region no pertenece
+          textbox.classList.add("invalid");
+          return false
+        }
+     }else{
+        //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
+        textbox.classList.add("invalid");
+        return false
+
+     }    
+  
 }

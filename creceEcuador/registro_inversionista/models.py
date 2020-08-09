@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 import json
 import jwt
+from .types import CASADO, UNION_LIBRE
 
 class Conyuge(models.Model):
     nombres = models.CharField(max_length=100)
@@ -93,6 +94,17 @@ class Usuario(models.Model):
         (estado_bloqueado, "Bloqueado"),
     ]
 
+    opciones_estado_civil = [
+        "soltero",
+        CASADO,
+        "divorciado",
+        UNION_LIBRE,
+        "viudo",
+        "n/a"
+    ]
+
+    opciones_estado_civil = list(zip(opciones_estado_civil, opciones_estado_civil))
+
 
     idUsuario = models.AutoField(primary_key=True)
     nombres = models.CharField(max_length=100)
@@ -102,6 +114,7 @@ class Usuario(models.Model):
     email = models.EmailField(unique=True)
     celular = models.CharField(max_length=10)
     tipo_persona = models.IntegerField(choices=opciones_tipo_persona)
+    estado_civil = models.CharField(choices=opciones_estado_civil, max_length=15)
     estado = models.IntegerField(choices=opciones_estado, default=0)
     direccion1 = models.CharField(max_length=50, blank= True)
     direccion2 = models.CharField(max_length=50, blank= True)
