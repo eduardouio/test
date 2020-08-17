@@ -45,6 +45,7 @@
                                         <label>Nombre: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.nombres}}"
                                             class="form-control"
                                             name="nombre"
                                             id="nombre"
@@ -56,6 +57,7 @@
                                         <label>Apellidos: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.apellidos}}"
                                             class="form-control"
                                             name="apellidos"
                                             id="apellidos"
@@ -67,6 +69,7 @@
                                         <label>Cédula: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.cedula}}"
                                             class="form-control"
                                             name="cedula"
                                             id="cedula"
@@ -86,13 +89,14 @@
                                             id="foto_cedula"
                                             data-valueMissing="Suba la imagen de su cédula"
                                             />
-                                        <label class="crece-completar-datos-formulario-wrapper-boton-subir-label">PDF, JPG o PNG</label>
+                                        <label id="labelDocumento" data-documento="{{usuario.cedula_ruta}}" class="crece-completar-datos-formulario-wrapper-boton-subir-label">PDF, JPG o PNG</label>
                                     </div>
         
                                     <div class="form-group col-lg-12">
                                         <label>Celular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.celular}}"
                                             class="form-control"
                                             name="celular"
                                             id="celular"
@@ -101,7 +105,7 @@
                                     </div>
                                     <div class="form-group col-lg-12 crece-completar-datos-formulario-radio">
                                         <label>Estado Civil:</label>
-                                        <select class="form-control" id="selectEstadoCivil">
+                                        <select class="form-control" id="selectEstadoCivil" data-seleccion="{{usuario.estado_civil}}">
                                             <option value="soltero">Soltero/a</option>
                                             <option value="casado">Casado/a</option>
                                             <option value="divorciado">Divorciado/a</option>
@@ -115,7 +119,7 @@
                                             <div class="form-group col-lg-12">
                                                 <label>Nombre del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                                 <input 
-                                                    
+                                                    value="{{usuario.conyuge_id.nombres}}"
                                                     class="form-control"
                                                     name="nombre_conyugue"
                                                     id="nombre_conyugue"
@@ -126,7 +130,7 @@
                                             <div class="form-group col-lg-12">
                                                 <label>Apellidos del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                                 <input 
-                                                    
+                                                    value="{{usuario.conyuge_id.apellidos}}"
                                                     class="form-control"
                                                     name="apellidos_conyugue"
                                                     id="apellidos_conyugue"
@@ -137,6 +141,7 @@
                                             <div class="form-group col-lg-12">
                                                 <label>Cédula del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                                 <input 
+                                                    value="{{usuario.conyuge_id.cedula}}"
                                                     class="form-control"
                                                     name="cedula_conyugue"
                                                     id="cedula_conyugue"
@@ -153,6 +158,7 @@
                                         <label>Dirección de domicilio: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.direccion1}}"
                                             class="form-control"
                                             name="direccion"
                                             id="direccion"
@@ -164,6 +170,7 @@
                                         <label>Provincia: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.provincia}}"
                                             class="form-control typeahead"
                                             name="provincia"
                                             id="provincia"
@@ -175,6 +182,7 @@
                                         <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.canton.nombre}}"
                                             class="form-control typeahead"
                                             name="canton"
                                             id="canton"
@@ -185,6 +193,7 @@
                                     <div class="form-group col-lg-12">
                                         <label>Teléfono domicilio:</label>
                                         <input 
+                                            value="{{usuario.telefono_domicilio}}"
                                             class="form-control"
                                             name="telf_domicilio"
                                             id="telf_domicilio"
@@ -197,7 +206,7 @@
                                     </div>
                                     <div class="form-group col-lg-12 crece-completar-datos-formulario-radio">
                                         <label>Principal fuente de ingresos:</label>
-                                        <select class="form-control" id="selectTrabajo">
+                                        <select class="form-control" id="selectTrabajo" data-seleccion="{{usuario.ingresos.descripcion}}">
                                             <option value="1">Relación de dependencia</option>
                                             <option value="2">Profesional independiente</option>
                                             <option value="3">Auto empleado</option>
@@ -314,6 +323,7 @@
                                         <label>Dirección: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.ingresos.direccion}}"
                                             class="form-control"
                                             name="direccion_empresa"
                                             id="direccion_empresa"
@@ -325,6 +335,7 @@
                                         <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.canton.nombre}}"
                                             class="form-control typeahead"
                                             name="canton_empresa"
                                             id="canton_empresa"
@@ -335,6 +346,7 @@
                                         <label>Ingresos aproximados: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.ingresos.ingresos_mensuales}}"
                                             type="number"
                                             class="form-control"
                                             name="ingresos_aproximados"
@@ -350,6 +362,7 @@
                                         <label>Titular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.cuenta_bancaria.titular}}"
                                             class="form-control typeahead"
                                             name="titular"
                                             id="titular"
@@ -358,7 +371,7 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label>Banco:</label>
-                                        <select class="form-control" id="selectBanco">
+                                        <select class="form-control" id="selectBanco" data-seleccion="{{usuario.cuenta_bancaria.banco.nombre}}">
                                             <option value='BANCO GUAYAQUIL'>BANCO GUAYAQUIL</option>
                                             <option value='BANCO PACIFICO'>BANCO PACIFICO</option>
                                             <option value='BANCO PICHINCHA'>BANCO PICHINCHA</option>
@@ -387,7 +400,7 @@
 
                                     <div class="form-group col-6 crece-completar-datos-formulario-radio">
                                         <label>Tipo de cuenta:</label>
-                                        <select class="form-control" id="selectTipoCuenta">
+                                        <select class="form-control" id="selectTipoCuenta" data-seleccion="{{usuario.cuenta_bancaria.tipo_cuenta}}">
                                             <option value="0">Ahorros</option>
                                             <option value="1">Corriente</option>
                                         </select>
@@ -397,6 +410,7 @@
                                         <label>Número de cuenta: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input 
                                             required
+                                            value="{{usuario.cuenta_bancaria.numero_cuenta}}"
                                             class="form-control"
                                             name="numero_cuenta"
                                             id="numero_cuenta"
@@ -405,7 +419,14 @@
                                     </div>
                                     
                                     <div class="col-12">
-                                        <button id="guardar_respuestas"> Guardar</button>
+                                        <div class="row justify-content-center">
+                                            <div class="col-auto crece-completar-datos-formulario-botones">
+                                                <button id="guardar_respuestas"> Guardar</button>
+                                            </div>
+                                            <div class="col-auto crece-completar-datos-formulario-botones">
+                                                <button id="siguiente"> Siguiente</button>
+                                            </div>
+                                        </div>                                
                                     </div>
                                 </div>
                             </form>

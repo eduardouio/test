@@ -1,3 +1,6 @@
+const URL_SIGUIENTE = "/registro/fase2/";
+let datosDesdeBase = true;
+
 $(document).ready( function(){
   $(".crece-completar-datos-formulario-relacion-dependencia").show();
   hacerRequired(".crece-completar-datos-formulario-relacion-dependencia input");
@@ -7,7 +10,78 @@ $(document).ready( function(){
 
   $(".crece-completar-datos-formulario-auto-empleado").hide();
   hacerNoRequired(".crece-completar-datos-formulario-auto-empleado input");
+
+  seleccionarDesdeBase("#selectBanco");
+  seleccionarDesdeBase("#selectTipoCuenta");
+  seleccionarDesdeBase("#selectEstadoCivil");
+
+  seleccionarImagen()
+
+  cargarFuenteDeIngresos();
+
+  if(datosDesdeBase){
+    $('#guardar_respuestas').hide();
+  }
+
 });
+
+function cargarFuenteDeIngresos(){
+  var ingresos = $("#selectTrabajo").attr("data-seleccion");
+
+  if(ingresos) {
+    var dictIngresos = JSON.parse(JSON.parse(ingresos)); //Doble parse. Uno para quitar escape characters y otro para parsear el json
+
+    if(dictIngresos.ANIOS_RELACION_DEPENDENCIA){
+      $("#selectTrabajo").val("1");
+      $( "#selectTrabajo" ).trigger( "change" );
+
+      $("#empresa_relacion_dependencia").val(dictIngresos.EMPRESA_RELACION_DEPENDENCIA);
+      $("#cargo_relacion_dependencia").val(dictIngresos.CARGO_RELACION_DEPENDENCIA);
+      $("#anios_relacion_dependencia").val(dictIngresos.ANIOS_RELACION_DEPENDENCIA);
+    }
+    else if(dictIngresos.RUC_PROFESIONAL_INDEPENDIENTE){
+      $("#selectTrabajo").val("2");
+      $( "#selectTrabajo" ).trigger( "change" );
+
+      $("#ruc_profesional_independiente").val(dictIngresos.RUC_PROFESIONAL_INDEPENDIENTE);
+      $("#actividad_profesional_independiente").val(dictIngresos.ACTIVIDAD_PROFESIONAL_INDEPENDIENTE);
+      $("#anios_profesional_independiente").val(dictIngresos.ANIOS_PROFESIONAL_INDEPENDIENTE);
+    }
+    else if(dictIngresos.RUC_AUTO_EMPLEADO){
+      $("#selectTrabajo").val("3");
+      $( "#selectTrabajo" ).trigger( "change" );
+
+      $("#ruc_auto_empleado").val(dictIngresos.RUC_AUTO_EMPLEADO);
+      $("#empresa_auto_empleado").val(dictIngresos.EMPRESA_AUTO_EMPLEADO);
+      $("#actividad_auto_empleado").val(dictIngresos.ACTIVIDAD_AUTO_EMPLEADO);
+    }
+  }
+}
+
+function seleccionarImagen(){
+  var documento = $("#labelDocumento").attr("data-documento");
+
+  if(documento){
+    var nombreDocumento = documento.split("/").pop();
+    $("#labelDocumento").html(nombreDocumento);
+  }
+  else{
+    datosDesdeBase = false;
+  }
+  
+}
+
+function seleccionarDesdeBase(id_selector){
+  var seleccion = $(id_selector).attr("data-seleccion");
+
+  if(seleccion){
+    $(id_selector).val(seleccion);
+    $(id_selector).trigger( "change" );
+  }
+  else{
+    datosDesdeBase = false;
+  }
+}
 
 $("#selectEstadoCivil").change(function(){
     if (this.value === "casado" || this.value === "union libre") {
@@ -70,13 +144,30 @@ $("#foto_cedula").on('change', function() {
 
 $('.crece-completar-datos-formulario form').submit(function(e){
     e.preventDefault();
-    
-    if(checkInputs()){
-        var dictRespuestas = obtenerRespuestas()
-        enviarDatos(dictRespuestas)
-    }
 });
 
+$("#guardar_respuestas").click(function(){
+  if(!datosDesdeBase){
+    if(checkInputs()){
+      var dictRespuestas = obtenerRespuestas()
+      enviarDatos(dictRespuestas, false);
+    }
+  } 
+
+});
+
+$("#siguiente").click(function(){
+  if(!datosDesdeBase){
+    if(checkInputs()){
+      var dictRespuestas = obtenerRespuestas()
+      enviarDatos(dictRespuestas, true);
+    }
+  } 
+  else {
+    window.location.href = URL_SIGUIENTE;
+  }
+
+});
 
 var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
@@ -228,6 +319,7 @@ var substringMatcher = function(strs) {
       dictRespuestas.canton_fuentes_ingresos = $("#canton_empresa").val();
       dictRespuestas.ingresos_mensuales = $("#ingresos_aproximados").val();
 
+      dictRespuestas.titular = $("#titular").val();
       dictRespuestas.banco = $("#selectBanco").children("option:selected").val();
       dictRespuestas.numero_cuenta = $("#numero_cuenta").val();
       dictRespuestas.tipo_cuenta = $("#selectTipoCuenta").children("option:selected").val();
@@ -294,18 +386,18 @@ var substringMatcher = function(strs) {
     return es_valido;
   }
 
-  function enviarDatos(dictRespuestas) {
+  function enviarDatos(dictRespuestas, redirect) {
     $.ajax({
         type: 'POST',
         url: "/inversionista/fase1/",
         data: dictRespuestas,
         success: function(resultData) { 
-            enviarImagenCedula();
+            enviarImagenCedula(redirect);
         }
     });
   }
 
-    function enviarImagenCedula(){
+    function enviarImagenCedula(redirect){
         var myFormData = new FormData();
         const imagen = $('#foto_cedula').prop('files')[0];
         myFormData.append("img",imagen );
@@ -321,7 +413,10 @@ var substringMatcher = function(strs) {
             dataType : 'json',
             data: myFormData,
             success: function () {
-                alert("Save Complete") 
+                alert("Save Complete");
+                if(redirect){
+                  window.location.href = URL_SIGUIENTE;
+                }
             },
             error: function(){
                 alert("Imagen incorrecta. Intente de nuevo");

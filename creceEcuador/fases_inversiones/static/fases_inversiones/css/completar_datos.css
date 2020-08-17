@@ -92,10 +92,10 @@ form .form-control{
   width: 100%;
 }
 
-button{
+.crece-completar-datos-formulario-botones button{
   margin-right: auto;
   margin-left: auto;
-  display: block;
+  display: inline-block;
   width: 160px;
   height: 40px;
   text-align: center;
@@ -109,6 +109,21 @@ button{
   font-size: 18px;
 
   margin-bottom: 20px;
+}
+
+#guardar_respuestas{
+  background-color: white;
+  color: #006B8D;
+}
+
+#siguiente:hover{
+  background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 107, 141, 0.8);
+}
+
+#guardar_respuestas:hover{
+  color:#1199AD;
+  border: 1px solid #1199AD;
 }
 
 /* scaffolding */

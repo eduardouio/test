@@ -58,6 +58,7 @@ class Cuenta_bancaria(models.Model):
         (estado_xVerificar, "Por verificar")
     ]
 
+    titular = models.CharField(max_length=200)
     numero_cuenta = models.CharField(max_length=15)
     tipo_cuenta = models.IntegerField(choices=opciones_tipo_cuenta)
     estado = models.IntegerField(choices=opciones_tipo_estado, default=0)

@@ -27,16 +27,16 @@ class Inversion(models.Model):
     estado = models.IntegerField(choices=opciones_estado, default=0)
     fase_inversion = FSMField(default=FASES_INVERSION[0][0], choices=FASES_INVERSION)
 
-    @transition(field=fase_inversion, source='OPEN', target='FILL_INFO')
+    @transition(field=fase_inversion, source='OPEN', target='CONFIRM_INVESTMENT')
     def start(self):
 
         pass
     #FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
-    @transition(field=fase_inversion, source='FILL_INFO', target='CONFIRM_INVESTMENT')
+    @transition(field=fase_inversion, source='CONFIRM_INVESTMENT', target='FILL_INFO')
     def step_two(self):
         pass
 
-    @transition(field=fase_inversion, source='CONFIRM_INVESTMENT', target='ORIGIN_MONEY')
+    @transition(field=fase_inversion, source='FILL_INFO', target='ORIGIN_MONEY')
     def step_three(self):
         pass
 

@@ -3,6 +3,7 @@ from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
 
 from .serializers import InversionSerializer
 from . import models
@@ -104,6 +105,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
                                         adjudicacion=adjudicacion, adjudicacion_iva=adjudicacion_iva,
                                         inversion_total=inversion_total, ganancia_total=ganancia_total)
         new_inversion.start()
+        new_inversion.step_two()
         new_inversion.save()
 
         #pago_detalle
@@ -159,13 +161,12 @@ def get_inversiones(request):
         #Se obtiene el queryset y se lo convierte a json
         #Se agrega el - antes del atributo para ordenarlo descendientemente
         try:
-
             if cantidad>0:
                 #Se setea el indice del ultimo registro
                 final = inicio + cantidad 
-                queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')[inicio:final]
+                queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion__in=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')[inicio:final]
             else:
-                queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')
+                queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion__in=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')
         except KeyError:
             diccionario_respuesta = {
             'status': status.HTTP_400_BAD_REQUEST,
@@ -193,6 +194,9 @@ def get_inversiones(request):
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
+@login_required
 def completar_datos_financieros_view(request):
     if request.method == 'GET': 
-        return render(request, 'fases_inversiones/completa_datos.html')
+        if request.user.is_authenticated:
+            usuario = models.Usuario.objects.filter(user=request.user)[0]
+            return render(request, 'fases_inversiones/completa_datos.html', {"usuario":usuario})

@@ -14,10 +14,10 @@ MENSAJE_BAD_REQUEST = "Llamada incorrecta."
 FASE_KEY = "fase_inversion"
 
 FASES_INVERSION = {
-    "pendientes": "Pending Transfer",
-    "por_fondear": "Waiting to be Fund",
-    "vigentes": "Valid",
-    "terminados": "Finished"
+    "pendientes": ["FILL_INFO", "PENDING_TRANSFER"],
+    "por_fondear": ["TO_BE_FUND"],
+    "vigentes": ["VALID"],
+    "terminados": ["FINISHED"]
 }
 
 #key para id inversionista

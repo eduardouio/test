@@ -268,6 +268,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         ingresos_mensuales = request.data.get("ingresos_mensuales")
 
         #Cuenta bancaria
+        titular = request.data.get("titular")
         banco = request.data.get("banco")
         numero_cuenta = request.data.get("numero_cuenta")
         tipo_cuenta = request.data.get("tipo_cuenta")
@@ -298,7 +299,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         new_banco = models.Banco(nombre=banco)
         new_banco.save()
 
-        new_cuenta_bancaria = models.Cuenta_bancaria(numero_cuenta= numero_cuenta, tipo_cuenta= tipo_cuenta, banco= new_banco)
+        new_cuenta_bancaria = models.Cuenta_bancaria(numero_cuenta= numero_cuenta, tipo_cuenta= tipo_cuenta, banco= new_banco, titular=titular)
         new_cuenta_bancaria.save()
         
 
