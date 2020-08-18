@@ -5,6 +5,10 @@ let indice_opcion_actual = 0;
 let CANTIDAD_OPCIONES_MOSTRADAS = 3;
 let CANTIDAD_OPCIONES_MOSTRADAS_MIS_INV = -1;
 
+const URL_FILL_INFO = "/registro/completa_datos/"
+const URL_ORIGIN_MONEY = "/registro/declaracion_fondos/"
+const URL_PENDING_TRANSFER = "/registro/subir_transferencia/"
+
 $( document ).ready(function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
@@ -45,8 +49,6 @@ function crearCuadrosOportunidadesInversion(data){
     $.each( data, function( indice, oportunidad ) {
         string_operacion += stringSolicitud(oportunidad);
     });
-
-    console.log("test");
   
     $(".crece-oportunidades-container").html(string_operacion);
     let links = $(".crece-oportunidades-contenido-solicitante-link");
@@ -75,7 +77,6 @@ function crearCuadrosOportunidadesInversion(data){
     $(".crece-oportunidades-contenido-solicitante strong").each( function(numSolicitante) {
       var lines = lineWrapDetector.getLines(this);
       let stringParrafo = "";
-      console.log(lines.length);
       $.each(lines, function(numLinea, linea) {
         if(numLinea<1){
           $.each(linea, function(numPalabra, palabra) {
@@ -100,8 +101,6 @@ function crearCuadrosOportunidadesInversion(data){
     $(".crece-oportunidades-contenido-informacion-industria p").each( function(numSolicitante) {
       var lines = lineWrapDetector.getLines(this);
       let stringParrafo = "";
-      console.log(lines.length);
-      console.log(lines);
 
       $.each(lines, function(numLinea, linea) {
         if(numLinea<2){
@@ -117,7 +116,6 @@ function crearCuadrosOportunidadesInversion(data){
             $.each(linea, function(numPalabra, palabra) {
               let palabraSubstr = "";
               if(palabra.innerText.length > 9){
-                console.log(palabra.innerText.length)
                 palabraSubstr = palabra.innerText.substring(0,9);
                 let linkSolicitante = links[numSolicitante].outerHTML;
                 palabraSubstr += linkSolicitante;
@@ -254,9 +252,7 @@ function stringSolicitud(oportunidad){
   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-blanco">'+
   '                                                                <button type="button" onclick="ver_detalle_solicitud('+oportunidad.id+')">Ver más</button>'+
   '                                                            </div>'+
-  '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-  '                                                                <a href="/registro/aceptar_inversion/?id='+oportunidad.id+'&monto=0">Invertir</a>'+
-  '                                                            </div>'+
+                                                                link_a_fase_inversion(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id)+
   '                                                        </div>'+
   '                                                    </div>'+
   '        '+
@@ -274,7 +270,39 @@ function stringSolicitud(oportunidad){
 }
 
 
+function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
+  if(fase_inversion === "FILL_INFO"){
+    return (
+      '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+      '                                                                <a href="'+ URL_FILL_INFO + '?id_inversion='+id_oportunidad+'&monto=0">Continuar</a>'+
+      '                                                            </div>'
+    );
+  }
 
+  else if(fase_inversion === "ORIGIN_MONEY"){
+    return (
+      '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+      '                                                                <a href="'+ URL_ORIGIN_MONEY + '?id_inversion='+id_oportunidad+'&monto=0">Continuar</a>'+
+      '                                                            </div>'
+    );
+  }
+
+  else if(fase_inversion === "PENDING_TRANSFER"){
+    return (
+      '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+      '                                                                <a href="'+ URL_PENDING_TRANSFER + '?id_inversion='+id_oportunidad+'&monto=0">Continuar</a>'+
+      '                                                            </div>'
+    );
+  }
+  else{
+    return (
+      '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+      '                                                                <a href="/registro/aceptar_inversion/?id='+id_solicitud+'&monto=0">Invertir</a>'+
+      '                                                            </div>'
+    );
+  }
+
+}
 
 
 // SECCION DETALLE DE LA SOLICITUD
@@ -703,6 +731,9 @@ function obtenerOportunidadesDesdeInversion(inicio, cantidad_opciones, fase_inve
 function parseSolicitudesInversionASolicitudes(data){
     let listaSolicitudes = []
     $.each( data, function( indice, inversion ) {
+      console.log(inversion);
+        inversion.solicitud.fase_inversion = inversion.fase_inversion;
+        inversion.solicitud.id_inversion = inversion.id
         listaSolicitudes.push(inversion.solicitud);
         console.log(listaSolicitudes);
     });

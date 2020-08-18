@@ -14,7 +14,7 @@ MENSAJE_BAD_REQUEST = "Llamada incorrecta."
 FASE_KEY = "fase_inversion"
 
 FASES_INVERSION = {
-    "pendientes": ["FILL_INFO", "PENDING_TRANSFER"],
+    "pendientes": ["FILL_INFO", "PENDING_TRANSFER", "ORIGIN_MONEY"],
     "por_fondear": ["TO_BE_FUND"],
     "vigentes": ["VALID"],
     "terminados": ["FINISHED"]

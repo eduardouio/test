@@ -1,0 +1,88 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css"> 
+            <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/subir_transferencia.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/fase_final.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                    <div class="titulo">
+                            <strong>Confirma tu inversion</strong>
+                    </div>
+                    <div class="row fases-inversiones-pasos">
+
+                        <div class="col">
+                            Paso 1
+                        </div>
+                        <div class="col">
+                            Paso 2
+                        </div>
+                        <div class="col">
+                            Paso 3
+                        </div>
+                        <div class="col active">
+                            Paso 4
+                        </div>
+                    </div>
+                    <section class="crece-confirmar-transferencia-formulario">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
+                                <div class="row justify-content-center">
+                                    <form>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-12 col-lg-10">
+                                                <h2>
+                                                   Te felicitamos por tu inversión.<br>
+                                                   ¿Qué ocurre ahora?
+                                                </h2>
+                                            </div>
+                                            <div class="col-12 col-lg-6 crece-container-imagen-texto">
+                                                <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_1.png' %}"/>
+                                                <p class="crece-texto-final">
+                                                    Inversionistas completan los fondos solicitados
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_2.png' %}"/>
+                                                <p class="crece-texto-final">
+                                                    El emprendedor firma los documentos de respaldo
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_3.png' %}"/>
+                                                <p class="crece-texto-final">
+                                                    El emprendedor recibe los fondos vía transferencia bancaria
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_4.png' %}"/>
+                                                <p class="crece-texto-final">
+                                                    Te notificaremos cuando la operación de inicio
+                                                </p>
+                                            </div>
+                                            
+                                        <button type="button" id="enviar_transferencia"> Finalizar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        <script src="{% static 'fases_inversiones/js/fase_final.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

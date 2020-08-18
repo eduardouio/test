@@ -68,6 +68,10 @@ class Inversion(models.Model):
     def finish(self):
         pass
 
+    @property
+    def monto_a_transferirl(self):
+        return self.monto + self.adjudicacion + self.adjudicacion_iva
+
     class Meta:
         verbose_name = "Inversion"
         verbose_name_plural = "Inversiones"
@@ -108,13 +112,3 @@ class Pago_detalle(models.Model):
     # def __str__(self):
     #     pass
 
-#Signals
-def cambiar_estado_inversion_aprovada(sender, instance, **kwargs):
-    if(instance.estado == 1):
-        try:
-            instance.validate_transfer()
-        except TransitionNotAllowed:
-            print("Estado no se puede cambiar")
-        
-
-pre_save.connect(cambiar_estado_inversion_aprovada, sender=Inversion) 

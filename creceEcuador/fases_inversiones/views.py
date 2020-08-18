@@ -131,7 +131,9 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
             new_pago.save()
 
         response_data = {
-                "mensaje": "Datos enviados con exito"
+                "mensaje": "Datos enviados con exito",
+                "id_inversion": new_inversion.id
+
 
         }
 
@@ -288,3 +290,52 @@ def hacer_contrato(doc, usuario, fecha, hora):
 
 
     doc.build(Story)
+
+@login_required
+def subir_transferencia_view(request):
+    if request.method == 'GET': 
+        if request.user.is_authenticated:
+            id_inversion = request.GET.get('id_inversion', '')
+            if id_inversion:
+                inversion = models.Inversion.objects.get(pk=id_inversion)
+                if inversion.id_user.user == request.user:
+                    return render(request, 'fases_inversiones/subir_transferencia.html', {"inversion":inversion})
+
+@login_required
+def fase_final_view(request):
+    if request.method == 'GET': 
+        if request.user.is_authenticated:
+            return render(request, 'fases_inversiones/fase_final.html', {})
+
+@api_view(['POST'])
+def step_three_inversion(request):
+    id_inversion = request.GET.get('id_inversion', '')
+    try:
+        inversion = models.Inversion.objects.get(pk=id_inversion)
+        inversion.step_three()
+        inversion.save()
+        return HttpResponse(json.dumps({}), content_type='application/json')
+    except:
+        return HttpResponse(json.dumps({}), content_type='application/json', status=500)
+
+@api_view(['POST'])
+def step_four_inversion(request):
+    id_inversion = request.GET.get('id_inversion', '')
+    try:
+        inversion = models.Inversion.objects.get(pk=id_inversion)
+        inversion.step_four()
+        inversion.save()
+        return HttpResponse(json.dumps({}), content_type='application/json')
+    except:
+        return HttpResponse(json.dumps({}), content_type='application/json', status=500)
+
+@api_view(['POST'])
+def validate_transfer_inversion(request):
+    id_inversion = request.GET.get('id_inversion', '')
+    try:
+        inversion = models.Inversion.objects.get(pk=id_inversion)
+        inversion.validate_transfer()
+        inversion.save()
+        return HttpResponse(json.dumps({}), content_type='application/json')
+    except:
+        return HttpResponse(json.dumps({}), content_type='application/json', status=500)

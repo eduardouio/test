@@ -509,10 +509,6 @@ def LoginView(request):
  
     return render(request, 'registro_inversionista/login.html', {'form': form, 'submitted': submitted})
 
-def subir_transferencia_view(request):
-    if request.method == 'GET': 
-        return render(request, 'registro_inversionista/subir_transferencia.html')
-
 
 def aceptar_condiciones_view(request):
     if request.method == 'GET':

@@ -48,6 +48,7 @@ class Solicitud(models.Model):
     id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.DO_NOTHING, blank=False)
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.DO_NOTHING, blank=False)
     id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.DO_NOTHING, blank=False)
+    id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.DO_NOTHING, blank=True, null=True)
 
     @property
     def autor(self):
@@ -125,6 +126,12 @@ class CalificacionSolicitante(models.Model):
         verbose_name = "Calificación del Solicitante"
         verbose_name_plural = "Calificaciónes de los Solicitantes"
 
+class BancoDeposito(models.Model):
+    numero_cuenta = models.CharField(max_length=15)
+    nombre = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.nombre + ", " + self.numero_cuenta
 
 
 def generar_ticker(categoria):

@@ -1,0 +1,125 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css"> 
+            <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/subir_transferencia.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                    <div class="titulo">
+                            <strong>Confirma tu inversion</strong>
+                    </div>
+                    <div class="row fases-inversiones-pasos">
+
+                        <div class="col">
+                            Paso 1
+                        </div>
+                        <div class="col">
+                            Paso 2
+                        </div>
+                        <div class="col">
+                            Paso 3
+                        </div>
+                        <div class="col active">
+                            Paso 4
+                        </div>
+                    </div>
+                    <section class="crece-confirmar-transferencia-formulario">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
+                                <div class="row justify-content-center">
+                                    <form>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-12 col-lg-10">
+                                                <h2>
+                                                    Transfiere tu inversión
+                                                </h2>
+                                            </div>
+                                            <div class="col-12 col-lg-10">
+                                                <p>
+                                                    Transfiere los fondos a la siguiente cuenta y asegura tu participación:
+                                                </p>
+                                                <p>
+                                                    Inversión total: $<span id="texto_monto" data-monto="{{inversion.monto_a_transferirl}}"></span> <br>
+                                                    Cuenta de ahorros: {{inversion.id_solicitud.id_cuenta_banco_deposito.numero_cuenta}}<br>
+                                                    Banco Amazonas <br>
+                                                    A nombre de: “{{inversion.id_user.nombres}} {{inversion.id_user.apellidos}}” <br>
+                                                    Cédula: {{inversion.id_user.cedula}} <br>
+                                                    Correo: info@creceecuador.com <br>
+                                                    Teléfono: 0992066524 <br>
+                                                </p>
+                                            </div>
+                                            <div class="col-12 col-lg-10">
+                                                <label class="crece-confirmar-transferencia-formulario-wrapper-label">Selecciona el banco de donde vendrá tu transferencia</label>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <select class="form-control" id="selectBanco" data-seleccion="{{usuario.cuenta_bancaria.banco.nombre}}">
+                                                    <option disabled selected value> -- Seleccione un Banco -- </option>
+                                                    <option value='BANCO GUAYAQUIL'>BANCO GUAYAQUIL</option>
+                                                    <option value='BANCO PACIFICO'>BANCO PACIFICO</option>
+                                                    <option value='BANCO PICHINCHA'>BANCO PICHINCHA</option>
+                                                    <option value='BANCO BOLIVARIANO'>BANCO BOLIVARIANO</option>
+                                                    <option value='BANCO PRODUBANCO'>BANCO PRODUBANCO</option>
+                                                    <option value='BANCO DINERS'>BANCO DINERS</option>
+                                                    <option value='BANCO AMAZONAS'>BANCO AMAZONAS</option>
+                                                    <option value='BANCO AUSTRO'>BANCO AUSTRO</option>
+                                                    <option value='BANCO GENERAL RUMIÑAHUI'>BANCO GENERAL RUMIÑAHUI</option>
+                                                    <option value='BANCO INTERNACIONAL'>BANCO INTERNACIONAL</option>
+                                                    <option value='BANCO SOLIDARIO'>BANCO SOLIDARIO</option>
+                                                    <option value='BANCO MACHALA'>BANCO MACHALA</option>
+                                                    <option value='BANCO LOJA'>BANCO LOJA</option>
+                                                    <option value='BANCO PROCREDIT'>BANCO PROCREDIT</option>
+                                                    <option value='BANCO LITORAL'>BANCO LITORAL</option>
+                                                    <option value='BANCO VISIONFUND ECUADOR'>BANCO VISIONFUND ECUADOR</option>
+                                                    <option value='BANCO CODESARROLLO'>BANCO CODESARROLLO</option>
+                                                    <option value='BANCO CAPITAL'>BANCO CAPITAL</option>
+                                                    <option value='BANCO COMERCIAL DE MANABI'>BANCO COMERCIAL DE MANABI</option>
+                                                    <option value='BANCO COOPNACIONAL'>BANCO COOPNACIONAL</option>
+                                                    <option value='BANCO DELBANK'>BANCO DELBANK</option>
+                                                    <option value='BANCO D-MIRO S.A.'>BANCO D-MIRO S.A.</option>
+                                                    <option value='BANCO FINCA S.A.'>BANCO FINCA S.A.</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-lg-10">
+                                                <label class="crece-confirmar-transferencia-formulario-wrapper-label">Adjunta tu comprobante transferencia:</label>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="comprobante_transferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-doc">
+                                                    Cargar documento
+                                                </label>
+                                                <input 
+                                                    required
+                                                    type="file"
+                                                    accept="image/png, image/jpeg, application/pdf"
+                                                    class="form-control"
+                                                    name="comprobante_transferencia"
+                                                    id="comprobante_transferencia"
+                                                    data-valueMissing="Suba el comprobante de la transferencia"/>
+                                                    <label id="labelDocumento" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-label">Archivos PDF, JPG o PNG</label>
+                                            </div>
+                                        </div>
+            
+                                        <button id="enviar_transferencia"> Siguiente</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        <script src="{% static 'fases_inversiones/js/subir_transferencia.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

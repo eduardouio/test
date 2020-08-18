@@ -1,3 +1,11 @@
+/*Titulo */
+.titulo {
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    background-color: #99B6C3;
+}
+
 /* Pasos*/
 .fases-inversiones-pasos{
 	margin-top: 5px;

@@ -1,5 +1,6 @@
-const URL_SIGUIENTE = "/registro/fase2/";
+let URL_SIGUIENTE = "/registro/declaracion_fondos/?id_inversion=";
 let datosDesdeBase = true;
+let URL_CAMBIO_FASE = "/registro/step_three_inversion/?id_inversion="
 
 $(document).ready( function(){
   $(".crece-completar-datos-formulario-relacion-dependencia").show();
@@ -164,7 +165,7 @@ $("#siguiente").click(function(){
     }
   } 
   else {
-    window.location.href = URL_SIGUIENTE;
+    cambio_fase_inversion(obtenerIdInversion());
   }
 
 });
@@ -413,9 +414,8 @@ var substringMatcher = function(strs) {
             dataType : 'json',
             data: myFormData,
             success: function () {
-                alert("Save Complete");
                 if(redirect){
-                  window.location.href = URL_SIGUIENTE;
+                  cambio_fase_inversion(obtenerIdInversion());
                 }
             },
             error: function(){
@@ -423,6 +423,37 @@ var substringMatcher = function(strs) {
             }
         });
     }
+
+  function cambio_fase_inversion(id_inversion){
+    $.ajax({
+        type: 'POST',
+        url: URL_CAMBIO_FASE+id_inversion, 
+        data: {},
+        success: function(resultData) { 
+          window.location.href = URL_SIGUIENTE+id_inversion;
+        },
+        error: function(){
+            alert("Error en el cambio de estado de la inversión");
+        }
+    });
+  }
+
+function obtenerIdInversion(){
+  var dicQuerystring = obtenerMapaQueryString();
+  return dicQuerystring.id_inversion;
+
+}
+
+function obtenerMapaQueryString(){
+    return decodeURI(window.location.search)
+    .replace('?', '')
+    .split('&')
+    .map(param => param.split('='))
+    .reduce((values, [ key, value ]) => {
+        values[ key ] = value
+        return values
+    }, {})
+}
 
   function hacerRequired(selector){
       $(selector).each( function() {

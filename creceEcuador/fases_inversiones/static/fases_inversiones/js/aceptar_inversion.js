@@ -21,7 +21,7 @@ const FORMAT_PERCENT = new Intl.NumberFormat('en-US', {
 })
 
 function ruta_fase_2(id){
-    return RUTA_FASE_2+"?id="+id;
+    return RUTA_FASE_2+"?id_inversion="+id;
 }
 
 $( document ).ready(function() {
@@ -162,8 +162,7 @@ function guardar_tabla(oportunidad) {
     if (this.readyState == 4 && this.status == 200) {
 
     	response_data = JSON.parse(this.response)
-      	
-      	window.location.href = ruta_fase_2(oportunidad.id)
+      	window.location.href = ruta_fase_2(response_data.id_inversion)
 
    		}
   	};

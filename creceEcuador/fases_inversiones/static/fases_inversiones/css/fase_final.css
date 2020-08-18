@@ -1,0 +1,13 @@
+.crece-texto-final {
+    text-align: center;
+}
+
+.crece-img-final{
+    height: 125px;
+    display: block;
+    margin: 0 auto;
+}
+
+.crece-container-imagen-texto{
+    padding: 15px 10px;
+}

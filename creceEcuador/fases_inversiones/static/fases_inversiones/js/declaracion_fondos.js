@@ -1,6 +1,6 @@
 let RUTA_ACEPTAR_DECLARACION= "/registro/aceptar_declaracion_fondos/"
-const RUTA_SIGUIENTE = "/inversionista/subir_transferencia/"
-
+let URL_SIGUIENTE = "/registro/subir_transferencia/?id_inversion="
+let URL_CAMBIO_FASE = "/registro/step_four_inversion/?id_inversion="
 
 
 
@@ -20,7 +20,7 @@ function aceptar_declaracion_fondos() {
             link.download = "Contrato.pdf";
             document.body.appendChild(link);
             link.click();
-            window.location.href = RUTA_SIGUIENTE;
+            cambio_fase_inversion(obtenerIdInversion());
 
         }
     };
@@ -31,3 +31,33 @@ function aceptar_declaracion_fondos() {
 
 }
 
+function cambio_fase_inversion(id_inversion){
+    $.ajax({
+        type: 'POST',
+        url: URL_CAMBIO_FASE+id_inversion, 
+        data: {},
+        success: function(resultData) { 
+            window.location.href = URL_SIGUIENTE+id_inversion;
+        },
+        error: function(){
+            alert("Error en el cambio de estado de la inversión");
+        }
+    });
+}
+
+function obtenerIdInversion(){
+  var dicQuerystring = obtenerMapaQueryString();
+  return dicQuerystring.id_inversion;
+
+}
+
+function obtenerMapaQueryString(){
+    return decodeURI(window.location.search)
+    .replace('?', '')
+    .split('&')
+    .map(param => param.split('='))
+    .reduce((values, [ key, value ]) => {
+        values[ key ] = value
+        return values
+    }, {})
+}
