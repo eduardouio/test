@@ -36,5 +36,6 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'fecha_publicacion',
             'fecha_finalizacion',
             'fecha_expiracion',
-            'porcentaje_financiado'
+            'porcentaje_financiado',
+            'tin'
         ]

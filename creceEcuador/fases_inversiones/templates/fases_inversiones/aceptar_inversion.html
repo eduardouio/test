@@ -1,0 +1,130 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
+            <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'registro_inversionista/css/simular_inversion.css' %}" rel="stylesheet" type="text/css">
+            <script src="{% static 'registro_inversionista/js/valid-form.js' %}"></script>
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                <div class="titulo">
+                    <strong>Confirma tu inversion</strong>
+                </div>
+                <div class="row fases-inversiones-pasos">
+
+                    <div class="col active">
+                        Paso 1
+                    </div>
+                    <div class="col">
+                        Paso 2
+                    </div>
+                    <div class="col">
+                        Paso 3
+                    </div>
+                    <div class="col">
+                        Paso 4
+                    </div>
+                </div>
+                <section>
+                    <div class="container">
+                        <div class="row" id="crece-declaracion-body-id">
+                            <div class="col-12 body-contrato" id="body-contrato-id">
+                                <span id="contrado-titulo">Confirmar cantidad </span>
+                                
+                            </div>
+                        </div>
+
+                        <!--Aceptar y Descargar-->
+                     <div class="row body-opciones">
+                        
+                             <!--DATOS DE LA TABLA-->
+                              <div class="row simular-inversion-input-valores" id="simular-inversion-input-valores-id">
+                                  <div class="col-10 crece-body-datos">
+                                    <div class="row">
+                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
+                                      <div class="col-4" id="input-monto-button-calcular">
+                                        <input type="text" name="monto" id="input-monto" style="width: 100%;">
+                                        
+                                      </div>
+                                      <div class="col-4">
+                                        <button id="calcular" onclick="calcular_tabla_inversionista('TRUE')">Calcular</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
+                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
+                                          
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:  none;"> 
+                                        <div>Adjudicacion:</div>
+                                        <div class="body-datos-calculados" id="adjudicacion">
+                                          
+                                        </div>
+                                        <div>Adjudicacion (IVA):</div>
+                                        <div class="body-datos-calculados" id="adjudicacion-iva"></div>
+                                        <div>Ganancia Total:</div>
+                                        <div class="body-datos-calculados" id="ganancia-total">
+                                               
+                                        </div>
+
+                                    </div>
+                                        
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Total a invertir:</div>
+                                        <div class="col-4 body-datos-calculados" id="inversion-total" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                          
+                                        </div>
+                                    </div>
+                                        
+                                    
+            
+                                      </div>
+
+                                  <!--TABLA AMORTIZACION-->
+                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-id">
+                                     <tr>
+                                         <th>N°</th>
+                                         <th>Capital</th>
+                                         <th>Intereses</th>
+                                         <th>Comisión</th>
+                                         <th>Recibes</th>
+                                     </tr> 
+                                  </table>
+                                  
+                                    <!--Footer (GUARDAR-SIGUIENTE)-->
+                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
+                                    <p>
+                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <strong>Acuerdos específicos de uso del sitio web</strong> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    </p>
+                                      <button id="simular-inversion-boton-invertir">Siguiente</button>
+                                      
+                                  </div> 
+                                </div>
+                      </div>
+
+                    </div>
+                </section>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        <script src="{% static 'js/typeahead.jquery.js' %}"></script>
+        <script src="{% static 'fases_inversiones/js/aceptar_inversion.js' %}"></script>
+        <script src="{% static 'registro_inversionista/js/postScript.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

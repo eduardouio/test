@@ -14,15 +14,20 @@ import json
 
 #ibrerias para crear pdf
 import io
+import datetime
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
+from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.units import inch
+from reportlab.lib.enums import TA_JUSTIFY
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.rl_config import defaultPageSize
-from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Table, Paragraph, Spacer, TableStyle
 
 from .types import INICIO_DEFAULT, INICIO_KEY, CANTIDAD_DEFAULT, CANTIDAD_KEY, FASE_KEY, FASES_INVERSION, MENSAJE_BAD_REQUEST, INVERSIONISTA_KEY
-
+#Contrato
+from .declaracion_fondos import TITULO_CONTRATO, PERSONA_NATURAL, DECLARACIONES, CONTRATO_FOOTER, FIRMA_CONTRATO
 
 
 from reportlab.platypus import Table, Paragraph, Spacer, TableStyle
@@ -91,7 +96,6 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
         #Inversion
         dic_inversion = request.data.get("inversion")
         monto = dic_inversion.get("monto")
-        id_user = dic_inversion.get("id_user")
         id_solicitud = dic_inversion.get("id_solicitud")
         adjudicacion = dic_inversion.get("adjudicacion")
         adjudicacion_iva = dic_inversion.get("adjudicacion_iva")
@@ -99,7 +103,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
         ganancia_total = dic_inversion.get("ganancia_total")
 
         #nueva inversion
-        usuario = Usuario.objects.filter(idUsuario=id_user)[0]
+        usuario = Usuario.get_usuario(request)
         solicitud = Solicitud.objects.filter(id=id_solicitud)[0]
         new_inversion = models.Inversion(id_user=usuario, id_solicitud=solicitud, monto=monto, 
                                         adjudicacion=adjudicacion, adjudicacion_iva=adjudicacion_iva,
@@ -133,7 +137,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
 
 
     def get(self, request, *args, **kwargs):
-        return render(request,"fases_inversiones/fase2.html")
+        return render(request,"fases_inversiones/aceptar_inversion.html")
 
 
 @api_view(['GET'])
@@ -200,3 +204,76 @@ def completar_datos_financieros_view(request):
         if request.user.is_authenticated:
             usuario = models.Usuario.objects.filter(user=request.user)[0]
             return render(request, 'fases_inversiones/completa_datos.html', {"usuario":usuario})
+
+
+def declaracion_fondos_view(request):
+    if request.method == 'GET' and request.user.is_authenticated:
+        print(request.user)
+        usuario = models.Usuario.objects.get(user=request.user)
+        return render(request, 'fases_inversiones/declaracion_fondos.html',{"usuario": usuario})
+    
+
+def current_date_format(date):
+    months = ("Enero", "Febrero", "Marzo", "Abri", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+    day = date.day
+    month = months[date.month - 1]
+    year = date.year
+    messsage = "{} de {} del {}".format(day, month, year)
+
+    return messsage
+
+class aceptar_declaracion_fondos(generics.CreateAPIView):
+    def post(self, request):
+        usuario = Usuario.get_usuario(request)
+        date = datetime.datetime.now()
+        fecha = current_date_format(date)
+        # Create a file-like buffer to receive PDF data.
+        buffer = io.BytesIO()
+
+        width, height = letter 
+
+        doc = SimpleDocTemplate(buffer,pagesize=letter,
+                        rightMargin=72,leftMargin=72,
+                        topMargin=72,bottomMargin=18)
+        hacer_contrato(doc, usuario, fecha)
+
+        buffer.seek(0)
+        return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+
+
+
+def hacer_contrato(doc, usuario, fecha):
+    date = datetime.datetime.now()
+    styles=getSampleStyleSheet()
+    #Titulo
+    Story=[Paragraph(TITULO_CONTRATO, styles['Title'])]
+    Story.append(Spacer(1, 0.2*inch))
+    styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+
+    #Texto dependiendo que tipo de persona es
+    persona_texto = PERSONA_NATURAL.format(nombre=usuario.nombres+" "+usuario.apellidos, cedula=usuario.cedula)  
+    ptext = '<font size="12">'+persona_texto+'</font>'
+    Story.append(Paragraph(ptext, styles["Justify"]))
+    Story.append(Spacer(1, 0.2*inch))
+
+    #declaraciones
+    for i in range(len(DECLARACIONES)):
+        ptext = '<font size="12">'+DECLARACIONES[i]+'</font>'
+        Story.append(Paragraph(ptext, styles["Justify"]))
+        Story.append(Spacer(1, 0.2*inch))
+
+    #Final del contrato
+    ptext = '<font size="12">'+CONTRATO_FOOTER+'</font>'
+    Story.append(Paragraph(ptext, styles["Justify"]))
+    Story.append(Spacer(1, 0.2*inch))
+    Story.append(Spacer(1, 0.2*inch))
+    Story.append(Spacer(1, 0.2*inch))
+
+
+
+    #Firma y datos del inversionista
+    ptext = '<font size="12">'+FIRMA_CONTRATO.format(nombre=usuario.nombres+" "+usuario.apellidos, hora=str(date.hour)+':'+str(date.minute),fecha=fecha) +'</font>'
+    Story.append(Paragraph(ptext, styles["Justify"]))
+
+
+    doc.build(Story)

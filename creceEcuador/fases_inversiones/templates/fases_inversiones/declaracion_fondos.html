@@ -1,0 +1,79 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
+            <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/declaracion_fondos.css' %}" rel="stylesheet" type="text/css">
+            <script src="{% static 'registro_inversionista/js/valid-form.js' %}"></script>
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                <div class="titulo">
+                    <strong>Confirma tu inversion</strong>
+                </div>
+                <div class="row fases-inversiones-pasos">
+
+                    <div class="col">
+                        Paso 1
+                    </div>
+                    <div class="col active">
+                        Paso 2
+                    </div>
+                    <div class="col">
+                        Paso 3
+                    </div>
+                    <div class="col">
+                        Paso 4
+                    </div>
+                </div>
+                <section>
+                    <div class="container">
+                        <div class="row" id="crece-declaracion-body-id">
+                            <div class="col-12 body-contrato" id="body-contrato-id">
+                                <span id="contrado-titulo">DECLARACIÓN ORIGEN DE FONDOS </span>
+                                <p>
+
+                                    Yo, {{usuario.nombres}} {{usuario.apellidos}}
+                                    portador de la cédula de ciudadanía No. {{usuario.cedula}}, por sus propios y personales derechos, manifiesto que la información descrita en el formulario de usuario en calidad de inversionista para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR  es cierta, y realizo las siguientes declaraciones de fuentes u origen de fondos y actividades lícitas:<br>
+
+                                    1. Declaro que los recursos utilizados descritos para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR  proviene de actividades lícitas, de conformidad con la normatividad Ecuatoriana. <br>
+                                    2. Que todas las actividades e ingresos que se perciben provienen de actividades lícitas. <br>
+                                    3. Que no me encuentro en ninguna lista de reporte internacional o bloqueado por actividades de narcotráfico, lavado de activos, o delitos asociados al turismo sexual en menores de edad. Que en nuestra contra no se existe ningún proceso judicial en instancias nacionales o internacionales por ninguno de los aspectos anteriores. <br>
+                                    4. Autorizo a resolver cualquier acuerdo, beneficio, subsidio, negocio o contrato celebrado utilizando la plataforma virtual  de CRECE ECUADOR  en caso de infracción de cualquiera de los numerales contenidos en este documento eximiendo a CRECE ECUADOR de toda responsabilidad que se derive por información errónea, falsa o inexacta que yo hubiere proporcionado en este u otro documento durante la operación de financiamiento colaborativo utilizando la plataforma de CRECE ECUADOR, o de la violación del mismo. <br>
+                                    5. Autorizo a PROSPERAECU S.A. / CRECE ECUADOR para que consulte mi información crediticia en las Centrales de Riesgo y ante las entidades que estime necesarias.
+                                    Los datos aquí consignados obedecen a la realidad, y declaro (amos) haber leído, entendido y aceptado libremente el presente documento.
+                                  </p>
+                            </div>
+                        </div>
+
+                        <!--Aceptar y Descargar-->
+                     <div class="row body-opciones">
+                            
+                            <div class="col-6">
+                              <button onclick="aceptar_declaracion_fondos()" id="descargar-contrato">Siguiente</button>
+                            </div>
+                      </div>
+
+                    </div>
+                </section>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        <script src="{% static 'js/typeahead.jquery.js' %}"></script>
+        <script src="{% static 'fases_inversiones/js/declaracion_fondos.js' %}"></script>
+        <script src="{% static 'registro_inversionista/js/postScript.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

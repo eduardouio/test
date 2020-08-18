@@ -1,0 +1,223 @@
+:root{
+	--main-bg-color:#2E333B;
+
+}
+
+
+
+
+/*Titulo*/
+.titulo{
+	color: #ffffff;
+	text-align: center;
+	font-size: 30px;
+	background-color: #99B6C3;
+}
+
+
+.fase-2-container{
+	background-color: var(--main-bg-color);
+	color: #ffffff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 50px;
+	padding: 50px;
+	/*max-width: 600px;*/
+
+}
+
+/*Contenido Header*/
+.inversion-container{
+	background-color: #47717F;
+	max-width: 200px;
+	height: 75px;
+	    border-radius: .25rem;
+}
+
+.inversion-container p{
+	text-align: right;
+	position: relative;
+	top:35px;
+	font-size: 25px;
+}
+
+.informacion-container{
+	margin-left: 15px;
+	padding-top: 20px; 
+}
+
+.progress-bar{
+	color: #000000;
+}
+
+/*Contenido Body*/
+.fase-2-body{
+	display: block;
+	text-align: center;
+}
+
+.body-datos{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 50px;
+}
+
+#calcular{
+	background-color: #006B8D;
+	    border-radius: 12px;
+    border: 1px;
+    padding: 2px 15px;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+.tabla-amortizacion{
+	margin-left: auto;
+	margin-right: auto;
+	    margin-top: 15px;
+}
+
+
+
+/*Tabla de inversionista*/
+.crece-tabla-simular-inversion {
+  display: grid;
+  grid-template-columns: 25px auto auto auto auto;
+  background-color: #ffffff;
+  color: #000000;
+  
+}
+
+.tabla-headers {
+  color: #ffffff;
+  background-color: var(--main-bg-color);
+  font-weight: bold;
+
+}
+
+
+
+
+.simular-inversion-input-valores{
+	color:  #08A7BA;
+}
+
+#input-monto{
+	background-color: lightblue;
+	text-align: right;
+	font-weight: 500;
+}
+
+#tabla-amortizacion-id > tr > td:last-child{
+	background-color: lightblue;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+#tabla-amortizacion-id > tr >td{
+	border: 7px solid white;
+	color:black;
+}
+
+#tabla-amortizacion-id > tr > td:not(:last-child){
+	background-color: #B7B8B8;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+#tabla-amortizacion-id > tr > td:first-child{
+	background-color: white;
+	text-align: center;
+
+}
+
+#simular-inversion-boton-invertir{
+	background-color: #006B8D;
+	    border-radius: 12px;
+    border: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+        margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 2px 35px;
+    color: white;
+    font-weight: bold;
+}
+
+
+.crece-modal-simular-inversion{
+	 display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+ z-index: 999999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow-y: auto;
+  overflow-x: hidden; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.85);
+}
+.crece-simular-inversion-container{
+	background-color: white;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#span-close-modal-id{
+	color: black;
+	    display: block;
+    float: right;
+    position: relative;
+    left: 4.5vw;
+}
+
+#input-monto-detalle-solicitud{
+	width: 75%;
+}
+
+
+#crece-calcular-inversion-invertir-container > div > div:nth-child(1){
+	color: #006B8D;
+}
+
+
+.crece-body-datos{
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+th{
+	text-align: center;
+}
+
+#crece-boton-simular-detalle-solicitud{
+	background: #006B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #006B8D;
+    color: white;
+    font-size: 18px;
+    padding-top: 5px;
+    border-radius: 30px;
+    padding: 3px 15px;
+    font-weight: bold;
+}
