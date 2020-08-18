@@ -11,6 +11,8 @@ from registro_inversionista.models import Usuario
 from solicitudes.models import Solicitud
 import json
 
+from django.conf import settings
+
 
 #ibrerias para crear pdf
 import io
@@ -206,6 +208,7 @@ def completar_datos_financieros_view(request):
             return render(request, 'fases_inversiones/completa_datos.html', {"usuario":usuario})
 
 
+@login_required
 def declaracion_fondos_view(request):
     if request.method == 'GET' and request.user.is_authenticated:
         print(request.user)
@@ -218,15 +221,20 @@ def current_date_format(date):
     day = date.day
     month = months[date.month - 1]
     year = date.year
-    messsage = "{} de {} del {}".format(day, month, year)
+    fecha = "{} de {} del {}".format(day, month, year)
 
-    return messsage
+    hora = format_dos_digitos(date.hour)+':'+ format_dos_digitos(date.minute)
+    return (hora, fecha)
+
+def format_dos_digitos(entero):
+    return str(entero) if entero > 9 else "0"+str(entero)
 
 class aceptar_declaracion_fondos(generics.CreateAPIView):
     def post(self, request):
+        print(request.user.id)
         usuario = Usuario.get_usuario(request)
-        date = datetime.datetime.now()
-        fecha = current_date_format(date)
+        date = datetime.datetime.utcnow() - datetime.timedelta(hours=5)
+        hora, fecha = current_date_format(date)
         # Create a file-like buffer to receive PDF data.
         buffer = io.BytesIO()
 
@@ -235,15 +243,18 @@ class aceptar_declaracion_fondos(generics.CreateAPIView):
         doc = SimpleDocTemplate(buffer,pagesize=letter,
                         rightMargin=72,leftMargin=72,
                         topMargin=72,bottomMargin=18)
-        hacer_contrato(doc, usuario, fecha)
+        hacer_contrato(doc, usuario, fecha, hora)
+
+        buffer.seek(0)
+        with open( settings.STATIC_URL_COMPLETA+"/contratos/Declaracion-Origen-Fondos-"+ usuario.cedula+ ".pdf", "wb") as f:
+            f.write(buffer.getbuffer())
 
         buffer.seek(0)
         return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
 
 
 
-def hacer_contrato(doc, usuario, fecha):
-    date = datetime.datetime.now()
+def hacer_contrato(doc, usuario, fecha, hora):
     styles=getSampleStyleSheet()
     #Titulo
     Story=[Paragraph(TITULO_CONTRATO, styles['Title'])]
@@ -272,7 +283,7 @@ def hacer_contrato(doc, usuario, fecha):
 
 
     #Firma y datos del inversionista
-    ptext = '<font size="12">'+FIRMA_CONTRATO.format(nombre=usuario.nombres+" "+usuario.apellidos, hora=str(date.hour)+':'+str(date.minute),fecha=fecha) +'</font>'
+    ptext = '<font size="12">'+FIRMA_CONTRATO.format(nombre=usuario.nombres+" "+usuario.apellidos, hora=hora,fecha=fecha) +'</font>'
     Story.append(Paragraph(ptext, styles["Justify"]))
 
 

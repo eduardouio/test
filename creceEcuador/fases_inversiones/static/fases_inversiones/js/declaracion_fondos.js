@@ -1,4 +1,5 @@
 let RUTA_ACEPTAR_DECLARACION= "/registro/aceptar_declaracion_fondos/"
+const RUTA_SIGUIENTE = "/inversionista/subir_transferencia/"
 
 
 
@@ -18,12 +19,15 @@ function aceptar_declaracion_fondos() {
             link.href = window.URL.createObjectURL(file);
             link.download = "Contrato.pdf";
             document.body.appendChild(link);
-            link.click()
+            link.click();
+            window.location.href = RUTA_SIGUIENTE;
 
         }
     };
     xhttp.open("POST", RUTA_ACEPTAR_DECLARACION, true);
     //xhttp.setRequestHeader("Content-type", "text/html;charset=UTF-8");
     xhttp.send();
+
+
 }
 
