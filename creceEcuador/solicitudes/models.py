@@ -89,8 +89,8 @@ class Solicitud(models.Model):
         return self.ticket + ", "+ self.autor
 
     def save(self, *args, **kwargs):
-        
-        self.ticket = generar_ticker(self.id_categoria)
+        if(self.ticket == ""):
+            self.ticket = generar_ticker(self.id_categoria)
         super(Solicitud, self).save(*args, **kwargs)
         
 
