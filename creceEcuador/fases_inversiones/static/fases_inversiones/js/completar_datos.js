@@ -1,6 +1,6 @@
-let URL_SIGUIENTE = "/registro/declaracion_fondos/?id_inversion=";
+let URL_SIGUIENTE_COMPLETAR_DATOS = "/registro/declaracion_fondos/?id_inversion=";
 let datosDesdeBase = true;
-let URL_CAMBIO_FASE = "/registro/step_three_inversion/?id_inversion="
+let URL_CAMBIO_FASE_COMPLETAR_DATOS = "/registro/step_three_inversion/?id_inversion="
 
 $(document).ready( function(){
   $(".crece-completar-datos-formulario-relacion-dependencia").show();
@@ -165,7 +165,7 @@ $("#siguiente").click(function(){
     }
   } 
   else {
-    cambio_fase_inversion(obtenerIdInversion());
+    cambio_fase_inversion_completar_datos(id_inversion_modal);
   }
 
 });
@@ -415,7 +415,10 @@ var substringMatcher = function(strs) {
             data: myFormData,
             success: function () {
                 if(redirect){
-                  cambio_fase_inversion(obtenerIdInversion());
+                  cambio_fase_inversion_completar_datos(id_inversion_modal);
+                }
+                else{
+                  alert("Datos guardados");
                 }
             },
             error: function(){
@@ -424,13 +427,16 @@ var substringMatcher = function(strs) {
         });
     }
 
-  function cambio_fase_inversion(id_inversion){
+  function cambio_fase_inversion_completar_datos(id_inversion){
     $.ajax({
         type: 'POST',
-        url: URL_CAMBIO_FASE+id_inversion, 
+        url: URL_CAMBIO_FASE_COMPLETAR_DATOS+id_inversion, 
         data: {},
         success: function(resultData) { 
-          window.location.href = URL_SIGUIENTE+id_inversion;
+          $(CLASE_MODAL).show();
+          $(ID_DECLARACION_FONDOS).css('display', 'flex');
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
         },
         error: function(){
             alert("Error en el cambio de estado de la inversión");

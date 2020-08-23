@@ -69,8 +69,20 @@ class Inversion(models.Model):
         pass
 
     @property
-    def monto_a_transferirl(self):
+    def monto_a_transferir(self):
         return self.monto + self.adjudicacion + self.adjudicacion_iva
+
+    @property
+    def banco_transferencia(self):
+        return self.id_solicitud.id_cuenta_banco_deposito.numero_cuenta
+
+    @property
+    def nombre_completo(self):
+        return self.id_user.nombres + " " + self.id_user.apellidos
+
+    @property
+    def cedula_solicitante(self):
+        return self.id_user.cedula
 
     class Meta:
         verbose_name = "Inversion"

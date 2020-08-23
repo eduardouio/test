@@ -1,0 +1,34 @@
+.crece-modal {
+    display: none;
+    padding: 0px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 999999;
+    background-color: rgba(0,0,0,0.85);
+}
+
+.crece-modal-container {
+    padding: 40px;
+}
+
+#completar_datos_wrapper{
+    display: none;
+}
+
+#crece-declaracion-body-id{
+    display: none;
+}
+
+#subir_transferencia_wrapper{
+    display: none;
+}
+
+#final_inversion_wrapper{
+    display: none;
+}

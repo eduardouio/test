@@ -12,7 +12,7 @@
   .crece-oportunidades-contenedor {
     background-color: white;
     width: 332px;
-    height: 420px;
+    height: 440px;
     border-radius: 10px;
     border: 1px solid #DEDEDE;
     margin-top: 25px;
@@ -268,6 +268,8 @@
     font-weight: 700;
     border-radius: 30px;
     margin-bottom: 5px;
+
+    padding: 1px 6px;
   }
   
   .crece-oportunidades-anterior span,

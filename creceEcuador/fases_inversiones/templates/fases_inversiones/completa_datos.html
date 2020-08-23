@@ -9,6 +9,7 @@
             <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
             <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'fases_inversiones/css/completar_datos.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/flujo_inversionista.css' %}" rel="stylesheet" type="text/css">
             <script src="{% static 'registro_inversionista/js/valid-form.js' %}"></script>
         {% endblock head_css_agregado %}
     </head>
@@ -36,6 +37,32 @@
                 <section class="crece-completar-datos-formulario">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected col-3">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="crece-flujo-inversionista-paso col-3">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="crece-flujo-inversionista-paso col-3">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <span class="crece-flujo-inversionista-progreso-texto">Progreso: 25%</span>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-12 crece-flujo-inversionista-barra">
+                                        <div style="width: 25%;" class="crece-flujo-inversionista-barra-progreso"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <form method="POST">
                                 <div class="row">
                                     <div class="col-12">

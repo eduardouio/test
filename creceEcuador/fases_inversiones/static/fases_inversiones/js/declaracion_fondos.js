@@ -1,6 +1,6 @@
 let RUTA_ACEPTAR_DECLARACION= "/registro/aceptar_declaracion_fondos/"
-let URL_SIGUIENTE = "/registro/subir_transferencia/?id_inversion="
-let URL_CAMBIO_FASE = "/registro/step_four_inversion/?id_inversion="
+let URL_SIGUIENTE_DECLARACION = "/registro/subir_transferencia/?id_inversion="
+let URL_CAMBIO_FASE_DECLARACION = "/registro/step_four_inversion/?id_inversion="
 
 
 
@@ -34,10 +34,10 @@ function aceptar_declaracion_fondos() {
 function cambio_fase_inversion(id_inversion){
     $.ajax({
         type: 'POST',
-        url: URL_CAMBIO_FASE+id_inversion, 
+        url: URL_CAMBIO_FASE_DECLARACION+id_inversion, 
         data: {},
         success: function(resultData) { 
-            window.location.href = URL_SIGUIENTE+id_inversion;
+            window.location.href = URL_SIGUIENTE_DECLARACION+id_inversion;
         },
         error: function(){
             alert("Error en el cambio de estado de la inversión");

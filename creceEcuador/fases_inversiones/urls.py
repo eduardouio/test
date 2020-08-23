@@ -11,6 +11,7 @@ urlpatterns = [
     path('subir_transferencia/', views.subir_transferencia_view, name="subir_transferencia"),
     path('fase_final/', views.fase_final_view, name="fase_final_view"),
     path('', views.get_inversiones),
+    path('<int:pk>/', views.get_inversion_individual, name='get_inversion_individual'),
 
     url('step_three_inversion/', views.step_three_inversion, name="step_three"),
     url('step_four_inversion/', views.step_four_inversion, name="step_four_inversion"),

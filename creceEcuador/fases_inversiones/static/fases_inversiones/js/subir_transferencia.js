@@ -1,5 +1,5 @@
 const TEXTO_DEFAULT_LABEL_TRANSF = "Archivos PDF, JPG o PNG";
-let URL_SIGUIENTE = "/registro/fase_final/?id_inversion=";
+let URL_SIGUIENTE_SUBIR_TRANSFERENCIA = "/registro/fase_final/?id_inversion=";
 
 
 $(document).ready(function(){
@@ -7,25 +7,18 @@ $(document).ready(function(){
     $("#texto_monto").html(numeroConComas(monto));
 });
 
-$('.crece-confirmar-transferencia-formulario form').submit(function(e){
-    e.preventDefault();
-
-    if(checkInputs()){
-        enviarComprobanteTransferencia();
-    }
-});
 
 $("#comprobante_transferencia").on('change', function() {
     if(this.files[0]){
-        $("#labelDocumento").html(this.files[0].name);
+        $("#labelDocumentoTransferencia").html(this.files[0].name);
     }
     else{
-        $("#labelDocumento").html(TEXTO_DEFAULT_LABEL_TRANSF);
+        $("#labelDocumentoTransferencia").html(TEXTO_DEFAULT_LABEL_TRANSF);
     }
     
 });
 
-$("#selectBanco").on('change', function(){
+$("#selectBancoTransferencia").on('change', function(){
     let url = url_bancos[this.value]
     if(url){
         window.open(url);
@@ -83,7 +76,7 @@ function enviarComprobanteTransferencia(){
         dataType : 'json',
         data: myFormData,
         success: function () {
-            window.location.href = URL_SIGUIENTE+id_inversion;
+            window.location.href = URL_SIGUIENTE_SUBIR_TRANSFERENCIA+id_inversion;
         },
         error: function(){
             alert("Archivo incorrecto. Intente de nuevo");

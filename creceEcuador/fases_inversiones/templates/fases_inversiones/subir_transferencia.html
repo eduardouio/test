@@ -8,6 +8,7 @@
             <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css"> 
             <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'fases_inversiones/css/subir_transferencia.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/flujo_inversionista.css' %}" rel="stylesheet" type="text/css">
         {% endblock head_css_agregado %}
     </head>
     <body> 
@@ -34,6 +35,32 @@
                     <section class="crece-confirmar-transferencia-formulario">
                         <div class="row justify-content-center">
                             <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                                <span>1</span>
+                                            </div>
+                                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                                <span>2</span>
+                                            </div>
+                                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                                <span>3</span>
+                                            </div>
+                                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected col-3">
+                                                <span>4</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="crece-flujo-inversionista-progreso-texto">Progreso: 75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-12 crece-flujo-inversionista-barra">
+                                                <div style="width: 75%;" class="crece-flujo-inversionista-barra-progreso"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="row justify-content-center">
                                     <form>
                                         <div class="form-group row justify-content-center">
@@ -47,7 +74,7 @@
                                                     Transfiere los fondos a la siguiente cuenta y asegura tu participación:
                                                 </p>
                                                 <p>
-                                                    Inversión total: $<span id="texto_monto" data-monto="{{inversion.monto_a_transferirl}}"></span> <br>
+                                                    Inversión total: $<span id="texto_monto" data-monto="{{inversion.monto_a_transferir}}"></span> <br>
                                                     Cuenta de ahorros: {{inversion.id_solicitud.id_cuenta_banco_deposito.numero_cuenta}}<br>
                                                     Banco Amazonas <br>
                                                     A nombre de: “{{inversion.id_user.nombres}} {{inversion.id_user.apellidos}}” <br>
@@ -102,7 +129,7 @@
                                                     name="comprobante_transferencia"
                                                     id="comprobante_transferencia"
                                                     data-valueMissing="Suba el comprobante de la transferencia"/>
-                                                    <label id="labelDocumento" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-label">Archivos PDF, JPG o PNG</label>
+                                                    <label id="labelDocumentoTransferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-label">Archivos PDF, JPG o PNG</label>
                                             </div>
                                         </div>
             

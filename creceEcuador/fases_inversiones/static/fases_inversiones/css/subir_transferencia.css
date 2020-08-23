@@ -84,6 +84,7 @@ form{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #006B8D !important;
   }
 
   #comprobante_transferencia {

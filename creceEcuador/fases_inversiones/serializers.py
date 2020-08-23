@@ -13,3 +13,22 @@ class InversionSerializer(serializers.ModelSerializer):
             'fase_inversion',
             'solicitud'
          ]
+
+
+class InversionTransferenciaSerializer(serializers.ModelSerializer):
+
+    monto_a_transferir = serializers.ReadOnlyField()
+    banco_transferencia = serializers.ReadOnlyField()
+    nombre_completo = serializers.ReadOnlyField()
+    cedula_solicitante = serializers.ReadOnlyField()
+
+
+    class Meta:
+        model = Inversion
+        fields = [
+            'id',
+            'banco_transferencia',
+            'monto_a_transferir',
+            'nombre_completo',
+            'cedula_solicitante'
+         ]

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 
-from .serializers import InversionSerializer
+from .serializers import InversionSerializer, InversionTransferenciaSerializer
 from . import models
 from registro_inversionista.models import Usuario
 from solicitudes.models import Solicitud
@@ -339,3 +339,29 @@ def validate_transfer_inversion(request):
         return HttpResponse(json.dumps({}), content_type='application/json')
     except:
         return HttpResponse(json.dumps({}), content_type='application/json', status=500)
+
+
+@api_view(['GET'])
+def get_inversion_individual(request, pk):
+    try:
+        inversion = models.Inversion.objects.get(pk=pk) #get_object_or_404(Solicitud, pk=pk)
+
+        serializer = InversionTransferenciaSerializer(instance=inversion)
+
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+            'data': serializer.data
+        }
+
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    except models.Inversion.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Inversion no encontrada",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+        #raise Http404(json.dumps({'status':404}))
+    
+    

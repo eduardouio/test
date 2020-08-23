@@ -274,7 +274,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   if(fase_inversion === "FILL_INFO"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="'+ URL_FILL_INFO + '?id_inversion='+id_oportunidad+'&monto=0">Continuar</a>'+
+      '                                                                <a href="#" onclick="completar_datos_modal('+id_oportunidad+')">Continuar</a>'+
       '                                                            </div>'
     );
   }
@@ -282,7 +282,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   else if(fase_inversion === "ORIGIN_MONEY"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="'+ URL_ORIGIN_MONEY + '?id_inversion='+id_oportunidad+'&monto=0">Continuar</a>'+
+      '                                                                <a href="#" onclick="declaracion_fondos_modal('+id_oportunidad+')">Continuar</a>'+
       '                                                            </div>'
     );
   }
@@ -290,7 +290,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   else if(fase_inversion === "PENDING_TRANSFER"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="'+ URL_PENDING_TRANSFER + '?id_inversion='+id_oportunidad+'&monto=0">Continuar</a>'+
+      '                                                                <a href="#" onclick="subir_transferencia_modal('+id_oportunidad+')">Continuar</a>'+
       '                                                            </div>'
     );
   }
@@ -740,3 +740,160 @@ function parseSolicitudesInversionASolicitudes(data){
 
     return listaSolicitudes
 }
+
+
+
+/*modals*/
+
+const CLASE_MODAL =".crece-modal";
+const ID_COMPLETA_DATOS = "#completar_datos_wrapper";
+const ID_DECLARACION_FONDOS = "#crece-declaracion-body-id";
+const ID_SUBIR_TRANSFERENCIA = "#subir_transferencia_wrapper";
+const ID_FASE_FINAL = "#final_inversion_wrapper";
+
+let id_inversion_modal;
+
+
+/* declaracion de fondos */
+function declaracion_fondos_modal(id_inversion){
+  id_inversion_modal = id_inversion;
+  $(CLASE_MODAL).show();
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_COMPLETA_DATOS).hide();
+  $(ID_DECLARACION_FONDOS).css('display', 'flex');
+  console.log(id_inversion);
+
+}
+
+function aceptar_declaracion_fondos_modal() {
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          console.log(this)
+          var file = new Blob([this.response], { 
+                                  type: 'application/pdf' 
+          });
+
+          var link = document.createElement("a");
+          link.href = window.URL.createObjectURL(file);
+          link.download = "Contrato.pdf";
+          document.body.appendChild(link);
+          link.click();
+          cambio_fase_inversion_declaracion_fondos_modal(id_inversion_modal);
+
+      }
+  };
+  xhttp.open("POST", RUTA_ACEPTAR_DECLARACION, true);
+  //xhttp.setRequestHeader("Content-type", "text/html;charset=UTF-8");
+  xhttp.send();
+
+
+}
+
+function cambio_fase_inversion_declaracion_fondos_modal(id_inversion){
+  $.ajax({
+      type: 'POST',
+      url: URL_CAMBIO_FASE_DECLARACION+id_inversion, 
+      data: {},
+      success: function(resultData) { 
+        $(CLASE_MODAL).show();
+        $(ID_DECLARACION_FONDOS).hide();
+        $(ID_COMPLETA_DATOS).hide();
+        $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+      },
+      error: function(){
+          alert("Error en el cambio de estado de la inversión");
+      }
+  });
+}
+
+
+
+
+/* Completa Datos*/
+function completar_datos_modal(id_inversion){
+  id_inversion_modal = id_inversion;
+  $(CLASE_MODAL).show();
+  $(ID_COMPLETA_DATOS).css('display', 'flex');
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_DECLARACION_FONDOS).hide();
+
+}
+
+
+/* Subir Transferencia */
+function subir_transferencia_modal(id_inversion){
+  id_inversion_modal = id_inversion;
+
+  llenar_datos_transferencia(id_inversion_modal)
+  
+
+}
+function llenar_datos_transferencia(id_inversion){
+  $.ajax({
+    url: "/registro/"+id_inversion+"/",
+    type: 'GET',
+    dataType: 'json', // added data type
+    success: function(res) {
+      $("#nombre_transferencia").html(res.data.nombre_completo);
+      $("#cuenta_transferencia").html(res.data.banco_transferencia);
+      $("#texto_monto").html(res.data.monto_a_transferir);
+      $("#cedula_transferencia").html(res.data.cedula_solicitante);
+
+      $(CLASE_MODAL).show();
+      $(ID_COMPLETA_DATOS).hide();
+      $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+      $(ID_DECLARACION_FONDOS).hide();
+    },
+    error: function(){
+      alert("No se pueden cargar datos solicitante")
+    }
+  });
+}
+
+function enviarComprobanteTransferenciaModal(id_inversion){
+  var myFormData = new FormData();
+  const archivo = $('#comprobante_transferencia').prop('files')[0];
+  myFormData.append("url_documento",archivo );
+
+  myFormData.append("id_inversion", id_inversion);
+
+  let nuevoNombre = renombrarArchivo(id_inversion, archivo.name);
+
+  $.ajax({
+      url: '/inversionista/comprobante_transferencia/'+nuevoNombre,  
+      type: 'POST',
+      processData: false,
+      contentType: false,
+      dataType : 'json',
+      data: myFormData,
+      success: function () {
+        $(CLASE_MODAL).show();
+        $(ID_COMPLETA_DATOS).hide();
+        $(ID_FASE_FINAL).css('display', 'flex');
+        $(ID_DECLARACION_FONDOS).hide();
+        $(ID_SUBIR_TRANSFERENCIA).hide();
+      },
+      error: function(){
+          alert("Archivo incorrecto. Intente de nuevo");
+      }
+  });
+}
+
+$("#enviar_transferencia").click(function(){
+  console.log("button")
+  console.log($('#comprobante_transferencia').prop('files')[0])
+  if($('#comprobante_transferencia').prop('files')[0]){
+    enviarComprobanteTransferenciaModal(id_inversion_modal);
+  }
+});
+
+/*Seccion finalizar inversion */
+$("#finalizar_inversion").click(function(){
+  $(CLASE_MODAL).hide();
+  $(ID_COMPLETA_DATOS).hide();
+  $(ID_FASE_FINAL).hide();
+  $(ID_DECLARACION_FONDOS).hide();
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+});

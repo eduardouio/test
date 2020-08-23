@@ -8,6 +8,7 @@
             <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
             <link href="{% static 'fases_inversiones/css/declaracion_fondos.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/flujo_inversionista.css' %}" rel="stylesheet" type="text/css">
             <script src="{% static 'registro_inversionista/js/valid-form.js' %}"></script>
         {% endblock head_css_agregado %}
     </head>
@@ -36,6 +37,32 @@
                     <div>
                         <div class="row justify-content-center" id="crece-declaracion-body-id">
                             <div class="col-11 col-lg-8 body-contrato" id="body-contrato-id">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                            <span>1</span>
+                                        </div>
+                                        <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                            <span>2</span>
+                                        </div>
+                                        <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected  col-3">
+                                            <span>3</span>
+                                        </div>
+                                        <div class="crece-flujo-inversionista-paso col-3">
+                                            <span>4</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="crece-flujo-inversionista-progreso-texto">Progreso: 50%</span>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 crece-flujo-inversionista-barra">
+                                            <div style="width: 50%;" class="crece-flujo-inversionista-barra-progreso"></div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <span id="contrado-titulo">Declaración de Origen de Fondos</span>
                                 <p>
                                     

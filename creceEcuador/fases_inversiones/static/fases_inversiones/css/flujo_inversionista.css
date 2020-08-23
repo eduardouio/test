@@ -1,0 +1,49 @@
+.crece-flujo-inversionista-paso{
+    text-align: center;
+    border-right: 1px solid #DEDEDE;
+}
+
+.crece-flujo-inversionista-paso:nth-child(4){
+    border-right: 0px;
+}
+
+.crece-flujo-inversionista-paso span{
+    color: #006B8D;
+    opacity: 0.6;
+    text-align: center;
+    font-size: 40px;
+}
+
+.crece-flujo-inversionista-paso-selected span{
+    opacity: 1;
+}
+
+.crece-flujo-inversionista-paso-completado span{
+    opacity: 1;
+    color: rgb(180, 180, 180);
+}
+
+.crece-flujo-inversionista-barra{
+    height: 10px;
+    width: 95%;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 10px;
+    border: 1px solid #006B8D;
+}
+
+.crece-flujo-inversionista-barra-progreso{
+    height: 100%;
+    background-color: #006B8D;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.crece-flujo-inversionista-progreso-texto{
+    color: #006B8D;
+}
+
+.crece-flujo-inversionista-paso{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
