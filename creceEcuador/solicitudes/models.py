@@ -51,10 +51,10 @@ class Solicitud(models.Model):
     id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.DO_NOTHING, blank=False)
     id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.DO_NOTHING, blank=True, null=True)
     
-    garantias = models.CharField(max_length=200, blank=True, default=True)
-    visita_agente_CRECE = models.TextField(blank=True, default=True)
-    condiciones = models.TextField(blank=True, default=True)
-    mas_informacion_autor = models.TextField(blank=True, default=True)
+    garantias = models.CharField(max_length=200, blank=True, default=True, null=True)
+    visita_agente_CRECE = models.TextField(blank=True, default=True, null=True)
+    condiciones = models.TextField(blank=True, default=True, null=True)
+    mas_informacion_autor = models.TextField(blank=True, default=True, null=True)
 
     @property
     def autor(self):
