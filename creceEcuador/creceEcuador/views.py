@@ -24,3 +24,10 @@ def pdf_view_manual_solicitante(request):
         return FileResponse(open('creceEcuador/static/assets/manual_solicitante.pdf', 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404()
+
+@require_http_methods(["GET"])
+def pdf_view_manual_inversionista(request):
+    try:
+        return FileResponse(open('creceEcuador/static/assets/manual_inversionista.pdf', 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
