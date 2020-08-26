@@ -762,3 +762,8 @@
     cursor: pointer;
     fill: rgba(255,255,255,0.8);
   }
+
+
+  #crece-detalle-operaciones-header-imagen-blur-id{
+    position: relative;
+  }

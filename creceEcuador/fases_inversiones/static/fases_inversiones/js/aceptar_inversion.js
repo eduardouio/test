@@ -1,7 +1,8 @@
 let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004;
 let IVA = 0.12
-let COMISION_ADJUDICACION_FACTOR =0.006;
+let COMISION_ADJUDICACION_FACTOR =0.008;
 let ADJUDICACION_FACTOR = 1.12
+let COMISION_BANCO = 0.4
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
 let RUTA_FASE_2 ="/registro/completa_datos/"
@@ -89,6 +90,37 @@ function go_to_fase2(oportunidad){
 
 }
 
+function verificar_valores_inversion(oportunidad) {
+	// body...
+
+	
+	let input_monto_inversion = document.getElementById("input-monto-aceptar-inversion").value
+	let monto_maximo = oportunidad.monto * 0.9 
+	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
+	let monto_por_financiar = oportunidad.monto - total_financiado
+
+	if (input_monto_inversion < 350 || input_monto_inversion>monto_maximo || input_monto_inversion>monto_por_financiar){
+		$("#label_error_aceptar_inversion").show()
+		let tabla = document.getElementById("tabla-amortizacion-id");
+		/*Verificando que ya exista la tabla*/
+		if (tabla.children.length > 1) {
+			let last_child = tabla.lastChild
+
+			for (var i = oportunidad.plazo - 1; i >= 0; i--) {
+				let last_child = tabla.lastChild
+				tabla.removeChild(last_child)
+			}
+
+
+			
+		}
+		return false
+	}
+
+	$("#label_error_aceptar_inversion").hide()
+
+	return true
+}
 
 /*Guardar tabla y enviarla al servidor*/
 function guardar_tabla(oportunidad) {
@@ -184,6 +216,9 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	if(input_modal === "TRUE"){
 		diccionario = DICCIONARIO_SIMULACION
 		oportunidad = OPORTUNIDAD
+		if (!verificar_valores_inversion(oportunidad)){
+			return false
+		}
 	}else{
 		diccionario = hacer_tabla_amortizacion(oportunidad)
 		DICCIONARIO_SIMULACION = diccionario
@@ -218,6 +253,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	let lista_cuotas_sol = diccionario['lista_cuotas']
 	let lista_intereses_sol = diccionario['lista_intereses']
 	let lista_capitales_sol = diccionario['lista_capitales']
+	let dias = diccionario['dias']
 
 
 
@@ -235,9 +271,10 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	let comision_iva_total = 0;
 
 	for (var i = 0; i < oportunidad.plazo ; i++) {
-		interes_i =  lista_intereses_sol[i] * participacion_inversionista
+		interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
 		capital_i = lista_capitales_sol[i] * participacion_inversionista
-		comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL * participacion_inversionista //ES EL COBRO POR USO DE LA PLATAFORMA
+		let dias_transcurridos = dias[i+1]
+		comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista //ES EL COBRO POR USO DE LA PLATAFORMA
 		comision_iva_i = comision_i * IVA
 		pago_i = capital_i + interes_i
 		ganancia_i = pago_i - comision_iva_i - comision_i
@@ -252,7 +289,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		let fila = document.createElement("tr")
 
 		let fila_numero_cuota = '<td>'+ (i+1) +'</td>'
-		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(pago_i)+'</td>'
+		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(capital_i)+'</td>'
 		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
 		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
@@ -299,8 +336,9 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 /*Crea tabla de amortizacion del solicitante*/
 function hacer_tabla_amortizacion(oportunidad) {
 	// body...
-
-	let date = new Date()
+	let fecha_publicacion_solicitud = oportunidad.fecha_publicacion
+	let fecha_split = fecha_publicacion_solicitud.split("-")
+	let date = new Date(fecha_split[0], fecha_split[1], fecha_split[2])
 	let next_date = new Date(date.getFullYear(),date.getMonth()+1,date.getDate())
 	let date_tmp = new Date()
 	
@@ -318,19 +356,19 @@ function hacer_tabla_amortizacion(oportunidad) {
 		if(next_date.getDay() == 0){
 			
 			next_date.setDate(next_date.getDate() + 1) //lunes
-			dias_transcurridos = getDuration(next_date-date).value
+			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-1)
 		}
 		else if(next_date.getDay() == 6){
 			next_date.setDate(next_date.getDate() + 2) //lunes
-			dias_transcurridos = getDuration(next_date-date).value
+			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-2)
 		}else{
-			dias_transcurridos = getDuration(next_date-date).value
+			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 		}
@@ -345,7 +383,11 @@ function hacer_tabla_amortizacion(oportunidad) {
 
 	let plazo_dias = dias.reduce((a, b) => a + b, 0)
 	let TASA_INTERES_ANUAL = oportunidad.tin;
-	let tasa_diaria = (1+TASA_INTERES_ANUAL/plazo_dias)-1 ; // tasa diaria
+	if( TASA_INTERES_ANUAL > 1){
+
+		TASA_INTERES_ANUAL = TASA_INTERES_ANUAL/100
+	}
+	let tasa_diaria = (1+TASA_INTERES_ANUAL/360)-1 ; // tasa diaria
 
 	let tasa_mensual = [ Math.pow((1 + tasa_diaria),(plazo_dias/oportunidad.plazo)) ] - 1 ;
 	let cuota_mensual = PMT(tasa_mensual, oportunidad.plazo, oportunidad.monto)*-1
@@ -406,7 +448,8 @@ function hacer_tabla_amortizacion(oportunidad) {
 	let diccionario = {'lista_cuotas': lista_cuotas, 
 						'lista_capital_insoluto': lista_capital_insoluto,
 						'lista_intereses': lista_intereses,
-						'lista_capitales':lista_capitales}
+						'lista_capitales':lista_capitales,
+						'dias':dias}
 
 	return diccionario
 }
@@ -479,3 +522,5 @@ function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
   total_financiado = parseFloat(monto)*(parseFloat(porcentaje_financiado)/100);
   return Math.round( total_financiado );
 }
+
+

@@ -1,9 +1,7 @@
 let RUTA_SOLICITUDES_API ="/solicitudes/";
 
 
-
-
-function ver_detalle_solicitud(id_oportunidad){
+function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad){
     $.ajax({
         url: RUTA_SOLICITUDES_API+id_oportunidad+'/',
         type: 'GET',
@@ -11,7 +9,7 @@ function ver_detalle_solicitud(id_oportunidad){
         success: function(res) {
             
             if (res.data){
-                crearDetalleInversion(res.data);
+                crearDetalleInversion(fase_inversion,id_inversion,res.data);
             }  
         },
         error: function(xhr, status, error) {
@@ -22,9 +20,100 @@ function ver_detalle_solicitud(id_oportunidad){
 }
 
 
-function crearDetalleInversion(oportunidad) {
+function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_solicitud) {
+    // body...
+    $('#crece-detalle-operaciones-id').show()
+    if(fase_inversion === "FILL_INFO"){
+    return (`
+      <h3>Termina tu inversión</h3>
+      <!-- input invierte-->
+      <div class="crece-detalle-operaciones-invierte-botones">                                                    
+          <div class="crece-detalle-operaciones-invierte-botones-azul">
+              <div class="row justify-content-center">
+                   
+      <a href="#" onclick="completar_datos_modal(`+id_oportunidad+`)">Continuar</a>
+              </div>
+          </div>
+              
+      </div>
+      `
+      
+      
+      
+    );
+  }
+
+  else if(fase_inversion === "ORIGIN_MONEY"){
+    return (`
+      <h3>Termina tu inversión</h3>
+      <!-- input invierte-->
+      <div class="crece-detalle-operaciones-invierte-botones">                                                    
+          <div class="crece-detalle-operaciones-invierte-botones-azul">
+              <div class="row justify-content-center">
+                   
+     <a href="#" onclick="declaracion_fondos_modal(`+id_oportunidad+`)">Continuar</a>
+              </div>
+          </div>
+              
+      </div>
+      `
+
+      
+
+    );
+  }
+
+  else if(fase_inversion === "PENDING_TRANSFER"){
+    return (`
+      <h3>Termina tu inversión</h3>
+      <!-- input invierte-->
+      <div class="crece-detalle-operaciones-invierte-botones">                                                    
+          <div class="crece-detalle-operaciones-invierte-botones-azul">
+              <div class="row justify-content-center">
+                   
+      <a href="#" onclick="subir_transferencia_modal(`+id_oportunidad +`)">Continuar</a>
+              </div>
+          </div>
+              
+      </div>
+      `
+
+
+    );
+  }
+  else{
+    return (`
+      <h3>Calcula tu ganancia</h3>
+      <!-- input invierte-->
+      <div class="crece-detalle-operaciones-invierte-monto col-12">
+          <div>
+              <label for="monto" style="display: contents;">$</label>
+              <input id="input-monto-detalle-solicitud" name="monto" type="text" min="0">
+          </div>
+      </div>
+
+      <div class="crece-detalle-operaciones-invierte-botones">                                                    
+          <div class="crece-detalle-operaciones-invierte-botones-azul">
+              <div class="row justify-content-center">
+                          <div class="col-lg-12">
+                            <label id="label_error_simular_inversion_detalle_solicitud">
+                              Valor no permitido
+                            </label>
+                          </div>
+                   <button id="crece-boton-simular-detalle-solicitud" type="button" onclick="crear_modal_simulacion_inversion(`+id_solicitud+`,'FALSE')"> Simular</button>
+              </div>
+          </div>
+              
+      </div>
+      `
+    );
+  }
+}
+
+
+function crearDetalleInversion(fase_inversion,id_inversion,oportunidad) {
     var html_string = '<div class="row justify-content-center crece-detalle-operaciones-header">'+
-'                        <div class="crece-detalle-operaciones-header-imagen-blur" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
+'                        <div class="crece-detalle-operaciones-header-imagen-blur" id="crece-detalle-operaciones-header-imagen-blur-id" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
 '                        </div>'+
 '                        <div class="crece-detalle-operaciones-header-gradiente" >'+
 '                           <div class="row justify-content-center crece-detalle-operaciones-header-gradiente-imagen" >'+
@@ -77,21 +166,6 @@ function crearDetalleInversion(oportunidad) {
 '                                                        </div>'+
 '                                                    </div>'+
 '                                                </div>'+
-'        '+
-                                                `<div class="crece-calcular-inversion-invertir-container col-12" id="crece-calcular-inversion-invertir-container">
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-lg-5 col-xl-5 col-sm-5">
-                                                            Calcula tu ganancia
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 col-xl-3 col-sm-3">
-                                                            <input placeholder="$" type="text" id="input-monto-detalle-solicitud"/>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4">
-                                                            <button id="crece-boton-simular-detalle-solicitud" type="button" onclick="crear_modal_simulacion_inversion(`+oportunidad.id+`,'FALSE')"> Simular</button>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>`+
 '                                                <!-- Informacion -->'+
 '                                                <div class="col-10 crece-operaciones-contenido-informacion">'+
 '                                                    <h2>Información del Financiamiento</h2>'+
@@ -168,6 +242,66 @@ function crearDetalleInversion(oportunidad) {
 '                                                        </div>'+
 '                                                    </div>'+
 '                                                </div>'+
+                                                `<div class="col-10 crece-operaciones-contenido-historia">
+                                                    <h2>Identificación y contacto</h2>
+                                                    <div class="row">
+                                                      <div clas="col-12">
+                                                        <p>`+oportunidad.autor+`
+                                                        </p>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                                `+
+                                                `<div class="col-10 crece-operaciones-contenido-historia">
+                                                    <h2>Detalles de la solicitud</h2>
+                                                    <div class="row">
+                                                      <div clas="col-12">
+                                                        <p>`+oportunidad.operacion+`
+                                                        </p>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                                `+
+                                                `<div class="col-10 crece-operaciones-contenido-historia">
+                                                    <h2>Garantias de la solicitud</h2>
+                                                    <div class="row">
+                                                      <div clas="col-12">
+                                                        <p>`+oportunidad.garantias+`
+                                                        </p>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                                `+
+                                                `<div class="col-10 crece-operaciones-contenido-historia">
+                                                    <h2>Visita agente CRECE</h2>
+                                                    <div class="row">
+                                                      <div clas="col-12">
+                                                        <p>`+oportunidad.visita_agente_CRECE+`
+                                                        </p>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                                `+
+                                                 `<div class="col-10 crece-operaciones-contenido-historia">
+                                                    <h2>Condiciones de la solicitud</h2>
+                                                    <div class="row">
+                                                      <div clas="col-12">
+                                                        <p>`+oportunidad.condiciones+`
+                                                        </p>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                                `+
+                                                `<div class="col-10 crece-operaciones-contenido-historia">
+                                                    <h2>Más información de `+oportunidad.autor+`</h2>
+                                                    <div class="row">
+                                                      <div clas="col-12">
+                                                        <p>`+oportunidad.mas_informacion_autor+`
+                                                        </p>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                                `+
 '                                            </div>'+
 '                                            '+
 '    '+
@@ -183,33 +317,8 @@ function crearDetalleInversion(oportunidad) {
 '                                        <!-- Invierte -->'+
 '                                        <div class="crece-detalle-operaciones-invierte col-lg-9">'+
 '                                            <div class="row justify-content-center">'+
-'                                                <h3>Invierte en el Solicitante</h3>'+
-'                                                <p>'+
-'                                                    Ingresa a la plataforma, calcula tu retorno y haz tu compromiso de inversión. <br> Si estás registrado, da clic en Invertir. Si no te has registrado crea tu usuario ahora.'+
-'                                                </p>'+
-/*
-'                                                <!-- input invierte-->'+
-'                                                <div class="crece-detalle-operaciones-invierte-monto col-12">'+
-'                                                    <div>'+
-'                                                        <label for="monto">$</label><input id="monto_inversion" name="monto" type="text" min="0">'+
-'                                                    </div>'+
-'                                                </div>'+*/
-''+
-'                                                <div class="crece-detalle-operaciones-invierte-botones">'+
-'                                                    <div class="crece-detalle-operaciones-invierte-botones-blanco">'+
-'                                                        <div class="row justify-content-center">'+
-'                                                            <a href="https://www.creceecuador.com/aplicar-inversionista">Crear Usuario</a>'+
-'                                                        </div>'+
-'                                                    </div>'+
-''+
-'                                                    <div class="crece-detalle-operaciones-invierte-botones-azul">'+
-'                                                        <div class="row justify-content-center">'+
-'                                                            <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Invertir</a>'+
-'                                                        </div>'+
-'                                                    </div>'+
-'                                                        '+
-'                                                </div>'+
-'                                            </div>'+
+                                                mostrar_detalle_continuar_simular(fase_inversion,id_inversion,oportunidad.id)+
+'                                             </div>'+
 '                                        </div>'+
 '    '+
 '                                        <!-- Historial Solicitante -->'+

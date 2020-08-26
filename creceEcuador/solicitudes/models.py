@@ -1,5 +1,6 @@
 from django.db import models
-from datetime import date
+from datetime import date, timedelta
+import calendar
 from django.conf import settings
 from registro_inversionista.models import Usuario
 
@@ -42,13 +43,18 @@ class Solicitud(models.Model):
     porcentaje_financiado = models.DecimalField(max_digits=5, decimal_places=2, blank=False, default=0)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_publicacion = models.DateField()
-    fecha_finalizacion = models.DateField()
-    fecha_expiracion = models.DateField()
+    fecha_finalizacion = models.DateField(blank=True)
+    fecha_expiracion = models.DateField(blank=True)
     id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False) #Se debe especificar la app del modelo
     id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.DO_NOTHING, blank=False)
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.DO_NOTHING, blank=False)
     id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.DO_NOTHING, blank=False)
     id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.DO_NOTHING, blank=True, null=True)
+    
+    garantias = models.CharField(max_length=200, blank=True, default=True)
+    visita_agente_CRECE = models.TextField(blank=True, default=True)
+    condiciones = models.TextField(blank=True, default=True)
+    mas_informacion_autor = models.TextField(blank=True, default=True)
 
     @property
     def autor(self):
@@ -91,6 +97,7 @@ class Solicitud(models.Model):
     def save(self, *args, **kwargs):
         if(self.ticket == ""):
             self.ticket = generar_ticker(self.id_categoria)
+        
         super(Solicitud, self).save(*args, **kwargs)
         
 
@@ -143,3 +150,4 @@ def generar_ticker(categoria):
     new_categoria_no = str(int(categoria_no[3:]) + 1)
     new_categoria_no = categoria_no[0:-(len(new_categoria_no))] + new_categoria_no
     return new_categoria_no
+

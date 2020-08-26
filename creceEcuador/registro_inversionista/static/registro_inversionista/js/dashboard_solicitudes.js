@@ -250,7 +250,7 @@ function stringSolicitud(oportunidad){
   '                                                    <div class="col-12 crece-oportunidades-contenido-botones">'+
   '                                                        <div class="row">'+
   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-blanco">'+
-  '                                                                <button type="button" onclick="ver_detalle_solicitud('+oportunidad.id+')">Ver más</button>'+
+                                                                    button_detalle_solicitud(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id)+                                                                
   '                                                            </div>'+
                                                                 link_a_fase_inversion(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id)+
   '                                                        </div>'+
@@ -269,6 +269,35 @@ function stringSolicitud(oportunidad){
 	
 }
 
+function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud) {
+  // body...
+  if(fase_inversion === "FILL_INFO"){
+    return ( `<button type="button" onclick="ver_detalle_solicitud('FILL_INFO',`+id_oportunidad+`,`+id_solicitud+`)">Ver más</button>'
+              `
+
+                                                                  );
+  }
+
+  else if(fase_inversion === "ORIGIN_MONEY"){
+    return ( `<button type="button" onclick="ver_detalle_solicitud('ORIGIN_MONEY',`+id_oportunidad+`,`+id_solicitud+`)">Ver más</button>'
+              `
+
+                                                                  );
+  }
+
+  else if(fase_inversion === "PENDING_TRANSFER"){
+    return ( `<button type="button" onclick="ver_detalle_solicitud('PENDING_TRANSFER',`+id_oportunidad+`,`+id_solicitud+`)">Ver más</button>'
+              `
+
+                                                                  );
+  }
+  else{
+   return ( `<button type="button" onclick="ver_detalle_solicitud('SIMULAR',`+id_oportunidad+`,`+id_solicitud+`)">Ver más</button>'
+              `
+
+                                                                  );
+  }
+}
 
 function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   if(fase_inversion === "FILL_INFO"){
@@ -297,7 +326,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   else{
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="/registro/aceptar_inversion/?id='+id_solicitud+'&monto=0">Invertir</a>'+
+      '                                                                <a href="#" onclick="crear_modal_aceptar_inversion('+id_solicitud+',`aceptar-inversion-inicio`,350)">Invertir</a>'+
       '                                                            </div>'
     );
   }
@@ -696,6 +725,7 @@ $(".selectable").click(function (){
     if (fase_inversion){
 
         $("#crece-botones-pag").hide()
+        $('#crece-detalle-operaciones-id').hide()
         $(".crece-oportunidades-titulo").html("Mis Inversiones")
         obtenerOportunidadesDesdeInversion(0, CANTIDAD_OPCIONES_MOSTRADAS_MIS_INV, fase_inversion, inversionista)
         
@@ -704,6 +734,7 @@ $(".selectable").click(function (){
         indice_opcion_actual = 0;
         obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
         $("#crece-botones-pag").show()
+        $('#crece-detalle-operaciones-id').hide()
         $(".crece-oportunidades-titulo").html("Oportunidades de Inversión")
     }
     
@@ -750,14 +781,27 @@ const ID_COMPLETA_DATOS = "#completar_datos_wrapper";
 const ID_DECLARACION_FONDOS = "#crece-declaracion-body-id";
 const ID_SUBIR_TRANSFERENCIA = "#subir_transferencia_wrapper";
 const ID_FASE_FINAL = "#final_inversion_wrapper";
+const ID_FASE_ACEPTAR = "#aceptar-inversion-modal-dashboard"
 
 let id_inversion_modal;
 
+/*Aceptar inversion */
+function aceptar_inversion_modal(id_solicitud) {
+  // body...
+  console.log(id_solicitud)
+  $(CLASE_MODAL).show();
+  $(ID_FASE_ACEPTAR).css('display', 'flex');
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_COMPLETA_DATOS).hide();
+  $(ID_DECLARACION_FONDOS).hide();
+
+}
 
 /* declaracion de fondos */
 function declaracion_fondos_modal(id_inversion){
   id_inversion_modal = id_inversion;
   $(CLASE_MODAL).show();
+  $(ID_FASE_ACEPTAR).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_COMPLETA_DATOS).hide();
   $(ID_DECLARACION_FONDOS).css('display', 'flex');
@@ -798,6 +842,7 @@ function cambio_fase_inversion_declaracion_fondos_modal(id_inversion){
       data: {},
       success: function(resultData) { 
         $(CLASE_MODAL).show();
+        $(ID_FASE_ACEPTAR).hide();
         $(ID_DECLARACION_FONDOS).hide();
         $(ID_COMPLETA_DATOS).hide();
         $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
@@ -815,6 +860,7 @@ function cambio_fase_inversion_declaracion_fondos_modal(id_inversion){
 function completar_datos_modal(id_inversion){
   id_inversion_modal = id_inversion;
   $(CLASE_MODAL).show();
+  $(ID_FASE_ACEPTAR).hide();
   $(ID_COMPLETA_DATOS).css('display', 'flex');
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_DECLARACION_FONDOS).hide();
@@ -842,6 +888,7 @@ function llenar_datos_transferencia(id_inversion){
       $("#cedula_transferencia").html(res.data.cedula_solicitante);
 
       $(CLASE_MODAL).show();
+      $(ID_FASE_ACEPTAR).hide();
       $(ID_COMPLETA_DATOS).hide();
       $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
@@ -892,6 +939,7 @@ $("#enviar_transferencia").click(function(){
 /*Seccion finalizar inversion */
 $("#finalizar_inversion").click(function(){
   $(CLASE_MODAL).hide();
+  $(ID_FASE_ACEPTAR).hide();
   $(ID_COMPLETA_DATOS).hide();
   $(ID_FASE_FINAL).hide();
   $(ID_DECLARACION_FONDOS).hide();

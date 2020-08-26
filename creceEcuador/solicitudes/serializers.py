@@ -37,5 +37,9 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'fecha_finalizacion',
             'fecha_expiracion',
             'porcentaje_financiado',
-            'tin'
+            'tin',
+            'garantias',
+            'visita_agente_CRECE',
+            'condiciones',
+            'mas_informacion_autor'
         ]

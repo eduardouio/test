@@ -1,10 +1,11 @@
 
 let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004;
 let IVA = 0.12
-let COMISION_ADJUDICACION_FACTOR =0.006;
+let COMISION_ADJUDICACION_FACTOR =0.008;
 let ADJUDICACION_FACTOR = 1.12
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
+let COMISION_BANCO = 0.4
 let RUTA_FASE_1 ="/registro/aceptar_inversion/"
 
 const FORMAT_CURRENCY = new Intl.NumberFormat('en-US', {
@@ -45,15 +46,13 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
       success: function(res) {
           
           if (res.data){
+
+          	if (!verificar_valores_inversion("detalle-solicitud", res.data)){
+          		return false
+          	}
           	let crece_modal = document.getElementById("crece-modal-simular-inversion-id")
           	crece_modal.style.display = 'block'
-          	let boton_invertir  = document.getElementById("simular-inversion-boton-invertir")
-          	let input_monto_inversion = document.getElementById("input-monto-detalle-solicitud").value
-          	boton_invertir.addEventListener('click', function (argument) {
-          		// body...
-          		go_to_fase1(res.data, input_monto_inversion)
-          	})
-
+          	
           	let barra_porcentaje_financiado = document.getElementById("crece-operaciones-contenido-monto-barra-progreso-id")
           	let oportunidad = res.data
           	porcentaje_financiado = oportunidad.porcentaje_financiado
@@ -64,6 +63,38 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           	document.getElementById("strong-monto-objetivo").innerHTML =  numeroConComas(decimalAEntero(oportunidad.monto))
           	
             calcular_tabla_inversionista(input_modal,res.data);
+           
+          }  
+      },
+      error: function(xhr, status, error) {
+          var err = JSON.parse(xhr.responseText);
+          alert("Solicitud no encontrada.");
+      }
+  });
+}
+
+function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
+  $.ajax({
+      url: RUTA_SOLICITUDES+id_oportunidad+'/',
+      type: 'GET',
+      dataType: 'json', // added data type
+      success: function(res) {
+          
+          if (res.data){
+          	$(".crece-modal").show();
+			  $("#aceptar-inversion-modal-dashboard").css('display', 'flex');
+			  $("#subir_transferencia_wrapper").hide();
+			  $("#completar_datos_wrapper").hide();
+			  $("#crece-declaracion-body-id").hide();
+			  $("#crece-modal-simular-inversion-id").hide()
+
+
+          	let boton_invertir = document.getElementById("aceptar-inversion-button-invertir")
+            calcular_tabla_inversionista(input_modal,res.data,monto);
+               	boton_invertir.addEventListener('click', function () {
+               		// body...
+               		go_to_fase2(res.data)
+               	})
           }  
       },
       error: function(xhr, status, error) {
@@ -77,8 +108,53 @@ function go_to_fase1(oportunidad, monto){
 	window.location.href = ruta_fase_1(oportunidad.id, monto)
 }
 
+function go_to_fase2(oportunidad){
+	guardar_tabla(oportunidad)
+	
+
+}
+
+
+function verificar_valores_inversion(modo, oportunidad) {
+	// body...
+	let id = ""
+	if (modo === "detalle-solicitud"){
+		id = "input-monto-detalle-solicitud"
+	}else{
+		id = "input-monto"
+	}
+	
+	let input_monto_inversion = document.getElementById(id).value
+	let monto_maximo = oportunidad.monto * 0.9 
+	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
+	let monto_por_financiar = oportunidad.monto - total_financiado
+
+	if (input_monto_inversion < 350 || input_monto_inversion>monto_maximo || input_monto_inversion>monto_por_financiar){
+		$("#label_error_simular_inversion_detalle_solicitud").show()
+		$("#label_error_simular_inversion_modal").show()
+		let tabla = document.getElementById("tabla-amortizacion-id");
+		/*Verificando que ya exista la tabla*/
+		if (tabla.children.length > 1) {
+			let last_child = tabla.lastChild
+
+			for (var i = oportunidad.plazo - 1; i >= 0; i--) {
+				let last_child = tabla.lastChild
+				tabla.removeChild(last_child)
+			}
+
+
+			
+		}
+		return false
+	}
+	$("#label_error_simular_inversion_detalle_solicitud").hide()
+	$("#label_error_simular_inversion_modal").hide()
+
+	return true
+}
+
 /*Calcula valores de las cuotas y llena la tabla de inversion*/
-function calcular_tabla_inversionista(input_modal,oportunidad) {
+function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 	// body...
 	let diccionario = {}
@@ -88,15 +164,42 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		document.getElementById("input-monto-detalle-solicitud").value = input_monto_inversion
 		diccionario = DICCIONARIO_SIMULACION
 		oportunidad = OPORTUNIDAD
-	}else{
+		if (!verificar_valores_inversion("",oportunidad)){
+			return false
+		}
+	}else if(input_modal === 'aceptar-inversion'){
+		input_monto_inversion = document.getElementById("input-monto-aceptar-inversion").value
+		diccionario = DICCIONARIO_SIMULACION
+		oportunidad = OPORTUNIDAD
+		
+	}
+	else{
 		diccionario = hacer_tabla_amortizacion(oportunidad)
 		DICCIONARIO_SIMULACION = diccionario
 		OPORTUNIDAD = oportunidad
-		input_monto_inversion = document.getElementById("input-monto-detalle-solicitud").value
+		if (input_modal === 'aceptar-inversion-inicio'){
+
+			input_monto_inversion = monto
+			document.getElementById("input-monto-aceptar-inversion").value = input_monto_inversion
+		}
+		else{
+			input_monto_inversion = document.getElementById("input-monto-detalle-solicitud").value
+		}
 		document.getElementById("input-monto").value = input_monto_inversion
 	}
-
-	let tabla = document.getElementById("tabla-amortizacion-id");
+	 let boton_invertir  = document.getElementById("simular-inversion-boton-invertir")
+	boton_invertir.addEventListener('click', function (argument) {
+  		// body...
+  		crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",input_monto_inversion)
+  	})
+	let tabla_id = ''
+	if(input_modal === 'aceptar-inversion-inicio' || input_modal === 'aceptar-inversion'){
+		tabla_id = "tabla-amortizacion-aceptar-inversion-id"
+	}
+	else{
+		tabla_id = "tabla-amortizacion-id"
+	}
+	let tabla = document.getElementById(tabla_id);
 	let tabla_inversionista_grid = document.getElementById("crece-tabla-inversionista-id");
 
 	/*Verificando que ya exista la tabla*/
@@ -112,7 +215,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		
 	}
 	
-	
+
 	let monto_inversion = parseInt(input_monto_inversion, 10)
 
 	
@@ -120,7 +223,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	let lista_cuotas_sol = diccionario['lista_cuotas']
 	let lista_intereses_sol = diccionario['lista_intereses']
 	let lista_capitales_sol = diccionario['lista_capitales']
-
+	let dias = diccionario['dias']
 
 
 	let participacion_inversionista = (monto_inversion/oportunidad.monto)
@@ -137,9 +240,10 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	let comision_iva_total = 0;
 
 	for (var i = 0; i < oportunidad.plazo ; i++) {
-		interes_i =  lista_intereses_sol[i] * participacion_inversionista
+		interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
 		capital_i = lista_capitales_sol[i] * participacion_inversionista
-		comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL * participacion_inversionista //ES EL COBRO POR USO DE LA PLATAFORMA
+		let dias_transcurridos = dias[i+1]
+		comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista //ES EL COBRO POR USO DE LA PLATAFORMA
 		comision_iva_i = comision_i * IVA
 		pago_i = capital_i + interes_i
 		ganancia_i = pago_i - comision_iva_i - comision_i
@@ -150,11 +254,12 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		comision_total += comision_i;
 		comision_iva_total += comision_iva_i
 		comision_total_i = comision_i + comision_iva_i
+
 		/*LLenando la tabla */
 		let fila = document.createElement("tr")
 
 		let fila_numero_cuota = '<td>'+ (i+1) +'</td>'
-		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(pago_i)+'</td>'
+		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(capital_i)+'</td>'
 		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
 		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
@@ -166,6 +271,23 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 
 		
 
+	}
+
+	if (input_modal === 'aceptar-inversion-inicio' || input_modal === 'aceptar-inversion'){
+		let div_adjudicacion_total = document.getElementById("adjudicacion-total")
+	cargo_adjudicacion_total = cargo_adjudicacion+cargo_adjudicacion_iva
+	div_adjudicacion_total.innerHTML = '$'+cargo_adjudicacion_total.toFixed(2)
+
+	let div_inversion_total = document.getElementById("inversion-total")
+	div_inversion_total.innerHTML = '$'+inversion_total.toFixed(2)
+
+	
+	let div_ganancia = document.getElementById("ganancia-total");
+	div_ganancia.innerHTML = ganancia_total.toFixed(2);
+	let div_adjudicacion = document.getElementById("adjudicacion");
+	div_adjudicacion.innerHTML = cargo_adjudicacion.toFixed(2)
+	let div_adjudicacion_iva = document.getElementById("adjudicacion-iva")
+	div_adjudicacion_iva.innerHTML = cargo_adjudicacion_iva.toFixed(2)
 	}
 
 
@@ -180,8 +302,10 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 /*Crea tabla de amortizacion del solicitante*/
 function hacer_tabla_amortizacion(oportunidad) {
 	// body...
-
-	let date = new Date()
+	let fecha_publicacion_solicitud = oportunidad.fecha_publicacion
+	let fecha_split = fecha_publicacion_solicitud.split("-")
+	let date = new Date(fecha_split[0], fecha_split[1], fecha_split[2])
+	
 	let next_date = new Date(date.getFullYear(),date.getMonth()+1,date.getDate())
 	let date_tmp = new Date()
 	
@@ -199,19 +323,19 @@ function hacer_tabla_amortizacion(oportunidad) {
 		if(next_date.getDay() == 0){
 			
 			next_date.setDate(next_date.getDate() + 1) //lunes
-			dias_transcurridos = getDuration(next_date-date).value
+			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-1)
 		}
 		else if(next_date.getDay() == 6){
 			next_date.setDate(next_date.getDate() + 2) //lunes
-			dias_transcurridos = getDuration(next_date-date).value
+			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-2)
 		}else{
-			dias_transcurridos = getDuration(next_date-date).value
+			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 		}
@@ -224,13 +348,20 @@ function hacer_tabla_amortizacion(oportunidad) {
 	}
 
 
+	let ultima_fecha = fechas[7]
+	let primera_fecha = fechas[0]
+
 	let plazo_dias = dias.reduce((a, b) => a + b, 0)
 	let TASA_INTERES_ANUAL = oportunidad.tin;
-	let tasa_diaria = (1+TASA_INTERES_ANUAL/plazo_dias)-1 ; // tasa diaria
+	if( TASA_INTERES_ANUAL > 1){
+
+		TASA_INTERES_ANUAL = TASA_INTERES_ANUAL/100
+	}
+
+	let tasa_diaria = (1+TASA_INTERES_ANUAL/360)-1 ; // tasa diaria
 
 	let tasa_mensual = [ Math.pow((1 + tasa_diaria),(plazo_dias/oportunidad.plazo)) ] - 1 ;
 	let cuota_mensual = PMT(tasa_mensual, oportunidad.plazo, oportunidad.monto)*-1
-
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let MONTO_SOLICITANTE = parseInt(oportunidad.monto, 10)
 	let capital_por_pagar_n = MONTO_SOLICITANTE
@@ -251,7 +382,7 @@ function hacer_tabla_amortizacion(oportunidad) {
 		
 		/*Intereses mensual*/
 		let dias_transcurridos = dias[i+1]
-
+		
 		tasa_mensual = [ Math.pow((1 + tasa_diaria),dias_transcurridos) ] - 1
 		intereses_n = capital_por_pagar_n*tasa_mensual
 		
@@ -287,7 +418,8 @@ function hacer_tabla_amortizacion(oportunidad) {
 	let diccionario = {'lista_cuotas': lista_cuotas, 
 						'lista_capital_insoluto': lista_capital_insoluto,
 						'lista_intereses': lista_intereses,
-						'lista_capitales':lista_capitales}
+						'lista_capitales':lista_capitales,
+						'dias':dias}
 
 	return diccionario
 }
@@ -359,4 +491,105 @@ function decimalAEntero(decimal){
 function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
   total_financiado = parseFloat(monto)*(parseFloat(porcentaje_financiado)/100);
   return Math.round( total_financiado );
+}
+
+
+/*Guardar tabla y enviarla al servidor*/
+function guardar_tabla(oportunidad) {
+	// body...
+
+	let id_solicitud = oportunidad.id;
+	let date = new Date()
+	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
+
+
+	let monto = document.getElementById("input-monto").value
+	let adjudicacion = document.getElementById("adjudicacion").textContent;
+	let adjudicacion_iva = document.getElementById("adjudicacion-iva").textContent;
+	let inversion_total = document.getElementById("inversion-total").textContent;
+	inversion_total = inversion_total.replace(/\$/g,'');
+	let ganancia_total = document.getElementById("ganancia-total").textContent;
+
+	let inversion = {"monto": monto, 
+						"id_solicitud": id_solicitud,
+						"adjudicacion": adjudicacion,
+						"adjudicacion_iva": adjudicacion_iva,
+						"inversion_total": inversion_total,
+						"ganancia_total": ganancia_total
+					}
+
+		
+	let pagos = [];
+	let tabla = document.getElementById("tabla-amortizacion-aceptar-inversion-id");
+	let tabla_childrens = tabla.children
+	let PLAZO = oportunidad.plazo
+
+	for (var i = 0; i < PLAZO; i++) {
+
+		let fila_i = tabla_childrens[i+1];
+		let fila_i_childrens = fila_i.children;
+
+
+		let pago = fila_i_childrens[1].textContent;
+		pago = pago.replace(/\$/g,'');
+		let comision = fila_i_childrens[2].textContent;
+		comision = comision.replace(/\$/g,'');
+		let comision_iva = fila_i_childrens[3].textContent;
+		comision_iva = comision_iva.replace(/\$/g,'');
+		let ganancia = fila_i_childrens[4].textContent;
+		ganancia = ganancia.replace(/\$/g,'');
+
+
+		
+
+		
+		let orden = {"orden": i+1,
+						"fecha":fecha_pago,
+						"pago": pago,
+						"comision": comision,
+						"comision_iva": comision_iva,
+						"ganancia": ganancia,
+					}
+
+		date.setDate(date.getDate() + 30)
+		fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
+
+		pagos.push(orden);
+
+	}
+
+	
+
+	var xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+    	response_data = JSON.parse(this.response)
+      	completar_datos_modal(response_data.id_inversion)
+
+   		}
+  	};
+	xhttp.open("POST", RUTA_FASE_1, true);
+	xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+	xhttp.send(JSON.stringify({
+								"inversion": inversion,
+								"pagos": pagos,
+							})
+				);
+
+
+}
+
+
+
+/* Completa Datos*/
+function completar_datos_modal(id_inversion){
+  id_inversion_modal = id_inversion;
+  $(CLASE_MODAL).show();
+  $(ID_FASE_ACEPTAR).hide();
+  $(ID_COMPLETA_DATOS).css('display', 'flex');
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_DECLARACION_FONDOS).hide();
+
 }

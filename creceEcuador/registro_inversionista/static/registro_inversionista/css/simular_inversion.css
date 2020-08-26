@@ -4,8 +4,79 @@
 }
 
 
+#label_error_simular_inversion_detalle_solicitud{
+	color: #e03e46;
+	font-size: 12px;
+	display: none;
+}
+
+#label_error_simular_inversion_modal{
+	color: #e03e46;
+	font-size: 12px;
+	display: none;
+}
+
+#label_error_aceptar_inversion{
+	color: #e03e46;
+	font-size: 12px;
+	display: none;
+}
+
+#aceptar-inversion-modal-dashboard{
+	background-color: white;
+    border: 1px solid #DEDEDE;
+    padding: 0px 45px;
+}
 
 
+#tabla-amortizacion-aceptar-inversion-id > tr > td:last-child{
+	background-color: lightblue;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+#tabla-amortizacion-aceptar-inversion-id > tr >td{
+	border: 7px solid white;
+	color:black;
+}
+
+#tabla-amortizacion-aceptar-inversion-id > tr > td:not(:last-child){
+	background-color: #B7B8B8;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+#tabla-amortizacion-aceptar-inversion-id > tr > td:first-child{
+	background-color: white;
+	text-align: center;
+
+}
+#calcular-aceptar-inversion{
+	background-color: #006B8D;
+    border-radius: 12px;
+    border: 1px;
+    padding: 2px 15px;
+    color: white;
+    font-weight: bold;
+}
+
+#aceptar-inversion-button-invertir{
+	    background-color: #006B8D;
+    border-radius: 12px;
+    border: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 2px 35px;
+    color: white;
+    font-weight: bold;
+}
+
+    
 /*Titulo*/
 .titulo{
 	color: #ffffff;
@@ -218,6 +289,12 @@ th{
     font-size: 18px;
     padding-top: 5px;
     border-radius: 30px;
-    padding: 3px 15px;
+    padding: 3px 32px;
     font-weight: bold;
+}
+
+.crece-detalle-solicitud-continuar-inversion a{
+	background: #006B8D 0% 0% no-repeat padding-box;
+    border: 1px solid #006B8D;
+    color: white;
 }

@@ -2,6 +2,7 @@ const VALID_INF_PERS_CAMPOS = 4;
 
 $("#ver_perfil").click( function() {
     $(".crece-oportunidades").hide();
+    $('#crece-detalle-operaciones-id').hide()
     $(".crece-perfil").show();
 
     $("<link/>", {
