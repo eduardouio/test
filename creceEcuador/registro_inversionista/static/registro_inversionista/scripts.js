@@ -89,7 +89,6 @@ function login(argument) {
 
 
         }else if(this.status == 401 && this.readyState == 4){
-            console.log(this)
 
             let label_error = document.getElementById("label_error")
             label_error.innerHTML = "Usuario o contraseña incorrectos"

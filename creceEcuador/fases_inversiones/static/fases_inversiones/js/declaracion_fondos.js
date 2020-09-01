@@ -10,7 +10,7 @@ function aceptar_declaracion_fondos() {
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this)
+            
             var file = new Blob([this.response], { 
                                     type: 'application/pdf' 
             });

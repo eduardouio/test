@@ -17,6 +17,24 @@
     padding: 40px;
 }
 
+.crece-modal-container svg{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 9999999;
+}
+
+.crece-modal-container-cerrar:hover,
+.crece-modal-container-cerrar *:hover{
+    cursor: pointer;
+    fill: rgba(255,255,255,0.8);
+}
+
+#aceptar-inversion-modal-dashboard {
+    background-color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+}
+
 #completar_datos_wrapper{
     display: none;
 }
@@ -31,4 +49,41 @@
 
 #final_inversion_wrapper{
     display: none;
+}
+
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno:hover,
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span:hover
+{
+    cursor: pointer;
+    color: rgba(0, 108, 141, 0.705);;
+}
+
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos:hover,
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span:hover
+{
+    cursor: pointer;
+    color: rgba(0, 108, 141, 0.705);;
+}
+
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres:hover,
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span:hover
+{
+    cursor: pointer;
+    color: rgba(0, 108, 141, 0.705);;
+}
+
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro:hover,
+.crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro span:hover
+{
+    cursor: pointer;
+    color: rgba(0, 108, 141, 0.705);;
+}
+
+.error {
+    color: #e03e46;;
+}
+
+.error-container{
+    display: none;
+    padding: 0px 0px 15px 0px;
 }

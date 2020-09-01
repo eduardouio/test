@@ -27,6 +27,7 @@ urlpatterns = [
     path('dashboard/', views.Dashboard, name='dashboard'),
     path('dashboard/perfil', views.DashboardPerfil, name='dashboard_perfil'),
     path('ingresa/', views.ingresar_como, name='ingresar_como'),
+    path('logout/', views.logout_view, name='logout'),
    
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),

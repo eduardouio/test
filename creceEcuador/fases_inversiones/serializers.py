@@ -11,6 +11,7 @@ class InversionSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'fase_inversion',
+            'monto',
             'solicitud'
          ]
 

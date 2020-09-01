@@ -44,7 +44,7 @@ $(document).ready(function(){
   obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
   $.each( $('*'), function() { 
     if( $(this).width() > $('body').width()) {
-        console.log("Wide Element: ", $(this), "Width: ", $(this).width()); 
+
     } 
   });
   
@@ -154,7 +154,6 @@ function crearCuadrosOportunidadesInversion(data){
   $(".crece-oportunidades-contenido-solicitante strong").each( function(numSolicitante) {
     var lines = lineWrapDetector.getLines(this);
     let stringParrafo = "";
-    console.log(lines.length);
     $.each(lines, function(numLinea, linea) {
       if(numLinea<1){
         $.each(linea, function(numPalabra, palabra) {
@@ -180,8 +179,6 @@ function crearCuadrosOportunidadesInversion(data){
   $(".crece-oportunidades-contenido-informacion-industria p").each( function(numSolicitante) {
     var lines = lineWrapDetector.getLines(this);
     let stringParrafo = "";
-    console.log(lines.length);
-    console.log(lines);
 
     $.each(lines, function(numLinea, linea) {
       if(numLinea<2){
@@ -197,7 +194,6 @@ function crearCuadrosOportunidadesInversion(data){
           $.each(linea, function(numPalabra, palabra) {
             let palabraSubstr = "";
             if(palabra.innerText.length > 9){
-              console.log(palabra.innerText.length)
               palabraSubstr = palabra.innerText.substring(0,9);
               let linkSolicitante = links[numSolicitante].outerHTML;
               palabraSubstr += linkSolicitante;

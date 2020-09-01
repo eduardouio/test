@@ -26,7 +26,7 @@ $("#selectBancoTransferencia").on('change', function(){
         
 });
 
-function checkInputs() {
+function checkInputsTransferencia() {
     var es_valido = true;
     $('input').filter('[required]').each(function() {
       if ($(this).val() === '') {

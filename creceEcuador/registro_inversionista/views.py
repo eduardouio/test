@@ -3,7 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -349,9 +349,12 @@ class Login_Users(generics.CreateAPIView):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     def get(self, request, *args, **kwargs):
-
-        return render(request, 'registro_inversionista/login.html')
-
+        if request.user.is_authenticated:
+            usuario = models.Usuario.objects.filter(user=request.user)[0]
+            return redirect(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
+        else:
+            print(request.user)
+            return render(request, 'registro_inversionista/login.html')
 
 
 class ImagenCedulaView(APIView):        
@@ -476,7 +479,11 @@ def ingresar_como(request):
 
 
         
+@login_required
+def logout_view(request):
+    logout(request)
 
+    return redirect('/inversionista/login/')
 
 
 

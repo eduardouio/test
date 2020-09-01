@@ -219,6 +219,17 @@
     border: 1px solid #006B8D;
     color: white;
   }
+
+  .crece-oportunidades-contenido-botones-azul-desactivado a {
+    background: rgba(0, 108, 141, 0.603) 0% 0% no-repeat padding-box;
+    border: 1px solid rgba(0, 108, 141, 0.603);
+    color: white;
+  }
+
+  .crece-oportunidades-contenido-botones-azul-desactivado a:hover{
+    cursor: not-allowed;
+    text-decoration-line: none;
+  }
   
   .crece-oportunidades-mas a {
     background: #006B8D 0% 0% no-repeat padding-box;

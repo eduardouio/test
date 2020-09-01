@@ -585,11 +585,24 @@ function guardar_tabla(oportunidad) {
 
 /* Completa Datos*/
 function completar_datos_modal(id_inversion){
-  id_inversion_modal = id_inversion;
-  $(CLASE_MODAL).show();
-  $(ID_FASE_ACEPTAR).hide();
-  $(ID_COMPLETA_DATOS).css('display', 'flex');
-  $(ID_SUBIR_TRANSFERENCIA).hide();
-  $(ID_DECLARACION_FONDOS).hide();
+	id_inversion_modal = id_inversion;
+	$(CLASE_MODAL).show();
+	$(ID_FASE_ACEPTAR).hide();
+	$(ID_COMPLETA_DATOS).css('display', 'flex');
+	$(ID_SUBIR_TRANSFERENCIA).hide();
+	$(ID_DECLARACION_FONDOS).hide();
+
+	fase_inversion_actual = "FILL_INFO";
+
+	habilitarClicks();
+
+	habilitarLinksAnteriores(fase_inversion_actual,2);
+
+	setPasoInversionistaActualFillInfo(2);
+
+	$(".crece-flujo-inversionista-paso-tres, "+
+		".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
+	$(".crece-flujo-inversionista-paso-cuatro, "+
+		".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
 
 }

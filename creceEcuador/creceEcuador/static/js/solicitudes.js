@@ -14,10 +14,8 @@ $(".crece-oportunidades-siguiente").click( function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
 $(".crece-oportunidades-anterior").click( function() {
-    console.log("indice opcion antes" + indice_opcion_actual);
     if(indice_opcion_actual > CANTIDAD_OPCIONES_MOSTRADAS){
         indice_opcion_actual = indice_opcion_actual - CANTIDAD_OPCIONES_MOSTRADAS - CANTIDAD_OPCIONES_MOSTRADAS;
-        console.log("indice opcion despues" + indice_opcion_actual);
         obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
     } 
 });
@@ -43,8 +41,6 @@ function crearCuadrosOportunidadesInversion(data){
     $.each( data, function( indice, oportunidad ) {
         string_operacion += stringSolicitud(oportunidad);
     });
-
-    console.log("test");
   
     $(".crece-oportunidades-container").html(string_operacion);
     let links = $(".crece-oportunidades-contenido-solicitante-link");
@@ -73,7 +69,7 @@ function crearCuadrosOportunidadesInversion(data){
     $(".crece-oportunidades-contenido-solicitante strong").each( function(numSolicitante) {
       var lines = lineWrapDetector.getLines(this);
       let stringParrafo = "";
-      console.log(lines.length);
+      
       $.each(lines, function(numLinea, linea) {
         if(numLinea<1){
           $.each(linea, function(numPalabra, palabra) {
@@ -98,8 +94,6 @@ function crearCuadrosOportunidadesInversion(data){
     $(".crece-oportunidades-contenido-informacion-industria p").each( function(numSolicitante) {
       var lines = lineWrapDetector.getLines(this);
       let stringParrafo = "";
-      console.log(lines.length);
-      console.log(lines);
 
       $.each(lines, function(numLinea, linea) {
         if(numLinea<2){
@@ -115,7 +109,6 @@ function crearCuadrosOportunidadesInversion(data){
             $.each(linea, function(numPalabra, palabra) {
               let palabraSubstr = "";
               if(palabra.innerText.length > 9){
-                console.log(palabra.innerText.length)
                 palabraSubstr = palabra.innerText.substring(0,9);
                 let linkSolicitante = links[numSolicitante].outerHTML;
                 palabraSubstr += linkSolicitante;

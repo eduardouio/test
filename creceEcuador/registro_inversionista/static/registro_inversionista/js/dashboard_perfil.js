@@ -19,7 +19,6 @@ function capitalizeFirstLetter(palabra) {
 $(document).ready( function() {
     var canton_elegido = $("#id_canton").attr("data-canton")
     $("#id_canton").val(capitalizeFirstLetter(canton_elegido)).change();
-    console.log(capitalizeFirstLetter(canton_elegido));
 });
 
 function guardarCambiosPerfil(id_inversionista) {

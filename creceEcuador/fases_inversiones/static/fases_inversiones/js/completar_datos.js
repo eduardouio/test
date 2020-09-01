@@ -325,7 +325,6 @@ var substringMatcher = function(strs) {
       dictRespuestas.numero_cuenta = $("#numero_cuenta").val();
       dictRespuestas.tipo_cuenta = $("#selectTipoCuenta").children("option:selected").val();
       
-      console.log(dictRespuestas);
       return dictRespuestas;
   }
 
@@ -334,56 +333,86 @@ var substringMatcher = function(strs) {
     $('input').filter('[required]').each(function() {
 
       if (this.name === 'foto_cedula' && this.files.length == 0) {
-        alert("Suba una foto de su cédula");
+
+        $("#completar_datos_wrapper .error").html("Suba una foto de su cédula.");
+        $("#completar_datos_wrapper .error-container").css("display", "flex");
+
         es_valido = false;
         return false;
       }
       else if ($(this).val() === '') {
-        alert("llene todos los campos");
+
+        $("#completar_datos_wrapper .error").html("Llene todos los campos");
+        $("#completar_datos_wrapper .error-container").css("display", "flex");
+        
         es_valido = false;
         return false;
       }
       else {
         if (this.name === 'cedula' && !validar_cedula(this)){
-          alert("Ingrese su cédula correctamente");
+          $("#completar_datos_wrapper .error").html("Ingrese su cédula correctamente");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
           es_valido = false;
           return false;
 
         }
         else if (this.name === 'cedula_conyugue' && !validar_cedula(this)){
-          alert("Ingrese la cédula de su cónyugue correctamente");
+          $("#completar_datos_wrapper .error").html("Ingrese la cédula de su cónyugue correctamente");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
           es_valido = false;
           return false;
 
         }
 
         else if(this.name === 'canton' && !cantones.includes(this.value)) {
-          alert("Ingrese un cantón válido");
+          $("#completar_datos_wrapper .error").html("Ingrese un cantón válido");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
           this.classList.add("invalid");
           es_valido = false;
           return false;
         }
 
         else if(this.name === 'canton_empresa' && !cantones.includes(this.value)) {
-          alert("Ingrese un cantón válido");
+          $("#completar_datos_wrapper .error").html("Ingrese un cantón válido");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
           this.classList.add("invalid");
           es_valido = false;
           return false;
         }
         else if(this.name === 'provincia' && !provincias.includes(this.value)) {
-          alert("Ingrese una provincia válida");
+          $("#completar_datos_wrapper .error").html("Ingrese una provincia válida");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+         
           this.classList.add("invalid");
           es_valido = false;
           return false;
         }
         else if(this.name === 'celular' && this.value.length != 10) {
-          alert("Ingrese un celular válido");
+          $("#completar_datos_wrapper .error").html("Ingrese un celular válido");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
           this.classList.add("invalid");
           es_valido = false;
           return false;
         }
       }
     });
+    
+    if(!$('#foto_cedula').prop('files')[0]){
+      $("#completar_datos_wrapper .error").html("Suba una foto de su cédula.");
+      $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+      es_valido = false;
+    }
+
+    if(es_valido){
+      $("#completar_datos_wrapper .error-container").hide();
+    }
+    
     return es_valido;
   }
 
@@ -414,34 +443,68 @@ var substringMatcher = function(strs) {
             dataType : 'json',
             data: myFormData,
             success: function () {
-                if(redirect){
-                  cambio_fase_inversion_completar_datos(id_inversion_modal);
-                }
-                else{
-                  alert("Datos guardados");
-                }
+              $("#completar_datos_wrapper .error-container").hide();
+              if(redirect){
+                cambio_fase_inversion_completar_datos(id_inversion_modal);
+              }
+              else{
+                
+              }
             },
             error: function(){
-                alert("Imagen incorrecta. Intente de nuevo");
+              $("#completar_datos_wrapper .error").html("No se pudo cargar la imagen. Intente de nuevo.");
+              $("#completar_datos_wrapper .error-container").css("display", "flex");
             }
         });
     }
 
   function cambio_fase_inversion_completar_datos(id_inversion){
-    $.ajax({
+    if(fase_inversion_actual != "FILL_INFO") {
+      $(CLASE_MODAL).show();
+      $(ID_DECLARACION_FONDOS).css('display', 'flex');
+      $(ID_COMPLETA_DATOS).hide();
+      $(ID_SUBIR_TRANSFERENCIA).hide();
+
+      habilitarClicks();
+
+      habilitarLinksAnteriores(fase_inversion_actual,3);
+
+      setPasoInversionistaActualOrigin(3);
+
+      $(".crece-flujo-inversionista-paso-cuatro, "+
+            ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+
+    }
+    else {
+      $.ajax({
         type: 'POST',
         url: URL_CAMBIO_FASE_COMPLETAR_DATOS+id_inversion, 
         data: {},
         success: function(resultData) { 
+          $("#completar_datos_wrapper .error-container").hide();
           $(CLASE_MODAL).show();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
           $(ID_COMPLETA_DATOS).hide();
           $(ID_SUBIR_TRANSFERENCIA).hide();
+
+          fase_inversion_actual = "ORIGIN_MONEY";
+
+          habilitarClicks();
+
+          habilitarLinksAnteriores(fase_inversion_actual,3);
+
+          setPasoInversionistaActualOrigin(3);
+
+          $(".crece-flujo-inversionista-paso-cuatro, "+
+                ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
         },
         error: function(){
-            alert("Error en el cambio de estado de la inversión");
+          $("#completar_datos_wrapper .error").html("No se pudo cambiar el estado de la inversión.");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
         }
-    });
+      });
+    }
+    
   }
 
 function obtenerIdInversion(){

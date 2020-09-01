@@ -2,8 +2,10 @@ let RUTA_SOLICITUDES = "/solicitudes/"
 let RUTA_SOLICITUDES_FASES_INVERSION = "/registro/"
 let RUTA_DETALLE_SOLICITUD ="/invertir/detalle/"
 let indice_opcion_actual = 0;
-let CANTIDAD_OPCIONES_MOSTRADAS = 3;
+let CANTIDAD_OPCIONES_MOSTRADAS = 9;
 let CANTIDAD_OPCIONES_MOSTRADAS_MIS_INV = -1;
+let obteniendoOportunidades = false;
+let dataEncontrada = true;
 
 const URL_FILL_INFO = "/registro/completa_datos/"
 const URL_ORIGIN_MONEY = "/registro/declaracion_fondos/"
@@ -13,6 +15,16 @@ $( document ).ready(function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
 
+$(window).scroll(cargarOportunidadesOnScroll);
+
+function cargarOportunidadesOnScroll(){
+  if($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
+    if(!obteniendoOportunidades && dataEncontrada){
+      obteniendoOportunidades = true;
+      obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
+    }
+  }
+}
 
 
 
@@ -20,10 +32,8 @@ $(".crece-oportunidades-siguiente").click( function() {
     obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
 });
 $(".crece-oportunidades-anterior").click( function() {
-    console.log("indice opcion antes" + indice_opcion_actual);
     if(indice_opcion_actual > CANTIDAD_OPCIONES_MOSTRADAS){
         indice_opcion_actual = indice_opcion_actual - CANTIDAD_OPCIONES_MOSTRADAS - CANTIDAD_OPCIONES_MOSTRADAS;
-        console.log("indice opcion despues" + indice_opcion_actual);
         obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
     } 
 });
@@ -37,20 +47,33 @@ function obtenerOportunidadesInversion(inicio, cantidad_opciones){
         success: function(res) {
             if (res.data.length > 0){
                 indice_opcion_actual += cantidad_opciones
-                crearCuadrosOportunidadesInversion(res.data);
+                crearCuadrosOportunidadesInversion(res.data, true);
             }  
+            else{
+              dataEncontrada = false;
+              obteniendoOportunidades = false;
+            }
+        },
+        error: function() {
+          obteniendoOportunidades = false;
         }
     });
 }
 
-function crearCuadrosOportunidadesInversion(data){
+function crearCuadrosOportunidadesInversion(data, append){
     let string_operacion = "";
+    let solicitudes_anteriores;
   
     $.each( data, function( indice, oportunidad ) {
         string_operacion += stringSolicitud(oportunidad);
     });
   
+    if(append){
+      solicitudes_anteriores = $(".crece-oportunidades-container").html();
+    }
+
     $(".crece-oportunidades-container").html(string_operacion);
+    
     let links = $(".crece-oportunidades-contenido-solicitante-link");
     $(".crece-oportunidades-contenido-solicitante-link").remove();
     $(".crece-oportunidades-contenido-solicitante p").each( function(numSolicitante) {
@@ -135,6 +158,12 @@ function crearCuadrosOportunidadesInversion(data){
 
       this.innerHTML = stringParrafo;
     });
+
+    if(append) {
+      $(".crece-oportunidades-container").prepend(solicitudes_anteriores);
+    }
+
+    obteniendoOportunidades = false;
   
   }
 
@@ -252,7 +281,7 @@ function stringSolicitud(oportunidad){
   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-blanco">'+
                                                                     button_detalle_solicitud(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id)+                                                                
   '                                                            </div>'+
-                                                                link_a_fase_inversion(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id)+
+                                                                botonInvertir(oportunidad)+
   '                                                        </div>'+
   '                                                    </div>'+
   '        '+
@@ -267,6 +296,17 @@ function stringSolicitud(oportunidad){
 
     return tarjeta_oportunidad;
 	
+}
+
+function botonInvertir(oportunidad){
+  if(parseInt(oportunidad.porcentaje_financiado) < 100){
+    return link_a_fase_inversion(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id, oportunidad.monto_invertido);
+  }
+  return (
+    '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul-desactivado">'+
+    '                                                                <a href="#">Invertir</a>'+
+    '                                                            </div>'
+  );
 }
 
 function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud) {
@@ -299,11 +339,12 @@ function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud) 
   }
 }
 
-function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
+function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, monto){
+  
   if(fase_inversion === "FILL_INFO"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="#" onclick="completar_datos_modal('+id_oportunidad+')">Continuar</a>'+
+      '                                                                <a href="#" onclick="mostrar_completar_datos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
       '                                                            </div>'
     );
   }
@@ -311,7 +352,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   else if(fase_inversion === "ORIGIN_MONEY"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="#" onclick="declaracion_fondos_modal('+id_oportunidad+')">Continuar</a>'+
+      '                                                                <a href="#" onclick="declaracion_fondos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
       '                                                            </div>'
     );
   }
@@ -319,7 +360,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud){
   else if(fase_inversion === "PENDING_TRANSFER"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-      '                                                                <a href="#" onclick="subir_transferencia_modal('+id_oportunidad+')">Continuar</a>'+
+      '                                                                <a href="#" onclick="subir_transferencia_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
       '                                                            </div>'
     );
   }
@@ -732,6 +773,7 @@ $(".selectable").click(function (){
     }
     else {
         indice_opcion_actual = 0;
+        $(".crece-oportunidades-container").html("");
         obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
         $("#crece-botones-pag").show()
         $('#crece-detalle-operaciones-id').hide()
@@ -750,7 +792,7 @@ function obtenerOportunidadesDesdeInversion(inicio, cantidad_opciones, fase_inve
             if (res.data.length > 0){
                 let listaSolicitudes = parseSolicitudesInversionASolicitudes(res.data)
                 
-                crearCuadrosOportunidadesInversion(listaSolicitudes);
+                crearCuadrosOportunidadesInversion(listaSolicitudes, false);
             }  
             else {
                 $(".crece-oportunidades-container").html("");
@@ -762,11 +804,10 @@ function obtenerOportunidadesDesdeInversion(inicio, cantidad_opciones, fase_inve
 function parseSolicitudesInversionASolicitudes(data){
     let listaSolicitudes = []
     $.each( data, function( indice, inversion ) {
-      console.log(inversion);
         inversion.solicitud.fase_inversion = inversion.fase_inversion;
+        inversion.solicitud.monto_invertido = inversion.monto;
         inversion.solicitud.id_inversion = inversion.id
         listaSolicitudes.push(inversion.solicitud);
-        console.log(listaSolicitudes);
     });
 
     return listaSolicitudes
@@ -783,12 +824,15 @@ const ID_SUBIR_TRANSFERENCIA = "#subir_transferencia_wrapper";
 const ID_FASE_FINAL = "#final_inversion_wrapper";
 const ID_FASE_ACEPTAR = "#aceptar-inversion-modal-dashboard"
 
+let monto_inversion_actual = 350;
+let fase_inversion_actual;
+let id_solicitud_actual;
+
 let id_inversion_modal;
 
 /*Aceptar inversion */
 function aceptar_inversion_modal(id_solicitud) {
   // body...
-  console.log(id_solicitud)
   $(CLASE_MODAL).show();
   $(ID_FASE_ACEPTAR).css('display', 'flex');
   $(ID_SUBIR_TRANSFERENCIA).hide();
@@ -798,39 +842,76 @@ function aceptar_inversion_modal(id_solicitud) {
 }
 
 /* declaracion de fondos */
-function declaracion_fondos_modal(id_inversion){
+function declaracion_fondos_modal(id_inversion, monto, id_solicitud, fase_inversion){
   id_inversion_modal = id_inversion;
+  id_solicitud_actual = id_solicitud;
+  monto_inversion_actual = monto;
+  fase_inversion_actual = fase_inversion;
   $(CLASE_MODAL).show();
   $(ID_FASE_ACEPTAR).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_COMPLETA_DATOS).hide();
   $(ID_DECLARACION_FONDOS).css('display', 'flex');
-  console.log(id_inversion);
+  habilitarClicks();
+
+  setPasoInversionistaActualOrigin(3);
+
+  $(".crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
 
 }
 
 function aceptar_declaracion_fondos_modal() {
-  var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-          console.log(this)
-          var file = new Blob([this.response], { 
-                                  type: 'application/pdf' 
-          });
+  if(fase_inversion_actual != "ORIGIN_MONEY"){
 
-          var link = document.createElement("a");
-          link.href = window.URL.createObjectURL(file);
-          link.download = "Contrato.pdf";
-          document.body.appendChild(link);
-          link.click();
-          cambio_fase_inversion_declaracion_fondos_modal(id_inversion_modal);
+    $(CLASE_MODAL).show();
+    $(ID_FASE_ACEPTAR).hide();
+    $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+    $(ID_COMPLETA_DATOS).hide();
+    $(ID_DECLARACION_FONDOS).hide();
 
-      }
-  };
-  xhttp.open("POST", RUTA_ACEPTAR_DECLARACION, true);
-  //xhttp.setRequestHeader("Content-type", "text/html;charset=UTF-8");
-  xhttp.send();
+    habilitarClicks();
+
+    habilitarLinksAnteriores(fase_inversion_actual,4);
+
+    setPasoInversionistaActualPendingTransfer(4);
+
+    llenar_datos_transferencia(id_inversion_modal);
+
+  }
+  else {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var file = new Blob([this.response], { 
+                                    type: 'application/pdf' 
+            });
+
+            var link = document.createElement("a");
+            link.href = window.URL.createObjectURL(file);
+            link.download = "Contrato.pdf";
+            document.body.appendChild(link);
+            link.click();
+            cambio_fase_inversion_declaracion_fondos_modal(id_inversion_modal);
+
+            fase_inversion_actual = "PENDING_TRANSFER";
+
+            habilitarClicks();
+
+            habilitarLinksAnteriores(fase_inversion_actual,4);
+
+            setPasoInversionistaActualPendingTransfer(4);
+
+            llenar_datos_transferencia(id_inversion_modal)          
+
+        }
+    };
+    xhttp.open("POST", RUTA_ACEPTAR_DECLARACION, true);
+    //xhttp.setRequestHeader("Content-type", "text/html;charset=UTF-8");
+    xhttp.send();
+  }
 
 
 }
@@ -841,14 +922,17 @@ function cambio_fase_inversion_declaracion_fondos_modal(id_inversion){
       url: URL_CAMBIO_FASE_DECLARACION+id_inversion, 
       data: {},
       success: function(resultData) { 
+        $("#crece-declaracion-body-id .error-container").hide();
         $(CLASE_MODAL).show();
         $(ID_FASE_ACEPTAR).hide();
         $(ID_DECLARACION_FONDOS).hide();
         $(ID_COMPLETA_DATOS).hide();
         $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+        $("#subir_transferencia_wrapper .error-container").hide();
       },
       error: function(){
-          alert("Error en el cambio de estado de la inversión");
+          $("#crece-declaracion-body-id .error").html("No se pudo cambiar la fase de la inversión.");
+          $("#crece-declaracion-body-id .error-container").css("display", "flex");
       }
   });
 }
@@ -857,20 +941,40 @@ function cambio_fase_inversion_declaracion_fondos_modal(id_inversion){
 
 
 /* Completa Datos*/
-function completar_datos_modal(id_inversion){
+function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_inversion){
   id_inversion_modal = id_inversion;
+  monto_inversion_actual = monto;
+  id_solicitud_actual = id_solicitud;
+  fase_inversion_actual = fase_inversion;
   $(CLASE_MODAL).show();
   $(ID_FASE_ACEPTAR).hide();
   $(ID_COMPLETA_DATOS).css('display', 'flex');
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_DECLARACION_FONDOS).hide();
 
+  habilitarClicks();
+
+  setPasoInversionistaActualFillInfo(2);
+
+  $(".crece-flujo-inversionista-paso-tres, "+
+  ".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
+
+  $(".crece-flujo-inversionista-paso-cuatro, "+
+  ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+
 }
 
 
 /* Subir Transferencia */
-function subir_transferencia_modal(id_inversion){
+function subir_transferencia_modal(id_inversion, monto, id_solicitud, fase_inversion){
   id_inversion_modal = id_inversion;
+  monto_inversion_actual = monto;
+  id_solicitud_actual = id_solicitud;
+  fase_inversion_actual = fase_inversion;
+
+  habilitarClicks();
+
+  setPasoInversionistaActualPendingTransfer(4);
 
   llenar_datos_transferencia(id_inversion_modal)
   
@@ -887,6 +991,8 @@ function llenar_datos_transferencia(id_inversion){
       $("#texto_monto").html(res.data.monto_a_transferir);
       $("#cedula_transferencia").html(res.data.cedula_solicitante);
 
+      $("#subir_transferencia_wrapper .error-container").hide();
+
       $(CLASE_MODAL).show();
       $(ID_FASE_ACEPTAR).hide();
       $(ID_COMPLETA_DATOS).hide();
@@ -894,7 +1000,15 @@ function llenar_datos_transferencia(id_inversion){
       $(ID_DECLARACION_FONDOS).hide();
     },
     error: function(){
-      alert("No se pueden cargar datos solicitante")
+      
+      $("#subir_transferencia_wrapper .error").html("No se pueden cargar datos.");
+      $("#subir_transferencia_wrapper .error-container").css("display", "flex");
+
+      $(CLASE_MODAL).show();
+      $(ID_FASE_ACEPTAR).hide();
+      $(ID_COMPLETA_DATOS).hide();
+      $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+      $(ID_DECLARACION_FONDOS).hide();
     }
   });
 }
@@ -923,16 +1037,20 @@ function enviarComprobanteTransferenciaModal(id_inversion){
         $(ID_SUBIR_TRANSFERENCIA).hide();
       },
       error: function(){
-          alert("Archivo incorrecto. Intente de nuevo");
+          $("#subir_transferencia_wrapper .error").html("No se pudo cargar el archivo. Intente de nuevo.");
+          $("#subir_transferencia_wrapper .error-container").css("display", "flex");
       }
   });
 }
 
 $("#enviar_transferencia").click(function(){
-  console.log("button")
-  console.log($('#comprobante_transferencia').prop('files')[0])
   if($('#comprobante_transferencia').prop('files')[0]){
+    $("#subir_transferencia_wrapper .error-container").hide();
     enviarComprobanteTransferenciaModal(id_inversion_modal);
+  }
+  else{
+    $("#subir_transferencia_wrapper .error").html("Suba una foto del comprobante de su transferencia.");
+    $("#subir_transferencia_wrapper .error-container").css("display", "flex");
   }
 });
 
@@ -945,3 +1063,534 @@ $("#finalizar_inversion").click(function(){
   $(ID_DECLARACION_FONDOS).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
 });
+
+$(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(function(){
+  $(CLASE_MODAL).hide();
+  $(ID_FASE_ACEPTAR).hide();
+  $(ID_COMPLETA_DATOS).hide();
+  $(ID_FASE_FINAL).hide();
+  $(ID_DECLARACION_FONDOS).hide();
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+});
+
+$(".crece-modal").click(function(e) {
+
+  let id_event = e.target.id;
+
+  if(id_event === "aceptar-inversion-modal-dashboard" ||
+  id_event === "completar_datos_wrapper" ||
+  id_event === "crece-declaracion-body-id" ||
+  id_event === "subir_transferencia_wrapper"){
+    $(CLASE_MODAL).hide();
+    $(ID_FASE_ACEPTAR).hide();
+    $(ID_COMPLETA_DATOS).hide();
+    $(ID_FASE_FINAL).hide();
+    $(ID_DECLARACION_FONDOS).hide();
+    $(ID_SUBIR_TRANSFERENCIA).hide();
+
+  }
+
+});
+
+function habilitarClicks(){
+
+  $(".crece-flujo-inversionista-paso-uno, "+
+  ".crece-flujo-inversionista-paso-uno span").prop("onclick", null).off("click");
+
+  $(".crece-flujo-inversionista-paso-dos, "+
+  ".crece-flujo-inversionista-paso-dos span").prop("onclick", null).off("click");
+
+  $(".crece-flujo-inversionista-paso-tres, "+
+  ".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
+
+  $(".crece-flujo-inversionista-paso-cuatro, "+
+  ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+
+
+  $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+    ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+      crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+      habilitarLinksAnteriores(fase_inversion_actual,1);
+    });
+
+    $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+    ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+      $(CLASE_MODAL).show();
+      $(ID_FASE_ACEPTAR).hide();
+      $(ID_SUBIR_TRANSFERENCIA).hide();
+      $(ID_COMPLETA_DATOS).css('display', 'flex');
+      $(ID_DECLARACION_FONDOS).hide();
+      habilitarLinksAnteriores(fase_inversion_actual,2);
+    });
+
+    $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres, "+
+    ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span").click( function(){
+      $(CLASE_MODAL).show();
+      $(ID_FASE_ACEPTAR).hide();
+      $(ID_SUBIR_TRANSFERENCIA).hide();
+      $(ID_COMPLETA_DATOS).hide();
+      $(ID_DECLARACION_FONDOS).css('display', 'flex');
+      habilitarLinksAnteriores(fase_inversion_actual,3);
+    });
+
+    $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro, "+
+    ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro span").click( function(){
+      $(CLASE_MODAL).show();
+      $(ID_FASE_ACEPTAR).hide();
+      $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+      $(ID_COMPLETA_DATOS).hide();
+      $(ID_DECLARACION_FONDOS).hide();
+
+      $("#subir_transferencia_wrapper .error-container").hide();
+
+      habilitarLinksAnteriores(fase_inversion_actual,4);
+    });
+}
+
+function habilitarLinksAnteriores(fase_inversion, fase_click){
+  if(fase_inversion === "FILL_INFO"){
+
+    switch (fase_click) {
+      case 1:
+          setPasoInversionistaActualFillInfo(1);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).css('display', 'flex');
+          $(ID_DECLARACION_FONDOS).hide();
+
+          setPasoInversionistaActualFillInfo(2);
+          
+        });
+    
+        $(".crece-flujo-inversionista-paso-tres, "+
+        ".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
+
+        $(".crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+        break;
+
+      case 2:
+          setPasoInversionistaActualFillInfo(2);
+
+          $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+          ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+            crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+  
+            setPasoInversionistaActualFillInfo(1);
+          });
+      
+          $(".crece-flujo-inversionista-paso-tres, "+
+        ".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
+  
+          $(".crece-flujo-inversionista-paso-cuatro, "+
+          ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+          break;
+
+    }
+
+  }
+
+  else if(fase_inversion === "ORIGIN_MONEY"){
+
+    switch (fase_click) {
+      case 1:
+        setPasoInversionistaActualOrigin(1);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).css('display', 'flex');
+          $(ID_DECLARACION_FONDOS).hide();
+
+          setPasoInversionistaActualOrigin(2);
+          
+        });
+    
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).css('display', 'flex');
+
+          setPasoInversionistaActualOrigin(3);
+        });
+
+        $(".crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+        break;
+
+      case 2:
+          setPasoInversionistaActualOrigin(2);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+
+          setPasoInversionistaActualOrigin(1);
+        });
+    
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).css('display', 'flex');
+
+          setPasoInversionistaActualOrigin(3);
+        });
+
+        $(".crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+        break;
+
+      case 3:
+        setPasoInversionistaActualOrigin(3);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+
+          setPasoInversionistaActualOrigin(1);
+        });
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).css('display', 'flex');
+          $(ID_DECLARACION_FONDOS).hide();
+
+          setPasoInversionistaActualOrigin(2);
+        });
+
+        $(".crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+        break;
+    }
+
+  }
+
+  else if(fase_inversion === "PENDING_TRANSFER"){
+
+    switch (fase_click){
+      case 1:
+
+        setPasoInversionistaActualPendingTransfer(1);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).css('display', 'flex');
+          $(ID_DECLARACION_FONDOS).hide();
+
+          setPasoInversionistaActualPendingTransfer(2);
+          
+        });
+    
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).css('display', 'flex');
+
+          setPasoInversionistaActualPendingTransfer(3);
+        });
+    
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).hide();
+
+          $("#subir_transferencia_wrapper .error-container").hide();
+
+          setPasoInversionistaActualPendingTransfer(4);
+        });
+        break;
+      
+      case 2:
+
+          setPasoInversionistaActualPendingTransfer(2);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+
+          setPasoInversionistaActualPendingTransfer(1);
+        });
+    
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).css('display', 'flex');
+
+          setPasoInversionistaActualPendingTransfer(3);
+        });
+    
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).hide();
+
+          $("#subir_transferencia_wrapper .error-container").hide();
+
+          setPasoInversionistaActualPendingTransfer(4);
+        });
+
+        break;
+
+      case 3:
+          setPasoInversionistaActualPendingTransfer(3);
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+
+          setPasoInversionistaActualPendingTransfer(1);
+        });
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).hide();
+          $(ID_COMPLETA_DATOS).css('display', 'flex');
+          $(ID_DECLARACION_FONDOS).hide();
+
+          setPasoInversionistaActualPendingTransfer(2);
+        });
+
+        $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro, "+
+        ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-cuatro span").click( function(){
+          $(CLASE_MODAL).show();
+          $(ID_FASE_ACEPTAR).hide();
+          $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+          $(ID_COMPLETA_DATOS).hide();
+          $(ID_DECLARACION_FONDOS).hide();
+
+          setPasoInversionistaActualPendingTransfer(4);
+        });
+
+        break;
+
+      case 4:
+          setPasoInversionistaActualPendingTransfer(4);
+
+  
+          $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
+          ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
+            crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+
+            setPasoInversionistaActualPendingTransfer(1);
+          });
+  
+          $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos, "+
+          ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-dos span").click( function(){
+            $(CLASE_MODAL).show();
+            $(ID_FASE_ACEPTAR).hide();
+            $(ID_SUBIR_TRANSFERENCIA).hide();
+            $(ID_COMPLETA_DATOS).css('display', 'flex');
+            $(ID_DECLARACION_FONDOS).hide();
+
+            setPasoInversionistaActualPendingTransfer(2);
+          });
+  
+          $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres, "+
+          ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-tres span").click( function(){
+            $(CLASE_MODAL).show();
+            $(ID_FASE_ACEPTAR).hide();
+            $(ID_SUBIR_TRANSFERENCIA).hide();
+            $(ID_COMPLETA_DATOS).hide();
+            $(ID_DECLARACION_FONDOS).css('display', 'flex');
+
+            setPasoInversionistaActualPendingTransfer(3);
+            
+          });
+  
+          break;
+
+    }
+  }
+  else{
+
+  }
+}
+
+function setPasoInversionistaActualPendingTransfer(pasoClickeado){
+  switch (pasoClickeado){
+    case 1:
+
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-selected");
+
+      break;
+
+    case 2:
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-selected");
+      break;
+
+    case 3:
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-selected");
+      break;
+
+    case 4:
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").addClass("crece-flujo-inversionista-paso-selected");
+      break;
+  }
+}
+
+function setPasoInversionistaActualOrigin(pasoClickeado){
+  switch (pasoClickeado){
+    case 1:
+
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-selected");
+
+      break;
+
+    case 2:
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-selected");
+      break;
+
+    case 3:
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-tres").addClass("crece-flujo-inversionista-paso-selected");
+      break;
+  }
+}
+
+function setPasoInversionistaActualFillInfo(pasoClickeado){
+
+  switch (pasoClickeado){
+    case 1:
+
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-completado");
+
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-selected");
+
+      break;
+
+    case 2:
+      $(".crece-flujo-inversionista-paso-uno").addClass("crece-flujo-inversionista-paso-completado");
+
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-completado");
+      
+      $(".crece-flujo-inversionista-paso-tres").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-cuatro").removeClass("crece-flujo-inversionista-paso-selected");
+      $(".crece-flujo-inversionista-paso-uno").removeClass("crece-flujo-inversionista-paso-selected");
+
+      $(".crece-flujo-inversionista-paso-dos").removeClass("crece-flujo-inversionista-paso-completado");
+      $(".crece-flujo-inversionista-paso-dos").addClass("crece-flujo-inversionista-paso-selected");
+      break;
+  }
+}

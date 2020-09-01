@@ -27,21 +27,25 @@
   <body>
       <section class="crece-modal">
           <div class="crece-modal-container">
+            <svg class="bi bi-x crece-modal-container-cerrar" width="50px" height="50px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">                             
+              <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"></path>                             
+              <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"></path>                           
+            </svg>
             <!--seccion aceptar inversion-->
-            <div class="row justify-content-center crece-completar-datos-formulario-wrapper" id="aceptar-inversion-modal-dashboard">
-                <div class="col-lg-6">
+            <div class="row justify-content-center" id="aceptar-inversion-modal-dashboard">
+                <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
                     <div class="col-12">
                         <div class="row">
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-selected">
                                 <span>1</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-dos">
                                 <span>2</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso  col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-tres">
                                 <span>3</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-cuatro">
                                 <span>4</span>
                             </div>
                         </div>
@@ -143,16 +147,16 @@
                 <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
                     <div class="col-12">
                         <div class="row">
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                 <span>1</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-dos crece-flujo-inversionista-paso-selected">
                                 <span>2</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-tres">
                                 <span>3</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-cuatro">
                                 <span>4</span>
                             </div>
                         </div>
@@ -167,7 +171,7 @@
                             </div>
                         </div>
                     </div>
-                    <form method="POST">
+                    <form>
                         <div class="row">
                             <div class="col-12">
                                 <h2>Datos del inversionista</h2>
@@ -548,14 +552,20 @@
                                     data-valueMissing="Ingrese su número de cuenta"
                                     />
                             </div>
+
+                            <div class="row justify-content-center error-container">
+                              <div class="col-auto">
+                                <span class="error"></span>
+                              </div>
+                            </div>
                             
                             <div class="col-12">
                                 <div class="row justify-content-center">
                                     <div class="col-auto crece-completar-datos-formulario-botones">
-                                        <button id="guardar_respuestas"> Guardar</button>
+                                        <button type="button" id="guardar_respuestas"> Guardar</button>
                                     </div>
                                     <div class="col-auto crece-completar-datos-formulario-botones">
-                                        <button id="siguiente"> Siguiente</button>
+                                        <button type="button" id="siguiente"> Siguiente</button>
                                     </div>
                                 </div>                                
                             </div>
@@ -569,16 +579,16 @@
                 <div class="col-11 col-lg-8 body-contrato" id="body-contrato-id">
                     <div class="col-12">
                         <div class="row">
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                 <span>1</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-dos crece-flujo-inversionista-paso-completado">
                                 <span>2</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected  col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-tres crece-flujo-inversionista-paso-selected">
                                 <span>3</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-cuatro">
                                 <span>4</span>
                             </div>
                         </div>
@@ -614,6 +624,12 @@
                             <button onclick="aceptar_declaracion_fondos_modal()" id="descargar-contrato">Siguiente</button>
                             </div>
                     </div>
+
+                    <div class="row justify-content-center error-container">
+                      <div class="col-auto">
+                        <span class="error"></span>
+                      </div>
+                    </div>
                 </div>
             </div>
 
@@ -622,16 +638,16 @@
                 <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
                         <div class="col-12">
                             <div class="row">
-                                <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                     <span>1</span>
                                 </div>
-                                <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-dos crece-flujo-inversionista-paso-completado">
                                     <span>2</span>
                                 </div>
-                                <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-tres crece-flujo-inversionista-paso-completado">
                                     <span>3</span>
                                 </div>
-                                <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected col-3">
+                                <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-cuatro crece-flujo-inversionista-paso-selected">
                                     <span>4</span>
                                 </div>
                             </div>
@@ -707,7 +723,6 @@
                                         Cargar documento
                                     </label>
                                     <input 
-                                        required
                                         type="file"
                                         accept="image/png, image/jpeg, application/pdf"
                                         class="form-control"
@@ -716,6 +731,12 @@
                                         data-valueMissing="Suba el comprobante de la transferencia"/>
                                         <label id="labelDocumentoTransferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-label">Archivos PDF, JPG o PNG</label>
                                 </div>
+                            </div>
+
+                            <div class="row justify-content-center error-container">
+                              <div class="col-auto">
+                                <span class="error"></span>
+                              </div>
                             </div>
 
                             <button type="button" id="enviar_transferencia"> Siguiente</button>
@@ -729,16 +750,16 @@
                 <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
                     <div class="col-12">
                         <div class="row">
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                 <span>1</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-dos crece-flujo-inversionista-paso-completado">
                                 <span>2</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-tres crece-flujo-inversionista-paso-completado">
                                 <span>3</span>
                             </div>
-                            <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-cuatro crece-flujo-inversionista-paso-completado">
                                 <span>4</span>
                             </div>
                         </div>
@@ -812,7 +833,7 @@
                     </a>
                   </h6>
                   <h6>
-                    <a href="#">
+                    <a href="/inversionista/logout/">
                       Cerrar Sesión
                     </a>
                   </h6>
@@ -823,22 +844,22 @@
           
           <ul class="list-unstyled components">          
             <li class="active selectable" data-fase-inversion="">
-              <a href="#"><span>Oportunidades de<br> Inversion</span></a>
+              <a href="#todas"><span>Todas las Inversiones</span></a>
             </li>
             <li>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis Inversiones</a>
-              <ul class="collapse list-unstyled" id="pageSubmenu">
+              <ul class="collapse list-unstyled show" id="pageSubmenu">
                 <li class="selectable" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
-                  <a href="#">Pendientes</a>
+                  <a href="#pendientes">Pendientes</a>
                 </li>
                 <li class="selectable" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
-                  <a href="#">Por fondear</a>
+                  <a href="#por_fondear">Por fondear</a>
                 </li>
                 <li class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
-                  <a href="#">Vigentes</a>
+                  <a href="#vigentes">Vigentes</a>
                 </li>
                 <li class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
-                  <a href="#">Terminadas</a>
+                  <a href="#terminadas">Terminadas</a>
                 </li>
               </ul> 
             </li>
@@ -857,10 +878,9 @@
               </div>-->
     
               <div class="crece-header-logo" >
-                <a href="#">
+                <a href="/">
     
-                    <img src="{% static 'registro_inversionista/assets/logo.png' %}" alt="Logo crece">
-                    Crece Ecuador
+                    <img src="{% static 'assets/logo_color.png' %}" alt="Logo crece">
     
                 </a>
                 
@@ -1015,28 +1035,6 @@
                     </div>
                     <div class="row justify-content-center crece-oportunidades-container"> 
                     </div>                                              
-                </div>
-            </div>
-            <div id="crece-botones-pag" class="row justify-content-center">
-                <div class="col-lg-10">
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="row justify-content-center">
-                          <button class="crece-oportunidades-anterior">
-                              <i class="fa fa-caret-left" aria-hidden="true"></i>
-                              <span>Anterior</span>
-                          </button>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="row justify-content-center">
-                          <button class="crece-oportunidades-siguiente">
-                            <span>Siguiente</span> 
-                            <i class="fa fa-caret-right" aria-hidden="true"></i>
-                          </button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
             </div>
           </section>
