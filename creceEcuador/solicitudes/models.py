@@ -97,7 +97,8 @@ class Solicitud(models.Model):
     def save(self, *args, **kwargs):
         if(self.ticket == ""):
             self.ticket = generar_ticker(self.id_categoria)
-        
+        fecha_expiracion = generar_fecha_expiracion(self.fecha_publicacion)
+        self.fecha_expiracion = fecha_expiracion
         super(Solicitud, self).save(*args, **kwargs)
         
 
@@ -151,3 +152,6 @@ def generar_ticker(categoria):
     new_categoria_no = categoria_no[0:-(len(new_categoria_no))] + new_categoria_no
     return new_categoria_no
 
+def generar_fecha_expiracion(fecha_publicacion):
+    fecha_expiracion = fecha_publicacion + timedelta(days=60)
+    return fecha_expiracion

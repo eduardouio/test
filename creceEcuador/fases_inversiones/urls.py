@@ -12,6 +12,9 @@ urlpatterns = [
     path('fase_final/', views.fase_final_view, name="fase_final_view"),
     path('', views.get_inversiones),
     path('<int:pk>/', views.get_inversion_individual, name='get_inversion_individual'),
+    path('inversiones/<int:pk>/', views.get_inversiones_por_inversionista, name='get_inversiones_por_inversionista'),
+     path('pagos/<int:id_inversion>/', views.get_pagos_inversionista, name='get_pagos_inversionista'),
+
 
     url('step_three_inversion/', views.step_three_inversion, name="step_three"),
     url('step_four_inversion/', views.step_four_inversion, name="step_four_inversion"),

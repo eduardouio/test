@@ -1,7 +1,7 @@
 let RUTA_SOLICITUDES_API ="/solicitudes/";
 
 
-function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad){
+function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad,monto_inversion){
     $.ajax({
         url: RUTA_SOLICITUDES_API+id_oportunidad+'/',
         type: 'GET',
@@ -9,7 +9,7 @@ function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad){
         success: function(res) {
             
             if (res.data){
-                crearDetalleInversion(fase_inversion,id_inversion,res.data);
+                crearDetalleInversion(fase_inversion,id_inversion,res.data,monto_inversion);
             }  
         },
         error: function(xhr, status, error) {
@@ -20,7 +20,7 @@ function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad){
 }
 
 
-function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_solicitud) {
+function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_solicitud,monto) {
     // body...
     $('#crece-detalle-operaciones-id').show()
     if(fase_inversion === "FILL_INFO"){
@@ -31,7 +31,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
           <div class="crece-detalle-operaciones-invierte-botones-azul">
               <div class="row justify-content-center">
                    
-      <a href="#" onclick="completar_datos_modal(`+id_oportunidad+`)">Continuar</a>
+      <a href="#" onclick="mostrar_completar_datos_modal(`+id_oportunidad+`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
               </div>
           </div>
               
@@ -51,7 +51,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
           <div class="crece-detalle-operaciones-invierte-botones-azul">
               <div class="row justify-content-center">
                    
-     <a href="#" onclick="declaracion_fondos_modal(`+id_oportunidad+`)">Continuar</a>
+     <a href="#" onclick="declaracion_fondos_modal(`+id_oportunidad+`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
               </div>
           </div>
               
@@ -71,7 +71,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
           <div class="crece-detalle-operaciones-invierte-botones-azul">
               <div class="row justify-content-center">
                    
-      <a href="#" onclick="subir_transferencia_modal(`+id_oportunidad +`)">Continuar</a>
+      <a href="#" onclick="subir_transferencia_modal(`+id_oportunidad +`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
               </div>
           </div>
               
@@ -111,7 +111,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
 }
 
 
-function crearDetalleInversion(fase_inversion,id_inversion,oportunidad) {
+function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inversion) {
     var html_string = '<div class="row justify-content-center crece-detalle-operaciones-header">'+
 '                        <div class="crece-detalle-operaciones-header-imagen-blur" id="crece-detalle-operaciones-header-imagen-blur-id" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
 '                        </div>'+
@@ -317,7 +317,7 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad) {
 '                                        <!-- Invierte -->'+
 '                                        <div class="crece-detalle-operaciones-invierte col-lg-9">'+
 '                                            <div class="row justify-content-center">'+
-                                                mostrar_detalle_continuar_simular(fase_inversion,id_inversion,oportunidad.id)+
+                                                mostrar_detalle_continuar_simular(fase_inversion,id_inversion,oportunidad.id,monto_inversion)+
 '                                             </div>'+
 '                                        </div>'+
 '    '+

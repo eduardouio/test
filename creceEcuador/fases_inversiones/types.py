@@ -22,3 +22,6 @@ FASES_INVERSION = {
 
 #key para id inversionista
 INVERSIONISTA_KEY = "id_inversionista"
+
+
+

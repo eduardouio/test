@@ -226,9 +226,6 @@ def confirmar_email(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        inversionista = models.Usuario.objects.filter(user=user.id)[0]
-        inversionista.estado = 1
-        inversionista.save()
         login(request, user)
 
         return redirect('/inversionista/dashboard/')

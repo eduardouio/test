@@ -3,7 +3,74 @@
 
 }
 
+#tabla-vigente-id > tr > td:last-child{
+	background-color: lightblue;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
 
+#tabla-vigente-id > tr >td{
+	border: 7px solid white;
+	color:black;
+}
+
+#tabla-vigente-id > tr > td:not(:last-child){
+	background-color: #B7B8B8;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+#tabla-vigente-id > tr > td:first-child{
+	background-color: white;
+	text-align: center;
+
+}
+
+#span-close-modal-tabla-solicitud-vigente-id{
+	color: black;
+	    display: block;
+    float: right;
+    position: relative;
+    left: 0.5vw;
+}
+
+.crece-modal-tabla-solicitud-vigente{
+	 display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+ z-index: 999999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow-y: auto;
+  overflow-x: hidden; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.85);
+}
+
+.crece-solicitud-invertida-dashboard{
+	padding: 3px 15px;
+    font-weight: bold;
+    background: #006B8D 0% 0% no-repeat padding-box;
+    color: white;
+    position: relative;
+    top: -20px;
+    left: -25px;
+    padding-left: 0;
+    background-color: #AECB6F;
+
+}
+.fa-check-square-o{
+	font-size: 20px;
+	position: relative;
+	margin-right: 0;
+	right: -12px;
+}
+.span-solicitud-invertida-dashboard{
+
+}
 #label_error_simular_inversion_detalle_solicitud{
 	color: #e03e46;
 	font-size: 12px;

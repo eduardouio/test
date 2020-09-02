@@ -5,6 +5,16 @@ from django_fsm import FSMField, transition
 from django_fsm import TransitionNotAllowed
 from django.db.models.signals import pre_save
 from django.conf import settings
+from datetime import date, timedelta
+import calendar
+import math
+import numpy as np 
+import decimal
+COMISION_ADJUDICACION_FACTOR =0.008
+ADJUDICACION_FACTOR = 1.12
+COMISION_BANCO = 0.4
+COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004
+IVA = 0.12
 # Create your models here.
 
 FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
@@ -56,6 +66,7 @@ class Inversion(models.Model):
     def approve_transfer(self):
         pass
 
+
     @transition(field=fase_inversion, source='TO_BE_FUND', target='ABANDONED')
     def invalid_project(self):
         pass
@@ -81,8 +92,13 @@ class Inversion(models.Model):
         return self.id_user.nombres + " " + self.id_user.apellidos
 
     @property
+    def nombre_completo_autor(self):
+        return self.id_solicitud.id_autor.nombres + " " + self.id_solicitud.id_autor.apellidos
+
+
+    @property
     def cedula_solicitante(self):
-        return self.id_user.cedula
+        return self.id_solicitud.id_autor.cedula
 
     class Meta:
         verbose_name = "Inversion"
@@ -95,7 +111,12 @@ class Inversion(models.Model):
             return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", Confirmado: $" + str(self.monto) 
         else:
             return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", No confirmado: $" + str(self.monto)  
-                
+    
+    def save(self, *args, **kwargs):
+        if(self.fase_inversion == "VALID"):
+            crear_pagos(self, self.id_user, self.id_solicitud)
+        super(Inversion, self).save(*args, **kwargs)
+
 class Pago_detalle(models.Model):
     estado_pagado = 1
     estado_pendiente = 0
@@ -124,3 +145,164 @@ class Pago_detalle(models.Model):
     # def __str__(self):
     #     pass
 
+
+def crear_pagos(inversion, usuario, solicitud):
+    monto_inversion = inversion.monto
+    monto_solicitud = float(solicitud.monto)
+    diccionario = crear_tabla_amortizacion(solicitud)
+    lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
+    lista_cuotas_sol = diccionario['lista_cuotas']
+    lista_intereses_sol = diccionario['lista_intereses']
+    lista_capitales_sol = diccionario['lista_capitales']
+    dias = diccionario['dias']
+    fechas = diccionario['fechas']
+
+    participacion_inversionista = (monto_inversion/monto_solicitud)
+    participacion_inversionista_porcentaje = participacion_inversionista *100
+    COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
+    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista * ADJUDICACION_FACTOR
+    cargo_adjudicacion_iva = cargo_adjudicacion * IVA
+    inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
+    inversion_total = round(inversion_total,2)
+    
+    ganancia_total = 0;
+    pago_total = 0;
+    comision_total = 0;
+    comision_iva_total = 0;
+
+    for i in range(solicitud.plazo):
+        interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
+        capital_i = lista_capitales_sol[i] * participacion_inversionista
+        dias_transcurridos = dias[i+1]
+        comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista
+        comision_iva_i = comision_i * IVA
+        pago_i = capital_i + interes_i
+        ganancia_i = pago_i - comision_iva_i - comision_i
+
+        
+        ganancia_total += ganancia_i;
+        pago_total += pago_i;
+        comision_total += comision_i;
+        comision_iva_total += comision_iva_i
+        comision_total_i = comision_i + comision_iva_i
+
+        num_orden = i+1
+        fecha = fechas[i]
+        pago = round(capital_i,2)
+        comision = round(comision_i, 2)
+        comision_iva = round(comision_iva_i,2)
+        ganancia = round(ganancia_i,2)
+
+        new_pago_detalle = Pago_detalle(id_inversion=inversion, orden=num_orden, fecha=fecha, pago=pago, comision=comision, 
+                                        comision_iva=comision_iva, ganancia=ganancia)
+        new_pago_detalle.save()
+        
+
+    
+
+
+def crear_tabla_amortizacion(solicitud):
+    monto_solicitud = solicitud.monto
+    plazo_solicitud = solicitud.plazo
+    TASA_INTERES_ANUAL = solicitud.tin
+    start_date = solicitud.fecha_finalizacion
+    next_date = add_months(start_date, 1)
+    fechas=[]
+    dias=[]
+
+    dias_transcurridos = abs((start_date - start_date).days)
+    # fecha_pago = date(next_date.year, next_date.month, next_date.day) 
+    # fechas.append(fecha_pago)
+    dias.append(dias_transcurridos)
+
+    for i in range(plazo_solicitud):
+        if(next_date.weekday() == 6):   #domingo
+            next_date = next_date + timedelta(days=1)
+
+            dias_transcurridos = abs((next_date - start_date).days) 
+            start_date = date(next_date.year, next_date.month , next_date.day)
+            fecha_pago = date(next_date.year, next_date.month , next_date.day)
+
+            next_date = next_date + timedelta(days=-1)
+        elif (next_date.weekday() == 5):    #sabado
+            next_date = next_date + timedelta(days=2)
+            dias_transcurridos = abs((next_date - start_date).days) 
+            start_date = date(next_date.year, next_date.month , next_date.day)
+            fecha_pago = date(next_date.year, next_date.month , next_date.day)
+            next_date = next_date + timedelta(days=-2)
+        else:
+            dias_transcurridos = abs((next_date - start_date).days) 
+            start_date = date(next_date.year, next_date.month , next_date.day)
+            fecha_pago = date(next_date.year, next_date.month , next_date.day)
+        dias.append(dias_transcurridos)
+        next_date = add_months(next_date, 1)
+        fechas.append(fecha_pago)
+        
+    plazo_dias = sum(dias)
+
+
+    if( TASA_INTERES_ANUAL > 1):
+        TASA_INTERES_ANUAL = TASA_INTERES_ANUAL/100
+
+    tasa_diaria = (1+TASA_INTERES_ANUAL/360)-1
+    base = 1 + tasa_diaria
+    exponente = plazo_dias/plazo_solicitud
+    tasa_mensual = math.pow(base,exponente) - 1
+    cuota_mensual = np.pmt(decimal.Decimal(tasa_mensual), plazo_solicitud,  monto_solicitud,000) * -1
+
+    MONTO_SOLICITANTE = float(monto_solicitud)
+    capital_por_pagar_n = MONTO_SOLICITANTE
+    cuota_n = float(cuota_mensual) 
+
+    capital_TOTAL =0
+    cuota_TOTAL = 0
+    intereses_TOTAL = 0
+
+    lista_capital_insoluto = [float(MONTO_SOLICITANTE)]
+    lista_cuotas = []
+    lista_intereses = []
+    lista_capitales = []
+
+    for i in range(plazo_solicitud):
+        dias_transcurridos = dias[i+1]
+        base = 1 + tasa_diaria
+        tasa_mensual = math.pow(base,dias_transcurridos) - 1
+        intereses_n = float(capital_por_pagar_n)*tasa_mensual
+        
+        intereses_TOTAL += intereses_n
+        lista_intereses.append(intereses_n)
+        capital_n = cuota_n - intereses_n  
+        
+
+        if (i == plazo_solicitud-1):
+            capital_n = float(MONTO_SOLICITANTE) - float(capital_TOTAL) 
+            cuota_n = capital_n + intereses_n 
+            
+        
+
+        
+        capital_TOTAL += capital_n
+        lista_capitales.append(capital_n)
+
+        lista_cuotas.append(cuota_n)
+        cuota_TOTAL += cuota_n
+
+
+        capital_por_pagar_n = float(capital_por_pagar_n) - float(capital_n)
+        lista_capital_insoluto.append(capital_por_pagar_n)
+
+    diccionario = {'lista_cuotas': lista_cuotas, 
+                        'lista_capital_insoluto': lista_capital_insoluto,
+                        'lista_intereses': lista_intereses,
+                        'lista_capitales':lista_capitales,
+                        'dias':dias,
+                        'fechas':fechas}
+
+    return diccionario
+
+def add_months(sourcedate, months):
+    month = sourcedate.month - 1 + months
+    year = sourcedate.year + month // 12
+    month = month % 12 + 1
+    day = min(sourcedate.day, calendar.monthrange(year,month)[1])
+    return date(year, month, day)  

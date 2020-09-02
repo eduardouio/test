@@ -23,6 +23,6 @@ internacionales por ninguno de los aspectos anteriores. \n""",
 """5. Autorizo a PROSPERAECU S.A. / CRECE ECUADOR para que consulte mi información crediticia en las Centrales de Riesgo y ante las entidades que 
 estime necesarias."""
 ]
-CONTRATO_FOOTER = """Los datos aquí consignados obedecen a la realidad, y declaro (amos) haber leído, entendido y aceptado libremente el presente documento."""
+CONTRATO_FOOTER = """Los datos aquí consignados obedecen a la realidad. Al dar clic en Siguiente declaro (amos) haber leído, entendido y aceptado libremente el presente documento."""
 
 FIRMA_CONTRATO = """Esta declaración ha sido aceptada por {nombre} a las {hora} el {fecha}.*"""

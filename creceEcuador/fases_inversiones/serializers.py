@@ -1,4 +1,4 @@
-from .models import Inversion
+from .models import Inversion, Pago_detalle
 from rest_framework import serializers
 from solicitudes.serializers import SolicitudSerializer
 
@@ -31,5 +31,20 @@ class InversionTransferenciaSerializer(serializers.ModelSerializer):
             'banco_transferencia',
             'monto_a_transferir',
             'nombre_completo',
-            'cedula_solicitante'
+            'cedula_solicitante',
+            'nombre_completo_autor'
+         ]
+
+class PagoDetalleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Pago_detalle
+        fields = [
+            'orden',
+            'fecha',
+            'pago',
+            'comision',
+            'comision_iva',
+            'ganancia',
+            'estado'
          ]

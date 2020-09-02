@@ -7,6 +7,7 @@ let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
 let COMISION_BANCO = 0.4
 let RUTA_FASE_1 ="/registro/aceptar_inversion/"
+let RUTA_PAGOS = '/registro/pagos/'
 
 const FORMAT_CURRENCY = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -36,6 +37,21 @@ let span_close_modal = document.getElementById("span-close-modal-id")
 span_close_modal.addEventListener('click', function () {
 	// body...
 	crece_modal.style.display = 'none'
+})
+
+
+let crece_modal_solicitud_vigente = document.getElementById("crece-modal-tabla-solicitud-vigente-id")
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == crece_modal_solicitud_vigente) {
+    crece_modal_solicitud_vigente.style.display = "none";
+  }
+}
+
+let span_close_modal_solicitud_vigente = document.getElementById("span-close-modal-tabla-solicitud-vigente-id")
+span_close_modal_solicitud_vigente.addEventListener('click', function () {
+	// body...
+	crece_modal_solicitud_vigente.style.display = 'none'
 })
 
 function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
@@ -102,6 +118,92 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
           alert("Solicitud no encontrada.");
       }
   });
+}
+
+
+function crear_modal_tabla_solicitud_valida(id_inversion, id_solicitud) {
+	// body...
+	$.ajax({
+      url: RUTA_PAGOS+id_inversion+'/',
+      type: 'GET',
+      dataType: 'json', // added data type
+      success: function(res) {
+          
+          if (res.data){
+
+          	let crece_modal = document.getElementById("crece-modal-tabla-solicitud-vigente-id")
+          	crece_modal.style.display = 'block'
+          	
+          	
+          	let lista_pagos = res.data.lista_pagos
+          	let monto_inversion = res.data.monto
+          	let adjudicacion_total = res.data.adjudicacion_total
+            llenar_tabla_solicitud_valida(lista_pagos, monto_inversion, adjudicacion_total)
+           
+          }  
+      },
+      error: function(xhr, status, error) {
+          var err = JSON.parse(xhr.responseText);
+          alert("Solicitud no encontrada.");
+      }
+  });
+}
+
+function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
+	// body...
+
+	let tabla = document.getElementById("tabla-vigente-id");
+	/*Verificando que ya exista la tabla*/
+		if (tabla.children.length > 1) {
+			let last_child = tabla.lastChild
+
+			for (var i = lista_pagos.length - 1; i >= 0; i--) {
+				let last_child = tabla.lastChild
+				tabla.removeChild(last_child)
+			}
+
+
+			
+		}
+	for (var i = 0 ; i < lista_pagos.length; i++) {
+		let pago = lista_pagos[i]
+		let fecha_pago = pago.fecha
+		let num_cuota = pago.orden
+		let capital_i = pago.pago
+		let ganancia_i = pago.ganancia
+		let comision_iva_i = pago.comision_iva
+		let comision_i = pago.comision
+		let comision_total_i = comision_i + comision_iva_i
+		let pago_i = ganancia_i + comision_iva_i + comision_i
+		let interes_i = pago_i - capital_i
+		/*LLenando la tabla */
+		let fila = document.createElement("tr")
+
+		let fila_numero_cuota = '<td>'+ (num_cuota) +'</td>'
+		let fila_fecha_pago = '<td>'+ (fecha_pago) +'</td>'
+		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(capital_i)+'</td>'
+		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
+		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
+		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
+
+		let html_fila = fila_numero_cuota + fila_fecha_pago + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i 
+		
+		fila.innerHTML= html_fila;
+		tabla.appendChild(fila)
+		
+	}
+	let div_monto_invertir = document.getElementById("monto-invertir-tabla-vigente-id")
+	div_monto_invertir.innerHTML = '$'+monto.toFixed(2)
+
+	let div_adjudicacion_total = document.getElementById("adjudicacion-total-tabla-vigente-id")
+	div_adjudicacion_total.innerHTML = '$'+adjudicacion_total.toFixed(2)
+
+	let div_inversion_total = document.getElementById("total-invertir-tabla-vigente-id")
+	let inversion_total = monto+adjudicacion_total
+	div_inversion_total.innerHTML = '$'+(inversion_total).toFixed(2)
+
+	
+	
 }
 
 function go_to_fase1(oportunidad, monto){
@@ -304,7 +406,7 @@ function hacer_tabla_amortizacion(oportunidad) {
 	// body...
 	let fecha_publicacion_solicitud = oportunidad.fecha_publicacion
 	let fecha_split = fecha_publicacion_solicitud.split("-")
-	let date = new Date(fecha_split[0], fecha_split[1], fecha_split[2])
+	let date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2])
 	
 	let next_date = new Date(date.getFullYear(),date.getMonth()+1,date.getDate())
 	let date_tmp = new Date()
@@ -313,7 +415,7 @@ function hacer_tabla_amortizacion(oportunidad) {
 	let dias = []
 	
 
-	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
+	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()) + "-" +date.getDate()
 	let dias_transcurridos = getDuration(date-date).value
 	fechas.push(fecha_pago)
 	dias.push(dias_transcurridos)
@@ -323,21 +425,21 @@ function hacer_tabla_amortizacion(oportunidad) {
 		if(next_date.getDay() == 0){
 			
 			next_date.setDate(next_date.getDate() + 1) //lunes
-			dias_transcurridos = getDuration(next_date-date).value + 1
+			dias_transcurridos = getDuration(next_date-date).value 
 			date.setDate(next_date.getDate())
-			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
+			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-1)
 		}
 		else if(next_date.getDay() == 6){
 			next_date.setDate(next_date.getDate() + 2) //lunes
-			dias_transcurridos = getDuration(next_date-date).value + 1
+			dias_transcurridos = getDuration(next_date-date).value 
 			date.setDate(next_date.getDate())
-			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
+			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-2)
 		}else{
-			dias_transcurridos = getDuration(next_date-date).value + 1
+			dias_transcurridos = getDuration(next_date-date).value
 			date.setDate(next_date.getDate())
-			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
+			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 		}
 		
 		dias.push(dias_transcurridos)
@@ -503,7 +605,7 @@ function guardar_tabla(oportunidad) {
 	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
 
 
-	let monto = document.getElementById("input-monto").value
+	let monto = document.getElementById("input-monto-aceptar-inversion").value
 	let adjudicacion = document.getElementById("adjudicacion").textContent;
 	let adjudicacion_iva = document.getElementById("adjudicacion-iva").textContent;
 	let inversion_total = document.getElementById("inversion-total").textContent;
@@ -566,8 +668,7 @@ function guardar_tabla(oportunidad) {
     if (this.readyState == 4 && this.status == 200) {
 
     	response_data = JSON.parse(this.response)
-      	completar_datos_modal(response_data.id_inversion)
-
+      	mostrar_completar_datos_modal(response_data.id_inversion, monto, id_solicitud, "FILL_INFO")
    		}
   	};
 	xhttp.open("POST", RUTA_FASE_1, true);
@@ -581,28 +682,27 @@ function guardar_tabla(oportunidad) {
 
 }
 
-
-
 /* Completa Datos*/
-function completar_datos_modal(id_inversion){
-	id_inversion_modal = id_inversion;
-	$(CLASE_MODAL).show();
-	$(ID_FASE_ACEPTAR).hide();
-	$(ID_COMPLETA_DATOS).css('display', 'flex');
-	$(ID_SUBIR_TRANSFERENCIA).hide();
-	$(ID_DECLARACION_FONDOS).hide();
+function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_inversion){
+  id_inversion_modal = id_inversion;
+  monto_inversion_actual = monto;
+  id_solicitud_actual = id_solicitud;
+  fase_inversion_actual = fase_inversion;
+  $(CLASE_MODAL).show();
+  $(ID_FASE_ACEPTAR).hide();
+  $(ID_COMPLETA_DATOS).css('display', 'flex');
+  $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_DECLARACION_FONDOS).hide();
 
-	fase_inversion_actual = "FILL_INFO";
 
-	habilitarClicks();
+  habilitarClicks();
 
-	habilitarLinksAnteriores(fase_inversion_actual,2);
+  setPasoInversionistaActualFillInfo(2);
 
-	setPasoInversionistaActualFillInfo(2);
+  $(".crece-flujo-inversionista-paso-tres, "+
+  ".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
 
-	$(".crece-flujo-inversionista-paso-tres, "+
-		".crece-flujo-inversionista-paso-tres span").prop("onclick", null).off("click");
-	$(".crece-flujo-inversionista-paso-cuatro, "+
-		".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
+  $(".crece-flujo-inversionista-paso-cuatro, "+
+  ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
 
 }

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 
-from .serializers import InversionSerializer, InversionTransferenciaSerializer
+from .serializers import InversionSerializer, InversionTransferenciaSerializer, PagoDetalleSerializer
 from . import models
 from registro_inversionista.models import Usuario
 from solicitudes.models import Solicitud
@@ -115,20 +115,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
         new_inversion.save()
 
         #pago_detalle
-        lista_pagos = request.data.get("pagos")
-        for pagos in lista_pagos:
-            orden = pagos.get("orden")
-            fecha = pagos.get("fecha")
-            pago = pagos.get("pago")
-            comision = pagos.get("comision")
-            comision_iva = pagos.get("comision_iva")
-            ganancia = pagos.get("ganancia")
-
-            #nuevo detalle de pago
-            new_pago = models.Pago_detalle(id_inversion=new_inversion, orden=orden, fecha=fecha, 
-                                            pago=pago, comision=comision, comision_iva=comision_iva, 
-                                            ganancia=ganancia)
-            new_pago.save()
+        
 
         response_data = {
                 "mensaje": "Datos enviados con exito",
@@ -363,5 +350,60 @@ def get_inversion_individual(request, pk):
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
         #raise Http404(json.dumps({'status':404}))
-    
+
+
+@api_view(['GET'])
+def get_inversiones_por_inversionista(request, pk):
+    try:
+        inversionista = models.Usuario.objects.get(pk=pk) #get_object_or_404(Solicitud, pk=pk)
+        lista_inversiones =  models.Inversion.objects.filter(id_user = inversionista.idUsuario)
+        # serializer = UsuarioSerializer(instance=inversionista)
+        inversiones_usuario = []
+
+        for inversion in lista_inversiones:
+            inversion_i = models.Inversion.objects.get(id=inversion.id)
+            serializer = InversionSerializer(instance=inversion_i)
+            inversiones_usuario.append(serializer.data)
+            
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+            'data': inversiones_usuario
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    except models.Usuario.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Usuario no encontrado",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+        
+
+@api_view(['GET'])
+def get_pagos_inversionista(request, id_inversion):
+    try:
+        lista_pagos_detalles = models.Pago_detalle.objects.filter(id_inversion=id_inversion) #get_object_or_404(Solicitud, pk=pk)
+        inversion = models.Inversion.objects.get(id=id_inversion)
+        adjudicacion_total = round(inversion.adjudicacion + inversion.adjudicacion_iva, 2)
+        pagos_inversionista = []
+        for pago in lista_pagos_detalles:
+            pago_i = models.Pago_detalle.objects.get(id=pago.id)
+            serializer = PagoDetalleSerializer(instance=pago_i)
+            pagos_inversionista.append(serializer.data)
+        
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+            'data': {'lista_pagos':pagos_inversionista, 'adjudicacion_total': adjudicacion_total, 
+                        'monto': inversion.monto}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    except models.Pago_detalle.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Pagos no encontrados",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
     

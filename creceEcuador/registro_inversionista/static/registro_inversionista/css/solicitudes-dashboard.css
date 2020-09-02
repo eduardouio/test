@@ -49,6 +49,7 @@
     display: block;
     font-size: 14px;
     padding: 0.5px 0px;
+    max-width: 124px;
   }
   
   .crece-oportunidades-imagen-gradiente-texto{
