@@ -38,6 +38,7 @@ from reportlab.platypus import Table, Paragraph, Spacer, TableStyle
 
 
 from reportlab.lib.styles import getSampleStyleSheet
+from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA
 
 # Create your views here.
 class Proceso_aceptar_inversion(generics.CreateAPIView):
@@ -406,4 +407,73 @@ def get_pagos_inversionista(request, id_inversion):
             'data': {}
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
-    
+
+@api_view(['POST'])
+def cambiar_monto_inversion(request):
+    id_inversion = request.data.get('id_inversion')
+    monto  = request.data.get('monto_cambiar')
+
+    inversion = models.Inversion.objects.get(id=id_inversion)
+    solicitud = inversion.id_solicitud
+    inversion.monto = float(monto)
+    inversion.save()
+    actualizar_datos_inversion(inversion, solicitud)
+
+    diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+            'data': {"inversion_total":inversion.inversion_total}
+        }
+    return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+
+def actualizar_datos_inversion(inversion,solicitud):
+    monto_inversion = inversion.monto
+    monto_solicitud = float(solicitud.monto)
+    diccionario = models.crear_tabla_amortizacion(solicitud,'CAMBIO_MONTO_INVERSION')
+    lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
+    lista_cuotas_sol = diccionario['lista_cuotas']
+    lista_intereses_sol = diccionario['lista_intereses']
+    lista_capitales_sol = diccionario['lista_capitales']
+    dias = diccionario['dias']
+    fechas = diccionario['fechas']
+
+    participacion_inversionista = (monto_inversion/monto_solicitud)
+    participacion_inversionista_porcentaje = participacion_inversionista *100
+    COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
+    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista * ADJUDICACION_FACTOR
+    cargo_adjudicacion_iva = cargo_adjudicacion * IVA
+    inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
+    inversion_total = round(inversion_total,2)
+    ganancia_total = 0;
+    pago_total = 0;
+    comision_total = 0;
+    comision_iva_total = 0;
+
+    for i in range(solicitud.plazo):
+        interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
+        capital_i = lista_capitales_sol[i] * participacion_inversionista
+        dias_transcurridos = dias[i+1]
+        comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista
+        comision_iva_i = comision_i * IVA
+        pago_i = capital_i + interes_i
+        ganancia_i = pago_i - comision_iva_i - comision_i
+
+        
+        ganancia_total += ganancia_i;
+        pago_total += pago_i;
+        comision_total += comision_i;
+        comision_iva_total += comision_iva_i
+        comision_total_i = comision_i + comision_iva_i
+
+        num_orden = i+1
+        fecha = fechas[i]
+        pago = round(capital_i,2)
+        comision = round(comision_i, 2)
+        comision_iva = round(comision_iva_i,2)
+        ganancia = round(ganancia_i,2)
+
+    inversion.adjudicacion = round(cargo_adjudicacion,2)
+    inversion.adjudicacion_iva = round(cargo_adjudicacion_iva,2)
+    inversion.inversion_total = round(inversion_total,2)
+    inversion.ganancia_total = round(ganancia_total,2)
+    inversion.save()

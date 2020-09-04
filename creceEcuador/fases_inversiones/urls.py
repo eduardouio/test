@@ -13,7 +13,8 @@ urlpatterns = [
     path('', views.get_inversiones),
     path('<int:pk>/', views.get_inversion_individual, name='get_inversion_individual'),
     path('inversiones/<int:pk>/', views.get_inversiones_por_inversionista, name='get_inversiones_por_inversionista'),
-     path('pagos/<int:id_inversion>/', views.get_pagos_inversionista, name='get_pagos_inversionista'),
+    path('pagos/<int:id_inversion>/', views.get_pagos_inversionista, name='get_pagos_inversionista'),
+    path('cambiar_monto_inversion/', views.cambiar_monto_inversion, name='cambiar_monto_inversion'),
 
 
     url('step_three_inversion/', views.step_three_inversion, name="step_three"),

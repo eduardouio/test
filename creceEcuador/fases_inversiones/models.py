@@ -10,11 +10,7 @@ import calendar
 import math
 import numpy as np 
 import decimal
-COMISION_ADJUDICACION_FACTOR =0.008
-ADJUDICACION_FACTOR = 1.12
-COMISION_BANCO = 0.4
-COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004
-IVA = 0.12
+from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA
 # Create your models here.
 
 FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
@@ -114,7 +110,8 @@ class Inversion(models.Model):
     
     def save(self, *args, **kwargs):
         if(self.fase_inversion == "VALID"):
-            crear_pagos(self, self.id_user, self.id_solicitud)
+            ganancia_total = crear_pagos(self, self.id_solicitud)
+            self.ganancia_total = ganancia_total
         super(Inversion, self).save(*args, **kwargs)
 
 class Pago_detalle(models.Model):
@@ -146,10 +143,10 @@ class Pago_detalle(models.Model):
     #     pass
 
 
-def crear_pagos(inversion, usuario, solicitud):
+def crear_pagos(inversion,solicitud):
     monto_inversion = inversion.monto
     monto_solicitud = float(solicitud.monto)
-    diccionario = crear_tabla_amortizacion(solicitud)
+    diccionario = crear_tabla_amortizacion(solicitud, "PAGO")
     lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
     lista_cuotas_sol = diccionario['lista_cuotas']
     lista_intereses_sol = diccionario['lista_intereses']
@@ -196,16 +193,21 @@ def crear_pagos(inversion, usuario, solicitud):
         new_pago_detalle = Pago_detalle(id_inversion=inversion, orden=num_orden, fecha=fecha, pago=pago, comision=comision, 
                                         comision_iva=comision_iva, ganancia=ganancia)
         new_pago_detalle.save()
-        
+
+    print(round(ganancia_total,2))
+    return round(ganancia_total,2)
 
     
 
 
-def crear_tabla_amortizacion(solicitud):
+def crear_tabla_amortizacion(solicitud, modo):
     monto_solicitud = solicitud.monto
     plazo_solicitud = solicitud.plazo
     TASA_INTERES_ANUAL = solicitud.tin
     start_date = solicitud.fecha_finalizacion
+    if(modo == "CAMBIO_MONTO_INVERSION"):
+        start_date = solicitud.fecha_publicacion
+        
     next_date = add_months(start_date, 1)
     fechas=[]
     dias=[]

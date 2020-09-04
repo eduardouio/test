@@ -24,7 +24,8 @@ function cargarOportunidadesOnScroll(){
   if($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
     if(!obteniendoOportunidades && dataEncontrada){
       obteniendoOportunidades = true;
-      obtenerOportunidadesInversion(indice_opcion_actual, CANTIDAD_OPCIONES_MOSTRADAS);
+      let inversionista = $(".active.selectable").attr("data-usuario")
+      obtener_inversiones_por_usuario(inversionista)
     }
   }
 }
@@ -1025,7 +1026,7 @@ const ID_DECLARACION_FONDOS = "#crece-declaracion-body-id";
 const ID_SUBIR_TRANSFERENCIA = "#subir_transferencia_wrapper";
 const ID_FASE_FINAL = "#final_inversion_wrapper";
 const ID_FASE_ACEPTAR = "#aceptar-inversion-modal-dashboard"
-
+const ID_CAMBIAR_MONTO_INVERSION = "#cambiar-monto-inversion-modal-dashboard"
 let monto_inversion_actual = 350;
 let fase_inversion_actual;
 let id_solicitud_actual;
@@ -1156,6 +1157,7 @@ function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_i
   $(ID_COMPLETA_DATOS).css('display', 'flex');
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_DECLARACION_FONDOS).hide();
+  $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
   habilitarClicks();
 
@@ -1204,6 +1206,7 @@ function llenar_datos_transferencia(id_inversion){
       $(ID_COMPLETA_DATOS).hide();
       $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
+      $(ID_CAMBIAR_MONTO_INVERSION).hide();
     },
     error: function(){
       
@@ -1215,6 +1218,7 @@ function llenar_datos_transferencia(id_inversion){
       $(ID_COMPLETA_DATOS).hide();
       $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
+      $(ID_CAMBIAR_MONTO_INVERSION).hide();
     }
   });
 }
@@ -1241,6 +1245,7 @@ function enviarComprobanteTransferenciaModal(id_inversion){
         $(ID_FASE_FINAL).css('display', 'flex');
         $(ID_DECLARACION_FONDOS).hide();
         $(ID_SUBIR_TRANSFERENCIA).hide();
+        $(ID_CAMBIAR_MONTO_INVERSION).hide();
       },
       error: function(){
           $("#subir_transferencia_wrapper .error").html("No se pudo cargar el archivo. Intente de nuevo.");
@@ -1268,6 +1273,7 @@ $("#finalizar_inversion").click(function(){
   $(ID_FASE_FINAL).hide();
   $(ID_DECLARACION_FONDOS).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_CAMBIAR_MONTO_INVERSION).hide();
 });
 
 $(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(function(){
@@ -1277,6 +1283,7 @@ $(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(functi
   $(ID_FASE_FINAL).hide();
   $(ID_DECLARACION_FONDOS).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
+  $(ID_CAMBIAR_MONTO_INVERSION).hide();
 });
 
 $(".crece-modal").click(function(e) {
@@ -1293,6 +1300,7 @@ $(".crece-modal").click(function(e) {
     $(ID_FASE_FINAL).hide();
     $(ID_DECLARACION_FONDOS).hide();
     $(ID_SUBIR_TRANSFERENCIA).hide();
+    $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
   }
 
@@ -1315,7 +1323,7 @@ function habilitarClicks(){
 
   $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
     ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-      crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+      crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
       habilitarLinksAnteriores(fase_inversion_actual,1);
     });
 
@@ -1326,6 +1334,7 @@ function habilitarClicks(){
       $(ID_SUBIR_TRANSFERENCIA).hide();
       $(ID_COMPLETA_DATOS).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
+      $(ID_CAMBIAR_MONTO_INVERSION).hide();
       habilitarLinksAnteriores(fase_inversion_actual,2);
     });
 
@@ -1336,6 +1345,7 @@ function habilitarClicks(){
       $(ID_SUBIR_TRANSFERENCIA).hide();
       $(ID_COMPLETA_DATOS).hide();
       $(ID_DECLARACION_FONDOS).css('display', 'flex');
+      $(ID_CAMBIAR_MONTO_INVERSION).hide();
       habilitarLinksAnteriores(fase_inversion_actual,3);
     });
 
@@ -1346,6 +1356,7 @@ function habilitarClicks(){
       $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
       $(ID_COMPLETA_DATOS).hide();
       $(ID_DECLARACION_FONDOS).hide();
+      $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
       $("#subir_transferencia_wrapper .error-container").hide();
 
@@ -1367,6 +1378,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).css('display', 'flex');
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualFillInfo(2);
           
@@ -1384,7 +1396,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
 
           $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
           ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-            crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+            crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
   
             setPasoInversionistaActualFillInfo(1);
           });
@@ -1413,6 +1425,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).css('display', 'flex');
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualOrigin(2);
           
@@ -1425,6 +1438,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualOrigin(3);
         });
@@ -1438,7 +1452,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
 
         $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
         ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+          crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
 
           setPasoInversionistaActualOrigin(1);
         });
@@ -1450,6 +1464,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualOrigin(3);
         });
@@ -1463,7 +1478,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
 
         $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
         ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+          crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
 
           setPasoInversionistaActualOrigin(1);
         });
@@ -1475,6 +1490,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).css('display', 'flex');
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualOrigin(2);
         });
@@ -1500,6 +1516,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).css('display', 'flex');
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualPendingTransfer(2);
           
@@ -1512,6 +1529,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualPendingTransfer(3);
         });
@@ -1523,6 +1541,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           $("#subir_transferencia_wrapper .error-container").hide();
 
@@ -1536,7 +1555,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
 
         $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
         ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+          crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
 
           setPasoInversionistaActualPendingTransfer(1);
         });
@@ -1548,6 +1567,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualPendingTransfer(3);
         });
@@ -1559,6 +1579,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           $("#subir_transferencia_wrapper .error-container").hide();
 
@@ -1572,7 +1593,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
 
         $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
         ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-          crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+          crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
 
           setPasoInversionistaActualPendingTransfer(1);
         });
@@ -1584,6 +1605,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).css('display', 'flex');
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualPendingTransfer(2);
         });
@@ -1595,6 +1617,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
           $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
           $(ID_COMPLETA_DATOS).hide();
           $(ID_DECLARACION_FONDOS).hide();
+          $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
           setPasoInversionistaActualPendingTransfer(4);
         });
@@ -1607,7 +1630,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
   
           $(".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno, "+
           ".crece-flujo-inversionista-paso-completado.crece-flujo-inversionista-paso-uno span").click( function(){
-            crear_modal_aceptar_inversion(id_solicitud_actual,'aceptar-inversion-inicio',monto_inversion_actual);
+            crear_modal_cambiar_monto_inversion(id_solicitud_actual,'cambiar-monto-inversion-inicio',monto_inversion_actual, id_inversion_modal);
 
             setPasoInversionistaActualPendingTransfer(1);
           });
@@ -1619,6 +1642,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
             $(ID_SUBIR_TRANSFERENCIA).hide();
             $(ID_COMPLETA_DATOS).css('display', 'flex');
             $(ID_DECLARACION_FONDOS).hide();
+            $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
             setPasoInversionistaActualPendingTransfer(2);
           });
@@ -1630,6 +1654,7 @@ function habilitarLinksAnteriores(fase_inversion, fase_click){
             $(ID_SUBIR_TRANSFERENCIA).hide();
             $(ID_COMPLETA_DATOS).hide();
             $(ID_DECLARACION_FONDOS).css('display', 'flex');
+            $(ID_CAMBIAR_MONTO_INVERSION).hide();
 
             setPasoInversionistaActualPendingTransfer(3);
             

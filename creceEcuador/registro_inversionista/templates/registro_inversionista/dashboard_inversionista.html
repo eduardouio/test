@@ -82,7 +82,7 @@
                                         
                                       </div>
                                       <div class="col-4">
-                                        <button id="calcular-aceptar-inversion" onclick="calcular_tabla_inversionista('aceptar-inversion')">Calcular</button>
+                                        <button class='crece-boton-calcular-tabla-amortizacion' id="calcular-aceptar-inversion" onclick="calcular_tabla_inversionista('aceptar-inversion')">Calcular</button>
                                       </div>
                                     </div>
                                     <div class="row">
@@ -133,7 +133,118 @@
                                     <p>
                                     Al dar clic en Siguiente confirmo haber aceptado previamente los <strong>Acuerdos específicos de uso del sitio web</strong> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     </p>
-                                      <button id="aceptar-inversion-button-invertir">Siguiente</button>
+                                      <button class="crece-boton-final-tabla-amortizacion" id="aceptar-inversion-button-invertir">Siguiente</button>
+                                      
+                                  </div> 
+                                </div>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--seccion cambiar monto inversion-->
+            <div class="row justify-content-center" id="cambiar-monto-inversion-modal-dashboard">
+                <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-selected">
+                                <span>1</span>
+                            </div>
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-dos">
+                                <span>2</span>
+                            </div>
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-tres">
+                                <span>3</span>
+                            </div>
+                            <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-cuatro">
+                                <span>4</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <span class="crece-flujo-inversionista-progreso-texto">Progreso: 0%</span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 crece-flujo-inversionista-barra">
+                                <div style="width: 0%;" class="crece-flujo-inversionista-barra-progreso"></div>
+                            </div>
+                        </div>
+                        <!--Aceptar y Descargar-->
+                     <div class="row body-opciones">
+                        
+                             <!--DATOS DE LA TABLA-->
+                              <div class="row simular-inversion-input-valores" id="cambiar-monto-inversion-input-valores-id">
+                                <div class="col-10" style="margin-left: auto;margin-right: auto;">
+                                    <div class="row">
+                                      <div class="col-4">
+                                        <label id="label_error_cambiar_monto_inversion">
+                                          Valor no permitido
+                                        </label>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col-10 crece-body-datos">
+                                    <div class="row">
+                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
+                                      <div class="col-4" id="input-cambiar-monto-button-calcular">
+                                        <input type="text" name="monto" id="input-cambiar-monto-inversion" style="width: 100%;text-align: right;">
+                                        
+                                      </div>
+                                      <div class="col-4">
+                                        <button class='crece-boton-calcular-tabla-amortizacion' id="calcular-cambiar-monto-inversion" onclick="calcular_tabla_inversionista('cambiar-monto-inversion')">Calcular</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
+                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
+                                          
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:  none;"> 
+                                        <div>Adjudicacion:</div>
+                                        <div class="body-datos-calculados" id="adjudicacion-cambiar-monto-inversion">
+                                          
+                                        </div>
+                                        <div>Adjudicacion (IVA):</div>
+                                        <div class="body-datos-calculados" id="adjudicacion-iva-cambiar-monto-inversion"></div>
+                                        <div>Ganancia Total:</div>
+                                        <div class="body-datos-calculados" id="ganancia-total-cambiar-monto-inversion">
+                                               
+                                        </div>
+
+                                    </div>
+                                        
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Total a invertir:</div>
+                                        <div class="col-4 body-datos-calculados" id="inversion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                          
+                                        </div>
+                                    </div>
+                                        
+                                    
+            
+                                      </div>
+
+                                  <!--TABLA AMORTIZACION-->
+                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-cambiar-monto-inversion-id">
+                                     <tr>
+                                         <th>N°</th>
+                                         <th>Capital</th>
+                                         <th>Intereses</th>
+                                         <th>Comisión</th>
+                                         <th>Recibes</th>
+                                     </tr> 
+                                  </table>
+                                  
+                                    <!--Footer (GUARDAR-SIGUIENTE)-->
+                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
+                                    <p>
+                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <strong>Acuerdos específicos de uso del sitio web</strong> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    </p>
+                                      <button class="crece-boton-final-tabla-amortizacion" id="cambiar-monto-inversion-button">Siguiente</button>
                                       
                                   </div> 
                                 </div>
@@ -499,7 +610,7 @@
                                 <label>Titular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                 <input 
                                     required
-                                    value="{{usuario.cuenta_bancaria.titular}}"
+                                    value="{{usuario.nombres}} {{usuario.apellidos}}"
                                     class="form-control typeahead"
                                     name="titular"
                                     id="titular"
@@ -1186,7 +1297,7 @@
                                         
                                       </div>
                                       <div class="col-4">
-                                        <button id="calcular" onclick="calcular_tabla_inversionista('TRUE')">Calcular</button>
+                                        <button class='crece-boton-calcular-tabla-amortizacion' id="calcular" onclick="calcular_tabla_inversionista('simulacion-inversion')">Calcular</button>
                                       </div>
                                     </div>
         
@@ -1205,7 +1316,7 @@
                                   
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
-                                      <button id="simular-inversion-boton-invertir">Invertir</button>
+                                      <button class="crece-boton-final-tabla-amortizacion" id="simular-inversion-boton-invertir">Invertir</button>
                                       
                                   </div> 
                                 </div>

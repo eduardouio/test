@@ -3,26 +3,55 @@
 
 }
 
-#tabla-vigente-id > tr > td:last-child{
+#cambiar-monto-inversion-modal-dashboard{
+	display: none;
+}
+
+.tabla-amortizacion > tr > td:last-child{
 	background-color: lightblue;
 	text-align: right;
 	padding: 5px 8px;
 	font-weight: 500;
 }
 
-#tabla-vigente-id > tr >td{
+.tabla-amortizacion > tr >td{
 	border: 7px solid white;
 	color:black;
 }
 
-#tabla-vigente-id > tr > td:not(:last-child){
+.tabla-amortizacion > tr > td:not(:last-child){
 	background-color: #B7B8B8;
 	text-align: right;
 	padding: 5px 8px;
 	font-weight: 500;
 }
 
-#tabla-vigente-id > tr > td:first-child{
+.tabla-amortizacion > tr > td:first-child{
+	background-color: white;
+	text-align: center;
+
+}
+
+.tabla-amortizacion > tr > td:last-child{
+	background-color: lightblue;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+.tabla-amortizacion > tr >td{
+	border: 7px solid white;
+	color:black;
+}
+
+.tabla-amortizacion > tr > td:not(:last-child){
+	background-color: #B7B8B8;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+.tabla-amortizacion > tr > td:first-child{
 	background-color: white;
 	text-align: center;
 
@@ -83,7 +112,7 @@
 	display: none;
 }
 
-#label_error_aceptar_inversion{
+#label_error_aceptar_inversion, #label_error_cambiar_monto_inversion{
 	color: #e03e46;
 	font-size: 12px;
 	display: none;
@@ -96,31 +125,7 @@
 }
 
 
-#tabla-amortizacion-aceptar-inversion-id > tr > td:last-child{
-	background-color: lightblue;
-	text-align: right;
-	padding: 5px 8px;
-	font-weight: 500;
-}
-
-#tabla-amortizacion-aceptar-inversion-id > tr >td{
-	border: 7px solid white;
-	color:black;
-}
-
-#tabla-amortizacion-aceptar-inversion-id > tr > td:not(:last-child){
-	background-color: #B7B8B8;
-	text-align: right;
-	padding: 5px 8px;
-	font-weight: 500;
-}
-
-#tabla-amortizacion-aceptar-inversion-id > tr > td:first-child{
-	background-color: white;
-	text-align: center;
-
-}
-#calcular-aceptar-inversion{
+.crece-boton-calcular-tabla-amortizacion{
 	background-color: #006B8D;
     border-radius: 12px;
     border: 1px;
@@ -200,14 +205,6 @@
   grid-column-gap: 50px;
 }
 
-#calcular{
-	background-color: #006B8D;
-	    border-radius: 12px;
-    border: 1px;
-    padding: 2px 15px;
-    color: white;
-    font-weight: bold;
-}
 
 
 
@@ -248,32 +245,7 @@
 	font-weight: 500;
 }
 
-#tabla-amortizacion-id > tr > td:last-child{
-	background-color: lightblue;
-	text-align: right;
-	padding: 5px 8px;
-	font-weight: 500;
-}
-
-#tabla-amortizacion-id > tr >td{
-	border: 7px solid white;
-	color:black;
-}
-
-#tabla-amortizacion-id > tr > td:not(:last-child){
-	background-color: #B7B8B8;
-	text-align: right;
-	padding: 5px 8px;
-	font-weight: 500;
-}
-
-#tabla-amortizacion-id > tr > td:first-child{
-	background-color: white;
-	text-align: center;
-
-}
-
-#simular-inversion-boton-invertir{
+.crece-boton-final-tabla-amortizacion{
 	background-color: #006B8D;
 	    border-radius: 12px;
     border: 1px;
