@@ -1,4 +1,81 @@
-const VALID_INF_PERS_CAMPOS = 4;
+const VALID_INF_PERS_CAMPOS = 5;
+
+$(document).ready(function(){
+    
+    let substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+          var matches, substringRegex;
+      
+          // an array that will be populated with substring matches
+          matches = [];
+      
+          // regex used to determine if a string contains the substring `q`
+          substrRegex = new RegExp(q, 'i');
+      
+          // iterate through the pool of strings and for any string that
+          // contains the substring `q`, add it to the `matches` array
+          $.each(strs, function(i, str) {
+            if (substrRegex.test(str)) {
+              matches.push(str);
+            }
+          });
+      
+          cb(matches);
+        };
+      };
+      
+    
+      var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA', 
+        'SAN FERNANDO', 'SANTA ISABEL', 'SIGSIG', 'OÑA', 'CHORDELEG', 'EL PAN', 
+        'SEVILLA DE ORO', 'GUACHAPALA', 'CAMILO PONCE ENRIQUEZ', 'GUARANDA', 
+        'CHILLANES', 'SAN JOSE DE CHIMBO', 'ECHEANDIA', 'SAN MIGUEL', 'CALUMA', 
+        'LAS NAVES', 'AZOGUES', 'BIBLIAN', 'CAÑAR', 'LA TRONCAL', 'EL TAMBO', 
+        'DELEG', 'SUSCAL', 'TULCAN', 'BOLIVAR', 'ESPEJO', 'MIRA', 'MONTUFAR', 
+        'SAN PEDRO DE HUACA', 'LATACUNGA', 'LA MANA', 'PANGUA', 'PUJILI', 
+        'SALCEDO', 'SAQUISILI', 'SIGCHOS', 'RIOBAMBA', 'ALAUSI', 'COLTA', 
+        'CHAMBO', 'CHUNCHI', 'GUAMOTE', 'GUANO', 'PALLATANGA', 'PENIPE', 
+        'CUMANDA', 'MACHALA', 'ARENILLAS', 'ATAHUALPA', 'BALSAS', 'CHILLA', 
+        'EL GUABO', 'HUAQUILLAS', 'MARCABELI', 'PASAJE', 'PIÑAS', 'PORTOVELO', 
+        'SANTA ROSA', 'ZARUMA', 'LAS LAJAS', 'ESMERALDAS', 'ELOY ALFARO', 'MUISNE', 
+        'QUININDE', 'SAN LORENZO', 'ATACAMES', 'RIOVERDE', 'LA CONCORDIA', 'GUAYAQUIL', 
+        'ALFREDO BAQUERIZO MORENO', 'BALAO', 'BALZAR', 'COLIMES', 'DAULE', 'DURAN', 
+        'EL EMPALME', 'EL TRIUNFO', 'MILAGRO', 'NARANJAL', 'NARANJITO', 'PALESTINA', 
+        'PEDRO CARBO', 'SAMBORONDON', 'SANTA LUCIA', 'URBINA JADO', 'YAGUACHI', 'PLAYAS', 
+        'SIMON BOLIVAR', 'CORONEL MARCELINO MARIDUEÑA', 'LOMAS DE SARGENTILLO', 'NOBOL', 
+        'GENERAL ANTONIO ELIZALDE', 'ISIDRO AYORA', 'IBARRA', 'ANTONIO ANTE', 'COTACACHI', 
+        'OTAVALO', 'PIMAMPIRO', 'SAN MIGUEL DE URCUQUI', 'LOJA', 'CALVAS', 'CATAMAYO', 
+        'CELICA', 'CHAGUARPAMBA', 'ESPINDOLA', 'GONZANAMA', 'MACARA', 'PALTAS', 
+        'PUYANGO', 'SARAGURO', 'SOZORANGA', 'ZAPOTILLO', 'PINDAL', 'QUILANGA', 
+        'OLMEDO', 'BABAHOYO', 'BABA', 'MONTALVO', 'PUEBLOVIEJO', 'QUEVEDO', 
+        'URDANETA', 'VENTANAS', 'VINCES', 'PALENQUE', 'BUENA FE', 'VALENCIA', 
+        'MOCACHE', 'QUINSALOMA', 'PORTOVIEJO', 'BOLIVAR', 'CHONE', 'EL CARMEN', 
+        'FLAVIO ALFARO', 'JIPIJAPA', 'JUNIN', 'MANTA', 'MONTECRISTI', 'PAJAN', 
+        'PICHINCHA', 'ROCAFUERTE', 'SANTA ANA', 'SUCRE', 'TOSAGUA', '24 DE MAYO', 
+        'PEDERNALES', 'OLMEDO', 'PUERTO LOPEZ', 'JAMA', 'JARAMIJO', 'SAN VICENTE', 
+        'MORONA', 'GUALAQUIZA', 'LIMON INDANZA', 'PALORA', 'SANTIAGO', 'SUCUA', 
+        'HUAMBOYA', 'SAN JUAN BOSCO', 'TAISHA', 'LOGROÑO', 'PABLO VI', 'TIWINTZA', 
+        'TENA', 'ARCHIDONA', 'EL CHACO', 'QUIJOS', 'CARLOS JULIO AROSEMENA', 'PASTAZA', 
+        'MERA', 'SANTA CLARA', 'ARAJUNO', 'QUITO', 'CAYAMBE', 'MEJIA', 'PEDRO MONCAYO', 
+        'RUMIÑAHUI', 'SAN MIGUEL DE LOS BANCOS', 'PEDRO VICENTE MALDONADO', 'PUERTO QUITO', 
+        'AMBATO', 'BAÑOS', 'CEVALLOS', 'MOCHA', 'PATATE', 'QUERO', 'SAN PEDRO DE PELILEO', 
+        'SANTIAGO DE PILLARO', 'TISALEO', 'ZAMORA', 'CHINCHIPE', 'NANGARITZA', 'YACUAMBI', 
+        'YANTZAZA', 'EL PANGUI', 'CENTINELA DEL CONDOR', 'PALANDA', 'PAQUISHA', 'SAN CRISTOBAL', 
+        'ISABELA', 'SANTA CRUZ', 'LAGO AGRIO', 'GONZALO PIZARRO', 'PUTUMAYO', 'SHUSHUFINDI', 
+        'SUCUMBIOS', 'CASCALES', 'CUYABENO', 'ORELLANA', 'AGUARICO', 'LA JOYA DE LOS SACHAS', 
+        'LORETO', 'SANTO DOMINGO DE LOS TSACHILAS', 'SANTA ELENA', 'LIBERTAD', 'SALINAS', 
+        'LAS GOLONDRINAS', 'MANGA DEL CURA', 'EL PIEDRERO'
+      ];
+
+      $('#id_canton').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },
+    {
+        name: 'id_canton',
+        source: substringMatcher(cantones)
+    });
+});
 
 $("#ver_perfil").click( function() {
     $(".crece-oportunidades").hide();
@@ -16,10 +93,7 @@ function capitalizeFirstLetter(palabra) {
     return palabra[0].toUpperCase() + palabra.slice(1).toLowerCase();
 }
 
-$(document).ready( function() {
-    var canton_elegido = $("#id_canton").attr("data-canton")
-    $("#id_canton").val(capitalizeFirstLetter(canton_elegido)).change();
-});
+
 
 function guardarCambiosPerfil(id_inversionista) {
 
@@ -35,7 +109,7 @@ function guardarCambiosPerfil(id_inversionista) {
             url: "/inversionista/modificar/"+id_inversionista+"/",
             data: dictRespuestas,
             success: function(resultData) { 
-                alert("Datos guardados correctamente");
+                
             }
         });
     }
@@ -89,7 +163,6 @@ function validar_form_modificar() {
     }
 
     let inputs_validos = document.getElementsByClassName("crece-form-valid-input")
-
     return inputs_validos.length
 
 }
@@ -111,18 +184,23 @@ function mostrar_check(input) {
 
 function mostrar_times(input) {
     // body...
-    input.className = 'crece-form-input crece-form-invalid-input'
-            let id_times_fa = "times-"+input.name+"-id"
-            let times_fa = document.getElementById(id_times_fa)
-            times_fa.style.display = 'block'
-            let id_check_fa = "check-"+input.name+"-id"
-            let check_fa = document.getElementById(id_check_fa)
-            check_fa.style.display = 'none'
+    try{
+        input.className = 'crece-form-input crece-form-invalid-input'
+        let id_times_fa = "times-"+input.name+"-id"
+        let times_fa = document.getElementById(id_times_fa)
+        times_fa.style.display = 'block'
+        let id_check_fa = "check-"+input.name+"-id"
+        let check_fa = document.getElementById(id_check_fa)
+        check_fa.style.display = 'none'
 
-            let id_error = "crece-mensaje-invalid-input-"+input.name
-            let label_error = document.getElementById(id_error)
-            label_error.style.display = "block"
-            input.focus()
+        let id_error = "crece-mensaje-invalid-input-"+input.name
+        let label_error = document.getElementById(id_error)
+        label_error.style.display = "block"
+        input.focus()
+    }
+    catch(error) {
+    }
+    
 }
 
 function validar_cedula(textbox){

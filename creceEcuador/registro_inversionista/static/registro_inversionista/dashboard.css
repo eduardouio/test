@@ -2,14 +2,42 @@ body{
 	background-color: #e9ebee;
 }
 
+.crece-menu-toggle{
+	width: 35px;
+	color: #006b8d;
+
+}
+
+.crece-menu-toggle:hover{
+	cursor: pointer;
+
+}
+
 #crece-header {
 	display: none;
+}
+
+#id_bars_icon{
+	display: block !important;
+	position: static !important;
 }
 
 footer{
 	display: none;
 }
 /*Side Nav bar*/
+
+#crece_ocultar_sidebar svg {
+	font-size: 30px;
+	position: absolute;
+	top: 10px;
+	right: 25px;
+}
+
+ #crece_ocultar_sidebar svg:hover,
+#crece_ocultar_sidebar:hover {
+	cursor: pointer;
+}
 
 .crece-usuario{
 	margin-bottom: 25px;
@@ -67,7 +95,7 @@ footer{
 	top: 0;
 	bottom: 0;
 	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-	z-index: 1; /* Stay on top */
+	z-index: 2; /* Stay on top */
 	left: 0;
 }
 
@@ -249,6 +277,34 @@ ul li {
 	display: none;
 }
 
+.content-block-background{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(0,0,0,0.8);
+}
+
+ .crece-oportunidades-container-mensaje{
+	color: #006B8D ;
+	font-weight: 400 !important;
+	text-align: center;
+	font-size: 24px;
+	padding-top: 200px;
+}
+
+ .crece-oportunidades-container-boton{
+	background-color: #006B8D;
+	margin-bottom: 200px;
+}
+
+ .crece-oportunidades-container-boton:hover{
+	text-decoration: none;
+	background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+	border: 1px solid rgba(0, 107, 141, 0.8);
+}
+
 @media(max-width:768px){
 	#sidebar{margin-left: -250px;}
 	#sidebar.active{
@@ -257,5 +313,41 @@ ul li {
 	#sidebarCollapse span{
 		display: none;
 	}
+	
+	.content{
+		padding-left: 0px;
+	}
+
+	.crece-perfil-seleccionar{
+		margin-right: 0px !important;
+	}
+
+	#crece-registro-super-container {
+		margin-right: 0px !important; 
+    	margin-left: 0px !important;
+	}
+
+	.crece-modal-container svg {
+		top: 37px !important;
+		right: 25px !important;
+		color: #b4b4b4;
+	}
+
+	.crece-flujo-inversionista-pasos{
+		margin-top: 22px;
+	}
+
+	.crece-completar-datos-formulario-wrapper {
+		padding: 0px 15px !important;
+	}
+
+	.body-contrato {
+		padding: 0px 15px !important;
+	}
+
+	#crece-declaracion-body-id p {
+		padding: 30px 10px !important;
+	}
+
 }
 

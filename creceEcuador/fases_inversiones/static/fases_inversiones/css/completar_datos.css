@@ -184,6 +184,10 @@ form .form-control{
     *z-index: 1;
     margin: 50px 0;
   }
+
+  .typeahead:disabled{
+    background-color: #e9ecef !important;
+  }
   
   .typeahead,
   .tt-query,
@@ -285,3 +289,6 @@ form .form-control{
       color: black;
   }
   
+  form .form-control{
+    font-size: 15px !important;
+  }

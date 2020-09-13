@@ -123,6 +123,8 @@ class Usuario(models.Model):
     provincia = models.CharField(max_length=50, blank=True)
     pais = models.CharField(max_length=50, blank=True)
 
+    ruc = models.CharField(max_length=15, blank=True, null=True)
+
     #Model user
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=True)
 

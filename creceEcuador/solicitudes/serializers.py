@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 class SolicitudSerializer(serializers.ModelSerializer):
     autor = serializers.ReadOnlyField()
+    ruc_autor = serializers.ReadOnlyField()
     categoria = serializers.ReadOnlyField()
     imagen_categoria = serializers.ReadOnlyField()
     tipo_credito = serializers.ReadOnlyField()
@@ -19,6 +20,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'operacion',
             'plazo',
             'autor',
+            'ruc_autor',
             'tipo_persona',
             'url',
             'imagen_url',

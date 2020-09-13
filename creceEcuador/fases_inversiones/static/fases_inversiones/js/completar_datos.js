@@ -22,7 +22,17 @@ $(document).ready( function(){
 
   if(datosDesdeBase){
     $('#guardar_respuestas').hide();
+
+    $(".crece-completar-datos-formulario-wrapper input").each(function(){
+      $(this).prop("disabled", true);
+    });
+
+    $(".crece-completar-datos-formulario-wrapper select").each(function(){
+      $(this).prop("disabled", true);
+    });
   }
+
+
 
 });
 
@@ -328,20 +338,18 @@ var substringMatcher = function(strs) {
       return dictRespuestas;
   }
 
+  function focusAndInvalidate(element){
+    let id = $(element).attr('id');
+    location.href = "#"+id;
+    $(element).addClass("invalid");
+  }
+
   function checkInputs() {
     var es_valido = true;
     $('input').filter('[required]').each(function() {
 
-      if (this.name === 'foto_cedula' && this.files.length == 0) {
-
-        $("#completar_datos_wrapper .error").html("Suba una foto de su cédula.");
-        $("#completar_datos_wrapper .error-container").css("display", "flex");
-
-        es_valido = false;
-        return false;
-      }
-      else if ($(this).val() === '') {
-
+      if ($(this).val() === '') {
+        focusAndInvalidate(this);
         $("#completar_datos_wrapper .error").html("Llene todos los campos");
         $("#completar_datos_wrapper .error-container").css("display", "flex");
         
@@ -350,6 +358,9 @@ var substringMatcher = function(strs) {
       }
       else {
         if (this.name === 'cedula' && !validar_cedula(this)){
+
+          
+          focusAndInvalidate(this);
           $("#completar_datos_wrapper .error").html("Ingrese su cédula correctamente");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
 
@@ -358,6 +369,8 @@ var substringMatcher = function(strs) {
 
         }
         else if (this.name === 'cedula_conyugue' && !validar_cedula(this)){
+          focusAndInvalidate(this);
+
           $("#completar_datos_wrapper .error").html("Ingrese la cédula de su cónyugue correctamente");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
 
@@ -367,6 +380,8 @@ var substringMatcher = function(strs) {
         }
 
         else if(this.name === 'canton' && !cantones.includes(this.value)) {
+          focusAndInvalidate(this);
+
           $("#completar_datos_wrapper .error").html("Ingrese un cantón válido");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
 
@@ -376,6 +391,8 @@ var substringMatcher = function(strs) {
         }
 
         else if(this.name === 'canton_empresa' && !cantones.includes(this.value)) {
+          focusAndInvalidate(this);
+
           $("#completar_datos_wrapper .error").html("Ingrese un cantón válido");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
 
@@ -384,6 +401,8 @@ var substringMatcher = function(strs) {
           return false;
         }
         else if(this.name === 'provincia' && !provincias.includes(this.value)) {
+          focusAndInvalidate(this);
+
           $("#completar_datos_wrapper .error").html("Ingrese una provincia válida");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
          
@@ -392,6 +411,7 @@ var substringMatcher = function(strs) {
           return false;
         }
         else if(this.name === 'celular' && this.value.length != 10) {
+          focusAndInvalidate(this);
           $("#completar_datos_wrapper .error").html("Ingrese un celular válido");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
 
@@ -399,15 +419,11 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
+        else {
+          $(this).removeClass("invalid");
+        }
       }
     });
-    
-    if(!$('#foto_cedula').prop('files')[0]){
-      $("#completar_datos_wrapper .error").html("Suba una foto de su cédula.");
-      $("#completar_datos_wrapper .error-container").css("display", "flex");
-
-      es_valido = false;
-    }
 
     if(es_valido){
       $("#completar_datos_wrapper .error-container").hide();

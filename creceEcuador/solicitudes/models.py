@@ -59,6 +59,10 @@ class Solicitud(models.Model):
     @property
     def autor(self):
         return (self.id_autor.nombres + " "  + self.id_autor.apellidos)
+
+    @property
+    def ruc_autor(self):
+        return self.id_autor.ruc
     
     @property
     def categoria(self):

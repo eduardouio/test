@@ -10,6 +10,17 @@ function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad,monto_
             
             if (res.data){
                 crearDetalleInversion(fase_inversion,id_inversion,res.data,monto_inversion);
+                $("#input-monto-detalle-solicitud").keydown(function(e) {
+                  if(e.key==='.'){
+                    event.preventDefault();
+                  }
+                });
+
+                 $("#input-monto-detalle-solicitud").keyup(function(e) {
+                  let numero = $(this).val();
+                  numero = limpiarNumero(numero);
+                  $(this).val(numberWithCommas(numero));
+                });
             }  
         },
         error: function(xhr, status, error) {
@@ -17,6 +28,14 @@ function ver_detalle_solicitud(fase_inversion,id_inversion,id_oportunidad,monto_
             alert("Solicitud no encontrada.");
         }
     });
+}
+
+function limpiarNumero(num){
+  return num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
+}
+
+ function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 
@@ -90,6 +109,10 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
               <label for="monto" style="display: contents;">$</label>
               <input id="input-monto-detalle-solicitud" name="monto" type="text" min="0">
           </div>
+      </div>
+
+      <div class="crece-detalle-operaciones-invierte-minimo">
+           <span>Inversión mínima: $350</span>
       </div>
 
       <div class="crece-detalle-operaciones-invierte-botones">                                                    
@@ -246,7 +269,7 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inv
                                                     <h2>Identificación y contacto</h2>
                                                     <div class="row">
                                                       <div clas="col-12">
-                                                        <p>`+oportunidad.autor+`
+                                                        <p>`+oportunidad.autor+`<br> <strong>RUC:</strong> `+oportunidad.ruc_autor+`
                                                         </p>
                                                       </div>
                                                     </div>

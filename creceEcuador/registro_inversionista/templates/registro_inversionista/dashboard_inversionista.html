@@ -1,6 +1,7 @@
 {% extends 'template_base.html' %}
 {% load static %}
 {% block head_css_agregado %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="{% static 'registro_inversionista/dashboard.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'registro_inversionista/css/solicitudes-dashboard.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'registro_inversionista/css/dashboard_perfil.css' %}" rel="stylesheet" type="text/css">
@@ -34,7 +35,7 @@
             <!--seccion aceptar inversion-->
             <div class="row justify-content-center" id="aceptar-inversion-modal-dashboard">
                 <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
-                    <div class="col-12">
+                    <div class="col-12 crece-flujo-inversionista-pasos">
                         <div class="row">
                             <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-selected">
                                 <span>1</span>
@@ -107,7 +108,7 @@
                                     </div>
                                         
                                     <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Total a invertir:</div>
+                                        <div class="col-4" style="font-weight: bold;">Total a transferir:</div>
                                         <div class="col-4 body-datos-calculados" id="inversion-total" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
                                           
                                         </div>
@@ -145,7 +146,7 @@
             <!--seccion cambiar monto inversion-->
             <div class="row justify-content-center" id="cambiar-monto-inversion-modal-dashboard">
                 <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
-                    <div class="col-12">
+                    <div class="col-12 crece-flujo-inversionista-pasos">
                         <div class="row">
                             <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-selected">
                                 <span>1</span>
@@ -256,7 +257,7 @@
             <!-- Seccion completar datos-->
             <div id="completar_datos_wrapper" class="row justify-content-center">
                 <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
-                    <div class="col-12">
+                    <div class="col-12 crece-flujo-inversionista-pasos">
                         <div class="row">
                             <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                 <span>1</span>
@@ -296,6 +297,7 @@
                                     name="nombre"
                                     id="nombre"
                                     data-valueMissing="Ingrese un nombre"
+                                    disabled
                                     />
                             </div>
 
@@ -308,6 +310,7 @@
                                     name="apellidos"
                                     id="apellidos"
                                     data-valueMissing="Ingrese su apellido"
+                                    disabled
                                     />
                             </div>
 
@@ -320,6 +323,7 @@
                                     name="cedula"
                                     id="cedula"
                                     data-valueMissing="Ingrese su número de cédula"
+                                    disabled
                                     />
                             </div>
                             <div class="form-group col-lg-4">
@@ -327,7 +331,6 @@
                                     Cargar documento
                                 </label>
                                 <input 
-                                    required
                                     type="file"
                                     accept="image/png, image/jpeg, application/pdf"
                                     class="form-control"
@@ -443,6 +446,7 @@
                                     class="form-control"
                                     name="telf_domicilio"
                                     id="telf_domicilio"
+                                    type="number"
                                     data-valueMissing="Ingrese el número de teléfono de su domicilio"
                                     />
                             </div>
@@ -690,8 +694,8 @@
 
             <!--Seccion declaracion de fondos-->
             <div class="row justify-content-center" id="crece-declaracion-body-id">
-                <div class="col-11 col-lg-8 body-contrato" id="body-contrato-id">
-                    <div class="col-12">
+                <div class="col-12 col-lg-8 body-contrato" id="body-contrato-id">
+                    <div class="col-12 crece-flujo-inversionista-pasos">
                         <div class="row">
                             <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                 <span>1</span>
@@ -749,8 +753,8 @@
 
             <!-- Seccion guardar transferencia -->
             <div id="subir_transferencia_wrapper" class="row justify-content-center">
-                <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
-                        <div class="col-12">
+                <div class="col-12 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
+                        <div class="col-12 crece-flujo-inversionista-pasos">
                             <div class="row">
                                 <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                     <span>1</span>
@@ -771,7 +775,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <div class="col-12 crece-flujo-inversionista-barra">
+                                <div class="col-11 crece-flujo-inversionista-barra">
                                     <div style="width: 75%;" class="crece-flujo-inversionista-barra-progreso"></div>
                                 </div>
                             </div>
@@ -779,12 +783,12 @@
                     <div class="row justify-content-center">
                         <div>
                             <div class="form-group row justify-content-center">
-                                <div class="col-12 col-lg-10">
+                                <div class="col-11 col-lg-10">
                                     <h2>
                                         Transfiere tu inversión
                                     </h2>
                                 </div>
-                                <div class="col-12 col-lg-10">
+                                <div class="col-11 col-lg-10">
                                     <p>
                                         Transfiere los fondos a la siguiente cuenta y asegura tu participación:
                                     </p>
@@ -798,10 +802,10 @@
                                         Teléfono: 0988349088 <br>
                                     </p>
                                 </div>
-                                <div class="col-12 col-lg-10">
+                                <div class="col-11 col-lg-10">
                                     <label class="crece-confirmar-transferencia-formulario-wrapper-label">Selecciona el banco de donde vendrá tu transferencia</label>
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-6 col-11">
                                     <select class="form-control" id="selectBancoTransferencia" data-seleccion="{{usuario.cuenta_bancaria.banco.nombre}}">
                                         <option disabled selected value> -- Seleccione un Banco -- </option>
                                         <option value='BANCO GUAYAQUIL'>BANCO GUAYAQUIL</option>
@@ -829,7 +833,7 @@
                                         <option value='BANCO FINCA S.A.'>BANCO FINCA S.A.</option>
                                     </select>
                                 </div>
-                                <div class="col-12 col-lg-10">
+                                <div class="col-11 col-lg-10">
                                     <label class="crece-confirmar-transferencia-formulario-wrapper-label">Adjunta tu comprobante transferencia:</label>
                                 </div>
                                 <div class="col-lg-6">
@@ -861,8 +865,8 @@
 
             <!-- Seccion final inversion-->
             <div id="final_inversion_wrapper" class="row justify-content-center">
-                <div class="col-11 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
-                    <div class="col-12">
+                <div class="col-12 col-md-10 col-lg-6 crece-confirmar-transferencia-formulario-wrapper">
+                    <div class="col-12 crece-flujo-inversionista-pasos">
                         <div class="row">
                             <div class="col-3 crece-flujo-inversionista-paso crece-flujo-inversionista-paso-uno crece-flujo-inversionista-paso-completado">
                                 <span>1</span>
@@ -935,6 +939,11 @@
 
       <nav id="sidebar">
           <div class="sidebar-header">
+              <div id="crece_ocultar_sidebar">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                  </svg>
+              </div>
               <div class='crece-usuario'>
                 <i class="crece-usuario-imagen fa fa-user-circle-o" aria-hidden="true"></i>
                 <div class="crece-usuario-nombre" id='nombre-usuario'>
@@ -958,8 +967,8 @@
           
           <ul class="list-unstyled components">          
 
-            <li class="active selectable" data-fase-inversion="" data-usuario="{{usuario.pk}}">
-              <a href="#todas"><span>Todas las Inversiones</span></a>
+            <li id="todas_las_oportunidades" class="active selectable" data-fase-inversion="" data-usuario="{{usuario.pk}}">
+                <a href="#todas"><span>Oportunidades de Inversión</span></a>
 
 
             </li>
@@ -987,6 +996,9 @@
       </nav>
 
       <div class="content">
+          <div class="content-block-background">
+
+          </div>
           <header>
             <!-- 
               <div class="search_area">
@@ -994,13 +1006,24 @@
                 <input type="text" name="">
               </div>-->
     
-              <div class="crece-header-logo" >
-                <a href="/">
-    
-                    <img src="{% static 'assets/logo_color.png' %}" alt="Logo crece">
-    
-                </a>
-                
+              <div class="row justify-content-between">
+                  <div class="col-auto">
+                      <div class="crece-menu-toggle">
+                          <i id="id_bars_icon" class="fa fa-bars"></i>
+                      </div>
+                  </div>  
+                    
+  
+                  <div class="col-auto">
+                      <div class="crece-header-logo" >
+                        <a href="/">
+            
+                            <img src="{% static 'assets/logo_color.png' %}" alt="Logo crece">
+            
+                        </a>
+                        
+                      </div>
+                  </div>
               </div>
     
           </header>
@@ -1008,7 +1031,7 @@
           <section class="crece-perfil">
               <div class="row justify-content-center" id="crece-registro-super-container">
 
-                <div class="col-xl-3 col-lg-3 crece-perfil-seleccionar">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-11 crece-perfil-seleccionar">
                   <ul class="list-unstyled" id="crece-perfil-lista">
                     <li class="active" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
                       <a href="#">Información Personal</a>
@@ -1029,7 +1052,7 @@
                 </div>
 
                   <!--Cuadro de registro-->
-                <div class="col-xl-7 col-lg-7 col-md-12 col-12 crece-registro-container" id="crece-registro-container-id">
+                <div class="col-xl-7 col-lg-7 col-md-11 col-11 crece-registro-container" id="crece-registro-container-id">
                       <div class="col-12 crece-login-container-form-wrapper-titulo">
                         <div class="crece-registro-container-logo"><img src="{% static 'assets/logo_color.png' %}"></div>
                       </div>
@@ -1112,14 +1135,19 @@
                           <div class="col-12 crece-registro-form-label">
                             Ciudad
                           </div> 
-                          <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
-                            <select id="id_canton" name="canton" data-canton="{{ usuario.canton.nombre }}">
-                              <option value="Guayaquil">Guayaquil</option>
-                              <option value="Quito">Quito</option>
-                              <option value="Cuenca">Cuenca</option>
-                              <option value="Manta">Manta</option>
-                              <option value="Machala">Machala</option>
-                            </select>
+                          <div class="col-lg-12">
+                              <input 
+                                  value="{{usuario.canton.nombre}}"
+                                  class="crece-form-input typeahead"
+                                  name="id_canton"
+                                  id="id_canton"
+                                  data-valueMissing="Ingrese su canton de residencia"
+                                  />
+                              <i class="fa fa-check" aria-hidden="true" id="check-id_canton-id"></i>
+                              <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-id_canton-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-id_canton">
+                                Ingrese un canton correctamente
+                              </div>
                           </div>
                         </div>
                       </div>
@@ -1188,7 +1216,7 @@
                                     </div>
                                         
                                     <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Total a invertir:</div>
+                                        <div class="col-4" style="font-weight: bold;">Total a transferir:</div>
                                         <div class="col-4 body-datos-calculados" id="total-invertir-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
                                           
                                         </div>
@@ -1344,6 +1372,7 @@
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
 <script type="text/javascript" src="{% static 'registro_inversionista/js/dashboard_detalle_solicitud.js' %}" ></script>
 <script type="text/javascript" src="{% static 'registro_inversionista/js/simular_inversion.js' %}" ></script>
+<script type="text/javascript" src="{% static 'registro_inversionista/js/dashboard_general.js' %}" ></script>
 <script src="{% static 'js/tooltip-crece.js' %}"></script>
 
 <script src="{% static 'js/typeahead.jquery.js' %}"></script>

@@ -997,7 +997,11 @@ function obtenerOportunidadesDesdeInversion(inicio, cantidad_opciones, fase_inve
                 crearCuadrosOportunidadesInversion(listaSolicitudes, false);
             }  
             else {
-                $(".crece-oportunidades-container").html("");
+              $(".crece-oportunidades-container").html('<div class="col-11"><h3 class="crece-oportunidades-container-mensaje">No tienes inversiones activas</h3></div><div class="col-auto"><button class="crece-oportunidades-container-boton" type="button">Quiero Invertir</button></div>');
+              
+              $(".crece-oportunidades-container-boton").click(function(){
+                $("#todas_las_oportunidades a").trigger("click");
+              });
             }
         }
     });

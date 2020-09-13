@@ -310,7 +310,7 @@ function verificar_valores_inversion(modo, oportunidad) {
 		id = "input-monto"
 	}
 	
-	let input_monto_inversion = document.getElementById(id).value
+	let input_monto_inversion = limpiarNumero(document.getElementById(id).value);
 	let monto_maximo = oportunidad.monto * 0.9 
 	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
 	let monto_por_financiar = oportunidad.monto - total_financiado
@@ -376,7 +376,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 			document.getElementById("input-cambiar-monto-inversion").value = input_monto_inversion
 		}
 		else{
-			input_monto_inversion = document.getElementById("input-monto-detalle-solicitud").value
+			limpiarNumero(input_monto_inversion = document.getElementById("input-monto-detalle-solicitud").value);
 		}
 		document.getElementById("input-monto").value = input_monto_inversion
 	}
@@ -796,4 +796,8 @@ function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_i
   $(".crece-flujo-inversionista-paso-cuatro, "+
   ".crece-flujo-inversionista-paso-cuatro span").prop("onclick", null).off("click");
 
+}
+
+function limpiarNumero(num){
+	return num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
 }
