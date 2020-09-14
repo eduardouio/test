@@ -27,34 +27,13 @@ function ruta_fase_1(id, monto){
     return RUTA_FASE_1+"?id="+id+"&monto="+monto;
 }
 
-let crece_modal = document.getElementById("crece-modal-simular-inversion-id")
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == crece_modal) {
-    crece_modal.style.display = "none";
-  }
-}
-
-let span_close_modal = document.getElementById("span-close-modal-id")
-span_close_modal.addEventListener('click', function () {
-	// body...
-	crece_modal.style.display = 'none'
-})
 
 
-let crece_modal_solicitud_vigente = document.getElementById("crece-modal-tabla-solicitud-vigente-id")
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == crece_modal_solicitud_vigente) {
-    crece_modal_solicitud_vigente.style.display = "none";
-  }
-}
 
-let span_close_modal_solicitud_vigente = document.getElementById("span-close-modal-tabla-solicitud-vigente-id")
-span_close_modal_solicitud_vigente.addEventListener('click', function () {
-	// body...
-	crece_modal_solicitud_vigente.style.display = 'none'
-})
+
+
+
+
 
 function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
   $.ajax({
@@ -68,8 +47,24 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           	if (!verificar_valores_inversion("detalle-solicitud", res.data)){
           		return false
           	}
-          	let crece_modal = document.getElementById("crece-modal-simular-inversion-id")
-          	crece_modal.style.display = 'block'
+          	$("#input-monto").keydown(function(e) {
+                  if(e.key==='.'){
+                    event.preventDefault();
+                  }
+                });
+
+                 $("#input-monto").keyup(function(e) {
+                  let numero = $(this).val();
+                  numero = limpiarNumero(numero);
+                  $(this).val('$'+numberWithCommas(numero));
+                });
+          	  $(".crece-modal").show();
+			  $("#crece-modal-simular-inversion-id").css('display', 'flex');
+			  $("#aceptar-inversion-modal-dashboard").hide();
+			  $("#subir_transferencia_wrapper").hide();
+			  $("#completar_datos_wrapper").hide();
+			  $("#crece-declaracion-body-id").hide();
+			  $("#cambiar-monto-inversion-modal-dashboard").hide()
           	
           	let barra_porcentaje_financiado = document.getElementById("crece-operaciones-contenido-monto-barra-progreso-id")
           	let oportunidad = res.data
@@ -112,8 +107,22 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
 			  $("#crece-modal-simular-inversion-id").hide()
 			  $("#cambiar-monto-inversion-modal-dashboard").hide()
 
+			  $("#input-monto-aceptar-inversion").keydown(function(e) {
+                  if(e.key==='.'){
+                    event.preventDefault();
+                  }
+                });
+
+                 $("#input-monto-aceptar-inversion").keyup(function(e) {
+                  let numero = $(this).val();
+                  numero = limpiarNumero(numero);
+                  $(this).val('$'+numberWithCommas(numero));
+                });
+
 
           	let boton_invertir = document.getElementById("aceptar-inversion-button-invertir")
+          	$("#aceptar-inversion-button-invertir").attr("disabled", false)
+          	$("#label_error_aceptar_inversion").hide()
             calcular_tabla_inversionista(input_modal,res.data,monto);
                	boton_invertir.addEventListener('click', function () {
                		// body...
@@ -139,8 +148,14 @@ function crear_modal_tabla_solicitud_valida(id_inversion, id_solicitud) {
           
           if (res.data){
 
-          	let crece_modal = document.getElementById("crece-modal-tabla-solicitud-vigente-id")
-          	crece_modal.style.display = 'block'
+          	  $(".crece-modal").show();
+			  $("#crece-modal-tabla-solicitud-vigente-id").css('display', 'flex');
+			  $("#crece-modal-simular-inversion-id").hide();
+			  $("#aceptar-inversion-modal-dashboard").hide();
+			  $("#subir_transferencia_wrapper").hide();
+			  $("#completar_datos_wrapper").hide();
+			  $("#crece-declaracion-body-id").hide();
+			  $("#cambiar-monto-inversion-modal-dashboard").hide()
           	
           	
           	let lista_pagos = res.data.lista_pagos
@@ -175,8 +190,22 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
 			  $("#crece-modal-simular-inversion-id").hide()
 			  $("#aceptar-inversion-modal-dashboard").hide();
 
+			  $("#input-cambiar-monto-inversion").keydown(function(e) {
+                  if(e.key==='.'){
+                    event.preventDefault();
+                  }
+                });
+
+                 $("#input-cambiar-monto-inversion").keyup(function(e) {
+                  let numero = $(this).val();
+                  numero = limpiarNumero(numero);
+                  $(this).val('$'+numberWithCommas(numero));
+                });
+
 
           	let boton_cambiar_monto_inversion = document.getElementById("cambiar-monto-inversion-button")
+          	$("#cambiar-monto-inversion-button").attr("disabled", false)
+          	$("#label_error_cambiar_monto_inversion").hide()
             calcular_tabla_inversionista(input_modal,res.data,monto);
                	boton_cambiar_monto_inversion.addEventListener('click', function () {
                		// body...
@@ -266,7 +295,7 @@ function go_to_fase2(oportunidad,input_modal, id_inversion){
 
 function guardar_nuevo_monto_inversion(oportunidad, id_inversion) {
 	// body...
-	let monto_cambiar = document.getElementById("input-cambiar-monto-inversion").value
+	let monto_cambiar = limpiarNumero(document.getElementById("input-cambiar-monto-inversion").value)
 
 	var xhttp = new XMLHttpRequest();
 
@@ -304,9 +333,17 @@ function guardar_nuevo_monto_inversion(oportunidad, id_inversion) {
 function verificar_valores_inversion(modo, oportunidad) {
 	// body...
 	let id = ""
+	
 	if (modo === "detalle-solicitud"){
 		id = "input-monto-detalle-solicitud"
-	}else{
+	}
+	else if(modo==='aceptar-inversion'){
+		id = "input-monto-aceptar-inversion"	
+	}
+	else if(modo==='cambiar-monto-inversion'){
+		id = 'input-cambiar-monto-inversion'
+	}
+	else{
 		id = "input-monto"
 	}
 	
@@ -315,26 +352,57 @@ function verificar_valores_inversion(modo, oportunidad) {
 	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
 	let monto_por_financiar = oportunidad.monto - total_financiado
 
-	if (input_monto_inversion < 350 || input_monto_inversion>monto_maximo || input_monto_inversion>monto_por_financiar){
-		$("#label_error_simular_inversion_detalle_solicitud").show()
-		$("#label_error_simular_inversion_modal").show()
-		let tabla = document.getElementById("tabla-amortizacion-id");
-		/*Verificando que ya exista la tabla*/
-		if (tabla.children.length > 1) {
-			let last_child = tabla.lastChild
-
-			for (var i = oportunidad.plazo - 1; i >= 0; i--) {
-				let last_child = tabla.lastChild
-				tabla.removeChild(last_child)
+	if (parseInt(oportunidad.porcentaje_financiado) < 100){
+		if (input_monto_inversion < 350 || input_monto_inversion>monto_maximo || input_monto_inversion>monto_por_financiar){
+			let tabla_id = "tabla-amortizacion-id"
+			if (modo==='aceptar-inversion'){
+				$("#label_error_aceptar_inversion").show()
+				tabla_id = "tabla-amortizacion-aceptar-inversion-id"
+				$("#adjudicacion-total").html("")
+				$("#inversion-total").html("")
+				$("#aceptar-inversion-button-invertir").attr("disabled", true)
 			}
-
-
+			else if(modo==='cambiar-monto-inversion'){
+				$("#label_error_cambiar_monto_inversion").show()
+				tabla_id = "tabla-amortizacion-cambiar-monto-inversion-id"
+				$("#adjudicacion-total-cambiar-monto-inversion").html("")
+				$("#inversion-total-cambiar-monto-inversion").html("")
+				$("#cambiar-monto-inversion-button").attr("disabled", true)
+				
+			}
+			else{
+				$("#label_error_simular_inversion_detalle_solicitud").show()
+				$("#label_error_simular_inversion_modal").show()
+			}
 			
+			let tabla = document.getElementById(tabla_id);
+			/*Verificando que ya exista la tabla*/
+			if (tabla.children.length > 1) {
+				let last_child = tabla.lastChild
+
+				for (var i = oportunidad.plazo - 1; i >= 0; i--) {
+					let last_child = tabla.lastChild
+					tabla.removeChild(last_child)
+				}
+
+
+				
+			}
+			return false
 		}
+		$("#label_error_simular_inversion_detalle_solicitud").hide()
+		$("#label_error_simular_inversion_modal").hide()
+		$("#label_error_aceptar_inversion").hide()
+		$("#aceptar-inversion-button-invertir").attr("disabled", false)
+		$("#label_error_cambiar_monto_inversion").hide()
+		$("#cambiar-monto-inversion-button").attr("disabled", false)
+	}
+	else  {
+		$("#label_error_simular_inversion_detalle_solicitud").html("Esta solicitud ya ha sido completada")
+		$("#label_error_simular_inversion_detalle_solicitud").show()
 		return false
 	}
-	$("#label_error_simular_inversion_detalle_solicitud").hide()
-	$("#label_error_simular_inversion_modal").hide()
+	
 
 	return true
 }
@@ -346,22 +414,28 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 	let diccionario = {}
 	let input_monto_inversion = 0
 	if (input_modal === 'simulacion-inversion'){
-		input_monto_inversion = document.getElementById("input-monto").value
-		document.getElementById("input-monto-detalle-solicitud").value = input_monto_inversion
+		input_monto_inversion = limpiarNumero(document.getElementById("input-monto").value)
+		document.getElementById("input-monto-detalle-solicitud").value = numberWithCommas(input_monto_inversion)
 		diccionario = DICCIONARIO_SIMULACION
 		oportunidad = OPORTUNIDAD
 		if (!verificar_valores_inversion("",oportunidad)){
 			return false
 		}
 	}else if(input_modal === 'aceptar-inversion'){
-		input_monto_inversion = document.getElementById("input-monto-aceptar-inversion").value
+		input_monto_inversion = limpiarNumero(document.getElementById("input-monto-aceptar-inversion").value)
 		diccionario = DICCIONARIO_SIMULACION
 		oportunidad = OPORTUNIDAD
+		if (!verificar_valores_inversion(input_modal,oportunidad)){
+			return false
+		}
 		
 	}else if (input_modal === 'cambiar-monto-inversion'){
-		input_monto_inversion = document.getElementById("input-cambiar-monto-inversion").value
+		input_monto_inversion =  limpiarNumero(document.getElementById("input-cambiar-monto-inversion").value)
 		diccionario = DICCIONARIO_SIMULACION
 		oportunidad = OPORTUNIDAD
+		if (!verificar_valores_inversion(input_modal,oportunidad)){
+			return false
+		}
 	}
 	else{
 		diccionario = hacer_tabla_amortizacion(oportunidad)
@@ -370,15 +444,16 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		if (input_modal === 'aceptar-inversion-inicio'){
 
 			input_monto_inversion = monto
-			document.getElementById("input-monto-aceptar-inversion").value = input_monto_inversion
+			document.getElementById("input-monto-aceptar-inversion").value = '$'+numberWithCommas(input_monto_inversion)
 		}else if (input_modal === 'cambiar-monto-inversion-inicio'){
 			input_monto_inversion = monto
-			document.getElementById("input-cambiar-monto-inversion").value = input_monto_inversion
+			document.getElementById("input-cambiar-monto-inversion").value = '$'+numberWithCommas(input_monto_inversion)
 		}
 		else{
-			limpiarNumero(input_monto_inversion = document.getElementById("input-monto-detalle-solicitud").value);
+			input_monto_inversion = limpiarNumero(document.getElementById("input-monto-detalle-solicitud").value);
+
 		}
-		document.getElementById("input-monto").value = input_monto_inversion
+		document.getElementById("input-monto").value = '$'+numberWithCommas(input_monto_inversion)
 	}
 	INPUT_MONTO_INVERSION = input_monto_inversion
 	let tabla_id = ''
@@ -395,8 +470,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 	if (tabla){
 		if (tabla.children.length > 1) {
 			let last_child = tabla.lastChild
-
-			for (var i = oportunidad.plazo - 1; i >= 0; i--) {
+			for (var i = tabla.children.length - 1; i >= 1; i--) {
 				let last_child = tabla.lastChild
 				tabla.removeChild(last_child)
 			}
@@ -407,7 +481,6 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 	
 	}
 	
-
 	let monto_inversion = parseInt(input_monto_inversion, 10)
 
 	
@@ -467,19 +540,36 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 	if (input_modal === 'aceptar-inversion-inicio' || input_modal === 'aceptar-inversion'){
 		let div_adjudicacion_total = document.getElementById("adjudicacion-total")
-	cargo_adjudicacion_total = cargo_adjudicacion+cargo_adjudicacion_iva
-	div_adjudicacion_total.innerHTML = '$'+cargo_adjudicacion_total.toFixed(2)
+		cargo_adjudicacion_total = cargo_adjudicacion+cargo_adjudicacion_iva
+		div_adjudicacion_total.innerHTML = FORMAT_CURRENCY.format(cargo_adjudicacion_total)
 
-	let div_inversion_total = document.getElementById("inversion-total")
-	div_inversion_total.innerHTML = '$'+inversion_total.toFixed(2)
+		let div_inversion_total = document.getElementById("inversion-total")
+		div_inversion_total.innerHTML = FORMAT_CURRENCY.format(inversion_total)
 
-	
-	let div_ganancia = document.getElementById("ganancia-total");
-	div_ganancia.innerHTML = ganancia_total.toFixed(2);
-	let div_adjudicacion = document.getElementById("adjudicacion");
-	div_adjudicacion.innerHTML = cargo_adjudicacion.toFixed(2)
-	let div_adjudicacion_iva = document.getElementById("adjudicacion-iva")
-	div_adjudicacion_iva.innerHTML = cargo_adjudicacion_iva.toFixed(2)
+		
+		let div_ganancia = document.getElementById("ganancia-total");
+		div_ganancia.innerHTML = ganancia_total.toFixed(2);
+		let div_adjudicacion = document.getElementById("adjudicacion");
+		div_adjudicacion.innerHTML = cargo_adjudicacion.toFixed(2)
+		let div_adjudicacion_iva = document.getElementById("adjudicacion-iva")
+		div_adjudicacion_iva.innerHTML = cargo_adjudicacion_iva.toFixed(2)
+	}
+
+	else if (input_modal === 'cambiar-monto-inversion-inicio' || input_modal === 'cambiar-monto-inversion'){
+		let div_adjudicacion_total = document.getElementById("adjudicacion-total-cambiar-monto-inversion")
+		cargo_adjudicacion_total = cargo_adjudicacion+cargo_adjudicacion_iva
+		div_adjudicacion_total.innerHTML = FORMAT_CURRENCY.format(cargo_adjudicacion_total)
+
+		let div_inversion_total = document.getElementById("inversion-total-cambiar-monto-inversion")
+		div_inversion_total.innerHTML = FORMAT_CURRENCY.format(inversion_total)
+
+		
+		let div_ganancia = document.getElementById("ganancia-total-cambiar-monto-inversion");
+		div_ganancia.innerHTML = ganancia_total.toFixed(2);
+		let div_adjudicacion = document.getElementById("adjudicacion-cambiar-monto-inversion");
+		div_adjudicacion.innerHTML = cargo_adjudicacion.toFixed(2)
+		let div_adjudicacion_iva = document.getElementById("adjudicacion-iva-cambiar-monto-inversion")
+		div_adjudicacion_iva.innerHTML = cargo_adjudicacion_iva.toFixed(2)
 	}
 
 
@@ -695,11 +785,13 @@ function guardar_tabla(oportunidad) {
 	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
 
 
-	let monto = document.getElementById("input-monto-aceptar-inversion").value
+	let monto = limpiarNumero(document.getElementById("input-monto-aceptar-inversion").value)
 	let adjudicacion = document.getElementById("adjudicacion").textContent;
 	let adjudicacion_iva = document.getElementById("adjudicacion-iva").textContent;
-	let inversion_total = document.getElementById("inversion-total").textContent;
-	inversion_total = inversion_total.replace(/\$/g,'');
+	let adjudicacion_total = document.getElementById("adjudicacion-total").textContent
+	adjudicacion_total = adjudicacion_total.replace(/\$/g,'');
+	let inversion_total = parseFloat(monto,10) + parseFloat(adjudicacion_total,10)
+	// inversion_total = inversion_total.replace(/\$/g,'');
 	let ganancia_total = document.getElementById("ganancia-total").textContent;
 
 	let inversion = {"monto": monto, 
@@ -710,45 +802,6 @@ function guardar_tabla(oportunidad) {
 						"ganancia_total": ganancia_total
 					}
 
-		
-	let pagos = [];
-	let tabla = document.getElementById("tabla-amortizacion-aceptar-inversion-id");
-	let tabla_childrens = tabla.children
-	let PLAZO = oportunidad.plazo
-
-	for (var i = 0; i < PLAZO; i++) {
-
-		let fila_i = tabla_childrens[i+1];
-		let fila_i_childrens = fila_i.children;
-
-
-		let pago = fila_i_childrens[1].textContent;
-		pago = pago.replace(/\$/g,'');
-		let comision = fila_i_childrens[2].textContent;
-		comision = comision.replace(/\$/g,'');
-		let comision_iva = fila_i_childrens[3].textContent;
-		comision_iva = comision_iva.replace(/\$/g,'');
-		let ganancia = fila_i_childrens[4].textContent;
-		ganancia = ganancia.replace(/\$/g,'');
-
-
-		
-
-		
-		let orden = {"orden": i+1,
-						"fecha":fecha_pago,
-						"pago": pago,
-						"comision": comision,
-						"comision_iva": comision_iva,
-						"ganancia": ganancia,
-					}
-
-		date.setDate(date.getDate() + 30)
-		fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
-
-		pagos.push(orden);
-
-	}
 
 	
 
@@ -765,7 +818,6 @@ function guardar_tabla(oportunidad) {
 	xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
 								"inversion": inversion,
-								"pagos": pagos,
 							})
 				);
 

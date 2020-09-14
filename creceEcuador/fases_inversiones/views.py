@@ -240,8 +240,7 @@ class aceptar_declaracion_fondos(generics.CreateAPIView):
             f.write(buffer.getbuffer())
 
         buffer.seek(0)
-        return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
-
+        return Response(status=status.HTTP_200_OK,)
 
 
 def hacer_contrato(doc, usuario, fecha, hora):
@@ -440,7 +439,7 @@ def actualizar_datos_inversion(inversion,solicitud):
     participacion_inversionista = (monto_inversion/monto_solicitud)
     participacion_inversionista_porcentaje = participacion_inversionista *100
     COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
-    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista * ADJUDICACION_FACTOR
+    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista
     cargo_adjudicacion_iva = cargo_adjudicacion * IVA
     inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
     inversion_total = round(inversion_total,2)

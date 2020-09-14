@@ -21,8 +21,10 @@ $( document ).ready(function() {
 $(window).scroll(cargarOportunidadesOnScroll);
 
 function cargarOportunidadesOnScroll(){
+  var a = window.location.href;
+  let referencia = a.split('#')[1];
   if($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-    if(!obteniendoOportunidades && dataEncontrada){
+    if(!obteniendoOportunidades && dataEncontrada && referencia === 'todas'){
       obteniendoOportunidades = true;
       let inversionista = $(".active.selectable").attr("data-usuario")
       obtener_inversiones_por_usuario(inversionista)
@@ -199,66 +201,82 @@ function numeroConComas(x) {
     return parts.join(".");
 }
 
-function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, inicio) {
+function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, inicio, porcentaje_financiado) {
   // body...
-  if(inicio === "INICIO"){
-      for (var i = lista_inversiones_usuario.length - 1; i >= 0; i--) {
-        solicitud_invertida = lista_inversiones_usuario[i]
-        if(id_solicitud === solicitud_invertida.id){
-          let fase_inversion = solicitud_invertida.fase_inversion
-          let id_oportunidad = solicitud_invertida.id_inversion
-          let monto = solicitud_invertida.monto_invertido
-          if(fase_inversion === "FILL_INFO"){
-            return (`
-                    <span class="span-solicitud-invertida-dashboard">
-                      
-
-                        <a class="crece-solicitud-invertida-dashboard" href="#" onclick="mostrar_completar_datos_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')">
-                          <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                          Continuar
-                        </a>
-                    </span>`
-            );
-          }
-
-          else if(fase_inversion === "ORIGIN_MONEY"){
-            return (`
-                    <span class="span-solicitud-invertida-dashboard">
-                       <a class="crece-solicitud-invertida-dashboard" href="#" onclick="declaracion_fondos_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')">
-                         <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                         Continuar
-                        </a>
-                   </span>`  
-            );
-          }
-
-          else if(fase_inversion === "PENDING_TRANSFER"){
-            return (`
+  if(parseInt(porcentaje_financiado) < 100){
+      if(inicio === "INICIO"){
+        for (var i = lista_inversiones_usuario.length - 1; i >= 0; i--) {
+          solicitud_invertida = lista_inversiones_usuario[i]
+          if(id_solicitud === solicitud_invertida.id){
+            let fase_inversion = solicitud_invertida.fase_inversion
+            let id_oportunidad = solicitud_invertida.id_inversion
+            let monto = solicitud_invertida.monto_invertido
+            if(fase_inversion === "FILL_INFO"){
+              return (`
                       <span class="span-solicitud-invertida-dashboard">
-                          <a class="crece-solicitud-invertida-dashboard" href="#" onclick="subir_transferencia_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')"> 
+                        
+
+                          <a class="crece-solicitud-invertida-dashboard" href="#" onclick="mostrar_completar_datos_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                             Continuar
                           </a>
                       </span>`
-            );
-          }
-          else if(fase_inversion ===  "VALID"){
-            return (`
-                      <span class="span-solicitud-invertida-dashboard">
-                          <span class="crece-solicitud-invertida-dashboard" href="#"> 
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            Invertido
-                          </span>
-                      </span>`
-            );
-          }  
+              );
+            }
 
+            else if(fase_inversion === "ORIGIN_MONEY"){
+              return (`
+                      <span class="span-solicitud-invertida-dashboard">
+                         <a class="crece-solicitud-invertida-dashboard" href="#" onclick="declaracion_fondos_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')">
+                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                           Continuar
+                          </a>
+                     </span>`  
+              );
+            }
+
+            else if(fase_inversion === "PENDING_TRANSFER"){
+              return (`
+                        <span class="span-solicitud-invertida-dashboard">
+                            <a class="crece-solicitud-invertida-dashboard" href="#" onclick="subir_transferencia_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')"> 
+                              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                              Continuar
+                            </a>
+                        </span>`
+              );
+            }
+            else if(fase_inversion ===  "VALID"){
+              return (`
+                        <span class="span-solicitud-invertida-dashboard">
+                            <span class="crece-solicitud-invertida-dashboard" href="#"> 
+                              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                              Invertido
+                            </span>
+                        </span>`
+              );
+            }  
+
+          }
         }
-      }
+        return ""
+    }else{
       return ""
-  }else{
-    return ""
+    }
   }
+  else{
+    return(
+            `
+             <span class="span-solicitud-invertida-dashboard">
+                            <span class="crece-solicitud-invertida-dashboard"> 
+                              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                              Completada
+                            </span>
+                        </span>
+
+            `
+          );
+  }
+  
   
   
 }
@@ -269,7 +287,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
   '                                                <div class="crece-oportunidades-imagen-gradiente">'+
   '                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
-                                                        crear_boton_continuar_tarjeta(oportunidad.id, lista_inversiones_usuario, inicio)+
+                                                        crear_boton_continuar_tarjeta(oportunidad.id, lista_inversiones_usuario, inicio, oportunidad.porcentaje_financiado)+
   '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
   '                                                        <strong>'+ oportunidad.autor +'</strong>'+
   '                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
@@ -1031,6 +1049,8 @@ const ID_SUBIR_TRANSFERENCIA = "#subir_transferencia_wrapper";
 const ID_FASE_FINAL = "#final_inversion_wrapper";
 const ID_FASE_ACEPTAR = "#aceptar-inversion-modal-dashboard"
 const ID_CAMBIAR_MONTO_INVERSION = "#cambiar-monto-inversion-modal-dashboard"
+const ID_SIMULAR_INVERSION = "#crece-modal-simular-inversion-id"
+const ID_TABLA_SOLICITUD_VIGENTE = "#crece-modal-tabla-solicitud-vigente-id"
 let monto_inversion_actual = 350;
 let fase_inversion_actual;
 let id_solicitud_actual;
@@ -1045,7 +1065,8 @@ function aceptar_inversion_modal(id_solicitud) {
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_COMPLETA_DATOS).hide();
   $(ID_DECLARACION_FONDOS).hide();
-  
+  $(ID_SIMULAR_INVERSION).hide();
+  $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 
 }
 
@@ -1061,6 +1082,8 @@ function declaracion_fondos_modal(id_inversion, monto, id_solicitud, fase_invers
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_COMPLETA_DATOS).hide();
   $(ID_DECLARACION_FONDOS).css('display', 'flex');
+  $(ID_SIMULAR_INVERSION).hide();
+  $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 
   habilitarClicks();
 
@@ -1080,6 +1103,8 @@ function aceptar_declaracion_fondos_modal() {
     $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
     $(ID_COMPLETA_DATOS).hide();
     $(ID_DECLARACION_FONDOS).hide();
+    $(ID_SIMULAR_INVERSION).hide();
+    $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 
     habilitarClicks();
 
@@ -1095,15 +1120,7 @@ function aceptar_declaracion_fondos_modal() {
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var file = new Blob([this.response], { 
-                                    type: 'application/pdf' 
-            });
-
-            var link = document.createElement("a");
-            link.href = window.URL.createObjectURL(file);
-            link.download = "Contrato.pdf";
-            document.body.appendChild(link);
-            link.click();
+           
             cambio_fase_inversion_declaracion_fondos_modal(id_inversion_modal);
 
             fase_inversion_actual = "PENDING_TRANSFER";
@@ -1137,7 +1154,9 @@ function cambio_fase_inversion_declaracion_fondos_modal(id_inversion){
         $(ID_FASE_ACEPTAR).hide();
         $(ID_DECLARACION_FONDOS).hide();
         $(ID_COMPLETA_DATOS).hide();
+        $(ID_SIMULAR_INVERSION).hide();
         $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
+        $(ID_TABLA_SOLICITUD_VIGENTE).hide();
         $("#subir_transferencia_wrapper .error-container").hide();
       },
       error: function(){
@@ -1162,6 +1181,8 @@ function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_i
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_DECLARACION_FONDOS).hide();
   $(ID_CAMBIAR_MONTO_INVERSION).hide();
+  $(ID_SIMULAR_INVERSION).hide();
+  $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 
   habilitarClicks();
 
@@ -1211,6 +1232,7 @@ function llenar_datos_transferencia(id_inversion){
       $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
       $(ID_CAMBIAR_MONTO_INVERSION).hide();
+      $(ID_TABLA_SOLICITUD_VIGENTE).hide();
     },
     error: function(){
       
@@ -1223,6 +1245,7 @@ function llenar_datos_transferencia(id_inversion){
       $(ID_SUBIR_TRANSFERENCIA).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
       $(ID_CAMBIAR_MONTO_INVERSION).hide();
+      $(ID_TABLA_SOLICITUD_VIGENTE).hide();
     }
   });
 }
@@ -1250,6 +1273,7 @@ function enviarComprobanteTransferenciaModal(id_inversion){
         $(ID_DECLARACION_FONDOS).hide();
         $(ID_SUBIR_TRANSFERENCIA).hide();
         $(ID_CAMBIAR_MONTO_INVERSION).hide();
+        $(ID_TABLA_SOLICITUD_VIGENTE).hide();
       },
       error: function(){
           $("#subir_transferencia_wrapper .error").html("No se pudo cargar el archivo. Intente de nuevo.");
@@ -1278,6 +1302,7 @@ $("#finalizar_inversion").click(function(){
   $(ID_DECLARACION_FONDOS).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_CAMBIAR_MONTO_INVERSION).hide();
+  $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 });
 
 $(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(function(){
@@ -1288,6 +1313,8 @@ $(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(functi
   $(ID_DECLARACION_FONDOS).hide();
   $(ID_SUBIR_TRANSFERENCIA).hide();
   $(ID_CAMBIAR_MONTO_INVERSION).hide();
+  $(ID_SIMULAR_INVERSION).hide();
+  $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 });
 
 $(".crece-modal").click(function(e) {
@@ -1305,6 +1332,7 @@ $(".crece-modal").click(function(e) {
     $(ID_DECLARACION_FONDOS).hide();
     $(ID_SUBIR_TRANSFERENCIA).hide();
     $(ID_CAMBIAR_MONTO_INVERSION).hide();
+    $(ID_TABLA_SOLICITUD_VIGENTE).hide();
 
   }
 
@@ -1339,6 +1367,7 @@ function habilitarClicks(){
       $(ID_COMPLETA_DATOS).css('display', 'flex');
       $(ID_DECLARACION_FONDOS).hide();
       $(ID_CAMBIAR_MONTO_INVERSION).hide();
+      $(ID_TABLA_SOLICITUD_VIGENTE).hide();
       habilitarLinksAnteriores(fase_inversion_actual,2);
     });
 
@@ -1350,6 +1379,7 @@ function habilitarClicks(){
       $(ID_COMPLETA_DATOS).hide();
       $(ID_DECLARACION_FONDOS).css('display', 'flex');
       $(ID_CAMBIAR_MONTO_INVERSION).hide();
+      $(ID_TABLA_SOLICITUD_VIGENTE).hide();
       habilitarLinksAnteriores(fase_inversion_actual,3);
     });
 

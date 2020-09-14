@@ -157,7 +157,7 @@ def crear_pagos(inversion,solicitud):
     participacion_inversionista = (monto_inversion/monto_solicitud)
     participacion_inversionista_porcentaje = participacion_inversionista *100
     COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
-    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista * ADJUDICACION_FACTOR
+    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista
     cargo_adjudicacion_iva = cargo_adjudicacion * IVA
     inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
     inversion_total = round(inversion_total,2)
@@ -194,7 +194,6 @@ def crear_pagos(inversion,solicitud):
                                         comision_iva=comision_iva, ganancia=ganancia)
         new_pago_detalle.save()
 
-    print(round(ganancia_total,2))
     return round(ganancia_total,2)
 
     

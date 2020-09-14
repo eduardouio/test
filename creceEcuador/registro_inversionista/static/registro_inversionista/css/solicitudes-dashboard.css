@@ -49,7 +49,6 @@
     display: block;
     font-size: 14px;
     padding: 0.5px 0px;
-    max-width: 124px;
   }
   
   .crece-oportunidades-imagen-gradiente-texto{
@@ -419,7 +418,9 @@
     align-items: center;
     /* align vertical */
     padding: 0px 10px;
-    color: white;
+        color: white;
+
+
   }
   
   /* Contenido */

@@ -11,15 +11,6 @@ function aceptar_declaracion_fondos() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             
-            var file = new Blob([this.response], { 
-                                    type: 'application/pdf' 
-            });
-
-            var link = document.createElement("a");
-            link.href = window.URL.createObjectURL(file);
-            link.download = "Contrato.pdf";
-            document.body.appendChild(link);
-            link.click();
             cambio_fase_inversion(obtenerIdInversion());
 
         }

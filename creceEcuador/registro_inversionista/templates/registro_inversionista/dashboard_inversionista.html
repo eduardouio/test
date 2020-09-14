@@ -32,6 +32,160 @@
               <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"></path>                             
               <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"></path>                           
             </svg>
+
+            <!--seccion simular inversion-->
+            <div class="row justify-content-center" id="crece-modal-simular-inversion-id">
+                <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
+                    <div class="col-12">
+                        <h2>Calcula tu ganancia</h2>
+                    </div>
+                      <!--Barra de progreso-->                                               
+                      <div class="col-10 crece-operaciones-contenido-monto-barra" style="margin-top: 10px;margin-left: auto;margin-right: auto;"> 
+                          <div class="crece-operaciones-contenido-monto-barra-progreso" id="crece-operaciones-contenido-monto-barra-progreso-id">
+                          </div>                                                        
+                      </div>
+                      <!--Datos Barra-->
+                      <div class="col-10 crece-operaciones-contenido-datos-barra" style="margin: 20px auto;">
+                        <div class="row">
+                              <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">
+                                  <strong id=strong-monto-recolectado>
+                                      
+                                  </strong>
+                                  <span id="span-pr-recolectado"> </span>
+                              </div>
+                              <div class="col-6 crece-operaciones-contenido-datos-barra-objetivo">
+                                  <strong id='strong-monto-objetivo'>
+                                      
+                                  </strong>
+                                  <span >Objetivo</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!--DATOS DE LA TABLA-->
+                              <div class="row simular-inversion-input-valores" id="simular-inversion-input-valores-id">
+                                  <div class="col-10" style="margin-left: auto;margin-right: auto;">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <label id="label_error_simular_inversion_modal">
+                                          Valor no permitido
+                                        </label>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col-10 crece-body-datos">
+                                    <div class="row">
+                                      <div class="col-4" style="font-weight: bold;">Inversión:</div>
+                                      <div class="col-4" id="input-monto-button-calcular">
+                                        <input type="text" id="input-monto" style="width: 100%;">
+                                        <div class="crece-detalle-operaciones-invierte-minimo">
+                                          <span style="color: #006B8D; font-size: 10px;">Inversión mínima $350</span>
+                                        </div>
+                                      </div>
+                                      <div class="col-4">
+                                        <button class='crece-boton-calcular-tabla-amortizacion' id="calcular" onclick="calcular_tabla_inversionista('simulacion-inversion')">Calcular</button>
+                                      </div>
+                                    </div>
+        
+                                  </div>
+
+                                  <!--TABLA AMORTIZACION-->
+                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-id">
+                                     <tr>
+                                         <th>N°</th>
+                                         <th>Capital</th>
+                                         <th>Intereses</th>
+                                         <th>Comisión</th>
+                                         <th>Recibes</th>
+                                     </tr> 
+                                  </table>
+                                  
+                                    <!--Footer (GUARDAR-SIGUIENTE)-->
+                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
+                                      <button class="crece-boton-final-tabla-amortizacion" id="simular-inversion-boton-invertir">Invertir</button>
+                                      
+                                  </div> 
+                                </div>
+
+                </div>
+            </div>
+
+            <!--seccion tabla de solicitud vigente-->
+            <div class="row justify-content-center" id="crece-modal-tabla-solicitud-vigente-id">
+                <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
+                  <div class="col-12">
+                        <h2>Tabla de solicitud vigente</h2>
+                    </div>
+                    <!--DATOS DE LA TABLA-->
+                              <div class="row simular-inversion-input-valores" id=" ">
+                                  <div class="col-10 crece-body-datos">
+                                    <div class="row">
+                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
+                                      <div class="col-4" id="">
+                                        <div id="monto-invertir-tabla-vigente-id" disabled style="width: 100%;text-align: right; 
+                                        color: black;font-weight: 500;">
+
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
+                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
+                                          
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:  none;"> 
+                                        <div>Adjudicacion:</div>
+                                        <div class="body-datos-calculados" id="adjudicación-tabla-vigente-id">
+                                          
+                                        </div>
+                                        <div>Adjudicacion (IVA):</div>
+                                        <div class="body-datos-calculados" id="adjudicación-iva-tabla-vigente-id"></div>
+                                        <div>Ganancia Total:</div>
+                                        <div class="body-datos-calculados" id="ganancia-total-tabla-vigente-id">
+                                               
+                                        </div>
+
+                                    </div>
+                                        
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Total a transferir:</div>
+                                        <div class="col-4 body-datos-calculados" id="total-invertir-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                          
+                                        </div>
+                                    </div>
+                                        
+                                    
+            
+                                      </div>
+                              
+
+                                  <!--TABLA AMORTIZACION-->
+                                  <table class='col-10 tabla-amortizacion' id="tabla-vigente-id">
+                                     <tr>
+                                         <th>N°</th>
+                                         <th>Fecha de pago</th>
+                                         <th>Capital</th>
+                                         <th>Intereses</th>
+                                         <th>Comisión</th>
+                                         <th>Recibes</th>
+
+                                     </tr> 
+                                  </table>
+                                  
+                                    <!--Footer (GUARDAR-SIGUIENTE)-->
+                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
+                                      
+                                      
+                                  </div> 
+                                </div>
+
+                </div>
+            </div>
+
             <!--seccion aceptar inversion-->
             <div class="row justify-content-center" id="aceptar-inversion-modal-dashboard">
                 <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
@@ -51,6 +205,7 @@
                             </div>
                         </div>
                         <div class="row">
+
                             <div class="col-auto">
                                 <span class="crece-flujo-inversionista-progreso-texto">Progreso: 0%</span>
                             </div>
@@ -59,15 +214,18 @@
                             <div class="col-12 crece-flujo-inversionista-barra">
                                 <div style="width: 0%;" class="crece-flujo-inversionista-barra-progreso"></div>
                             </div>
+                            <div class="col-12">
+                                <h2>Confirma la cantidad a invertir</h2>
+                            </div>
                         </div>
                         <!--Aceptar y Descargar-->
                      <div class="row body-opciones">
-                        
+                            
                              <!--DATOS DE LA TABLA-->
                               <div class="row simular-inversion-input-valores" id="simular-inversion-input-valores-id">
                                 <div class="col-10" style="margin-left: auto;margin-right: auto;">
                                     <div class="row">
-                                      <div class="col-4">
+                                      <div class="col-12">
                                         <label id="label_error_aceptar_inversion">
                                           Valor no permitido
                                         </label>
@@ -77,10 +235,12 @@
                                   </div>
                                   <div class="col-10 crece-body-datos">
                                     <div class="row">
-                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
+                                      <div class="col-4" style="font-weight: bold;">Inversión:</div>
                                       <div class="col-4" id="input-monto-button-calcular">
-                                        <input type="text" name="monto" id="input-monto-aceptar-inversion" style="width: 100%;text-align: right;">
-                                        
+                                        <input placeholder="Inversión mínima $350" type="text" name="monto" id="input-monto-aceptar-inversion" style="width: 100%;text-align: right;">
+                                        <div class="crece-detalle-operaciones-invierte-minimo">
+                                          <span style="color: #006B8D; font-size: 10px;">Inversión mínima $350</span>
+                                        </div>
                                       </div>
                                       <div class="col-4">
                                         <button class='crece-boton-calcular-tabla-amortizacion' id="calcular-aceptar-inversion" onclick="calcular_tabla_inversionista('aceptar-inversion')">Calcular</button>
@@ -162,6 +322,7 @@
                             </div>
                         </div>
                         <div class="row">
+                            
                             <div class="col-auto">
                                 <span class="crece-flujo-inversionista-progreso-texto">Progreso: 0%</span>
                             </div>
@@ -169,6 +330,9 @@
                         <div class="row justify-content-center">
                             <div class="col-12 crece-flujo-inversionista-barra">
                                 <div style="width: 0%;" class="crece-flujo-inversionista-barra-progreso"></div>
+                            </div>
+                            <div class="col-12">
+                                <h2>Confirma la cantidad a invertir</h2>
                             </div>
                         </div>
                         <!--Aceptar y Descargar-->
@@ -178,7 +342,7 @@
                               <div class="row simular-inversion-input-valores" id="cambiar-monto-inversion-input-valores-id">
                                 <div class="col-10" style="margin-left: auto;margin-right: auto;">
                                     <div class="row">
-                                      <div class="col-4">
+                                      <div class="col-12">
                                         <label id="label_error_cambiar_monto_inversion">
                                           Valor no permitido
                                         </label>
@@ -188,10 +352,12 @@
                                   </div>
                                   <div class="col-10 crece-body-datos">
                                     <div class="row">
-                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
+                                      <div class="col-4" style="font-weight: bold;">Inversión:</div>
                                       <div class="col-4" id="input-cambiar-monto-button-calcular">
-                                        <input type="text" name="monto" id="input-cambiar-monto-inversion" style="width: 100%;text-align: right;">
-                                        
+                                        <input placeholder="Inversión mínima $350" type="text" name="monto" id="input-cambiar-monto-inversion" style="width: 100%;text-align: right;">
+                                        <div class="crece-detalle-operaciones-invierte-minimo">
+                                          <span style="color: #006B8D; font-size: 10px;">Inversión mínima $350</span>
+                                        </div>
                                       </div>
                                       <div class="col-4">
                                         <button class='crece-boton-calcular-tabla-amortizacion' id="calcular-cambiar-monto-inversion" onclick="calcular_tabla_inversionista('cambiar-monto-inversion')">Calcular</button>
@@ -441,14 +607,28 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Teléfono domicilio:</label>
+                                {% if usuario.telefono_domicilio %}
                                 <input 
-                                    value="{{usuario.telefono_domicilio}}"
-                                    class="form-control"
-                                    name="telf_domicilio"
-                                    id="telf_domicilio"
-                                    type="number"
-                                    data-valueMissing="Ingrese el número de teléfono de su domicilio"
-                                    />
+
+                                      value="{{usuario.telefono_domicilio}}"
+                                      class="form-control"
+                                      name="telf_domicilio"
+                                      id="telf_domicilio" 
+                                      data-valueMissing="Ingrese el número de teléfono de su domicilio"
+                                      />
+                                {% else %}
+                                 <input 
+
+                                      value=""
+                                      class="form-control"
+                                      name="telf_domicilio"
+                                      id="telf_domicilio"
+                                      data-valueMissing="Ingrese el número de teléfono de su domicilio"
+                                      />
+                                {% endif %}
+                                  
+                      
+
                             </div>
                             
                             <div class="col-12">
@@ -1006,6 +1186,7 @@
                 <input type="text" name="">
               </div>-->
     
+
               <div class="row justify-content-between">
                   <div class="col-auto">
                       <div class="crece-menu-toggle">
@@ -1016,7 +1197,9 @@
   
                   <div class="col-auto">
                       <div class="crece-header-logo" >
-                        <a href="/">
+
+                        <a href="/" target="_blank">
+
             
                             <img src="{% static 'assets/logo_color.png' %}" alt="Logo crece">
             
@@ -1024,6 +1207,7 @@
                         
                       </div>
                   </div>
+
               </div>
     
           </header>
@@ -1172,94 +1356,7 @@
           </section>
           <section class="crece-detalle-operaciones" id="crece-detalle-operaciones-id">
                 </section>
-          <section class="crece-modal-tabla-solicitud-vigente" id="crece-modal-tabla-solicitud-vigente-id">
-            <div class="crece-modal-simular-inversion-container">
-                      <!--CONTENIDO-->
-                      <div class="crece-simular-inversion-container container">
 
-                        <div class="container">
-                          <div class="row justify-content-center">
-                                          
-                                
-                              <!--DATOS DE LA TABLA-->
-                              <div class="row simular-inversion-input-valores" id=" ">
-                                  <div class="col-10 crece-body-datos">
-                                    <div class="row">
-                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
-                                      <div class="col-4" id="">
-                                        <div id="monto-invertir-tabla-vigente-id" disabled style="width: 100%;text-align: right; 
-                                        color: black;font-weight: 500;">
-
-                                        </div>
-                                        
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
-                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
-                                          
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="display:  none;"> 
-                                        <div>Adjudicacion:</div>
-                                        <div class="body-datos-calculados" id="adjudicación-tabla-vigente-id">
-                                          
-                                        </div>
-                                        <div>Adjudicacion (IVA):</div>
-                                        <div class="body-datos-calculados" id="adjudicación-iva-tabla-vigente-id"></div>
-                                        <div>Ganancia Total:</div>
-                                        <div class="body-datos-calculados" id="ganancia-total-tabla-vigente-id">
-                                               
-                                        </div>
-
-                                    </div>
-                                        
-                                    <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Total a transferir:</div>
-                                        <div class="col-4 body-datos-calculados" id="total-invertir-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                          
-                                        </div>
-                                    </div>
-                                        
-                                    
-            
-                                      </div>
-                                       <svg class="bi bi-x crece-detalle-operaciones-header-gradiente-cerrar" id= "span-close-modal-tabla-solicitud-vigente-id" width="50px" height="50px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                 <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
-                                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
-                              </svg>    
-
-                                  <!--TABLA AMORTIZACION-->
-                                  <table class='col-10 tabla-amortizacion' id="tabla-vigente-id">
-                                     <tr>
-                                         <th>N°</th>
-                                         <th>Fecha de pago</th>
-                                         <th>Capital</th>
-                                         <th>Intereses</th>
-                                         <th>Comisión</th>
-                                         <th>Recibes</th>
-
-                                     </tr> 
-                                  </table>
-                                  
-                                    <!--Footer (GUARDAR-SIGUIENTE)-->
-                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
-                                      
-                                      
-                                  </div> 
-                                </div>
-                            </div>
-                      
-
-                                
-
-
-
-                        </div>
-                </div>
-            </div>
-          </section>
           <section class="crece-oportunidades" id="crece-oportunidades-id">
             <div class="row justify-content-center">
                 <div class="container col-lg-12">
@@ -1268,94 +1365,6 @@
                     </div>
                     <div class="row justify-content-center crece-oportunidades-container"> 
                     </div>                                              
-                </div>
-            </div>
-          </section>
-          <section class="crece-modal-simular-inversion" id='crece-modal-simular-inversion-id'>
-
-                    <div class="crece-modal-simular-inversion-container">
-                      <!--CONTENIDO-->
-                      <div class="crece-simular-inversion-container container">
-
-                        <div class="container">
-                          <div class="row justify-content-center">
-                                                <!--Barra de progreso-->                                               
-                                            <div class="col-10 crece-operaciones-contenido-monto-barra" style="margin-top: 10px;"> 
-                                                    <div class="crece-operaciones-contenido-monto-barra-progreso" id="crece-operaciones-contenido-monto-barra-progreso-id">
-                                                    </div>                                                        
-                                                </div>
-                          <!--Datos Barra-->
-                                                <div class="col-10 crece-operaciones-contenido-datos-barra">'
-                                                  <div class="row">
-                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">
-                                                            <strong id=strong-monto-recolectado>
-                                                                
-                                                            </strong>
-                                                            <span id="span-pr-recolectado"> </span>
-                                                        </div>
-                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-objetivo">
-                                                            <strong id='strong-monto-objetivo'>
-                                                                
-                                                            </strong>
-                                                            <span >Objetivo</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                <svg class="bi bi-x crece-detalle-operaciones-header-gradiente-cerrar" id= "span-close-modal-id" width="50px" height="50px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'+
-                                 <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
-                                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
-                              </svg>
-                              <!--DATOS DE LA TABLA-->
-                              <div class="row simular-inversion-input-valores" id="simular-inversion-input-valores-id">
-                                  <div class="col-10" style="margin-left: auto;margin-right: auto;">
-                                    <div class="row">
-                                      <div class="col-4">
-                                        <label id="label_error_simular_inversion_modal">
-                                          Valor no permitido
-                                        </label>
-                                      </div>
-                                      
-                                    </div>
-                                  </div>
-                                  <div class="col-10 crece-body-datos">
-                                    <div class="row">
-                                      <div class="col-4">Inversion:</div>
-                                      <div class="col-4" id="input-monto-button-calcular">
-                                        <input type="text" id="input-monto" style="width: 100%;">
-                                        
-                                      </div>
-                                      <div class="col-4">
-                                        <button class='crece-boton-calcular-tabla-amortizacion' id="calcular" onclick="calcular_tabla_inversionista('simulacion-inversion')">Calcular</button>
-                                      </div>
-                                    </div>
-        
-                                  </div>
-
-                                  <!--TABLA AMORTIZACION-->
-                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-id">
-                                     <tr>
-                                         <th>N°</th>
-                                         <th>Capital</th>
-                                         <th>Intereses</th>
-                                         <th>Comisión</th>
-                                         <th>Recibes</th>
-                                     </tr> 
-                                  </table>
-                                  
-                                    <!--Footer (GUARDAR-SIGUIENTE)-->
-                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
-                                      <button class="crece-boton-final-tabla-amortizacion" id="simular-inversion-boton-invertir">Invertir</button>
-                                      
-                                  </div> 
-                                </div>
-                            </div>
-                      
-
-                                
-
-
-
-                        </div>
                 </div>
             </div>
           </section>

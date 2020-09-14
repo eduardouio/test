@@ -134,6 +134,53 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
 }
 
 
+
+function crear_boton_regresar_solicitudes() {
+  // body...
+  var a = window.location.href;
+  let referencia = a.split('#')[1]
+
+  return (  
+          `
+            <button id="crece-regresar-detalle-solicitud" onclick="regresar_detalle_solicitud('`+referencia+`')" style="
+    margin-bottom: auto;position: relative;left: -16px;margin-top: 12px;">Regresar</button>
+          
+          `
+  )
+
+};
+
+function regresar_detalle_solicitud(referencia) {
+  // body...
+  var fase_inversion =  $(".selectable.active").attr("data-fase-inversion")
+    var inversionista =  $(".selectable.active").attr("data-usuario")
+
+    $(".crece-oportunidades").show();
+    $(".crece-perfil").hide();
+
+    $("link[href='/static/registro_inversionista/css/registro.css']").remove();
+
+    if (fase_inversion){
+
+        $("#crece-botones-pag").hide()
+        $('#crece-detalle-operaciones-id').hide()
+        $(".crece-oportunidades-titulo").html("Mis Inversiones")
+        obtenerOportunidadesDesdeInversion(0, CANTIDAD_OPCIONES_MOSTRADAS_MIS_INV, fase_inversion, inversionista)
+        
+    }
+    else {
+        indice_opcion_actual = 0;
+
+        $(".crece-oportunidades-container").html("");
+        obtener_inversiones_por_usuario(inversionista)
+
+        $("#crece-botones-pag").show()
+        $('#crece-detalle-operaciones-id').hide()
+        $(".crece-oportunidades-titulo").html("Oportunidades de Inversión")
+    }
+}
+
+
 function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inversion) {
     var html_string = '<div class="row justify-content-center crece-detalle-operaciones-header">'+
 '                        <div class="crece-detalle-operaciones-header-imagen-blur" id="crece-detalle-operaciones-header-imagen-blur-id" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
@@ -157,7 +204,8 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inv
 '                    </div>'+
 ''+
 '                    <div class="row justify-content-center fondo-gris">'+
-'                        <div class="col-xl-8 col-lg-10 col-11 fondo-blanco">'+
+                      crear_boton_regresar_solicitudes()+
+'                        <div class="col-xl-8 col-lg-8 col-8 fondo-blanco">'+
 '                            <div class="row justify-content-center">'+
 '                                <!--Contenido izquierda-->'+
 '                                <div class="col-lg-8 col-12">'+
