@@ -1135,9 +1135,15 @@ function aceptar_declaracion_fondos_modal() {
 
         }
     };
+    let inversionista = $(".active.selectable").attr("data-usuario")
     xhttp.open("POST", RUTA_ACEPTAR_DECLARACION, true);
-    //xhttp.setRequestHeader("Content-type", "text/html;charset=UTF-8");
-    xhttp.send();
+    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({
+                "id_inversionista": inversionista,
+              })
+        );
+
+
   }
 
 

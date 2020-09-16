@@ -257,7 +257,7 @@ function stringSolicitud(oportunidad){
   '                                                                <button type="button" onclick="crearModal('+oportunidad.id+')">Ver más</button>'+
   '                                                            </div>'+
   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-  '                                                                <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Invertir</a>'+
+  '                                                                <a href="/inversionista/login/" target="_blank">Invertir</a>'+
   '                                                            </div>'+
   '                                                        </div>'+
   '                                                    </div>'+

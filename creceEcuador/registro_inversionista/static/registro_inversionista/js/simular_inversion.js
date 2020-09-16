@@ -779,7 +779,7 @@ function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
 /*Guardar tabla y enviarla al servidor*/
 function guardar_tabla(oportunidad) {
 	// body...
-
+	let inversionista = $(".active.selectable").attr("data-usuario")
 	let id_solicitud = oportunidad.id;
 	let date = new Date()
 	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
@@ -799,7 +799,8 @@ function guardar_tabla(oportunidad) {
 						"adjudicacion": adjudicacion,
 						"adjudicacion_iva": adjudicacion_iva,
 						"inversion_total": inversion_total,
-						"ganancia_total": ganancia_total
+						"ganancia_total": ganancia_total,
+						'id_inversionista': inversionista
 					}
 
 

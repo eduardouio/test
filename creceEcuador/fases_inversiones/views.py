@@ -104,10 +104,12 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
         adjudicacion_iva = dic_inversion.get("adjudicacion_iva")
         inversion_total = dic_inversion.get("inversion_total")
         ganancia_total = dic_inversion.get("ganancia_total")
+        id_usuario = dic_inversion.get('id_inversionista')
+
 
         #nueva inversion
-        usuario = Usuario.get_usuario(request)
         solicitud = Solicitud.objects.filter(id=id_solicitud)[0]
+        usuario = models.Usuario.objects.get(idUsuario=id_usuario)
         new_inversion = models.Inversion(id_user=usuario, id_solicitud=solicitud, monto=monto, 
                                         adjudicacion=adjudicacion, adjudicacion_iva=adjudicacion_iva,
                                         inversion_total=inversion_total, ganancia_total=ganancia_total)
@@ -221,8 +223,8 @@ def format_dos_digitos(entero):
 
 class aceptar_declaracion_fondos(generics.CreateAPIView):
     def post(self, request):
-        print(request.user.id)
-        usuario = Usuario.get_usuario(request)
+        id_inversionista = request.data.get("id_inversionista")
+        usuario = models.Usuario.objects.get(idUsuario=id_inversionista)
         date = datetime.datetime.utcnow() - datetime.timedelta(hours=5)
         hora, fecha = current_date_format(date)
         # Create a file-like buffer to receive PDF data.
