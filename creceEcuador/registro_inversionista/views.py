@@ -185,7 +185,7 @@ class RegisterUsers(generics.CreateAPIView):
             plain_message = strip_tags(message)
             to_email = email
             email = EmailMessage(
-                        mail_subject, message, to=[to_email]
+                        mail_subject, message,from_email="info@creceecuador.com", to=[to_email]
             )
             email.content_subtype = "html"
             email.send()

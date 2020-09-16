@@ -22,11 +22,11 @@ $(document).ready( function(){
 
   if(datosDesdeBase){
     $('#guardar_respuestas').hide();
-
+    
     $(".crece-completar-datos-formulario-wrapper input").each(function(){
       $(this).prop("disabled", true);
     });
-
+    
     $(".crece-completar-datos-formulario-wrapper select").each(function(){
       $(this).prop("disabled", true);
     });

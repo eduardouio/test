@@ -9,6 +9,12 @@
   padding: 0px 45px;
 }
 
+.crece-simular-inversion-wrapper{
+  background-color: white;
+  border: 1px solid #DEDEDE;
+  padding: 0px 45px;
+}
+
 .crece-completar-datos-formulario-wrapper-required{
   color: red;
 }

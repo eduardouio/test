@@ -238,7 +238,7 @@ function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, 
             else if(fase_inversion === "PENDING_TRANSFER"){
               return (`
                         <span class="span-solicitud-invertida-dashboard">
-                            <a class="crece-solicitud-invertida-dashboard" href="#" onclick="subir_transferencia_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')"> 
+                            <a class="crece-solicitud-invertida-dashboard check" href="#" onclick="subir_transferencia_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')"> 
                               <i class="fa fa-check-square-o" aria-hidden="true"></i>
                               Continuar
                             </a>
@@ -248,10 +248,10 @@ function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, 
             else if(fase_inversion ===  "VALID"){
               return (`
                         <span class="span-solicitud-invertida-dashboard">
-                            <span class="crece-solicitud-invertida-dashboard" href="#"> 
+                            <a class="crece-solicitud-invertida-dashboard check"> 
                               <i class="fa fa-check-square-o" aria-hidden="true"></i>
                               Invertido
-                            </span>
+                            </a>
                         </span>`
               );
             }  
@@ -267,10 +267,10 @@ function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, 
     return(
             `
              <span class="span-solicitud-invertida-dashboard">
-                            <span class="crece-solicitud-invertida-dashboard"> 
+                            <a class="crece-solicitud-invertida-dashboard check"> 
                               <i class="fa fa-check-square-o" aria-hidden="true"></i>
                               Completada
-                            </span>
+                            </a>
                         </span>
 
             `

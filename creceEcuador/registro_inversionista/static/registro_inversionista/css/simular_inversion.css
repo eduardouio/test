@@ -93,8 +93,8 @@
     background: #006B8D 0% 0% no-repeat padding-box;
     color: white;
     position: relative;
-    top: -20px;
-    left: -25px;
+    top: 119px;
+    left: 156px;
     padding-left: 0;
     background-color: #AECB6F;
 
@@ -129,7 +129,7 @@
 #aceptar-inversion-modal-dashboard{
 	background-color: white;
     border: 1px solid #DEDEDE;
-    padding: 0px 45px;
+
 }
 
 
@@ -343,3 +343,31 @@ th{
 	color: #006B8D;
 	padding: 10px 20px !important;
 } 
+
+@media screen and (max-width: 550px) {
+	
+	.crece-aceptar-inversion-titulo h2{
+		font-size: 16px;
+	}
+
+	.crece-body-datos{
+		margin-left: 0;
+		margin-right: 0;
+		font-size: 13px;
+	}
+
+	.crece-detalle-operaciones-invierte-minimo span{
+		font-size: 8px !important;
+	}
+
+	
+
+	.crece-boton-calcular-tabla-amortizacion{
+		font-size: 12px;
+	}
+
+	.tabla-amortizacion{
+		font-size: 11px;
+	}
+}
+

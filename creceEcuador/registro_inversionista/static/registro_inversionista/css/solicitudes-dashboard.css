@@ -51,6 +51,8 @@
     padding: 0.5px 0px;
   }
   
+  
+
   .crece-oportunidades-imagen-gradiente-texto{
     padding-left: 32px;
   }
@@ -793,4 +795,12 @@
 
   #crece-detalle-operaciones-header-imagen-blur-id{
     position: relative;
+  }
+
+  #crece-regresar-detalle-solicitud{
+    color: grey;
+    position: relative;
+    top: 9px;
+    left: 18px;
+    cursor: pointer;
   }

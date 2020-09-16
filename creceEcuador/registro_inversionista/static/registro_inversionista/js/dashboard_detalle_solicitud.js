@@ -142,8 +142,8 @@ function crear_boton_regresar_solicitudes() {
 
   return (  
           `
-            <button id="crece-regresar-detalle-solicitud" onclick="regresar_detalle_solicitud('`+referencia+`')" style="
-    margin-bottom: auto;position: relative;left: -16px;margin-top: 12px;">Regresar</button>
+            <span id="crece-regresar-detalle-solicitud" onclick="regresar_detalle_solicitud('`+referencia+`')">
+            <i class="fa fa-chevron-left" aria-hidden="true" style="font-size: 22px;margin: -9px;"></i>Regresar</span>
           
           `
   )
@@ -204,8 +204,9 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inv
 '                    </div>'+
 ''+
 '                    <div class="row justify-content-center fondo-gris">'+
-                      crear_boton_regresar_solicitudes()+
-'                        <div class="col-xl-8 col-lg-8 col-8 fondo-blanco">'+
+                      
+'                        <div class="col-xl-8 col-lg-8 col-12 fondo-blanco">'+
+crear_boton_regresar_solicitudes()+
 '                            <div class="row justify-content-center">'+
 '                                <!--Contenido izquierda-->'+
 '                                <div class="col-lg-8 col-12">'+
