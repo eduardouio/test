@@ -1,5 +1,6 @@
 let RUTA_USUARIOS = "/inversionista/"
 let RUTA_DASHBOARD = "/inversionista/dashboard/"
+let RUTA_REENVIAR_EMAIL_CONFIRMACION = '/inversionista/reenviar_email/'
 
 
 
@@ -91,6 +92,14 @@ function login(argument) {
         }else if(this.status == 401 && this.readyState == 4){
 
             let label_error = document.getElementById("label_error")
+            mensaje = JSON.parse(this.response).mensaje
+            label_error.innerHTML = mensaje
+            $(".crece-login-container-form-wrapper-error").show()
+        
+
+        }else if(this.status == 400 && this.readyState == 4){
+
+            let label_error = document.getElementById("label_error")
             label_error.innerHTML = "Usuario o contraseña incorrectos"
             $(".crece-login-container-form-wrapper-error").show()
         }
@@ -130,4 +139,51 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+
+function insertar_timestamps(email){
+  let timestamp_span = document.getElementById("span-hora-email-id")
+  let date = new Date()
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  let strTime = hours + ':' + minutes +" "+ ampm;
+  let timestamp = date.toISOString().split('T')[0] +" "+ strTime 
+  timestamp_span.innerHTML = timestamp
+
+  let timestamp_email_span = document.getElementById("span-send-to-id")
+  timestamp_email_span.innerHTML = "Hemos enviado un correo a "+email
+
+
+}
+
+function reenviar_confirmacion_email() {
+    // body...
+
+    let email = $("#crece-link-confirmar-registro").attr("email")
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            insertar_timestamps(email)
+            let super_container = document.getElementById("crece-login-super-container")
+                super_container.style.display = 'none'
+            let super_container_exitoso = document.getElementById("crece-reenviar-confirmacion-email-super-container")
+                super_container_exitoso.style.display = 'block'
+
+        }else if(this.status == 401 && this.readyState == 4){
+
+        }
+    };
+    xhttp.open("POST", RUTA_REENVIAR_EMAIL_CONFIRMACION, true);
+    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({
+                                "username": email,
+                            })
+                );
 }

@@ -9,7 +9,7 @@
   <main id="main-id">
     <div class="container">
             <!--Formulario para Login-->
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id='crece-login-super-container'>
               <div class="col-lg-5 col-md-8 col-11 crece-login-container">
                 <div class="col-12 crece-login-container-form-wrapper-titulo">
                     <div class="crece-login-container-logo"><a href="/" target="_blank"><img src="{% static 'assets/logo_color.png' %}"></a></div>
@@ -59,6 +59,33 @@
                   
                   </div>
               </div>
+            </div>
+
+
+
+            <div class="container" id="crece-reenviar-confirmacion-email-super-container">
+                  <div class="col-12 crece-login-container-form-wrapper-titulo">
+                          <div class="crece-registro-container-logo" id="crece-logo-registro-exitoso"><a href="/"><img src="{% static 'assets/logo_color.png' %}" style="display: block;margin-left: auto;margin-right: auto;"></a></div>
+                </div>
+                <div class="wrapper" id="crece-wrapper-id">
+                  
+                  <i class="fa fa-check" aria-hidden="true" id="check-timelime-email-id"></i>
+                  <div class="timeline">
+
+
+                    <dl class="timeline--entry">
+                      
+                      <dt class="timeline--entry__title"><i class="fa fa-envelope" aria-hidden="true" id="crece-registro-icon-email-id"></i>  <span id="span-hora-email-id">hora</span></dt>
+                      <dd class="timeline--entry__detail"><span id="span-send-to-id"></span></dd>
+                    </dl>
+                    <dl class="timeline--entry">
+                      <dt class="timeline--entry__title">Ahora activa tu cuenta</dt>
+                      <dd class="timeline--entry__detail">Gracias por registrarte en CRECE. Ahora debes activar tu cuenta desde el enlace que enviamos a tu correo electrónico. No olvides revisar la bandeja de correo no deseado en caso de no recibir el correo en tu bandeja de entrada</dd>
+                    </dl>
+                    
+                    
+                  </div>
+                </div>
             </div>
 
 

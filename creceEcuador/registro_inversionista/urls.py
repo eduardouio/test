@@ -28,7 +28,7 @@ urlpatterns = [
     path('dashboard/perfil', views.DashboardPerfil, name='dashboard_perfil'),
     path('ingresa/', views.ingresar_como, name='ingresar_como'),
     path('logout/', views.logout_view, name='logout'),
-   
+    path('reenviar_email/', views.reenviar_confirmacion_registro.as_view(), name="reenviar_email"),
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),
     url(r'^comprobante_transferencia/(?P<filename>[^/]+)$', views.SubirTransferenciaView.as_view()),

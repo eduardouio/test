@@ -330,20 +330,32 @@ class Login_Users(generics.CreateAPIView):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             r = requests.post(request.headers['Origin']+'/api/token/', data = {'username':username, 'password': password})
+            status_send = status.HTTP_200_OK
             dic_tokens = r.json()
-
+            mensaje = "Ingreso exitoso"
+            if (r.status_code == 401 and not user.is_active):
+                status_send = status.HTTP_401_UNAUTHORIZED
+                mensaje = "El usuario no ha sido activado aún. Para enviar correo electrónico de confirmación, haga click <a onclick='reenviar_confirmacion_email()' email="+username+" id='crece-link-confirmar-registro'>Aquí</a>"
             usuario = serializers.UserSerializer(user,
                                                  context=self.get_serializer_context()).data
 
-            response = HttpResponse(json.dumps({'auth_token':dic_tokens}), content_type='application/json',  status=status.HTTP_200_OK)   
+            diccionario_respuesta = {
+                'status': status_send,
+                'mensaje': mensaje,
+                'auth_token':dic_tokens
+            }
+            response = HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=status_send)   
             response.set_cookie('auth_token', json.dumps(dic_tokens),
                         max_age=None, expires=None, path='/', domain=None, secure=False, httponly=True)
             login(request, user)
             return response
             #return Response({'tokens':dic_tokens, 'user':usuario},  status=status.HTTP_200_OK) 
 
-
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
+        diccionario_respuesta = {
+                'status': status.HTTP_401_UNAUTHORIZED,
+                'mensaje': "Usuario o contraseña incorrectos"
+            }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=status.HTTP_401_UNAUTHORIZED)
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -352,6 +364,44 @@ class Login_Users(generics.CreateAPIView):
         else:
             print(request.user)
             return render(request, 'registro_inversionista/login.html')
+
+class reenviar_confirmacion_registro(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = serializers.UsuarioSerializer
+    def post(self, request, *args, **kwargs):
+        username = request.data.get("username")
+        try:
+            inversionista = User.objects.get(username=username)
+            if not inversionista.is_active:
+                current_site = get_current_site(request)
+                mail_subject = 'Activa tu cuenta de CRECE'
+                message = render_to_string('registro_inversionista/acc_active_email.html', {
+                    'usuario': inversionista,
+                    'domain': current_site.domain,
+                    'uid':urlsafe_base64_encode(force_bytes(inversionista.pk)),
+                    'token':account_activation_token.make_token(inversionista),
+                })
+                plain_message = strip_tags(message)
+                to_email = username
+                email = EmailMessage(
+                            mail_subject, message,from_email="info@creceecuador.com", to=[to_email]
+                )
+                email.content_subtype = "html"
+                email.send()
+
+                response = HttpResponse(status=status.HTTP_200_OK)   
+
+                return response
+
+        except User.DoesNotExist:
+            diccionario_respuesta = {
+                'status': status.HTTP_404_NOT_FOUND,
+                'message': MENSAJE_NOT_FOUND,
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+        
 
 
 class ImagenCedulaView(APIView):        
