@@ -533,43 +533,9 @@ def logout_view(request):
     return redirect('/inversionista/login/')
 
 
-
-#Login View con frontend de Django
-def LoginView(request):
-    """
-    POST inversionista/login/
-
-    ESTE LOGIN SOLO ES PARA FRONT END DE DJANGO CON HTML BASICO****
-    """
-    submitted = False
-    if request.method == 'POST':
-        form = Login_form(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            
-
-            r = requests.post('http://127.0.0.1:8000/inversionista/login/', 
-                                data = {'username':cd.get('username'), 'password': cd.get('password')})
-            print(r.json())
-            dic_tokens = r.json().get('auth_token')
-            user = r.json()
-            return render(request, 'registro_inversionista/dashboard_inversionista.html', 
-                                    {'submitted': submitted, 'tokens': dic_tokens})
-            
-    else:
-        form = Login_form()
-        if 'submitted' in request.GET:
-             submitted = True
- 
-    return render(request, 'registro_inversionista/login.html', {'form': form, 'submitted': submitted})
-
-
 def aceptar_condiciones_view(request):
     if request.method == 'GET':
         return render(request, 'registro_inversionista/aceptar_condiciones.html')
-
-
-
 
 
 @require_http_methods(["GET"])
@@ -593,6 +559,92 @@ def pdf_acuerdo_uso_sitio(request):
     except FileNotFoundError:
         raise Http404()
 
+class restablecer_password(generics.CreateAPIView):
+    """
+    inversionista/login/
 
-    
+    Este Login es el verdadero API Endpoint para verificar el usuario 
+    """
+
+    def post(self, request, *args, **kwargs):
+        
+        username = request.data.get("username", "")
+        try:
+            inversionista = User.objects.get(username=username) 
+            diccionario_respuesta = {
+                'status': status.HTTP_200_OK,
+            }
+            inversionista.is_active = False
+            inversionista.save()
+            current_site = get_current_site(request)
+            mail_subject = 'Restablece tu contraseña - CRECE'
+            message = render_to_string('registro_inversionista/restablecer_password_email.html', {
+                'usuario': inversionista,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(inversionista.pk)),
+                'token':account_activation_token.make_token(inversionista),
+            })
+            plain_message = strip_tags(message)
+            to_email = username
+            email = EmailMessage(
+                        mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+            )
+            email.content_subtype = "html"
+            email.send()
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+        except User.DoesNotExist:
+            diccionario_respuesta = {
+                'status': status.HTTP_404_NOT_FOUND,
+                'message': "Usuario no encontrado",
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+             
+
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'registro_inversionista/restablecer_password.html')
+
+def confirmar_email_restablecer_password(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+
+        return render(request, 'registro_inversionista/restablecer_password_confirmar.html', {'usuario':user})
+    else:
+        return HttpResponse('Link de activación inválido!') 
+
+
+class confirmar_restablecer_password_view(APIView):
+    """
+    inversionista/login/
+
+    Este Login es el verdadero API Endpoint para verificar el usuario 
+    """
+    permission_classes = [permissions.AllowAny]
+    def post(self, request, *args, **kwargs):
+        uidb64 = request.data.get("uid")
+        token = request.data.get("token")
+        new_pass = request.data.get("password")
+        try:
+            uid = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+        if user is not None and account_activation_token.check_token(user, token):
+            user.set_password(new_pass)
+            user.is_active = True
+            user.save()
+            
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'registro_inversionista/restablecer_password_confirmar.html')
 

@@ -3,6 +3,18 @@ let RUTA_DASHBOARD = "/inversionista/dashboard/"
 let RUTA_REENVIAR_EMAIL_CONFIRMACION = '/inversionista/reenviar_email/'
 
 
+$(document).ready(function() {
+    var next = getParameterByName('reset')
+    if (next){
+        $(".crece-login-container-form-wrapper-error").show()
+        let label_error = document.getElementById("label_error")
+            label_error.style.display = 'none'
+        
+        let label_reset_password = document.getElementById("label_mensaje_new_pass")
+        label_reset_password.style.display = "block"
+    }
+        
+});
 
 function ingresar_enter(event) {
     // body...
@@ -92,6 +104,10 @@ function login(argument) {
         }else if(this.status == 401 && this.readyState == 4){
 
             let label_error = document.getElementById("label_error")
+            label_error.style.display = 'block'
+            let label_reset_password = document.getElementById("label_mensaje_new_pass")
+            label_reset_password.style.display = "none"
+
             mensaje = JSON.parse(this.response).mensaje
             label_error.innerHTML = mensaje
             $(".crece-login-container-form-wrapper-error").show()
@@ -100,7 +116,11 @@ function login(argument) {
         }else if(this.status == 400 && this.readyState == 4){
 
             let label_error = document.getElementById("label_error")
+            label_error.style.display = 'block'
+
             label_error.innerHTML = "Usuario o contraseña incorrectos"
+            let label_reset_password = document.getElementById("label_mensaje_new_pass")
+            label_reset_password.style.display = "none"
             $(".crece-login-container-form-wrapper-error").show()
         }
     };

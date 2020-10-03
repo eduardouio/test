@@ -28,7 +28,12 @@ urlpatterns = [
     path('dashboard/perfil', views.DashboardPerfil, name='dashboard_perfil'),
     path('ingresa/', views.ingresar_como, name='ingresar_como'),
     path('logout/', views.logout_view, name='logout'),
+    path('restablecer_password/', views.restablecer_password.as_view(), name='restablecer_password'),
+    url(r'^confirmar_email_restablecer_password/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.confirmar_email_restablecer_password, name='confirmar_email_restablecer_password'),
+    path('confirmar_restablecer_password/', views.confirmar_restablecer_password_view.as_view(), name='confirmar_restablecer_password'),
     path('reenviar_email/', views.reenviar_confirmacion_registro.as_view(), name="reenviar_email"),
+
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),
     url(r'^comprobante_transferencia/(?P<filename>[^/]+)$', views.SubirTransferenciaView.as_view()),

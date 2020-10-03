@@ -10,6 +10,12 @@ footer{
     display: none;
 }
 
+#label_mensaje_new_pass{
+      color: #AECB6F;
+    font-weight: bold;
+    font-size: 15px;
+}
+
 #crece-header{
     display: none;
 }
@@ -170,11 +176,20 @@ label.required::after {
 }
 
 
+
+
 #label_error a{
     text-decoration: underline;
     color: #e03e46;
-        cursor: pointer;
+    cursor: pointer;
 }
+
+
+#crece-reset-password-envio-email-timeline{
+    display: none;  
+}
+/****NUEVO TIMELINE***/
+
 
 
 /****NUEVO TIMELINE***/
@@ -182,15 +197,14 @@ label.required::after {
     display: none;
 }
 
+
 /*- Screen Sizes*/
 /*import fonts*/
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("https://fonts.googleapis.com/css?family=Oswald");
 /*media queries*/
-html {
-  box-sizing: border-box;
-}
+
 
 
 
@@ -310,8 +324,11 @@ html {
 }
 
 
+
+
 #check-timelime-email-id{
-        display: block;
+        
+
     position: relative;
     right: 90px;
     font-size: 25px;
@@ -332,4 +349,4 @@ html {
     .timeline--entry{
         width: 66.5vw;
     }
-}
+
