@@ -1,0 +1,360 @@
+.crece-modificar-datos-formulario {
+    background-color: #E9EBEE;
+    padding-top: 0px;
+}
+
+.crece-modificar-datos-formulario-wrapper-editar{
+  text-align: right;
+  color: #006B8D;
+}
+
+.crece-modificar-datos-formulario-wrapper-editar span{
+  line-height: 15px;
+}
+
+.crece-modificar-datos-formulario-wrapper-editar span svg{
+  padding-bottom: 2px;
+}
+
+.crece-modificar-datos-formulario-wrapper-editar span:hover{
+  cursor: pointer;
+}
+
+.crece-perfil-seleccionar li{
+  cursor: pointer;
+  background-color: white;
+}
+
+.crece-modificar-datos-formulario-wrapper{
+  background-color: white;
+  border: 1px solid #DEDEDE;
+  padding: 0px 25px;
+  margin-top: 50px;
+}
+
+#perfil_modificar_informacion_laboral,
+#perfil_modificar_cuenta_bancaria,
+#perfil_ver_contratos {
+  display: none;
+}
+
+.crece-simular-inversion-wrapper{
+  background-color: white;
+  border: 1px solid #DEDEDE;
+  padding: 0px 45px;
+}
+
+.crece-modificar-datos-formulario-wrapper-required{
+  color: red;
+}
+
+.error-modificar{
+  color: red;
+}
+
+.crece-modificar-datos-formulario-wrapper-boton-subir-doc{ 
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 160px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: 600 !important;
+  border-radius: 30px;
+  padding: 0px 10px;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
+  color: white;
+  font-size: 14px !important;
+  margin-bottom: 0px;
+}
+
+.crece-modificar-datos-formulario-wrapper-boton-subir-doc:hover {
+  cursor: pointer;
+}
+
+#modificar_foto_cedula,
+#modificar_foto_perfil {
+  display: none;
+}
+
+.crece-modificar-datos-formulario-wrapper-boton-subir-label{
+  font-weight: 300 !important;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+label {
+  width: 100% !important;
+}
+
+.crece-modificar-datos-formulario h2{
+  padding-top: 20px;
+  font-size: 26px;
+  color: #006B8D;
+  font-weight: 700;
+}
+
+.crece-modificar-datos-formulario-radio-label{
+  width: auto !important;
+  padding-left: 4px;
+  padding-right: 40px;
+  margin: 0px;
+  font-weight: 500 !important;
+}
+
+.crece-modificar-datos-formulario-radio input{
+    -webkit-appearance: radio;
+    appearance: radio;
+    margin-right: 4px;
+}
+
+.label-subir-foto-desactivado{
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}
+
+/* formulario conyugue*/
+.crece-modificar-datos-formulario-conyugue{
+    display: none;
+}
+
+/* formulario fuente ingresos */
+.crece-modificar-datos-formulario-relacion-dependencia,
+.crece-modificar-datos-formulario-profesional-independiente,
+.crece-modificar-datos-formulario-auto-empleado{
+    display: none;
+}
+
+/*formulario */
+form .form-control{
+  border: 2px solid #DEDEDE;
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.crece-modificar-datos-formulario-botones button{
+  margin-right: auto;
+  margin-left: auto;
+  display: inline-block;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 0px 10px;
+  
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
+  color: white;
+  font-size: 18px;
+
+  margin-bottom: 20px;
+}
+
+#modificar_guardar_respuestas{
+  background-color: white;
+  color: #006B8D;
+}
+
+.modificar_guardar_datos:hover{
+  background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 107, 141, 0.8);
+}
+
+#modificar_guardar_respuestas:hover{
+  color:#1199AD;
+  border: 1px solid #1199AD;
+}
+
+/* scaffolding */
+/* ----------- */
+  
+  .tt-menu,
+  .gist {
+    text-align: left;
+  }
+  
+  /* base styles */
+  /* ----------- */
+  
+  
+  a {
+    color: #03739c;
+    text-decoration: none;
+  }
+  
+  
+  .table-of-contents li {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+  }
+  
+  .table-of-contents li a {
+    font-size: 16px;
+    color: #999;
+  }
+  
+  p + p {
+    margin: 30px 0 0 0;
+  }
+  
+  /* site theme */
+  /* ---------- */
+  
+  .title {
+    margin: 20px 0 0 0;
+    font-size: 64px;
+  }
+  
+  .example {
+    padding: 30px 0;
+  }
+  
+  .example-name {
+    margin: 20px 0;
+    font-size: 32px;
+  }
+  
+  .demo {
+    position: relative;
+    *z-index: 1;
+    margin: 50px 0;
+  }
+
+  .crece-modificar-datos-formulario-wrapper .form-control.typeahead.tt-input:disabled{
+    background-color: #e9ecef !important;
+  }
+
+  .crece-modificar-datos-formulario-wrapper .form-control.typeahead.tt-input{
+    background-color: white !important;
+  }
+
+  .typeahead:disabled{
+    background-color: #e9ecef !important;
+  }
+  
+  .typeahead,
+  .tt-query,
+  .tt-hint {
+    width: 396px;
+    padding: 8px 12px;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    outline: none;
+  }
+  
+  .typeahead {
+    background-color: #fff;
+  }
+  
+  .typeahead:focus {
+    border: 2px solid #0097cf;
+  }
+  
+  .tt-query {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+  
+  .tt-hint {
+    color: #999
+  }
+  
+  .tt-menu {
+    width: 422px;
+    margin: 12px 0;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  }
+  
+  .tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  
+  .tt-suggestion:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #0097cf;
+  }
+  
+  .tt-suggestion.tt-cursor {
+    color: #fff;
+    background-color: #0097cf;
+  
+  }
+  
+  .tt-suggestion p {
+    margin: 0;
+  }
+  
+  .gist {
+    font-size: 14px;
+  }
+  
+  /* example specific styles */
+  /* ----------------------- */
+  
+  #custom-templates .empty-message {
+    padding: 5px 10px;
+   text-align: center;
+  }
+  
+  #multiple-datasets .league-name {
+    margin: 0 20px 5px 20px;
+    padding: 3px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  #scrollable-dropdown-menu .tt-menu {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  #rtl-support .tt-menu {
+    text-align: right;
+  }
+
+  .tt-selectable {
+      color: black;
+  }
+  
+  form .form-control{
+    font-size: 15px !important;
+  }
+
+  @media (max-width: 768px) {
+    .crece-modificar-datos-formulario-wrapper-contratos {
+      padding: 10px;
+      width: 100%;
+      font-size: 12px;
+    }
+
+    .crece-modificar-datos-formulario-wrapper-contratos h5 {
+      font-size: 12px;
+    }
+
+    #label_fecha_aceptacion{
+      padding: 0px;
+    }
+  }

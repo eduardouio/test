@@ -6,6 +6,53 @@
     margin: 15px 0px;
 }
 
+#modificar_imagen_perfil_container .crece-usuario-imagen-seleccionada{
+    height: 150px !important;
+    width: 150px !important;
+    margin-top: 0px !important;
+}
+
+#modificar_imagen_perfil_container {
+    width: 100% !important;
+    padding: 20px 0px;
+    color: #006B8D;
+    margin: auto;
+}
+
+#modificar_imagen_perfil_container label{
+    margin: auto;
+}
+
+#modificar_imagen_perfil_container i {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    color: #71BDC5;
+    position: relative;
+    top: 0px;
+    right: 0px;
+}
+
+.crece-usuario-imagen-seleccionada{
+    object-fit: cover;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-size: 100px !important;
+    width: 100px !important;
+    text-align: center;
+    border-radius: 50%;
+    height: 100px;
+    width: auto;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    position: relative;
+    top: 0px;
+    right: 0px;
+}
+
 .crece-perfil-seleccionar {
     background-color: white;
     color: #006B8D;
@@ -22,7 +69,44 @@
     font-size: 1.1em;
 }
 
+.crece-perfil-seleccionar li:hover{
+    cursor: pointer;
+}
+
 .crece-perfil-seleccionar li.active{
     color: #fff;
     background: #08a7ba;
+}
+
+/* Ver perfil - contratos */
+
+.crece-modificar-datos-formulario-wrapper-contratos {
+    padding: 40px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.crece-modificar-datos-formulario-wrapper-contratos h5{
+    color: #006B8D;
+    font-size: 14px;
+}
+
+.crece-modificar-datos-formulario-wrapper-contratos-contrato{
+    background-color: #e9ecef;
+    color: rgb(167, 167, 167) !important;
+    line-height: 35px;
+    border: 2px solid white;
+}
+
+.crece-modificar-datos-formulario-wrapper-contratos-contrato a{
+    color: rgb(167, 167, 167) !important;
+    text-decoration-line: underline;
+}
+
+.crece-modificar-datos-formulario-wrapper-contratos-fecha{
+    background-color: #e9ecef;
+    color: rgb(167, 167, 167);
+    line-height: 35px;
+    text-align: center;
+    border: 2px solid white;
 }

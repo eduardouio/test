@@ -46,3 +46,9 @@ class UserSerializer(serializers.ModelSerializer):
         """Metadata"""
         model = User
         fields = ('id', 'username', 'email', 'first_name', 'last_name')
+
+class ContratoSerializer(serializers.ModelSerializer):
+    class Meta:
+        """Metadata"""
+        model = models.Contrato
+        fields = ('id', 'fecha', 'contrato')

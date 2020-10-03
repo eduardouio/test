@@ -1,6 +1,7 @@
 const VALID_INF_PERS_CAMPOS = 5;
 
 $(document).ready(function(){
+
     
     let substringMatcher = function(strs) {
         return function findMatches(q, cb) {
@@ -87,6 +88,8 @@ $("#ver_perfil").click( function() {
         type: "text/css",
         href: "/static/registro_inversionista/css/registro.css"
      }).appendTo("head");
+
+     inicializarVerPerfil();
 });
 
 function capitalizeFirstLetter(palabra) {

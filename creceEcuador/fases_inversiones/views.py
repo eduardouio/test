@@ -10,6 +10,9 @@ from . import models
 from registro_inversionista.models import Usuario
 from solicitudes.models import Solicitud
 import json
+import os
+
+from registro_inversionista.models import Contrato
 
 from django.conf import settings
 
@@ -238,6 +241,11 @@ class aceptar_declaracion_fondos(generics.CreateAPIView):
         hacer_contrato(doc, usuario, fecha, hora)
 
         buffer.seek(0)
+
+        ruta_contrato = settings.STATIC_URL_COMPLETA+"/contratos/Declaracion-Origen-Fondos-"+ usuario.cedula+ ".pdf"
+        if(not os.path.isfile(ruta_contrato)):
+            Contrato.objects.create(contrato= ruta_contrato,content_object=usuario)
+
         with open( settings.STATIC_URL_COMPLETA+"/contratos/Declaracion-Origen-Fondos-"+ usuario.cedula+ ".pdf", "wb") as f:
             f.write(buffer.getbuffer())
 

@@ -4,6 +4,8 @@ from django.conf import settings
 import json
 import jwt
 from .types import CASADO, UNION_LIBRE
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 class Conyuge(models.Model):
     nombres = models.CharField(max_length=100)
@@ -76,6 +78,14 @@ class Cuenta_bancaria(models.Model):
         verbose_name = "Cuenta_bancaria"
         verbose_name_plural = "Cuenta_bancarias"
 
+class Contrato(models.Model):
+    contrato = models.CharField(max_length=200)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    # Below the mandatory fields for generic relation
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
 
 class Usuario(models.Model):
     """Tabla Usuario en la DB"""
@@ -131,6 +141,7 @@ class Usuario(models.Model):
     #datos personales para financiar una inversion
     cedula = models.CharField(max_length=10, blank=True)
     cedula_ruta = models.TextField(blank=True)
+    profile_pic_ruta = models.TextField(blank=True, null=True)
     conyuge_id = models.ForeignKey(Conyuge, blank=True, null=True, on_delete=models.CASCADE)
     telefono_domicilio =  models.CharField(blank=True, null=True, max_length=30)
     ingresos = models.ForeignKey(Fuente_ingresos, blank=True, null=True, on_delete=models.CASCADE)

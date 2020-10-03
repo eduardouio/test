@@ -1,0 +1,476 @@
+{% extends 'template_base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
+            <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/completar_datos.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'fases_inversiones/css/flujo_inversionista.css' %}" rel="stylesheet" type="text/css">
+            <script src="{% static 'registro_inversionista/js/valid-form.js' %}"></script>
+        {% endblock head_css_agregado %}
+    </head>
+    <body> 
+
+                {% block content %}  
+                <div class="titulo">
+                    <strong>Confirma tu inversion</strong>
+                </div>
+                <div class="row fases-inversiones-pasos">
+
+                    <div class="col active">
+                        Paso 1
+                    </div>
+                    <div class="col">
+                        Paso 2
+                    </div>
+                    <div class="col">
+                        Paso 3
+                    </div>
+                    <div class="col">
+                        Paso 4
+                    </div>
+                </div>
+                <section class="crece-modificar-datos-formulario">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 crece-modificar-datos-formulario-wrapper">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-completado col-3">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="crece-flujo-inversionista-paso crece-flujo-inversionista-paso-selected col-3">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="crece-flujo-inversionista-paso col-3">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="crece-flujo-inversionista-paso col-3">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <span class="crece-flujo-inversionista-progreso-texto">Progreso: 25%</span>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-12 crece-flujo-inversionista-barra">
+                                        <div style="width: 25%;" class="crece-flujo-inversionista-barra-progreso"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form method="POST">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2>Datos del inversionista</h2>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>Nombre: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.nombres}}"
+                                            class="form-control"
+                                            name="modificar_nombre"
+                                            id="modificar_nombre"
+                                            data-valueMissing="Ingrese un nombre"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Apellidos: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.apellidos}}"
+                                            class="form-control"
+                                            name="modificar_apellidos"
+                                            id="modificar_apellidos"
+                                            data-valueMissing="Ingrese su apellido"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-8">
+                                        <label>Cédula: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.cedula}}"
+                                            class="form-control"
+                                            name="modificar_cedula"
+                                            id="modificar_cedula"
+                                            data-valueMissing="Ingrese su número de cédula"
+                                            />
+                                    </div>
+                                    <div class="form-group col-lg-4">
+                                        <label for="foto_cedula" class="crece-modificar-datos-formulario-wrapper-boton-subir-doc">
+                                            Cargar documento
+                                        </label>
+                                        <input 
+                                            required
+                                            type="file"
+                                            accept="image/png, image/jpeg, application/pdf"
+                                            class="form-control"
+                                            name="modificar_foto_cedula"
+                                            id="modificar_foto_cedula"
+                                            data-valueMissing="Suba la imagen de su cédula"
+                                            />
+                                        <label id="modificar_labelDocumento" data-documento="{{usuario.cedula_ruta}}" class="crece-modificar-datos-formulario-wrapper-boton-subir-label">PDF, JPG o PNG</label>
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Celular: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.celular}}"
+                                            class="form-control"
+                                            name="modificar_celular"
+                                            id="modificar_celular"
+                                            data-valueMissing="Ingrese su número de celular"
+                                            />
+                                    </div>
+                                    <div class="form-group col-lg-12 crece-modificar-datos-formulario-radio">
+                                        <label>Estado Civil:</label>
+                                        <select class="form-control" id="modificar_selectEstadoCivil" data-seleccion="{{usuario.estado_civil}}">
+                                            <option value="soltero">Soltero/a</option>
+                                            <option value="casado">Casado/a</option>
+                                            <option value="divorciado">Divorciado/a</option>
+                                            <option value="union libre">Unión libre</option>
+                                            <option value="viudo">Viudo/a</option>
+                                        </select>
+                                    </div>
+        
+                                    <div class="crece-modificar-datos-formulario-conyugue col-lg-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Nombre del cónyugue: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    value="{{usuario.conyuge_id.nombres}}"
+                                                    class="form-control"
+                                                    name="modificar_nombre_conyugue"
+                                                    id="modificar_nombre_conyugue"
+                                                    data-valueMissing="Ingrese el nombre de su cónyugue"
+                                                    />
+                                            </div>
+                
+                                            <div class="form-group col-lg-12">
+                                                <label>Apellidos del cónyugue: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    value="{{usuario.conyuge_id.apellidos}}"
+                                                    class="form-control"
+                                                    name="modificar_apellidos_conyugue"
+                                                    id="modificar_apellidos_conyugue"
+                                                    data-valueMissing="Ingrese el apellido de su cónyugue"
+                                                    />
+                                            </div>
+                
+                                            <div class="form-group col-lg-12">
+                                                <label>Cédula del cónyugue: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    value="{{usuario.conyuge_id.cedula}}"
+                                                    class="form-control"
+                                                    name="modificar_cedula_conyugue"
+                                                    id="modificar_cedula_conyugue"
+                                                    data-valueMissing="Ingrese el número de cédula de su cónyugue"
+                                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <h2>Domicilio</h2>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>Dirección de domicilio: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.direccion1}}"
+                                            class="form-control"
+                                            name="modificar_direccion"
+                                            id="modificar_direccion"
+                                            data-valueMissing="Ingrese su dirección de domicilio"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Provincia: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.provincia}}"
+                                            class="form-control typeahead"
+                                            name="modificar_provincia"
+                                            id="modificar_provincia"
+                                            data-valueMissing="Ingrese su provincia de residencia"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Canton: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.canton.nombre}}"
+                                            class="form-control typeahead"
+                                            name="modificar_canton"
+                                            id="modificar_canton"
+                                            data-valueMissing="Ingrese su canton de residencia"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Teléfono domicilio:</label>
+                                        <input 
+                                            value="{{usuario.telefono_domicilio}}"
+                                            class="form-control"
+                                            name="modificar_telf_domicilio"
+                                            id="modificar_telf_domicilio"
+                                            data-valueMissing="Ingrese el número de teléfono de su domicilio"
+                                            />
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <h2>Fuentes de Ingresos</h2>
+                                    </div>
+                                    <div class="form-group col-lg-12 crece-modificar-datos-formulario-radio">
+                                        <label>Principal fuente de ingresos:</label>
+                                        <select class="form-control" id="modificar_selectTrabajo" data-seleccion="{{usuario.ingresos.descripcion}}">
+                                            <option value="1">Relación de dependencia</option>
+                                            <option value="2">Profesional independiente</option>
+                                            <option value="3">Auto empleado</option>
+                                        </select>
+                                    </div>
+        
+                                    <div class="crece-modificar-datos-formulario-relacion-dependencia col-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Empresa: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="modificar_empresa_relacion_dependencia"
+                                                    id="modificar_empresa_relacion_dependencia"
+                                                    data-valueMissing="Ingrese el nombre de la empresa donde trabaja"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>Cargo: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="modificar_cargo_relacion_dependencia"
+                                                    id="modificar_cargo_relacion_dependencia"
+                                                    data-valueMissing="Ingrese el cargo que desempeña en su empresa"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>Años en el puesto: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="modificar_anios_relacion_dependencia"
+                                                    id="modificar_anios_relacion_dependencia"
+                                                    data-valueMissing="Ingrese el número de años que lleva en la empresa"
+                                                    />
+                                            </div>
+
+                                        </div>
+                                    </div>
+        
+                                    <div class="crece-modificar-datos-formulario-profesional-independiente col-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>RUC: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    class="form-control"
+                                                    name="modificar_ruc_profesional_independiente"
+                                                    id="modificar_ruc_profesional_independiente"
+                                                    data-valueMissing="Ingrese su RUC"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>Actividad: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="modificar_actividad_profesional_independiente"
+                                                    id="modificar_actividad_profesional_independiente"
+                                                    data-valueMissing="Ingrese el nombre de su actividad"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>Años en la actividad: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="modificar_anios_profesional_independiente"
+                                                    id="modificar_anios_profesional_independiente"
+                                                    data-valueMissing="Ingrese el número de años que ha desempeñado la actividad"
+                                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="crece-modificar-datos-formulario-auto-empleado col-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Empresa: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="modificar_empresa_auto_empleado"
+                                                    id="modificar_empresa_auto_empleado"
+                                                    data-valueMissing="Ingrese el nombre de la empresa"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>RUC: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input                                     
+                                                    class="form-control"
+                                                    name="modificar_ruc_auto_empleado"
+                                                    id="modificar_ruc_auto_empleado"
+                                                    data-valueMissing="Ingrese el RUC"
+                                                    />
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>Actividades: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                                <input 
+                                                    
+                                                    class="form-control"
+                                                    name="modificar_actividad_auto_empleado"
+                                                    id="modificar_actividad_auto_empleado"
+                                                    data-valueMissing="Ingrese sus actividades"
+                                                    />
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Dirección: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.ingresos.direccion}}"
+                                            class="form-control"
+                                            name="modificar_direccion_empresa"
+                                            id="modificar_direccion_empresa"
+                                            data-valueMissing="Ingrese la dirección de su lugar de trabajo"
+                                            />
+                                    </div>
+        
+                                    <div class="form-group col-lg-12">
+                                        <label>Canton: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.canton.nombre}}"
+                                            class="form-control typeahead"
+                                            name="modificar_canton_empresa"
+                                            id="modificar_canton_empresa"
+                                            data-valueMissing="Ingrese su canton de trabajo"
+                                            />
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>Ingresos aproximados: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.ingresos.ingresos_mensuales}}"
+                                            type="number"
+                                            class="form-control"
+                                            name="modificar_ingresos_aproximados"
+                                            id="modificar_ingresos_aproximados"
+                                            data-valueMissing="Ingrese sus ingresos aproximados"
+                                            />
+                                    </div>
+
+                                    <div class="col-12">
+                                        <h2>Registra tu cuenta bancaria donde recibirás tus ganancias</h2>
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label>Titular: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.cuenta_bancaria.titular}}"
+                                            class="form-control typeahead"
+                                            name="modificar_titular"
+                                            id="modificar_titular"
+                                            data-valueMissing="Ingrese el nombre del titular de la cuenta"
+                                            />
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Banco:</label>
+                                        <select class="form-control" id="modificar_selectBanco" data-seleccion="{{usuario.cuenta_bancaria.banco.nombre}}">
+                                            <option value='BANCO GUAYAQUIL'>BANCO GUAYAQUIL</option>
+                                            <option value='BANCO PACIFICO'>BANCO PACIFICO</option>
+                                            <option value='BANCO PICHINCHA'>BANCO PICHINCHA</option>
+                                            <option value='BANCO BOLIVARIANO'>BANCO BOLIVARIANO</option>
+                                            <option value='BANCO PRODUBANCO'>BANCO PRODUBANCO</option>
+                                            <option value='BANCO DINERS'>BANCO DINERS</option>
+                                            <option value='BANCO AMAZONAS'>BANCO AMAZONAS</option>
+                                            <option value='BANCO AUSTRO'>BANCO AUSTRO</option>
+                                            <option value='BANCO GENERAL RUMIÑAHUI'>BANCO GENERAL RUMIÑAHUI</option>
+                                            <option value='BANCO INTERNACIONAL'>BANCO INTERNACIONAL</option>
+                                            <option value='BANCO SOLIDARIO'>BANCO SOLIDARIO</option>
+                                            <option value='BANCO MACHALA'>BANCO MACHALA</option>
+                                            <option value='BANCO LOJA'>BANCO LOJA</option>
+                                            <option value='BANCO PROCREDIT'>BANCO PROCREDIT</option>
+                                            <option value='BANCO LITORAL'>BANCO LITORAL</option>
+                                            <option value='BANCO VISIONFUND ECUADOR'>BANCO VISIONFUND ECUADOR</option>
+                                            <option value='BANCO CODESARROLLO'>BANCO CODESARROLLO</option>
+                                            <option value='BANCO CAPITAL'>BANCO CAPITAL</option>
+                                            <option value='BANCO COMERCIAL DE MANABI'>BANCO COMERCIAL DE MANABI</option>
+                                            <option value='BANCO COOPNACIONAL'>BANCO COOPNACIONAL</option>
+                                            <option value='BANCO DELBANK'>BANCO DELBANK</option>
+                                            <option value='BANCO D-MIRO S.A.'>BANCO D-MIRO S.A.</option>
+                                            <option value='BANCO FINCA S.A.'>BANCO FINCA S.A.</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-6 crece-modificar-datos-formulario-radio">
+                                        <label>Tipo de cuenta:</label>
+                                        <select class="form-control" id="modificar_selectTipoCuenta" data-seleccion="{{usuario.cuenta_bancaria.tipo_cuenta}}">
+                                            <option value="0">Ahorros</option>
+                                            <option value="1">Corriente</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-lg-12">
+                                        <label>Número de cuenta: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                                        <input 
+                                            required
+                                            value="{{usuario.cuenta_bancaria.numero_cuenta}}"
+                                            class="form-control"
+                                            name="modificar_numero_cuenta"
+                                            id="modificar_numero_cuenta"
+                                            data-valueMissing="Ingrese su número de cuenta"
+                                            />
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <div class="row justify-content-center">
+                                            <div class="col-auto crece-modificar-datos-formulario-botones">
+                                                <button id="modificar_guardar_respuestas"> Guardar</button>
+                                            </div>
+                                            <div class="col-auto crece-modificar-datos-formulario-botones">
+                                                <button id="modificar_siguiente"> Siguiente</button>
+                                            </div>
+                                        </div>                                
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                {% endblock content %}
+      
+
+
+        {% block footer_javascript_agregado %}
+        <script src="{% static 'js/typeahead.jquery.js' %}"></script>
+        <script src="{% static 'fases_inversiones/js/completar_datos.js' %}"></script>
+        <script src="{% static 'registro_inversionista/js/postScript.js' %}"></script>
+        {% endblock footer_javascript_agregado %}
+        
+
+    </body>
+</html>

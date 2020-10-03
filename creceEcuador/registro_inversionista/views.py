@@ -20,7 +20,7 @@ from manager_archivos.serializers import TransferenciaInversionArchivoSerializer
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
 from django.views.decorators.http import require_http_methods
-
+from django.contrib.contenttypes.models import ContentType
 
 
 from . import models
@@ -164,7 +164,7 @@ class RegisterUsers(generics.CreateAPIView):
                                             email=email, celular=celular, tipo_persona=tipo_persona, 
                                             canton=canton, cedula=cedula, user=new_user)
             new_usuario.save()
-            guardar_contratos(nombres,apellidos,cedula)
+            guardar_contratos(nombres,apellidos,cedula, new_usuario)
 
 
             #guardando encuesta
@@ -199,7 +199,7 @@ class RegisterUsers(generics.CreateAPIView):
         return render(request, 'registro_inversionista/registro.html')
 
 
-def guardar_contratos(nombres,apellidos,cedula):
+def guardar_contratos(nombres,apellidos,cedula, usuario_creado):
     #Guardar archivo pdf en nuestro servidor
     out_filedir = './creceEcuador/static/contratos/'
     if not os.path.exists(out_filedir):
@@ -216,6 +216,12 @@ def guardar_contratos(nombres,apellidos,cedula):
                 rightMargin=72,leftMargin=72,
                 topMargin=72,bottomMargin=18)
     hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
+
+    ruta_archivo = '/static/contratos/'+out_filename
+    models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario_creado)
+    models.Contrato.objects.create(contrato= '/static/contratos/Terminos-Legales-y-Condiciones.pdf',content_object=usuario_creado)
+    models.Contrato.objects.create(contrato= '/static/contratos/Politicas-de-Privacidad.pdf',content_object=usuario_creado)
+
 
 def confirmar_email(request, uidb64, token):
     try:
@@ -365,6 +371,52 @@ class Login_Users(generics.CreateAPIView):
             print(request.user)
             return render(request, 'registro_inversionista/login.html')
 
+class ImagenPerfilView(APIView):        
+    parser_classes = (MultiPartParser, )
+    def post(self, request, filename, format=None):
+        try: 
+            file_obj = request.data['img']
+            url_base = settings.MEDIA_ROOT +"/profile_pic/"+filename
+
+            if not os.path.exists(settings.MEDIA_ROOT +"/profile_pic/"):
+                os.makedirs(settings.MEDIA_ROOT +"/profile_pic/")
+
+            cedula = filename.split(".")[0]
+
+            inversionista = models.Usuario.objects.filter(cedula=cedula)[0]
+
+            with open(url_base, 'wb+') as destination:
+                for chunk in file_obj.chunks():
+                    destination.write(chunk)
+            
+            inversionista.profile_pic_ruta = "/"+settings.MEDIA_URL +"profile_pic/"+filename
+
+            inversionista.save()
+
+            diccionario_respuesta = {
+                'status': status.HTTP_200_OK,
+                'data': {
+                    'mensaje': "Imagen guardada",
+                    'ruta': inversionista.profile_pic_ruta
+                }
+            }
+
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+        #Index error quiere decir que no se encontró usuario con cédula del nombre del archivo
+        except IndexError as e:
+            diccionario_respuesta = {
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': "Usuario no existe o nombre de archivo no tiene formato <cedula>.<extension>",
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
+        except Exception as e:
+            diccionario_respuesta = {
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': str(e),
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 class reenviar_confirmacion_registro(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
@@ -410,6 +462,9 @@ class ImagenCedulaView(APIView):
         try: 
             file_obj = request.data['img']
             url_base = settings.MEDIA_ROOT +"/cedula/"+filename
+
+            if not os.path.exists(settings.MEDIA_ROOT +"/cedula/"):
+                os.makedirs(settings.MEDIA_ROOT +"/cedula/")
 
             cedula = filename.split(".")[0]
 
@@ -475,6 +530,21 @@ class SubirTransferenciaView(APIView):
             }
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
+@api_view(['GET'])
+def get_contratos(request, pk):
+    usuario = models.Usuario.objects.get(pk=pk)
+
+    ct = ContentType.objects.get_for_model(usuario)
+    contratos = models.Contrato.objects.filter(content_type=ct, object_id=usuario.pk)
+
+    serializer = serializers.ContratoSerializer(contratos, many=True)
+
+    diccionario_respuesta = {
+        'status': status.HTTP_200_OK,
+        'data': serializer.data
+    }
+
+    return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
 
 @login_required
 def Dashboard(request):

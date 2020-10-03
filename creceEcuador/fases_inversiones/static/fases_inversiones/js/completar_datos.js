@@ -346,7 +346,7 @@ var substringMatcher = function(strs) {
 
   function checkInputs() {
     var es_valido = true;
-    $('input').filter('[required]').each(function() {
+    $('.crece-completar-datos-formulario-wrapper input').filter('[required]').each(function() {
 
       if ($(this).val() === '') {
         focusAndInvalidate(this);

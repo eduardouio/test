@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'fase1/', views.Proceso_formulario_inversion.as_view(), name="formulario-inversion"),
     path('login/', views.Login_Users.as_view(), name="inversionista_login"),
     path('dashboard/', views.Dashboard, name='dashboard'),
+    path('contratos/<int:pk>/', views.get_contratos, name='contratos'),
     path('dashboard/perfil', views.DashboardPerfil, name='dashboard_perfil'),
     path('ingresa/', views.ingresar_como, name='ingresar_como'),
     path('logout/', views.logout_view, name='logout'),
@@ -36,6 +37,7 @@ urlpatterns = [
 
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),
+    url(r'^profile_pic/(?P<filename>[^/]+)$', views.ImagenPerfilView.as_view()),
     url(r'^comprobante_transferencia/(?P<filename>[^/]+)$', views.SubirTransferenciaView.as_view()),
     path('registro/terminos_legales/', views.pdf_view_terminos_legales),
     path('registro/politicas_privacidad/', views.pdf_view_privacidad_proteccion_datos),
