@@ -115,6 +115,8 @@ function inicializarVerPerfil(){
   seleccionarDesdeBase("#modificar_selectBanco");
   seleccionarDesdeBase("#modificar_selectTipoCuenta");
   seleccionarDesdeBase("#modificar_selectEstadoCivil");
+  limpiar_password()
+  cambiar_fecha_nacimiento()
 
   seleccionarImagenModificar()
 
@@ -142,11 +144,15 @@ function inicializarVerPerfil(){
     $("#selectable_informacion_laboral").removeClass("active");
     $("#selectable_cuenta_bancaria").removeClass("active");
     $("#selectable_contratos_aceptados").removeClass("active");
+    $("#selectable_cambiar_password").removeClass("active");
 
     $("#perfil_modificar_informacion_personal").css("display", "flex");
     $("#perfil_modificar_informacion_laboral").hide();
     $("#perfil_modificar_cuenta_bancaria").hide();
     $("#perfil_ver_contratos").hide();
+    $("#perfil_cambiar_password").hide();
+
+    cambiar_fecha_nacimiento();
   });
 
   $("#selectable_informacion_laboral").click(function(){
@@ -154,11 +160,13 @@ function inicializarVerPerfil(){
     $("#selectable_informacion_personal").removeClass("active");
     $("#selectable_cuenta_bancaria").removeClass("active");
     $("#selectable_contratos_aceptados").removeClass("active");
+    $("#selectable_cambiar_password").removeClass("active");
 
     $("#perfil_modificar_informacion_personal").hide();
     $("#perfil_modificar_informacion_laboral").css("display", "flex");
     $("#perfil_modificar_cuenta_bancaria").hide();
     $("#perfil_ver_contratos").hide();
+    $("#perfil_cambiar_password").hide();
   });
 
   $("#selectable_cuenta_bancaria").click(function(){
@@ -166,11 +174,13 @@ function inicializarVerPerfil(){
     $("#selectable_informacion_laboral").removeClass("active");
     $("#selectable_informacion_personal").removeClass("active");
     $("#selectable_contratos_aceptados").removeClass("active");
+    $("#selectable_cambiar_password").removeClass("active");
 
     $("#perfil_modificar_informacion_personal").hide();
     $("#perfil_modificar_informacion_laboral").hide()
     $("#perfil_modificar_cuenta_bancaria").css("display", "flex");
     $("#perfil_ver_contratos").hide();
+    $("#perfil_cambiar_password").hide();
   });
 
   $("#selectable_contratos_aceptados").click(function(){
@@ -178,14 +188,89 @@ function inicializarVerPerfil(){
     $("#selectable_informacion_laboral").removeClass("active");
     $("#selectable_cuenta_bancaria").removeClass("active");
     $("#selectable_informacion_personal").removeClass("active");
+    $("#selectable_cambiar_password").removeClass("active");
 
     $("#perfil_modificar_informacion_personal").hide();
     $("#perfil_modificar_informacion_laboral").hide()
     $("#perfil_modificar_cuenta_bancaria").hide();
     $("#perfil_ver_contratos").css("display", "flex");
+    $("#perfil_cambiar_password").hide();
 
     cargarContratos();
   });
+
+  $("#selectable_cambiar_password").click(function(){
+    $("#selectable_cambiar_password").addClass("active");
+    $("#selectable_contratos_aceptados").removeClass("active");
+    $("#selectable_informacion_laboral").removeClass("active");
+    $("#selectable_cuenta_bancaria").removeClass("active");
+    $("#selectable_informacion_personal").removeClass("active");
+
+    $("#perfil_modificar_informacion_personal").hide();
+    $("#perfil_modificar_informacion_laboral").hide()
+    $("#perfil_modificar_cuenta_bancaria").hide();
+    $("#perfil_ver_contratos").hide();
+    $("#perfil_cambiar_password").css("display", "flex");
+
+    limpiar_password();
+    
+  });
+
+  function cambiar_fecha_nacimiento() {
+    // body...
+    let fecha_nacimiento = $("#modificar_fecha_nacimiento").attr("value-date");
+
+    
+    let date = new Date(fecha_nacimiento)
+    if (isValidDate(date)){
+      var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+        let date_local = date.toLocaleDateString('es-MX', options)
+        $("#modificar_fecha_nacimiento").val(formatDate(fecha_nacimiento))
+      }
+  }
+    
+    function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+
+      if (month.length < 2) 
+          month = '0' + month;
+      if (day.length < 2) 
+          day = '0' + day;
+
+      return [year, month, day].join('-');
+  }
+
+  function isValidDate(d) {
+    return d instanceof Date && !isNaN(d);
+  }
+
+  function limpiar_password() {
+    // body...
+    document.getElementById("id_password").value="";
+    document.getElementById("id_confirmar_password").value = "";
+    $("#label_mensaje_new_pass").hide();
+    $("#crece-mensaje-invalid-input-password").hide();
+    $("#crece-mensaje-invalid-input-confirmar-password").hide();
+    $("#times-password-id").hide();
+    $("#check-password-id").hide();
+    $("#check-confirmar-password-id").hide();
+    $("#times-confirmar-password-id").hide();
+
+
+    let input_password_confirmar = document.getElementById("id_confirmar_password");
+    let div_text_confirmar = document.getElementById("crece-show-hide-confirmar-password")
+    input_password_confirmar.type = "password";
+    div_text_confirmar.innerHTML = "MOSTRAR";
+
+    let input_password = document.getElementById("id_password");
+        let div_text = document.getElementById("crece-show-hide-password")
+        input_password.type = "password";
+    div_text.innerHTML = "MOSTRAR";
+
+  }
 
   $("#modificar_selectEstadoCivil").change(function(){
     if (this.value === "casado" || this.value === "union libre") {
@@ -970,3 +1055,4 @@ function validar_cedula_modificar(textbox){
      }    
   
 }
+

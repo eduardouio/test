@@ -1,5 +1,6 @@
 let RUTA_RESTABLECER_PASSWORD = "/inversionista/restablecer_password/"
 let RUTA_CONFIRMAR_RESTABLECER_PASSWORD = '/inversionista/confirmar_restablecer_password/'
+let RUTA_CAMBIAR_PASSWORD_PERFIL = '/inversionista/cambiar_password/'
 
 function restablecer_password() {
     // body...
@@ -85,6 +86,38 @@ function confirmar_restablecer_password() {
                                 })
                     );
     }
+}
+
+function cambiar_password() {
+    // body...
+     let check_password = confirmar_password()
+
+     if (check_password){
+        var xhttp = new XMLHttpRequest();
+        let new_password = document.getElementById("id_password").value
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                $('#label_mensaje_new_pass').show();
+                
+
+                              
+                
+            }else if(this.status == 404 && this.readyState == 4){
+                console.log("ERROr")
+                
+
+            }
+        };
+        xhttp.open("POST", RUTA_CAMBIAR_PASSWORD_PERFIL);
+        xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+        xhttp.send(JSON.stringify({
+                                    
+                                    "password": new_password,
+                                })
+                    );
+    }
+
 }
 
 

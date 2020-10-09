@@ -150,7 +150,11 @@ class Usuario(models.Model):
     canton = models.ForeignKey(Canton, blank=True, null=True, on_delete=models.DO_NOTHING)
     provincia = models.CharField(max_length=50, blank=True)
     pais = models.CharField(max_length=50, blank=True)
+
+    fecha_nacimiento = models.DateField(blank=True, null=True)
+
     contratoAcUsoFirmado = models.BooleanField(default=False) 
+
 
     ruc = models.CharField(max_length=15, blank=True, null=True)
 

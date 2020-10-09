@@ -36,6 +36,8 @@ urlpatterns = [
         views.confirmar_email_restablecer_password, name='confirmar_email_restablecer_password'),
     path('confirmar_restablecer_password/', views.confirmar_restablecer_password_view.as_view(), name='confirmar_restablecer_password'),
     path('reenviar_email/', views.reenviar_confirmacion_registro.as_view(), name="reenviar_email"),
+    path('cambiar_password/', views.cambiar_password.as_view(), name="cambiar_password"),
+    path('encuesta_preferencia_persona/', views.encuesta_preferencia_persona, name='encuesta_preferencia_persona'),
 
 
     url(r'^cedula/(?P<filename>[^/]+)$', views.ImagenCedulaView.as_view()),

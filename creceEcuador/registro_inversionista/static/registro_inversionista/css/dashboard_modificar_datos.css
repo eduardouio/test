@@ -34,8 +34,41 @@
 
 #perfil_modificar_informacion_laboral,
 #perfil_modificar_cuenta_bancaria,
-#perfil_ver_contratos {
+#perfil_ver_contratos, #perfil_cambiar_password {
   display: none;
+}
+
+#perfil_cambiar_password{
+  color: #006B8D;
+}
+
+#perfil_cambiar_password button{
+      margin-top: 25px;
+
+}
+
+
+.crece-cambiar-password-perfil-container{
+  background-color: white;
+    border: 1px solid #DEDEDE;
+    padding: 0px 25px;
+    margin-top: 50px;
+}
+
+#label_mensaje_new_pass{
+      color: #AECB6F;
+    font-weight: bold;
+    font-size: 15px;
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#perfil_cambiar_password i.fa-confirmar-password{
+          display: none;
+    right: 55px;
+    top: 16px;
+    font-size: 12px;
 }
 
 .crece-simular-inversion-wrapper{

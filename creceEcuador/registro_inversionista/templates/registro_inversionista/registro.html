@@ -61,14 +61,30 @@
                       </div>
                     </div>
 
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-fecha-nacimiento crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Fecha de nacimiento
+                        </div> 
+                        <div class="col">
+                          <input type="date" name="fecha-nacimiento" class="crece-form-input" id="id_fecha_nacimiento" required="" placeholder="dd/mm/aaaa">
+                          <i class="fa fa-check" aria-hidden="true" id="check-fecha-nacimiento-id" style="right: 40px;"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-fecha-nacimiento-id" style="right: 40px;"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-fecha-nacimiento">
+                            Ingrese su fecha de nacimiento
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                      <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
                       <div class="row">
                         <div class="col-12 crece-registro-form-label">
                           Cédula
                         </div> 
                         <div class="col">
-                          <input type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
-                          <i class="fa fa-check" aria-hidden="true" id="check-cedula-id"></i>
+                          <input required type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
+                          <i class="fa fa-check" aria-hidden="true" id="check-cedula-id" ></i>
                           <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
                             Ingrese su Cédula
@@ -117,7 +133,7 @@
                           Confirmar contraseña
                         </div> 
                         <div class="col">
-                          <input type="password" name="confirmar-password" class="crece-form-input" id="id_confirmar_password">
+                          <input required type="password" name="confirmar-password" class="crece-form-input" id="id_confirmar_password">
                           <div class="show-hide-password" id="crece-show-hide-confirmar-password" onclick="switch_mostrar_ocultar_password('confirmar')">MOSTRAR</div>
                           <i class="fa fa-check fa-confirmar-password" aria-hidden="true" id="check-confirmar-password-id"></i>
                           <i class="fa fa-exclamation-circle fa-confirmar-password" aria-hidden="true" id="times-confirmar-password-id"></i>
@@ -149,14 +165,19 @@
                         <div class="col-12 crece-registro-form-label">
                           Ciudad
                         </div> 
-                        <div class="col-9 col-md-9 col-sm-9 col-lg-9 ">
-                          <select id="id_canton" name="canton">
-                            <option value="Guayaquil">Guayaquil</option>
-                            <option value="Quito">Quito</option>
-                            <option value="Cuenca">Cuenca</option>
-                            <option value="Manta">Manta</option>
-                            <option value="Machala">Machala</option>
-                          </select>
+                        <div class="col">
+                          <input
+                                    required
+                                    class="form-control typeahead crece-form-input"
+                                    name="canton"
+                                    id="id_canton"
+                                    data-valueMissing="Ingrese su canton de residencia"
+                                    />
+                          <i class="fa fa-check" aria-hidden="true" id="check-canton-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-canton-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-canton">
+                            Ingrese su ciudad de residencia
+                          </div>          
                         </div>
                       </div>
                     </div>
@@ -283,5 +304,8 @@
 
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="{% static 'js/typeahead.jquery.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+
   <script type="text/javascript" src="{% static 'registro_inversionista/js/registro.js' %}" ></script>
 {% endblock content %}

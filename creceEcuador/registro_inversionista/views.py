@@ -151,6 +151,7 @@ class RegisterUsers(generics.CreateAPIView):
         tipo_persona = request.data.get("tipo_persona")
         nombre_canton = request.data.get("canton")
         cedula = request.data.get("cedula")
+        fecha_nacimiento = request.data.get("fecha_nacimiento")
 
         encuesta = request.data.get("encuesta")
 
@@ -180,7 +181,7 @@ class RegisterUsers(generics.CreateAPIView):
 
             new_usuario = models.Usuario(usuario=usuario, nombres=nombres, apellidos=apellidos, 
                                             email=email, celular=celular, tipo_persona=tipo_persona, 
-                                            canton=canton, cedula=cedula, user=new_user)
+                                            canton=canton, cedula=cedula, user=new_user, fecha_nacimiento=fecha_nacimiento)
             new_usuario.save()
             guardar_contratos(nombres,apellidos,cedula, new_usuario)
 
@@ -317,7 +318,7 @@ def confirmar_email(request, uidb64, token):
         user.save()
         login(request, user)
 
-        return redirect('/inversionista/dashboard/')
+        return redirect('/inversionista/dashboard/?from_email=True')
     else:
         return HttpResponse('Link de activación inválido!')
 
@@ -827,3 +828,57 @@ class confirmar_restablecer_password_view(APIView):
     def get(self, request, *args, **kwargs):
         return render(request, 'registro_inversionista/restablecer_password_confirmar.html')
 
+class cambiar_password(generics.CreateAPIView):
+    """
+    inversionista/login/
+
+    Este Login es el verdadero API Endpoint para verificar el usuario 
+    """
+    queryset = models.Usuario.objects.all()
+    serializer_class = serializers.UsuarioSerializer
+
+    def post(self, request, *args, **kwargs):
+        print(request)
+        usuario = models.Usuario.get_usuario(request)
+        new_pass = request.data.get("password")
+        user = User.objects.get(username=usuario.user)
+        user.set_password(new_pass)
+        user.save()
+        login(request, user)
+
+        diccionario_respuesta = {
+                'status': status.HTTP_200_OK,
+                'message': "Exito",
+                'data': {}
+            }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def encuesta_preferencia_persona(request):
+    try:
+        pk = request.data.get("inversionista")
+        lista_respuestas = request.data.get("lista_respuestas")
+        usuario = models.Usuario.objects.get(pk=pk) 
+        date = datetime.datetime.now()
+        for pk_respuesta in lista_respuestas:
+            respuesta = models.Respuesta.objects.get(pk=pk_respuesta)
+            pk_pregunta = str(pk_respuesta)[0]
+            pregunta = models.Pregunta.objects.get(pk=pk_pregunta)
+            encuesta = models.Encuesta(id_pregunta= pregunta, id_respuesta=respuesta, id_usuario=usuario, fecha=date)
+            encuesta.save()
+      
+
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+        }
+
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    except models.Usuario.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': MENSAJE_NOT_FOUND,
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)

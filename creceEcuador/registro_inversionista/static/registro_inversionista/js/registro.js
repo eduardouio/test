@@ -5,6 +5,80 @@ let RUTA_POLITICAS_PRIVACIDAD = 'politicas_privacidad/'
 let RUTA_PREGUNTAS = "/inversionista/preguntas/"
 let RUTA_RESPUESTAS = "/inversionista/respuestas/"
 
+
+var substringMatcher = function(strs) {
+    return function findMatches(q, cb) {
+      var matches, substringRegex;
+  
+      // an array that will be populated with substring matches
+      matches = [];
+  
+      // regex used to determine if a string contains the substring `q`
+      substrRegex = new RegExp(q, 'i');
+  
+      // iterate through the pool of strings and for any string that
+      // contains the substring `q`, add it to the `matches` array
+      $.each(strs, function(i, str) {
+        if (substrRegex.test(str)) {
+          matches.push(str);
+        }
+      });
+  
+      cb(matches);
+    };
+  };
+
+var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA', 
+    'SAN FERNANDO', 'SANTA ISABEL', 'SIGSIG', 'OÑA', 'CHORDELEG', 'EL PAN', 
+    'SEVILLA DE ORO', 'GUACHAPALA', 'CAMILO PONCE ENRIQUEZ', 'GUARANDA', 
+    'CHILLANES', 'SAN JOSE DE CHIMBO', 'ECHEANDIA', 'SAN MIGUEL', 'CALUMA', 
+    'LAS NAVES', 'AZOGUES', 'BIBLIAN', 'CAÑAR', 'LA TRONCAL', 'EL TAMBO', 
+    'DELEG', 'SUSCAL', 'TULCAN', 'BOLIVAR', 'ESPEJO', 'MIRA', 'MONTUFAR', 
+    'SAN PEDRO DE HUACA', 'LATACUNGA', 'LA MANA', 'PANGUA', 'PUJILI', 
+    'SALCEDO', 'SAQUISILI', 'SIGCHOS', 'RIOBAMBA', 'ALAUSI', 'COLTA', 
+    'CHAMBO', 'CHUNCHI', 'GUAMOTE', 'GUANO', 'PALLATANGA', 'PENIPE', 
+    'CUMANDA', 'MACHALA', 'ARENILLAS', 'ATAHUALPA', 'BALSAS', 'CHILLA', 
+    'EL GUABO', 'HUAQUILLAS', 'MARCABELI', 'PASAJE', 'PIÑAS', 'PORTOVELO', 
+    'SANTA ROSA', 'ZARUMA', 'LAS LAJAS', 'ESMERALDAS', 'ELOY ALFARO', 'MUISNE', 
+    'QUININDE', 'SAN LORENZO', 'ATACAMES', 'RIOVERDE', 'LA CONCORDIA', 'GUAYAQUIL', 
+    'ALFREDO BAQUERIZO MORENO', 'BALAO', 'BALZAR', 'COLIMES', 'DAULE', 'DURAN', 
+    'EL EMPALME', 'EL TRIUNFO', 'MILAGRO', 'NARANJAL', 'NARANJITO', 'PALESTINA', 
+    'PEDRO CARBO', 'SAMBORONDON', 'SANTA LUCIA', 'URBINA JADO', 'YAGUACHI', 'PLAYAS', 
+    'SIMON BOLIVAR', 'CORONEL MARCELINO MARIDUEÑA', 'LOMAS DE SARGENTILLO', 'NOBOL', 
+    'GENERAL ANTONIO ELIZALDE', 'ISIDRO AYORA', 'IBARRA', 'ANTONIO ANTE', 'COTACACHI', 
+    'OTAVALO', 'PIMAMPIRO', 'SAN MIGUEL DE URCUQUI', 'LOJA', 'CALVAS', 'CATAMAYO', 
+    'CELICA', 'CHAGUARPAMBA', 'ESPINDOLA', 'GONZANAMA', 'MACARA', 'PALTAS', 
+    'PUYANGO', 'SARAGURO', 'SOZORANGA', 'ZAPOTILLO', 'PINDAL', 'QUILANGA', 
+    'OLMEDO', 'BABAHOYO', 'BABA', 'MONTALVO', 'PUEBLOVIEJO', 'QUEVEDO', 
+    'URDANETA', 'VENTANAS', 'VINCES', 'PALENQUE', 'BUENA FE', 'VALENCIA', 
+    'MOCACHE', 'QUINSALOMA', 'PORTOVIEJO', 'BOLIVAR', 'CHONE', 'EL CARMEN', 
+    'FLAVIO ALFARO', 'JIPIJAPA', 'JUNIN', 'MANTA', 'MONTECRISTI', 'PAJAN', 
+    'PICHINCHA', 'ROCAFUERTE', 'SANTA ANA', 'SUCRE', 'TOSAGUA', '24 DE MAYO', 
+    'PEDERNALES', 'OLMEDO', 'PUERTO LOPEZ', 'JAMA', 'JARAMIJO', 'SAN VICENTE', 
+    'MORONA', 'GUALAQUIZA', 'LIMON INDANZA', 'PALORA', 'SANTIAGO', 'SUCUA', 
+    'HUAMBOYA', 'SAN JUAN BOSCO', 'TAISHA', 'LOGROÑO', 'PABLO VI', 'TIWINTZA', 
+    'TENA', 'ARCHIDONA', 'EL CHACO', 'QUIJOS', 'CARLOS JULIO AROSEMENA', 'PASTAZA', 
+    'MERA', 'SANTA CLARA', 'ARAJUNO', 'QUITO', 'CAYAMBE', 'MEJIA', 'PEDRO MONCAYO', 
+    'RUMIÑAHUI', 'SAN MIGUEL DE LOS BANCOS', 'PEDRO VICENTE MALDONADO', 'PUERTO QUITO', 
+    'AMBATO', 'BAÑOS', 'CEVALLOS', 'MOCHA', 'PATATE', 'QUERO', 'SAN PEDRO DE PELILEO', 
+    'SANTIAGO DE PILLARO', 'TISALEO', 'ZAMORA', 'CHINCHIPE', 'NANGARITZA', 'YACUAMBI', 
+    'YANTZAZA', 'EL PANGUI', 'CENTINELA DEL CONDOR', 'PALANDA', 'PAQUISHA', 'SAN CRISTOBAL', 
+    'ISABELA', 'SANTA CRUZ', 'LAGO AGRIO', 'GONZALO PIZARRO', 'PUTUMAYO', 'SHUSHUFINDI', 
+    'SUCUMBIOS', 'CASCALES', 'CUYABENO', 'ORELLANA', 'AGUARICO', 'LA JOYA DE LOS SACHAS', 
+    'LORETO', 'SANTO DOMINGO DE LOS TSACHILAS', 'SANTA ELENA', 'LIBERTAD', 'SALINAS', 
+    'LAS GOLONDRINAS', 'MANGA DEL CURA', 'EL PIEDRERO'
+  ];
+
+  $('#id_canton').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },
+  {
+    name: 'canton',
+    source: substringMatcher(cantones)
+  });
+
 $(document).ready(function(){
 
 
@@ -24,22 +98,24 @@ $(document).ready(function(){
                 let id_respuesta = respuestas[i].id
                 let id_pregunta = "pregunta-container-"+(id_respuesta.toString()[0])
                 let pregunta_container = document.getElementById(id_pregunta)
-                let input_respuesta = `<input type="radio" id="male" name="gender" value="male">`
-                let row = document.createElement("div")
-                row.setAttribute("class", "row")
-                let html_respuesta = `
-                                        
-                                          <div class="col-12 crece-registro-encuesta-respuesta parent-`+id_pregunta+`">
-                                              <input type="radio" id="respuesta-`+id_respuesta+`" name="respuesta-name-`+id_pregunta+`" value="`+respuesta+`">
-                                              <label for="respuesta-`+id_respuesta+`">`+respuesta+`</label><br>
-            
-                                          </div>
-                                        
-                                        
-                                    ` 
-                row.innerHTML = html_respuesta
+                if (pregunta_container){
+                  let input_respuesta = `<input type="radio" id="male" name="gender" value="male">`
+                  let row = document.createElement("div")
+                  row.setAttribute("class", "row")
+                  let html_respuesta = `
+                                          
+                                            <div class="col-12 crece-registro-encuesta-respuesta parent-`+id_pregunta+`">
+                                                <input type="radio" id="respuesta-`+id_respuesta+`" name="respuesta-name-`+id_pregunta+`" value="`+respuesta+`">
+                                                <label for="respuesta-`+id_respuesta+`">`+respuesta+`</label><br>
+              
+                                            </div>
+                                          
+                                          
+                                      ` 
+                  row.innerHTML = html_respuesta
 
-                pregunta_container.appendChild(row)
+                  pregunta_container.appendChild(row)
+                }
 
             }
             
@@ -111,6 +187,7 @@ function registrar(argument) {
     let email = document.getElementById("id_email").value
     let celular = document.getElementById("id_celular").value
     let cedula = document.getElementById('id_cedula').value
+    let fecha_nacimiento = document.getElementById('id_fecha_nacimiento').value
 
 
     let tipo_persona = 1 
@@ -142,7 +219,7 @@ function registrar(argument) {
     }
 
     let inputs_validos = validar_form()
-    if (inputs_validos === 7 && lista_respuestas.length === 4){
+    if (inputs_validos === 9 && lista_respuestas.length === 4){
         let encuesta_dic = {"preguntas":lista_preguntas, "respuestas":lista_respuestas}
         var xhttp = new XMLHttpRequest();
 
@@ -193,9 +270,10 @@ function registrar(argument) {
                                     "tipo_persona": tipo_persona,
                                     "cedula": cedula,
                                     "encuesta": encuesta_dic,
+                                    'fecha_nacimiento':fecha_nacimiento,
                                 })
                     );
-    }else if(inputs_validos === 7 && lista_respuestas.length != 4){
+    }else if(inputs_validos === 9 && lista_respuestas.length != 4){
             let mensaje = "Debe Llenar la encuesta"
                 let times_encuesta = document.getElementById("times-encuesta-id")
                 times_encuesta.style.display = "inline-block"
@@ -475,6 +553,7 @@ function validateEmail(email) {
 function validar_form() {
     // body...
     let inputs = document.getElementsByClassName("crece-form-input")
+    
 
     for (var i = inputs.length - 1; i >= 0; i--) {
         let input = inputs[i]
@@ -508,6 +587,12 @@ function validar_form() {
                 label_error.style.display = "block"
                 label_error.innerHTML = "Las contraseñas no coinciden"
 
+            }else if (input.name === "fecha-nacimiento" && !validar_fecha_nacimiento(input)){
+                mostrar_times(input)
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = "Fecha de nacimiento no valida"
             }
             else{
                 
@@ -522,6 +607,13 @@ function validar_form() {
     let inputs_validos = document.getElementsByClassName("crece-form-valid-input")
 
     return inputs_validos.length
+
+}
+
+function validar_fecha_nacimiento(input) {
+  // body...
+  
+  return true
 
 }
 
@@ -542,7 +634,8 @@ function mostrar_check(input) {
 
 function mostrar_times(input) {
     // body...
-    input.className = 'crece-form-input crece-form-invalid-input'
+    if (input.required){
+       input.className = 'crece-form-input crece-form-invalid-input'
             let id_times_fa = "times-"+input.name+"-id"
             let times_fa = document.getElementById(id_times_fa)
             times_fa.style.display = 'block'
@@ -554,4 +647,6 @@ function mostrar_times(input) {
             let label_error = document.getElementById(id_error)
             label_error.style.display = "block"
             input.focus()
+    }
+   
 }

@@ -1700,6 +1700,210 @@
       "fields": {
             "texto": "Volante"
       }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 5,
+      "fields": {
+            "texto": "¿Cuáles son tus intereses?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 501,
+      "fields": {
+            "texto": "Medio ambiente"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 502,
+      "fields": {
+            "texto": "Manufactura"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 503,
+      "fields": {
+            "texto": "Construcción"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 504,
+      "fields": {
+            "texto": "Tecnología"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 505,
+      "fields": {
+            "texto": "Comidas y bebidas"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 506,
+      "fields": {
+            "texto": "Cine"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 507,
+      "fields": {
+            "texto": "Educación"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 508,
+      "fields": {
+            "texto": "Emprendimiento"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 509,
+      "fields": {
+            "texto": "Cuidado de la salud"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 510,
+      "fields": {
+            "texto": "Finanzas"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 511,
+      "fields": {
+            "texto": "Moda"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 512,
+      "fields": {
+            "texto": "Marketing digital"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 513,
+      "fields": {
+            "texto": "Automóviles"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 514,
+      "fields": {
+            "texto": "Comercio"
+      }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 6,
+      "fields": {
+            "texto": "¿Tienes experiencia invirtiendo?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 601,
+      "fields": {
+            "texto": "Ahorros programados"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 602,
+      "fields": {
+            "texto": "Pólizas de acumulación"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 603,
+      "fields": {
+            "texto": "Bolsa de valores local"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 604,
+      "fields": {
+            "texto": "Bolsa de valores internacional"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 605,
+      "fields": {
+            "texto": "Negocio propio"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 606,
+      "fields": {
+            "texto": "No tengo experiencia"
+      }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 7,
+      "fields": {
+            "texto": "¿Qué buscas en CRECE?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 701,
+      "fields": {
+            "texto": "Alta rentabilidad de tu dinero"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 702,
+      "fields": {
+            "texto": "Ayudar a emprendedores locales"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 703,
+      "fields": {
+            "texto": "Solo quiero conocer más de ustedes"
+      }
+},
+{
+      "model": "registro_inversionista.pregunta",
+      "pk": 8,
+      "fields": {
+            "texto": "¿Estás de acuerdo en realizar inversiones 100% a través de la web?"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 801,
+      "fields": {
+            "texto": "Sí, me parece genial"
+      }
+},
+{
+      "model": "registro_inversionista.respuesta",
+      "pk": 802,
+      "fields": {
+            "texto": "No, necesito ver algo físico"
+      }
 }
+
 
 ]
