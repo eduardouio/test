@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'app',
     'registro_inversionista',
     'solicitudes',
-
+    'log_acciones',
     'fases_inversiones',
 
     'proceso',

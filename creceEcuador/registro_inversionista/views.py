@@ -35,6 +35,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
+from log_acciones.models import EventoInversionista, EventoUsuario
 
 import json
 import io
@@ -275,6 +276,36 @@ def guardar_contrato_ac_uso(nombres,apellidos,cedula):
         usuario.contratoAcUsoFirmado = True
         usuario.save()
 
+def guardar_contrato_ac_uso(nombres,apellidos,cedula):
+    #Guardar archivo pdf en nuestro servidor
+    out_filedir = './creceEcuador/static/contratos/'
+    if not os.path.exists(out_filedir):
+        os.makedirs(out_filedir)
+
+    ultimoAcUso = models.VersionContrato.objects.filter(tipoContrato="ac_uso").latest('fecha')
+
+    usuario = models.Usuario.objects.filter(cedula=cedula)[0]
+
+    if(not usuario.contratoAcUsoFirmado):
+        out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+ultimoAcUso.version+".pdf"
+        out_filedir = './creceEcuador/static/contratos/'
+        out_filepath = os.path.join( out_filedir, out_filename )
+        file_open = open(out_filepath, 'w')
+        file_open.close()
+        date = datetime.datetime.now()
+        fecha = current_date_format(date)
+        usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
+        doc = SimpleDocTemplate(out_filepath,pagesize=letter,
+                    rightMargin=72,leftMargin=72,
+                    topMargin=72,bottomMargin=18)
+        hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
+
+        ruta_archivo = '/static/contratos/'+out_filename
+        models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario, versionContrato=ultimoAcUso)
+
+        usuario.contratoAcUsoFirmado = True
+        usuario.save()
+
 def confirmar_email(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -387,6 +418,10 @@ class Login_Users(generics.CreateAPIView):
         password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
+            #log de accion
+            usuarioAutenticado = models.Usuario.objects.filter(user=user)[0]
+            EventoUsuario.objects.create(accion="login", usuario=usuarioAutenticado)
+
             r = requests.post(request.headers['Origin']+'/api/token/', data = {'username':username, 'password': password})
             status_send = status.HTTP_200_OK
             dic_tokens = r.json()
@@ -667,6 +702,9 @@ def ingresar_como(request):
         
 @login_required
 def logout_view(request):
+    if request.user.is_authenticated:
+        usuario = models.Usuario.objects.filter(user=request.user)[0]
+        EventoUsuario.objects.create(accion="logout", usuario=usuario)
     logout(request)
 
     return redirect('/inversionista/login/')
@@ -776,6 +814,8 @@ class confirmar_restablecer_password_view(APIView):
             user = None
         if user is not None and account_activation_token.check_token(user, token):
             user.set_password(new_pass)
+            usuario = models.Usuario.objects.filter(user=user)[0]
+            EventoUsuario.objects.create(accion="rec_contrasena", usuario=usuario)
             user.is_active = True
             user.save()
             

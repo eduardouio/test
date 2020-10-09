@@ -6,6 +6,7 @@ from django_fsm import TransitionNotAllowed
 from django.db.models.signals import pre_save
 from django.conf import settings
 from datetime import date, timedelta
+from log_acciones.models import EventoUsuario, EventoInversionista
 import calendar
 import math
 import numpy as np 
@@ -35,44 +36,53 @@ class Inversion(models.Model):
 
     @transition(field=fase_inversion, source='OPEN', target='CONFIRM_INVESTMENT')
     def start(self):
-
+        EventoInversionista.objects.create(accion="OPEN_to_CONFIRM_INVESTMENT", inversion=self, usuario=self.id_user)
         pass
     #FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
     @transition(field=fase_inversion, source='CONFIRM_INVESTMENT', target='FILL_INFO')
     def step_two(self):
+        EventoInversionista.objects.create(accion="CONFIRM_INVESTMENT_to_FILL_INFO", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='FILL_INFO', target='ORIGIN_MONEY')
     def step_three(self):
+        EventoInversionista.objects.create(accion="FILL_INFO_to_ORIGIN_MONEY", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='ORIGIN_MONEY', target='PENDING_TRANSFER')
     def step_four(self):
+        EventoInversionista.objects.create(accion="ORIGIN_MONEY_to_PENDING_TRANSFER", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='PENDING_TRANSFER', target='TRANSFER_SUBMITED')
     def validate_transfer(self):
+        EventoInversionista.objects.create(accion="PENDING_TRANSFER_to_TRANSFER_SUBMITED", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='DECLINED')
     def decline_transfer(self):
+        EventoInversionista.objects.create(accion="TRANSFER_SUBMITED_to_DECLINED", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='TO_BE_FUND')
     def approve_transfer(self):
+        EventoInversionista.objects.create(accion="TRANSFER_SUBMITED_to_TO_BE_FUND", inversion=self, usuario=self.id_user)
         pass
 
 
     @transition(field=fase_inversion, source='TO_BE_FUND', target='ABANDONED')
     def invalid_project(self):
+        EventoInversionista.objects.create(accion="TO_BE_FUND_to_ABANDONED", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='TO_BE_FUND', target='GOING')
     def validate(self):
+        EventoInversionista.objects.create(accion="TO_BE_FUND_to_GOING", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='GOING', target='FINISHED')
     def finish(self):
+        EventoInversionista.objects.create(accion="GOING_to_FINISHED", inversion=self, usuario=self.id_user)
         pass
 
     @property
