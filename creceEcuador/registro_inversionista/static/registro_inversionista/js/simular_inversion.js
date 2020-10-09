@@ -182,6 +182,7 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
       success: function(res) {
           
           if (res.data){
+			obtener_ruta_ac_uso();
           	$(".crece-modal").show();
 			  $("#cambiar-monto-inversion-modal-dashboard").css('display', 'flex');
 			  $("#subir_transferencia_wrapper").hide();
@@ -283,6 +284,8 @@ function go_to_fase1(oportunidad, monto){
 }
 
 function go_to_fase2(oportunidad,input_modal, id_inversion){
+	
+	firmar_ac_uso();
 	if (input_modal === 'cambiar-monto-inversion'){
 		guardar_nuevo_monto_inversion(oportunidad, id_inversion)
 	}else{
@@ -291,6 +294,21 @@ function go_to_fase2(oportunidad,input_modal, id_inversion){
 	
 	
 
+}
+
+function firmar_ac_uso(){
+	let dictRespuestas = {
+		"nombres": $("#nombre").val(),
+		"apellidos": $("#apellidos").val(),
+		"cedula": $("#cedula").val()
+	}
+	$.ajax({
+		type: 'POST',
+		url: "/inversionista/firma_contrato_ac_uso/",
+		data: dictRespuestas,
+		success: function(resultData) { 
+		}
+	});
 }
 
 function guardar_nuevo_monto_inversion(oportunidad, id_inversion) {

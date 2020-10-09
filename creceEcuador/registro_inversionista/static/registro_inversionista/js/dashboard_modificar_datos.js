@@ -9,7 +9,7 @@ function cambiarHabilitadoInputs() {
   let nonEditableInputs;
   if(usuarioConfirmado == 1){
     nonEditableInputs = ["modificar_nombre", "modificar_apellidos", "modificar_cedula",
-    "modificar_ruc_profesional_independiente", "modificar_ruc_auto_empleado", "modificar_titular"];
+    "modificar_ruc_profesional_independiente", "modificar_titular"];
   }
   else {
     nonEditableInputs = ["modificar_titular"];
@@ -259,7 +259,6 @@ function inicializarVerPerfil(){
     if(!datosDesdeBaseModificar){
       if(checkInputsModificar()){
         var dictRespuestas = obtenerRespuestasModificar()
-        console.log(dictRespuestas);
         enviarDatosModificar(dictRespuestas, false);
       }
     } 
@@ -311,10 +310,19 @@ function inicializarVerPerfil(){
 
 }
 
+function parseControlCharacters(json){
+  var regex = /\\u([\d\w]{4})/gi;
+  json = json.toLowerCase().replace(regex, function (match, grp) {
+      return String.fromCharCode(parseInt(grp, 16)); 
+  });
+  return json.toUpperCase();
+}
+
 function cargarFuenteDeIngresosModificar(){
   var ingresos = $("#modificar_selectTrabajo").attr("data-seleccion");
 
   if(ingresos) {
+    ingresos = parseControlCharacters(ingresos);
     var dictIngresos = JSON.parse(JSON.parse(ingresos)); //Doble parse. Uno para quitar escape characters y otro para parsear el json
 
     if(dictIngresos.ANIOS_RELACION_DEPENDENCIA){

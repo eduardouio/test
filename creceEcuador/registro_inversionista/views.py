@@ -112,7 +112,24 @@ class Bancos_list(generics.ListAPIView):
 
 
 
-  
+class FirmarContratoAcUso(generics.CreateAPIView):
+    """
+    inversionista/firma_contrato_ac_uso/
+    """
+    
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        nombres = request.data.get("nombres").title()
+        apellidos = request.data.get("apellidos").title()
+        cedula = request.data.get("cedula")
+
+        guardar_contrato_ac_uso(nombres,apellidos,cedula)
+
+        response = HttpResponse(status=status.HTTP_200_OK)   
+
+        return response
+
     
 
 class RegisterUsers(generics.CreateAPIView):
@@ -204,7 +221,10 @@ def guardar_contratos(nombres,apellidos,cedula, usuario_creado):
     out_filedir = './creceEcuador/static/contratos/'
     if not os.path.exists(out_filedir):
         os.makedirs(out_filedir)
-    out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+".pdf"
+
+    ultimoAcUso = models.VersionContrato.objects.filter(tipoContrato="ac_uso").latest('fecha')
+
+    out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+ultimoAcUso.version+".pdf"
     out_filedir = './creceEcuador/static/contratos/'
     out_filepath = os.path.join( out_filedir, out_filename )
     file_open = open(out_filepath, 'w')
@@ -218,10 +238,42 @@ def guardar_contratos(nombres,apellidos,cedula, usuario_creado):
     hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
 
     ruta_archivo = '/static/contratos/'+out_filename
-    models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario_creado)
+    models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario_creado, versionContrato=ultimoAcUso)
     models.Contrato.objects.create(contrato= '/static/contratos/Terminos-Legales-y-Condiciones.pdf',content_object=usuario_creado)
     models.Contrato.objects.create(contrato= '/static/contratos/Politicas-de-Privacidad.pdf',content_object=usuario_creado)
+    usuario_creado.contratoAcUsoFirmado = True
+    usuario_creado.save()
 
+
+def guardar_contrato_ac_uso(nombres,apellidos,cedula):
+    #Guardar archivo pdf en nuestro servidor
+    out_filedir = './creceEcuador/static/contratos/'
+    if not os.path.exists(out_filedir):
+        os.makedirs(out_filedir)
+
+    ultimoAcUso = models.VersionContrato.objects.filter(tipoContrato="ac_uso").latest('fecha')
+
+    usuario = models.Usuario.objects.filter(cedula=cedula)[0]
+
+    if(not usuario.contratoAcUsoFirmado):
+        out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+ultimoAcUso.version+".pdf"
+        out_filedir = './creceEcuador/static/contratos/'
+        out_filepath = os.path.join( out_filedir, out_filename )
+        file_open = open(out_filepath, 'w')
+        file_open.close()
+        date = datetime.datetime.now()
+        fecha = current_date_format(date)
+        usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
+        doc = SimpleDocTemplate(out_filepath,pagesize=letter,
+                    rightMargin=72,leftMargin=72,
+                    topMargin=72,bottomMargin=18)
+        hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
+
+        ruta_archivo = '/static/contratos/'+out_filename
+        models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario, versionContrato=ultimoAcUso)
+
+        usuario.contratoAcUsoFirmado = True
+        usuario.save()
 
 def confirmar_email(request, uidb64, token):
     try:
@@ -535,9 +587,26 @@ def get_contratos(request, pk):
     usuario = models.Usuario.objects.get(pk=pk)
 
     ct = ContentType.objects.get_for_model(usuario)
-    contratos = models.Contrato.objects.filter(content_type=ct, object_id=usuario.pk)
+    contratos = models.Contrato.objects.filter(content_type=ct, object_id=usuario.pk).order_by('-fecha')
 
     serializer = serializers.ContratoSerializer(contratos, many=True)
+
+    diccionario_respuesta = {
+        'status': status.HTTP_200_OK,
+        'data': serializer.data
+    }
+
+    return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+@api_view(['GET'])
+def get_ultimo_contrato_ac_uso(request, pk):
+    usuario = models.Usuario.objects.get(pk=pk)
+
+    ct = ContentType.objects.get_for_model(usuario)
+    ultimaVersionContrato = models.VersionContrato.objects.filter(tipoContrato="ac_uso").latest('fecha')
+    contrato = models.Contrato.objects.filter(content_type=ct, object_id=usuario.pk, versionContrato=ultimaVersionContrato).latest('fecha')
+
+    serializer = serializers.ContratoSerializer(instance=contrato)
 
     diccionario_respuesta = {
         'status': status.HTTP_200_OK,

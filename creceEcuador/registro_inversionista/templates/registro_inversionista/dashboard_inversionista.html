@@ -293,7 +293,7 @@
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                     <p>
-                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <strong>Acuerdos específicos de uso del sitio web</strong> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     </p>
                                       <button class="crece-boton-final-tabla-amortizacion" id="aceptar-inversion-button-invertir">Siguiente</button>
                                       
@@ -410,7 +410,7 @@
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                     <p>
-                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <strong>Acuerdos específicos de uso del sitio web</strong> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal_cambiar" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     </p>
                                       <button class="crece-boton-final-tabla-amortizacion" id="cambiar-monto-inversion-button">Siguiente</button>
                                       
@@ -1118,7 +1118,7 @@
       </section>
     <div class="dashboard" id="dashboard">
 
-      <nav id="sidebar">
+      <nav id="sidebar" data-firmar-contrato="{{usuario.contratoAcUsoFirmado}}" data-usuario="{{usuario.pk}}">
           <div class="sidebar-header">
               <div id="crece_ocultar_sidebar">
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

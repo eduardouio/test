@@ -1,5 +1,7 @@
 let sidebarMostrado;
 
+let contratoAcUsoFirmado;
+
   $(".crece-menu-toggle").click(function(){
 
       if($(window).width() > 768){
@@ -48,6 +50,7 @@ let sidebarMostrado;
 
   $(document).ready(function() {
      initSidebar();
+     contratoAcUsoFirmado = $("#sidebar").attr("data-firmar-contrato");
  });
 
   function initSidebar() {
@@ -74,3 +77,22 @@ let sidebarMostrado;
      $(".content-block-background").hide()
      sidebarMostrado = false;
  });
+
+ function obtener_ruta_ac_uso(){
+     let pk = $("#sidebar").attr("data-usuario");
+
+     $.ajax({
+        type: 'GET',
+        url: "/inversionista/ultimo_ac_uso/"+pk+"/",
+        success: function(resultData) { 
+            let linkAContrato = resultData.data.contrato;
+            $("#link_ac_esp_modal").attr("href", linkAContrato);
+
+            $("#link_ac_esp_modal_cambiar").attr("href", linkAContrato);
+        },
+        error: function(e){
+
+        }
+        
+     });
+ }

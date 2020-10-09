@@ -4,6 +4,7 @@ from django.conf import settings
 import json
 import jwt
 from .types import CASADO, UNION_LIBRE
+from django.db.models.signals import post_save
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
@@ -78,9 +79,26 @@ class Cuenta_bancaria(models.Model):
         verbose_name = "Cuenta_bancaria"
         verbose_name_plural = "Cuenta_bancarias"
 
+class VersionContrato(models.Model):
+    opciones_tipo_contrato = [
+        ("dec_fond", "Declaracion de fondos"),
+        ("ac_uso", "Acuerdo Uso de Sitio"),
+        ("term_leg", "Terminos Legales y Condiciones"),
+        ("pol_priv", "Politicas de Privacidad")
+    ]
+
+    tipoContrato = models.CharField(max_length=10, choices=opciones_tipo_contrato)
+    fecha = models.DateTimeField(auto_now_add=True)
+    version = models.CharField(max_length=20)
+    archivo = models.FileField(null=True, blank=True, upload_to='contratos')
+
+    def __str__(self):
+        return self.tipoContrato + ", v" + self.version
+
 class Contrato(models.Model):
     contrato = models.CharField(max_length=200)
     fecha = models.DateTimeField(auto_now_add=True)
+    versionContrato = models.ForeignKey(VersionContrato, blank=True, null=True, on_delete=models.DO_NOTHING)
 
     # Below the mandatory fields for generic relation
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -132,6 +150,7 @@ class Usuario(models.Model):
     canton = models.ForeignKey(Canton, blank=True, null=True, on_delete=models.DO_NOTHING)
     provincia = models.CharField(max_length=50, blank=True)
     pais = models.CharField(max_length=50, blank=True)
+    contratoAcUsoFirmado = models.BooleanField(default=False) 
 
     ruc = models.CharField(max_length=15, blank=True, null=True)
 
@@ -192,3 +211,14 @@ class Encuesta(models.Model):
 
     # def __str__(self):
     #     pass
+
+
+#Signals
+def cambiar_estado_contrato_firmado_usuarios(sender, instance, created, **kwargs):
+    if(created):
+        if(instance.tipoContrato == "ac_uso"):
+            Usuario.objects.all().update(contratoAcUsoFirmado=False)
+
+
+# Se conecta la señal con el modelo Contrato 
+post_save.connect(cambiar_estado_contrato_firmado_usuarios, sender=VersionContrato)

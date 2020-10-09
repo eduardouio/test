@@ -36,10 +36,19 @@ $(document).ready( function(){
 
 });
 
+function parseControlCharacters(json){
+  var regex = /\\u([\d\w]{4})/gi;
+  json = json.toLowerCase().replace(regex, function (match, grp) {
+      return String.fromCharCode(parseInt(grp, 16)); 
+  });
+  return json.toUpperCase();
+}
+
 function cargarFuenteDeIngresos(){
   var ingresos = $("#selectTrabajo").attr("data-seleccion");
 
   if(ingresos) {
+    ingresos = parseControlCharacters(ingresos);
     var dictIngresos = JSON.parse(JSON.parse(ingresos)); //Doble parse. Uno para quitar escape characters y otro para parsear el json
 
     if(dictIngresos.ANIOS_RELACION_DEPENDENCIA){
