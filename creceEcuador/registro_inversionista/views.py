@@ -204,7 +204,7 @@ class RegisterUsers(generics.CreateAPIView):
             plain_message = strip_tags(message)
             to_email = email
             email = EmailMessage(
-                        mail_subject, message,from_email="info@creceecuador.com", to=[to_email]
+                        mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
             )
             email.content_subtype = "html"
             email.send()
@@ -317,12 +317,24 @@ def confirmar_email(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
+        enviar_email_registro_validado(user, user.username)
 
         return redirect('/inversionista/dashboard/?from_email=True')
     else:
         return HttpResponse('Link de activación inválido!')
 
-
+def enviar_email_registro_validado(usuario, email):
+    mail_subject = 'Activa tu cuenta de CRECE'
+    message = render_to_string('registro_inversionista/registro_validado.html', {
+        'usuario': usuario,
+    })
+    plain_message = strip_tags(message)
+    to_email = email
+    email = EmailMessage(
+                mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+    )
+    email.content_subtype = "html"
+    email.send()
 
 
 class Proceso_formulario_inversion(generics.CreateAPIView):
@@ -525,7 +537,7 @@ class reenviar_confirmacion_registro(generics.CreateAPIView):
                 plain_message = strip_tags(message)
                 to_email = username
                 email = EmailMessage(
-                            mail_subject, message,from_email="info@creceecuador.com", to=[to_email]
+                            mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
                 )
                 email.content_subtype = "html"
                 email.send()
