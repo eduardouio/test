@@ -1,0 +1,28 @@
+digraph {
+	subgraph cluster_fases_inversiones_Inversion_fase_inversion {
+		graph [label="fases_inversiones.Inversion.fase_inversion"]
+		"fases_inversiones.Inversion.fase_inversion.ABANDONED" [label=ABANDONED shape=doublecircle]
+		"fases_inversiones.Inversion.fase_inversion.FINISHED" [label=FINISHED shape=doublecircle]
+		"fases_inversiones.Inversion.fase_inversion.DECLINED" [label=DECLINED shape=doublecircle]
+		"fases_inversiones.Inversion.fase_inversion.FILL_INFO" [label=FILL_INFO shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.TRANSFER_SUBMITED" [label=TRANSFER_SUBMITED shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.OPEN" [label=OPEN shape=circle]
+		"fases_inversiones.Inversion.fase_inversion._initial" [label="" shape=point]
+		"fases_inversiones.Inversion.fase_inversion._initial" -> "fases_inversiones.Inversion.fase_inversion.OPEN"
+		"fases_inversiones.Inversion.fase_inversion.GOING" [label=GOING shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.ORIGIN_MONEY" [label=ORIGIN_MONEY shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.TO_BE_FUND" [label=TO_BE_FUND shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.CONFIRM_INVESTMENT" [label=CONFIRM_INVESTMENT shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.PENDING_TRANSFER" [label=PENDING_TRANSFER shape=circle]
+		"fases_inversiones.Inversion.fase_inversion.TO_BE_FUND" -> "fases_inversiones.Inversion.fase_inversion.ABANDONED" [label=invalid_project]
+		"fases_inversiones.Inversion.fase_inversion.CONFIRM_INVESTMENT" -> "fases_inversiones.Inversion.fase_inversion.FILL_INFO" [label=step_two]
+		"fases_inversiones.Inversion.fase_inversion.PENDING_TRANSFER" -> "fases_inversiones.Inversion.fase_inversion.TRANSFER_SUBMITED" [label=validate_transfer]
+		"fases_inversiones.Inversion.fase_inversion.ORIGIN_MONEY" -> "fases_inversiones.Inversion.fase_inversion.PENDING_TRANSFER" [label=step_four]
+		"fases_inversiones.Inversion.fase_inversion.TO_BE_FUND" -> "fases_inversiones.Inversion.fase_inversion.GOING" [label=validate]
+		"fases_inversiones.Inversion.fase_inversion.TRANSFER_SUBMITED" -> "fases_inversiones.Inversion.fase_inversion.TO_BE_FUND" [label=approve_transfer]
+		"fases_inversiones.Inversion.fase_inversion.OPEN" -> "fases_inversiones.Inversion.fase_inversion.CONFIRM_INVESTMENT" [label=start]
+		"fases_inversiones.Inversion.fase_inversion.GOING" -> "fases_inversiones.Inversion.fase_inversion.FINISHED" [label=finish]
+		"fases_inversiones.Inversion.fase_inversion.FILL_INFO" -> "fases_inversiones.Inversion.fase_inversion.ORIGIN_MONEY" [label=step_three]
+		"fases_inversiones.Inversion.fase_inversion.TRANSFER_SUBMITED" -> "fases_inversiones.Inversion.fase_inversion.DECLINED" [label=decline_transfer]
+	}
+}

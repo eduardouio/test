@@ -28,3 +28,12 @@ python manage.py runserver
 ```
 
 Go to http://127.0.0.1:8000 and see the action!
+
+
+## How to generate state diagram FSM
+```
+python manage.py graph_transitions > transitions.dot
+```
+
+After that copy the text generated inside transitions.dot and paste it here
+http://www.webgraphviz.com/
