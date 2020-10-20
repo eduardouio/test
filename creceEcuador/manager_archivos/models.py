@@ -6,13 +6,22 @@ from django.core.exceptions import ValidationError
 from django_fsm import TransitionNotAllowed
 
 class TransferenciaInversion(models.Model):
+    estado_confirmada = 1
+    estado_xConfirmar = 0
+    estado_declinada = -1
+    opciones_estado = [
+        (estado_confirmada,"Confirmada"),
+        (estado_xConfirmar, "Por confirmar"),
+        (estado_declinada, "Declinada")
+    ]
+
     id_transferencia = models.AutoField(primary_key=True)
     id_inversion = models.ForeignKey(Inversion, on_delete=models.CASCADE)
     url_documento = models.FileField(blank=False, null=False, upload_to="transferencia")
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_aprobacion = models.DateField(null=True, blank=True)
     usuario_aprobacion = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    estado = models.IntegerField(default=0)
+    estado = models.IntegerField(choices= opciones_estado, default=0)
     
     
     class Meta:
@@ -24,8 +33,10 @@ class TransferenciaInversion(models.Model):
         solicitud = self.id_inversion.id_solicitud
         if (self.estado == 1):
             return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", Confirmado: $" + str(self.id_inversion.monto) 
+        elif (self.estado == -1):
+            return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", Declinado: $" + str(self.id_inversion.monto) 
         else:
-            return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", No confirmado: $" + str(self.id_inversion.monto)  
+            return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", Por confirmar: $" + str(self.id_inversion.monto)  
                 
 
 #Signals
@@ -62,6 +73,28 @@ def setear_porcentaje_en_solicitud_cambiar_estado_inversion(sender, instance, **
     else:
         print("no confirmado")
 
+
+#Signals
+def cambiar_estado_transferencia_declinada(sender, instance, **kwargs):
+    if(instance.estado == -1):
+
+        transf_en_db = TransferenciaInversion.objects.get(pk=instance.pk)
+
+        if (transf_en_db.estado != -1):
+            inversion = instance.id_inversion
+            try:
+                print("cambiando estados declinado")
+                inversion.decline_transfer()
+                inversion.decline_to_pending()
+                inversion.save()
+
+
+            except TransitionNotAllowed:
+                print("Estado no se puede cambiar")
+            
+    else:
+        print("no declinado")
+
 #Signals
 def cambiar_estado_inversion_transferencia_creada(sender, instance, created, **kwargs):
     if(created):
@@ -76,4 +109,5 @@ def cambiar_estado_inversion_transferencia_creada(sender, instance, created, **k
 
 # Se conecta la señal con el modelo TransferenciaInversion
 pre_save.connect(setear_porcentaje_en_solicitud_cambiar_estado_inversion, sender=TransferenciaInversion) 
+pre_save.connect(cambiar_estado_transferencia_declinada, sender=TransferenciaInversion) 
 post_save.connect(cambiar_estado_inversion_transferencia_creada, sender=TransferenciaInversion)

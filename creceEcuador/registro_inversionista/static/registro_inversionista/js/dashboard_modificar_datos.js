@@ -99,6 +99,18 @@ function getNombreContrato(rutaContrato){
 
 function inicializarVerPerfil(){
 
+  $("#modificar_usar_dir_domicilio").change(function() {
+    if(this.checked) {
+      $("#modificar_direccion_empresa").val(
+        $("#modificar_direccion").val()
+      );
+
+      $("#modificar_canton_empresa").val(
+        $("#modificar_canton").val()
+      );
+    }
+  });
+
   $(".crece-modificar-datos-formulario-wrapper-editar span").click(function() {
     cambiarHabilitadoInputs();
   });

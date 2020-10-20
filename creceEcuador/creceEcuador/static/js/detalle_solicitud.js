@@ -214,7 +214,7 @@ function crearDetalleInversion(oportunidad) {
 ''+
 '                                                    <div class="crece-detalle-operaciones-invierte-botones-azul">'+
 '                                                        <div class="row justify-content-center">'+
-'                                                            <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Invertir</a>'+
+'                                                            <a href="/inversionista/dashboard/?modal_simular=true&id_solicitud='+oportunidad.id+'" target="_blank">Invertir</a>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '                                                        '+

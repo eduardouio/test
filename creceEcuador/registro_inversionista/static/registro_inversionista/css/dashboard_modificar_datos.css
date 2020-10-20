@@ -161,6 +161,36 @@ label {
     display: none;
 }
 
+#modificar_usar_dir_domicilio,
+#usar_dir_domicilio{
+  appearance: auto !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  position: relative;
+  display: inline-block;
+}
+
+#modificar_usar_dir_domicilio_label,
+#usar_dir_domicilio_label{
+  width: auto !important;
+  display: inline-block;
+  margin: 20px 0px 10px 0px !important;
+}
+
+#modificar_usar_dir_domicilio:hover,
+#modificar_usar_dir_domicilio_label:hover,
+#usar_dir_domicilio:hover,
+#usar_dir_domicilio_label:hover{
+  cursor: pointer;
+}
+
+#modificar_usar_dir_domicilio:disabled:hover,
+#modificar_usar_dir_domicilio_label:disabled:hover,
+#usar_dir_domicilio:disabled:hover,
+#usar_dir_domicilio_label:disabled:hover{
+  cursor: default;
+}
+
 /*formulario */
 form .form-control{
   border: 2px solid #DEDEDE;

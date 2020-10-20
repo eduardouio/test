@@ -1,4 +1,5 @@
 const TEXTO_DEFAULT_LABEL_TRANSF = "Archivos PDF, JPG o PNG";
+const TEXTO_LARGE_FILE_SIZE = TEXTO_DEFAULT_LABEL_TRANSF+'</br><span style="color:red;">El archivo debe ser de 4MB o menos.</span>';
 let URL_SIGUIENTE_SUBIR_TRANSFERENCIA = "/registro/fase_final/?id_inversion=";
 
 
@@ -10,7 +11,18 @@ $(document).ready(function(){
 
 $("#comprobante_transferencia").on('change', function() {
     if(this.files[0]){
-        $("#labelDocumentoTransferencia").html(this.files[0].name);
+        var filesize = ((this.files[0].size/1024)/1024).toFixed(4); // MB
+
+        if (this.files[0].name != "item" && typeof this.files[0].name != "undefined" && filesize <= 4) { 
+            $("#labelDocumentoTransferencia").html(this.files[0].name);
+        }
+
+        else{
+            $("#comprobante_transferencia").val("");
+            $("#labelDocumentoTransferencia").html(TEXTO_LARGE_FILE_SIZE);
+
+        }
+
     }
     else{
         $("#labelDocumentoTransferencia").html(TEXTO_DEFAULT_LABEL_TRANSF);
@@ -76,6 +88,7 @@ function enviarComprobanteTransferencia(){
         dataType : 'json',
         data: myFormData,
         success: function () {
+            $('#comprobante_transferencia').val('')
             window.location.href = URL_SIGUIENTE_SUBIR_TRANSFERENCIA+id_inversion;
         },
         error: function(){

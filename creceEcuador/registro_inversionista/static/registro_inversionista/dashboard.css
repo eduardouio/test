@@ -305,7 +305,31 @@ ul li {
 	border: 1px solid rgba(0, 107, 141, 0.8);
 }
 
+#imagen-solicitud-container,
+#crece-modal-imagen-solicitud{
+	padding: 0px;
+}
+
+#crece-modal-imagen-solicitud{
+	display: none;
+}
+
+#crece-modal-imagen-solicitud img{
+	width: 500px;
+}
+
+#detalle-operaciones-imagen-solicitante:hover{
+	cursor: pointer;
+}
+
 @media(max-width:768px){
+	#crece-modal-imagen-solicitud img {
+		width: 300px;
+	}
+	
+	#crece-modal-imagen-solicitud {
+		margin-top: 70%;
+	}
 	#sidebar{margin-left: -250px;}
 	#sidebar.active{
 		margin-left: 0px;

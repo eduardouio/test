@@ -1,6 +1,7 @@
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework import status
 from django.core.files import File
 from urllib.request import urlopen
@@ -9,7 +10,10 @@ import urllib
 import copy
 from .utils import download_objeto, get_nombre_archivo, crear_diccionario_respuesta_400, crear_diccionario_respuesta_ok
 from .types import PREFIJO_NOMBRE_ARCHIVO_COMPROBANTE_TRANSFERENCIA, MENSAJE_URL_NO_VALIDA, MENSAJE_DOCUMENTO_NOT_IN_REQUEST
-from .serializers import TransferenciaInversionPostRequestSerializer, TransferenciaInversionSerializer
+from .serializers import TransferenciaInversionPostRequestSerializer, TransferenciaInversionSerializer, TransferenciaInversionArchivoSerializer
+from .models import TransferenciaInversion
+import json
+from django.http import HttpResponse
 
 
 class TransferenciaInversionView(APIView):
@@ -44,4 +48,38 @@ class TransferenciaInversionView(APIView):
             diccionario_respuesta = crear_diccionario_respuesta_400(str(e))
             return Response(diccionario_respuesta, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['GET'])
+def get_transferencia_inversion_individual(request, pk):
+    try:
+        transferencia_count = TransferenciaInversion.objects.filter(id_inversion= pk, estado=0).count() #get_object_or_404(Solicitud, pk=pk)
+
+        if(transferencia_count>0):
+            transferencia = TransferenciaInversion.objects.filter(id_inversion= pk, estado=0).latest('fecha_creacion')
+
+            serializer = TransferenciaInversionArchivoSerializer(instance=transferencia)
+
+            diccionario_respuesta = {
+                'status': status.HTTP_200_OK,
+                'data': serializer.data
+            }
+
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Transferencia no encontrada",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+
+
+    except TransferenciaInversion.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Transferencia no encontrada",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+        #raise Http404(json.dumps({'status':404}))
 

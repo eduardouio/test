@@ -33,7 +33,7 @@ class Canton(models.Model):
 class Fuente_ingresos(models.Model):
     descripcion = models.TextField()
     direccion = models.CharField(max_length=200)
-    canton = models.ForeignKey(Canton, null=False, blank=False, on_delete=models.DO_NOTHING)
+    canton = models.ForeignKey(Canton, null=True, blank=False, on_delete=models.SET_NULL)
     ingresos_mensuales = models.FloatField()
     class Meta:
         verbose_name = "Fuente_ingresos"
@@ -98,7 +98,7 @@ class VersionContrato(models.Model):
 class Contrato(models.Model):
     contrato = models.CharField(max_length=200)
     fecha = models.DateTimeField(auto_now_add=True)
-    versionContrato = models.ForeignKey(VersionContrato, blank=True, null=True, on_delete=models.DO_NOTHING)
+    versionContrato = models.ForeignKey(VersionContrato, blank=True, null=True, on_delete=models.SET_NULL)
 
     # Below the mandatory fields for generic relation
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -112,6 +112,12 @@ class Usuario(models.Model):
     opciones_tipo_persona = [
         (persona_natural, "persona natural"),
         (persona_juridica, "persona juridica")
+    ]
+
+    opciones_tipo_usuario = [
+        ("inversionista", "inversionista"),
+        ("solicitante", "solicitante"),
+        ("staff", "staff"),
     ]
 
     estado_confirmado = 1
@@ -147,9 +153,10 @@ class Usuario(models.Model):
     estado = models.IntegerField(choices=opciones_estado, default=0)
     direccion1 = models.CharField(max_length=50, blank= True)
     direccion2 = models.CharField(max_length=50, blank= True)
-    canton = models.ForeignKey(Canton, blank=True, null=True, on_delete=models.DO_NOTHING)
+    canton = models.ForeignKey(Canton, blank=True, null=True, on_delete=models.SET_NULL)
     provincia = models.CharField(max_length=50, blank=True)
     pais = models.CharField(max_length=50, blank=True)
+    tipo_usuario = models.CharField(choices=opciones_tipo_usuario, max_length=15, default="inversionista")
 
     fecha_nacimiento = models.DateField(blank=True, null=True)
 

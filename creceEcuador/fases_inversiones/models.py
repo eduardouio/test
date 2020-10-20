@@ -1,5 +1,6 @@
 from django.db import models
 from solicitudes.models import Solicitud
+from datetime import date
 from registro_inversionista.models import Usuario
 from django_fsm import FSMField, transition
 from django_fsm import TransitionNotAllowed
@@ -33,6 +34,7 @@ class Inversion(models.Model):
     ganancia_total = models.FloatField()
     estado = models.IntegerField(choices=opciones_estado, default=0)
     fase_inversion = FSMField(default=FASES_INVERSION[0][0], choices=FASES_INVERSION)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     @transition(field=fase_inversion, source='OPEN', target='CONFIRM_INVESTMENT')
     def start(self):
@@ -62,6 +64,11 @@ class Inversion(models.Model):
     @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='DECLINED')
     def decline_transfer(self):
         EventoInversionista.objects.create(accion="TRANSFER_SUBMITED_to_DECLINED", inversion=self, usuario=self.id_user)
+        pass
+
+    @transition(field=fase_inversion, source='DECLINED', target='PENDING_TRANSFER')
+    def decline_to_pending(self):
+        EventoInversionista.objects.create(accion="DECLINED_to_PENDING_TRANSFER", inversion=self, usuario=self.id_user)
         pass
 
     @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='TO_BE_FUND')
@@ -119,7 +126,7 @@ class Inversion(models.Model):
             return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", No confirmado: $" + str(self.monto)  
     
     def save(self, *args, **kwargs):
-        if(self.fase_inversion == "VALID"):
+        if(self.fase_inversion == "GOING"):
             ganancia_total = crear_pagos(self, self.id_solicitud)
             self.ganancia_total = ganancia_total
         super(Inversion, self).save(*args, **kwargs)
@@ -317,3 +324,30 @@ def add_months(sourcedate, months):
     month = month % 12 + 1
     day = min(sourcedate.day, calendar.monthrange(year,month)[1])
     return date(year, month, day)  
+
+
+
+#Signals
+def cambiar_estado_solicitud(sender, instance, **kwargs):
+    try:
+        solicitud_en_base =  Solicitud.objects.get(pk=instance.pk)
+
+        if(instance.porcentaje_financiado != solicitud_en_base.porcentaje_financiado and instance.porcentaje_financiado == 100):
+            instance.fecha_finalizacion = date.today()
+            inversiones = Inversion.objects.filter(id_solicitud=instance)
+
+            for inversion in inversiones:
+                try:
+                    inversion.validate()
+                    inversion.save()
+                    print("Inversion transition: ",str(inversion))
+
+                except TransitionNotAllowed:
+                    print("Inversion no transition: ",str(inversion))
+                    pass
+
+    except Solicitud.DoesNotExist:
+        print("Solicitud nueva")
+
+# Se conecta la señal con el modelo TransferenciaInversion
+pre_save.connect(cambiar_estado_solicitud, sender=Solicitud)

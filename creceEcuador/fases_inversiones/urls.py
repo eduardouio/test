@@ -15,6 +15,7 @@ urlpatterns = [
     path('inversiones/<int:pk>/', views.get_inversiones_por_inversionista, name='get_inversiones_por_inversionista'),
     path('pagos/<int:id_inversion>/', views.get_pagos_inversionista, name='get_pagos_inversionista'),
     path('cambiar_monto_inversion/', views.cambiar_monto_inversion, name='cambiar_monto_inversion'),
+    path('<int:id_solicitud>/<int:id_inversionista>/', views.get_inversion_usuario, name='get_inversion_usuario'),
 
 
     url('step_three_inversion/', views.step_three_inversion, name="step_three"),

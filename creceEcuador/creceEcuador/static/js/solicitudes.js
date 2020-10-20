@@ -45,6 +45,7 @@ function crearCuadrosOportunidadesInversion(data){
     $(".crece-oportunidades-container").html(string_operacion);
     let links = $(".crece-oportunidades-contenido-solicitante-link");
     $(".crece-oportunidades-contenido-solicitante-link").remove();
+    $(".crece-historia-container *:not(:first-child)").remove();
     $(".crece-oportunidades-contenido-solicitante p").each( function(numSolicitante) {
       var lines = lineWrapDetector.getLines(this);
       let stringParrafo = "";
@@ -220,10 +221,9 @@ function stringSolicitud(oportunidad){
   '                                                            <div class="col-12">'+
   '                                                                <strong>'+ oportunidad.autor+' en CRECE</strong>'+
   '                                                            </div>'+
-  '                                                            <div class="col-12">'+
-  '                                                                <p>'+
+  '                                                            <div class="col-12 crece-historia-container">'+
                                                                       oportunidad.historia+
-  '                                                                </p><a class="crece-oportunidades-contenido-solicitante-link" href="'+rutaDetalleSolicitud(oportunidad.id)+'">...</a>'+
+  '                                                                <a class="crece-oportunidades-contenido-solicitante-link" href="'+rutaDetalleSolicitud(oportunidad.id)+'">...</a>'+
   '                                                            </div>'+
   '                                                        </div>'+
   '                                                    </div>'+
@@ -257,7 +257,7 @@ function stringSolicitud(oportunidad){
   '                                                                <button type="button" onclick="crearModal('+oportunidad.id+')">Ver más</button>'+
   '                                                            </div>'+
   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
-  '                                                                <a href="/inversionista/login/" target="_blank">Invertir</a>'+
+  '                                                                <a href="/inversionista/dashboard/?mostrar_detalle=true&id_solicitud='+oportunidad.id+'" target="_blank">Invertir</a>'+
   '                                                            </div>'+
   '                                                        </div>'+
   '                                                    </div>'+
@@ -485,7 +485,7 @@ function crearDetalleInversion(oportunidad) {
 ''+
 '                                                    <div class="crece-detalle-operaciones-invierte-botones-azul">'+
 '                                                        <div class="row justify-content-center">'+
-'                                                            <a href="https://www.creceecuador-server.tk/sysworkspace/en/neoclassic/login/login">Invertir</a>'+
+'                                                            <a href="/inversionista/dashboard/?modal_simular=true&id_solicitud='+oportunidad.id+'" target="_blank">Invertir</a>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '                                                        '+

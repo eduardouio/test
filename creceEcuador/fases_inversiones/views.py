@@ -363,6 +363,41 @@ def get_inversion_individual(request, pk):
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
         #raise Http404(json.dumps({'status':404}))
 
+@api_view(['GET'])
+def get_inversion_usuario(request, id_solicitud, id_inversionista):
+    try:
+        inversion_count = models.Inversion.objects.filter(id_user=id_inversionista, id_solicitud=id_solicitud).count()
+        
+        if (inversion_count > 0):
+            inversion = models.Inversion.objects.filter(id_user=id_inversionista, id_solicitud=id_solicitud).latest('fecha_creacion')
+
+            lista_fase = ['OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND']
+            
+            print("fase inversion: "+ inversion.fase_inversion)
+            if(inversion.fase_inversion in lista_fase):
+                serializer = InversionSerializer(instance=inversion)
+
+                diccionario_respuesta = {
+                    'status': status.HTTP_200_OK,
+                    'data': serializer.data
+                }
+
+                return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+        
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK
+        }
+
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+
+    except models.Inversion.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Inversion no encontrada",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+        #raise Http404(json.dumps({'status':404}))
 
 @api_view(['GET'])
 def get_inversiones_por_inversionista(request, pk):

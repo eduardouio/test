@@ -190,6 +190,7 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
 			  $("#crece-declaracion-body-id").hide();
 			  $("#crece-modal-simular-inversion-id").hide()
 			  $("#aceptar-inversion-modal-dashboard").hide();
+			  $("#final_inversion_wrapper").hide();
 
 			  $("#input-cambiar-monto-inversion").keydown(function(e) {
                   if(e.key==='.'){

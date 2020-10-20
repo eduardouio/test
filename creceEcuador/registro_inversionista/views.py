@@ -26,6 +26,8 @@ from django.contrib.contenttypes.models import ContentType
 from . import models
 from . import serializers
 
+from manager_archivos.models import TransferenciaInversion
+
 #confirmacion de email
 from .forms import SignupForm, Encuesta_form, Login_form
 from django.contrib.sites.shortcuts import get_current_site
@@ -209,7 +211,7 @@ class RegisterUsers(generics.CreateAPIView):
             email.content_subtype = "html"
             email.send()
 
-
+            EventoUsuario.objects.create(accion="register", usuario=new_usuario)
 
             response = HttpResponse(status=status.HTTP_200_OK)   
 
@@ -316,6 +318,8 @@ def confirmar_email(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
+        usuarioAutenticado = models.Usuario.objects.filter(user=user)[0]
+        EventoUsuario.objects.create(accion="email_conf", usuario=usuarioAutenticado)
         login(request, user)
         enviar_email_registro_validado(user, user.username)
 
@@ -605,22 +609,38 @@ class SubirTransferenciaView(APIView):
     parser_classes = (MultiPartParser, )
     def post(self, request, filename, format=None):
         try: 
-            transferencia_serializer = TransferenciaInversionArchivoSerializer(data=request.data)
-            print(transferencia_serializer)
-            if transferencia_serializer.is_valid():
-                transferencia = transferencia_serializer.save()
-                print(transferencia.url_documento)
-                transferencia.url_documento = settings.MEDIA_URL + str(transferencia.url_documento)
-                transferencia.save()
-                print(transferencia.url_documento)
-                diccionario_respuesta = {
-                    'status': status.HTTP_200_OK,
-                    'mensaje': "Archivo guardado"
-                }
+            id_inversion = request.POST.get("id_inversion", "")
+            count_objects = TransferenciaInversion.objects.filter(id_inversion= id_inversion, estado=0).count()
+            print("count objects: "+str(count_objects))
+            if(count_objects > 0):
+                
+                transferencia_obtenida = TransferenciaInversion.objects.filter(id_inversion= id_inversion, estado=0).latest('fecha_creacion')
+                transferencia_serializer = TransferenciaInversionArchivoSerializer(transferencia_obtenida, data=request.data, partial=True)
+                print(transferencia_serializer)
+                if transferencia_serializer.is_valid():
+                    transferencia = transferencia_serializer.save()
+                    diccionario_respuesta = {
+                        'status': status.HTTP_200_OK,
+                        'mensaje': "Archivo guardado"
+                    }
 
-                return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+                    return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+                else:
+                    raise Exception(transferencia_serializer.errors)
+
             else:
-                raise Exception(transferencia_serializer.errors)
+                transferencia_serializer = TransferenciaInversionArchivoSerializer(data=request.data)
+                print(transferencia_serializer)
+                if transferencia_serializer.is_valid():
+                    transferencia = transferencia_serializer.save()
+                    diccionario_respuesta = {
+                        'status': status.HTTP_200_OK,
+                        'mensaje': "Archivo guardado"
+                    }
+
+                    return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+                else:
+                    raise Exception(transferencia_serializer.errors)
 
         except Exception as e:
             diccionario_respuesta = {

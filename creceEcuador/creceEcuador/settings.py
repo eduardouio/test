@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'proceso',
     'manager_archivos',
 
-
+    'ckeditor',
+    'ckeditor_uploader',
     #rest_framework
     'rest_framework',
     'django_fsm',
@@ -144,6 +145,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_URL_COMPLETA = os.path.join(BASE_DIR, 'creceEcuador/static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
 #Ruta a los archivos

@@ -3,6 +3,8 @@ from django.db import models
 
 class EventoUsuario(models.Model):
     opciones_tipo_accion = [
+        ("register", "register"),
+        ("email_conf", "email_conf"),
         ("login", "login"),
         ("logout", "logout"),
         ("rec_contrasena", "rec_contrasena")
@@ -10,7 +12,7 @@ class EventoUsuario(models.Model):
 
     accion = models.CharField(max_length=20, choices=opciones_tipo_accion)
     timestamp = models.DateTimeField(auto_now_add=True)
-    usuario = models.ForeignKey(to="registro_inversionista.Usuario", on_delete=models.DO_NOTHING)
+    usuario = models.ForeignKey(to="registro_inversionista.Usuario", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.accion + " | " + str(self.usuario)+ " | " + str(self.timestamp)
@@ -24,6 +26,7 @@ class EventoInversionista(models.Model):
         ("ORIGIN_MONEY_to_PENDING_TRANSFER", "ORIGIN_MONEY_to_PENDING_TRANSFER"),
         ("PENDING_TRANSFER_to_TRANSFER_SUBMITED", "PENDING_TRANSFER_to_TRANSFER_SUBMITED"),
         ("TRANSFER_SUBMITED_to_DECLINED", "TRANSFER_SUBMITED_to_DECLINED"),
+        ("DECLINED_to_PENDING_TRANSFER", "DECLINED_to_PENDING_TRANSFER"),
         ("TO_BE_FUND_to_ABANDONED", "TO_BE_FUND_to_ABANDONED"),
         ("TO_BE_FUND_to_GOING", "TO_BE_FUND_to_GOING"),
         ("GOING_to_FINISHED", "GOING_to_FINISHED"),
@@ -31,8 +34,8 @@ class EventoInversionista(models.Model):
 
     accion = models.CharField(max_length=50, choices=opciones_tipo_accion)
     timestamp = models.DateTimeField(auto_now_add=True)
-    usuario = models.ForeignKey(to="registro_inversionista.Usuario", on_delete=models.DO_NOTHING)
-    inversion = models.ForeignKey(to="fases_inversiones.Inversion", on_delete=models.DO_NOTHING)
+    usuario = models.ForeignKey(to="registro_inversionista.Usuario", on_delete=models.SET_NULL, null=True)
+    inversion = models.ForeignKey(to="fases_inversiones.Inversion", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.accion + " | " + str(self.usuario) + " | " + self.inversion.id_solicitud.operacion + " | " + str(self.timestamp)

@@ -32,6 +32,17 @@ $(document).ready( function(){
     });
   }
 
+  $("#usar_dir_domicilio").change(function() {
+    if(this.checked) {
+      $("#direccion_empresa").val(
+        $("#direccion").val()
+      );
+
+      $("#canton_empresa").val(
+        $("#canton").val()
+      );
+    }
+  });
 
 
 });

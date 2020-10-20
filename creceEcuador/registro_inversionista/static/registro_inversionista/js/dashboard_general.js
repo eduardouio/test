@@ -99,14 +99,95 @@ $(document).ready(function() {
         $(".crece-modal").show();
         $("#crece-modal-pregunta-prefencia-1-id").css('display', 'flex');
         $("#crece-modal-simular-inversion-id").hide();
-              $("#aceptar-inversion-modal-dashboard").hide();
-              $("#subir_transferencia_wrapper").hide();
-              $("#completar_datos_wrapper").hide();
-              $("#crece-declaracion-body-id").hide();
-              $("#cambiar-monto-inversion-modal-dashboard").hide();
+        $("#aceptar-inversion-modal-dashboard").hide();
+        $("#subir_transferencia_wrapper").hide();
+        $("#completar_datos_wrapper").hide();
+        $("#crece-declaracion-body-id").hide();
+        $("#cambiar-monto-inversion-modal-dashboard").hide();
+    }
+
+    if(getParameterByName('mostrar_detalle')){
+        let solicitud_query = getParameterByName('id_solicitud');
+
+        let id_usuario = $("#sidebar").attr("data-usuario");
+
+        $.ajax({
+            url: "/registro/"+solicitud_query+"/"+id_usuario+"/",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                
+                if (res.data){
+                    let data = res.data;
+                    ver_detalle_solicitud(data.fase_inversion, data.id,data.solicitud.id,data.monto);
+                }  
+                else{
+                    ver_detalle_solicitud('SIMULAR',undefined,solicitud_query);
+                }
+            },
+            error: function(xhr, status, error) {
+                ver_detalle_solicitud('SIMULAR',undefined,solicitud_query);
+            }
+        });
+    }
+
+    if(getParameterByName('modal_simular')){
+        let solicitud_query = getParameterByName('id_solicitud');
+
+        let id_usuario = $("#sidebar").attr("data-usuario");
+
+        $.ajax({
+            url: "/registro/"+solicitud_query+"/"+id_usuario+"/",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                
+                if (res.data){
+                    let data = res.data;
+                    ver_detalle_solicitud(data.fase_inversion, data.id,data.solicitud.id,data.monto);
+                    waitForElementToDisplay(".crece-detalle-operaciones-invierte-botones-azul a", function(){
+                        $(".crece-detalle-operaciones-invierte-botones-azul a").trigger("click");
+                    },200,10000);
+                    
+                }  
+                else{
+                    ver_detalle_solicitud('SIMULAR',undefined,solicitud_query);
+                    waitForElementToDisplay("#input-monto-detalle-solicitud", function(){
+                        $("#input-monto-detalle-solicitud").val("350");
+                        crear_modal_simulacion_inversion(solicitud_query, 'FALSE');
+                    },200,5000);
+                    
+                    
+                }
+            },
+            error: function(xhr, status, error) {
+                ver_detalle_solicitud('SIMULAR',undefined,solicitud_query);
+                waitForElementToDisplay("#input-monto-detalle-solicitud", function(){
+                    $("#input-monto-detalle-solicitud").val("350");
+                    crear_modal_simulacion_inversion(solicitud_query, 'FALSE');
+                },200,5000);
+            }
+        });
     }
         
 });
+
+function waitForElementToDisplay(selector, callback, checkFrequencyInMs, timeoutInMs) {
+    var startTimeInMs = Date.now();
+    (function loopSearch() {
+        if (document.querySelector(selector) != null) {
+        callback();
+        return;
+        }
+        else {
+        setTimeout(function () {
+            if (timeoutInMs && Date.now() - startTimeInMs > timeoutInMs)
+            return;
+            loopSearch();
+        }, checkFrequencyInMs);
+        }
+    })();
+}
 
 function siguiente_pregunta_preferencia(actual) {
     // body...

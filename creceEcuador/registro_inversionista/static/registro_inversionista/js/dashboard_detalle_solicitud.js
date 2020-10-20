@@ -181,6 +181,20 @@ function regresar_detalle_solicitud(referencia) {
 }
 
 
+function mostrarModalImagen(ruta){
+  $("#imagen-solicitud-container img").attr("src", ruta);
+
+  $(".crece-modal").show();
+  $("#aceptar-inversion-modal-dashboard").hide()
+  $("#subir_transferencia_wrapper").hide();
+  $("#completar_datos_wrapper").hide();
+  $("#crece-declaracion-body-id").hide();
+  $("#crece-modal-simular-inversion-id").hide();
+  $("#crece-modal-tabla-solicitud-vigente-id").hide();
+  $("#final_inversion_wrapper").hide();
+  $("#crece-modal-imagen-solicitud").css('display', 'flex');
+}
+
 function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inversion) {
     var html_string = '<div class="row justify-content-center crece-detalle-operaciones-header">'+
 '                        <div class="crece-detalle-operaciones-header-imagen-blur" id="crece-detalle-operaciones-header-imagen-blur-id" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
@@ -188,7 +202,7 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inv
 '                        <div class="crece-detalle-operaciones-header-gradiente" >'+
 '                           <div class="row justify-content-center crece-detalle-operaciones-header-gradiente-imagen" >'+
 '                               <div class="col-auto" >'+
-'                                   <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /'+oportunidad.imagen_url+'\');">'+
+'                                   <div onclick="mostrarModalImagen(\'/'+oportunidad.imagen_url+'\')" id="detalle-operaciones-imagen-solicitante" class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /'+oportunidad.imagen_url+'\');">'+
 '                                   </div>'+
 '                               </div>'+
 '                               <div class="col-12 col-sm-auto" >'+

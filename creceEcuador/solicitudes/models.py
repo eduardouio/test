@@ -3,6 +3,8 @@ from datetime import date, timedelta
 import calendar
 from django.conf import settings
 from registro_inversionista.models import Usuario
+from django.db.models.signals import pre_save, post_save
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class CategoriaSolicitud(models.Model):
@@ -32,7 +34,7 @@ class Solicitud(models.Model):
     #Modelo Solicitud
     ticket = models.CharField(max_length=200, blank=True)
     operacion = models.TextField(blank=False)
-    historia = models.TextField(blank=False)
+    historia = RichTextUploadingField()
     plazo = models.IntegerField(blank=False)
     url = models.TextField(blank=True, null=True) 
     imagen_url = models.ImageField(blank=False, null=False, upload_to="solicitudes")
@@ -45,11 +47,11 @@ class Solicitud(models.Model):
     fecha_publicacion = models.DateField()
     fecha_finalizacion = models.DateField(blank=True)
     fecha_expiracion = models.DateField(blank=True)
-    id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False) #Se debe especificar la app del modelo
-    id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.DO_NOTHING, blank=False)
-    id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.DO_NOTHING, blank=False)
-    id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.DO_NOTHING, blank=False)
-    id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.DO_NOTHING, blank=True, null=True)
+    id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False) #Se debe especificar la app del modelo
+    id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.SET_NULL, null=True, blank=False)
+    id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.SET_NULL, null=True, blank=False)
+    id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.SET_NULL, null=True, blank=False)
+    id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.SET_NULL, blank=True, null=True)
     
     garantias = models.CharField(max_length=200, blank=True, default=True, null=True)
     visita_agente_CRECE = models.TextField(blank=True, default=True, null=True)
@@ -114,8 +116,8 @@ class Solicitud(models.Model):
 
     
 class HistorialFinanciamiento(models.Model):
-    id_usuario = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False)
-    id_solicitud = models.ForeignKey('Solicitud', on_delete=models.DO_NOTHING, blank=False)
+    id_usuario = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False)
+    id_solicitud = models.ForeignKey('Solicitud', on_delete=models.SET_NULL, null=True, blank=False)
     fecha_financiamiento = models.DateField()
     porcentaje_financiamiento = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=0)
     monto_financiamiento = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
@@ -129,7 +131,7 @@ class CalificacionSolicitante(models.Model):
     solicitudes_pagadas = models.IntegerField(blank=False)
     solicitudes_vigentes = models.IntegerField(blank=False)
     puntualidad = models.DecimalField(max_digits=5, decimal_places=2, blank=False)
-    id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.DO_NOTHING, blank=False)
+    id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False)
 
     def __str__(self):
         return ("Calificacion: "+self.id_autor.nombres + " "  + self.id_autor.apellidos)
