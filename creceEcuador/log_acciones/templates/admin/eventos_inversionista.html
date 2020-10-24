@@ -1,0 +1,181 @@
+{% extends 'admin/change_list.html' %}
+{% load humanize %}
+{% block content_title %}
+    <h1> Evemto Inversionista </h1>
+{% endblock %}
+{% block result_list %}
+<div class=”results”>
+    <style>
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            height: 160px;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        .bar-chart .bar {
+            flex: 100%;
+            align-self: flex-end;
+            margin-right: 2px;
+            position: relative;
+            background-color: #79aec8;
+        }
+        .bar-chart .bar:last-child {
+            margin: 0;
+        }
+        .bar-chart .bar:hover {
+            background-color: #417690;
+        }
+        .bar-chart .bar .bar-tooltip {
+            position: relative;
+            z-index: 999;
+        }
+        .bar-chart .bar .bar-tooltip {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-weight: bold;
+            opacity: 0;
+        }
+        .bar-chart .bar:hover .bar-tooltip {
+            opacity: 1;
+        }
+    
+        #resultados-eventos-bar{
+            margin-right: 0px;
+        }
+
+        .crece-titulo-grafico{
+            padding-top: 30px;
+        }
+        
+    </style>
+    <div class="results">
+        <table>
+
+            <thead>
+                <tr>
+                <th>
+                    <div class=”text”>
+                    <a href=”#”>Acción</a>
+                    </div>
+                </th>
+                <th>
+                    <div class=”text”>
+                    <a href=”#”>Total</a>
+                    </div>
+                </th>
+                <th>
+                    <div class=”text”>
+                        <a href=”#”>
+                        <strong>Fecha</strong>
+                        </a>
+                    </div>
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in summary_over_time %}
+                <tr class="{% cycle 'row1' 'row2' %}">
+                <td> {{ row.accion }} </td>
+                <td> {{ row.total | intcomma }} </td>
+                <td>
+                        <strong>
+                            {{row.period | date:"d/m/Y H:i"}}
+                        </strong>
+                      </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        
+        </table>
+    </div>
+
+    <h1 class="crece-titulo-grafico"> Count de Acciones </h1>
+
+    <div class="results">
+        <div class="bar-chart">
+        {% for x in summary_over_time %}
+            <div class="bar" style="height:{{x.pct}}%">
+                <div class="bar-tooltip">
+                    {{x.accion}}<br/>
+                    {{x.period | date:"d/m/Y H:i"}}<br/>
+                    {{x.total | default:0 }}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <h1 class="crece-titulo-grafico"> Tabla de monto invertido por usuario y solicitud </h1>
+
+    <div class="results">
+        <table>
+
+            <thead>
+                <tr>
+                <th>
+                    <div class=”text”>
+                    <a href=”#”>Usuario</a>
+                    </div>
+                </th>
+                <th>
+                    <div class=”text”>
+                    <a href=”#”>Fecha</a>
+                    </div>
+                </th>
+                <th>
+                    <div class=”text”>
+                    <a href=”#”>Solicitud</a>
+                    </div>
+                </th>
+                <th>
+                    <div class=”text”>
+                        <a href=”#”>
+                        <strong>Total</strong>
+                        </a>
+                    </div>
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in summary_confirm_investment %}
+                <tr class="{% cycle 'row1' 'row2' %}">
+                <td> {{ row.usuario }} </td>
+                <td> {{row.period | date:"d/m/Y H:i"}} </td>
+                <td> {{ row.solicitud }} </td>
+                <td>
+                        <strong>
+                            {{ row.total | intcomma }}
+                        </strong>
+                        </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        
+        </table>
+    </div>
+
+    <h1 class="crece-titulo-grafico"> Suma de monto invertido por usuario y solicitud </h1>
+
+    <div class="results">
+        <div class="bar-chart">
+        {% for x in summary_confirm_investment %}
+            <div class="bar" style="height:{{x.pct}}%">
+                <div class="bar-tooltip">
+                    {{x.usuario}}<br/>
+                    {{x.solicitud}}<br/>
+                    {{x.period | date:"d/m/Y H:i"}}<br/>
+                    {{x.total | default:0 }}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+{% block pagination %}{% endblock %}

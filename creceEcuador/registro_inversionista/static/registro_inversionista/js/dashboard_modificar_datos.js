@@ -359,9 +359,7 @@ function inicializarVerPerfil(){
         enviarDatosModificar(dictRespuestas, false);
       }
     } 
-    console.log("click guardar");
     var dictRespuestas = obtenerRespuestasModificar()
-    console.log(dictRespuestas);
   });
 
   $("#modificar_siguiente").click(function(){
@@ -713,14 +711,12 @@ var substringMatcher = function(strs) {
 
   function checkInputsModificar() {
     var es_valido = true;
-    console.log($('input').filter('[required]'));
     $('.crece-modificar-datos-formulario-wrapper input').filter('[required]').each(function() {
 
       if ($(this).val() === '') {
         focusAndInvalidate(this);
         $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("Llene todos los campos");
         $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
-        console.log($(this).attr("name"));
         es_valido = false;
         return false;
       }
@@ -738,10 +734,6 @@ var substringMatcher = function(strs) {
         }
         else if (this.name === 'modificar_cedula_conyugue' && !validar_cedula_modificar(this)){
           focusAndInvalidate(this);
-
-          console.log("required: "+$(this).prop('required'));
-          console.log("ced validada: "+validar_cedula_modificar(this));
-          console.log(this)
 
           $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("Ingrese la cédula de su cónyugue correctamente");
           $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
@@ -810,7 +802,6 @@ var substringMatcher = function(strs) {
         url: "/inversionista/fase1/",
         data: dictRespuestas,
         success: function(resultData) { 
-          console.log("datos enviados");
           if($('#modificar_foto_cedula').prop('files')[0]){
             enviarImagenCedulaModificar(redirect);
           }
@@ -989,7 +980,6 @@ function validar_cedula_modificar(textbox){
      * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.     
      */
      let cedula = $(textbox).val();
-     console.log(cedula);
      let times_cedula = document.getElementById("times-cedula-id")
      let check_cedula = document.getElementById("check-cedula-id")
      //Preguntamos si la cedula consta de 10 digitos

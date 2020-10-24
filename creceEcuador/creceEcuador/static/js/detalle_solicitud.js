@@ -208,7 +208,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                <div class="crece-detalle-operaciones-invierte-botones">'+
 '                                                    <div class="crece-detalle-operaciones-invierte-botones-blanco">'+
 '                                                        <div class="row justify-content-center">'+
-'                                                            <a href="https://www.creceecuador.com/aplicar-inversionista">Crear Usuario</a>'+
+'                                                            <a href="/inversionista/registro">Crear Usuario</a>'+
 '                                                        </div>'+
 '                                                    </div>'+
 ''+

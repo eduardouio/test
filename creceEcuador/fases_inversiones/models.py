@@ -111,7 +111,9 @@ class Inversion(models.Model):
 
     @property
     def cedula_solicitante(self):
-        return self.id_solicitud.id_autor.cedula
+        if self.id_solicitud.id_autor.tipo_persona == 1:
+            return self.id_solicitud.id_autor.cedula
+        return self.id_solicitud.id_autor.ruc
 
     class Meta:
         verbose_name = "Inversion"

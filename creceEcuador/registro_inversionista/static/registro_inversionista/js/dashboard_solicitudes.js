@@ -26,7 +26,7 @@ function cargarOportunidadesOnScroll(){
   var a = window.location.href;
   let referencia = a.split('#')[1];
   if($(window).scrollTop() + $(window).height() > $(document).height() - 5) {
-    if(!obteniendoOportunidades && dataEncontrada && referencia === 'todas'){
+    if(!obteniendoOportunidades && dataEncontrada && (referencia === 'todas' || referencia === undefined)){
       obteniendoOportunidades = true;
       let inversionista = $(".active.selectable").attr("data-usuario")
       obtener_inversiones_por_usuario(inversionista)
@@ -504,7 +504,6 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
           let fase_inversion = solicitud_invertida.fase_inversion
           let id_oportunidad = solicitud_invertida.id_inversion
           let monto = solicitud_invertida.monto_invertido
-          console.log(fase_inversion)
             if(fase_inversion === "FILL_INFO"){
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
@@ -798,7 +797,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                <div class="crece-detalle-operaciones-invierte-botones">'+
 '                                                    <div class="crece-detalle-operaciones-invierte-botones-blanco">'+
 '                                                        <div class="row justify-content-center">'+
-'                                                            <a href="https://www.creceecuador.com/aplicar-inversionista">Crear Usuario</a>'+
+'                                                            <a href="/inversionista/registro">Crear Usuario</a>'+
 '                                                        </div>'+
 '                                                    </div>'+
 ''+
@@ -1012,6 +1011,8 @@ $(".selectable").click(function (){
     }
     else {
         indice_opcion_actual = 0;
+
+        dataEncontrada = true;
 
         $(".crece-oportunidades-container").html("");
         obtener_inversiones_por_usuario(inversionista)
