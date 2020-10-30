@@ -46,5 +46,5 @@ class PagoDetalleSerializer(serializers.ModelSerializer):
             'comision',
             'comision_iva',
             'ganancia',
-            'estado'
+            'estado_pago'
          ]

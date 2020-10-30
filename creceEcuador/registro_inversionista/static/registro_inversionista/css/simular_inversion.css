@@ -15,7 +15,32 @@
 	display: none;
 }
 
-.tabla-amortizacion > tr > td:last-child{
+.tabla-amortizacion-solicitud > tr > td:last-child{
+	background-color: lightblue;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+.tabla-amortizacion-solicitud > tr >td{
+	border: 7px solid white;
+	color:black;
+}
+
+.tabla-amortizacion-solicitud > tr > td:not(:last-child){
+	background-color: #B7B8B8;
+	text-align: right;
+	padding: 5px 8px;
+	font-weight: 500;
+}
+
+.tabla-amortizacion-solicitud > tr > td:first-child{
+	background-color: white;
+	text-align: center;
+
+}
+
+.tabla-amortizacion > tr > td:nth-child(6){
 	background-color: lightblue;
 	text-align: right;
 	padding: 5px 8px;
@@ -27,7 +52,7 @@
 	color:black;
 }
 
-.tabla-amortizacion > tr > td:not(:last-child){
+.tabla-amortizacion > tr > td:not(:nth-child(6)){
 	background-color: #B7B8B8;
 	text-align: right;
 	padding: 5px 8px;
@@ -40,30 +65,11 @@
 
 }
 
-.tabla-amortizacion > tr > td:last-child{
-	background-color: lightblue;
-	text-align: right;
-	padding: 5px 8px;
-	font-weight: 500;
-}
-
-.tabla-amortizacion > tr >td{
-	border: 7px solid white;
-	color:black;
-}
-
-.tabla-amortizacion > tr > td:not(:last-child){
-	background-color: #B7B8B8;
-	text-align: right;
-	padding: 5px 8px;
-	font-weight: 500;
-}
-
-.tabla-amortizacion > tr > td:first-child{
-	background-color: white;
+.tabla-amortizacion > tr > td:nth-child(2){
 	text-align: center;
 
 }
+
 
 #span-close-modal-tabla-solicitud-vigente-id{
 	color: black;
@@ -210,6 +216,12 @@
 	    margin-top: 15px;
 }
 
+.tabla-amortizacion-solicitud {
+	margin-left: auto;
+	margin-right: auto;
+	    margin-top: 15px;
+}
+
 
 
 /*Tabla de inversionista*/
@@ -319,6 +331,7 @@
 
 th{
 	text-align: center;
+	font-weight:500;
 }
 
 #crece-boton-simular-detalle-solicitud{
@@ -336,6 +349,16 @@ th{
 	background: #006B8D 0% 0% no-repeat padding-box;
     border: 1px solid #006B8D;
     color: white;
+}
+
+.tabla-detalle-derecha{
+	width: 100%;
+	text-align: right;
+    font-weight: 500;
+}
+
+.tabla-detalle-izquierda{
+	color: #006B8D;
 }
 
 .fase-2-footer p{
@@ -369,5 +392,26 @@ th{
 	.tabla-amortizacion{
 		font-size: 11px;
 	}
+
+	.tabla-amortizacion-solicitud{
+		font-size: 11px;
+	}
+
+	.crece-operaciones-contenido-datos-barra span {
+	   	font-size: 12px;
+	}
+	.crece-operaciones-contenido-datos-barra strong {
+	
+    	font-size: 15px;
+	}
+
+	.fase-2-footer p {
+	    font-size: 8px !important;
+	    color: #006B8D;
+	    /* padding: 10px 20px !important; */
+	    text-align: justify;
+	}
+
 }
+
 

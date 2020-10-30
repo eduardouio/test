@@ -161,6 +161,12 @@ function crear_modal_tabla_solicitud_valida(id_inversion, id_solicitud) {
           	let lista_pagos = res.data.lista_pagos
           	let monto_inversion = res.data.monto
           	let adjudicacion_total = res.data.adjudicacion_total
+          	id_interes_ganados = "#solicitud-valida-intereses-ganados-"+id_inversion
+            let intereses_ganados = $(id_interes_ganados).html()
+          	$("#intereses-ganados-tabla-vigente-id").html(intereses_ganados)
+          	id_capital_cobrado = "#solicitud-valida-capital-cobrado-"+id_inversion
+            let capital_cobrado = $(id_capital_cobrado).html()
+            $("#capital-cobrado-tabla-vigente-id").html(capital_cobrado)
             llenar_tabla_solicitud_valida(lista_pagos, monto_inversion, adjudicacion_total)
            
           }  
@@ -223,6 +229,15 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
 
 }
 
+function format_proxima_fecha_pago(fecha) {
+  // body...
+  lista = fecha.split("-")
+  dia = lista[2]
+  mes = lista[1]
+  year = lista[0]
+  return dia+"/"+mes+"/"+year
+}
+
 function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 	// body...
 
@@ -230,15 +245,14 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 	/*Verificando que ya exista la tabla*/
 		if (tabla.children.length > 1) {
 			let last_child = tabla.lastChild
-
-			for (var i = lista_pagos.length - 1; i >= 0; i--) {
+			for (var i = tabla.children.length - 1; i >= 1; i--) {
 				let last_child = tabla.lastChild
 				tabla.removeChild(last_child)
 			}
 
 
-			
-		}
+		
+		}	
 	for (var i = 0 ; i < lista_pagos.length; i++) {
 		let pago = lista_pagos[i]
 		let fecha_pago = pago.fecha
@@ -250,6 +264,9 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 		let comision_total_i = comision_i + comision_iva_i
 		let pago_i = ganancia_i + comision_iva_i + comision_i
 		let interes_i = pago_i - capital_i
+		let estado_i = pago.estado_pago
+		fecha_pago = format_proxima_fecha_pago(fecha_pago)
+		
 		/*LLenando la tabla */
 		let fila = document.createElement("tr")
 
@@ -259,22 +276,17 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
 		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
+		let fila_estado_i = '<td>'+ (estado_i)+'</td>'
 
-		let html_fila = fila_numero_cuota + fila_fecha_pago + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i 
+		let html_fila = fila_fecha_pago + fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i + fila_estado_i
 		
 		fila.innerHTML= html_fila;
 		tabla.appendChild(fila)
 		
 	}
 	let div_monto_invertir = document.getElementById("monto-invertir-tabla-vigente-id")
-	div_monto_invertir.innerHTML = '$'+monto.toFixed(2)
-
-	let div_adjudicacion_total = document.getElementById("adjudicacion-total-tabla-vigente-id")
-	div_adjudicacion_total.innerHTML = '$'+adjudicacion_total.toFixed(2)
-
-	let div_inversion_total = document.getElementById("total-invertir-tabla-vigente-id")
-	let inversion_total = monto+adjudicacion_total
-	div_inversion_total.innerHTML = '$'+(inversion_total).toFixed(2)
+	div_monto_invertir.innerHTML = '$'+numberWithCommas(monto)
+	lista_pagos_anterior = lista_pagos
 
 	
 	

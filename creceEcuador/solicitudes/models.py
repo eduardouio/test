@@ -45,8 +45,8 @@ class Solicitud(models.Model):
     porcentaje_financiado = models.DecimalField(max_digits=5, decimal_places=2, blank=False, default=0)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_publicacion = models.DateField()
-    fecha_finalizacion = models.DateField(blank=True)
-    fecha_expiracion = models.DateField(blank=True)
+    fecha_finalizacion = models.DateField(blank=True, null=True)
+    fecha_expiracion = models.DateField(blank=True, null=True)
     id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False) #Se debe especificar la app del modelo
     id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.SET_NULL, null=True, blank=False)
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.SET_NULL, null=True, blank=False)

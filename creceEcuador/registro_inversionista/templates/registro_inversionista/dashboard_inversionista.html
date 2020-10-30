@@ -229,7 +229,7 @@
                                   </div>
 
                                   <!--TABLA AMORTIZACION-->
-                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-id">
+                                  <table class='col-10 tabla-amortizacion-solicitud' id="tabla-amortizacion-id">
                                      <tr>
                                          <th>N°</th>
                                          <th>Capital</th>
@@ -251,78 +251,81 @@
 
             <!--seccion tabla de solicitud vigente-->
             <div class="row justify-content-center" id="crece-modal-tabla-solicitud-vigente-id">
-                <div class="col-lg-6 crece-completar-datos-formulario-wrapper">
+                <div class="col-lg-9 crece-completar-datos-formulario-wrapper">
                   <div class="col-12 crece-aceptar-inversion-titulo">
-                        <h2>Tabla de solicitud vigente</h2>
+                        <h2>Resumen de tu inversión</h2>
                     </div>
                     <!--DATOS DE LA TABLA-->
                               <div class="row simular-inversion-input-valores" id=" ">
-                                  <div class="col-xl-10 col-lg-10 col-md-10 col-12 crece-body-datos">
-                                    <div class="row">
-                                      <div class="col-4" style="font-weight: bold;">Inversion:</div>
-                                      <div class="col-4" id="">
-                                        <div id="monto-invertir-tabla-vigente-id" disabled style="width: 100%;text-align: right; 
-                                        color: black;font-weight: 500;">
+                                  <div class="col-xl-10 col-lg-10 col-md-10 col-12 crece-body-datos crece-resumen-inversion">
+                                    <!--Intereses ganados-->
+                                    <div class="row justify-content-center">
+                                      <div class="col-xl-4 col-lg-4 col-md-4 col-6 tabla-detalle-izquierda" style="font-weight: bold;">Intereses ganados</div>
+                                      <div class="col-1">
+                                        <div class="tabla-detalle-derecha" id="intereses-ganados-tabla-vigente-id" disabled>
+                                            $107.35
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    <!--Capital Cobrado-->
+                                    <div class="row justify-content-center">
+                                      <div class="col-xl-4 col-lg-4 col-md-4 col-6 tabla-detalle-izquierda" style="font-weight: bold;">Capital Cobrado</div>
+                                      <div class="col-1">
+                                        <div class="tabla-detalle-derecha" id="capital-cobrado-tabla-vigente-id" disabled>
+                                          $702.56
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    <!--Capital Invertido-->
+                                    <div class="row justify-content-center">
+                                      <div class="col-xl-4 col-lg-4 col-md-4 col-6 tabla-detalle-izquierda" style="font-weight: bold;">Capital invertido:</div>
+                                      <div class="col-1">
+                                        <div class="tabla-detalle-derecha" id="monto-invertir-tabla-vigente-id" disabled >
 
                                         </div>
                                         
                                       </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
-                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
-                                          
+                                     <!--Tasa TIR-->
+                                    <div class="row justify-content-center">
+                                      <div class="col-xl-4 col-lg-4 col-md-4 col-6 tabla-detalle-izquierda" style="font-weight: bold;">Tasa(TIR):</div>
+                                      <div class="col-1" id="">
+                                        <div class="tabla-detalle-derecha" id="tasa-tir-tabla-vigente-id" disabled>
+                                          20.44%
                                         </div>
-                                    </div>
-
-                                    <div class="row" style="display:  none;"> 
-                                        <div>Adjudicacion:</div>
-                                        <div class="body-datos-calculados" id="adjudicación-tabla-vigente-id">
-                                          
-                                        </div>
-                                        <div>Adjudicacion (IVA):</div>
-                                        <div class="body-datos-calculados" id="adjudicación-iva-tabla-vigente-id"></div>
-                                        <div>Ganancia Total:</div>
-                                        <div class="body-datos-calculados" id="ganancia-total-tabla-vigente-id">
-                                               
-                                        </div>
-
+                                        
+                                      </div>
                                     </div>
                                         
-                                    <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Total a transferir:</div>
-                                        <div class="col-4 body-datos-calculados" id="total-invertir-tabla-vigente-id" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                          
-                                        </div>
-                                    </div>
                                         
                                     
             
-                                      </div>
+                                </div>
                               
 
                                   <!--TABLA AMORTIZACION-->
                                   <table class='col-10 tabla-amortizacion' id="tabla-vigente-id">
                                      <tr>
-                                         <th>N°</th>
-                                         <th>Fecha de pago</th>
-                                         <th>Capital</th>
-                                         <th>Intereses</th>
-                                         <th>Comisión</th>
-                                         <th>Recibes</th>
+                                        <th>Fecha</th>
+                                        <th>No. Cuota</th>
+                                        <th>Capital</th>
+                                        <th>Intereses</th>
+                                        <th>Comisión</th>
+                                        <th>Recibes</th>
+                                        <th>Estado</th>
 
                                      </tr> 
                                   </table>
                                   
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
-                                  <div class="col-12 fase-2-footer" id="fase-2-footer-id">
-                                      
-                                      
-                                  </div> 
+                                  
                                 </div>
 
                 </div>
             </div>
+
 
             <!--seccion aceptar inversion-->
             <div class="row justify-content-center" id="aceptar-inversion-modal-dashboard">
@@ -385,8 +388,8 @@
                                       </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
-                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
+                                        <div class="col-lg-9 col-xl-5 col-sm-5 col-md-5 col-9" style="font-weight: bold;">Cargo de adjudicación:</div>
+                                        <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="adjudicacion-total" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
                                           
                                         </div>
                                     </div>
@@ -406,8 +409,8 @@
                                     </div>
                                         
                                     <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Total a transferir:</div>
-                                        <div class="col-4 body-datos-calculados" id="inversion-total" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                        <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Total a transferir:</div>
+                                        <div class="col-lg-1 col-xl-3 col-md-3 col-sm-3 col-1 body-datos-calculados" id="inversion-total" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
                                           
                                         </div>
                                     </div>
@@ -417,7 +420,7 @@
                                       </div>
 
                                   <!--TABLA AMORTIZACION-->
-                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-aceptar-inversion-id">
+                                  <table class='col-10 tabla-amortizacion-solicitud' id="tabla-amortizacion-aceptar-inversion-id">
                                      <tr>
                                          <th>N°</th>
                                          <th>Capital</th>
@@ -502,8 +505,8 @@
                                       </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Cargo de adjudicación:</div>
-                                        <div class="col-4 body-datos-calculados" id="adjudicacion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
+                                        <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Cargo de adjudicación:</div>
+                                        <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="adjudicacion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
                                           
                                         </div>
                                     </div>
@@ -523,8 +526,8 @@
                                     </div>
                                         
                                     <div class="row">
-                                        <div class="col-4" style="font-weight: bold;">Total a invertir:</div>
-                                        <div class="col-4 body-datos-calculados" id="inversion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                        <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Total a invertir:</div>
+                                        <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="inversion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
                                           
                                         </div>
                                     </div>
@@ -534,7 +537,7 @@
                                       </div>
 
                                   <!--TABLA AMORTIZACION-->
-                                  <table class='col-10 tabla-amortizacion' id="tabla-amortizacion-cambiar-monto-inversion-id">
+                                  <table class='col-10 tabla-amortizacion-solicitud' id="tabla-amortizacion-cambiar-monto-inversion-id">
                                      <tr>
                                          <th>N°</th>
                                          <th>Capital</th>
@@ -1959,7 +1962,7 @@
 
           <section class="crece-oportunidades" id="crece-oportunidades-id">
             <div class="row justify-content-center">
-                <div class="container col-lg-12">
+                <div class="container col-12">
                     <div class="col-12">
                         <h2 class="crece-oportunidades-titulo">Oportunidades de Inversión</h2>
                     </div>

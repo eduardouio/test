@@ -99,6 +99,39 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
 
 
     );
+  } 
+  else if(fase_inversion === "TRANSFER_SUBMITED"){
+    return (`
+      <h3>Termina tu inversión</h3>
+      <!-- input invierte-->
+      <div class="crece-detalle-operaciones-invierte-botones">                                                    
+          <div class="crece-detalle-operaciones-invierte-botones-azul">
+              <div class="row justify-content-center">
+                   
+      <a href="#" onclick="transfer_submited_modal(`+id_oportunidad +`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
+              </div>
+          </div>
+              
+      </div>
+      `
+
+
+    );
+  } 
+  else if(fase_inversion === "GOING"){
+    return(`
+        <h3>Revisa tus fechas de pago y tus intereses ganados</h3>      
+         <!-- input invierte-->
+        <div class="crece-detalle-operaciones-invierte-botones">                                                    
+            <div class="crece-detalle-operaciones-invierte-botones-azul">
+                <div class="row justify-content-center">
+                     
+        <a href="#" onclick="crear_modal_tabla_solicitud_valida(`+id_oportunidad+`,`+id_solicitud+`)" style="font-weight: normal;">Tabla de pagos</a>
+                </div>
+            </div>
+                
+        </div>
+      `)
   }
   else{
     return (`

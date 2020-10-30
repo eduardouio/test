@@ -12,7 +12,9 @@ import calendar
 import math
 import numpy as np 
 import decimal
-from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA
+from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA, COMISIONES_BANCARIAS
+import numpy_financial as npf
+import json
 # Create your models here.
 
 FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
@@ -28,13 +30,13 @@ class Inversion(models.Model):
     id_user = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     id_solicitud = models.ForeignKey(Solicitud, on_delete=models.CASCADE)
     monto = models.FloatField()
-    adjudicacion = models.FloatField()
-    adjudicacion_iva = models.FloatField(default=None)
-    inversion_total = models.FloatField()
-    ganancia_total = models.FloatField()
+    adjudicacion = models.FloatField(blank=True, null=True)
+    adjudicacion_iva = models.FloatField(default=None, blank=True, null=True)
+    inversion_total = models.FloatField(blank=True, null=True)
+    ganancia_total = models.FloatField(blank=True, null=True)
     estado = models.IntegerField(choices=opciones_estado, default=0)
     fase_inversion = FSMField(default=FASES_INVERSION[0][0], choices=FASES_INVERSION)
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
 
     @transition(field=fase_inversion, source='OPEN', target='CONFIRM_INVESTMENT')
     def start(self):
@@ -133,6 +135,10 @@ class Inversion(models.Model):
             self.ganancia_total = ganancia_total
         super(Inversion, self).save(*args, **kwargs)
 
+
+
+    
+
 class Pago_detalle(models.Model):
     estado_pagado = 1
     estado_pendiente = 0
@@ -152,8 +158,14 @@ class Pago_detalle(models.Model):
     ganancia = models.FloatField()
     estado = models.IntegerField(choices=opciones_estado, default=0)
     
-    
-
+    @property
+    def estado_pago(self):
+        estado = self.estado
+        if estado == 1:
+            return "Pagado"
+        elif estado == 0:
+            return "Pendiente"
+        return "Retrasado"
     class Meta:
         verbose_name = "Pago_detalle"
         verbose_name_plural = "Pago_detalles"
@@ -163,18 +175,17 @@ class Pago_detalle(models.Model):
 
 
 def crear_pagos(inversion,solicitud):
-    monto_inversion = inversion.monto
+    monto_inversion = float(inversion.monto)
     monto_solicitud = float(solicitud.monto)
     diccionario = crear_tabla_amortizacion(solicitud, "PAGO")
     lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
-    lista_cuotas_sol = diccionario['lista_cuotas']
-    lista_intereses_sol = diccionario['lista_intereses']
+    lista_cuotas_sol = diccionario['lista_pagos']
+    lista_intereses_sol = diccionario['lista_intereses_pagados']
     lista_capitales_sol = diccionario['lista_capitales']
     dias = diccionario['dias']
     fechas = diccionario['fechas']
 
     participacion_inversionista = (monto_inversion/monto_solicitud)
-    participacion_inversionista_porcentaje = participacion_inversionista *100
     COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
     cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista
     cargo_adjudicacion_iva = cargo_adjudicacion * IVA
@@ -188,6 +199,7 @@ def crear_pagos(inversion,solicitud):
 
     for i in range(solicitud.plazo):
         interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
+        interes_i = round(interes_i,2)
         capital_i = lista_capitales_sol[i] * participacion_inversionista
         dias_transcurridos = dias[i+1]
         comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista
@@ -219,9 +231,9 @@ def crear_pagos(inversion,solicitud):
 
 
 def crear_tabla_amortizacion(solicitud, modo):
-    monto_solicitud = solicitud.monto
+    monto_solicitud = float(solicitud.monto)
     plazo_solicitud = solicitud.plazo
-    TASA_INTERES_ANUAL = solicitud.tin
+    TASA_INTERES_ANUAL = float(solicitud.tin)
     start_date = solicitud.fecha_finalizacion
     if(modo == "CAMBIO_MONTO_INVERSION"):
         start_date = solicitud.fecha_publicacion
@@ -268,55 +280,59 @@ def crear_tabla_amortizacion(solicitud, modo):
     base = 1 + tasa_diaria
     exponente = plazo_dias/plazo_solicitud
     tasa_mensual = math.pow(base,exponente) - 1
-    cuota_mensual = np.pmt(decimal.Decimal(tasa_mensual), plazo_solicitud,  monto_solicitud,000) * -1
+    cuota_mensual = npf.pmt(tasa_mensual, plazo_solicitud,  monto_solicitud) * -1
+    pago = round(cuota_mensual,2)
 
-    MONTO_SOLICITANTE = float(monto_solicitud)
-    capital_por_pagar_n = MONTO_SOLICITANTE
-    cuota_n = float(cuota_mensual) 
-
+    capital_por_pagar_i = monto_solicitud
+    pago_i = pago + COMISIONES_BANCARIAS
+    MONTO_SOLICITANTE = monto_solicitud
     capital_TOTAL =0
-    cuota_TOTAL = 0
+    pago_TOTAL = 0
     intereses_TOTAL = 0
 
-    lista_capital_insoluto = [float(MONTO_SOLICITANTE)]
-    lista_cuotas = []
-    lista_intereses = []
+    lista_capital_insoluto = [monto_solicitud]
+    lista_pagos = []
+    lista_intereses_pagados = []
     lista_capitales = []
 
     for i in range(plazo_solicitud):
         dias_transcurridos = dias[i+1]
         base = 1 + tasa_diaria
         tasa_mensual = math.pow(base,dias_transcurridos) - 1
-        intereses_n = float(capital_por_pagar_n)*tasa_mensual
+        intereses_pagados_i = capital_por_pagar_i*tasa_mensual
+        intereses_pagados_i = round(intereses_pagados_i,2)
         
-        intereses_TOTAL += intereses_n
-        lista_intereses.append(intereses_n)
-        capital_n = cuota_n - intereses_n  
+        intereses_TOTAL += intereses_pagados_i
+        lista_intereses_pagados.append(intereses_pagados_i)
+        capital_i = pago - intereses_pagados_i
+        capital_i = round(capital_i,2)
         
-
         if (i == plazo_solicitud-1):
-            capital_n = float(MONTO_SOLICITANTE) - float(capital_TOTAL) 
-            cuota_n = capital_n + intereses_n 
+            capital_i = MONTO_SOLICITANTE - capital_TOTAL
+            pago_i = capital_i + intereses_pagados_i + COMISIONES_BANCARIAS
             
         
 
         
-        capital_TOTAL += capital_n
-        lista_capitales.append(capital_n)
+        capital_TOTAL += capital_i
+        lista_capitales.append(capital_i)
 
-        lista_cuotas.append(cuota_n)
-        cuota_TOTAL += cuota_n
+        lista_pagos.append(pago_i)
+        pago_TOTAL += pago_i
 
 
-        capital_por_pagar_n = float(capital_por_pagar_n) - float(capital_n)
-        lista_capital_insoluto.append(capital_por_pagar_n)
+        capital_por_pagar_i = capital_por_pagar_i - capital_i
+        capital_por_pagar_i = round(capital_por_pagar_i,2)
+        lista_capital_insoluto.append(capital_por_pagar_i)
 
-    diccionario = {'lista_cuotas': lista_cuotas, 
+
+    diccionario = {     'lista_pagos': lista_pagos, 
                         'lista_capital_insoluto': lista_capital_insoluto,
-                        'lista_intereses': lista_intereses,
+                        'lista_intereses_pagados': lista_intereses_pagados,
                         'lista_capitales':lista_capitales,
                         'dias':dias,
                         'fechas':fechas}
+
 
     return diccionario
 

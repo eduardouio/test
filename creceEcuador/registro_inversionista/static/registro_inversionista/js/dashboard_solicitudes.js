@@ -7,6 +7,7 @@ let CANTIDAD_OPCIONES_MOSTRADAS = 9;
 let CANTIDAD_OPCIONES_MOSTRADAS_MIS_INV = -1;
 let obteniendoOportunidades = false;
 let dataEncontrada = true;
+let RUTA_DETALLES_INVERSION_VIGENTE = "/registro/detalles_inversion_vigente/"
 
 const URL_FILL_INFO = "/registro/completa_datos/"
 const URL_ORIGIN_MONEY = "/registro/declaracion_fondos/"
@@ -292,8 +293,160 @@ function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, 
   
   
 }
+
+function format_proxima_fecha_pago(fecha) {
+  // body...
+  lista = fecha.split("-")
+  dia = lista[2]
+  mes = lista[1]
+  year = lista[0]
+  return dia+"/"+mes+"/"+year
+}
+
+function crear_inversiones_vigentes(oportunidad) {
+  // body...
+  id_inversion = oportunidad.id_inversion
+  $.ajax({
+      url: RUTA_DETALLES_INVERSION_VIGENTE+id_inversion+'/',
+      type: 'GET',
+      dataType: 'json', // added data type
+      success: function(res) {
+          
+          if (res.data){
+            let intereses_ganados = res.data.intereses_ganados
+            let capital_cobrado = res.data.capital_cobrado
+            let proxima_fecha_pago = res.data.proxima_fecha_pago
+            proxima_fecha_pago  = format_proxima_fecha_pago(proxima_fecha_pago)
+            id_interes_ganados = "#solicitud-valida-intereses-ganados-"+oportunidad.id_inversion
+            $(id_interes_ganados).html("$"+numberWithCommas(intereses_ganados))
+            id_capital_cobrado = "#solicitud-valida-capital-cobrado-"+oportunidad.id_inversion
+            $(id_capital_cobrado).html("$"+numberWithCommas(capital_cobrado))
+            id_proxima_fecha_pago = "#solicitud-valida-fecha-pago-"+oportunidad.id_inversion
+            $(id_proxima_fecha_pago).html(proxima_fecha_pago)
+            oportunidad.intereses_ganados = intereses_ganados
+            oportunidad.capital_cobrado = capital_cobrado
+            oportunidad.proxima_fecha_pago = proxima_fecha_pago
+          }  
+      },
+      error: function(xhr, status, error) {
+          var err = JSON.parse(xhr.responseText);
+          alert("Solicitud no encontrada.");
+      }
+  });
+}
+
+function crearTarjetaInversionVigente(oportunidad) {
+  
+    let tarjeta_oportunidad = ` <div class="col-12">
+                                <div class="row justify-content-center">
+                                  <div class="col-12 crece-solicitud-valida-contenedor">
+                                    <div class="row">
+                                      <div class="col-lg-5 col-xl-5 col-5 crece-solicitud-valida-imagen-autor">
+                                          <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /`+encodeURIComponent(oportunidad.imagen_url)+ `\');">
+                                            
+                                          </div>
+                                          <div class="crece-solicitud-valida-imagen-autor-contenido">
+                                              <div class="row" >
+                                                  <h4>`+oportunidad.autor+`</h4>
+                                              </div>
+                                              <div class="row" >
+                                                  <h4>`+oportunidad.tipo_persona+`</h4>
+                                              </div>
+                                              <div class="row" >
+                                                  <h5>`+oportunidad.ticket+`</h5>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-7 col-xl-7 col-7 crece-solicitud-valida-detalle">
+                                        <div class="row crece-solicitud-valida-detalle-intereses-ganados">
+                                          <div class="col-1 crece-solicitud-detalle-icono">
+                                            <img src="/static/assets/favicon-32.png">
+                                          </div>
+                                          <div class="col-10" style="padding-left: 0px;">
+                                            <div class="col-12" style="color: #006B8D;font-weight: 400;font-size: 30px;">
+                                              <span id="solicitud-valida-intereses-ganados-`+oportunidad.id_inversion+`"> $0 </span>
+                                            </div>
+                                            <div class="col-12" style="font-size: 10px;top: -8px;">
+                                              Intereses ganados
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row crece-solicitud-valida-detalle-inversion">
+                                          <div class="col-12">
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_capital_cobrado.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-capital-cobrado-`+oportunidad.id_inversion+`">$702.56</span> 
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Capital cobrado</span>
+                                                <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Capital cobrado
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_capital_invertido.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-capital-invertido">$`+numberWithCommas(oportunidad.monto_invertido)+`</span>
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Capital invertido</span>
+                                                <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Capital invertido
+                                                </div>
+                                              </div>
+
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_tasa_tir.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-tasa-tir">`+oportunidad.tir+`%</span>
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Tasa(TIR)</span>
+                                                <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Tasa(TIR)
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_proxima_fecha_pago.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-fecha-pago-`+oportunidad.id_inversion+`">10/01/2020</span> 
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Próxima fecha de pago</span>
+                                                 <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Próxima fecha de pago
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row crece-solicitud-valida-botones">
+                                          <div class="col-12">
+                                            <button  onclick="ver_detalle_solicitud('GOING',`+oportunidad.id_inversion+`,`+oportunidad.id+`, `+oportunidad.monto_inversion+`)">Ver más</button>
+                                            <button onclick="crear_modal_tabla_solicitud_valida(`+oportunidad.id_inversion+`,`+oportunidad.id_solicitud+`)">Tabla de pagos</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            `
+  crear_inversiones_vigentes(oportunidad)
+  return tarjeta_oportunidad
+}
+
 function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
-    var tarjeta_oportunidad = '<div class="col-xl-4 col-lg-6 col-12">'+
+  let tarjeta_oportunidad = ""
+  if (oportunidad.fase_inversion === "GOING"){
+    tarjeta_oportunidad = crearTarjetaInversionVigente(oportunidad)
+  }else{
+    tarjeta_oportunidad = '<div class="col-xl-4 col-lg-6 col-12">'+
+  
   '                                    <div class="row justify-content-center">'+
   '                                        <div class="crece-oportunidades-contenedor">'+
   '                                            <div class="col-12 crece-oportunidades-imagen" style="background-image: url(\' /'+encodeURIComponent(oportunidad.imagen_url)+ '\');">'+
@@ -403,8 +556,9 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                    '+
   '                                </div>';
 
-
-    return tarjeta_oportunidad;
+  }
+  return tarjeta_oportunidad;
+  
 	
 }
 function botonInvertir(oportunidad, lista_inversiones_usuario, inicio){
@@ -451,6 +605,12 @@ function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud, 
 
                                                                                 );
                 }
+                 else if(fase_inversion === "TRANSFER_SUBMITED"){
+                  return ( `<button type="button" onclick="ver_detalle_solicitud('TRANSFER_SUBMITED',`+id_oportunidad+`,`+id_solicitud+`, `+monto+`)">Ver más</button>'
+                            `
+
+                                                                                );
+                }
                 
                 
         }
@@ -478,6 +638,12 @@ function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud, 
 
   else if(fase_inversion === "PENDING_TRANSFER"){
     return ( `<button type="button" onclick="ver_detalle_solicitud('PENDING_TRANSFER',`+id_oportunidad+`,`+id_solicitud+`, `+monto+`)">Ver más</button>'
+              `
+
+                                                                  );
+  }
+  else if(fase_inversion === "TRANSFER_SUBMITED"){
+    return ( `<button type="button" onclick="ver_detalle_solicitud('TRANSFER_SUBMITED',`+id_oportunidad+`,`+id_solicitud+`, `+monto+`)">Ver más</button>'
               `
 
                                                                   );
