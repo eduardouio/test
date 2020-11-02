@@ -59,6 +59,9 @@ INSTALLED_APPS = [
 
 ]
 
+#session 
+SESSION_COOKIE_AGE = 86400 #24 horas de sesion
+
 #Email
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

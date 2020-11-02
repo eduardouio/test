@@ -445,6 +445,14 @@ var substringMatcher = function(strs) {
       }
     });
 
+    if (!$('#foto_cedula').prop('files')[0]){
+      $("#completar_datos_wrapper .error").html("Por favor, suba una foto o un archivo PDF de su documento de identidad.");
+      $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+      es_valido = false;
+      return false;
+    }
+
     if(es_valido){
       $("#completar_datos_wrapper .error-container").hide();
     }

@@ -225,6 +225,18 @@
                                         <button class='crece-boton-calcular-tabla-amortizacion' id="calcular" onclick="calcular_tabla_inversionista('simulacion-inversion')">Calcular</button>
                                       </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Total a recibir:</div>
+                                        <div class="col-4 body-datos-calculados" id="total-a-recibir-simulacion" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12" id="container-mensaje-ganancia" style="font-weight: bold;">
+                                        </div>
+                                    </div>
         
                                   </div>
 
@@ -415,7 +427,12 @@
                                         </div>
                                     </div>
                                         
-                                    
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Total a recibir:</div>
+                                        <div class="col-4 body-datos-calculados" id="total-a-recibir" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                            
+                                        </div>
+                                    </div>
             
                                       </div>
 
@@ -531,6 +548,13 @@
                                           
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-4" style="font-weight: bold;">Total a recibir:</div>
+                                        <div class="col-4 body-datos-calculados" id="inversion-total-cambiar-monto-recibido" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
+                                            
+                                        </div>
+                                    </div>
                                         
                                     
             
@@ -637,7 +661,7 @@
                                 <label for="foto_cedula" class="crece-completar-datos-formulario-wrapper-boton-subir-doc">
                                     Cargar documento
                                 </label>
-                                <input 
+                                <input
                                     type="file"
                                     accept="image/png, image/jpeg, application/pdf"
                                     class="form-control"
@@ -1118,8 +1142,10 @@
                                     <p>
                                         Transfiere los fondos a la siguiente cuenta y asegura tu participación:
                                     </p>
+                                    <div class="crece-confirmar-transferencia-formulario-wrapper-total-inversion">
+                                        <img id="imagen_total_inversion" src="{% static 'assets/total_inversion.png' %}"/>   Inversión total: $<span id="texto_monto" data-monto="{{inversion.monto_a_transferirl}}"></span> <br>
+                                    </div>
                                     <p>
-                                        Inversión total: $<span id="texto_monto" data-monto="{{inversion.monto_a_transferirl}}"></span> <br>
                                         Cuenta de ahorros: <span id="cuenta_transferencia"></span>{{inversion.id_solicitud.id_cuenta_banco_deposito.numero_cuenta}}<br>
                                         Banco Amazonas <br>
                                         A nombre de: “<span id="nombre_transferencia"></span>” <br>
@@ -1128,6 +1154,22 @@
                                         Teléfono: 0988349088 <br>
                                     </p>
                                 </div>
+                                <div class="col-11 col-lg-10">
+                                    <div id="contenedor_dudas_transferencia" class="row">
+                                        <div class="col-11 col-lg-2">
+                                            <img id="imagen_dudas_transferencia" src="{% static 'assets/dudas_transferencia.png' %}"/> 
+                                        </div>
+                                        <div id="contenedor_dudas_pregunta" class="col-12 col-lg-10">
+                                            <strong class="crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta">¿A qué cuenta estoy transfiriendo los fondos?</strong>
+                                            <p class="crece-confirmar-transferencia-formulario-wrapper-cuenta-explicacion">
+                                                Tus fondos son transferidos a una cuenta denominada "Escrow". Esta cuenta está a nombre 
+                                                del emprendedor, sin embargo, es administrada por CRECE quien impide el acceso a los fondos 
+                                                hasta que se complete el total solicitado y se firmen los documentos de respaldo.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 
                                 <div class="col-11 col-lg-10">
                                     <label class="crece-confirmar-transferencia-formulario-wrapper-label">Selecciona el banco de donde vendrá tu transferencia</label>
                                 </div>
@@ -1158,7 +1200,7 @@
                                         <option value='BANCO D-MIRO S.A.'>BANCO D-MIRO S.A.</option>
                                         <option value='BANCO FINCA S.A.'>BANCO FINCA S.A.</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="col-11 col-lg-10">
                                     <label class="crece-confirmar-transferencia-formulario-wrapper-label">Adjunta tu comprobante transferencia:</label>
                                 </div>
@@ -1228,28 +1270,16 @@
                                     </h2>
                                 </div>
                                 <div class="col-12 col-lg-6 crece-container-imagen-texto">
-                                    <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_1.png' %}"/>
-                                    <p class="crece-texto-final">
-                                        Inversionistas completan los fondos solicitados
-                                    </p>
+                                    <img class="crece-img-final" src="{% static 'assets/fase_final_1.png' %}"/>
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_2.png' %}"/>
-                                    <p class="crece-texto-final">
-                                        El emprendedor firma los documentos de respaldo
-                                    </p>
+                                <div class="col-12 col-lg-6 crece-container-imagen-texto">
+                                    <img class="crece-img-final" src="{% static 'assets/fase_final_2.png' %}"/>
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_3.png' %}"/>
-                                    <p class="crece-texto-final">
-                                        El emprendedor recibe los fondos vía transferencia bancaria
-                                    </p>
+                                <div class="col-12 col-lg-6 crece-container-imagen-texto">
+                                    <img class="crece-img-final" src="{% static 'assets/fase_final_3.png' %}"/>
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <img class="crece-img-final" src="{% static 'assets/ilustracion_final_inversion_4.png' %}"/>
-                                    <p class="crece-texto-final">
-                                        Te notificaremos cuando la operación de inicio
-                                    </p>
+                                <div class="col-12 col-lg-6 crece-container-imagen-texto">
+                                    <img class="crece-img-final" src="{% static 'assets/fase_final_4.png' %}"/>
                                 </div>
                                 
                             <button type="button" id="finalizar_inversion"> Finalizar</button>
@@ -1270,8 +1300,7 @@
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                   </svg>
               </div>
-              <div class='crece-usuario'>
-                <img class="crece-usuario-imagen-seleccionada" src="{{usuario.profile_pic_ruta}}" onerror="this.outerHTML= '<i class= &quot crece-usuario-imagen fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">
+              <div id="usuario_data_container" class='crece-usuario' data-profile-pic="{{usuario.profile_pic_ruta}}">
                 <div class="crece-usuario-nombre" id='nombre-usuario'>
                   {{ usuario.nombres }} {{usuario.apellidos}}
                 </div>
@@ -1301,16 +1330,16 @@
             <li>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis Inversiones</a>
               <ul class="collapse list-unstyled show" id="pageSubmenu">
-                <li class="selectable" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
+                <li id="oportunidades_pendientes" class="selectable" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
                   <a href="#pendientes">Pendientes</a>
                 </li>
-                <li class="selectable" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
+                <li id="oportunidades_por_fondear" class="selectable" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
                   <a href="#por_fondear">Por fondear</a>
                 </li>
-                <li class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
+                <li id="oportunidades_vigentes" class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
                   <a href="#vigentes">Vigentes</a>
                 </li>
-                <li class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
+                <li id="oportunidades_terminadas" class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
                   <a href="#terminadas">Terminadas</a>
                 </li>
               </ul> 

@@ -88,6 +88,50 @@
     padding: 0px 0px 15px 0px;
 }
 
+#contenedor_dudas_transferencia{
+    margin: 0px;
+    border: 2px solid #ced4da;
+    border-radius: 15px;
+    margin-bottom: 20px;
+
+}
+
+#imagen_total_inversion{
+    width: 25px;
+    margin-top: -6px
+}
+
+#imagen_dudas_transferencia{
+    max-width: 85%;
+    max-height: 90%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#contenedor_dudas_pregunta{
+    padding-top: 10px;
+}
+
+.crece-confirmar-transferencia-formulario-wrapper-total-inversion{
+    color: #08A7BA;
+    padding-bottom: 15px;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta{
+    font-size: 12px;
+    color: #006B8D;
+}
+
+.crece-confirmar-transferencia-formulario-wrapper-cuenta-explicacion{
+    font-size: 12px;
+    text-align: justify;
+    padding: 0px;
+}
+
 
 #crece-modal-pregunta-prefencia-1-id{
     display: none;
@@ -177,4 +221,12 @@ div.grid-onlyitem-3.active{
 div.grid-onlyitem-4.active{
     background-color: #08A7BA;
     color: white;
+}
+
+@media screen and (max-width: 600px){
+
+    #imagen_dudas_transferencia{
+        display: none;
+    }
+
 }

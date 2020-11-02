@@ -534,6 +534,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 	let pago_total = 0;
 	let comision_total = 0;
 	let comision_iva_total = 0;
+	let interes_total = 0;
 
 	for (var i = 0; i < oportunidad.plazo ; i++) {
 		interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
@@ -550,6 +551,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		comision_total += comision_i;
 		comision_iva_total += comision_iva_i
 		comision_total_i = comision_i + comision_iva_i
+		interes_total += interes_i;
 
 		/*LLenando la tabla */
 		let fila = document.createElement("tr")
@@ -569,6 +571,12 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 	}
 
+	$("#total-a-recibir-simulacion").html(FORMAT_CURRENCY.format(ganancia_total));
+	$("#container-mensaje-ganancia").html(
+		'<p> Invirtiendo '+ FORMAT_CURRENCY.format(input_monto_inversion) +' ganarías ' +FORMAT_CURRENCY.format(ganancia_total - input_monto_inversion) +
+		' en ' + oportunidad.plazo + ' meses. ¡Invierte ahora!</p>'
+	);
+
 	if (input_modal === 'aceptar-inversion-inicio' || input_modal === 'aceptar-inversion'){
 		let div_adjudicacion_total = document.getElementById("adjudicacion-total")
 		cargo_adjudicacion_total = cargo_adjudicacion+cargo_adjudicacion_iva
@@ -576,6 +584,8 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 		let div_inversion_total = document.getElementById("inversion-total")
 		div_inversion_total.innerHTML = FORMAT_CURRENCY.format(inversion_total)
+
+		$("#total-a-recibir").html( FORMAT_CURRENCY.format(ganancia_total) );
 
 		
 		let div_ganancia = document.getElementById("ganancia-total");
@@ -594,6 +604,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		let div_inversion_total = document.getElementById("inversion-total-cambiar-monto-inversion")
 		div_inversion_total.innerHTML = FORMAT_CURRENCY.format(inversion_total)
 
+		$("#inversion-total-cambiar-monto-recibido").html( FORMAT_CURRENCY.format(ganancia_total) );
 		
 		let div_ganancia = document.getElementById("ganancia-total-cambiar-monto-inversion");
 		div_ganancia.innerHTML = ganancia_total.toFixed(2);

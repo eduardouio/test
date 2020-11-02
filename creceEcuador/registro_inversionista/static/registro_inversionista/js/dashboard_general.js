@@ -53,7 +53,18 @@ let contratoAcUsoFirmado;
   $(document).ready(function() {
      initSidebar();
      contratoAcUsoFirmado = $("#sidebar").attr("data-firmar-contrato");
+
+     let image_src = $("#usuario_data_container").attr("data-profile-pic");
+     if(image_src){
+        $("#usuario_data_container").prepend(`<img class="crece-usuario-imagen-seleccionada" src="`+ image_src +`" onerror="this.outerHTML= '<i class= &quot crece-usuario-imagen fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">`)
+     }
+     else{
+        $("#usuario_data_container").prepend('<i class= " crece-usuario-imagen fa fa-user-circle-o " aria-hidden= " true "></i>')
+     }
+     
  });
+
+
 
   function initSidebar() {
      if($(window).width() > 768) {

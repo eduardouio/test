@@ -50,7 +50,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
           <div class="crece-detalle-operaciones-invierte-botones-azul">
               <div class="row justify-content-center">
                    
-      <a href="#" onclick="mostrar_completar_datos_modal(`+id_oportunidad+`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
+      <a href="#pendientes" onclick="mostrar_completar_datos_modal(`+id_oportunidad+`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
               </div>
           </div>
               
@@ -70,7 +70,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
           <div class="crece-detalle-operaciones-invierte-botones-azul">
               <div class="row justify-content-center">
                    
-     <a href="#" onclick="declaracion_fondos_modal(`+id_oportunidad+`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
+     <a href="#pendientes" onclick="declaracion_fondos_modal(`+id_oportunidad+`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
               </div>
           </div>
               
@@ -90,7 +90,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
           <div class="crece-detalle-operaciones-invierte-botones-azul">
               <div class="row justify-content-center">
                    
-      <a href="#" onclick="subir_transferencia_modal(`+id_oportunidad +`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
+      <a href="#pendientes" onclick="subir_transferencia_modal(`+id_oportunidad +`, `+monto+`, `+id_solicitud+`, '`+fase_inversion+`')">Continuar</a>
               </div>
           </div>
               
