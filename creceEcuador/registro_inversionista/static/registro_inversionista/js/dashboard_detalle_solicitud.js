@@ -156,7 +156,7 @@ function mostrar_detalle_continuar_simular(fase_inversion,id_oportunidad,id_soli
                               Valor no permitido
                             </label>
                           </div>
-                   <button id="crece-boton-simular-detalle-solicitud" type="button" onclick="crear_modal_simulacion_inversion(`+id_solicitud+`,'FALSE')"> Simular</button>
+                   <a href="#detalle_simular" onclick="crear_modal_simulacion_inversion(`+id_solicitud+`,'FALSE')"> Simular</a>
               </div>
           </div>
               

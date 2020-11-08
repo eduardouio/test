@@ -206,6 +206,8 @@ function numeroConComas(x) {
 
 function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, inicio, porcentaje_financiado) {
   // body...
+  var a = window.location.href;
+  let referencia = a.split('#')[1]
   if(parseInt(porcentaje_financiado) < 100){
       if(inicio === "INICIO"){
         for (var i = lista_inversiones_usuario.length - 1; i >= 0; i--) {
@@ -218,6 +220,7 @@ function crear_boton_continuar_tarjeta(id_solicitud, lista_inversiones_usuario, 
               return (`
                       <span class="span-solicitud-invertida-dashboard">
                         
+
 
                           <a class="crece-solicitud-invertida-dashboard" href="#pendientes" onclick="mostrar_completar_datos_modal(`+id_oportunidad+`, `+ monto+`, `+ id_solicitud+`, '`+ fase_inversion+`')">
                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
@@ -330,14 +333,15 @@ function crear_inversiones_vigentes(oportunidad) {
       },
       error: function(xhr, status, error) {
           var err = JSON.parse(xhr.responseText);
-          alert("Solicitud no encontrada.");
+          let id = "#crece-inversion-vigente-container-"+oportunidad.id_inversion
+          $(id).hide()
       }
   });
 }
 
 function crearTarjetaInversionVigente(oportunidad) {
   
-    let tarjeta_oportunidad = ` <div class="col-12">
+    let tarjeta_oportunidad = ` <div class="col-12" id="crece-inversion-vigente-container-`+oportunidad.id_inversion+`">
                                 <div class="row justify-content-center">
                                   <div class="col-12 crece-solicitud-valida-contenedor">
                                     <div class="row">
@@ -378,7 +382,7 @@ function crearTarjetaInversionVigente(oportunidad) {
                                                 <img src="/static/assets/icono_capital_cobrado.png">
                                               </div>
                                               <div class="col-10">
-                                                <span id="solicitud-valida-capital-cobrado-`+oportunidad.id_inversion+`">$702.56</span> 
+                                                <span id="solicitud-valida-capital-cobrado-`+oportunidad.id_inversion+`">$</span> 
                                                 <span class="solicitud-valida-detalle-inversion-texto-derecha">Capital cobrado</span>
                                                 <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
                                                   Capital cobrado
@@ -415,7 +419,7 @@ function crearTarjetaInversionVigente(oportunidad) {
                                                 <img src="/static/assets/icono_proxima_fecha_pago.png">
                                               </div>
                                               <div class="col-10">
-                                                <span id="solicitud-valida-fecha-pago-`+oportunidad.id_inversion+`">10/01/2020</span> 
+                                                <span id="solicitud-valida-fecha-pago-`+oportunidad.id_inversion+`"></span> 
                                                 <span class="solicitud-valida-detalle-inversion-texto-derecha">Próxima fecha de pago</span>
                                                  <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
                                                   Próxima fecha de pago
@@ -574,7 +578,7 @@ function botonInvertir(oportunidad, lista_inversiones_usuario, inicio){
 
 function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud, lista_inversiones_usuario, inicio, monto) {
   // body...
- 
+
   if(inicio==="INICIO"){
     for (let  i = 0; i< lista_inversiones_usuario.length; i++) {
 
@@ -662,8 +666,12 @@ function button_detalle_solicitud(fase_inversion, id_oportunidad, id_solicitud, 
 
 
 function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, monto, lista_inversiones_usuario, inicio){
-
+  var a = window.location.href;
+  let referencia = a.split('#')[1]
   if(inicio==="INICIO"){
+    if (!referencia){
+      referencia = "todas"
+    }
     for (var i = lista_inversiones_usuario.length - 1; i >= 0; i--) {
       solicitud_invertida = lista_inversiones_usuario[i]
         if(id_solicitud === solicitud_invertida.id){
@@ -673,7 +681,9 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
             if(fase_inversion === "FILL_INFO"){
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
                   '                                                                <a href="#pendientes" onclick="mostrar_completar_datos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
                   '                                                            </div>'
                 );
               }
@@ -681,7 +691,9 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
               else if(fase_inversion === "ORIGIN_MONEY"){
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
                   '                                                                <a href="#pendientes" onclick="declaracion_fondos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
                   '                                                            </div>'
                 );
               }
@@ -689,14 +701,18 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
               else if(fase_inversion === "PENDING_TRANSFER"){
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
                   '                                                                <a href="#pendientes" onclick="subir_transferencia_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
                   '                                                            </div>'
                 );
               }
               else if(fase_inversion === "TRANSFER_SUBMITED"){
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
                   '                                                                <a href="#pendientes" onclick="transfer_submited_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
                   '                                                            </div>'
                 );
               }
@@ -704,7 +720,9 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
         }
     }
           return ( '<div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
       '                   <a href="#pendientes" onclick="crear_modal_aceptar_inversion('+id_solicitud+',`aceptar-inversion-inicio`,350)">Invertir</a>'+
+
       '                                          </div>'
               );
 
@@ -714,7 +732,9 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
   if(fase_inversion === "FILL_INFO"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
       '                                                                <a href="#pendientes" onclick="mostrar_completar_datos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
       '                                                            </div>'
     );
   }
@@ -722,7 +742,9 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
   else if(fase_inversion === "ORIGIN_MONEY"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
       '                                                                <a href="#pendientes" onclick="declaracion_fondos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
       '                                                            </div>'
     );
   }
@@ -730,21 +752,29 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
   else if(fase_inversion === "PENDING_TRANSFER"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
       '                                                                <a href="#pendientes" onclick="subir_transferencia_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
       '                                                            </div>'
     );
   }
   else if(fase_inversion === "TRANSFER_SUBMITED"){
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
       '                                                                <a href="#pendientes" onclick="transfer_submited_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+
       '                                                            </div>'
     );
   }
   else if(fase_inversion === "GOING"){
     return (`
             <div class="col-12 crece-oportunidades-contenido-botones-azul">
+<<<<<<< HEAD
+                <a href="#`+referencia+`" onclick="crear_modal_tabla_solicitud_valida(`+id_oportunidad+`,`+id_solicitud+`)" style="margin-left: auto;margin-right: auto;
+=======
                 <a href="#vigentes" onclick="crear_modal_tabla_solicitud_valida(`+id_oportunidad+`,`+id_solicitud+`)" style="margin-left: auto;margin-right: auto;
+>>>>>>> 818883e3e271d19b9a31f8ba6ef39e3b1f22e963
                                                                                         display: block;">
                   Ver Tabla
                   </a>
@@ -755,7 +785,9 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
   else{
     return (
       '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
+
       '                                                                <a href="#pendientes" onclick="crear_modal_aceptar_inversion('+id_solicitud+',`aceptar-inversion-inicio`,350)">Invertir</a>'+
+
       '                                                            </div>'
     );
   }
@@ -1628,7 +1660,18 @@ $(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(functi
   $(ID_SIMULAR_INVERSION).hide();
   $(ID_TABLA_SOLICITUD_VIGENTE).hide();
   $("#crece-modal-imagen-solicitud").hide();
+
+  // var a = window.location.href;
+  // let referencia = a.split('#')[1]
+  // if (referencia === "inversion_creada"){
+  //   window.location = "/inversionista/dashboard/"
+  // }
+  $("#aceptar-inversion-button-invertir").unbind()
+  $("#simular-inversion-boton-invertir").unbind()
+
+
   recargarSeccion();
+
 });
 
 $(".crece-modal").click(function(e) {
@@ -1647,6 +1690,10 @@ $(".crece-modal").click(function(e) {
     $(ID_SUBIR_TRANSFERENCIA).hide();
     $(ID_CAMBIAR_MONTO_INVERSION).hide();
     $(ID_TABLA_SOLICITUD_VIGENTE).hide();
+
+    $("#aceptar-inversion-button-invertir").unbind()
+    $("#simular-inversion-boton-invertir").unbind()
+
     recargarSeccion();
 
   }

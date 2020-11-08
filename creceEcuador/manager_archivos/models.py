@@ -59,17 +59,19 @@ def setear_porcentaje_en_solicitud_cambiar_estado_inversion(sender, instance, **
             raise ValidationError("Monto de inversion excede monto restante de la solicitud.")
 
         solicitud.porcentaje_financiado = porcentaje_inversion + float(solicitud.porcentaje_financiado)
-        solicitud.save()
+        
 
         #Cambiar estado de inversion
         inversion.estado = 1
 
         try:
             inversion.approve_transfer()
+
         except TransitionNotAllowed:
             print("Estado no se puede cambiar")
 
         inversion.save()
+        solicitud.save()
     else:
         print("no confirmado")
 

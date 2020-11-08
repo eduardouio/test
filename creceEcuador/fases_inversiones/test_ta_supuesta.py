@@ -71,13 +71,13 @@ def solicitud_prueba(juan_pihuave, tec, capital_trabajo):
 		plazo= 12,
 		url="www.juanpiguave.com",
 		imagen_url="aws.data.img/one.jpg",
-		monto="6000",
+		monto="7000",
 		moneda="USD",
 		tir=15.33,
-		tin=21.12,
-		fecha_finalizacion =datetime.date(2020,10,21),
+		tin=19.50,
+		fecha_finalizacion =datetime.date(2020,10,29),
 		porcentaje_financiado=50,
-		fecha_publicacion=datetime.date(2020,10,20),
+		fecha_publicacion=datetime.date(2020,10,29),
 		id_autor=juan_pihuave,
 		id_categoria=tec,
 		id_tipo_credito=capital_trabajo
@@ -106,7 +106,7 @@ def test_crear_ta_supuesta(solicitud_prueba):
 		intereses_pagados_i = lista_intereses_pagados_ta_supuesta[i]
 		capital_insoluto_i = lista_capital_insoluto_ta_supuesta[i+1]
 		capital_i = lista_capitales_ta_supuesta[i]
-		str_notformat = "{fecha_i} \t {pago_i:8.2f} \t {capital_i:8.2f} \t {intereses_pagados_i:8.2f} \t \t {capital_insoluto_i}"
+		str_notformat = "{fecha_i} \t {pago_i:8.2f} \t {capital_i:8.2f} \t {intereses_pagados_i:8.2f} \t \t {capital_insoluto_i:8.2f}"
 		str_format = str_notformat.format(fecha_i=fecha_i, pago_i=pago_i, capital_i=capital_i, intereses_pagados_i=intereses_pagados_i, capital_insoluto_i=capital_insoluto_i)
 		print(str_format)
 	pago_total = sum(lista_pagos_ta_supuesta)
@@ -122,8 +122,7 @@ def inversion_prueba(juan_pihuave, solicitud_prueba):
 	return Inversion.objects.create(
 		id_user=juan_pihuave,
 		id_solicitud = solicitud_prueba,
-		monto=1000
-
+		monto=3500
 	)
 
 @pytest.mark.django_db

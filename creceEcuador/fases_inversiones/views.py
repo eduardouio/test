@@ -458,42 +458,49 @@ def get_pagos_inversionista(request, id_inversion):
 def get_detalles_inversion_vigente(request, id_inversion):
     try:
         lista_pagos_detalles = models.Pago_detalle.objects.filter(id_inversion=id_inversion) #get_object_or_404(Solicitud, pk=pk)
-        inversion = models.Inversion.objects.get(id=id_inversion)
-        intereses_pagados = 0
-        capital_cobrado = 0
-        contador = 0
-        index_ultimo_pago = 0
-        for pago in lista_pagos_detalles:
-            pago_i = models.Pago_detalle.objects.get(id=pago.id)
-            capital_i = pago_i.pago
-            ganancia_i = pago_i.ganancia
-            comision_iva_i = pago_i.comision_iva
-            comision_i = pago_i.comision
-            interes_i = ganancia_i + comision_iva_i + comision_i - capital_i
-            if (pago_i.estado == 1):
-                index_ultimo_pago = contador + 1
-                intereses_pagados += interes_i
-                capital_cobrado += capital_i
-            contador += 1
-        intereses_pagados = round(intereses_pagados,2)
-        capital_cobrado = round(capital_cobrado,2)
-        if(index_ultimo_pago == len(lista_pagos_detalles)):
-            proximo_pago = lista_pagos_detalles[index_ultimo_pago-1]
+        if len(lista_pagos_detalles) > 0:
+            inversion = models.Inversion.objects.get(id=id_inversion)
+            intereses_pagados = 0
+            capital_cobrado = 0
+            contador = 0
+            index_ultimo_pago = 0
+            for pago in lista_pagos_detalles:
+                pago_i = models.Pago_detalle.objects.get(id=pago.id)
+                capital_i = pago_i.pago
+                ganancia_i = pago_i.ganancia
+                comision_iva_i = pago_i.comision_iva
+                comision_i = pago_i.comision
+                interes_i = ganancia_i + comision_iva_i + comision_i - capital_i
+                if (pago_i.estado == 1):
+                    index_ultimo_pago = contador + 1
+                    intereses_pagados += interes_i
+                    capital_cobrado += capital_i
+                contador += 1
+            intereses_pagados = round(intereses_pagados,2)
+            capital_cobrado = round(capital_cobrado,2)
+            if(index_ultimo_pago == len(lista_pagos_detalles)):
+                proximo_pago = lista_pagos_detalles[index_ultimo_pago-1]
+            else:
+                proximo_pago = lista_pagos_detalles[index_ultimo_pago]
+            serializer = PagoDetalleSerializer(instance=proximo_pago)
+            proxima_fecha_pago = serializer.data.get("fecha")
+            diccionario_respuesta = {
+                'status': status.HTTP_200_OK,
+                'data': {"intereses_ganados":intereses_pagados, "capital_cobrado":capital_cobrado, "proxima_fecha_pago":proxima_fecha_pago}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
         else:
-            proximo_pago = lista_pagos_detalles[index_ultimo_pago]
-        serializer = PagoDetalleSerializer(instance=proximo_pago)
-        proxima_fecha_pago = serializer.data.get("fecha")
-        diccionario_respuesta = {
-            'status': status.HTTP_200_OK,
-            'data': {"intereses_ganados":intereses_pagados, "capital_cobrado":capital_cobrado, "proxima_fecha_pago":proxima_fecha_pago}
-        }
-        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
+            diccionario_respuesta = {
+                'status': status.HTTP_404_NOT_FOUND,
+                'message': "Pagos no encontrados",
+                'data': {}
+            }
+            return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
 
     except models.Pago_detalle.DoesNotExist:
         diccionario_respuesta = {
             'status': status.HTTP_404_NOT_FOUND,
             'message': "Pagos no encontrados",
-            'data': {}
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
 
@@ -567,3 +574,25 @@ def actualizar_datos_inversion(inversion,solicitud):
     inversion.ganancia_total = round(ganancia_total,2)
     inversion.save()
 
+@api_view(['GET'])
+def get_ta_simulacion(request, id_solicitud):
+    try:
+        solicitud = Solicitud.objects.get(pk=id_solicitud)
+        diccionario_ta_simulacion = models.crear_tabla_amortizacion(solicitud,"SIMULACION")
+        fechas = diccionario_ta_simulacion["fechas"]
+        for i in range(len(fechas)):
+            fechas[i] = fechas[i].strftime("%Y/%m/%d")
+        diccionario_ta_simulacion["fechas"] = fechas
+        diccionario_respuesta = {
+            'status': status.HTTP_200_OK,
+            'data': diccionario_ta_simulacion
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=200)
+
+    except Solicitud.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Usuario no encontrado",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)

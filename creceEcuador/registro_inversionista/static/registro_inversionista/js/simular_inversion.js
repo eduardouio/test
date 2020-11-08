@@ -1,14 +1,16 @@
 
 let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004;
 let IVA = 0.12
-let COMISION_ADJUDICACION_FACTOR =0.008;
+let COMISION_ADJUDICACION_FACTOR =0.007;
 let ADJUDICACION_FACTOR = 1.12
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
 let COMISION_BANCO = 0.4
+let COMISIONES_BANCARIAS = 0.22
 let RUTA_FASE_1 ="/registro/aceptar_inversion/"
 let RUTA_PAGOS = '/registro/pagos/'
 let RUTA_CAMBIAR_MONTO_INVERSION = '/registro/cambiar_monto_inversion/'
+let RUTA_TA_SIMULACION = "/registro/ta_simulacion/"
 let INPUT_MONTO_INVERSION = 0
 
 const FORMAT_CURRENCY = new Intl.NumberFormat('en-US', {
@@ -74,14 +76,18 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           	document.getElementById('strong-monto-recolectado').innerHTML =  numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))
           	document.getElementById("span-pr-recolectado").innerHTML = oportunidad.porcentaje_financiado+'% recolectado'
           	document.getElementById("strong-monto-objetivo").innerHTML =  numeroConComas(decimalAEntero(oportunidad.monto))
-          	
-            calcular_tabla_inversionista(input_modal,res.data);
-            let boton_invertir  = document.getElementById("simular-inversion-boton-invertir")
-				boton_invertir.addEventListener('click', function (argument) {
-			  		// body...
-			  		crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION)
-			  	})
-           
+
+            calcular_tabla_inversionista(input_modal,res.data)
+
+    //         let boton_invertir  = document.getElementById("simular-inversion-boton-invertir")
+				// boton_invertir.addEventListener('click', function (argument) {
+			 //  		// body...
+			 //  		crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION)
+			 //  	})
+           $("#simular-inversion-boton-invertir").click(function () {
+           	// body...
+           		crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION)
+           })
           }  
       },
       error: function(xhr, status, error) {
@@ -121,13 +127,18 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
 
 
           	let boton_invertir = document.getElementById("aceptar-inversion-button-invertir")
+
           	$("#aceptar-inversion-button-invertir").attr("disabled", false)
           	$("#label_error_aceptar_inversion").hide()
             calcular_tabla_inversionista(input_modal,res.data,monto);
-               	boton_invertir.addEventListener('click', function () {
-               		// body...
-               		go_to_fase2(res.data)
-               	})
+               	// boton_invertir.addEventListener('click', function () {
+               	// 	// body...
+               	// 	go_to_fase2(res.data)
+               	// })
+            $("#aceptar-inversion-button-invertir").click(function () {
+            	// body...
+            	go_to_fase2(res.data)
+            })
           }  
       },
       error: function(xhr, status, error) {
@@ -469,6 +480,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		}
 	}
 	else{
+
 		diccionario = hacer_tabla_amortizacion(oportunidad)
 		DICCIONARIO_SIMULACION = diccionario
 		OPORTUNIDAD = oportunidad
@@ -625,51 +637,50 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 /*Crea tabla de amortizacion del solicitante*/
 function hacer_tabla_amortizacion(oportunidad) {
+
 	// body...
 	let fecha_publicacion_solicitud = oportunidad.fecha_publicacion
 	let fecha_split = fecha_publicacion_solicitud.split("-")
-	let date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2])
+	let start_date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2])
 	
-	let next_date = new Date(date.getFullYear(),date.getMonth()+1,date.getDate())
-	let date_tmp = new Date()
+	let next_date = new add_months(start_date,1)
+	let temp_date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2])
 	
 	let fechas = []
 	let dias = []
 	
 
-	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()) + "-" +date.getDate()
-	let dias_transcurridos = getDuration(date-date).value
-	fechas.push(fecha_pago)
+
+	let dias_transcurridos = getDuration(start_date - start_date).value
 	dias.push(dias_transcurridos)
 	for (var i = 0; i < oportunidad.plazo; i++) {
-		
 		
 		if(next_date.getDay() == 0){
 			
 			next_date.setDate(next_date.getDate() + 1) //lunes
-			dias_transcurridos = getDuration(next_date-date).value 
-			date.setDate(next_date.getDate())
+			dias_transcurridos = getDuration(next_date - temp_date).value 
+			temp_date = new Date(next_date.getFullYear(), next_date.getMonth(), next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-1)
 		}
 		else if(next_date.getDay() == 6){
 			next_date.setDate(next_date.getDate() + 2) //lunes
-			dias_transcurridos = getDuration(next_date-date).value 
-			date.setDate(next_date.getDate())
+			dias_transcurridos = getDuration(next_date - temp_date).value 
+			temp_date = new Date(next_date.getFullYear(), next_date.getMonth(), next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-2)
 		}else{
-			dias_transcurridos = getDuration(next_date-date).value
-			date.setDate(next_date.getDate())
+			dias_transcurridos = getDuration(next_date - temp_date).value
+			temp_date = new Date(next_date.getFullYear(), next_date.getMonth(), next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 		}
 		
 		dias.push(dias_transcurridos)
-		date.setMonth(date.getMonth()+1)
-		next_date.setMonth(next_date.getMonth()+1)
+		next_date = add_months(start_date, i+2)
 		fechas.push(fecha_pago)
 		
 	}
+
 
 
 	let ultima_fecha = fechas[7]
@@ -682,14 +693,14 @@ function hacer_tabla_amortizacion(oportunidad) {
 		TASA_INTERES_ANUAL = TASA_INTERES_ANUAL/100
 	}
 
-	let tasa_diaria = (1+TASA_INTERES_ANUAL/360)-1 ; // tasa diaria
+	let tasa_diaria = (1+TASA_INTERES_ANUAL/365)-1 ; // tasa diaria
 
 	let tasa_mensual = [ Math.pow((1 + tasa_diaria),(plazo_dias/oportunidad.plazo)) ] - 1 ;
 	let cuota_mensual = PMT(tasa_mensual, oportunidad.plazo, oportunidad.monto)*-1
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let MONTO_SOLICITANTE = parseInt(oportunidad.monto, 10)
 	let capital_por_pagar_n = MONTO_SOLICITANTE
-	let cuota_n = cuota_mensual 
+	let cuota_n = cuota_mensual + COMISIONES_BANCARIAS
 
 	let capital_TOTAL =0
 	let cuota_TOTAL = 0
@@ -714,12 +725,12 @@ function hacer_tabla_amortizacion(oportunidad) {
 		lista_intereses.push(intereses_n)
 
 
-		capital_n = cuota_n - intereses_n  //capital
+		capital_n = cuota_mensual - intereses_n  //capital
 		
 
 		if (i == oportunidad.plazo-1){
 			capital_n = MONTO_SOLICITANTE - capital_TOTAL //capital mensual
-			cuota_n = capital_n + intereses_n //cuota a pagar
+			cuota_n = capital_n + intereses_n + COMISIONES_BANCARIAS //cuota a pagar
 			
 		}
 
@@ -750,7 +761,15 @@ function hacer_tabla_amortizacion(oportunidad) {
 
 
 
-
+function add_months(start_date, months) {
+	// body...
+	month = start_date.getMonth() + months
+	year = start_date.getFullYear() + Math.floor(month / 12);
+    month = month % 12
+    day = start_date.getDate()
+    new_date = new Date(year, month, day)
+    return new_date
+}
 
 
 

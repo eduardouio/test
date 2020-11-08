@@ -17,6 +17,7 @@ urlpatterns = [
     path('detalles_inversion_vigente/<int:id_inversion>/', views.get_detalles_inversion_vigente, name='detalles_inversion_vigente'),
     path('cambiar_monto_inversion/', views.cambiar_monto_inversion, name='cambiar_monto_inversion'),
     path('<int:id_solicitud>/<int:id_inversionista>/', views.get_inversion_usuario, name='get_inversion_usuario'),
+    path('ta_simulacion/<int:id_solicitud>/', views.get_ta_simulacion, name='get_ta_simulacion'),
 
 
     url('step_three_inversion/', views.step_three_inversion, name="step_three"),
