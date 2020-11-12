@@ -299,19 +299,24 @@ ul.social li{
             	<tr style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
             		<td style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;mso-table-lspace: 0pt !important;mso-table-rspace: 0pt !important;">
             			<div class="text" style="padding: 0 2.5em;text-align: center;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: rgba(0,0,0,.3);">
-            				<h2 style="color: #006B8D;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin-top: 0;font-weight: 400;font-size: 40px;margin-bottom: 0;line-height: 1.4;">Activa tu cuenta para empezar a invertir</h2>
+            				<h2 style="color: #006B8D;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin-top: 0;font-weight: 400;font-size: 40px;margin-bottom: 0;line-height: 1.4;">¡Gracias por tu Solicitud!</h2>
                             <p style="text-align: left;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                Estimado/a {{ usuario.nombres }} {{usuario.apellidos}}, <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                ¡Gracias por registrarte como inversionista en Crece Ecuador! <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                Estimado/a {{ solicitud.id_usuario_solicitante_temporal.nombres }} {{solicitud.id_usuario_solicitante_temporal.apellidos}} (CI: {{solicitud.id_usuario_solicitante_temporal.cedula}}), <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
 
-                                Descubre oportunidades de inversión en los términos que más se acoplen a tus preferencias. 
-                                Explora las opciones en Oportunidades de Inversión y empieza a ganar rentabilidad con impacto social. <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                Muchas gracias por aplicar a una solicitud de financiamiento colaborativo a través de Crece Ecuador, 
+                                la primera plataforma de financiamiento colaborativo del país y tu aliado en el crecimiento de tu emprendimiento y empresa. 
+                                Hemos recibido tu aplicación por un capital de ${{monto}} a {{solicitud.plazo}} meses plazo con una tasa de interés anual nominal del {{tasa}}%. <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
 
-                                Si tienes dudas o deseas nuestro acompañamiento no dudes en contactarnos.<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                Ya has hecho tu parte, ahora uno de nuestros agentes se pondrá en contacto contigo para completar la información referente a tu aplicación. 
+                                Si tienes alguna consulta puedes escribirnos por correo electrónico a solicitudes@creceecuador.com o por WhatsApp al +593988349088, que con gusto atenderemos tus inquietudes.<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
 
-                                El equipo de Crece<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                ¡Excelente semana!<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+                                Atentamente,<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+                                El Equipo de Crece Ecuador<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                             </p>
-            				<p style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><a href="http://{{ domain }}{% url 'confirmar_email' uidb64=uid token=token %}" class="btn btn-primary" style="background: #006B8D;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;text-decoration: none;padding: 10px 15px;display: inline-block;border-radius: 5px;color: #ffffff;">Confirmar Registro</a></p>
+            				
             			</div>
             		</td>
             	</tr>

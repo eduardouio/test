@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'solicitudes',
     'log_acciones',
     'fases_inversiones',
+    'solicitante',
 
     'proceso',
     'manager_archivos',

@@ -30,6 +30,7 @@ urlpatterns = [
     path('inversionista/', include('registro_inversionista.urls')),
     path('transferencia/', include('manager_archivos.urls')),
     path('registro/', include('fases_inversiones.urls')),
+    path('solicitante/', include('solicitante.urls')),
 
     path('', TemplateView.as_view(template_name="index.html")),
     path('invertir/', TemplateView.as_view(template_name="solicitudes.html")),

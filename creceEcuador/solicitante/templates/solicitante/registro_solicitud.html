@@ -1,0 +1,394 @@
+{% extends 'template_base.html' %}
+{% load static %}
+
+{% block head_css_agregado %}
+            <link href="{% static 'solicitante/css/registro_solicitud.css' %}" rel="stylesheet" type="text/css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        {% endblock head_css_agregado %}
+{% block content %}
+  <main id="main-id">
+    <div class="container">
+          
+            
+
+            <div class="row justify-content-center" id="crece-registro-super-container">
+
+
+
+                <!--Cuadro de registro-->
+              <div class="col-xl-9 col-lg-9 col-md-12 col-12 crece-registro-container" id="crece-registro-container-id">
+                    <div class="col-12 crece-login-container-form-wrapper-titulo">
+                      <div class="crece-registro-container-logo"><a href="/" target="_blank"><img src="{% static 'assets/logo_color.png' %}"></a></div>
+                    </div>
+
+                     <div class="col-12 crece-registro-container-form-wrapper-titulo" id="crece-registro-titulo-id">
+                        <h2>¡Estás a solo unos pasos de convertirte en un inversionista CRECE!</h2>
+                      </div>
+
+
+                  <!--Formulario para Registro-->
+                <div class="row justify-content-center crece-registro-form-wrapper" id="crece-registro-form-id">
+                  <!--form id="crece-form-registro-id" method="POST"-->
+
+                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Tipo de persona
+                            </div> 
+                            <div class="col">
+                            <input type="radio" name="tipo-persona" class="crece-form-radio" id="empresa" value="0" checked="checked">
+                            <label for="empresa">Empresa</label>
+                            <input type="radio" name="tipo-persona" class="crece-form-radio" id="persona_natural" value="1">
+                            <label for="persona_natural">Persona Natural</label>
+                            <i class="fa fa-check" aria-hidden="true" id="check-tipo-persona-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-tipo-persona-id"></i>
+                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-tipo-persona">
+                                Seleccione el tipo de persona del solicitante
+                            </div>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-razon crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Razón Social
+                            </div> 
+                            <div class="col">
+                            <input type="text" name="razon" class="crece-form-input" id="id_razon" required>
+                            <i class="fa fa-check" aria-hidden="true" id="check-razon-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-razon-id"></i>
+                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-razon">
+                                Ingrese la razón social de la empresa
+                            </div>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-nombre-comercial crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Nombre Comercial
+                            </div> 
+                            <div class="col">
+                            <input type="text" name="nombre-comercial" class="crece-form-input" id="id_nombre_comercial" required>
+                            <i class="fa fa-check" aria-hidden="true" id="check-nombre-comercial-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombre-comercial-id"></i>
+                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombre-comercial">
+                                Ingrese el nombre comercial
+                            </div>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-ruc crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            RUC
+                            </div> 
+                            <div class="col">
+                            <input required type="text" name="ruc" class="crece-form-input" id="id_ruc" maxlength="13"  />
+                            <i class="fa fa-check" aria-hidden="true" id="check-ruc-id" ></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-ruc-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-ruc">
+                                Ingrese el RUC de la empresa
+                            </div>
+
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div id="subtitulo_representante_legal" class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
+                        <div class="col-12 crece-registro-form-subtitulo">
+                            Datos del representante legal
+                        </div> 
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-usuario crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Nombres
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="nombres" class="crece-form-input" id="id_nombres" required>
+                          <i class="fa fa-check" aria-hidden="true" id="check-nombres-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombres-id"></i>
+                          <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombres">
+                            Ingrese sus Nombres
+                          </div>
+                        </div>
+                      </div>   
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Apellidos
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="apellidos" class="crece-form-input" id="id_apellidos" required="">
+                          <i class="fa fa-check" aria-hidden="true" id="check-apellidos-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-apellidos-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-apellidos">
+                            Ingrese sus Apellidos
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Cédula
+                        </div> 
+                        <div class="col">
+                          <input required type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
+                          <i class="fa fa-check" aria-hidden="true" id="check-cedula-id" ></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
+                            Ingrese su Cédula
+                          </div>
+
+                        </div>
+                      </div> 
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Teléfono Celular
+                            </div> 
+                            <div class="col">
+                            <input type="text" name="celular" class="crece-form-input" id="id_celular" required="" maxlength="10">
+                            <i class="fa fa-check" aria-hidden="true" id="check-celular-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-celular-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-celular">
+                                Ingrese su Teléfono Celular
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Correo electrónico
+                        </div> 
+                        <div class="col">
+                          <input type="text" name="email" class="crece-form-input" id="id_email" required>
+                          <i class="fa fa-check" aria-hidden="true" id="check-email-id"></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-email-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-email">
+                            Ingrese su correo electrónico
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
+                        <div class="col-12 crece-registro-form-subtitulo">
+                            Información del Crédito
+                        </div> 
+                    </div>
+                    
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-monto crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Monto
+                            </div> 
+                            <div class="col">
+                            <input type="number" name="monto" class="crece-form-input" id="id_monto" required="" maxlength="10">
+                            <i class="fa fa-check" aria-hidden="true" id="check-monto-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-monto-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-monto">
+                                Ingrese el monto que solicita
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-plazo crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Plazo (meses)
+                            </div> 
+                            <div class="col">
+                            <input type="number" name="plazo" class="crece-form-input" id="id_plazo" required="" maxlength="10">
+                            <i class="fa fa-check" aria-hidden="true" id="check-plazo-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-plazo-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-plazo">
+                                Ingrese el plazo en el que pagará su solicitud
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-tasa crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Tasa a pagar
+                            </div> 
+                            <div class="col">
+                            <input type="number" name="tasa" onchange="setTwoNumberDecimal" class="crece-form-input" id="id_tasa" required="" maxlength="4" step=".01" min="0" max="100">
+                            <i class="fa fa-check" aria-hidden="true" id="check-tasa-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-tasa-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-tasa">
+                                Ingrese la Tasa a pagar
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-uso crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Uso del financiamiento
+                            </div> 
+                            <div class="col">
+                            <textarea type="text" name="uso" class="crece-form-input crece-form-text-area" id="id_uso" rows="10" cols="50"></textarea>
+                            <i class="fa fa-check" aria-hidden="true" id="check-uso-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-uso-id"></i>
+                                <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-uso">
+                                Ingrese el uso que le dará al financiamiento
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                  <!--/form-->
+
+                </div>
+
+              <!--Encuesta-->
+              <div tabindex="-1" class="row justify-content-center crece-registro-encuesta-container" id="crece-registro-encuesta-container-id">
+                <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-1">
+                  <div class="row">
+                    <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-1"> 
+                      <strong>¿En cuánto tiempo esperas recuperar tus inversiones? </strong>
+                    </div>
+                  </div>
+                                        
+                </div>
+                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-2">
+                  <div class="row">
+                    <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-2"> 
+                      <strong>¿Cuánto esperas invertir a través de CRECE? </strong>
+                    </div>
+                  </div>
+                                        
+                </div>
+                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-3">
+                  <div class="row">
+                    <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-3"> 
+                      <strong>¿Qué nivel de riesgo se ajusta a su perfil? </strong>
+                    </div>
+                  </div>
+                                        
+                </div>
+                 <div class="col-12 col-sm-6 col-lg-6 col-md-6 crece-registro-container-encuesta-pregunta" id="pregunta-container-4">
+                  <div class="row">
+                    <div class="col-12 crece-registro-encuesta-pregunta" id="pregunta-4"> 
+                      <strong>¿Cómo conociste a CRECE? </strong>
+                    </div>
+                  </div>
+                                        
+                </div>
+                <div class="col-lg-9 crece-registro-container-form-wrapper-error crece-registro-container-form-wrapper-error-encuesta ">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-encuesta-id"></i>
+                    <label id="label_error_encuesta">
+
+                    </label>
+                </div>
+              </div>
+
+              <!--Aceptacion de contratos-->
+                  <div class="crece-contratos-texto" id="crece-contratos-texto-id">
+                    <p>
+                      Al dar clic en "Registrarme", aceptas los 
+                      <a target="_blank" rel="noopener noreferrer" href="/static/contratos/Terminos-Legales-y-Condiciones.pdf"> 
+                        <span id='span-terminos-condiciones' class='crece-span-acuerdos-contratos'><strong>Términos y condiciones</strong></span> 
+                    </a>
+                    
+                    generales, 
+                    <a target="_blank" rel="noopener noreferrer" href="/static/contratos/Politicas-de-Privacidad.pdf"> 
+                        <span id='span-politicas-privacidad' class='crece-span-acuerdos-contratos'><strong>Políticas de privacidad</strong></span>
+                    </a>
+                    
+                     y 
+                     
+                     <a target="_blank" rel="noopener noreferrer" href="/static/contratos/Acuerdo-uso-solicitante.pdf"> 
+                        <span id='span-acuerdo-uso-sitio' class='crece-span-acuerdos-contratos'><strong>Acuerdos específicos de uso del sitio web</strong></span> 
+                     </a>
+                     como usuario inversionista de CRECE ECUADOR.
+                    </p>
+                  </div>
+                  
+                  <div class="crece-registro-check-acepto-registrarse" id="crece-registro-check-acepto-registrarse-id">
+                    <div class="col-12 crece-registro-container-form-wrapper-boton-registrar">
+
+                          <button type="submit" form="crece-form-registro-id" onclick="registrar()" id="crece-registrarse" >Registrarme</button>
+                    </div>
+                  </div>
+
+
+                  <div class="crece-registro-footer row justify-content-center">
+                                      <ul class="crece-footer-redes-lista"> 
+                                        <li><div>Síguenos en: </div></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/creceec"><img src="{% static 'assets/twitter.png' %}" id="crece-twitter"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/creceec/?hl=es-la"><img src="{% static 'assets/instagram.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://ec.linkedin.com/company/creceec"><img src="{% static 'assets/linkedin.png' %}"></a></li>
+                                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/CreceEC/"><img src="{% static 'assets/fb.png' %}" id="crece-facebook"></a></li>
+                                      </ul>
+                        <!--div class="crece-inforacion">¿Más información?
+                                  <div>
+                                    Whatsapp: 
+                                    <a target="_blank" rel="noopener noreferrer" href="https://wa.me/593988349088">
+                                      <span style="    color: #08A7BA;">+593-98-834-9088</span>
+                                    </a>
+                                  </div>
+                                  <div>Escríbenos: 
+                                    <a href="mailto: info@creceecuador.com">
+                                      <span style="    color: #08A7BA;">info@creceecuador.com</span>
+                                    </a>
+                                  </div>
+                                </div-->
+                  </div>
+
+
+              </div>
+            </div>
+            <div class="col-12 crece-login-container-form-wrapper-titulo">
+                      <div class="crece-registro-container-logo" id="crece-logo-registro-exitoso"><img src="{% static 'assets/logo_color.png' %}"></div>
+            </div>
+            <div class="wrapper" id="crece-wrapper-id">
+              
+              <i class="fa fa-check" aria-hidden="true" id="check-timelime-email-id"></i>
+              <div class="timeline">
+
+
+                <dl class="timeline--entry">
+                  
+                  <dt class="timeline--entry__title"><i class="fa fa-envelope" aria-hidden="true" id="crece-registro-icon-email-id"></i>  <span id="span-hora-email-id">hora</span></dt>
+                  <dd class="timeline--entry__detail"><span id="span-send-to-id"></span></dd>
+                </dl>
+                <dl class="timeline--entry">
+                  <dt class="timeline--entry__title">Un operador de CRECE se contactará contigo.</dt>
+                  <dd class="timeline--entry__detail">Gracias por registrar tu solicitud en CRECE. Ahora un operador de CRECE la revisará y se contactará contigo.</dd>
+                </dl>
+                
+                
+              </div>
+            </div>
+
+
+    </div>
+
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="{% static 'js/typeahead.jquery.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+  <script type="text/javascript" src="{% static 'solicitante/js/registro_solicitud.js' %}" ></script>
+{% endblock content %}

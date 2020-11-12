@@ -299,19 +299,107 @@ ul.social li{
             	<tr style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
             		<td style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;mso-table-lspace: 0pt !important;mso-table-rspace: 0pt !important;">
             			<div class="text" style="padding: 0 2.5em;text-align: center;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: rgba(0,0,0,.3);">
-            				<h2 style="color: #006B8D;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin-top: 0;font-weight: 400;font-size: 40px;margin-bottom: 0;line-height: 1.4;">Activa tu cuenta para empezar a invertir</h2>
-                            <p style="text-align: left;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                Estimado/a {{ usuario.nombres }} {{usuario.apellidos}}, <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                ¡Gracias por registrarte como inversionista en Crece Ecuador! <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-
-                                Descubre oportunidades de inversión en los términos que más se acoplen a tus preferencias. 
-                                Explora las opciones en Oportunidades de Inversión y empieza a ganar rentabilidad con impacto social. <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-
-                                Si tienes dudas o deseas nuestro acompañamiento no dudes en contactarnos.<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-
-                                El equipo de Crece<br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> <br style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                            </p>
-            				<p style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><a href="http://{{ domain }}{% url 'confirmar_email' uidb64=uid token=token %}" class="btn btn-primary" style="background: #006B8D;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;text-decoration: none;padding: 10px 15px;display: inline-block;border-radius: 5px;color: #ffffff;">Confirmar Registro</a></p>
+                            <h2 style="color: #006B8D;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin-top: 0;font-weight: 400;font-size: 40px;margin-bottom: 0;line-height: 1.4;">Nueva solicitud en la plataforma</h2>
+                            <br>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Razón Social
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.razon_social }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Nombre Comercial
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.nombre_comercial }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        RUC
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.ruc }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Es persona Natural?
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ tipo_persona }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Representante Legal
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.id_usuario_solicitante_temporal.nombres }} {{solicitud.id_usuario_solicitante_temporal.apellidos}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Cédula
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.id_usuario_solicitante_temporal.cedula }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        E-mail
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.id_usuario_solicitante_temporal.email }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Teléfono
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.id_usuario_solicitante_temporal.celular }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Capital
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.monto }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Tasa anual nominal
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.tasa }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Plazo
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.plazo }} meses
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                                        Uso o destino del capital
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
+                                        {{ solicitud.uso_financiamiento }}
+                                    </td>
+                                </tr>
+                            </table>
+            				
             			</div>
             		</td>
             	</tr>
