@@ -59,6 +59,7 @@ let contratoAcUsoFirmado;
         $("#usuario_data_container").prepend(`<img class="crece-usuario-imagen-seleccionada" src="`+ image_src +`" onerror="this.outerHTML= '<i class= &quot crece-usuario-imagen fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">`)
      }
      else{
+
         $("#usuario_data_container").prepend('<i class= " crece-usuario-imagen fa fa-user-circle-o " aria-hidden= " true "></i>')
      }
      

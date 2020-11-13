@@ -808,6 +808,17 @@ var substringMatcher = function(strs) {
           else{
             cambiarHabilitadoInputs();
           } 
+        },
+        error: function(e){
+          
+          if(e.responseJSON){
+            $(".crece-modificar-datos-formulario-wrapper .error-modificar").html(e.responseJSON.mensaje);
+            $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
+          }
+          else{
+            $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("No se pudo registrar los datos.");
+            $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
+          }
         }
     });
   }

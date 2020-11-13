@@ -467,6 +467,16 @@ var substringMatcher = function(strs) {
         data: dictRespuestas,
         success: function(resultData) { 
             enviarImagenCedula(redirect);
+        },
+        error: function(e){
+          if(e.responseJSON){
+            $("#completar_datos_wrapper .error").html(e.responseJSON.mensaje);
+            $("#completar_datos_wrapper .error-container").css("display", "flex");
+          }
+          else{
+            $("#completar_datos_wrapper .error").html("No se pudo registrar los datos.");
+            $("#completar_datos_wrapper .error-container").css("display", "flex");
+          }
         }
     });
   }

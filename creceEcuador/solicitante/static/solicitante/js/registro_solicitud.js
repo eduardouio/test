@@ -115,7 +115,7 @@ $(document).ready(function(){
 
 
 
-    let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
+    let encuesta_container = document.getElementById("crece-registro-encuesta-container-id");
 
 
 
@@ -208,8 +208,7 @@ function registrar(argument) {
     let tasa = document.getElementById('id_tasa').value
     let uso = document.getElementById('id_uso').value
 
-    let lista_preguntas = ["¿En cuánto tiempo esperas recuperar tus inversiones?", "¿Cuánto esperas invertir a través de CRECE?",
-                            "¿Qué nivel de riesgo se ajusta a su perfil?","¿Cómo conociste a CRECE?"]
+    let lista_preguntas = ["¿Cómo conociste a CRECE?"]
     let lista_respuestas = []
     let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
 
@@ -234,7 +233,7 @@ function registrar(argument) {
     }
 
     let inputs_validos = validar_form()
-    if (inputs_validos === 12 && lista_respuestas.length === 4){
+    if (inputs_validos === 12 && lista_respuestas.length === 1){
         let encuesta_dic = {"preguntas":lista_preguntas, "respuestas":lista_respuestas}
         var xhttp = new XMLHttpRequest();
 
@@ -291,7 +290,7 @@ function registrar(argument) {
                                     "encuesta": encuesta_dic,
                                 })
                     );
-    }else if(inputs_validos === 12 && lista_respuestas.length != 4){
+    }else if(inputs_validos === 12 && lista_respuestas.length != 1){
             let mensaje = "Debe Llenar la encuesta"
                 let times_encuesta = document.getElementById("times-encuesta-id")
                 times_encuesta.style.display = "inline-block"
