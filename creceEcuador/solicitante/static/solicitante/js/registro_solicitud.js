@@ -79,7 +79,72 @@ var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA',
     source: substringMatcher(cantones)
   });
 
+function limpiarNumero(num){
+  return num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
+}
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 $(document).ready(function(){
+
+  let monto_anterior = "";
+  let plazo_anterior = "";
+  let tasa_anterior = "";
+
+  $("#id_monto").keydown(function(e) {
+    if(e.key==='.'){
+      event.preventDefault();
+    }
+  });
+
+   $("#id_monto").keyup(function(e) {
+    let numero = $(this).val();
+    numero = limpiarNumero(numero);
+
+    if (numero > 20000){
+      numero = monto_anterior;
+    }
+    else {
+      monto_anterior = numero;
+    }
+
+    $(this).val('$'+numberWithCommas(numero));
+  });
+
+  $("#id_cedula").keyup(function(e) {
+    let cedula = $(this).val();
+    $("#id_ruc").val(cedula + "001");
+  });
+
+  $("#id_plazo").keyup(function(e){
+    let numero = $(this).val();
+    numero = limpiarNumero(numero);
+
+    if (numero > 24){
+      numero = plazo_anterior;
+    }
+    else {
+      plazo_anterior = numero;
+    }
+
+    $(this).val(numero);
+
+  });
+
+  $("#id_tasa").keyup(function(e){
+    let numero = $(this).val();
+
+    if (numero > 25){
+      numero = tasa_anterior;
+    }
+    else {
+      tasa_anterior = numero;
+    }
+
+    $(this).val(numero);
+
+  });
 
   let ultimo_valor_tasa = 0;
   let regexp = /^\d{1,2}(\.\d{1,2})?$/;
@@ -565,7 +630,28 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+function validateMonto(monto) {
+  let numero = limpiarNumero(monto);
 
+  if (numero >=2500 && numero <= 20000){
+    return true;
+  }
+  return false;
+}
+
+function validateTasa(tasa) {
+  if (tasa >=9 && tasa <= 25){
+    return true;
+  }
+  return false;
+}
+
+function validatePlazo(plazo) {
+  if (plazo >=1 && plazo <= 24){
+    return true;
+  }
+  return false;
+}
 
 function validar_form() {
     // body...
@@ -597,6 +683,24 @@ function validar_form() {
                 label_error.innerHTML = "Ingrese una cédula válida"
 
                 
+            } else if (input.name === 'monto' && !validateMonto(input.value)) {
+                mostrar_times(input)
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = "Ingrese un monto entre $2,500 y $20,000"
+            } else if (input.name === 'tasa' && !validateTasa(input.value)) {
+              mostrar_times(input)
+              let id_error = "crece-mensaje-invalid-input-"+input.name
+              let label_error = document.getElementById(id_error)
+              label_error.style.display = "block"
+              label_error.innerHTML = "Ingrese una tasa de interés entre 9% y 25%"
+            } else if (input.name === 'plazo' && !validatePlazo(input.value)) {
+              mostrar_times(input)
+              let id_error = "crece-mensaje-invalid-input-"+input.name
+              let label_error = document.getElementById(id_error)
+              label_error.style.display = "block"
+              label_error.innerHTML = "Ingrese un plazo de entre 1 y 24 meses"
             }
             else{
                 
@@ -617,6 +721,7 @@ function validar_form() {
     else{
       $("#id_razon").val("");
       mostrar_check(document.getElementById("id_razon"));
+      mostrar_check(document.getElementById("id_nombre_comercial"));
     }
 
     let inputs_validos = document.getElementsByClassName("crece-form-valid-input")
