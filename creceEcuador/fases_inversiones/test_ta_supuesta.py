@@ -129,5 +129,5 @@ def inversion_prueba(juan_pihuave, solicitud_prueba):
 def test_crear_pagos_desde_ta_supuesta(inversion_prueba, solicitud_prueba):
 	print("PAGOS DETALLES")
 	ganancia_total = crear_pagos(inversion_prueba, solicitud_prueba)
-	lista_pagos_detalles = Pago_detalle.objects.filter(id_inversion=inversion_prueba.id)
+	# lista_pagos_detalles = Pago_detalle.objects.filter(id_inversion=inversion_prueba.id)
 	print("Ganancia total",ganancia_total)

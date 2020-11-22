@@ -240,21 +240,19 @@ function registrar(argument) {
 
 
             }else if(this.status == 400 && this.readyState == 4){
-
+                $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+                $("#crece-registrarse").removeAttr("disabled");
                 let response = JSON.parse(this.response)
                 let mensaje = response.mensaje
-                let email = response.email
-                let id_input_email = "id_email"
-                let input_email = document.getElementById(id_input_email)
-                mostrar_times(input_email)
-                let id_error = "crece-mensaje-invalid-input-"+email
+                let tipo_error = response.tipo_error
+                let id_input = "id_"+tipo_error
+                let input_error = document.getElementById(id_input)
+                mostrar_times(input_error)
+                let id_error = "crece-mensaje-invalid-input-"+tipo_error
                 let label_error = document.getElementById(id_error)
                 label_error.style.display = "block"
                 label_error.innerHTML = mensaje
-                input_email.focus()
-                // let label_error = document.getElementById("label_error")
-                // label_error.innerHTML = mensaje.mensaje
-                // $(".crece-login-container-form-wrapper-error").show()
+
             }
         };
         xhttp.open("POST", "/inversionista/registro/", true);
@@ -274,15 +272,21 @@ function registrar(argument) {
                                 })
                     );
     }else if(inputs_validos === 9 && lista_respuestas.length != 4){
+
             let mensaje = "Debe Llenar la encuesta"
-                let times_encuesta = document.getElementById("times-encuesta-id")
-                times_encuesta.style.display = "inline-block"
-                document.getElementById('crece-registro-encuesta-container-id').focus();
-                
-                let label_error = document.getElementById("label_error_encuesta")
-                label_error.innerHTML = mensaje
-                $(".crece-login-container-form-wrapper-error-encuesta").show()
+            let times_encuesta = document.getElementById("times-encuesta-id")
+            times_encuesta.style.display = "inline-block"
+            document.getElementById('crece-registro-encuesta-container-id').focus();
+            
+            let label_error = document.getElementById("label_error_encuesta")
+            label_error.innerHTML = mensaje
+            $(".crece-login-container-form-wrapper-error-encuesta").show()
+            $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+            $("#crece-registrarse").removeAttr("disabled");
+            $("#crece-registro-encuesta-container-id").focus()
     }
+    $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+    $("#crece-registrarse").removeAttr("disabled");
     
 }
 
@@ -593,8 +597,13 @@ function validar_form() {
                 let label_error = document.getElementById(id_error)
                 label_error.style.display = "block"
                 label_error.innerHTML = "Fecha de nacimiento no valida"
-            }
-            else{
+            }else if (input.name === "canton" && !(cantones.includes(input.value.toUpperCase()))){
+                mostrar_times(input)
+                let id_error = "crece-mensaje-invalid-input-"+input.name
+                let label_error = document.getElementById(id_error)
+                label_error.style.display = "block"
+                label_error.innerHTML = "Ciudad fuera de los límites permitidos, por favor ingresa una ciudad válida."
+            }else{
                 
                 mostrar_check(input)
 
@@ -676,4 +685,12 @@ setInputFilter(document.getElementById("id_cedula"), function(value) {
 
 setInputFilter(document.getElementById("id_celular"), function(value) {
   return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+});
+
+
+$('#crece-registrarse').click(function() {
+    
+  $('#crece-registrarse').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
+  $("#crece-registrarse").attr("disabled","True")
+  setTimeout(() => registrar(), 2000)
 });

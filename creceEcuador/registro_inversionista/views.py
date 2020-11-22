@@ -162,12 +162,11 @@ class RegisterUsers(generics.CreateAPIView):
 
         date = datetime.datetime.now()
 
-        canton = models.Canton.objects.get(nombre=nombre_canton.upper())
 
         if User.objects.filter(username=usuario).exists():
             data_response = {
                                 "mensaje": "El Correo electrónico "+ usuario +" ya existe",
-                                "email": "email",
+                                "tipo_error": "email",
                             }
 
             return Response(data_response, status=status.HTTP_400_BAD_REQUEST)
@@ -179,12 +178,23 @@ class RegisterUsers(generics.CreateAPIView):
                             )
             new_user.set_password(password)
             new_user.is_active = False
-            new_user.save()
+            
+            try:
+                 canton = models.Canton.objects.get(nombre=nombre_canton.upper())
+            except models.Canton.DoesNotExist:
+                diccionario_respuesta = {
+                    'mensaje': "Ciudad fuera de los límites permitidos, por favor ingresa una ciudad válida.",
+                    'tipo_error': "canton"
+                }
+                return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
+
 
             new_usuario = models.Usuario(usuario=usuario, nombres=nombres, apellidos=apellidos, 
                                             email=email, celular=celular, tipo_persona=tipo_persona, 
                                             canton=canton, cedula=cedula, user=new_user, fecha_nacimiento=fecha_nacimiento)
+            new_user.save()
             new_usuario.save()
+
             guardar_contratos(nombres,apellidos,cedula, new_usuario)
 
 

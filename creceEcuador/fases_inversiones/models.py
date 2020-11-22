@@ -133,6 +133,15 @@ class Inversion(models.Model):
     
 class Pagos_ta_supuesta(models.Model):
 
+    estado_pagado = 1
+    estado_pendiente = 0
+    estado_retrasado = -1
+    opciones_estado = [
+        (estado_pagado,"Pagado"),
+        (estado_pendiente, "Pendiente"),
+        (estado_retrasado, "Retrasado")
+    ]
+
     id_solicitud = models.ForeignKey(Solicitud, on_delete=models.CASCADE)
     num_pago = models.IntegerField(default=0)
     fecha = models.DateField()
@@ -141,14 +150,39 @@ class Pagos_ta_supuesta(models.Model):
     intereses_pagados = models.FloatField()
     capital_insoluto = models.FloatField()
     dias_totales = models.IntegerField()
-
+    estado = models.IntegerField(choices=opciones_estado, default=0)
 
     class Meta:
         verbose_name = "Pagos_ta_supuesta"
         verbose_name_plural = "Pagos_ta_supuestas"
 
-    # def __str__(self):
-    #     pass
+    def __str__(self):
+        return str(self.id_solicitud)+", Pago N°: "+str(self.num_pago)
+
+class Pagos_ta_real(models.Model):
+
+    id_pago_ta_supuesta = models.ForeignKey(Pagos_ta_supuesta, on_delete=models.CASCADE)
+    num_pago = models.IntegerField()
+    fecha = models.DateField()
+    pago = models.FloatField()
+    saldo_capital = models.FloatField()
+    pago_intereses = models.FloatField()
+    saldo_intereses = models.FloatField()
+    capital_insoluto = models.FloatField()
+    dias_mora = models.IntegerField()
+    pago_intereses_mora = models.FloatField()
+    saldo_intereses_mora = models.FloatField()
+    # cargo por mora
+
+    class Meta:
+        verbose_name = "Pagos_ta_real"
+        verbose_name_plural = "Pagos_ta_reals"
+
+    def __str__(self):
+        if (self.dias_mora > 0):
+            return str(self.id_pago_ta_supuesta) + ", Pago Atrasado N°: " + str(self.num_pago)
+        else:
+            return str(self.id_pago_ta_supuesta) + ", Pago Anticipo N°: " + str(self.num_pago)
     
     
 
@@ -183,14 +217,17 @@ class Pago_detalle(models.Model):
         verbose_name = "Pago_detalle"
         verbose_name_plural = "Pago_detalles"
 
-    # def __str__(self):
-    #     pass
+    def __str__(self):
+        return "Pago N°: " + str(self.orden) + ", " + str(self.id_inversion)
 
 
-def crear_pagos(inversion,solicitud):
+def crear_pagos(inversion,solicitud, crear = True):
     monto_inversion = float(inversion.monto)
     monto_solicitud = float(solicitud.monto)
-    diccionario = crear_tabla_amortizacion(solicitud, "PAGO")
+    if crear:
+        diccionario = crear_tabla_amortizacion(solicitud, "PAGO")
+    else:
+        diccionario = crear_tabla_amortizacion(solicitud, "NOPAGO")
     lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
     lista_cuotas_sol = diccionario['lista_pagos']
     lista_intereses_sol = diccionario['lista_intereses_pagados']
@@ -198,41 +235,27 @@ def crear_pagos(inversion,solicitud):
     dias = diccionario['dias']
     fechas = diccionario['fechas']
     participacion_inversionista = (monto_inversion/monto_solicitud)
-    COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
-    cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista
-    cargo_adjudicacion_iva = cargo_adjudicacion * IVA
-    inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
     
     ganancia_total = 0;
     capital_total = 0
     for i in range(solicitud.plazo):
         interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
-        # interes_i = round(interes_i,2)
         capital_i = lista_capitales_sol[i] * participacion_inversionista
-        # capital_i = round(capital_i,2)
         dias_transcurridos = dias[i+1]
         comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista
-        # comision_i = round(comision_i,2)
         comision_iva_i = comision_i * IVA
-        # comision_iva_i = round(comision_iva_i,2)
+
         comision_total_i = comision_i + comision_iva_i
-        # comision_total_i = round(comision_total_i,2)
         ganancia_i = capital_i + interes_i - comision_total_i 
-        # ganancia_i = round(ganancia_i,2)
         capital_total += capital_i
-        # ganancia_total += ganancia_i;
 
         num_orden = i+1
         fecha = fechas[i]
-        pago = round(capital_i,2)
-        comision = round(comision_i, 2)
-        comision_iva = round(comision_iva_i,2)
-        # ganancia = round(ganancia_i,2)
         ganancia_total += ganancia_i;
-        print(ganancia_i,"\t\t",capital_i,"\t\t",interes_i,"\t\t",comision_total_i)
-        new_pago_detalle = Pago_detalle(id_inversion=inversion, orden=num_orden, fecha=fecha, pago=capital_i, comision=comision_i, 
-                                        comision_iva=comision_iva_i, ganancia=ganancia_i)
-        new_pago_detalle.save()
+        if crear:
+            new_pago_detalle = Pago_detalle(id_inversion=inversion, orden=num_orden, fecha=fecha, pago=capital_i, comision=comision_i, 
+                                            comision_iva=comision_iva_i, ganancia=ganancia_i)
+            new_pago_detalle.save()
     return ganancia_total
 
     
@@ -352,6 +375,9 @@ def add_months(sourcedate, months):
             new_date = date(year, month + 1, day)
     return new_date  
 
+
+def crear_pago_ta_real(solicitud, fecha_pago_real, num_pago):
+    pass
 
 
 #Signals

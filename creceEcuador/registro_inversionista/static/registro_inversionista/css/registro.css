@@ -210,6 +210,10 @@ footer{
     margin-bottom:10px;
 }
 
+button.disabled{
+  opacity: 0.8;
+}
+
 .crece-registro-container-form-wrapper-error label{
     color: #e03e46;
     font-size: 12px;

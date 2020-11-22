@@ -111,11 +111,12 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
 
 
         #nueva inversion
-        solicitud = Solicitud.objects.filter(id=id_solicitud)[0]
+        solicitud = Solicitud.objects.get(id=id_solicitud)
         usuario = models.Usuario.objects.get(idUsuario=id_usuario)
         new_inversion = models.Inversion(id_user=usuario, id_solicitud=solicitud, monto=monto, 
                                         adjudicacion=adjudicacion, adjudicacion_iva=adjudicacion_iva,
                                         inversion_total=inversion_total, ganancia_total=ganancia_total)
+        actualizar_datos_inversion(new_inversion,solicitud)
         new_inversion.save()
         new_inversion.start()
         new_inversion.step_two()
@@ -523,15 +524,10 @@ def cambiar_monto_inversion(request):
 
 
 def actualizar_datos_inversion(inversion,solicitud):
-    monto_inversion = inversion.monto
+    monto_inversion = float(inversion.monto)
     monto_solicitud = float(solicitud.monto)
-    diccionario = models.crear_tabla_amortizacion(solicitud,'CAMBIO_MONTO_INVERSION')
-    lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
-    lista_cuotas_sol = diccionario['lista_pagos']
-    lista_intereses_sol = diccionario['lista_intereses_pagados']
-    lista_capitales_sol = diccionario['lista_capitales']
-    dias = diccionario['dias']
-    fechas = diccionario['fechas']
+
+    ganancia_total = models.crear_pagos(inversion, solicitud, crear = False)
 
     participacion_inversionista = (monto_inversion/monto_solicitud)
     participacion_inversionista_porcentaje = participacion_inversionista *100
@@ -539,39 +535,12 @@ def actualizar_datos_inversion(inversion,solicitud):
     cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista
     cargo_adjudicacion_iva = cargo_adjudicacion * IVA
     inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
-    inversion_total = round(inversion_total,2)
-    ganancia_total = 0;
-    pago_total = 0;
-    comision_total = 0;
-    comision_iva_total = 0;
 
-    for i in range(solicitud.plazo):
-        interes_i =  lista_intereses_sol[i] * participacion_inversionista - COMISION_BANCO
-        capital_i = lista_capitales_sol[i] * participacion_inversionista
-        dias_transcurridos = dias[i+1]
-        comision_i = lista_capital_insoluto_sol[i] * COMISION_COBRANZA_INSOLUTO_MENSUAL/30*dias_transcurridos * participacion_inversionista
-        comision_iva_i = comision_i * IVA
-        pago_i = capital_i + interes_i
-        ganancia_i = pago_i - comision_iva_i - comision_i
 
-        
-        ganancia_total += ganancia_i;
-        pago_total += pago_i;
-        comision_total += comision_i;
-        comision_iva_total += comision_iva_i
-        comision_total_i = comision_i + comision_iva_i
-
-        num_orden = i+1
-        fecha = fechas[i]
-        pago = round(capital_i,2)
-        comision = round(comision_i, 2)
-        comision_iva = round(comision_iva_i,2)
-        ganancia = round(ganancia_i,2)
-
-    inversion.adjudicacion = round(cargo_adjudicacion,2)
-    inversion.adjudicacion_iva = round(cargo_adjudicacion_iva,2)
-    inversion.inversion_total = round(inversion_total,2)
-    inversion.ganancia_total = round(ganancia_total,2)
+    inversion.adjudicacion = cargo_adjudicacion
+    inversion.adjudicacion_iva = cargo_adjudicacion_iva
+    inversion.inversion_total = inversion_total
+    inversion.ganancia_total = ganancia_total
     inversion.save()
 
 @api_view(['GET'])
@@ -592,7 +561,22 @@ def get_ta_simulacion(request, id_solicitud):
     except Solicitud.DoesNotExist:
         diccionario_respuesta = {
             'status': status.HTTP_404_NOT_FOUND,
-            'message': "Usuario no encontrado",
+            'message': "Solicitud no encontrado",
             'data': {}
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
+
+@api_view(['GET'])
+def get_consulta_pago(request, id_solicitud):
+    try:
+        solicitud = Solicitud.objects.get(pk = id_solicitud)
+        
+
+
+    except Solicitud.DoesNotExist:
+        diccionario_respuesta = {
+            'status': status.HTTP_404_NOT_FOUND,
+            'message': "Solicitud no encontrad",
+            'data': {}
+        }
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)   

@@ -111,6 +111,8 @@ function login(argument) {
             mensaje = JSON.parse(this.response).mensaje
             label_error.innerHTML = mensaje
             $(".crece-login-container-form-wrapper-error").show()
+            $('#btn_ingresar').html('Ingresar').removeClass('disabled');
+            $("#btn_ingresar").removeAttr("disabled");
         
 
         }else if(this.status == 400 && this.readyState == 4){
@@ -122,6 +124,8 @@ function login(argument) {
             let label_reset_password = document.getElementById("label_mensaje_new_pass")
             label_reset_password.style.display = "none"
             $(".crece-login-container-form-wrapper-error").show()
+            $('#btn_ingresar').html('Ingresar').removeClass('disabled');
+            $("#btn_ingresar").removeAttr("disabled");
         }
     };
     xhttp.open("POST", "/inversionista/login/", true);
@@ -207,3 +211,10 @@ function reenviar_confirmacion_email() {
                             })
                 );
 }
+
+$('#btn_ingresar').click(function() {
+    
+  $('#btn_ingresar').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
+  $("#btn_ingresar").attr("disabled","True")
+  setTimeout(() => login(), 500)
+});

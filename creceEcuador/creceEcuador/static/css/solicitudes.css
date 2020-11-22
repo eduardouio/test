@@ -755,3 +755,126 @@
   cursor: pointer;
   fill: rgba(255,255,255,0.8);
 }
+
+
+/*Tooltip*/
+
+.fa-question-circle{
+  cursor: pointer;
+  font-size: 15px;
+}
+
+
+.fa-question-circle .tooltiptextTicker {
+    visibility: hidden;
+    width: 208px;
+    background-color: #AECB6F;
+    text-align: justify; 
+    border-radius: 6px;
+    padding: 5px 7px;
+    position: absolute;
+    z-index: 1;
+    bottom: -18%;
+    left: 55%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.fa-question-circle .tooltiptextTicker::after {
+    content: "";
+    position: absolute;
+    top: 12%;
+    left: -22px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent #AECB6F transparent transparent;
+}
+
+
+.fa-question-circle:hover .tooltiptextTicker {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.tooltipTir {
+      position: absolute;
+    top: 5%;
+    left: 84%;
+}
+
+
+.fa-question-circle .tooltiptextTir {
+    visibility: hidden;
+    width: 277px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px 13px;
+    position: absolute;
+    z-index: 1;
+    bottom: -125px;
+    left: -292px;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+.fa-question-circle .tooltiptextTir::after {
+    content: "";
+    position: absolute;
+    top: 7%;
+    left: 284px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent transparent #AECB6F;
+}
+
+.fa-question-circle:hover .tooltiptextTir {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.tooltipPun {
+      position: absolute;
+    top: 2%;
+    left: 96%;
+}
+
+
+.fa-question-circle .tooltiptextPun {
+    visibility: hidden;
+    width: 277px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px 13px;
+    position: absolute;
+    z-index: 1;
+    bottom: 31px;
+    left: -200px;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+
+.fa-question-circle:hover .tooltiptextPun {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fa-question-circle .tooltiptextPun::after {
+    content: "";
+    position: absolute;
+    top: 92%;
+    left: 200px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: #AECB6F transparent transparent transparent;
+}

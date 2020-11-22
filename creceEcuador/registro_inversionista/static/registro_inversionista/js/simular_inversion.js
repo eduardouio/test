@@ -78,15 +78,15 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           	document.getElementById("strong-monto-objetivo").innerHTML =  numeroConComas(decimalAEntero(oportunidad.monto))
 
             calcular_tabla_inversionista(input_modal,res.data)
+            $('#simular-inversion-boton-invertir').html('Invertir').removeClass('disabled');
+			$("#simular-inversion-boton-invertir").removeAttr("disabled")
 
-    //         let boton_invertir  = document.getElementById("simular-inversion-boton-invertir")
-				// boton_invertir.addEventListener('click', function (argument) {
-			 //  		// body...
-			 //  		crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION)
-			 //  	})
            $("#simular-inversion-boton-invertir").click(function () {
-           	// body...
-           		crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION)
+				  $('#simular-inversion-boton-invertir').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
+				  $("#simular-inversion-boton-invertir").attr("disabled","True")
+				  setTimeout(() => crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION), 1000);
+				
+           		
            })
           }  
       },
@@ -126,18 +126,17 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
                 });
 
 
-          	let boton_invertir = document.getElementById("aceptar-inversion-button-invertir")
 
           	$("#aceptar-inversion-button-invertir").attr("disabled", false)
+          	$("#aceptar-inversion-button-invertir").html("Siguiente")
           	$("#label_error_aceptar_inversion").hide()
             calcular_tabla_inversionista(input_modal,res.data,monto);
-               	// boton_invertir.addEventListener('click', function () {
-               	// 	// body...
-               	// 	go_to_fase2(res.data)
-               	// })
+
             $("#aceptar-inversion-button-invertir").click(function () {
-            	// body...
-            	go_to_fase2(res.data)
+            	$('#aceptar-inversion-button-invertir').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
+				  $("#aceptar-inversion-button-invertir").attr("disabled","True")
+				  setTimeout(() => go_to_fase2(res.data), 1000);
+            	
             })
           }  
       },
@@ -224,12 +223,17 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
 
           	let boton_cambiar_monto_inversion = document.getElementById("cambiar-monto-inversion-button")
           	$("#cambiar-monto-inversion-button").attr("disabled", false)
+          	$('#cambiar-monto-inversion-button').html("Siguiente")
           	$("#label_error_cambiar_monto_inversion").hide()
             calcular_tabla_inversionista(input_modal,res.data,monto);
-               	boton_cambiar_monto_inversion.addEventListener('click', function () {
-               		// body...
-               		go_to_fase2(res.data, 'cambiar-monto-inversion', id_inversion)
-               	})
+            $("#cambiar-monto-inversion-button").click(function () {
+            	$('#cambiar-monto-inversion-button').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
+				  $("#cambiar-monto-inversion-button").attr("disabled","True")
+				  setTimeout(() => go_to_fase2(res.data, 'cambiar-monto-inversion', id_inversion), 1000);            	
+            });
+
+				  	
+
           }  
       },
       error: function(xhr, status, error) {
@@ -915,3 +919,6 @@ function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_i
 function limpiarNumero(num){
 	return num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
 }
+
+
+
