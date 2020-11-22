@@ -65,46 +65,13 @@
                         </div>   
                     </div>
 
-                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-nombre-comercial crece-registro-container-form-wrapper">
-                        <div class="row">
-                            <div class="col-12 crece-registro-form-label">
-                            Nombre Comercial
-                            </div> 
-                            <div class="col">
-                            <input type="text" name="nombre-comercial" class="crece-form-input" id="id_nombre_comercial">
-                            <i class="fa fa-check" aria-hidden="true" id="check-nombre-comercial-id"></i>
-                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombre-comercial-id"></i>
-                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombre-comercial">
-                                Ingrese el nombre comercial
-                            </div>
-                            </div>
-                        </div>   
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
-                      <div class="row">
-                        <div class="col-12 crece-registro-form-label">
-                          Cédula*
-                        </div> 
-                        <div class="col">
-                          <input required type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
-                          <i class="fa fa-check" aria-hidden="true" id="check-cedula-id" ></i>
-                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
-                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
-                            Ingrese su Cédula
-                          </div>
-
-                        </div>
-                      </div> 
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-ruc crece-registro-container-form-wrapper">
+                    <div id="ruc_container" class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-ruc crece-registro-container-form-wrapper">
                         <div class="row">
                             <div class="col-12 crece-registro-form-label">
                             RUC*
                             </div> 
                             <div class="col">
-                            <input required type="text" name="ruc" class="crece-form-input" id="id_ruc" maxlength="13"  disabled/>
+                            <input required type="text" name="ruc" class="crece-form-input" id="id_ruc" maxlength="13"/>
                             <i class="fa fa-check" aria-hidden="true" id="check-ruc-id" ></i>
                             <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-ruc-id"></i>
                                 <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-ruc">
@@ -137,7 +104,7 @@
                       </div>   
                     </div>
 
-                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
+                    <div id="apellidos_container" class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-apellidos crece-registro-container-form-wrapper">
                       <div class="row">
                         <div class="col-12 crece-registro-form-label">
                           Apellidos*
@@ -151,6 +118,39 @@
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    <div id="cedula_container" class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-cedula crece-registro-container-form-wrapper">
+                      <div class="row">
+                        <div class="col-12 crece-registro-form-label">
+                          Cédula*
+                        </div> 
+                        <div class="col">
+                          <input required type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
+                          <i class="fa fa-check" aria-hidden="true" id="check-cedula-id" ></i>
+                          <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
+                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
+                            Ingrese su Cédula
+                          </div>
+
+                        </div>
+                      </div> 
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-lg-7 col-md-7 crece-registro-container-form-wrapper-nombre-comercial crece-registro-container-form-wrapper">
+                        <div class="row">
+                            <div class="col-12 crece-registro-form-label">
+                            Nombre Comercial (opcional)
+                            </div> 
+                            <div class="col">
+                            <input type="text" name="nombre-comercial" class="crece-form-input" id="id_nombre_comercial">
+                            <i class="fa fa-check" aria-hidden="true" id="check-nombre-comercial-id"></i>
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombre-comercial-id"></i>
+                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombre-comercial">
+                                Ingrese el nombre comercial
+                            </div>
+                            </div>
+                        </div>   
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-celular crece-registro-container-form-wrapper">
@@ -188,14 +188,14 @@
 
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-email crece-registro-container-form-wrapper">
                         <div class="col-12 crece-registro-form-subtitulo">
-                            Información del Crédito
+                          Define tus condiciones para tu crédito
                         </div> 
                     </div>
                     
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-monto crece-registro-container-form-wrapper">
                         <div class="row">
                             <div class="col-12 crece-registro-form-label">
-                            Monto*
+                              Monto solicitado*
                             </div> 
                             <div class="col">
                             <input type="text" name="monto" class="crece-form-input" id="id_monto" required="" maxlength="7">
@@ -214,7 +214,7 @@
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-plazo crece-registro-container-form-wrapper">
                         <div class="row">
                             <div class="col-12 crece-registro-form-label">
-                            Plazo (meses)*
+                              Plazo en que deseas pagarlo (meses)*
                             </div> 
                             <div class="col">
                             <input type="number" name="plazo" class="crece-form-input" id="id_plazo" required="" maxlength="2">
@@ -233,7 +233,7 @@
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-tasa crece-registro-container-form-wrapper">
                         <div class="row">
                             <div class="col-12 crece-registro-form-label">
-                            Tasa a pagar*
+                              Tasa de interés que deseas pagar*
                             </div> 
                             <div class="col">
                             <input type="number" name="tasa" onchange="setTwoNumberDecimal" class="crece-form-input" id="id_tasa" required="" maxlength="4" step=".01" min="0" max="100">
@@ -252,7 +252,7 @@
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-uso crece-registro-container-form-wrapper">
                         <div class="row">
                             <div class="col-12 crece-registro-form-label">
-                            Uso del financiamiento*
+                              ¿Para qué necesitas el dinero?*
                             </div> 
                             <div class="col">
                             <textarea type="text" name="uso" class="crece-form-input crece-form-text-area" id="id_uso" rows="10" cols="50"></textarea>
@@ -370,6 +370,12 @@
                 </dl>
                 
                 
+              </div>
+
+              <div class="crece-finalizar-boton-container">
+                <div class="row justify-content-center">
+                  <a href="/" >Finalizar</a>
+                </div>
               </div>
             </div>
 

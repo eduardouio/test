@@ -388,6 +388,30 @@ html {
   left: -4.5em;
 }
 
+.crece-finalizar-boton-container{
+  padding: 30px;
+}
+
+.crece-finalizar-boton-container a{
+  display: inline-block;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 30px;
+  background: #006B8D 0% 0% no-repeat padding-box;
+  border: 1px solid #006B8D;
+  color: white;
+  font-size: 18px;
+  padding-top: 5px;
+}
+
+.crece-finalizar-boton-container a:hover{
+  text-decoration: none;
+  background: rgba(0, 107, 141, 0.8) 0% 0% no-repeat padding-box;
+  border: 1px solid rgba(0, 107, 141, 0.8);
+}
+
 @supports (display: grid) {
   @media (min-width: 768px) {
     .timeline {
@@ -454,7 +478,18 @@ html {
     }
 }
 
+/* Remover flechas de subir y bajar monto */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /* scaffolding */
 /* ----------- */

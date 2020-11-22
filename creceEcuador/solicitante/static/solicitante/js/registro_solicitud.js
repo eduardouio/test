@@ -112,11 +112,6 @@ $(document).ready(function(){
     $(this).val('$'+numberWithCommas(numero));
   });
 
-  $("#id_cedula").keyup(function(e) {
-    let cedula = $(this).val();
-    $("#id_ruc").val(cedula + "001");
-  });
-
   $("#id_plazo").keyup(function(e){
     let numero = $(this).val();
     numero = limpiarNumero(numero);
@@ -170,11 +165,28 @@ $(document).ready(function(){
       $("#subtitulo_representante_legal").hide();
       $(".crece-registro-container-form-wrapper-nombre-comercial").show();
       $(".crece-registro-container-form-wrapper-razon").hide();
+
+      $("#id_ruc").val("");
+      $("#id_ruc").attr('disabled', true); 
+
+      $("#id_cedula").keyup(function(e) {
+        let cedula = $(this).val();
+        $("#id_ruc").val(cedula + "001");
+      });
+
+      $("#ruc_container").before( $("#cedula_container"));
     }
-    else if (this.value == '0') {
+    else if (this.value == '0') { //empresa
       $("#subtitulo_representante_legal").show();
       $(".crece-registro-container-form-wrapper-nombre-comercial").hide();
       $(".crece-registro-container-form-wrapper-razon").show();
+
+      $("#id_ruc").val("");
+      $("#id_ruc").attr('disabled', false); 
+
+      $("#id_cedula").unbind("keyup");
+
+      $("#apellidos_container").after( $("#cedula_container") );
     }
   });
 
@@ -348,7 +360,7 @@ function registrar(argument) {
                                     "email": email,
                                     "celular": celular,
                                     "cedula": cedula,
-                                    "monto": monto,
+                                    "monto": limpiarNumero(monto),
                                     "plazo": plazo,
                                     "tasa": tasa,
                                     "uso":uso,
@@ -487,7 +499,9 @@ function sleep(milliseconds) {
 }
 
 
-
+function validar_ruc(ruc){
+  return ruc.length === 13;
+}
 
 function validar_cedula(textbox){
   
@@ -701,6 +715,14 @@ function validar_form() {
               let label_error = document.getElementById(id_error)
               label_error.style.display = "block"
               label_error.innerHTML = "Ingrese un plazo de entre 1 y 24 meses"
+            }
+
+            else if (input.name === "ruc" && !validar_ruc(input.value)){
+              mostrar_times(input)
+              let id_error = "crece-mensaje-invalid-input-"+input.name
+              let label_error = document.getElementById(id_error)
+              label_error.style.display = "block"
+              label_error.innerHTML = "Ingrese un RUC correcto"
             }
             else{
                 
