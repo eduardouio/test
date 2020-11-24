@@ -55,7 +55,7 @@
                             Razón Social*
                             </div> 
                             <div class="col">
-                            <input type="text" name="razon" class="crece-form-input" id="id_razon" required>
+                            <input type="text" name="razon" class="crece-form-input" id="id_razon" placeholder="Empresa S.A." required>
                             <i class="fa fa-check" aria-hidden="true" id="check-razon-id"></i>
                             <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-razon-id"></i>
                             <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-razon">
@@ -71,7 +71,7 @@
                             RUC*
                             </div> 
                             <div class="col">
-                            <input required type="text" name="ruc" class="crece-form-input" id="id_ruc" maxlength="13"/>
+                            <input required type="text" name="ruc" class="crece-form-input" id="id_ruc" placeholder="XXXXXXXXXX001" maxlength="13"/>
                             <i class="fa fa-check" aria-hidden="true" id="check-ruc-id" ></i>
                             <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-ruc-id"></i>
                                 <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-ruc">
@@ -94,7 +94,7 @@
                           Nombres*
                         </div> 
                         <div class="col">
-                          <input type="text" name="nombres" class="crece-form-input" id="id_nombres" required>
+                          <input type="text" name="nombres" class="crece-form-input" id="id_nombres" placeholder="Juan José" required>
                           <i class="fa fa-check" aria-hidden="true" id="check-nombres-id"></i>
                           <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombres-id"></i>
                           <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombres">
@@ -110,7 +110,7 @@
                           Apellidos*
                         </div> 
                         <div class="col">
-                          <input type="text" name="apellidos" class="crece-form-input" id="id_apellidos" required="">
+                          <input type="text" name="apellidos" class="crece-form-input" id="id_apellidos" placeholder="Pihuave Pérez" required="">
                           <i class="fa fa-check" aria-hidden="true" id="check-apellidos-id"></i>
                           <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-apellidos-id"></i>
                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-apellidos">
@@ -126,7 +126,7 @@
                           Cédula*
                         </div> 
                         <div class="col">
-                          <input required type="text" name="cedula" class="crece-form-input" id="id_cedula" maxlength="10"  />
+                          <input required type="text" name="cedula" class="crece-form-input" id="id_cedula" placeholder="0123456789" maxlength="10"  />
                           <i class="fa fa-check" aria-hidden="true" id="check-cedula-id" ></i>
                           <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-cedula-id"></i>
                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-cedula">
@@ -143,7 +143,7 @@
                             Nombre Comercial (opcional)
                             </div> 
                             <div class="col">
-                            <input type="text" name="nombre-comercial" class="crece-form-input" id="id_nombre_comercial">
+                            <input type="text" name="nombre-comercial" class="crece-form-input" id="id_nombre_comercial" placeholder="Tienda La Empresa">
                             <i class="fa fa-check" aria-hidden="true" id="check-nombre-comercial-id"></i>
                             <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-nombre-comercial-id"></i>
                             <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-nombre-comercial">
@@ -159,7 +159,7 @@
                             Teléfono Celular*
                             </div> 
                             <div class="col">
-                            <input type="text" name="celular" class="crece-form-input" id="id_celular" required="" maxlength="10">
+                            <input type="text" name="celular" class="crece-form-input" id="id_celular" required="" maxlength="10" placeholder="09XXXXXXXX">
                             <i class="fa fa-check" aria-hidden="true" id="check-celular-id"></i>
                             <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-celular-id"></i>
                                 <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-celular">
@@ -176,7 +176,7 @@
                           Correo electrónico*
                         </div> 
                         <div class="col">
-                          <input type="text" name="email" class="crece-form-input" id="id_email" required>
+                          <input type="text" name="email" class="crece-form-input" id="id_email" placeholder="ejemplo@email.com" required>
                           <i class="fa fa-check" aria-hidden="true" id="check-email-id"></i>
                           <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-email-id"></i>
                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-email">
@@ -198,7 +198,7 @@
                               Monto solicitado*
                             </div> 
                             <div class="col">
-                            <input type="text" name="monto" class="crece-form-input" id="id_monto" required="" maxlength="7">
+                            <input type="text" name="monto" class="crece-form-input" id="id_monto" required="" placeholder="$10,000" maxlength="7">
                             <div>
                               Ingrese un monto entre $2,500 y $20,000
                             </div>
@@ -217,7 +217,7 @@
                               Plazo en que deseas pagarlo (meses)*
                             </div> 
                             <div class="col">
-                            <input type="number" name="plazo" class="crece-form-input" id="id_plazo" required="" maxlength="2">
+                            <input type="number" name="plazo" class="crece-form-input" id="id_plazo" required="" placeholder="12" maxlength="2">
                             <div>
                               Ingrese un plazo entre 1 y 24 meses.
                             </div>
@@ -233,10 +233,10 @@
                     <div class="col-12 col-sm-12 col-md-7 col-lg-7 crece-registro-container-form-wrapper-tasa crece-registro-container-form-wrapper">
                         <div class="row">
                             <div class="col-12 crece-registro-form-label">
-                              Tasa de interés que deseas pagar*
+                              Tasa de interés anual que deseas pagar*
                             </div> 
                             <div class="col">
-                            <input type="number" name="tasa" onchange="setTwoNumberDecimal" class="crece-form-input" id="id_tasa" required="" maxlength="4" step=".01" min="0" max="100">
+                            <input type="number" name="tasa" onchange="setTwoNumberDecimal" class="crece-form-input" id="id_tasa" placeholder="21" required="" maxlength="4" step=".01" min="0" max="100">
                             <div>
                               Ingrese una tasa a pagar entre 9% y 25%
                             </div>
@@ -255,7 +255,7 @@
                               ¿Para qué necesitas el dinero?*
                             </div> 
                             <div class="col">
-                            <textarea type="text" name="uso" class="crece-form-input crece-form-text-area" id="id_uso" rows="10" cols="50"></textarea>
+                            <textarea type="text" name="uso" class="crece-form-input crece-form-text-area" id="id_uso" placeholder="Ingrese el uso que le dará al financiamiento" rows="10" cols="50"></textarea>
                             <i class="fa fa-check" aria-hidden="true" id="check-uso-id"></i>
                             <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-uso-id"></i>
                                 <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-uso">
@@ -372,9 +372,13 @@
                 
               </div>
 
-              <div class="crece-finalizar-boton-container">
-                <div class="row justify-content-center">
-                  <a href="/" >Finalizar</a>
+            </div>
+            <div id="boton_finalizar_container" class="row justify-content-center">
+              <div class="col-auto">
+                <div class="crece-finalizar-boton-container">
+                  <div class="row justify-content-center">
+                    <a href="/" >Finalizar</a>
+                  </div>
                 </div>
               </div>
             </div>

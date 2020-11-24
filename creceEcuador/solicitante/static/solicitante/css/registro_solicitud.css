@@ -250,6 +250,10 @@ footer{
     display: none;
 }
 
+#boton_finalizar_container{
+  display: none;
+}
+
 button{
     margin-right: auto;
     margin-left: auto;

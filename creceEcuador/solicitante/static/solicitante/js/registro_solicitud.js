@@ -167,6 +167,7 @@ $(document).ready(function(){
       $(".crece-registro-container-form-wrapper-razon").hide();
 
       $("#id_ruc").val("");
+      $("#id_cedula").val("");
       $("#id_ruc").attr('disabled', true); 
 
       $("#id_cedula").keyup(function(e) {
@@ -182,6 +183,7 @@ $(document).ready(function(){
       $(".crece-registro-container-form-wrapper-razon").show();
 
       $("#id_ruc").val("");
+      $("#id_cedula").val("");
       $("#id_ruc").attr('disabled', false); 
 
       $("#id_cedula").unbind("keyup");
@@ -325,6 +327,7 @@ function registrar(argument) {
                 logo_registro_exitoso.style.display = 'block'
                 let container_after_registro  = document.getElementById("crece-wrapper-id")
                 container_after_registro.style.display = 'block'
+                $("#boton_finalizar_container").show();
 
 
               
