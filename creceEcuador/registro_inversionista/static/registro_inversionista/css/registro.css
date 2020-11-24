@@ -34,6 +34,10 @@ footer{
     display: none;
 }
 
+#id_canton{
+  background-color: white !important;
+}
+
 
 #crece-registro-icon-email-id{
     display: inline-block;

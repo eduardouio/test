@@ -183,7 +183,7 @@ class RegisterUsers(generics.CreateAPIView):
                  canton = models.Canton.objects.get(nombre=nombre_canton.upper())
             except models.Canton.DoesNotExist:
                 diccionario_respuesta = {
-                    'mensaje': "Ciudad fuera de los límites permitidos, por favor ingresa una ciudad válida.",
+                    'mensaje': "Ciudad fuera de los límites permitidos. Por favor ingresa una ciudad dentro de Ecuador.",
                     'tipo_error': "canton"
                 }
                 return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)

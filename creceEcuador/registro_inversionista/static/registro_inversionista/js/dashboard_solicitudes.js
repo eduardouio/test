@@ -460,7 +460,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
   '                                                        <strong>'+ oportunidad.autor +'</strong>'+
   '                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
-  '                                                        <span>'+ oportunidad.ticket +'</span>'+
+  '                                                        <span>'+ oportunidad.ticket +'<i class="fa fa-question-circle tooltipTicker" aria-hidden="true"><span class="tooltiptextTicker">Es una codificación interna de CRECE para clasificar a los solicitantes. Con esto puedes comparar tu portafolio de inversión con otros inversionistas y ver los retornos que han tenido.</span></i></span>'+
                                                             
   '                                                    </div>'+
   '                                                </div>'+
@@ -508,7 +508,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                            </div>'+
   '                                                            <div class="col-4">'+
   '                                                                <p>'+
-  '                                                                    <strong>Tasa(TIR)</strong><br>'+
+  '                                                                    <strong>Tasa(TIR)</strong><i class="fa fa-question-circle tooltipTir" aria-hidden="true"><span class="tooltiptextTir">La Tasa Interna de Retorno representa una métrica más transparente del ingreso que genera tu inversión, pues toma en consideración las comisiones cobradas por CRECE. Adicionalmente, se expresa en periodos anuales, así que facilita la comparación entre operaciones de diferentes plazos.</span></i><br>'+
   '                                                                    '+ oportunidad.tir+'%'+
   '                                                                </p>'+
   '                                                            </div>'+
@@ -527,7 +527,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                            </div>'+
   '                                                            <div class="col-4 crece-oportunidades-contenido-historial-centro">'+
   '                                                                <p>'+
-  '                                                                    <strong>Puntualidad</strong><br>'+
+  '                                                                    <strong>Puntualidad</strong><i class="fa fa-question-circle tooltipPun" aria-hidden="true"><span class="tooltiptextPun">Indica la proporción de pagos que él ha realizado de forma puntual. Excluye retrasos por temas operativos o técnicos.</span></i><br>'+
   '                                                                    '+decimalAEntero(oportunidad.puntualidad_autor)+'%'+
   '                                                                </p>'+
   '                                                            </div>'+
@@ -946,7 +946,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6">'+
-'                                                            <strong>Ticker</strong>'+
+'                                                            <strong>Ticker</strong> '+
 '                                                        </div>'+
 '                                                        <div class="col-3">'+
 '                                                            <span>'+oportunidad.ticket+'</span>'+

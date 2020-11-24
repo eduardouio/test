@@ -1220,6 +1220,7 @@ ul li{
 
 /*Tooltip*/
 
+/*TICKER*/
 .fa-question-circle{
   cursor: pointer;
 }
@@ -1227,15 +1228,14 @@ ul li{
 
 .fa-question-circle .tooltiptextTicker {
     visibility: hidden;
-    width: 208px;
+    width: 297px;
     background-color: #AECB6F;
-    text-align: justify; 
+    text-align: justify;
     border-radius: 6px;
-    padding: 5px 7px;
+    padding: 8px 7px;
     position: absolute;
     z-index: 1;
-    bottom: -18%;
-    left: 55%;
+    margin-top: 10px;
     margin-left: -60px;
     opacity: 0;
     transition: opacity 1s;
@@ -1244,12 +1244,12 @@ ul li{
 .fa-question-circle .tooltiptextTicker::after {
     content: "";
     position: absolute;
-    top: 12%;
-    left: -22px;
+    top: -31%;
+    left: 20%;
     margin-left: -10px;
     border-width: 17px;
     border-style: solid;
-    border-color: transparent #AECB6F transparent transparent;
+    border-color: transparent transparent #AECB6F transparent;
 }
 
 
@@ -1258,7 +1258,7 @@ ul li{
   opacity: 1;
 }
 
-
+/*TIR*/
 .tooltipTir {
       position: absolute;
     top: 5%;
@@ -1268,15 +1268,15 @@ ul li{
 
 .fa-question-circle .tooltiptextTir {
     visibility: hidden;
-    width: 277px;
+    width: 312px;
     background-color: #AECB6F;
     text-align: justify;
     border-radius: 6px;
     padding: 5px 13px;
     position: absolute;
     z-index: 1;
-    bottom: -115px;
-    left: -292px;
+    bottom: -140px;
+    left: -281px;
     opacity: 0;
     transition: opacity 1s;
     color: white;
@@ -1285,12 +1285,12 @@ ul li{
 .fa-question-circle .tooltiptextTir::after {
     content: "";
     position: absolute;
-    top: 7%;
-    left: 284px;
+    top: -25%;
+    left: 280px;
     margin-left: -10px;
     border-width: 17px;
     border-style: solid;
-    border-color: transparent transparent transparent #AECB6F;
+    border-color: transparent transparent #AECB6F transparent;
 }
 
 .fa-question-circle:hover .tooltiptextTir {
@@ -1298,7 +1298,7 @@ ul li{
   opacity: 1;
 }
 
-
+/*PUNTUALIDAD*/
 .tooltipPun {
       position: absolute;
     top: 5%;
@@ -1337,4 +1337,156 @@ ul li{
     border-width: 17px;
     border-style: solid;
     border-color: #AECB6F transparent transparent transparent;
+}
+
+
+/****Ver MAS *****/
+
+/*TICKER*/
+.fa-question-circle .tooltiptextTickerVermas {
+    visibility: hidden;
+    width: 416px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 8px 22px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -83px;
+    margin-top: 3%;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+.fa-question-circle .tooltiptextTickerVermas::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: 20%;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+.fa-question-circle:hover .tooltiptextTickerVermas {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*TIR*/
+.tooltipTir {
+      position: absolute;
+}
+
+
+.fa-question-circle .tooltiptextTirVermas {
+    visibility: hidden;
+    width: 416px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 8px 22px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+    margin-left: -16%;
+    margin-top: 5%;
+
+}
+
+.fa-question-circle .tooltiptextTirVermas::after {
+    content: "";
+    position: absolute;
+    top: -19%;
+    left: 2.2vw;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+.fa-question-circle:hover .tooltiptextTirVermas {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*PUNTUALIDAD*/
+
+.tooltipPunVermas {
+
+    font-size: 15px;
+}
+
+
+.fa-question-circle .tooltiptextPunVermas {
+    visibility: hidden;
+    width: 277px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px 13px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+        margin-left: -188px;
+    margin-top: 29px;
+}
+
+
+.fa-question-circle:hover .tooltiptextPunVermas {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fa-question-circle .tooltiptextPunVermas::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: 174px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+
+
+@media screen and (max-width: 991px) {
+
+  .fa-question-circle .tooltiptextTickerVermas {
+      margin-left: -22%;
+
+  }
+
+  .fa-question-circle .tooltiptextTickerVermas::after {
+      top: -32%;
+      left: 15.5%;
+  }
+
+
+  .fa-question-circle .tooltiptextTirVermas {
+      margin-left: -13%;
+    margin-top: 4%;
+
+  }
+
+  .fa-question-circle .tooltiptextTirVermas::after {
+      margin-left: -10px;
+      
+  }
+
+  .fa-question-circle .tooltiptextPunVermas {
+          margin-left: -53px;
+    margin-top: 29px;
+  }
+  .fa-question-circle .tooltiptextPunVermas::after {
+    top: -40%;
+    left: 39px;
+
+  }
 }

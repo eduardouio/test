@@ -1023,3 +1023,344 @@ background-color: white;
 }
 
 
+/*Tooltip*/
+
+/*TICKER*/
+.fa-question-circle {
+    cursor: pointer;
+    font-size: 15px;
+    top: 5%;
+    right: -1%;
+}
+
+
+.fa-question-circle .tooltiptextTicker {
+    visibility: hidden;
+    width: 297px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 8px 7px;
+    position: absolute;
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.fa-question-circle .tooltiptextTicker::after {
+    content: "";
+    position: absolute;
+    top: -31%;
+    left: 20%;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+
+.fa-question-circle:hover .tooltiptextTicker {
+  visibility: visible;
+  opacity: 1;
+}
+
+.crece-oportunidades-contenido-informacion p{
+  font-size: 14px !important;
+  padding: 0px 0px;
+}
+
+.crece-oportunidades-contenido-historial p{
+  font-size: 14px !important;
+  padding: 0px 0px;
+}
+
+/*TIR*/
+.tooltipTir {
+    position: absolute;
+    top: 2%;
+    left: 75%;
+}
+
+.tooltiptextTir{
+  font-size: 14px;
+}
+
+
+.fa-question-circle .tooltiptextTir {
+    visibility: hidden;
+    width: 312px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px 13px;
+    position: absolute;
+    z-index: 1;
+    bottom: -140px;
+    left: -274px;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+.fa-question-circle .tooltiptextTir::after {
+    content: "";
+    position: absolute;
+    top: -25%;
+    left: 280px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+.fa-question-circle:hover .tooltiptextTir {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*PUNTUALIDAD*/
+.tooltipPun {
+      position: absolute;
+    top: 2%;
+    left: 88%;
+}
+
+
+.fa-question-circle .tooltiptextPun {
+    visibility: hidden;
+    width: 277px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px 13px;
+    position: absolute;
+    z-index: 1;
+    bottom: 31px;
+    left: -193px;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+
+.fa-question-circle:hover .tooltiptextPun {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fa-question-circle .tooltiptextPun::after {
+    content: "";
+    position: absolute;
+    top: 92%;
+    left: 200px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: #AECB6F transparent transparent transparent;
+}
+
+
+
+/****Ver MAS *****/
+
+/*TICKER*/
+.fa-question-circle .tooltiptextTickerVermas {
+    visibility: hidden;
+    width: 416px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 8px 22px;
+    position: absolute;
+    z-index: 1;
+    bottom: -86px;
+    left: -77%;
+    /* top: 50px; */
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+.fa-question-circle .tooltiptextTickerVermas::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: 20%;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+.fa-question-circle:hover .tooltiptextTickerVermas {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*TIR*/
+.tooltipTir {
+      position: absolute;
+}
+
+
+.fa-question-circle .tooltiptextTirVermas {
+    visibility: hidden;
+    width: 416px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 8px 22px;
+    position: absolute;
+    z-index: 1;
+    top: 165%;
+    left: -123%;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+    font-size: 14px;
+}
+
+.fa-question-circle .tooltiptextTirVermas::after {
+    content: "";
+    position: absolute;
+    top: -27%;
+    left: 9%;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+.fa-question-circle:hover .tooltiptextTirVermas {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*PUNTUALIDAD*/
+
+.tooltipPunVermas {
+    margin-right: 0px;
+    width: unset;
+}
+
+
+.fa-question-circle .tooltiptextPunVermas {
+    visibility: hidden;
+    width: 277px;
+    background-color: #AECB6F;
+    text-align: justify;
+    border-radius: 6px;
+    padding: 5px 13px;
+    position: absolute;
+    z-index: 1;
+    bottom: -82px;
+    left: -175px;
+    opacity: 0;
+    transition: opacity 1s;
+    color: white;
+}
+
+
+.fa-question-circle:hover .tooltiptextPunVermas {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fa-question-circle .tooltiptextPunVermas::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: 174px;
+    margin-left: -10px;
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent transparent #AECB6F transparent;
+}
+
+
+@media screen and (max-width: 991px) {
+
+  @media screen and (min-width: 601px) {
+      .fa-question-circle .tooltiptextTickerVermas {
+          margin-left: -16.5%;
+
+      }
+
+      .fa-question-circle .tooltiptextTickerVermas::after {
+          top: -32%;
+          left: 15.5%;
+      }
+
+
+      .fa-question-circle .tooltiptextTirVermas {
+              margin-left: 0.75%;
+        margin-top: -1%;
+
+      }
+
+      .fa-question-circle .tooltiptextTirVermas::after {
+          margin-left: -10px;
+          
+      }
+
+      .fa-question-circle .tooltiptextPunVermas {
+              margin-left: 136px;
+        margin-top: 29px;
+      }
+      .fa-question-circle .tooltiptextPunVermas::after {
+        top: -40%;
+        left: 39px;
+
+      }
+  }
+}
+
+@media screen and (max-width: 600px) {
+   .fa-question-circle .tooltiptextTickerVermas {
+          margin-left: -123.5%;
+          font-size: 10px;
+          width: 300px;
+          top: unset;
+          bottom: unset;
+          margin-top: 25%;
+
+      }
+
+      .fa-question-circle .tooltiptextTickerVermas::after {
+          top: -44%;
+      }
+
+
+      .fa-question-circle .tooltiptextTirVermas {
+        margin-left: 21.75%;
+        margin-top: -1%;
+        font-size: 10px;
+        width: 300px;
+
+      }
+
+      .fa-question-circle .tooltiptextTirVermas::after {
+          margin-left: -10px;
+          top: -32%;
+          left: 10%;
+          
+      }
+
+      .fa-question-circle .tooltiptextPunVermas {
+        
+              margin-left: 97px;
+            margin-top: 23px;
+            font-size: 10px;
+            width: 322px;
+            bottom: unset;     
+      }
+      .fa-question-circle .tooltiptextPunVermas::after {
+        top: -60%;
+        left: 86px;
+        border-width: 10px;
+
+      }
+}

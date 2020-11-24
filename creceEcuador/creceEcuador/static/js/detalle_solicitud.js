@@ -129,7 +129,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <strong>Tir</strong>'+
+'                                                            <strong>Tir</strong> <i class="fa fa-question-circle tooltipTirVermas" aria-hidden="true"><span class="tooltiptextTirVermas">La Tasa Interna de Retorno representa una métrica más transparente del ingreso que genera tu inversión, pues toma en consideración las comisiones cobradas por CRECE. Adicionalmente, se expresa en periodos anuales, así que facilita la comparación entre operaciones de diferentes plazos.</span></i>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+ oportunidad.tir+'%</span>'+
@@ -159,7 +159,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6">'+
-'                                                            <strong>Ticker</strong>'+
+'                                                            <strong>Ticker</strong> <i class="fa fa-question-circle tooltipTickerVermas" aria-hidden="true"><span class="tooltiptextTickerVermas">Es una codificación interna de CRECE para clasificar a los solicitantes. Con esto puedes comparar tu portafolio de inversión con otros inversionistas y ver los retornos que han tenido.</span></i>'+
 '                                                        </div>'+
 '                                                        <div class="col-3">'+
 '                                                            <span>'+oportunidad.ticket+'</span>'+
@@ -264,6 +264,7 @@ function crearDetalleInversion(oportunidad) {
 '                                                        <div class="col-9">'+
 '                                                            <h4>'+
 '                                                                Puntualidad'+
+'                                                                  <i class="fa fa-question-circle tooltipPunVermas" aria-hidden="true"><span class="tooltiptextPunVermas">Indica la proporción de pagos que él ha realizado de forma puntual. Excluye retrasos por temas operativos o técnicos.</span></i>'+
 '                                                            </h4>'+
 '                                                        </div>'+
 '                                                        <div class="col-3">'+

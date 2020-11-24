@@ -602,7 +602,7 @@ function validar_form() {
                 let id_error = "crece-mensaje-invalid-input-"+input.name
                 let label_error = document.getElementById(id_error)
                 label_error.style.display = "block"
-                label_error.innerHTML = "Ciudad fuera de los límites permitidos, por favor ingresa una ciudad válida."
+                label_error.innerHTML = "Ciudad fuera de los límites permitidos. Por favor ingresa una ciudad dentro de Ecuador."
             }else{
                 
                 mostrar_check(input)
@@ -657,6 +657,8 @@ function mostrar_times(input) {
             label_error.style.display = "block"
             input.focus()
     }
+    $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+    $("#crece-registrarse").removeAttr("disabled");
    
 }
 
@@ -692,5 +694,5 @@ $('#crece-registrarse').click(function() {
     
   $('#crece-registrarse').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
   $("#crece-registrarse").attr("disabled","True")
-  setTimeout(() => registrar(), 2000)
+  setTimeout(() => registrar(), 1000)
 });
