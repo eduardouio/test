@@ -366,7 +366,7 @@ function stringSolicitud(oportunidad){
 let section_carrusel = document.getElementById("crece-carrusel-id")
 let ingresar_boton_imagen_1 = document.createElement("div")
 ingresar_boton_imagen_1.className = "crece-carrusel-boton-ingresar-imagen"
-ingresar_boton_imagen_1.innerHTML = `<a class="" href="/solicitante/registro_solicitud/">
+ingresar_boton_imagen_1.innerHTML = `<a class="" href="/solicitar/">
                                 Solicitar
                                 </a>`
 ingresar_boton_imagen_1.setAttribute("id", "ingresar-boton-imagen-0")
