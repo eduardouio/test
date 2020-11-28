@@ -71,15 +71,34 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           	let barra_porcentaje_financiado = document.getElementById("crece-operaciones-contenido-monto-barra-progreso-id")
           	let oportunidad = res.data
           	porcentaje_financiado = oportunidad.porcentaje_financiado
-          	barra_porcentaje_financiado.style.width = porcentaje_financiado+'%'
+			barra_porcentaje_financiado.style.width = porcentaje_financiado+'%'
 
-          	document.getElementById('strong-monto-recolectado').innerHTML =  numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))
+			let monto_recolectado = calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado)
+          	document.getElementById('strong-monto-recolectado').innerHTML = "$"+ numeroConComas(monto_recolectado)
           	document.getElementById("span-pr-recolectado").innerHTML = oportunidad.porcentaje_financiado+'% recolectado'
-          	document.getElementById("strong-monto-objetivo").innerHTML =  numeroConComas(decimalAEntero(oportunidad.monto))
+			document.getElementById("strong-monto-objetivo").innerHTML = "$"+  numeroConComas(decimalAEntero(oportunidad.monto))
+			let monto_faltante = parseInt(oportunidad.monto) - parseInt(monto_recolectado);
+			$("#strong-monto-faltante").html("$"+numeroConComas(decimalAEntero(monto_faltante.toString())))  
 
             calcular_tabla_inversionista(input_modal,res.data)
             $('#simular-inversion-boton-invertir').html('Invertir').removeClass('disabled');
 			$("#simular-inversion-boton-invertir").removeAttr("disabled")
+
+			let monto_a_calcular = limpiarNumero($("#input-monto").val());
+			let barra_porcentaje_proyectado = document.getElementById("crece-operaciones-contenido-monto-barra-progreso-proyectado-id")
+			monto_a_calcular =((parseInt(monto_a_calcular))/oportunidad.monto)*100 ;
+			barra_porcentaje_proyectado.style.width =   monto_a_calcular+'%';
+			$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").css("margin-left", porcentaje_financiado+'%');
+			$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").attr("title", 'Tu aporte: '+monto_a_calcular.toFixed(2)+'%')
+
+			let options = {delay : {show:0, hide: 2000},
+							trigger: "manual"
+							}
+			$('#crece-operaciones-contenido-monto-barra-progreso-proyectado-id').tooltip(options);
+			$('#crece-operaciones-contenido-monto-barra-progreso-proyectado-id').hover(function (){
+				showTooltip('#crece-operaciones-contenido-monto-barra-progreso-proyectado-id');
+			});
+			showTooltip('#crece-operaciones-contenido-monto-barra-progreso-proyectado-id');
 
            $("#simular-inversion-boton-invertir").click(function () {
 				  $('#simular-inversion-boton-invertir').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
@@ -95,6 +114,15 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           alert("Solicitud no encontrada.");
       }
   });
+}
+
+function showTooltip(element){
+	var $el = $(element);
+	$el.tooltip("show");
+
+	setTimeout(function(){
+		$el.tooltip( 'hide' );
+	}, 2000);
 }
 
 function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
@@ -379,6 +407,7 @@ function guardar_nuevo_monto_inversion(oportunidad, id_inversion) {
 function verificar_valores_inversion(modo, oportunidad) {
 	// body...
 	let id = ""
+	let cambiar_barra_proyectada = false;
 	
 	if (modo === "detalle-solicitud"){
 		id = "input-monto-detalle-solicitud"
@@ -391,6 +420,7 @@ function verificar_valores_inversion(modo, oportunidad) {
 	}
 	else{
 		id = "input-monto"
+		cambiar_barra_proyectada = true;
 	}
 	
 	let input_monto_inversion = limpiarNumero(document.getElementById(id).value);
@@ -448,8 +478,17 @@ function verificar_valores_inversion(modo, oportunidad) {
 		$("#label_error_simular_inversion_detalle_solicitud").show()
 		return false
 	}
-	
 
+	if (cambiar_barra_proyectada){
+		let monto_a_calcular = limpiarNumero($("#input-monto").val());
+		let barra_porcentaje_proyectado = document.getElementById("crece-operaciones-contenido-monto-barra-progreso-proyectado-id")
+		monto_a_calcular =((parseInt(monto_a_calcular))/oportunidad.monto)*100 ;
+		barra_porcentaje_proyectado.style.width =   monto_a_calcular+'%'
+		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").css("margin-left", porcentaje_financiado+'%');
+		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").attr("data-original-title", 'Tu aporte: '+monto_a_calcular.toFixed(2)+'%')
+		console.log("cambiando porc")
+	}
+	
 	return true
 }
 
@@ -465,6 +504,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		diccionario = DICCIONARIO_SIMULACION
 		oportunidad = OPORTUNIDAD
 		if (!verificar_valores_inversion("",oportunidad)){
+			document.getElementById("crece-operaciones-contenido-monto-barra-progreso-proyectado-id").style.width = "0%";
 			return false
 		}
 	}else if(input_modal === 'aceptar-inversion'){

@@ -179,8 +179,10 @@
                     </div>
                       <!--Barra de progreso-->                                               
                       <div class="col-10 crece-operaciones-contenido-monto-barra" style="margin-top: 10px;margin-left: auto;margin-right: auto;"> 
-                          <div class="crece-operaciones-contenido-monto-barra-progreso" id="crece-operaciones-contenido-monto-barra-progreso-id">
-                          </div>                                                        
+                        <div class="crece-operaciones-contenido-monto-barra-progreso" id="crece-operaciones-contenido-monto-barra-progreso-id">
+                        </div>  
+                        <div class="crece-operaciones-contenido-monto-barra-progreso-proyectado" id="crece-operaciones-contenido-monto-barra-progreso-proyectado-id" data-toggle="tooltip" data-placement="top" title="Tu aporte">
+                        </div>                                                        
                       </div>
                       <!--Datos Barra-->
                       <div class="col-10 crece-operaciones-contenido-datos-barra" style="margin: 20px auto;">
@@ -195,7 +197,7 @@
                                   <strong id='strong-monto-objetivo'>
                                       
                                   </strong>
-                                  <span >Objetivo</span>
+                                  <span >Objetivo <br/> (<span id='strong-monto-faltante'></span>) faltante</span>
                               </div>
                           </div>
                       </div>
@@ -659,7 +661,7 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="foto_cedula" class="crece-completar-datos-formulario-wrapper-boton-subir-doc">
-                                    Cargar documento
+                                    Cargar cédula
                                 </label>
                                 <input
                                     type="file"
@@ -1074,14 +1076,14 @@
                     <span id="contrado-titulo">Declaración de Origen de Fondos</span>
                     <p>
                         
-                        Yo, {{usuario.nombres}} {{usuario.apellidos}}
-                        portador de la cédula de ciudadanía No. {{usuario.cedula}}, por sus propios y personales derechos, manifiesto que la información descrita en el formulario de usuario en calidad de inversionista para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR  es cierta, y realizo las siguientes declaraciones de fuentes u origen de fondos y actividades lícitas:<br><br><br>
+                        Yo, <strong>{{usuario.nombres}} {{usuario.apellidos}}</strong>
+                        portador de la cédula de ciudadanía No. <strong>{{usuario.cedula}}</strong>, por sus propios y personales derechos, manifiesto que la información descrita en el formulario de usuario en calidad de inversionista para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR  es cierta, y realizo las siguientes declaraciones de fuentes u origen de fondos y actividades lícitas:<br><br><br>
 
-                        1. Declaro que los recursos utilizados descritos para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR  proviene de actividades lícitas, de conformidad con la normatividad Ecuatoriana. <br><br>
-                        2. Que todas las actividades e ingresos que se perciben provienen de actividades lícitas. <br><br>
-                        3. Que no me encuentro en ninguna lista de reporte internacional o bloqueado por actividades de narcotráfico, lavado de activos, o delitos asociados al turismo sexual en menores de edad. Que en nuestra contra no se existe ningún proceso judicial en instancias nacionales o internacionales por ninguno de los aspectos anteriores. <br><br>
-                        4. Autorizo a resolver cualquier acuerdo, beneficio, subsidio, negocio o contrato celebrado utilizando la plataforma virtual  de CRECE ECUADOR  en caso de infracción de cualquiera de los numerales contenidos en este documento eximiendo a CRECE ECUADOR de toda responsabilidad que se derive por información errónea, falsa o inexacta que yo hubiere proporcionado en este u otro documento durante la operación de financiamiento colaborativo utilizando la plataforma de CRECE ECUADOR, o de la violación del mismo. <br><br>
-                        5. Autorizo a PROSPERAECU S.A. / CRECE ECUADOR para que consulte mi información crediticia en las Centrales de Riesgo y ante las entidades que estime necesarias.<br><br>
+                        1. <strong>Declaro que los recursos utilizados</strong> descritos para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR <strong>proviene de actividades lícitas</strong>, de conformidad con la normatividad Ecuatoriana. <br><br>
+                        2. Que <strong>todas las actividades e ingresos</strong> que se perciben provienen de actividades lícitas. <br><br>
+                        3. Que <strong>no me encuentro</strong> en ninguna lista de reporte internacional o bloqueado por actividades de <strong>narcotráfico, lavado de activos, o delitos asociados al turismo sexual en menores de edad</strong>. Que en nuestra contra <strong>no se existe ningún proceso judicial</strong> en instancias nacionales o internacionales por ninguno de los aspectos anteriores. <br><br>
+                        4. Autorizo a resolver cualquier acuerdo, beneficio, subsidio, negocio o contrato celebrado utilizando la plataforma virtual  de CRECE ECUADOR  en caso de infracción de cualquiera de los numerales contenidos en este documento <strong>eximiendo a CRECE ECUADOR de toda responsabilidad</strong> que se derive por <strong>información errónea, falsa o inexacta</strong> que yo hubiere proporcionado en este u otro documento durante la operación de financiamiento colaborativo utilizando la plataforma de CRECE ECUADOR, o de la violación del mismo. <br><br>
+                        5. Autorizo a PROSPERAECU S.A. / CRECE ECUADOR para que <strong>consulte mi información crediticia</strong> en las Centrales de Riesgo y ante las entidades que estime necesarias.<br><br>
                         Los datos aquí consignados obedecen a la realidad. Al dar clic en Siguiente declaro (amos) haber leído, entendido y aceptado libremente el presente documento.<br>
                       </p>
 
@@ -1145,30 +1147,41 @@
                                     <div class="crece-confirmar-transferencia-formulario-wrapper-total-inversion">
                                         <img id="imagen_total_inversion" src="{% static 'assets/total_inversion.png' %}"/>   Inversión total: $<span id="texto_monto" data-monto="{{inversion.monto_a_transferirl}}"></span> <br>
                                     </div>
-                                    <p>
-                                        Cuenta de ahorros: <span id="cuenta_transferencia"></span>{{inversion.id_solicitud.id_cuenta_banco_deposito.numero_cuenta}}<br>
-                                        Banco Amazonas <br>
-                                        A nombre de: “<span id="nombre_transferencia"></span>” <br>
-                                        Cédula: <span id="cedula_transferencia"></span> <br>
-                                        Correo: info@creceecuador.com <br>
-                                        Teléfono: 0988349088 <br>
-                                    </p>
-                                </div>
-                                <div class="col-11 col-lg-10">
-                                    <div id="contenedor_dudas_transferencia" class="row">
-                                        <div class="col-11 col-lg-2">
-                                            <img id="imagen_dudas_transferencia" src="{% static 'assets/dudas_transferencia.png' %}"/> 
-                                        </div>
-                                        <div id="contenedor_dudas_pregunta" class="col-12 col-lg-10">
-                                            <strong class="crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta">¿A qué cuenta estoy transfiriendo los fondos?</strong>
-                                            <p class="crece-confirmar-transferencia-formulario-wrapper-cuenta-explicacion">
-                                                Tus fondos son transferidos a una cuenta denominada "Escrow". Esta cuenta está a nombre 
-                                                del emprendedor, sin embargo, es administrada por CRECE quien impide el acceso a los fondos 
-                                                hasta que se complete el total solicitado y se firmen los documentos de respaldo.
+                                    <div class="row justify-content-center">
+                                        <div class="col-auto">
+                                            <p id="datos_transferencia">
+                                                Cuenta de ahorros: <strong id="cuenta_transferencia"></strong>{{inversion.id_solicitud.id_cuenta_banco_deposito.numero_cuenta}}<br>
+                                                <strong>Banco Amazonas</strong><br>
+                                                A nombre de: “<strong id="nombre_transferencia"></strong>” <br>
+                                                Cédula: <strong id="cedula_transferencia"></strong> <br>
+                                                Correo: <strong>info@creceecuador.com</strong> <br>
+                                                Teléfono: <strong>0988349088</strong> <br>
                                             </p>
                                         </div>
+                                        <div class="col-md-5">
+                                            <div class="row justify-content-center">
+                                                    <div class="col-auto">
+                                                        <label class="crece-confirmar-transferencia-formulario-wrapper-label">Adjunta tu comprobante de transferencia:</label>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <label for="comprobante_transferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-doc">
+                                                            Cargar documento
+                                                        </label>
+                                                        <input 
+                                                            type="file"
+                                                            accept="image/png, image/jpeg, application/pdf"
+                                                            class="form-control"
+                                                            name="comprobante_transferencia"
+                                                            id="comprobante_transferencia"
+                                                            data-valueMissing="Suba el comprobante de la transferencia"/>
+                                                            <label id="labelDocumentoTransferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-label">Archivos PDF, JPG o PNG</label>
+                                                    </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    
                                 </div>
+                                
                                 <!-- 
                                 <div class="col-11 col-lg-10">
                                     <label class="crece-confirmar-transferencia-formulario-wrapper-label">Selecciona el banco de donde vendrá tu transferencia</label>
@@ -1201,22 +1214,7 @@
                                         <option value='BANCO FINCA S.A.'>BANCO FINCA S.A.</option>
                                     </select>
                                 </div> -->
-                                <div class="col-11 col-lg-10">
-                                    <label class="crece-confirmar-transferencia-formulario-wrapper-label">Adjunta tu comprobante transferencia:</label>
-                                </div>
-                                <div class="col-lg-6">
-                                    <label for="comprobante_transferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-doc">
-                                        Cargar documento
-                                    </label>
-                                    <input 
-                                        type="file"
-                                        accept="image/png, image/jpeg, application/pdf"
-                                        class="form-control"
-                                        name="comprobante_transferencia"
-                                        id="comprobante_transferencia"
-                                        data-valueMissing="Suba el comprobante de la transferencia"/>
-                                        <label id="labelDocumentoTransferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-label">Archivos PDF, JPG o PNG</label>
-                                </div>
+                                
                             </div>
 
                             <div class="row justify-content-center error-container">
@@ -1227,6 +1225,21 @@
 
                             <button type="button" id="enviar_transferencia"> Siguiente</button>
                           </div>
+                          <div class="col-11 col-lg-10">
+                            <div id="contenedor_dudas_transferencia" class="row">
+                                <div class="col-11 col-lg-2">
+                                    <img id="imagen_dudas_transferencia" src="{% static 'assets/dudas_transferencia.png' %}"/> 
+                                </div>
+                                <div id="contenedor_dudas_pregunta" class="col-12 col-lg-10">
+                                    <strong class="crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta">¿A qué cuenta estoy transfiriendo los fondos?</strong>
+                                    <p class="crece-confirmar-transferencia-formulario-wrapper-cuenta-explicacion">
+                                        Tus fondos son transferidos a una cuenta denominada "Escrow". Esta cuenta está a nombre 
+                                        del emprendedor, sin embargo, es administrada por CRECE quien impide el acceso a los fondos 
+                                        hasta que se complete el total solicitado y se firmen los documentos de respaldo.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1354,7 +1367,7 @@
           <div class="content-block-background">
 
           </div>
-          <header>
+          <header class="crece-dashboard-header">
             <!-- 
               <div class="search_area">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -1362,7 +1375,7 @@
               </div>-->
     
 
-              <div class="row justify-content-between">
+              <div class="row">
                   <div class="col-auto">
                       <div class="crece-menu-toggle">
                           <i id="id_bars_icon" class="fa fa-bars"></i>
@@ -1381,6 +1394,46 @@
                         </a>
                         
                       </div>
+
+                    
+                  </div>
+
+                  <div id="navbar_dashboard_perfil" class="col align-self-end" >
+                      <div class="row justify-content-end">
+
+                        <div id="informacion_navbar" class="col-auto">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <a class="nav-link" href="/manual-inversionista/">Manual de Inversionista</a>
+                                </div>
+                                <div class="col-auto">
+                                    <a class="nav-link" href="/nosotros/">Conócenos</a>
+                                </div>
+                                <div class="col-auto">
+                                    <a class="nav-link" href="/faq">Preguntas</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+
+                        <div id="container_imagen_navbar" class="col-auto">
+                            <div id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="crece-usuario-imagen-navbar" 
+                                src="{{usuario.profile_pic_ruta}}" 
+                                onerror="this.outerHTML= '<i class= &quot crece-usuario-icono-navbar fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">
+                                <i id="flecha_perfil_navbar" class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a id="ver_perfil_navbar" class="dropdown-item" href="#perfil">Ver Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/inversionista/logout/">Cerrar Sesión</a>
+                            </div>
+                        </div>
+
+                      </div>
+                    
                   </div>
 
               </div>
@@ -1413,15 +1466,18 @@
                   <!--Cuadro de registro-->
                 <div id="perfil_modificar_informacion_personal" class="col-xl-7 col-lg-7 col-md-11 col-11  crece-modificar-datos-formulario-wrapper">
                     <form method="POST">
-                        <div class="row">
-                          <div class="col-12 crece-modificar-datos-formulario-wrapper-editar">
-                            <span>Editar </span>
-                            <span>
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                                </svg>
-                            </span>
-                          </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto align-self-end crece-modificar-datos-formulario-wrapper-editar">
+                                <div class="crece-modificar-datos-formulario-wrapper-editar-botón">
+                                    <span>Editar </span>
+                                    <span>
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                
+                            </div>
                             <div class="col-12">
                                 <h2>Datos del inversionista</h2>
                             </div>
@@ -1494,7 +1550,7 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="modificar_foto_cedula" class="crece-modificar-datos-formulario-wrapper-boton-subir-doc">
-                                    Cargar documento
+                                    Cargar cédula
                                 </label>
                                 <input 
                                     type="file"
@@ -1633,15 +1689,18 @@
 
                 <div id="perfil_modificar_informacion_laboral" class="col-xl-7 col-lg-7 col-md-11 col-11  crece-modificar-datos-formulario-wrapper">
                   <form method="POST">
-                      <div class="row">
-                          <div class="col-12 crece-modificar-datos-formulario-wrapper-editar">
-                            <span>Editar </span>
-                            <span>
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                                </svg>
-                            </span>
-                          </div>
+                      <div class="row justify-content-end">
+                            <div class="col-auto align-self-end crece-modificar-datos-formulario-wrapper-editar">
+                                <div class="crece-modificar-datos-formulario-wrapper-editar-botón">
+                                    <span>Editar </span>
+                                    <span>
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                
+                            </div>
                           <div class="col-12">
                               <h2>Fuentes de Ingresos</h2>
                           </div>
@@ -1818,14 +1877,17 @@
 
               <div id="perfil_modificar_cuenta_bancaria" class="col-xl-7 col-lg-7 col-md-11 col-11  crece-modificar-datos-formulario-wrapper">
                 <form method="POST">
-                    <div class="row">
-                        <div class="col-12 crece-modificar-datos-formulario-wrapper-editar">
-                          <span>Editar </span>
-                          <span>
-                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                              </svg>
-                          </span>
+                    <div class="row justify-content-end">
+                        <div class="col-auto align-self-end crece-modificar-datos-formulario-wrapper-editar">
+                            <div class="crece-modificar-datos-formulario-wrapper-editar-botón">
+                                <span>Editar </span>
+                                <span>
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                          
                         </div>
                         <div class="col-12">
                             <h2>Registra tu cuenta bancaria donde recibirás tus ganancias</h2>
@@ -2022,6 +2084,8 @@
 <script src="{% static 'fases_inversiones/js/declaracion_fondos.js' %}"></script>
 <script src="{% static 'fases_inversiones/js/subir_transferencia.js' %}"></script>
 <script src="{% static 'fases_inversiones/js/fase_final.js' %}"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="{% static 'registro_inversionista/js/dashboard_file_viewer.js' %}"></script>
 <script src="{% static 'registro_inversionista/js/dashboard_modificar_datos.js' %}"></script>
 <script type="text/javascript" src="{% static 'registro_inversionista/js/restablecer_password.js' %}" ></script>
 {% endblock footer_javascript_agregado %}

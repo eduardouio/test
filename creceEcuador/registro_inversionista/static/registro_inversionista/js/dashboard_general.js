@@ -10,15 +10,19 @@ let contratoAcUsoFirmado;
          if(sidebarMostrado){
              $("#sidebar").hide();
              $("#sidebar").css("margin-left", "-250px");
+             $(".crece-dashboard-header").css("max-width", "100vw");
              $(".content").css("padding-left", "0px");
-             $(".content-block-background").hide()
+             $(".content-block-background").hide();
+             $("footer").css("padding-left", "0px");
              sidebarMostrado = false;
          }
          else {
              $("#sidebar").show();
              $("#sidebar").css("margin-left", "0px");
+             $(".crece-dashboard-header").css("max-width", "calc(100vw - 250px)");
              $(".content").css("padding-left", "250px");
-             $(".content-block-background").hide()
+             $(".content-block-background").hide();
+             $("footer").css("padding-left", "250px");
              sidebarMostrado = true;
          }
      }   
@@ -26,15 +30,19 @@ let contratoAcUsoFirmado;
          if(sidebarMostrado){
              $("#sidebar").hide();
              $("#sidebar").css("margin-left", "-250px");
+             $(".crece-dashboard-header").css("max-width", "100vw");
              $(".content").css("padding-left", "0px");
              $(".content-block-background").hide()
+             $("footer").css("padding-left", "0px");
              sidebarMostrado = false;
          }
          else {
              $("#sidebar").show();
              $("#sidebar").css("margin-left", "0px");
              $(".content").css("padding-left", "0px");
-             $(".content-block-background").show()
+             $(".crece-dashboard-header").css("max-width", "100vw");
+             $(".content-block-background").show();
+             $("footer").css("padding-left", "0px");
              sidebarMostrado = true;
          }
      }
@@ -45,7 +53,9 @@ let contratoAcUsoFirmado;
      $("#sidebar").hide();
      $("#sidebar").css("margin-left", "-250px");
      $(".content").css("padding-left", "0px");
-     $(".content-block-background").hide()
+     $(".content-block-background").hide();
+     $(".crece-dashboard-header").css("max-width", "100vw");
+     $("footer").css("padding-left", "0px");
      sidebarMostrado = false;
 
   });
@@ -88,7 +98,9 @@ let contratoAcUsoFirmado;
      $("#sidebar").hide();
      $("#sidebar").css("margin-left", "-250px");
      $(".content").css("padding-left", "0px");
-     $(".content-block-background").hide()
+     $(".content-block-background").hide();
+     $("footer").css("padding-left", "0px");
+     $(".crece-dashboard-header").css("max-width", "100vw");
      sidebarMostrado = false;
  });
 

@@ -129,10 +129,20 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <strong>Tir</strong> <i class="fa fa-question-circle tooltipTirVermas" aria-hidden="true"><span class="tooltiptextTirVermas">La Tasa Interna de Retorno representa una métrica más transparente del ingreso que genera tu inversión, pues toma en consideración las comisiones cobradas por CRECE. Adicionalmente, se expresa en periodos anuales, así que facilita la comparación entre operaciones de diferentes plazos.</span></i>'+
+'                                                            <strong>TIR</strong> <i class="fa fa-question-circle tooltipTirVermas" aria-hidden="true"><span class="tooltiptextTirVermas">La Tasa Interna de Retorno representa una métrica más transparente del ingreso que genera tu inversión, pues toma en consideración las comisiones cobradas por CRECE. Adicionalmente, se expresa en periodos anuales, así que facilita la comparación entre operaciones de diferentes plazos.</span></i>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+ oportunidad.tir+'%</span>'+
+'                                                        </div>'+
+'                                                    </div>'+
+'        '+
+'                                                    <!-- Item informacion-->'+
+'                                                    <div class="row">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <strong>Frecuencia de pagos</strong>'+
+'                                                        </div>'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <span>Mensual (Capital e intereses)</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+

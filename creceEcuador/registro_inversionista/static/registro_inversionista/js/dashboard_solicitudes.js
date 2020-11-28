@@ -916,10 +916,20 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <strong>Tir</strong>'+
+'                                                            <strong>TIR</strong>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+ oportunidad.tir+'%</span>'+
+'                                                        </div>'+
+'                                                    </div>'+
+'        '+
+'                                                    <!-- Item informacion-->'+
+'                                                    <div class="row">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <strong>Frecuencia de pagos</strong>'+
+'                                                        </div>'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <span>Mensual (Capital e intereses)</span>'+
 '                                                        </div>'+
 '                                                    </div>'+
 '        '+

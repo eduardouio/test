@@ -23,7 +23,7 @@
     color: #006B8D;
     font-size: 26.62px;
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 90px;
   }
   .crece-oportunidades-imagen {
     width: 332px;
@@ -317,6 +317,7 @@
   
   .crece-detalle-operaciones {
     padding: 0px;
+    display: none;
   }
   
   .fondo-gris{
@@ -353,7 +354,7 @@
     text-align: center;
     position:relative;
     position:absolute;
-    z-index:1;
+    z-index:0;
     -webkit-filter: blur(0px);
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
@@ -446,6 +447,13 @@
     height: 100%;
     background-color: #006B8D;
     border-radius: 6px 0px 0px 6px;
+    float: left;
+  }
+
+  .crece-operaciones-contenido-monto-barra-progreso-proyectado{
+    height: 100%;
+    background-color: #08a7ba;
+    border-radius: 0px 6px 6px 0px;
   }
   
   /* Barra progreso Datos */

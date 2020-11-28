@@ -2,6 +2,50 @@ body{
 	background-color: #e9ebee;
 }
 
+.crece-dashboard-header{
+	background-color: white;
+	box-shadow: 0px 1px 1px #0000005D;
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	max-width: calc(100vw - 250px);
+}
+
+.crece-usuario-icono-navbar{
+	color: #006B8D;
+}
+
+.crece-dashboard-header a.nav-link:hover{
+	color: #006B8D;
+	text-decoration-line: underline;
+	
+}
+
+.crece-dashboard-header a[aria-expanded="true"]{
+	background-color: white;
+}
+
+.crece-dashboard-header a.dropdown-item{
+	color: #006B8D;
+
+}
+
+.crece-dashboard-header a.dropdown-item:hover{
+	color: #006B8D;
+	text-decoration-line: underline;
+	background-color: white;
+}
+
+#flecha_perfil_navbar{
+	color: #006B8D;
+	font-size: 25px;
+}
+
+.crece-usuario-imagen-navbar{
+	width: 45px;
+}
+
 .crece-menu-toggle{
 	width: 35px;
 	color: #006b8d;
@@ -18,13 +62,11 @@ body{
 }
 
 #id_bars_icon{
+	padding-top: 6px;
 	display: block !important;
 	position: static !important;
 }
 
-footer{
-	display: none;
-}
 /*Side Nav bar*/
 
 #crece_ocultar_sidebar svg {
@@ -95,7 +137,7 @@ footer{
 	top: 0;
 	bottom: 0;
 	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-	z-index: 2; /* Stay on top */
+	z-index: 3; /* Stay on top */
 	left: 0;
 }
 
@@ -273,8 +315,14 @@ ul li {
 	padding-left: 250px;
 }
 
+footer{
+	padding-left: 250px;
+	margin-top: 30px;
+}
+
 .crece-perfil {
 	display: none;
+	margin-top: 85px;
 }
 
 .content-block-background{
@@ -282,7 +330,7 @@ ul li {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	z-index: 1;
+	z-index: 2;
 	background-color: rgba(0,0,0,0.8);
 }
 
@@ -322,7 +370,22 @@ ul li {
 	cursor: pointer;
 }
 
+.crece-footer-about p {
+	color: white !important;
+}
+
+.crece-detalle-operaciones{
+	margin-top: 80px;
+}
+
+@media (max-width:1365px){
+	#informacion_navbar{
+		display: none;
+	}
+}
+
 @media(max-width:768px){
+
 	#crece-modal-imagen-solicitud img {
 		width: 300px;
 	}
@@ -340,6 +403,14 @@ ul li {
 	
 	.content{
 		padding-left: 0px;
+	}
+
+	footer{
+		padding-left: 0px;
+	}
+
+	.crece-dashboard-header{
+		max-width: 100vw;
 	}
 
 	.crece-perfil-seleccionar{
@@ -375,3 +446,15 @@ ul li {
 
 }
 
+@media (max-width:500px){
+	#navbar_dashboard_perfil{
+		display: none;
+	}
+}
+
+@media (max-width:324px){
+	.crece-header-logo img{
+		width: 200px;
+		height: auto;
+	}
+}

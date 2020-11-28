@@ -5,10 +5,23 @@
 
 .crece-modificar-datos-formulario-wrapper-editar{
   text-align: right;
-  color: #006B8D;
+  color: white;
+  background-color: #006B8D;
+  border-radius: 20px;
+  font-weight: 600 !important;
+}
+
+.crece-modificar-datos-formulario-wrapper-editar:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.crece-modificar-datos-formulario-wrapper-editar-botón{
+  padding: 7px 5px;
 }
 
 .crece-modificar-datos-formulario-wrapper-editar span{
+  font-size: 14px;
   line-height: 15px;
 }
 

@@ -57,7 +57,7 @@ function cargarContratos() {
         stringContratos += '<div class="row">'+
       '                            <div class="col-9 crece-modificar-datos-formulario-wrapper-contratos-contrato">'+
       '                              <span>'+
-      '                                <a target="_blank" rel="noopener noreferrer" href="'+contrato.contrato+'">'+getNombreContrato(contrato.contrato)+'</a>'+
+      '                                <a target="_blank" rel="noopener noreferrer" onclick="return previewFile(\''+contrato.contrato+'\', \''+getNombreContrato(contrato.contrato)+'\')" href="'+contrato.contrato+'">'+getNombreContrato(contrato.contrato)+'</a>'+
       '                              </span>'+
       '                            </div>'+
       '                            <div class="col-3 crece-modificar-datos-formulario-wrapper-contratos-fecha">'+
@@ -111,7 +111,7 @@ function inicializarVerPerfil(){
     }
   });
 
-  $(".crece-modificar-datos-formulario-wrapper-editar span").click(function() {
+  $(".crece-modificar-datos-formulario-wrapper-editar, div.crece-modificar-datos-formulario-wrapper-editar *").click(function() {
     cambiarHabilitadoInputs();
   });
 
@@ -714,11 +714,10 @@ var substringMatcher = function(strs) {
     $('.crece-modificar-datos-formulario-wrapper input').filter('[required]').each(function() {
 
       if ($(this).val() === '') {
-        focusAndInvalidate(this);
-        $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("Llene todos los campos");
-        $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
-        es_valido = false;
-        return false;
+        $("#"+this.name.substring(10)).val(this.value); //substring 10 para eliminar el prefijo modificar_
+        $("#"+this.name.substring(10)).attr("value",this.value);
+
+        return;
       }
       else {
         if (this.name === 'modificar_cedula' && !validar_cedula_modificar(this)){
@@ -785,6 +784,8 @@ var substringMatcher = function(strs) {
         }
         else {
           $(this).removeClass("invalid");
+          $("#"+this.name.substring(10)).val(this.value); //substring 10 para eliminar el prefijo modificar_
+          $("#"+this.name.substring(10)).attr("value",this.value);
         }
       }
     });
@@ -839,6 +840,7 @@ var substringMatcher = function(strs) {
             dataType : 'json',
             data: myFormData,
             success: function () { //TODO mostrar exito
+              $("#labelDocumento").html(nombre_imagen);
               $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").hide();
               cambiarHabilitadoInputs();
             },

@@ -9,7 +9,7 @@
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    z-index: 999999;
+    z-index: 4;
     background-color: rgba(0,0,0,0.85);
 }
 
@@ -117,8 +117,26 @@
 .crece-confirmar-transferencia-formulario-wrapper-total-inversion{
     color: #08A7BA;
     padding-bottom: 15px;
+    padding-top: 15px;
     font-size: 20px;
     line-height: 20px;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.crece-confirmar-transferencia-formulario-wrapper-label{
+    font-size: 14px;
+    text-align: center;
+}
+
+.crece-confirmar-transferencia-formulario-wrapper-boton-subir-label{
+    font-size: 14px;
+    text-align: center;
+}
+
+#datos_transferencia{
+    border: 2px solid #ced4da;
+    border-radius: 15px;
 }
 
 .crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta{
@@ -223,6 +241,10 @@ div.grid-onlyitem-4.active{
     color: white;
 }
 
+#strong-monto-faltante{
+    display: inline;
+    font-weight: 600;
+}
 @media screen and (max-width: 600px){
 
     #imagen_dudas_transferencia{

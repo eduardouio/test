@@ -20,6 +20,8 @@ $(document).ready( function(){
 
   cargarFuenteDeIngresos();
 
+  datosDesdeBase = checkInputs();
+
   if(datosDesdeBase){
     $('#guardar_respuestas').hide();
     
@@ -179,7 +181,7 @@ $('.crece-completar-datos-formulario form').submit(function(e){
 
 $("#guardar_respuestas").click(function(){
   if(!datosDesdeBase){
-    if(checkInputs()){
+    if(checkInputsGuardadoParcial()){
       var dictRespuestas = obtenerRespuestas()
       enviarDatos(dictRespuestas, false);
     }
@@ -348,7 +350,14 @@ var substringMatcher = function(strs) {
 
       dictRespuestas.direccion_fuente_ingresos = $("#direccion_empresa").val();
       dictRespuestas.canton_fuentes_ingresos = $("#canton_empresa").val();
-      dictRespuestas.ingresos_mensuales = $("#ingresos_aproximados").val();
+
+      let ingresos_aprox = $("#ingresos_aproximados").val();
+      if (ingresos_aprox){
+        dictRespuestas.ingresos_mensuales = ingresos_aprox;
+      }
+      else{
+        dictRespuestas.ingresos_mensuales = 0;
+      }
 
       dictRespuestas.titular = $("#titular").val();
       dictRespuestas.banco = $("#selectBanco").children("option:selected").val();
@@ -460,6 +469,94 @@ var substringMatcher = function(strs) {
     return es_valido;
   }
 
+
+  function checkInputsGuardadoParcial() {
+    var es_valido = true;
+    $('.crece-completar-datos-formulario-wrapper input').filter('[required]').each(function() {
+
+      if ($(this).val() === '') {
+        $("#modificar_"+this.name).val(this.value);
+        $("#modificar_"+this.name).attr("value",this.value);
+        return; //lo mismo que continue para for each 
+      }
+      else {
+        if (this.name === 'cedula' && !validar_cedula(this)){
+
+          
+          focusAndInvalidate(this);
+          $("#completar_datos_wrapper .error").html("Ingrese su cédula correctamente");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+          es_valido = false;
+          return false;
+
+        }
+        else if (this.name === 'cedula_conyugue' && !validar_cedula(this)){
+          focusAndInvalidate(this);
+
+          $("#completar_datos_wrapper .error").html("Ingrese la cédula de su cónyugue correctamente");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+          es_valido = false;
+          return false;
+
+        }
+
+        else if(this.name === 'canton' && !cantones.includes(this.value)) {
+          focusAndInvalidate(this);
+
+          $("#completar_datos_wrapper .error").html("Ingrese un cantón válido");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+
+        else if(this.name === 'canton_empresa' && !cantones.includes(this.value)) {
+          focusAndInvalidate(this);
+
+          $("#completar_datos_wrapper .error").html("Ingrese un cantón válido");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+        else if(this.name === 'provincia' && !provincias.includes(this.value)) {
+          focusAndInvalidate(this);
+
+          $("#completar_datos_wrapper .error").html("Ingrese una provincia válida");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+         
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+        else if(this.name === 'celular' && this.value.length != 10) {
+          focusAndInvalidate(this);
+          $("#completar_datos_wrapper .error").html("Ingrese un celular válido");
+          $("#completar_datos_wrapper .error-container").css("display", "flex");
+
+          this.classList.add("invalid");
+          es_valido = false;
+          return false;
+        }
+        else {
+          $(this).removeClass("invalid");
+          $("#modificar_"+this.name).val(this.value);
+          $("#modificar_"+this.name).attr("value",this.value);
+        }
+      }
+    });
+
+    if(es_valido){
+      $("#completar_datos_wrapper .error-container").hide();
+    }
+    
+    return es_valido;
+  }
+
   function enviarDatos(dictRespuestas, redirect) {
     $.ajax({
         type: 'POST',
@@ -484,6 +581,11 @@ var substringMatcher = function(strs) {
     function enviarImagenCedula(redirect){
         var myFormData = new FormData();
         const imagen = $('#foto_cedula').prop('files')[0];
+
+        if(!imagen){
+          return false;
+        }
+
         myFormData.append("img",imagen );
 
         const cedula = $("#cedula").val();
@@ -498,6 +600,7 @@ var substringMatcher = function(strs) {
             data: myFormData,
             success: function () {
               $("#completar_datos_wrapper .error-container").hide();
+              $("#modificar_labelDocumento").html(nombre_imagen);
               if(redirect){
                 cambio_fase_inversion_completar_datos(id_inversion_modal);
               }
