@@ -252,7 +252,7 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inv
 ''+
 '                    <div class="row justify-content-center fondo-gris">'+
                       
-'                        <div class="col-xl-8 col-lg-8 col-12 fondo-blanco">'+
+'                        <div class="col-xl-10 col-lg-10 col-12 fondo-blanco">'+
 crear_boton_regresar_solicitudes()+
 '                            <div class="row justify-content-center">'+
 '                                <!--Contenido izquierda-->'+
@@ -332,7 +332,7 @@ crear_boton_regresar_solicitudes()+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <strong>Tipo de Financiamiento</strong>'+
+'                                                            <strong>Tipo de Financiamiento</strong> <i class="fa fa-question-circle tooltipTipo_credVermas" aria-hidden="true"><span class="tooltiptextTipo_credVermas">Uso que se le dará al capital. Existen tres tipos:<br>-Capital de trabajo<br>-Compra de activo<br>-Adelanto de factura</span></i>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+oportunidad.tipo_credito+'</span>'+
@@ -464,6 +464,7 @@ crear_boton_regresar_solicitudes()+
 '                                                        <div class="col-9">'+
 '                                                            <h4>'+
 '                                                                Solicitudes Vigentes'+
+'                                                                 <i class="fa fa-question-circle tooltipVigVermas" aria-hidden="true"><span class="tooltiptextVigVermas">Cantidad de solicitudes que aún tienen pagos pendientes sobre el total de solicitudes publicadas en la plataforma.</span></i>'+
 '                                                            </h4>'+
 '                                                        </div>'+
 '                                                        <div class="col-3">'+
@@ -478,6 +479,7 @@ crear_boton_regresar_solicitudes()+
 '                                                        <div class="col-9">'+
 '                                                            <h4>'+
 '                                                                Solicitudes Pagadas'+
+'                                                                 <i class="fa fa-question-circle tooltipPagVermas" aria-hidden="true"><span class="tooltiptextPagVermas">Indica la cantidad de solicitudes terminadas de pagar por el solicitante.</span></i>'+
 '                                                            </h4>'+
 '                                                        </div>'+
 '                                                        <div class="col-3">'+

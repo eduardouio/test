@@ -240,8 +240,7 @@ function registrar(argument) {
 
 
             }else if(this.status == 400 && this.readyState == 4){
-                $('#crece-registrarse').html('Registrarme').removeClass('disabled');
-                $("#crece-registrarse").removeAttr("disabled");
+                
                 let response = JSON.parse(this.response)
                 let mensaje = response.mensaje
                 let tipo_error = response.tipo_error
@@ -252,6 +251,8 @@ function registrar(argument) {
                 let label_error = document.getElementById(id_error)
                 label_error.style.display = "block"
                 label_error.innerHTML = mensaje
+                $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+                $("#crece-registrarse").removeAttr("disabled");
 
             }
         };
@@ -284,9 +285,11 @@ function registrar(argument) {
             $('#crece-registrarse').html('Registrarme').removeClass('disabled');
             $("#crece-registrarse").removeAttr("disabled");
             $("#crece-registro-encuesta-container-id").focus()
+    }else{
+         $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+         $("#crece-registrarse").removeAttr("disabled");
     }
-    $('#crece-registrarse').html('Registrarme').removeClass('disabled');
-    $("#crece-registrarse").removeAttr("disabled");
+
     
 }
 
@@ -603,8 +606,9 @@ function validar_form() {
                 let label_error = document.getElementById(id_error)
                 label_error.style.display = "block"
                 label_error.innerHTML = "Ciudad fuera de los límites permitidos. Por favor ingresa una ciudad dentro de Ecuador."
+                // $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+                // $("#crece-registrarse").removeAttr("disabled");
             }else{
-                
                 mostrar_check(input)
 
                  
@@ -621,13 +625,17 @@ function validar_form() {
 
 function validar_fecha_nacimiento(input) {
   // body...
-  
+  year = input.value.split("-")[0]
+  if (year.length > 4){
+    return false
+  }
   return true
 
 }
 
 function mostrar_check(input) {
     // body...
+    if (input.required){
     input.className = 'crece-form-input crece-form-valid-input'
     let id_check_fa = "check-"+input.name+"-id"
                 let check_fa = document.getElementById(id_check_fa)
@@ -638,6 +646,8 @@ function mostrar_check(input) {
                 let id_error = "crece-mensaje-invalid-input-"+input.name
             let label_error = document.getElementById(id_error)
             label_error.style.display = "none"
+    }
+
 }
 
 
@@ -657,8 +667,8 @@ function mostrar_times(input) {
             label_error.style.display = "block"
             input.focus()
     }
-    $('#crece-registrarse').html('Registrarme').removeClass('disabled');
-    $("#crece-registrarse").removeAttr("disabled");
+    // $('#crece-registrarse').html('Registrarme').removeClass('disabled');
+    // $("#crece-registrarse").removeAttr("disabled");
    
 }
 
@@ -694,5 +704,5 @@ $('#crece-registrarse').click(function() {
     
   $('#crece-registrarse').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
   $("#crece-registrarse").attr("disabled","True")
-  setTimeout(() => registrar(), 1000)
+  setTimeout(() => registrar(), 2000)
 });

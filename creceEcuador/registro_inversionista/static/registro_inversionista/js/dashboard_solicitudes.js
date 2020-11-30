@@ -457,7 +457,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                <div class="crece-oportunidades-imagen-gradiente">'+
   '                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
                                                         crear_boton_continuar_tarjeta(oportunidad.id, lista_inversiones_usuario, inicio, oportunidad.porcentaje_financiado)+
-  '                                                        <span>'+ oportunidad.tipo_credito +'</span>'+
+  '                                                        <span>'+ oportunidad.tipo_credito +' <i class="fa fa-question-circle tooltipTipo_cred" aria-hidden="true"><span class="tooltiptextTipo_cred">Uso que se le dará al capital. Existen tres tipos:<br>-Capital de trabajo<br>-Compra de activo<br>-Adelanto de factura</span></i></span>'+
   '                                                        <strong>'+ oportunidad.autor +'</strong>'+
   '                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
   '                                                        <span>'+ oportunidad.ticket +'<i class="fa fa-question-circle tooltipTicker" aria-hidden="true"><span class="tooltiptextTicker">Es una codificación interna de CRECE para clasificar a los solicitantes. Con esto puedes comparar tu portafolio de inversión con otros inversionistas y ver los retornos que han tenido.</span></i></span>'+
@@ -521,7 +521,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                        <div class="row">'+
   '                                                            <div class="col-4">'+
   '                                                                <p>'+
-  '                                                                    <strong>Pagados</strong><br>'+
+  '                                                                    <strong>Pagados</strong> <i class="fa fa-question-circle tooltipPag" aria-hidden="true"><span class="tooltiptextPag">Indica la cantidad de solicitudes terminadas de pagar por el solicitante.</span></i><br>'+
   '                                                                    '+oportunidad.solicitudes_pagadas+
   '                                                                </p>'+
   '                                                            </div>'+
@@ -533,7 +533,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                            </div>'+
   '                                                            <div class="col-4">'+
   '                                                                <p>'+
-  '                                                                    <strong>Vigentes</strong><br>'+
+  '                                                                    <strong>Vigentes</strong><i class="fa fa-question-circle tooltipVig" aria-hidden="true"><span class="tooltiptextVig">Cantidad de solicitudes que aún tienen pagos pendientes sobre el total de solicitudes publicadas en la plataforma.</span></i><br>'+
   '                                                                    '+oportunidad.solicitudes_vigentes+
   '                                                                </p>'+
   '                                                            </div>'+
