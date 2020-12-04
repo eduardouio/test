@@ -879,8 +879,22 @@ var substringMatcher = function(strs) {
           }
           else{
             $(".crece-usuario-imagen-seleccionada").attr("src",response.data.ruta+"?t=" + new Date().getTime());
+            $(".crece-usuario-imagen-navbar").attr("src",response.data.ruta+"?t=" + new Date().getTime());
           }
           
+          $("#usuario_data_container *, .crece-usuario-imagen-seleccionada, .crece-usuario-imagen").click( function() {
+            $(".crece-oportunidades").hide();
+            $('#crece-detalle-operaciones-id').hide()
+            $(".crece-perfil").show();
+        
+            $("<link/>", {
+                rel: "stylesheet",
+                type: "text/css",
+                href: "/static/registro_inversionista/css/registro.css"
+             }).appendTo("head");
+        
+             inicializarVerPerfil();
+          });
 
         },
         error: function(){

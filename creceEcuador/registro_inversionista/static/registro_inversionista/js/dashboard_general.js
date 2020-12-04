@@ -8,21 +8,26 @@ let contratoAcUsoFirmado;
 
       if($(window).width() > 768){
          if(sidebarMostrado){
-             $("#sidebar").hide();
-             $("#sidebar").css("margin-left", "-250px");
-             $(".crece-dashboard-header").css("max-width", "100vw");
-             $(".content").css("padding-left", "0px");
+             $("#sidebar").show();
+             $("#sidebar").css("min-width", "51px");
+             $("#li_sidebar_desplegable").hide();
+             $(".content").css("padding-left", "51px");
              $(".content-block-background").hide();
-             $("footer").css("padding-left", "0px");
+             $(".sidebar-outer-li").show();
+             $(".sidebar-span").hide();
+             $(".crece-usuario-nombre").hide();
              sidebarMostrado = false;
          }
          else {
              $("#sidebar").show();
              $("#sidebar").css("margin-left", "0px");
-             $(".crece-dashboard-header").css("max-width", "calc(100vw - 250px)");
+             $("#li_sidebar_desplegable").show();
+             $("#sidebar").css("min-width", "250px");
              $(".content").css("padding-left", "250px");
              $(".content-block-background").hide();
-             $("footer").css("padding-left", "250px");
+             $(".sidebar-outer-li").hide();
+             $(".sidebar-span").show();
+             $(".crece-usuario-nombre").show();
              sidebarMostrado = true;
          }
      }   
@@ -30,19 +35,25 @@ let contratoAcUsoFirmado;
          if(sidebarMostrado){
              $("#sidebar").hide();
              $("#sidebar").css("margin-left", "-250px");
-             $(".crece-dashboard-header").css("max-width", "100vw");
+             $("#sidebar").css("min-width", "250px");
              $(".content").css("padding-left", "0px");
+             $("#li_sidebar_desplegable").show();
              $(".content-block-background").hide()
-             $("footer").css("padding-left", "0px");
+             $(".sidebar-outer-li").hide();
+             $(".sidebar-span").show();
+             $(".crece-usuario-nombre").show();
              sidebarMostrado = false;
          }
          else {
              $("#sidebar").show();
              $("#sidebar").css("margin-left", "0px");
+             $("#sidebar").css("min-width", "250px");
+             $("#li_sidebar_desplegable").show();
              $(".content").css("padding-left", "0px");
-             $(".crece-dashboard-header").css("max-width", "100vw");
              $(".content-block-background").show();
-             $("footer").css("padding-left", "0px");
+             $(".sidebar-outer-li").hide();
+             $(".sidebar-span").show();
+             $(".crece-usuario-nombre").show();
              sidebarMostrado = true;
          }
      }
@@ -54,8 +65,10 @@ let contratoAcUsoFirmado;
      $("#sidebar").css("margin-left", "-250px");
      $(".content").css("padding-left", "0px");
      $(".content-block-background").hide();
-     $(".crece-dashboard-header").css("max-width", "100vw");
-     $("footer").css("padding-left", "0px");
+     $(".sidebar-outer-li").hide();
+     $("#li_sidebar_desplegable").show();
+     $(".sidebar-span").show();
+    $(".crece-usuario-nombre").show();
      sidebarMostrado = false;
 
   });
@@ -64,14 +77,33 @@ let contratoAcUsoFirmado;
      initSidebar();
      contratoAcUsoFirmado = $("#sidebar").attr("data-firmar-contrato");
 
-     let image_src = $("#usuario_data_container").attr("data-profile-pic");
-     if(image_src){
-        $("#usuario_data_container").prepend(`<img class="crece-usuario-imagen-seleccionada" src="`+ image_src +`" onerror="this.outerHTML= '<i class= &quot crece-usuario-imagen fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">`)
-     }
-     else{
+    $("#usuario_data_container *, .crece-usuario-imagen-seleccionada, .crece-usuario-imagen").click( function() {
+        $(".crece-oportunidades").hide();
+        $('#crece-detalle-operaciones-id').hide()
+        $(".crece-perfil").show();
+    
+        $("<link/>", {
+            rel: "stylesheet",
+            type: "text/css",
+            href: "/static/registro_inversionista/css/registro.css"
+            }).appendTo("head");
+    
+            inicializarVerPerfil();
+    });
 
-        $("#usuario_data_container").prepend('<i class= " crece-usuario-imagen fa fa-user-circle-o " aria-hidden= " true "></i>')
-     }
+     $("#usuario_data_container *, .crece-usuario-imagen-seleccionada, .crece-usuario-imagen").click( function() {
+        $(".crece-oportunidades").hide();
+        $('#crece-detalle-operaciones-id').hide()
+        $(".crece-perfil").show();
+    
+        $("<link/>", {
+            rel: "stylesheet",
+            type: "text/css",
+            href: "/static/registro_inversionista/css/registro.css"
+         }).appendTo("head");
+    
+         inicializarVerPerfil();
+    });
      
  });
 

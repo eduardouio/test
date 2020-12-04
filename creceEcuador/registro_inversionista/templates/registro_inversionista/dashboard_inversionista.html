@@ -1315,7 +1315,7 @@
               </div>
               <div id="usuario_data_container" class='crece-usuario' data-profile-pic="{{usuario.profile_pic_ruta}}">
                 <div class="crece-usuario-nombre" id='nombre-usuario'>
-                  {{ usuario.nombres }} {{usuario.apellidos}}
+                    ¡Hola {{ usuario.nombres }} {{usuario.apellidos}}!
                 </div>
                 <div class="crece-usuario-ver-perfil"> 
                   <h6>
@@ -1336,29 +1336,41 @@
           <ul class="list-unstyled components">          
 
             <li id="todas_las_oportunidades" class="active selectable" data-fase-inversion="" data-usuario="{{usuario.pk}}">
-                <a href="#todas"><span>Oportunidades de Inversión</span></a>
+                <a href="#todas"> <img class="icono-sidebar" src="{% static 'assets/inicio_icono.png' %}" alt="Logo crece"> <span class="sidebar-span" >Inicio</span></a>
 
 
             </li>
-            <li>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mis Inversiones</a>
+            <li class="sidebar-outer-li selectable" id="oportunidades_pendientes" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
+                <a href="#pendientes"> <img class="icono-sidebar" src="{% static 'assets/pendientes_icono.png' %}" alt="Logo crece"> <span class="sidebar-span">Pendientes</span> </a>
+            </li>
+            <li class="sidebar-outer-li selectable" id="oportunidades_por_fondear" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
+                <a href="#por_fondear"><img class="icono-sidebar" src="{% static 'assets/por_fondear_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Por fondear</span></a>
+            </li>
+            <li class="sidebar-outer-li selectable" id="oportunidades_vigentes" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
+                <a href="#vigentes"><img class="icono-sidebar" src="{% static 'assets/vigentes_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Vigentes</span></a>
+            </li>
+            <li class="sidebar-outer-li selectable" id="oportunidades_terminadas" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
+                <a href="#terminadas"><img class="icono-sidebar" src="{% static 'assets/terminadas_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Terminadas</span></a>
+            </li>
+            <li id="li_sidebar_desplegable">
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <span class="sidebar-span">Mis Inversiones</span></a>
               <ul class="collapse list-unstyled show" id="pageSubmenu">
                 <li id="oportunidades_pendientes" class="selectable" data-fase-inversion="pendientes" data-usuario="{{usuario.pk}}">
-                  <a href="#pendientes">Pendientes</a>
+                  <a href="#pendientes"> <img class="icono-sidebar" src="{% static 'assets/pendientes_icono.png' %}" alt="Logo crece"> <span class="sidebar-span">Pendientes</span> </a>
                 </li>
                 <li id="oportunidades_por_fondear" class="selectable" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
-                  <a href="#por_fondear">Por fondear</a>
+                  <a href="#por_fondear"><img class="icono-sidebar" src="{% static 'assets/por_fondear_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Por fondear</span></a>
                 </li>
                 <li id="oportunidades_vigentes" class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
-                  <a href="#vigentes">Vigentes</a>
+                  <a href="#vigentes"><img class="icono-sidebar" src="{% static 'assets/vigentes_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Vigentes</span></a>
                 </li>
                 <li id="oportunidades_terminadas" class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
-                  <a href="#terminadas">Terminadas</a>
+                  <a href="#terminadas"><img class="icono-sidebar" src="{% static 'assets/terminadas_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Terminadas</span></a>
                 </li>
               </ul> 
             </li>
             <li class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
-              <a href="#">Calendario de pagos</a>
+              <a href="#"><img class="icono-sidebar" src="{% static 'assets/calendario_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Calendario de Pagos</span></a>
             </li>
           </ul>
       </nav>
@@ -1404,13 +1416,13 @@
                         <div id="informacion_navbar" class="col-auto">
                             <div class="row">
                                 <div class="col-auto">
-                                    <a class="nav-link" href="/manual-inversionista/">Manual de Inversionista</a>
+                                    <a target="_blank" rel="noopener noreferrer" class="nav-link" href="/manual-inversionista/">Manual de Inversionista</a>
                                 </div>
                                 <div class="col-auto">
-                                    <a class="nav-link" href="/nosotros/">Conócenos</a>
+                                    <a target="_blank" rel="noopener noreferrer" class="nav-link" href="/nosotros/">Conócenos</a>
                                 </div>
                                 <div class="col-auto">
-                                    <a class="nav-link" href="/faq">Preguntas</a>
+                                    <a target="_blank" rel="noopener noreferrer" class="nav-link" href="/faq">Preguntas</a>
                                 </div>
                             </div>
                         </div>

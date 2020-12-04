@@ -78,7 +78,7 @@ $(document).ready(function(){
     });
 });
 
-$("#ver_perfil, #ver_perfil_navbar").click( function() {
+$("#ver_perfil, #ver_perfil_navbar, #usuario_data_container *, .crece-usuario-imagen-seleccionada, .crece-usuario-imagen").click( function() {
     $(".crece-oportunidades").hide();
     $('#crece-detalle-operaciones-id').hide()
     $(".crece-perfil").show();
