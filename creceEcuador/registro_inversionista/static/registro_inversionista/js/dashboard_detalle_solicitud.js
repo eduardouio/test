@@ -235,8 +235,8 @@ function crearDetalleInversion(fase_inversion,id_inversion,oportunidad,monto_inv
 '                        <div class="crece-detalle-operaciones-header-gradiente" >'+
 '                           <div class="row justify-content-center crece-detalle-operaciones-header-gradiente-imagen" >'+
 '                               <div class="col-auto" >'+
-'                                   <div onclick="mostrarModalImagen(\'/'+oportunidad.imagen_url+'\')" id="detalle-operaciones-imagen-solicitante" class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /'+oportunidad.imagen_url+'\');">'+
-'                                   </div>'+
+'                                   <a href="#imagen"><div onclick="mostrarModalImagen(\'/'+oportunidad.imagen_url+'\')" id="detalle-operaciones-imagen-solicitante" class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /'+oportunidad.imagen_url+'\');">'+
+'                                   </div></a>'+
 '                               </div>'+
 '                               <div class="col-12 col-sm-auto" >'+
 '                                   <div class="row justify-content-center" >'+

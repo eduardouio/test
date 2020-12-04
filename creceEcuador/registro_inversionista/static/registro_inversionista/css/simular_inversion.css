@@ -98,9 +98,9 @@
     font-weight: bold;
     background: #006B8D 0% 0% no-repeat padding-box;
     color: white;
-    position: relative;
-    top: 119px;
-    left: 156px;
+    position: absolute;
+    top: 143px;
+    left: 190px;
     padding-left: 0;
     background-color: #AECB6F;
 

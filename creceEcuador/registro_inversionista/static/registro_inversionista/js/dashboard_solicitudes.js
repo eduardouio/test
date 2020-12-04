@@ -682,7 +682,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
 
-                  '                                                                <a href="#pendientes" onclick="mostrar_completar_datos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+                  '                                                                <a href="#continuar" onclick="mostrar_completar_datos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
 
                   '                                                            </div>'
                 );
@@ -692,7 +692,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
 
-                  '                                                                <a href="#pendientes" onclick="declaracion_fondos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+                  '                                                                <a href="#continuar" onclick="declaracion_fondos_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
 
                   '                                                            </div>'
                 );
@@ -702,7 +702,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
 
-                  '                                                                <a href="#pendientes" onclick="subir_transferencia_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+                  '                                                                <a href="#continuar" onclick="subir_transferencia_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
 
                   '                                                            </div>'
                 );
@@ -711,7 +711,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
                 return (
                   '                                                            <div class="col-6 crece-oportunidades-contenido-botones-azul">'+
 
-                  '                                                                <a href="#pendientes" onclick="transfer_submited_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
+                  '                                                                <a href="#continuar" onclick="transfer_submited_modal('+id_oportunidad+', '+ monto+', '+ id_solicitud+', `'+ fase_inversion+'`)">Continuar</a>'+
 
                   '                                                            </div>'
                 );
@@ -721,7 +721,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
     }
           return ( '<div class="col-6 crece-oportunidades-contenido-botones-azul">'+
 
-      '                   <a href="#pendientes" onclick="crear_modal_aceptar_inversion('+id_solicitud+',`aceptar-inversion-inicio`,350)">Invertir</a>'+
+      '                   <a href="#invertir" onclick="crear_modal_aceptar_inversion('+id_solicitud+',`aceptar-inversion-inicio`,350)">Invertir</a>'+
 
       '                                          </div>'
               );
