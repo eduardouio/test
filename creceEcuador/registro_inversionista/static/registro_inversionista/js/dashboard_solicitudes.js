@@ -76,6 +76,32 @@ function obtenerOportunidadesInversion(inicio, cantidad_opciones, lista_inversio
     });
 }
 
+function setearTooltipsSugerenciaCompartir(){
+  let options = {delay : {show:0, hide: 2000},
+							trigger: "manual"
+              }
+              
+
+  $('.copyImage').each(function(){
+    $(this).tooltip(options);
+
+    $(this).hover(function (){
+      showTooltipCompartir(this);
+    });
+
+  });
+
+}
+
+function showTooltipCompartir(element){
+  var $el = $(element);
+  $el.tooltip("show");
+
+  setTimeout(function() {
+    $el.tooltip("hide")
+  }, 1500);
+}
+
 
 function crearCuadrosOportunidadesInversion(data, append, lista_inversiones_usuario, inicio){
 
@@ -91,6 +117,7 @@ function crearCuadrosOportunidadesInversion(data, append, lista_inversiones_usua
     }
 
     $(".crece-oportunidades-container").html(string_operacion);
+    setearTooltipsSugerenciaCompartir();
     
     let links = $(".crece-oportunidades-contenido-solicitante-link");
     $(".crece-oportunidades-contenido-solicitante-link").remove();
@@ -480,7 +507,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                        </div>'+
   '                                                        <div class="col-1 crece-oportunidades-contenido-monto-img-wrapper">'+
   '                                                             <button class="copyButton" data-toggle="tooltip" data-placement="bottom" data-trigger="click" delay: { "show": 0, "hide": 100 } data-clipboard-text="'+rutaDetalleSolicitud(oportunidad.id)+'" alt="Compartir" width="20" height="20">'+
-  '                                                                 <img src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
+  '                                                                 <img class="copyImage" data-container=".content" data-toggle="tooltip" data-placement="top" data-original-title="Copiar enlace y compartir" src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
   '                                                             </button>'+
   '                                                            <span class="crece-oportunidades-contenido-monto-img-wrapper-link">'+rutaDetalleSolicitud(oportunidad.id)+'</span>'+
   '                                                        </div>'+
@@ -770,11 +797,7 @@ function link_a_fase_inversion(fase_inversion, id_oportunidad, id_solicitud, mon
   else if(fase_inversion === "GOING"){
     return (`
             <div class="col-12 crece-oportunidades-contenido-botones-azul">
-<<<<<<< HEAD
-                <a href="#`+referencia+`" onclick="crear_modal_tabla_solicitud_valida(`+id_oportunidad+`,`+id_solicitud+`)" style="margin-left: auto;margin-right: auto;
-=======
                 <a href="#vigentes" onclick="crear_modal_tabla_solicitud_valida(`+id_oportunidad+`,`+id_solicitud+`)" style="margin-left: auto;margin-right: auto;
->>>>>>> 818883e3e271d19b9a31f8ba6ef39e3b1f22e963
                                                                                         display: block;">
                   Ver Tabla
                   </a>

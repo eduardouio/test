@@ -9,7 +9,7 @@
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    z-index: 4;
+    z-index: 10;
     background-color: rgba(0,0,0,0.85);
 }
 

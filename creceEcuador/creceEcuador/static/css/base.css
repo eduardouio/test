@@ -103,6 +103,33 @@ footer{
   overflow-x: hidden;
 }
 
+.content .tooltip-inner {
+  background-color: #AECB6F;
+  color: white;
+}
+
+.content .bs-tooltip-auto[x-placement^=bottom] .arrow::before, .content .bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #AECB6F;
+}
+
+.content .bs-tooltip-auto[x-placement^=top] .arrow::before, .content .bs-tooltip-top .arrow::before {
+  border-top-color: #AECB6F;
+}
+
+.crece-oportunidades .tooltip-inner {
+  background-color: #AECB6F;
+  color: white;
+}
+
+.crece-oportunidades .bs-tooltip-auto[x-placement^=bottom] .arrow::before, .crece-oportunidades .bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #AECB6F;
+}
+
+.crece-oportunidades .bs-tooltip-auto[x-placement^=top] .arrow::before, .crece-oportunidades .bs-tooltip-top .arrow::before {
+  border-top-color: #AECB6F;
+}
+
+
 .tooltip-inner {
   background-color: #006B8D;
   color: white;

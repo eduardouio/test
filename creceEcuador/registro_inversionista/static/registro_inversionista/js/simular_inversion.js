@@ -91,7 +91,7 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
 			$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").css("margin-left", porcentaje_financiado+'%');
 			$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").attr("title", 'Tu aporte: '+monto_a_calcular.toFixed(2)+'%')
 
-			let options = {delay : {show:0, hide: 2000},
+			let options = {delay : {show:0, hide: 20000},
 							trigger: "manual"
 							}
 			$('#crece-operaciones-contenido-monto-barra-progreso-proyectado-id').tooltip(options);
@@ -119,10 +119,18 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
 function showTooltip(element){
 	var $el = $(element);
 	$el.tooltip("show");
+	$("div.tooltip-inner").css("margin-top", "20px");
+	$("div.tooltip-inner").css("padding-top", "1px");
+	$("div.tooltip-inner").css("padding-bottom", "1px");
+	$("div.tooltip-inner").css("font-size", "12px");
 
-	setTimeout(function(){
-		$el.tooltip( 'hide' );
-	}, 2000);
+	$(".crece-boton-calcular-tabla-amortizacion").click(function(){
+		$el.tooltip("hide");
+		$el.tooltip("show");
+	});
+	$(".crece-modal-container-cerrar, .crece-modal-container-cerrar *").click(function(){
+		$el.tooltip("hide");
+	});
 }
 
 function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
@@ -485,8 +493,7 @@ function verificar_valores_inversion(modo, oportunidad) {
 		monto_a_calcular =((parseInt(monto_a_calcular))/oportunidad.monto)*100 ;
 		barra_porcentaje_proyectado.style.width =   monto_a_calcular+'%'
 		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").css("margin-left", porcentaje_financiado+'%');
-		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").attr("data-original-title", 'Tu aporte: '+monto_a_calcular.toFixed(2)+'%')
-		console.log("cambiando porc")
+		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").attr("data-original-title", 'Tu aporte: '+monto_a_calcular.toFixed(2)+'%');
 	}
 	
 	return true

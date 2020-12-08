@@ -25,6 +25,11 @@ body{
     margin-top: -4px;
 }
 
+#navbar_dashboard_perfil{
+    min-height: 45px;
+
+}
+
 .sidebar-outer-li{
 	display: none;
 }
@@ -234,6 +239,10 @@ a:focus{
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
+#informacion_navbar a:focus{
+	color: #006B8D;
+}
+
 .navbar-btn{
 	box-shadow: none;
 	outline: none!important;
@@ -284,15 +293,20 @@ a:focus{
 	display: block;
 }
 #sidebar ul li a:hover {
-    color: #08a7ba;
-    background: #fff;
+	color: #fff;
+    background: #08a7ba;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+#sidebar ul li.active>a {
     color: #fff;
     background: #08a7ba;
 }
+
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #006B8D;
+}
+
 a[data-toggle="collapse"] {
     position: relative;
 }
