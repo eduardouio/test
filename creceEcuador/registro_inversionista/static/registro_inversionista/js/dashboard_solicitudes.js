@@ -507,7 +507,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                        </div>'+
   '                                                        <div class="col-1 crece-oportunidades-contenido-monto-img-wrapper">'+
   '                                                             <button class="copyButton" data-toggle="tooltip" data-placement="bottom" data-trigger="click" delay: { "show": 0, "hide": 100 } data-clipboard-text="'+rutaDetalleSolicitud(oportunidad.id)+'" alt="Compartir" width="20" height="20">'+
-  '                                                                 <img class="copyImage" data-container=".content" data-toggle="tooltip" data-placement="top" data-original-title="Copiar enlace y compartir" src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
+  '                                                                 <img class="copyImage" data-container=".content" data-toggle="tooltip" data-placement="bottom" data-original-title="Copiar enlace y compartir" src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
   '                                                             </button>'+
   '                                                            <span class="crece-oportunidades-contenido-monto-img-wrapper-link">'+rutaDetalleSolicitud(oportunidad.id)+'</span>'+
   '                                                        </div>'+
