@@ -346,6 +346,9 @@ function crear_inversiones_vigentes(oportunidad) {
             let intereses_ganados = res.data.intereses_ganados
             let capital_cobrado = res.data.capital_cobrado
             let proxima_fecha_pago = res.data.proxima_fecha_pago
+            let monto_vencimiento = res.data.monto_vencimiento
+            let capital_vencimiento = res.data.capital_vencimiento
+            let interes_vencimiento = res.data.interes_vencimiento
             proxima_fecha_pago  = format_proxima_fecha_pago(proxima_fecha_pago)
             id_interes_ganados = "#solicitud-valida-intereses-ganados-"+oportunidad.id_inversion
             $(id_interes_ganados).html("$"+numberWithCommas(intereses_ganados))
@@ -353,6 +356,14 @@ function crear_inversiones_vigentes(oportunidad) {
             $(id_capital_cobrado).html("$"+numberWithCommas(capital_cobrado))
             id_proxima_fecha_pago = "#solicitud-valida-fecha-pago-"+oportunidad.id_inversion
             $(id_proxima_fecha_pago).html(proxima_fecha_pago)
+            id_monto_vencimiento = "#solicitud-valida-monto-vencimiento-"+oportunidad.id_inversion
+            $(id_monto_vencimiento).html("$"+numberWithCommas(monto_vencimiento))
+            id_capital_vencimiento = "#solicitud-valida-capital-vencimiento-"+oportunidad.id_inversion
+            $(id_capital_vencimiento).html("$"+numberWithCommas(capital_vencimiento))
+            id_interes_vencimiento = "#solicitud-valida-interes-vencimiento-"+oportunidad.id_inversion
+            $(id_interes_vencimiento).html("$"+numberWithCommas(interes_vencimiento))
+            id_total_vencimiento = "#solicitud-valida-total-vencimiento-"+oportunidad.id_inversion
+            $(id_total_vencimiento).html("$"+numberWithCommas(monto_vencimiento))
             oportunidad.intereses_ganados = intereses_ganados
             oportunidad.capital_cobrado = capital_cobrado
             oportunidad.proxima_fecha_pago = proxima_fecha_pago
@@ -367,38 +378,56 @@ function crear_inversiones_vigentes(oportunidad) {
 }
 
 function crearTarjetaInversionVigente(oportunidad) {
-  
     let tarjeta_oportunidad = ` <div class="col-12" id="crece-inversion-vigente-container-`+oportunidad.id_inversion+`">
                                 <div class="row justify-content-center">
                                   <div class="col-12 crece-solicitud-valida-contenedor">
                                     <div class="row">
                                       <div class="col-lg-5 col-xl-5 col-5 crece-solicitud-valida-imagen-autor">
+                                       <span>N°: `+oportunidad.ticket+`-`+oportunidad.id_inversion+`</span>
                                           <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /`+encodeURIComponent(oportunidad.imagen_url)+ `\');">
                                             
                                           </div>
-                                          <div class="crece-solicitud-valida-imagen-autor-contenido">
+                                            <div class="solicitud-valida-autor-detalles-movil">
                                               <div class="row" >
-                                                  <h4>`+oportunidad.autor+`</h4>
+                                                <div class="col-12 solicitud-valida-autor-nombre">
+                                                  <span>`+oportunidad.autor+`</span>
+                                                </div>                                            
                                               </div>
-                                              <div class="row" >
-                                                  <h4>`+oportunidad.tipo_persona+`</h4>
+                                              <div class="row">
+                                                <div class="col-12 solicitud-valida-autor-tipo-oportunidad">
+                                                  <span>`+oportunidad.tipo_persona+`</span>
+                                                </div>
                                               </div>
-                                              <div class="row" >
-                                                  <h5>`+oportunidad.ticket+`</h5>
-                                              </div>
-                                          </div>
+                                            </div>
+                                          
+                                          
                                       </div>
                                       <div class="col-lg-7 col-xl-7 col-7 crece-solicitud-valida-detalle">
                                         <div class="row crece-solicitud-valida-detalle-intereses-ganados">
-                                          <div class="col-1 crece-solicitud-detalle-icono">
+                                          <div class="col-xl-1 col-lg-1 col-md-1 col-1 crece-solicitud-detalle-icono">
                                             <img src="/static/assets/favicon-32.png">
                                           </div>
-                                          <div class="col-10" style="padding-left: 0px;">
-                                            <div class="col-12" style="color: #006B8D;font-weight: 400;font-size: 30px;">
-                                              <span id="solicitud-valida-intereses-ganados-`+oportunidad.id_inversion+`"> $0 </span>
+                                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-10" style="padding-left: 0px;">
+                                            <div class="col-12 solicitud-valida-detalle-capitales" style="color: #006B8D;font-weight: 500;">
+                                              <span id="solicitud-valida-capital-invertido"> $`+numberWithCommas(oportunidad.monto_invertido)+`</span>
+                                             
                                             </div>
-                                            <div class="col-12" style="font-size: 10px;top: -8px;">
-                                              Intereses ganados
+                                            <div class="col-12 solicitud-valida-detalle-capitales-texto">
+                                              <span>Capital Invertido</span>
+                                              
+                                            </div>
+                                          </div>
+                                          <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
+                                            <div class="solicitud-valida-detalles-vencimiento row">
+                                                <div class="col-12" style="text-align: center;">
+                                                  <span class="vencimiento-texto">Próxima fecha de pago</span><br>
+                                                  <img src="/static/assets/icono_proxima_fecha_pago.png">
+                                                  <span class="vencimiento-valor" id="solicitud-valida-fecha-pago-`+oportunidad.id_inversion+`"></span>
+                                                </div>
+                                                <div class="vencimiento-texto col-xl-7 col-lg-7 col-md-7 col-5">Pago</div>
+                                                <div class="vencimiento-valor col-xl-5 col-lg-5 col-md-5 col-7" id="solicitud-valida-monto-vencimiento-`+oportunidad.id_inversion+`"> </div>
+
+                                                
                                             </div>
                                           </div>
                                         </div>
@@ -421,10 +450,10 @@ function crearTarjetaInversionVigente(oportunidad) {
                                                 <img src="/static/assets/icono_capital_invertido.png">
                                               </div>
                                               <div class="col-10">
-                                                <span id="solicitud-valida-capital-invertido">$`+numberWithCommas(oportunidad.monto_invertido)+`</span>
-                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Capital invertido</span>
+                                                <span id="solicitud-valida-intereses-ganados-`+oportunidad.id_inversion+`"></span>
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Intereses ganados</span>
                                                 <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
-                                                  Capital invertido
+                                                  Intereses ganados
                                                 </div>
                                               </div>
 
@@ -441,27 +470,39 @@ function crearTarjetaInversionVigente(oportunidad) {
                                                 </div>
                                               </div>
                                             </div>
-                                            <div class="row">
-                                              <div class="col-1 crece-solicitud-detalle-icono">
-                                                <img src="/static/assets/icono_proxima_fecha_pago.png">
+                                          </div>
+                                        </div>                                        
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        
+                                          <div class="crece-solicitud-valida-imagen-autor-contenido col-5">
+                                              <div class="row" >
+                                                <div class="col-12 solicitud-valida-autor-nombre">
+                                                  <span>`+oportunidad.autor+`</span>
+                                                </div>                                            
                                               </div>
-                                              <div class="col-10">
-                                                <span id="solicitud-valida-fecha-pago-`+oportunidad.id_inversion+`"></span> 
-                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Próxima fecha de pago</span>
-                                                 <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
-                                                  Próxima fecha de pago
+                                              <div class="row">
+                                                <div class="col-12 solicitud-valida-autor-tipo-oportunidad">
+                                                  <span>`+oportunidad.tipo_persona+`</span>
                                                 </div>
                                               </div>
+                                          </div>
+                                          <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12 crece-solicitud-valida-botones">
+
+                                            <div class="row">
+                                              <div class="col-xl-4 col-lg-4 col-md-5 col-5 ver-mas-solicitud-vigente">
+                                                <button  onclick="ver_detalle_solicitud('GOING',`+oportunidad.id_inversion+`,`+oportunidad.id+`, `+oportunidad.monto_inversion+`)">Ver más</button>
+                                              </div>
+                                              <div class="col-xl-8 col-lg-8 col-md-7 col-7 tabla-pagos-solicitud-vigente">
+                                                <button onclick="crear_modal_tabla_solicitud_valida(`+oportunidad.id_inversion+`,`+oportunidad.tir+`)">Tabla de pagos</button>
+                                              </div>
                                             </div>
+
                                           </div>
-                                        </div>
-                                        <div class="row crece-solicitud-valida-botones">
-                                          <div class="col-12">
-                                            <button  onclick="ver_detalle_solicitud('GOING',`+oportunidad.id_inversion+`,`+oportunidad.id+`, `+oportunidad.monto_inversion+`)">Ver más</button>
-                                            <button onclick="crear_modal_tabla_solicitud_valida(`+oportunidad.id_inversion+`,`+oportunidad.id_solicitud+`)">Tabla de pagos</button>
-                                          </div>
-                                        </div>
-                                      </div>
+                                          
+                                        
+
                                     </div>
                                   </div>
                                 </div>
@@ -1307,6 +1348,7 @@ function parseSolicitudesInversionASolicitudes(data){
         inversion.solicitud.fase_inversion = inversion.fase_inversion;
         inversion.solicitud.monto_invertido = inversion.monto;
         inversion.solicitud.id_inversion = inversion.id
+        inversion.solicitud.ganancia_total = inversion.ganancia_total.toFixed(2);
         listaSolicitudes.push(inversion.solicitud);
 
     });

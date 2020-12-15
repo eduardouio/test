@@ -12,129 +12,104 @@
 
                 {% block content %}  
 
+                <div class="col-12" id="crece-inversion-vigente-container-`+oportunidad.id_inversion+`">
+                                <div class="row justify-content-center">
+                                  <div class="col-12 crece-solicitud-valida-contenedor">
+                                    <div class="row">
+                                      <div class="col-lg-5 col-xl-5 col-5 crece-solicitud-valida-imagen-autor">
+                                          <div class="crece-detalle-operaciones-header-gradiente-imagen-autor" style="background-image: url(\' /`+encodeURIComponent(oportunidad.imagen_url)+ `\');">
+                                            
+                                          </div>
+                                          <div class="crece-solicitud-valida-imagen-autor-contenido">
+                                              <div class="row" >
+                                                  <h4>`+oportunidad.autor+`</h4>
+                                              </div>
+                                              <div class="row" >
+                                                  <h4>`+oportunidad.tipo_persona+`</h4>
+                                              </div>
+                                              <div class="row" >
+                                                  <h5>`+oportunidad.ticket+``+oportunidad.id_inversion+`</h5>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-7 col-xl-7 col-7 crece-solicitud-valida-detalle">
+                                        <div class="row crece-solicitud-valida-detalle-intereses-ganados">
+                                          <div class="col-1 crece-solicitud-detalle-icono">
+                                            <img src="/static/assets/favicon-32.png">
+                                          </div>
+                                          <div class="col-10" style="padding-left: 0px;">
+                                            <div class="col-12" style="color: #006B8D;font-weight: 400;font-size: 30px;">
+                                              <span id="solicitud-valida-intereses-ganados-`+oportunidad.id_inversion+`"> $0 </span>
+                                            </div>
+                                            <div class="col-12" style="font-size: 10px;top: -8px;">
+                                              Intereses ganados
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row crece-solicitud-valida-detalle-inversion">
+                                          <div class="col-12">
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_capital_cobrado.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-capital-cobrado-`+oportunidad.id_inversion+`">$</span> 
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Capital cobrado</span>
+                                                <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Capital cobrado
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_capital_invertido.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-capital-invertido">$`+numberWithCommas(oportunidad.monto_invertido)+`</span>
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Capital invertido</span>
+                                                <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Capital invertido
+                                                </div>
+                                              </div>
 
-            <main>
-                <!--CONFIRMA TU INVERSION-->
-                <div class="titulo">
-                    <strong>Confirma tu inversion</strong>
-                </div>
-
-                <!--PASOS (2)-->
-                    
-                        <div class="row fases-inversiones-pasos">
-
-                            <div class="col disabled">
-                                Paso 1
-                            </div>
-                            <div class="col active">
-                                Paso 2
-                            </div>
-                            <div class="col">
-                                Paso 3
-                            </div>
-                            <div class="col">
-                                Paso 4
-                            </div>
-                        </div>
-
-
-                <!--CONTENIDO-->
-                <div class="fase-2-container container">
-
-                  <div class="container">
-                        <!--HEADER (INVERSION, NOMBRE, PROGRESO)-->
-                        <div class="row fase-2-header">
-                            <div class="col inversion-container">
-                                <p><strong>Inversion:</strong></p> 
-                            </div>
-                            <div class="col informacion-container">
-                                <div class="row">
-                                    Mesias Pastuna
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_tasa_tir.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-tasa-tir">`+oportunidad.tir+`%</span>
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Tasa(TIR)</span>
+                                                <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Tasa(TIR)
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-1 crece-solicitud-detalle-icono">
+                                                <img src="/static/assets/icono_proxima_fecha_pago.png">
+                                              </div>
+                                              <div class="col-10">
+                                                <span id="solicitud-valida-fecha-pago-`+oportunidad.id_inversion+`"></span> 
+                                                <span class="solicitud-valida-detalle-inversion-texto-derecha">Próxima fecha de pago</span>
+                                                 <div class="solicitud-valida-detalle-inversion-texto-derecha-movil">
+                                                  Próxima fecha de pago
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row crece-solicitud-valida-botones">
+                                          <div class="col-12">
+                                            <button  onclick="ver_detalle_solicitud('GOING',`+oportunidad.id_inversion+`,`+oportunidad.id+`, `+oportunidad.monto_inversion+`)">Ver más</button>
+                                            <button onclick="crear_modal_tabla_solicitud_valida(`+oportunidad.id_inversion+`,`+oportunidad.id_solicitud+`)">Tabla de pagos</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="row progress">
-                                    
-                                        <div class="progress-bar" style="width:80%">80% completada</div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--DATOS DE LA TABLA-->
-                        <div class="row fase-2-body" id="fase-2-body-id">
-                            <div class="body-datos">
-                                <div>Monto a financiar:</div>
-                                <div>
-                                  <input type="text" name="monto" id="input-monto">
-                                    <button id="calcular" onclick="calcular_tabla_inversionista()">Calcular</button>
-                                </div>
-                                <div>Adjudicacion:</div>
-                                <div class="body-datos-calculados" id="adjudicacion">
-                                  
-                                </div>
-                                <div>Adjudicacion (IVA):</div>
-                                <div class="body-datos-calculados" id="adjudicacion-iva">
-                                      
-                                </div>
-                                <div>Inversion Total:</div>
-                                <div class="body-datos-calculados" id="inversion-total">
-                                      
-                                </div>
-                                <div>Ganancia Total:</div>
-                                 <div class="body-datos-calculados" id="ganancia-total">
-                                   
-                                 </div>
-                            </div>
-
-                            <!--TABLA AMORTIZACION-->
-                            <table class='tabla-amortizacion' id="tabla-amortizacion-id">
-                               <tr>
-                                   <th></th>
-                                   <th>Pago</th>
-                                   <th>Comision</th>
-                                   <th>Comision: IVA</th>
-                                   <th>Ganancia</th>
-                               </tr> 
-                            </table>
-
-                            <!--div class="crece-tabla-inversionista" id="crece-tabla-inversionista-id">
-                              <div class="tabla-headers"></div>
-                              <div class="tabla-headers">Pago</div>
-                              <div class="tabla-headers">Comisión</div>  
-                              <div class="tabla-headers">Comisión IVA</div>
-                              <div class="tabla-headers">Ganancias</div>
-
-                                  <div class="tabla-items tabla-items-row1 tabla-num-pago" >1</div>
-                                  <div class="tabla-items tabla-items-row1">96.17</div>
-                                  <div class="tabla-items tabla-items-row1">0.95</div>  
-                                  <div class="tabla-items tabla-items-row1">1</div>
-                                  <div class="tabla-items tabla-items-row1 tabla-ganancias">500</div>
-                                  <div class="tabla-items tabla-num-pago" >1</div>
-                                  <div class="tabla-items">96.17</div>
-                                  <div class="tabla-items" >0.85</div>
-                                  <div class="tabla-items" >1</div>
-                                  <div class="tabla-items tabla-ganancias">500</div>
-
-                              
-                            </div-->
-
-                            
-                          </div>
-
-                          <!--Footer (GUARDAR-SIGUIENTE)-->
-                          <div class="fase-2-footer" id="fase-2-footer-id">
-                              <button id="guardar-tabla" onclick="guardar_tabla()" disabled>Guardar</button>
-                              <button>Siguiente</button>
-                          </div> 
-
-
-
-                  </div>
-
-
-                </div>
-
-
-            <main>
+                              </div>
 
                 {% endblock content %}
       

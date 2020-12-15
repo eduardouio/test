@@ -846,15 +846,15 @@
 }
 
 .crece-solicitud-valida-imagen-autor{
-  border-left: white solid 60px;   
   margin-top: 12px;
 }
 
 .crece-solicitud-valida-imagen-autor div.crece-detalle-operaciones-header-gradiente-imagen-autor{
-height: 230px;
-    width: 230px;
+height: 200px;
+    width: 200px;
     margin-top: 15px;
-    margin-bottom: 9px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .crece-solicitud-valida-imagen-autor h4{
@@ -868,21 +868,117 @@ color: #006B8D;
 font-size: 16px;
 }
 
-.crece-solicitud-valida-detalle{
-  margin-top: 15px;
-}
 
 .crece-solicitud-valida-detalle-intereses-ganados{
-  margin-bottom: 75px;
+  margin-bottom: 71px;
+  margin-top: 16px;
 }
+
+.crece-solicitud-valida-detalle-intereses-ganados > div:nth-child(3){
+  margin-top: 8px;
+}
+
+.crece-solicitud-valida-imagen-autor > span{
+  border: 1px solid #08A7BA;
+    padding: 5px;
+    border-radius: 11px;
+    color: #006B8D;
+    font-weight: 500;
+}
+
+.solicitud-valida-autor-detalles-movil{
+  display: none;
+}
+
+.solicitud-valida-autor-nombre{
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.solicitud-valida-autor-tipo-oportunidad{
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+
+.solicitud-valida-detalles-vencimiento{
+  position: absolute;
+  left: -6%;
+  border: 1px solid;
+    border-radius: 10px;
+  max-width: 212px;
+  padding: 15px 0px;
+}
+
+.solicitud-valida-detalles-vencimiento > div:nth-child(1){
+  margin-bottom: 16px;
+}
+
+/*.solicitud-valida-detalles-vencimiento > div:nth-child(1) > span{
+  color: #006B8D;
+}
+*/
+.solicitud-valida-detalles-vencimiento > div:nth-child(2){
+  margin-bottom: 16px;
+}
+
+.solicitud-valida-detalles-vencimiento > div:nth-child(3){
+  margin-bottom: 16px;
+}
+
+.vencimiento-texto{
+  font-size: 13px;
+  padding-left: 10px;
+      margin-top: auto;
+    margin-bottom: auto;
+}
+
+.vencimiento-valor{
+  font-size: 15px;
+    font-weight: 500;
+    color: #006B8D;
+    margin-top: auto;
+    margin-bottom: auto;
+        padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+.solicitud-valida-detalle-capitales > span{
+  font-size: 30px;
+}
+
+.solicitud-valida-detalle-capitales-texto{
+  font-size: 13px;
+  top: -8px;
+}
+
+.solicitud-valida-detalle-capitales > span:nth-child(2){
+  position: absolute;
+    left: 48%;
+}
+
+.solicitud-valida-detalle-capitales-texto > span:nth-child(2){
+  margin-left: 20px;
+}
+
 
 .crece-solicitud-detalle-icono{
   margin-bottom: auto;
   margin-top: auto;
 }
 
+.solicitud-valida-detalles-vencimiento img{
+  width: 20px;
+}
 .crece-solicitud-valida-detalle-inversion{
-      padding-left: 5px;
+  padding-left: 5px;
+  position: relative;
+  top: -8%;
+
 
 }
 
@@ -892,61 +988,39 @@ color: #006B8D;
     font-size: 16px;
 }
 .crece-solicitud-valida-detalle-inversion>div>div{
-margin-bottom: 4px;
+margin-bottom: 15px;
 font-size: 13px;
 }
 
 .crece-solicitud-valida-botones{
-  margin-top: 10px;
+  margin-top: auto;
 }
 
-.crece-solicitud-valida-botones button{
-background-color: white;
-    color: #08A7BA;
-    border: 1px solid;
+.crece-solicitud-valida-botones > div > div{
+      padding-bottom: 5px;
+}
+
+.ver-mas-solicitud-vigente button{
+    background-color: white;
     padding: 5px 24px;
-    margin-right: 30px;
+    border: 1px solid #006B8D;
+    color: #006B8D;
+    font-weight: 700;
+    padding: 5px 24px;
+}
+
+.tabla-pagos-solicitud-vigente button{
+  padding: 5px 24px;
+  font-weight: 700;
+}
+
+.crece-solicitud-valida-logo img{
+    position: relative;
+    top: -20px;
 }
 
 
-@media screen and (max-width: 550px){
-      .crece-solicitud-valida-imagen-autor {
-        border-left: 0px; 
-        margin-top: 12px;
-    }
-    .crece-solicitud-valida-imagen-autor div.crece-detalle-operaciones-header-gradiente-imagen-autor{
-      height: 150px;
-          width: 150px;
-          margin-top: 15px;
-          margin-bottom: 9px;
-    }
-    .crece-solicitud-valida-detalle-intereses-ganados {
-        margin-bottom: 22px;
-    }
 
-    .crece-solicitud-valida-botones {
-        margin-top: 1.5vw;
-    }
-
-    .crece-solicitud-valida-botones button:nth-child(1) {
-        position: relative;
-        left: -39.5vw;
-    }
-    .crece-solicitud-valida-botones button:nth-child(2) {
-        position: relative;
-        top: -34px;
-        padding: 5px 21px;
-    }
-
-    .solicitud-valida-detalle-inversion-texto-derecha{
-      display: none;
-    }
-
-    .solicitud-valida-detalle-inversion-texto-derecha-movil{
-      display: block;
-    }
-
-}
 
 @media screen and (max-width: 600px){
   .crece-resumen-inversion>div{
@@ -982,55 +1056,205 @@ background-color: white;
   }
 }
 
-@media screen and (max-width: 768px) {
 
- 
 
-  @media screen and (min-width: 550px) {
-     .crece-solicitud-valida-imagen-autor{
-        border-left: white solid 30px;   
+@media screen and (min-width: 320px) and (max-width: 575px){
+    @media screen and (min-width: 425px){
+      .crece-solicitud-valida-contenedor {
+        max-width: 450px;
       }
-      .crece-solicitud-valida-imagen-autor div.crece-detalle-operaciones-header-gradiente-imagen-autor{
-          height: 200px;
-              width: 200px;
-              margin-top: 15px;
-              margin-bottom: 9px;
-        }
-      .crece-solicitud-valida-botones button {
-        margin-right: 13px;
-        font-size: 12px;
-      }
-  }
-
-}
-
-@media screen and (min-width: 768px) {
-
-  @media screen and (max-width: 950px){
-
-    .crece-solicitud-valida-imagen-autor{
-      border-left: white solid 30px;
-
     }
-
     .crece-solicitud-valida-imagen-autor div.crece-detalle-operaciones-header-gradiente-imagen-autor{
-      height: 200px;
-          width: 200px;
+      height: 150px;
+          width: 150px;
           margin-top: 15px;
           margin-bottom: 9px;
     }
-    .crece-solicitud-valida-imagen-autor-contenido{
-      margin-top: 25px;
-    }
-    .crece-solicitud-valida-botones button {
-        margin-right: 13px;
-        font-size: 12px;
-    }
 
-  }
+      .crece-solicitud-valida-contenedor {
+        height: 300px;
+      }
+        .solicitud-valida-autor-nombre{
+          font-size: 8px;
+        }
+        .solicitud-valida-autor-tipo-oportunidad{
+          font-size: 8px;
+        }
+        .crece-solicitud-valida-imagen-autor > span {
+          font-size: 10px;
+        }
+        .solicitud-valida-detalle-capitales > span {
+            font-size: 20px;
+        }
+        .solicitud-valida-detalle-capitales-texto {
+            font-size: 10px;
+            top: -8px;
+        }
+        .crece-solicitud-valida-detalle-intereses-ganados{
+          margin-bottom: 0px;
+        }
+        .solicitud-valida-detalles-vencimiento {
+            position: relative;
+            left: 10%;
+            border: 1px solid;
+            max-width: 190px;
+            padding: 0px 0px;
+        }
+        .vencimiento-texto {
+            font-size: 12px;  
+        } 
+        .solicitud-valida-detalles-vencimiento > div:nth-child(1) {
+             margin-bottom: 5px; 
+        }
+        .solicitud-valida-detalles-vencimiento > div:nth-child(2) {
+              margin-bottom: unset; 
+              text-align: right;
+        }
+        .solicitud-valida-detalles-vencimiento > div:nth-child(3) {
+            margin-bottom: unset;
+            text-align: center;
+        }
+
+        .crece-solicitud-valida-detalle-inversion {
+            top: unset;
+        }
+        .crece-solicitud-valida-detalle-inversion>div>div {
+          margin-bottom: 5px;
+          font-size: 10px;
+        }
+        .crece-solicitud-valida-detalle-intereses-ganados > div:nth-child(3) {
+            margin-bottom: 14px;
+        }
+        .crece-solicitud-valida-detalle-inversion span:not(:nth-child(2)) {
+            font-size: 12px;
+        }
+        .crece-solicitud-valida-botones button {
+            padding: 5px 20px;
+            font-size: 12px;
+        }
+        .solicitud-valida-autor-detalles-movil{
+          display: block;
+        }
+
+        .crece-solicitud-valida-imagen-autor-contenido{
+          display: none;
+        }
+        .crece-solicitud-valida-botones {
+            margin-top: 8px;
+        }
+        .crece-solicitud-valida-botones > div > div {
+              text-align: center;
+        }
+
 
 }
 
+@media screen and (min-width: 576px) and (max-width: 618px){
+        .solicitud-valida-detalles-vencimiento {
+            position: absolute;
+            left: 171px;
+            top: -65px;
+            border: 1px solid;
+            width: 194px;
+            padding: 0px 0px;
+        }
+
+        .vencimiento-texto {
+            font-size: 12px;  
+        } 
+        .solicitud-valida-detalles-vencimiento > div:nth-child(1) {
+             margin-bottom: 5px; 
+        }
+        .solicitud-valida-detalles-vencimiento > div:nth-child(2) {
+              margin-bottom: unset;
+              text-align: right;
+              
+        }
+        .solicitud-valida-detalles-vencimiento > div:nth-child(3) {
+            margin-bottom: unset;
+            text-align: center;
+        }
+}
+
+@media screen and (min-width: 619px) and (max-width: 767px){
+  @media screen and (max-width: 618){
+        .solicitud-valida-detalles-vencimiento {
+            position: absolute;
+            left: -14%;
+            border: 1px solid;
+            max-width: 190px;
+            padding: 0px 0px;
+        }
+  }
+        .solicitud-valida-detalles-vencimiento {
+            position: absolute;
+            left: -14%;
+            border: 1px solid;
+            max-width: 190px;
+            padding: 0px 0px;
+        }
+        .vencimiento-texto {
+            font-size: 12px;  
+        } 
+        .solicitud-valida-detalles-vencimiento > div:nth-child(1) {
+             margin-bottom: 5px; 
+        }
+        .solicitud-valida-detalles-vencimiento > div:nth-child(2) {
+              margin-bottom: unset;
+              text-align: right;
+              
+        }
+        .solicitud-valida-detalles-vencimiento > div:nth-child(3) {
+            margin-bottom: unset;
+            text-align: center;
+        }
+}
+
+@media screen and (min-width: 768px){
+    @media screen and (max-width: 1024px) {
+
+      @media screen and (min-width: 869px){
+
+          .solicitud-valida-detalles-vencimiento {
+            padding: 2px 0px;
+            left: -22%;
+          }
+      }
+
+      @media screen and (max-width: 868px ) {
+        .solicitud-valida-autor-nombre{
+          font-size: 13px;
+        }
+        .solicitud-valida-autor-tipo-oportunidad{
+          font-size: 13px;
+        }
+
+        .crece-solicitud-detalle-icono{
+          padding: 0px;
+        }
+
+        .solicitud-valida-detalle-capitales > span {
+          font-size: 25px;
+        }
+        .solicitud-valida-detalle-capitales-texto{
+          font-size: 10px !important;
+        }
+        .solicitud-valida-detalles-vencimiento {
+            padding: 2px 0px;
+            left: -22px;
+          }
+        .crece-solicitud-valida-detalle-inversion {
+          top: 0%;
+        }
+
+
+
+      }
+
+      
+
+    }
+}
 
 /*Tooltip*/
 

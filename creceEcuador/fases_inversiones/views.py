@@ -465,6 +465,8 @@ def get_detalles_inversion_vigente(request, id_inversion):
             capital_cobrado = 0
             contador = 0
             index_ultimo_pago = 0
+            monto_vencimiento = 0
+            interes_vencimiento = 0
             for pago in lista_pagos_detalles:
                 pago_i = models.Pago_detalle.objects.get(id=pago.id)
                 capital_i = pago_i.pago
@@ -479,15 +481,31 @@ def get_detalles_inversion_vigente(request, id_inversion):
                 contador += 1
             intereses_pagados = round(intereses_pagados,2)
             capital_cobrado = round(capital_cobrado,2)
+            capital_vencimiento = 0
+            interes_vencimiento = 0
+            monto_vencimiento = 0
             if(index_ultimo_pago == len(lista_pagos_detalles)):
                 proximo_pago = lista_pagos_detalles[index_ultimo_pago-1]
             else:
                 proximo_pago = lista_pagos_detalles[index_ultimo_pago]
+                serializer = PagoDetalleSerializer(instance=proximo_pago)
+                next_ganancia = serializer.data.get("ganancia")
+                next_capital = serializer.data.get("pago")
+                next_comision = serializer.data.get("comision")
+                next_comision_iva = serializer.data.get("comision_iva")
+                monto_vencimiento = monto_vencimiento + next_ganancia
+                capital_vencimiento = next_capital
+                interes_vencimiento = next_ganancia + next_comision + next_comision_iva - next_capital
+                monto_vencimiento = next_ganancia
             serializer = PagoDetalleSerializer(instance=proximo_pago)
             proxima_fecha_pago = serializer.data.get("fecha")
+            monto_vencimiento = round(monto_vencimiento,2)
+            capital_vencimiento = round(capital_vencimiento,2)
+            interes_vencimiento = round(interes_vencimiento,2)
             diccionario_respuesta = {
                 'status': status.HTTP_200_OK,
-                'data': {"intereses_ganados":intereses_pagados, "capital_cobrado":capital_cobrado, "proxima_fecha_pago":proxima_fecha_pago}
+                'data': {"intereses_ganados":intereses_pagados, "capital_cobrado":capital_cobrado, "proxima_fecha_pago":proxima_fecha_pago,
+                        "monto_vencimiento":monto_vencimiento, "capital_vencimiento":capital_vencimiento, "interes_vencimiento": interes_vencimiento}
             }
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
         else:

@@ -411,7 +411,10 @@ def crear_pagos_inversion(sender, instance, **kwargs):
             inversiones = Inversion.objects.filter(id_solicitud=instance)
 
             for inversion in inversiones:
-                crear_pagos(inversion, instance)
+                if inversion.fase_inversion == "GOING":
+                    crear_pagos(inversion, instance)
+                # else:
+                #     Inversion.fase_inversion
             diccionario = crear_tabla_amortizacion(instance, "PAGO")
             lista_capital_insoluto = diccionario['lista_capital_insoluto']
             lista_pagos = diccionario['lista_pagos']

@@ -184,7 +184,7 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
 }
 
 
-function crear_modal_tabla_solicitud_valida(id_inversion, id_solicitud) {
+function crear_modal_tabla_solicitud_valida(id_inversion, tir, interes_ganado) {
 	// body...
 	$.ajax({
       url: RUTA_PAGOS+id_inversion+'/',
@@ -203,6 +203,7 @@ function crear_modal_tabla_solicitud_valida(id_inversion, id_solicitud) {
 			  $("#crece-declaracion-body-id").hide();
 			  $("#cambiar-monto-inversion-modal-dashboard").hide()
           	
+          	$("#tasa-tir-tabla-vigente-id").html(tir+"%")
           	
           	let lista_pagos = res.data.lista_pagos
           	let monto_inversion = res.data.monto

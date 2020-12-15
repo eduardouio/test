@@ -12,7 +12,8 @@ class InversionSerializer(serializers.ModelSerializer):
             'id',
             'fase_inversion',
             'monto',
-            'solicitud'
+            'solicitud',
+            "ganancia_total"
          ]
 
 
