@@ -105,18 +105,26 @@ function showTooltipCompartir(element){
 
 function crearCuadrosOportunidadesInversion(data, append, lista_inversiones_usuario, inicio){
 
+  $(".crece-oportunidades-container").show();
+  $(".crece-oportunidades-list-container").show();
+
     let string_operacion = "";
+    let string_operacion_list = "";
     let solicitudes_anteriores;
+    let solicitudes_anteriores_list;
   
     $.each( data, function( indice, oportunidad ) {
         string_operacion += stringSolicitud(oportunidad, lista_inversiones_usuario, inicio);
+        string_operacion_list += stringSolicitudList(oportunidad, lista_inversiones_usuario, inicio);
     });
   
     if(append){
       solicitudes_anteriores = $(".crece-oportunidades-container").html();
+      solicitudes_anteriores_list = $(".crece-oportunidades-list-container").html();
     }
 
     $(".crece-oportunidades-container").html(string_operacion);
+    $(".crece-oportunidades-list-container").html(string_operacion_list);
     setearTooltipsSugerenciaCompartir();
     
     let links = $(".crece-oportunidades-contenido-solicitante-link");
@@ -206,9 +214,19 @@ function crearCuadrosOportunidadesInversion(data, append, lista_inversiones_usua
 
     if(append) {
       $(".crece-oportunidades-container").prepend(solicitudes_anteriores);
+      $(".crece-oportunidades-list-container").prepend(solicitudes_anteriores_list);
     }
 
     obteniendoOportunidades = false;
+
+    if($("#grid-button").hasClass("crece-oportunidades-button-group-selected")){
+      $(".crece-oportunidades-container").css("display", "flex");
+      $(".crece-oportunidades-list-container").hide();
+    }
+    else{
+      $(".crece-oportunidades-container").hide();
+      $(".crece-oportunidades-list-container").css("display", "flex");
+    }
   
   }
 
@@ -510,6 +528,114 @@ function crearTarjetaInversionVigente(oportunidad) {
                             `
   crear_inversiones_vigentes(oportunidad)
   return tarjeta_oportunidad
+}
+
+function stringSolicitudList(oportunidad, lista_inversiones_usuario, inicio){
+  let tarjeta = ""
+  if (oportunidad.fase_inversion === "GOING"){
+    tarjeta = crearTarjetaInversionVigente(oportunidad)
+  }else{
+    tarjeta = '<div class="col-auto crece-oportunidades-list-container-card-wrapper">'+
+'                            <div class="crece-oportunidades-list-container-card">'+
+'                                    <div class="row justify-content-center">'+
+'                                        <div class="col-auto">'+
+'                                            <div class="crece-oportunidades-list-container-card-image-container">'+
+''+
+'                                                <div class="crece-oportunidades-list-container-card-image-container-gradiente"></div>'+
+'                                                <img class="crece-oportunidades-list-container-card-image-container-image" src=/'+encodeURIComponent(oportunidad.imagen_url)+ '/>'+
+'                                                    '+
+'                                            </div>'+
+'                                            '+
+'                                        </div>'+
+''+
+'                                        <div class="col-auto">'+
+'                                            <div class="row justify-content-center">'+
+''+
+'                                                <div class="col-auto">'+
+'                                                    <div class="crece-oportunidades-contenido-monto-img-wrapper">'+
+'                                                        <button class="copyButton" data-toggle="tooltip" data-placement="bottom" data-trigger="click" data-clipboard-text="'+rutaDetalleSolicitud(oportunidad.id)+'"  alt="Compartir" width="20" height="20">'+
+'                                                            <img class="copyImage" data-container=".content" data-toggle="tooltip" data-placement="bottom" data-original-title="Copiar enlace y compartir" src="/static/assets/compartir.png" role="button" alt="Compartir" width="20" height="20" >'+
+'                                                        </button>'+
+'                                                        <span class="crece-oportunidades-contenido-monto-img-wrapper-link">'+rutaDetalleSolicitud(oportunidad.id)+'</span>'+
+'                                                    </div>'+
+'                                                    <div class="crece-oportunidades-imagen-gradiente-texto">'+
+'                                                        <span>'+ oportunidad.tipo_credito +' <i class="fa fa-question-circle tooltipTipo_cred" aria-hidden="true"><span class="tooltiptextTipo_cred">Uso que se le dará al capital. Existen tres tipos:<br>-Capital de trabajo<br>-Compra de activo<br>-Adelanto de factura</span></i></span>'+
+'                                                        <strong>'+ oportunidad.autor +'</strong>'+
+'                                                        <strong>'+oportunidad.tipo_persona+'</strong>'+
+'                                                        <span>'+ oportunidad.ticket +'<i class="fa fa-question-circle tooltipTicker" aria-hidden="true"><span class="tooltiptextTicker">Es una codificación interna de CRECE para clasificar a los solicitantes. Con esto puedes comparar tu portafolio de inversión con otros inversionistas y ver los retornos que han tenido.</span></i></span>'+
+                                                          
+'                                                    </div>'+
+'                                                    '+
+'                                                    <div class="col-12 crece-oportunidades-contenido-monto-texto">'+
+'                                                            <p>'+
+'                                                                <strong>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</strong><br>'+
+'                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+' ('+oportunidad.porcentaje_financiado+'%) recolectados'+
+'                                                            </p>'+
+'                                                        <span></span>'+
+'                                                    </div>'+
+'                                                </div>'+
+''+
+'                                                <div class="col-auto">'+
+'                                                    <div class="row crece-oportunidades-contenido">'+
+
+'                                                        <div class="col-12 crece-oportunidades-contenido-informacion">'+
+  '                                                        <div class="row">'+
+  '                                                            <div class="col-4">'+
+  '                                                                <p>'+
+  '                                                                    <strong>Plazo</strong><br>'+
+  '                                                                    '+oportunidad.plazo+' Meses'+
+  '                                                                </p>'+
+  '                                                            </div>'+
+  '                                                            <div class="col-4 crece-oportunidades-contenido-informacion-industria">'+
+  '                                                                <p>'+
+  '                                                                    <strong>Industria</strong><br>'
+                                                                          +oportunidad.categoria+
+  '                                                                </p>'+
+  '                                                            </div>'+
+  '                                                            <div class="col-4">'+
+  '                                                                <p>'+
+  '                                                                    <strong>Tasa(TIR)</strong><i class="fa fa-question-circle tooltipTir" aria-hidden="true"><span class="tooltiptextTir">La Tasa Interna de Retorno representa una métrica más transparente del ingreso que genera tu inversión, pues toma en consideración las comisiones cobradas por CRECE. Adicionalmente, se expresa en periodos anuales, así que facilita la comparación entre operaciones de diferentes plazos.</span></i><br>'+
+  '                                                                    '+ oportunidad.tir+'%'+
+  '                                                                </p>'+
+  '                                                            </div>'+
+  '                                                        </div>'+
+'                                                        </div>'+
+                                                          '<a class="crece-oportunidades-contenido-solicitante-link" href="'+rutaDetalleSolicitud(oportunidad.id)+'">...</a>'+
+
+'                                                    </div>'+
+
+'                                                    <div class="col-auto">'+
+'                                                        <div class="col-auto crece-oportunidades-contenido-botones">'+
+'                                                            <div class="row">'+
+'                                                                <div class="col-6 crece-oportunidades-contenido-botones-blanco">'+
+                                                                    button_detalle_solicitud(oportunidad.fase_inversion, oportunidad.id_inversion, oportunidad.id, lista_inversiones_usuario, inicio, oportunidad.monto_invertido)+                                                                
+'                                                            </div>'+
+
+                                                                botonInvertir(oportunidad, lista_inversiones_usuario, inicio)+
+'                                                            </div>'+
+'                                                        </div>'+
+'                                                    </div>'+
+'                                                </div>'+
+''+
+'                                            </div>'+
+'                                            <div class="row justify-content-center">'+
+'                                                    <div class="col-11 crece-oportunidades-contenido-monto-barra">'+
+'                                                        <div style="width:'+oportunidad.porcentaje_financiado+'%;" class="crece-oportunidades-contenido-monto-barra-progreso">                                                                        '+
+'                                                        </div>                                                        '+
+'                                                    </div>'+
+'                                            </div>'+
+'                                        </div>'+
+''+
+'                                        '+
+''+
+'                                        '+
+'                                        '+
+'                                    </div>'+
+'                                    '+
+'                            </div>'+
+'                        </div>';
+  }
+return tarjeta;
 }
 
 function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
@@ -1261,15 +1387,17 @@ $(".selectable").click(function (){
 
         $("#crece-botones-pag").hide()
         $('#crece-detalle-operaciones-id').hide()
+        $(".crece-oportunidades-button-group").show();
 
         if(fase_inversion == "pendientes"){
           $(".crece-oportunidades-titulo").html("Mis Inversiones Pendientes")
         }
         else if(fase_inversion == "por_fondear"){
-          $(".crece-oportunidades-titulo").html("Mis Inversiones Por Fondear")
+          $(".crece-oportunidades-titulo").html("Mis Inversiones Por Completar")
         }
         else if(fase_inversion == "vigentes"){
-          $(".crece-oportunidades-titulo").html("Mis Inversiones Vigentes")
+          $(".crece-oportunidades-titulo").html("Mis Inversiones Vigentes");
+          $(".crece-oportunidades-button-group").hide();
         }
         else if(fase_inversion == "terminados"){
           $(".crece-oportunidades-titulo").html("Mis Inversiones Terminadas")
@@ -1287,6 +1415,7 @@ $(".selectable").click(function (){
         dataEncontrada = true;
 
         $(".crece-oportunidades-container").html("");
+        $(".crece-oportunidades-list-container").html("");
         obtener_inversiones_por_usuario(inversionista)
 
         $("#crece-botones-pag").show()
@@ -1331,8 +1460,10 @@ function obtenerOportunidadesDesdeInversion(inicio, cantidad_opciones, fase_inve
                 crearCuadrosOportunidadesInversion(listaSolicitudes, false);
             }  
             else {
+
               $(".crece-oportunidades-container").html('<div class="col-11"><h3 class="crece-oportunidades-container-mensaje">No tienes inversiones activas</h3></div><div class="col-auto"><button class="crece-oportunidades-container-boton" type="button">Quiero Invertir</button></div>');
-              
+              $(".crece-oportunidades-list-container").html('<div class="col-11"><h3 class="crece-oportunidades-container-mensaje">No tienes inversiones activas</h3></div><div class="col-auto"><button class="crece-oportunidades-container-boton" type="button">Quiero Invertir</button></div>');
+
               $(".crece-oportunidades-container-boton").click(function(){
                 $("#todas_las_oportunidades a").trigger("click");
               });

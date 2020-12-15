@@ -1841,3 +1841,74 @@ font-size: 13px;
         border-width: 10px;
       }
 }
+
+/* Solicitudes LIST */
+
+.crece-oportunidades-list-container{
+  display: none;
+}
+
+.crece-oportunidades-list-container-card-image-container{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.crece-oportunidades-list-container-card-image-container-image{
+  width: 137px;
+  height: 137px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.crece-oportunidades-list-container-card-wrapper{
+  max-width: 862px;
+  margin: auto;
+}
+
+.crece-oportunidades-list-container-card{
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #DEDEDE;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  min-width: 862px;
+  padding-left: 0px;
+  
+}
+
+.crece-oportunidades-list-container-card-image-container-gradiente{
+  background-color: rgba(0,91,122,0.5);
+  width: 137px;
+  height: 137px;
+  border-radius: 100px;
+  position: absolute;
+}
+
+.crece-oportunidades-list-container-card .crece-oportunidades-imagen-gradiente-texto{
+  color: #006B8D;
+  padding-left: 0px;
+}
+
+.crece-oportunidades-list-container-card .crece-oportunidades-contenido-monto-texto p{
+  padding-left: 0px;
+  padding-top: 10px;
+  margin-bottom: 0px;
+}
+
+.crece-oportunidades-list-container-card .crece-oportunidades-contenido-monto-texto strong{
+  font-size: 18px;
+}
+
+.crece-oportunidades-list-container-card .crece-oportunidades-contenido-monto-texto p{
+  font-size: 14px;
+}
+
+.crece-oportunidades-list-container-card .crece-oportunidades-contenido-informacion{
+  margin-top: 0px;
+}
+
+.crece-oportunidades-list-container .crece-oportunidades-contenido-monto-barra{
+  margin-top: 10px;
+}

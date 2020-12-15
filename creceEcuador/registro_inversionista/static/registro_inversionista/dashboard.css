@@ -369,6 +369,40 @@ footer{
 	background-color: rgba(0,0,0,0.8);
 }
 
+.crece-oportunidades-button-group{
+	position: absolute;
+    right: 0;
+    margin-top: -50px;
+	padding-right: 25px;
+	
+}
+
+.crece-oportunidades-button-group button{
+	padding: 5px;
+    padding-right: 10px;
+}
+
+.crece-oportunidades-button-group button i{
+	font-size: 19px;
+	margin-right: 0px;
+}
+
+.crece-oportunidades-button-group-not-selected{
+	background-color: white;
+	color: #006B8D;
+	border: 1px solid white;
+}
+
+.crece-oportunidades-button-group-selected{
+	background-color: #006B8D;
+	color: white;
+	border: 1px solid #006B8D;
+}
+
+.crece-oportunidades-button-group-selected:hover{
+	cursor: default;
+}
+
  .crece-oportunidades-container-mensaje{
 	color: #006B8D ;
 	font-weight: 400 !important;
@@ -419,8 +453,14 @@ footer{
 	}
 }
 
-@media(min-width:1025px){
+@media(min-width:1023px){
 	.crece-usuario-ver-perfil{
+		display: none;
+	}
+}
+
+@media(max-width:1024px){
+	.crece-oportunidades-button-group{
 		display: none;
 	}
 }

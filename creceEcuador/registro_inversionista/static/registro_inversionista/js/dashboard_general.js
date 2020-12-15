@@ -73,8 +73,31 @@ let contratoAcUsoFirmado;
 
   });
 
+  function initListGridButtons(){
+      $("#list-button").click(function(){
+        $("#list-button").addClass("crece-oportunidades-button-group-selected");
+        $("#list-button").removeClass("crece-oportunidades-button-group-not-selected");
+        $("#grid-button").addClass("crece-oportunidades-button-group-not-selected");
+        $("#grid-button").removeClass("crece-oportunidades-button-group-selected");
+
+        $(".crece-oportunidades-list-container").css("display", "flex");
+        $(".crece-oportunidades-container").hide();
+      });
+      $("#grid-button").click(function(){
+        $("#grid-button").addClass("crece-oportunidades-button-group-selected");
+        $("#grid-button").removeClass("crece-oportunidades-button-group-not-selected");
+        $("#list-button").addClass("crece-oportunidades-button-group-not-selected");
+        $("#list-button").removeClass("crece-oportunidades-button-group-selected");
+
+        $(".crece-oportunidades-list-container").hide();
+        $(".crece-oportunidades-container").css("display", "flex");
+        
+      });
+  }
+
   $(document).ready(function() {
      initSidebar();
+     initListGridButtons();
      contratoAcUsoFirmado = $("#sidebar").attr("data-firmar-contrato");
 
     $("#usuario_data_container *, .crece-usuario-imagen-seleccionada, .crece-usuario-imagen").click( function() {
