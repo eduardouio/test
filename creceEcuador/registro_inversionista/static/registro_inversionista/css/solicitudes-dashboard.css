@@ -1889,6 +1889,7 @@ font-size: 13px;
 .crece-oportunidades-list-container-card .crece-oportunidades-imagen-gradiente-texto{
   color: #006B8D;
   padding-left: 0px;
+  max-width: 219px;
 }
 
 .crece-oportunidades-list-container-card .crece-oportunidades-contenido-monto-texto p{

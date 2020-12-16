@@ -542,7 +542,7 @@ function stringSolicitudList(oportunidad, lista_inversiones_usuario, inicio){
 '                                            <div class="crece-oportunidades-list-container-card-image-container">'+
 ''+
 '                                                <div class="crece-oportunidades-list-container-card-image-container-gradiente"></div>'+
-'                                                <img class="crece-oportunidades-list-container-card-image-container-image" src=/'+encodeURIComponent(oportunidad.imagen_url)+ '/>'+
+'                                                <img class="crece-oportunidades-list-container-card-image-container-image" src="/'+encodeURIComponent(oportunidad.imagen_url)+ '"/>'+
 '                                                    '+
 '                                            </div>'+
 '                                            '+
