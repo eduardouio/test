@@ -81,6 +81,16 @@ var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA',
 
 $(document).ready(function(){
 
+  if ( $('[type="date"]').prop('type') != 'date' ) {
+    $('[type="date"]').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-99:+0",
+      dateFormat: "yy-mm-dd",
+      altFormat: "yy-mm-dd"
+    });
+}
+
 
 
     let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
@@ -625,6 +635,8 @@ function validar_form() {
 
 function validar_fecha_nacimiento(input) {
   // body...
+  console.log(input);
+  console.log(input.value);
   year = input.value.split("-")[0]
   if (year.length > 4){
     return false

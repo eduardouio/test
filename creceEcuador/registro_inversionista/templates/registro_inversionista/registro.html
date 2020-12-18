@@ -4,6 +4,7 @@
 {% block head_css_agregado %}
             <link href="{% static 'registro_inversionista/css/registro.css' %}" rel="stylesheet" type="text/css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         {% endblock head_css_agregado %}
 {% block content %}
   <main id="main-id">
@@ -310,3 +311,6 @@
 
   <script type="text/javascript" src="{% static 'registro_inversionista/js/registro.js' %}" ></script>
 {% endblock content %}
+{% block footer_javascript_agregado %}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+{% endblock footer_javascript_agregado %}
