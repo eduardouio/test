@@ -68,13 +68,13 @@ body{
 	width: auto;
     height: auto;
     max-width: 45px;
-    max-height: 45px;
+	max-height: 45px;
+	border-radius: 100px;
 }
 
 .crece-menu-toggle{
 	width: 35px;
 	color: #006b8d;
-
 }
 
 .crece-menu-toggle:hover{

@@ -7,6 +7,7 @@ from .types import CASADO, UNION_LIBRE
 from django.db.models.signals import post_save
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+import avinit
 
 class Conyuge(models.Model):
     nombres = models.CharField(max_length=100)
@@ -179,6 +180,15 @@ class Usuario(models.Model):
 
     def __str__ (self):
         return self.nombres + " " + self.apellidos + ", " + self.cedula
+
+    @property
+    def get_profile_pic(self):
+        if self.profile_pic_ruta: 
+            return self.profile_pic_ruta
+
+        nombre = self.nombres + " " + self.apellidos
+        colors = ['#08a7ba']
+        return avinit.get_avatar_data_url(nombre, radius="100", colors=colors)
 
     @staticmethod
     def get_usuario(request):

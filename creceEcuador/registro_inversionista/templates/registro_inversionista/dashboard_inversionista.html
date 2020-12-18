@@ -1313,7 +1313,7 @@
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                   </svg>
               </div>
-              <div id="usuario_data_container" class='crece-usuario' data-profile-pic="{{usuario.profile_pic_ruta}}">
+              <div id="usuario_data_container" class='crece-usuario' data-profile-pic="{{usuario.get_profile_pic}}">
                 <div class="crece-usuario-nombre" id='nombre-usuario'>
                     ¡Hola {{ usuario.nombres }} {{usuario.apellidos}}!
                 </div>
@@ -1432,7 +1432,7 @@
                         <div id="container_imagen_navbar" class="col-auto">
                             <div id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="crece-usuario-imagen-navbar" 
-                                src="{{usuario.profile_pic_ruta}}" 
+                                src="{{usuario.get_profile_pic}}" 
                                 onerror="this.outerHTML= '<i class= &quot crece-usuario-icono-navbar fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">
                                 <i id="flecha_perfil_navbar" class="fa fa-caret-down" aria-hidden="true"></i>
                             </div>
@@ -1495,7 +1495,7 @@
                             </div>
                             <div id="modificar_imagen_perfil_container" class="row justify-content-center">
                                 <div class="col-lg-6">
-                                    <img class="crece-usuario-imagen-seleccionada" src="{{usuario.profile_pic_ruta}}" onerror="this.outerHTML= '<i class= &quot crece-usuario-imagen fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">
+                                    <img class="crece-usuario-imagen-seleccionada" src="{{usuario.get_profile_pic}}" onerror="this.outerHTML= '<i class= &quot crece-usuario-imagen fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="modificar_foto_perfil" class="crece-modificar-datos-formulario-wrapper-boton-subir-doc">
