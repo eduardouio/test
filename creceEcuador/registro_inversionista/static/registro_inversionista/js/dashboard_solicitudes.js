@@ -52,6 +52,141 @@ $(".crece-oportunidades-anterior").click( function() {
     } 
 });
 
+function fillWithSkeletonCardsVigente(){
+  var vigentesSkeleton = '<!-- skeleton -->'+
+'                        <div class="col-auto">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-vigente-skeleton-container">'+
+'                                    <div class="crece-oportunidades-vigente-skeleton-container-card">'+
+'                                        '+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-auto">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-vigente-skeleton-container">'+
+'                                    <div class="crece-oportunidades-vigente-skeleton-container-card">'+
+'                                        '+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>';
+$(".crece-oportunidades-container").html(vigentesSkeleton);
+$(".crece-oportunidades-list-container").html(vigentesSkeleton);
+	
+
+}
+
+function fillWithSkeletonCards(){
+  var gridSkeleton = '<!-- skeleton -->'+
+'                        <div class="col-xl-4 col-lg-6 col-12">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-skeleton-container">'+
+'                                    <div class="crece-oportunidades-skeleton-container-card">'+
+''+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-xl-4 col-lg-6 col-12">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-skeleton-container">'+
+'                                    <div class="crece-oportunidades-skeleton-container-card">'+
+''+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-xl-4 col-lg-6 col-12">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-skeleton-container">'+
+'                                    <div class="crece-oportunidades-skeleton-container-card">'+
+''+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-xl-4 col-lg-6 col-12">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-skeleton-container">'+
+'                                    <div class="crece-oportunidades-skeleton-container-card">'+
+''+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-xl-4 col-lg-6 col-12">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-skeleton-container">'+
+'                                    <div class="crece-oportunidades-skeleton-container-card">'+
+''+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-xl-4 col-lg-6 col-12">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-skeleton-container">'+
+'                                    <div class="crece-oportunidades-skeleton-container-card">'+
+''+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>';
+	
+  $(".crece-oportunidades-container").html(gridSkeleton);
+
+  var listSkeleton = '<!-- skeleton -->'+
+'                        <div class="col-auto">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-list-skeleton-container">'+
+'                                    <div class="crece-oportunidades-list-skeleton-container-card">'+
+'                                        '+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-auto">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-list-skeleton-container">'+
+'                                    <div class="crece-oportunidades-list-skeleton-container-card">'+
+'                                        '+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>'+
+''+
+'                        <!-- skeleton -->'+
+'                        <div class="col-auto">'+
+'                            <div class="row justify-content-center">'+
+'                                <div class="crece-oportunidades-list-skeleton-container">'+
+'                                    <div class="crece-oportunidades-list-skeleton-container-card">'+
+'                                        '+
+'                                    </div>'+
+'                                </div>'+
+'                            </div>'+
+'                        </div>';
+
+$(".crece-oportunidades-list-container").html(listSkeleton);
+	
+
+}
+
 function obtenerOportunidadesInversion(inicio, cantidad_opciones, lista_inversiones_usuario){
     var querystring = "?inicio="+inicio +"&cantidad="+ cantidad_opciones;
     $.ajax({
@@ -60,6 +195,11 @@ function obtenerOportunidadesInversion(inicio, cantidad_opciones, lista_inversio
         dataType: 'json', // added data type
         success: function(res) {
             if (res.data.length > 0){
+                if(indice_opcion_actual === 0){
+                  $(".crece-oportunidades-container").html("");
+                  $(".crece-oportunidades-list-container").html("");
+                }
+
                 indice_opcion_actual += cantidad_opciones
 
                 crearCuadrosOportunidadesInversion(res.data, true, lista_inversiones_usuario, "INICIO");
@@ -1390,16 +1530,20 @@ $(".selectable").click(function (){
         $(".crece-oportunidades-button-group").show();
 
         if(fase_inversion == "pendientes"){
+          fillWithSkeletonCards();
           $(".crece-oportunidades-titulo").html("Mis Inversiones Pendientes")
         }
         else if(fase_inversion == "por_fondear"){
+          fillWithSkeletonCards();
           $(".crece-oportunidades-titulo").html("Mis Inversiones Por Completar")
         }
         else if(fase_inversion == "vigentes"){
+          fillWithSkeletonCardsVigente()
           $(".crece-oportunidades-titulo").html("Mis Inversiones Vigentes");
           $(".crece-oportunidades-button-group").hide();
         }
         else if(fase_inversion == "terminados"){
+          fillWithSkeletonCards();
           $(".crece-oportunidades-titulo").html("Mis Inversiones Terminadas")
         }
         else{
@@ -1416,6 +1560,9 @@ $(".selectable").click(function (){
 
         $(".crece-oportunidades-container").html("");
         $(".crece-oportunidades-list-container").html("");
+        
+        fillWithSkeletonCards();
+
         obtener_inversiones_por_usuario(inversionista)
 
         $("#crece-botones-pag").show()

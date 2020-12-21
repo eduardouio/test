@@ -1913,3 +1913,287 @@ font-size: 13px;
 .crece-oportunidades-list-container .crece-oportunidades-contenido-monto-barra{
   margin-top: 10px;
 }
+
+/* skeleton */
+.crece-oportunidades-skeleton-container{
+  width: 332px;
+  height: 440px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+
+.crece-oportunidades-skeleton-container-card{
+  height: 440px;
+  border-radius: 10px;
+}
+
+.crece-oportunidades-skeleton-container-card{
+  background-repeat: no-repeat;
+  background-image:
+
+    /* background image con texto */
+    linear-gradient(white 14px, transparent 0),
+    linear-gradient(white 14px, transparent 0),
+    linear-gradient(white 14px, transparent 0),
+    linear-gradient(white 14px, transparent 0),
+    linear-gradient(#ccc 100%, transparent 0),
+
+    /* Monto */
+    linear-gradient(#ccc 18px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+
+    /* Plazo, Industria, TIR */
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+
+    /* Pagados, Puntualidad, Vigente */
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+
+
+    /* layer 0: card bg */
+    /* gray rectangle that covers whole element */
+    linear-gradient(white 100%, transparent 0);
+}
+
+.crece-oportunidades-skeleton-container-card{
+  background-size:
+
+    142px 14px, /*texto imagen*/
+    142px 14px, /*texto imagen*/
+    142px 14px, /*texto imagen*/
+    142px 14px, /*texto imagen*/
+    332px 162px, /* background imagen */
+
+    70px 18px, /*monto*/
+    220px 14px, /*monto invertido*/
+
+    40px 14px, /* titulo plazo */
+    40px 14px, /* titulo industria */
+    40px 14px, /* titulo tir */
+    70px 14px, /* plazo */
+    70px 14px, /* industria */
+    70px 14px, /* tir */
+
+    40px 14px, /* titulo pagados */
+    40px 14px, /* titulo puntualidad */
+    40px 14px, /* titulo vigente */
+    70px 14px, /* pagados */
+    70px 14px, /* puntualidad */
+    70px 14px, /* vigente */
+
+    100% 100%;  /* card bg */
+}
+
+.crece-oportunidades-skeleton-container-card{
+  background-position:
+    32px  40px, /*texto imagen*/
+    32px  62px, /*texto imagen*/
+    32px  84px, /*texto imagen*/
+    32px  106px, /*texto imagen*/
+    0 0, /* background imagen */
+
+    32px 175px, /*monto*/
+    32px 203px, /*monto invertido*/
+
+    45px 250px, /* titulo plazo */
+    142px 250px, /* titulo industria */
+    244px 250px, /* titulo plazo */
+    32px 272px, /* plazo */
+    130px 272px, /* industria */
+    230px 272px, /* plazo */
+
+    45px 306px, /* titulo pagado */
+    142px 306px, /* titulo puntualidad */
+    244px 306px, /* titulo vigente */
+    32px 328px, /* pagado */
+    130px 328px, /* puntualidad */
+    230px 328px, /* vigente */
+
+    0 0;        /* card bg */
+}
+
+.crece-oportunidades-list-skeleton-container{
+  width: 862px;
+  height: 201px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.crece-oportunidades-list-skeleton-container-card{
+  height: 201px;
+  border-radius: 10px;
+}
+
+.crece-oportunidades-list-skeleton-container-card{
+  background-repeat: no-repeat;
+  background-image:
+
+    /* avatar */
+    radial-gradient(circle 68.5px, #ccc 99%, transparent 0),
+
+    /* texto avatar (imagen) */
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+
+    /* Monto */
+    linear-gradient(#ccc 18px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+
+    /* Plazo, Industria, TIR */
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+    linear-gradient(#ccc 14px, transparent 0),
+
+
+    /* layer 0: card bg */
+    /* gray rectangle that covers whole element */
+    linear-gradient(white 100%, transparent 0);
+}
+
+.crece-oportunidades-list-skeleton-container-card{
+  background-size:
+
+    137px 137px, /*avatar */
+
+    142px 14px, /*texto imagen*/
+    142px 14px, /*texto imagen*/
+    142px 14px, /*texto imagen*/
+    142px 14px, /*texto imagen*/
+
+    70px 18px, /*monto*/
+    220px 14px, /*monto invertido*/
+
+    40px 14px, /* titulo plazo */
+    40px 14px, /* titulo industria */
+    40px 14px, /* titulo tir */
+    70px 14px, /* plazo */
+    70px 14px, /* industria */
+    70px 14px, /* tir */
+
+    100% 100%;  /* card bg */
+}
+
+.crece-oportunidades-list-skeleton-container-card{
+  background-position:
+
+    51px 30px, /* avatar */
+
+    217px 21px, /*texto imagen*/
+    217px 43px, /*texto imagen*/
+    217px 65px, /*texto imagen*/
+    217px 87px, /*texto imagen*/
+
+    217px 120px, /*monto*/
+    217px 148px, /*monto invertido*/
+
+    486px 20px, /* titulo plazo */
+    606px 20px, /* titulo industria */
+    723px 20px, /* titulo plazo */
+    471px 42px, /* plazo */
+    591px 42px, /* industria */
+    708px 42px, /* plazo */
+
+    0 0;        /* card bg */
+}
+
+
+
+.crece-oportunidades-vigente-skeleton-container{
+  width: 898px;
+  height: 348px;
+  margin-bottom: 50px;
+}
+
+.crece-oportunidades-vigente-skeleton-container-card{
+  height: 348px;
+}
+
+.crece-oportunidades-vigente-skeleton-container-card{
+  background-repeat: no-repeat;
+  background-image:
+
+    /* id */
+    linear-gradient(#ccc 31px, transparent 0),
+
+    /* avatar */
+    radial-gradient(circle 100px, #ccc 99%, transparent 0),
+
+    /* texto avatar (imagen) */
+    linear-gradient(#ccc 19px, transparent 0),
+    linear-gradient(#ccc 19px, transparent 0),
+
+    /* monto invertido */
+    linear-gradient(#ccc 30px, transparent 0),
+    linear-gradient(#ccc 16px, transparent 0),
+
+    /* datos ganancia */
+    linear-gradient(#ccc 16px, transparent 0),
+    linear-gradient(#ccc 16px, transparent 0),
+    linear-gradient(#ccc 16px, transparent 0),
+
+    /* proxima fecha */
+    linear-gradient(#ccc 131px, transparent 0),
+
+    /* layer 0: card bg */
+    /* gray rectangle that covers whole element */
+    linear-gradient(white 100%, transparent 0);
+}
+
+.crece-oportunidades-vigente-skeleton-container-card{
+  background-size:
+
+    136px 31px, /* id */
+
+    200px 200px, /*avatar */
+
+    170px 19px, /* texto avatar (imagen) */
+    136px 19px, /* texto avatar (imagen) */
+
+    73px 30px, /* monto invertido */
+    108px 16px, /* monto invertido */
+
+    124px 16px, /* datos ganancia */
+    124px 16px, /* datos ganancia */
+    124px 16px, /* datos ganancia */
+
+    212px 131px, /* proxima fecha */
+
+    100% 100%;  /* card bg */
+}
+
+.crece-oportunidades-vigente-skeleton-container-card{
+  background-position:
+
+    15px 8px, /* id */
+
+    89px 51px, /*avatar */
+
+    102px 271px, /* texto avatar (imagen) */
+    118px 295px, /* texto avatar (imagen) */
+
+    433px 22px, /* monto invertido */
+    433px 58px, /* monto invertido */
+
+    433px 133px, /* datos ganancia */
+    433px 174px, /* datos ganancia */
+    433px 212px, /* datos ganancia */
+
+    653px 22px, /* proxima fecha */
+
+    0 0;        /* card bg */
+}
