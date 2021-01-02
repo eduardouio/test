@@ -15,6 +15,9 @@ import decimal
 from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA, COMISIONES_BANCARIAS
 import numpy_financial as npf
 import json
+import re
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 # Create your models here.
 
 FASES_INVERSION = ('OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND', 'VALID', 'ABANDONED','GOING', 'FINISHED','DECLINED')
@@ -66,6 +69,16 @@ class Inversion(models.Model):
     @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='DECLINED')
     def decline_transfer(self):
         EventoInversionista.objects.create(accion="TRANSFER_SUBMITED_to_DECLINED", inversion=self, usuario=self.id_user)
+
+        mail_subject = 'Tu transferencia no ha sido recibida'
+        message = render_to_string('fases_inversiones/email_inversion_declined.html', {
+        })
+        to_email = self.id_user.email
+        email = EmailMessage(
+                    mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+        )
+        email.content_subtype = "html"
+        email.send()
         pass
 
     @transition(field=fase_inversion, source='DECLINED', target='PENDING_TRANSFER')
@@ -76,6 +89,17 @@ class Inversion(models.Model):
     @transition(field=fase_inversion, source='TRANSFER_SUBMITED', target='TO_BE_FUND')
     def approve_transfer(self):
         EventoInversionista.objects.create(accion="TRANSFER_SUBMITED_to_TO_BE_FUND", inversion=self, usuario=self.id_user)
+
+        mail_subject = 'Tu transferencia ha sido recibida'
+        message = render_to_string('fases_inversiones/email_inversion_tbfund.html', {
+            'inversion': self,
+        })
+        to_email = self.id_user.email
+        email = EmailMessage(
+                    mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+        )
+        email.content_subtype = "html"
+        email.send()
         pass
 
 
@@ -92,6 +116,7 @@ class Inversion(models.Model):
     @transition(field=fase_inversion, source='GOING', target='FINISHED')
     def finish(self):
         EventoInversionista.objects.create(accion="GOING_to_FINISHED", inversion=self, usuario=self.id_user)
+        enviarEmailFinInversion(self)
         pass
 
     @property
@@ -109,6 +134,10 @@ class Inversion(models.Model):
     @property
     def nombre_completo_autor(self):
         return self.id_solicitud.id_autor.nombres + " " + self.id_solicitud.id_autor.apellidos
+
+    @property
+    def monto_formated(self):
+        return sep( "%.2f" % self.monto)
 
 
     @property
@@ -379,6 +408,111 @@ def add_months(sourcedate, months):
 def crear_pago_ta_real(solicitud, fecha_pago_real, num_pago):
     pass
 
+#Funcion para formatear float
+# La funcion espera un string con 2 decimales de precision (ej: "%.2f" % 32757121.33)
+def sep(s, thou=",", dec="."):
+    integer, decimal = s.split(".")
+    integer = re.sub(r"\B(?=(?:\d{3})+$)", thou, integer)
+    return integer + dec + decimal
+
+
+def enviarEmailPagos(inversion):
+
+    mail_subject = 'Tu inversión ha iniciado'
+    message = render_to_string('fases_inversiones/email_inicio_inversion.html', {
+        'tabla': generarStringTabla(inversion)
+    })
+    to_email = inversion.id_user.email
+    email = EmailMessage(
+                mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+    )
+    email.content_subtype = "html"
+    email.send()
+
+
+def generarStringTabla(inversion):
+    string_tabla = '''<table style="width: 100%;">
+        <th>
+            <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                Fecha de Pago
+            </td>
+            <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">
+                Ganancia
+            </td>
+        </th>'''
+
+    detalles = Pago_detalle.objects.filter(id_inversion=inversion).order_by('orden')
+
+    for detalle in detalles:
+        string_temp = ('<tr><td style="border: 1px solid #dddddd; text-align: center; padding: 8px; font-weight: bold;">'+
+                                            str(detalle.orden)
+                                        +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+                                            str(detalle.fecha)
+                                        +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+                                            '$'+ sep( "%.2f" % detalle.ganancia) 
+                                        +'</td> </tr>')
+
+        string_tabla += string_temp
+
+    string_tabla += '</table>'
+
+
+    return string_tabla
+
+def enviarEmailFinInversion(inversion):
+
+    mail_subject = 'Tu inversión ha terminado exitosamente'
+    message = render_to_string('fases_inversiones/email_final_inversion.html', {
+        'tabla_inversion': generarStringTablaInversion(inversion)
+    })
+    to_email = inversion.id_user.email
+    email = EmailMessage(
+                mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+    )
+    email.content_subtype = "html"
+    email.send()
+
+def generarStringTablaInversion(inversion):
+    today = date.today()
+
+    string_tabla = '<table style="width: 100%;">'
+
+    string_tabla += ('<tr><td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">'+
+        "Intereses cobrados:"
+    +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+        '$'+ sep( "%.2f" % (inversion.ganancia_total - inversion.inversion_total)) 
+    +'</td> </tr>')
+
+    string_tabla += ('<tr><td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">'+
+        "Capital invertido:"
+    +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+        '$'+ sep( "%.2f" % (inversion.inversion_total)) 
+    +'</td> </tr>')
+
+    string_tabla += ('<tr><td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">'+
+        "Fecha de inicio:"
+    +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+        str(inversion.id_solicitud.fecha_finalizacion)
+    +'</td> </tr>')
+
+    string_tabla += ('<tr><td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">'+
+        "Fecha de finalización:"
+    +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+        str(today.strftime("%Y-%m-%d"))
+    +'</td> </tr>')
+
+    string_tabla += ('<tr><td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;">'+
+        "TIR:"
+    +'</td><td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">'+
+        str(inversion.id_solicitud.tir)
+    +'%</td> </tr>')
+
+    string_tabla += '</table>'
+
+
+    return string_tabla
+
+    
 
 #Signals
 def cambiar_estado_solicitud(sender, instance, **kwargs):
@@ -413,6 +547,7 @@ def crear_pagos_inversion(sender, instance, **kwargs):
             for inversion in inversiones:
                 if inversion.fase_inversion == "GOING":
                     crear_pagos(inversion, instance)
+                    enviarEmailPagos(inversion)
                 # else:
                 #     Inversion.fase_inversion
             diccionario = crear_tabla_amortizacion(instance, "PAGO")
@@ -440,6 +575,23 @@ def crear_pagos_inversion(sender, instance, **kwargs):
     except Solicitud.DoesNotExist:
         print("Solicitud nueva")
 
+
+#Signals
+def cambiar_a_finished(sender, instance, **kwargs):
+    if(instance.capital_insoluto == 0):
+
+        solicitud = instance.id_pago_ta_supuesta.id_solicitud
+        inversiones = Inversion.objects.filter(id_solicitud=solicitud)
+
+        for inversion in inversiones:
+            if inversion.fase_inversion == "GOING":
+                inversion.finish()
+                inversion.save()
+
+
+
 # Se conecta la señal con el modelo TransferenciaInversion
 pre_save.connect(cambiar_estado_solicitud, sender=Solicitud)
 post_save.connect(crear_pagos_inversion, sender=Solicitud)
+
+post_save.connect(cambiar_a_finished, sender=Pagos_ta_real)

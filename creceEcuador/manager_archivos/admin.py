@@ -34,6 +34,8 @@ class TransferenciaAdmin(admin.ModelAdmin):
 
             except models.TransferenciaInversion.DoesNotExist:
                 print("No existe inversion")
+            except AttributeError:
+                print("Atribute Error en change view manager archivos")
         return template_response
 
 admin.site.register(models.TransferenciaInversion , TransferenciaAdmin)
