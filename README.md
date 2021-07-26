@@ -37,3 +37,28 @@ python manage.py graph_transitions > transitions.dot
 
 After that copy the text generated inside transitions.dot and paste it here
 http://www.webgraphviz.com/
+
+## How to load answer options in survey questions
+```
+python manage.py loaddata vanilla_seed.json
+```
+
+## Mail Configuration
+
+In order to register or register an application you must configure the email in the application.
+-In the route **creceEcuador/creceEcuador** in the **settings.py** file, configure the following:
+
+```
+#Email
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+```
+
+Note: The **EMAIL_HOST_USER** is the email necessary to send an email to the user to activate their account.
+
+
+## configure pre-approved temporary requests
+```
+python manage.py loaddata preaprobados_seed.json
+``` 

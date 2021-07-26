@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from datetime import datetime
 
 # Create your models here.
 class UsuarioSolicitanteTemporal(models.Model):
@@ -49,6 +50,7 @@ class SolicitudTemporal(models.Model):
     uso_financiamiento = models.TextField(blank=False)
     estado = models.IntegerField(choices=opciones_estado, null=True, blank=True, default=0)
     razon_de_no_aprobacion = models.CharField(max_length=50, choices=opciones_no_aprob, null=True, blank=True)
+    fecha_creacion = models.DateTimeField('Fecha de creación',default=datetime.now())
     id_usuario_solicitante_temporal = models.ForeignKey(UsuarioSolicitanteTemporal, on_delete=models.CASCADE)
 
     def __str__ (self):
@@ -68,3 +70,16 @@ class EncuestaSolicitudTemporal(models.Model):
 
 def numberWithCommas(num):
     return f"{num:,}"
+class SolicitantesPreAprobados(models.Model):
+    opciones_estado = [
+        (0, "Aprobado"),
+        (2, "Domicilio no se encuentra en localidad requerida"),
+        (4, "Situacion Financiera"),
+        (5, "No cumple tiempo minimo"),
+        (7, "No suficiente info para ejercicio 2020"),
+        (8, "Situación crediticia - no se ha podido calcular dScore"),
+    ]
+    id = models.AutoField(primary_key=True)
+    ruc = models.CharField(max_length=13, blank=False)
+    estado = models.IntegerField(choices=opciones_estado, null=True, blank=True, default=0)
+    fecha_creacion = models.DateTimeField(default=datetime.now())

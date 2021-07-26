@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from django.shortcuts import render
-from .models import SolicitudTemporal, EncuestaSolicitudTemporal, UsuarioSolicitanteTemporal
+from .models import SolicitudTemporal, EncuestaSolicitudTemporal, UsuarioSolicitanteTemporal, SolicitantesPreAprobados
 from registro_inversionista.models import Pregunta, Respuesta
 from django.http import HttpResponse
 from rest_framework import status
@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from django.contrib.auth.models import User
-
+from django.contrib import messages
 # Create your views here.
 class RegisterSolicitudTemporal(generics.CreateAPIView):
     def post(self, request, *args, **kwargs):
@@ -31,7 +31,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
 
         preguntas = encuesta.get("preguntas")
         respuestas = encuesta.get("respuestas")
-
+        existe_solicitud = False
         if UsuarioSolicitanteTemporal.objects.filter(cedula=cedula).exists():
             usuario = UsuarioSolicitanteTemporal.objects.filter(cedula=cedula)[0]
             usuario.email = email
@@ -39,14 +39,21 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
             usuario.apellidos = apellidos
             usuario.celular = celular
             usuario.save()
-
-            new_solicitud = SolicitudTemporal(
-                razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
-                tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
-                id_usuario_solicitante_temporal= usuario
-            )
-
-            new_solicitud.save()
+            #validando si ya existe una solicitud temporal para ese RUC
+            if (existeCI(ruc)):
+                #ya ha realizado una peticion con dicho ruc
+                existe_solicitud = True
+                messages.warning(request,'Ya ha registrado una solicitud con dicha CEDULA O RUC.')
+                #validar tiempo (si lleva mas de un mes se actualiza la peticion)
+            else:
+                new_solicitud = SolicitudTemporal(
+                    razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
+                    tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
+                    id_usuario_solicitante_temporal= usuario
+                )
+                rechazar(tipo_persona,ruc,new_solicitud)
+                new_solicitud.save()
+                
 
         else:
             new_user = User( username=cedula, password=cedula, 
@@ -63,55 +70,62 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
             )
 
             new_usuario.save()
-
-            new_solicitud = SolicitudTemporal(
-                razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
-                tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
-                id_usuario_solicitante_temporal= new_usuario
-            )
-
-            new_solicitud.save()
-
+            if (existeCI(ruc)):
+                #ya ha realizado una peticion con dicho ruc
+                existe_solicitud=True
+                #validar tiempo (si lleva mas de un mes se actualiza la peticion)
+            else:
+                new_solicitud = SolicitudTemporal(
+                    razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
+                    tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
+                    id_usuario_solicitante_temporal= new_usuario
+                )
+                rechazar(tipo_persona,ruc,new_solicitud)
+                new_solicitud.save()
+                
+        
         #guardar_contratos(nombres,apellidos,cedula, new_usuario) #falta hacer el contrato para solic
 
+        #valida persona natural
 
         #guardando encuesta
-        for i in range(len(preguntas)):
-            pregunta = Pregunta.objects.filter(texto=preguntas[i])[0]
-            respuesta = Respuesta.objects.filter(texto=respuestas[i])[0]
-            encuesta = EncuestaSolicitudTemporal(id_pregunta= pregunta, id_respuesta=respuesta, id_solicitud_temporal=new_solicitud)
-            encuesta.save()
+        if (existe_solicitud==False):
+            for i in range(len(preguntas)):
+                pregunta = Pregunta.objects.filter(texto=preguntas[i])[0]
+                respuesta = Respuesta.objects.filter(texto=respuestas[i])[0]
+                encuesta = EncuestaSolicitudTemporal(id_pregunta= pregunta, id_respuesta=respuesta, id_solicitud_temporal=new_solicitud)
+                encuesta.save()
 
         
-        mail_subject = '¡Gracias por tu Solicitud!'
-        message = render_to_string('solicitante/registro_solicitud_email.html', {
-            'solicitud': new_solicitud,
-            'monto': numberWithCommas(float(monto)),
-            'tasa': numberWithCommas(float(tasa))
-        })
-        plain_message = strip_tags(message)
-        to_email = email
-        correo = EmailMessage(
-                    mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
-        )
-        correo.content_subtype = "html"
-        correo.send()
+            mail_subject = '¡Gracias por tu Solicitud!'
+            message = render_to_string('solicitante/registro_solicitud_email.html', {
+                'solicitud': new_solicitud,
+                'monto': numberWithCommas(float(monto)),
+                'tasa': numberWithCommas(float(tasa))
+            })
+            plain_message = strip_tags(message)
+            to_email = email
+            correo = EmailMessage(
+                        mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+            )
+            correo.content_subtype = "html"
+            correo.send()
 
-        #mail a admin
-        print(tipo_persona)
-        print(type(tipo_persona))
-        mail_subject = 'Nueva solicitud en la plataforma'
-        message = render_to_string('solicitante/email_registro_solicitud_admin.html', {
-            'solicitud': new_solicitud,
-            'tipo_persona': "Si" if tipo_persona == "1" else "No"
-        })
-        plain_message = strip_tags(message)
-        to_email = "info@creceecuador.com"
-        correo = EmailMessage(
-                    mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
-        )
-        correo.content_subtype = "html"
-        correo.send()
+            #mail a admin
+            print(tipo_persona)
+            print(type(tipo_persona))
+            mail_subject = 'Nueva solicitud en la plataforma'
+            message = render_to_string('solicitante/email_registro_solicitud_admin.html', {
+                'solicitud': new_solicitud,
+                'tipo_persona': "Si" if tipo_persona == "1" else "No"
+            })
+            plain_message = strip_tags(message)
+            to_email = "info@creceecuador.com"
+            correo = EmailMessage(
+                        mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+            )
+            correo.content_subtype = "html"
+            correo.send()
 
         response = HttpResponse(status=status.HTTP_200_OK)   
 
@@ -122,3 +136,22 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
 
 def numberWithCommas(num):
     return f"{num:,.2f}"
+
+def existeCI(RUC):
+    try:
+        solicitudesDB=SolicitudTemporal.objects.get(ruc=RUC)
+        if (solicitudesDB.ruc==RUC):
+            return True
+    except SolicitudTemporal.DoesNotExist:
+        solicitudesDB= None
+        return False
+
+def rechazar(tipoPersona,RUC,nueva_solicitud):
+    if(tipoPersona=='1'):
+        nueva_solicitud.estado = 4    
+    else:
+        try:
+            preabrobados=SolicitantesPreAprobados.objects.get(ruc=RUC)
+            nueva_solicitud.estado = preabrobados.estado
+        except SolicitantesPreAprobados.DoesNotExist:
+            preabrobados= None

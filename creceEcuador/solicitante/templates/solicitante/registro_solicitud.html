@@ -385,6 +385,15 @@
 
 
     </div>
+    <div id='content'>
+      {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags}} m-2" id="msg" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+      {% endif %}
+    </div>
 
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -392,4 +401,11 @@
   <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
 
   <script type="text/javascript" src="{% static 'solicitante/js/registro_solicitud.js' %}" ></script>
+  <script>
+    setTimeout(function(){
+      if($('msg').length > 0){
+        $('msg').remove();
+      }
+    },200)
+  </script>
 {% endblock content %}
