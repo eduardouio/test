@@ -1,7 +1,7 @@
-let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004;
+let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0;//0.004;
 let IVA = 0.12
-let COMISION_ADJUDICACION_FACTOR =0.008;
-let ADJUDICACION_FACTOR = 1.12
+let COMISION_ADJUDICACION_FACTOR = 0;//0.008;
+let ADJUDICACION_FACTOR = 0;//1.12
 let COMISION_BANCO = 0.4
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
@@ -65,7 +65,7 @@ function obtenerDetallesOportunidadInversion(id_oportunidad){
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            
+
             if (res.data){
                 calcular_tabla_inversionista('FALSE',res.data);
                	let boton_invertir = document.getElementById("simular-inversion-boton-invertir")
@@ -73,7 +73,7 @@ function obtenerDetallesOportunidadInversion(id_oportunidad){
                		// body...
                		go_to_fase2(res.data)
                	})
-            }  
+            }
         },
         error: function(xhr, status, error) {
             var err = JSON.parse(xhr.responseText);
@@ -86,16 +86,16 @@ function obtenerDetallesOportunidadInversion(id_oportunidad){
 
 function go_to_fase2(oportunidad){
 	guardar_tabla(oportunidad)
-	
+
 
 }
 
 function verificar_valores_inversion(oportunidad) {
 	// body...
 
-	
+
 	let input_monto_inversion = document.getElementById("input-monto-aceptar-inversion").value
-	let monto_maximo = oportunidad.monto * 0.9 
+	let monto_maximo = oportunidad.monto * 0.9
 	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
 	let monto_por_financiar = oportunidad.monto - total_financiado
 
@@ -112,7 +112,7 @@ function verificar_valores_inversion(oportunidad) {
 			}
 
 
-			
+
 		}
 		return false
 	}
@@ -138,7 +138,7 @@ function guardar_tabla(oportunidad) {
 	inversion_total = inversion_total.replace(/\$/g,'');
 	let ganancia_total = document.getElementById("ganancia-total").textContent;
 
-	let inversion = {"monto": monto, 
+	let inversion = {"monto": monto,
 						"id_solicitud": id_solicitud,
 						"adjudicacion": adjudicacion,
 						"adjudicacion_iva": adjudicacion_iva,
@@ -146,7 +146,7 @@ function guardar_tabla(oportunidad) {
 						"ganancia_total": ganancia_total
 					}
 
-		
+
 	let pagos = [];
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let tabla_childrens = tabla.children
@@ -168,9 +168,9 @@ function guardar_tabla(oportunidad) {
 		ganancia = ganancia.replace(/\$/g,'');
 
 
-		
 
-		
+
+
 		let orden = {"orden": i+1,
 						"fecha":fecha_pago,
 						"pago": pago,
@@ -186,7 +186,7 @@ function guardar_tabla(oportunidad) {
 
 	}
 
-	
+
 
 	var xhttp = new XMLHttpRequest();
 
@@ -224,10 +224,10 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		DICCIONARIO_SIMULACION = diccionario
 		OPORTUNIDAD = oportunidad
 	}
-	
-	
+
+
 	let input_monto_inversion = document.getElementById("input-monto").value
-		
+
 
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let tabla_inversionista_grid = document.getElementById("crece-tabla-inversionista-id");
@@ -242,13 +242,13 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		}
 
 
-		
+
 	}
-	
-	
+
+
 	let monto_inversion = parseInt(input_monto_inversion, 10)
 
-	
+
 	let lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
 	let lista_cuotas_sol = diccionario['lista_cuotas']
 	let lista_intereses_sol = diccionario['lista_intereses']
@@ -264,7 +264,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	let cargo_adjudicacion_iva = cargo_adjudicacion * IVA
 	let inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva //Verficar si se agrega el adjudicacion IVA
 
-	
+
 	let ganancia_total = 0;
 	let pago_total = 0;
 	let comision_total = 0;
@@ -294,19 +294,19 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
 
-		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i 
-		
+		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i
+
 		fila.innerHTML= html_fila;
 		tabla.appendChild(fila)
 
-		
+
 
 	}
 
 	/*Llenando los datos de adjudicacion...*/
 
 
-	
+
 
 	let div_adjudicacion_total = document.getElementById("adjudicacion-total")
 	cargo_adjudicacion_total = cargo_adjudicacion+cargo_adjudicacion_iva
@@ -315,7 +315,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 	let div_inversion_total = document.getElementById("inversion-total")
 	div_inversion_total.innerHTML = '$'+inversion_total.toFixed(2)
 
-	
+
 	let div_ganancia = document.getElementById("ganancia-total");
 	div_ganancia.innerHTML = ganancia_total.toFixed(2);
 	let div_adjudicacion = document.getElementById("adjudicacion");
@@ -326,8 +326,8 @@ function calcular_tabla_inversionista(input_modal,oportunidad) {
 
 
 
-	
-	
+
+
 
 }
 
@@ -341,20 +341,20 @@ function hacer_tabla_amortizacion(oportunidad) {
 	let date = new Date(fecha_split[0], fecha_split[1], fecha_split[2])
 	let next_date = new Date(date.getFullYear(),date.getMonth()+1,date.getDate())
 	let date_tmp = new Date()
-	
+
 	let fechas = []
 	let dias = []
-	
+
 
 	let fecha_pago  = date.getFullYear() + "-" + (date.getMonth()+1) + "-" +date.getDate()
 	let dias_transcurridos = getDuration(date-date).value
 	fechas.push(fecha_pago)
 	dias.push(dias_transcurridos)
 	for (var i = 0; i < oportunidad.plazo; i++) {
-		
-		
+
+
 		if(next_date.getDay() == 0){
-			
+
 			next_date.setDate(next_date.getDate() + 1) //lunes
 			dias_transcurridos = getDuration(next_date-date).value + 1
 			date.setDate(next_date.getDate())
@@ -372,12 +372,12 @@ function hacer_tabla_amortizacion(oportunidad) {
 			date.setDate(next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()+1) + "-" +next_date.getDate()
 		}
-		
+
 		dias.push(dias_transcurridos)
 		date.setMonth(date.getMonth()+1)
 		next_date.setMonth(next_date.getMonth()+1)
 		fechas.push(fecha_pago)
-		
+
 	}
 
 
@@ -395,7 +395,7 @@ function hacer_tabla_amortizacion(oportunidad) {
 	let tabla = document.getElementById("tabla-amortizacion-id");
 	let MONTO_SOLICITANTE = parseInt(oportunidad.monto, 10)
 	let capital_por_pagar_n = MONTO_SOLICITANTE
-	let cuota_n = cuota_mensual 
+	let cuota_n = cuota_mensual
 
 	let capital_TOTAL =0
 	let cuota_TOTAL = 0
@@ -408,25 +408,25 @@ function hacer_tabla_amortizacion(oportunidad) {
 
 	for (var i = 0; i < oportunidad.plazo; i++) {
 		//let fila = document.createElement("tr")
-		
-		
+
+
 		/*Intereses mensual*/
 		let dias_transcurridos = dias[i+1]
 
 		tasa_mensual = [ Math.pow((1 + tasa_diaria),dias_transcurridos) ] - 1
 		intereses_n = capital_por_pagar_n*tasa_mensual
-		
+
 		intereses_TOTAL += intereses_n
 		lista_intereses.push(intereses_n)
 
 
 		capital_n = cuota_n - intereses_n  //capital
-		
+
 
 		if (i == oportunidad.plazo-1){
 			capital_n = MONTO_SOLICITANTE - capital_TOTAL //capital mensual
 			cuota_n = capital_n + intereses_n //cuota a pagar
-			
+
 		}
 
 		/*Capital total y llenando la lista de capital mensual*/
@@ -445,7 +445,7 @@ function hacer_tabla_amortizacion(oportunidad) {
 	}
 
 
-	let diccionario = {'lista_cuotas': lista_cuotas, 
+	let diccionario = {'lista_cuotas': lista_cuotas,
 						'lista_capital_insoluto': lista_capital_insoluto,
 						'lista_intereses': lista_intereses,
 						'lista_capitales':lista_capitales,
@@ -522,5 +522,3 @@ function calcularPorcentajeFinanciado(monto, porcentaje_financiado){
   total_financiado = parseFloat(monto)*(parseFloat(porcentaje_financiado)/100);
   return Math.round( total_financiado );
 }
-
-

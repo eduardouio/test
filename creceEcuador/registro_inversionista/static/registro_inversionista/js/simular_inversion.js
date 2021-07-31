@@ -1,8 +1,8 @@
 
-let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0.004;
+let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0;//0.004;
 let IVA = 0.12
-let COMISION_ADJUDICACION_FACTOR =0.007;
-let ADJUDICACION_FACTOR = 1.12
+let COMISION_ADJUDICACION_FACTOR = 0;//0.007;
+let ADJUDICACION_FACTOR = 0;//1.12
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
 let COMISION_BANCO = 0.4
@@ -43,7 +43,7 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
       type: 'GET',
       dataType: 'json', // added data type
       success: function(res) {
-          
+
           if (res.data){
 
           	if (!verificar_valores_inversion("detalle-solicitud", res.data)){
@@ -67,7 +67,7 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
 			  $("#completar_datos_wrapper").hide();
 			  $("#crece-declaracion-body-id").hide();
 			  $("#cambiar-monto-inversion-modal-dashboard").hide()
-          	
+
           	let barra_porcentaje_financiado = document.getElementById("crece-operaciones-contenido-monto-barra-progreso-id")
           	let oportunidad = res.data
           	porcentaje_financiado = oportunidad.porcentaje_financiado
@@ -78,7 +78,7 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
           	document.getElementById("span-pr-recolectado").innerHTML = oportunidad.porcentaje_financiado+'% recolectado'
 			document.getElementById("strong-monto-objetivo").innerHTML = "$"+  numeroConComas(decimalAEntero(oportunidad.monto))
 			let monto_faltante = parseInt(oportunidad.monto) - parseInt(monto_recolectado);
-			$("#strong-monto-faltante").html("$"+numeroConComas(decimalAEntero(monto_faltante.toString())))  
+			$("#strong-monto-faltante").html("$"+numeroConComas(decimalAEntero(monto_faltante.toString())))
 
             calcular_tabla_inversionista(input_modal,res.data)
             $('#simular-inversion-boton-invertir').html('Invertir').removeClass('disabled');
@@ -104,10 +104,10 @@ function crear_modal_simulacion_inversion(id_oportunidad,input_modal){
 				  $('#simular-inversion-boton-invertir').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
 				  $("#simular-inversion-boton-invertir").attr("disabled","True")
 				  setTimeout(() => crear_modal_aceptar_inversion(oportunidad.id,"aceptar-inversion-inicio",INPUT_MONTO_INVERSION), 1000);
-				
-           		
+
+
            })
-          }  
+          }
       },
       error: function(xhr, status, error) {
           var err = JSON.parse(xhr.responseText);
@@ -139,7 +139,7 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
       type: 'GET',
       dataType: 'json', // added data type
       success: function(res) {
-          
+
           if (res.data){
           	$(".crece-modal").show();
 			  $("#aceptar-inversion-modal-dashboard").css('display', 'flex');
@@ -172,9 +172,9 @@ function crear_modal_aceptar_inversion(id_oportunidad,input_modal,monto){
             	$('#aceptar-inversion-button-invertir').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
 				  $("#aceptar-inversion-button-invertir").attr("disabled","True")
 				  setTimeout(() => go_to_fase2(res.data), 1000);
-            	
+
             })
-          }  
+          }
       },
       error: function(xhr, status, error) {
           var err = JSON.parse(xhr.responseText);
@@ -191,7 +191,7 @@ function crear_modal_tabla_solicitud_valida(id_inversion, tir, interes_ganado) {
       type: 'GET',
       dataType: 'json', // added data type
       success: function(res) {
-          
+
           if (res.data){
 
           	  $(".crece-modal").show();
@@ -202,9 +202,9 @@ function crear_modal_tabla_solicitud_valida(id_inversion, tir, interes_ganado) {
 			  $("#completar_datos_wrapper").hide();
 			  $("#crece-declaracion-body-id").hide();
 			  $("#cambiar-monto-inversion-modal-dashboard").hide()
-          	
+
           	$("#tasa-tir-tabla-vigente-id").html(tir+"%")
-          	
+
           	let lista_pagos = res.data.lista_pagos
           	let monto_inversion = res.data.monto
           	let adjudicacion_total = res.data.adjudicacion_total
@@ -215,8 +215,8 @@ function crear_modal_tabla_solicitud_valida(id_inversion, tir, interes_ganado) {
             let capital_cobrado = $(id_capital_cobrado).html()
             $("#capital-cobrado-tabla-vigente-id").html(capital_cobrado)
             llenar_tabla_solicitud_valida(lista_pagos, monto_inversion, adjudicacion_total)
-           
-          }  
+
+          }
       },
       error: function(xhr, status, error) {
           var err = JSON.parse(xhr.responseText);
@@ -233,7 +233,7 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
       type: 'GET',
       dataType: 'json', // added data type
       success: function(res) {
-          
+
           if (res.data){
 			obtener_ruta_ac_uso();
           	$(".crece-modal").show();
@@ -266,12 +266,12 @@ function crear_modal_cambiar_monto_inversion(id_solicitud,input_modal,monto, id_
             $("#cambiar-monto-inversion-button").click(function () {
             	$('#cambiar-monto-inversion-button').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Cargando...').addClass('disabled');
 				  $("#cambiar-monto-inversion-button").attr("disabled","True")
-				  setTimeout(() => go_to_fase2(res.data, 'cambiar-monto-inversion', id_inversion), 1000);            	
+				  setTimeout(() => go_to_fase2(res.data, 'cambiar-monto-inversion', id_inversion), 1000);
             });
 
-				  	
 
-          }  
+
+          }
       },
       error: function(xhr, status, error) {
           var err = JSON.parse(xhr.responseText);
@@ -303,8 +303,8 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 			}
 
 
-		
-		}	
+
+		}
 	for (var i = 0 ; i < lista_pagos.length; i++) {
 		let pago = lista_pagos[i]
 		let fecha_pago = pago.fecha
@@ -318,7 +318,7 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 		let interes_i = pago_i - capital_i
 		let estado_i = pago.estado_pago
 		fecha_pago = format_proxima_fecha_pago(fecha_pago)
-		
+
 		/*LLenando la tabla */
 		let fila = document.createElement("tr")
 
@@ -331,17 +331,17 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 		let fila_estado_i = '<td>'+ (estado_i)+'</td>'
 
 		let html_fila = fila_fecha_pago + fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i + fila_estado_i
-		
+
 		fila.innerHTML= html_fila;
 		tabla.appendChild(fila)
-		
+
 	}
 	let div_monto_invertir = document.getElementById("monto-invertir-tabla-vigente-id")
 	div_monto_invertir.innerHTML = '$'+numberWithCommas(monto)
 	lista_pagos_anterior = lista_pagos
 
-	
-	
+
+
 }
 
 function go_to_fase1(oportunidad, monto){
@@ -349,15 +349,15 @@ function go_to_fase1(oportunidad, monto){
 }
 
 function go_to_fase2(oportunidad,input_modal, id_inversion){
-	
+
 	firmar_ac_uso();
 	if (input_modal === 'cambiar-monto-inversion'){
 		guardar_nuevo_monto_inversion(oportunidad, id_inversion)
 	}else{
 		guardar_tabla(oportunidad)
 	}
-	
-	
+
+
 
 }
 
@@ -371,7 +371,7 @@ function firmar_ac_uso(){
 		type: 'POST',
 		url: "/inversionista/firma_contrato_ac_uso/",
 		data: dictRespuestas,
-		success: function(resultData) { 
+		success: function(resultData) {
 		}
 	});
 }
@@ -399,7 +399,7 @@ function guardar_nuevo_monto_inversion(oportunidad, id_inversion) {
           $(ID_SUBIR_TRANSFERENCIA).hide();
           $(ID_COMPLETA_DATOS).css('display', 'flex');
           $(ID_DECLARACION_FONDOS).hide();
-          
+
           $("#texto_monto").html(inversion_total);
    		}
   	};
@@ -417,12 +417,12 @@ function verificar_valores_inversion(modo, oportunidad) {
 	// body...
 	let id = ""
 	let cambiar_barra_proyectada = false;
-	
+
 	if (modo === "detalle-solicitud"){
 		id = "input-monto-detalle-solicitud"
 	}
 	else if(modo==='aceptar-inversion'){
-		id = "input-monto-aceptar-inversion"	
+		id = "input-monto-aceptar-inversion"
 	}
 	else if(modo==='cambiar-monto-inversion'){
 		id = 'input-cambiar-monto-inversion'
@@ -431,9 +431,9 @@ function verificar_valores_inversion(modo, oportunidad) {
 		id = "input-monto"
 		cambiar_barra_proyectada = true;
 	}
-	
+
 	let input_monto_inversion = limpiarNumero(document.getElementById(id).value);
-	let monto_maximo = oportunidad.monto * 0.9 
+	let monto_maximo = oportunidad.monto * 0.9
 	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
 	let monto_por_financiar = oportunidad.monto - total_financiado
 
@@ -453,13 +453,13 @@ function verificar_valores_inversion(modo, oportunidad) {
 				$("#adjudicacion-total-cambiar-monto-inversion").html("")
 				$("#inversion-total-cambiar-monto-inversion").html("")
 				$("#cambiar-monto-inversion-button").attr("disabled", true)
-				
+
 			}
 			else{
 				$("#label_error_simular_inversion_detalle_solicitud").show()
 				$("#label_error_simular_inversion_modal").show()
 			}
-			
+
 			let tabla = document.getElementById(tabla_id);
 			/*Verificando que ya exista la tabla*/
 			if (tabla.children.length > 1) {
@@ -471,7 +471,7 @@ function verificar_valores_inversion(modo, oportunidad) {
 				}
 
 
-				
+
 			}
 			return false
 		}
@@ -496,7 +496,7 @@ function verificar_valores_inversion(modo, oportunidad) {
 		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").css("margin-left", porcentaje_financiado+'%');
 		$("#crece-operaciones-contenido-monto-barra-progreso-proyectado-id").attr("data-original-title", 'Tu aporte: '+monto_a_calcular.toFixed(2)+'%');
 	}
-	
+
 	return true
 }
 
@@ -522,7 +522,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		if (!verificar_valores_inversion(input_modal,oportunidad)){
 			return false
 		}
-		
+
 	}else if (input_modal === 'cambiar-monto-inversion'){
 		input_monto_inversion =  limpiarNumero(document.getElementById("input-cambiar-monto-inversion").value)
 		diccionario = DICCIONARIO_SIMULACION
@@ -571,14 +571,14 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 			}
 
 
-		
-		}	
-	
+
+		}
+
 	}
-	
+
 	let monto_inversion = parseInt(input_monto_inversion, 10)
 
-	
+
 	let lista_capital_insoluto_sol = diccionario['lista_capital_insoluto']
 	let lista_cuotas_sol = diccionario['lista_cuotas']
 	let lista_intereses_sol = diccionario['lista_intereses']
@@ -593,7 +593,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 	let cargo_adjudicacion_iva = cargo_adjudicacion * IVA
 	let inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva //Verficar si se agrega el adjudicacion IVA
 
-	
+
 	let ganancia_total = 0;
 	let pago_total = 0;
 	let comision_total = 0;
@@ -626,12 +626,12 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
 
-		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i 
-		
+		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i
+
 		fila.innerHTML= html_fila;
 		tabla.appendChild(fila)
 
-		
+
 
 	}
 
@@ -651,7 +651,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 		$("#total-a-recibir").html( FORMAT_CURRENCY.format(ganancia_total) );
 
-		
+
 		let div_ganancia = document.getElementById("ganancia-total");
 		div_ganancia.innerHTML = ganancia_total.toFixed(2);
 		let div_adjudicacion = document.getElementById("adjudicacion");
@@ -669,7 +669,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		div_inversion_total.innerHTML = FORMAT_CURRENCY.format(inversion_total)
 
 		$("#inversion-total-cambiar-monto-recibido").html( FORMAT_CURRENCY.format(ganancia_total) );
-		
+
 		let div_ganancia = document.getElementById("ganancia-total-cambiar-monto-inversion");
 		div_ganancia.innerHTML = ganancia_total.toFixed(2);
 		let div_adjudicacion = document.getElementById("adjudicacion-cambiar-monto-inversion");
@@ -680,8 +680,8 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 
 
 
-	
-	
+
+
 
 }
 
@@ -694,30 +694,30 @@ function hacer_tabla_amortizacion(oportunidad) {
 	let fecha_publicacion_solicitud = oportunidad.fecha_publicacion
 	let fecha_split = fecha_publicacion_solicitud.split("-")
 	let start_date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2])
-	
+
 	let next_date = new add_months(start_date,1)
 	let temp_date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2])
-	
+
 	let fechas = []
 	let dias = []
-	
+
 
 
 	let dias_transcurridos = getDuration(start_date - start_date).value
 	dias.push(dias_transcurridos)
 	for (var i = 0; i < oportunidad.plazo; i++) {
-		
+
 		if(next_date.getDay() == 0){
-			
+
 			next_date.setDate(next_date.getDate() + 1) //lunes
-			dias_transcurridos = getDuration(next_date - temp_date).value 
+			dias_transcurridos = getDuration(next_date - temp_date).value
 			temp_date = new Date(next_date.getFullYear(), next_date.getMonth(), next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-1)
 		}
 		else if(next_date.getDay() == 6){
 			next_date.setDate(next_date.getDate() + 2) //lunes
-			dias_transcurridos = getDuration(next_date - temp_date).value 
+			dias_transcurridos = getDuration(next_date - temp_date).value
 			temp_date = new Date(next_date.getFullYear(), next_date.getMonth(), next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 			next_date.setDate(next_date.getDate()-2)
@@ -726,11 +726,11 @@ function hacer_tabla_amortizacion(oportunidad) {
 			temp_date = new Date(next_date.getFullYear(), next_date.getMonth(), next_date.getDate())
 			fecha_pago  = next_date.getFullYear() + "-" + (next_date.getMonth()) + "-" +next_date.getDate()
 		}
-		
+
 		dias.push(dias_transcurridos)
 		next_date = add_months(start_date, i+2)
 		fechas.push(fecha_pago)
-		
+
 	}
 
 
@@ -765,25 +765,25 @@ function hacer_tabla_amortizacion(oportunidad) {
 
 	for (var i = 0; i < oportunidad.plazo; i++) {
 		//let fila = document.createElement("tr")
-		
-		
+
+
 		/*Intereses mensual*/
 		let dias_transcurridos = dias[i+1]
-		
+
 		tasa_mensual = [ Math.pow((1 + tasa_diaria),dias_transcurridos) ] - 1
 		intereses_n = capital_por_pagar_n*tasa_mensual
-		
+
 		intereses_TOTAL += intereses_n
 		lista_intereses.push(intereses_n)
 
 
 		capital_n = cuota_mensual - intereses_n  //capital
-		
+
 
 		if (i == oportunidad.plazo-1){
 			capital_n = MONTO_SOLICITANTE - capital_TOTAL //capital mensual
 			cuota_n = capital_n + intereses_n + COMISIONES_BANCARIAS //cuota a pagar
-			
+
 		}
 
 		/*Capital total y llenando la lista de capital mensual*/
@@ -802,7 +802,7 @@ function hacer_tabla_amortizacion(oportunidad) {
 	}
 
 
-	let diccionario = {'lista_cuotas': lista_cuotas, 
+	let diccionario = {'lista_cuotas': lista_cuotas,
 						'lista_capital_insoluto': lista_capital_insoluto,
 						'lista_intereses': lista_intereses,
 						'lista_capitales':lista_capitales,
@@ -907,7 +907,7 @@ function guardar_tabla(oportunidad) {
 	// inversion_total = inversion_total.replace(/\$/g,'');
 	let ganancia_total = document.getElementById("ganancia-total").textContent;
 
-	let inversion = {"monto": monto, 
+	let inversion = {"monto": monto,
 						"id_solicitud": id_solicitud,
 						"adjudicacion": adjudicacion,
 						"adjudicacion_iva": adjudicacion_iva,
@@ -917,7 +917,7 @@ function guardar_tabla(oportunidad) {
 					}
 
 
-	
+
 
 	var xhttp = new XMLHttpRequest();
 
@@ -967,6 +967,3 @@ function mostrar_completar_datos_modal(id_inversion, monto, id_solicitud, fase_i
 function limpiarNumero(num){
 	return num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
 }
-
-
-
