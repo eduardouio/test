@@ -3,6 +3,8 @@ from . import models
 # Register your models here.
 admin.site.register(models.EncuestaSolicitudTemporal)
 admin.site.register(models.UsuarioSolicitanteTemporal)
+admin.site.register(models.SolicitantesPreAprobados)
+
 
 class SolicitudTemporalAdmin(admin.ModelAdmin):
     list_filter = (

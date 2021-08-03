@@ -38,7 +38,6 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
             usuario.nombres = nombres
             usuario.apellidos = apellidos
             usuario.celular = celular
-            usuario.save()
             #validando si ya existe una solicitud temporal para ese RUC
             if (existeCI(ruc)):
                 #ya ha realizado una peticion con dicho ruc
@@ -46,44 +45,40 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                 messages.warning(request,'Ya ha registrado una solicitud con dicha CEDULA O RUC.')
                 #validar tiempo (si lleva mas de un mes se actualiza la peticion)
             else:
+                usuario.save()
                 new_solicitud = SolicitudTemporal(
                     razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
                     tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
                     id_usuario_solicitante_temporal= usuario
                 )
                 rechazar(tipo_persona,ruc,new_solicitud)
-                new_solicitud.save()
-                
-
         else:
-            new_user = User( username=cedula, password=cedula, 
-                                email=email, first_name=nombres, last_name=apellidos,
-                            )
-
-            new_user.set_password(cedula)
-            new_user.is_active = False
-            new_user.save()
-
-            new_usuario = UsuarioSolicitanteTemporal(
-                email=email, nombres=nombres, apellidos=apellidos, celular=celular, 
-                cedula=cedula, user=new_user
-            )
-
-            new_usuario.save()
             if (existeCI(ruc)):
                 #ya ha realizado una peticion con dicho ruc
                 existe_solicitud=True
+                messages.warning(request,'Ya ha registrado una solicitud con dicha CEDULA O RUC.')
                 #validar tiempo (si lleva mas de un mes se actualiza la peticion)
             else:
+                new_user = User( username=cedula, password=cedula,
+                    email=email, first_name=nombres, last_name=apellidos,
+                )
+
+                new_user.set_password(cedula)
+                new_user.is_active = False
+                new_user.save()
+
+                new_usuario = UsuarioSolicitanteTemporal(
+                    email=email, nombres=nombres, apellidos=apellidos, celular=celular,
+                    cedula=cedula, user=new_user
+                )
+
+                new_usuario.save()
                 new_solicitud = SolicitudTemporal(
                     razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
                     tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
                     id_usuario_solicitante_temporal= new_usuario
                 )
                 rechazar(tipo_persona,ruc,new_solicitud)
-                new_solicitud.save()
-                
-        
         #guardar_contratos(nombres,apellidos,cedula, new_usuario) #falta hacer el contrato para solic
 
         #valida persona natural
@@ -96,7 +91,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                 encuesta = EncuestaSolicitudTemporal(id_pregunta= pregunta, id_respuesta=respuesta, id_solicitud_temporal=new_solicitud)
                 encuesta.save()
 
-        
+
             mail_subject = '¡Gracias por tu Solicitud!'
             message = render_to_string('solicitante/registro_solicitud_email.html', {
                 'solicitud': new_solicitud,
@@ -127,7 +122,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
             correo.content_subtype = "html"
             correo.send()
 
-        response = HttpResponse(status=status.HTTP_200_OK)   
+        response = HttpResponse(status=status.HTTP_200_OK)
 
         return response
     def get(self, request, *args, **kwargs):
@@ -148,10 +143,17 @@ def existeCI(RUC):
 
 def rechazar(tipoPersona,RUC,nueva_solicitud):
     if(tipoPersona=='1'):
-        nueva_solicitud.estado = 4    
+        nueva_solicitud.estado = 4
+        nueva_solicitud.razon_de_no_aprobacion=1
     else:
         try:
-            preabrobados=SolicitantesPreAprobados.objects.get(ruc=RUC)
-            nueva_solicitud.estado = preabrobados.estado
+            preaprobados=SolicitantesPreAprobados.objects.get(ruc=RUC)
+            if(preaprobados.estado==0):
+                nueva_solicitud.estado =1
+                # nueva_solicitud.razon_de_no_aprobacion=preaprobados.estado
+            else:
+                nueva_solicitud.estado = 4
+                nueva_solicitud.razon_de_no_aprobacion=preaprobados.estado
         except SolicitantesPreAprobados.DoesNotExist:
-            preabrobados= None
+            nueva_solicitud.estado = 4
+    nueva_solicitud.save()
