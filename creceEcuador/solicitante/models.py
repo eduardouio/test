@@ -34,10 +34,22 @@ class SolicitudTemporal(models.Model):
     ]
 
     opciones_no_aprob = [
-        ("Antecedentes", "Antecedentes"),
-        ("Mala Situacion Financiera", "Mala Situacion Financiera"),
-        ("Falta de Potencial de Crecimiento", "Falta de Potencial de Crecimiento"),
-        ("Abandono de la Solicitud", "Abandono de la Solicitud"),
+        # ("Antecedentes", "Antecedentes"),
+        # ("Mala Situacion Financiera", "Mala Situacion Financiera"),
+        # ("Falta de Potencial de Crecimiento", "Falta de Potencial de Crecimiento"),
+        # ("Abandono de la Solicitud", "Abandono de la Solicitud"),
+        (1,"Estado societario"),
+        (2, "Domicilio no se encuentra en localidad requerida"),
+        (3,"Sector económico"),
+        (4, "Situacion Financiera"),
+        (5, "No cumple tiempo minimo"),
+        (6,"Abandono de la solicitud"),
+        (7, "No suficiente info para ejercicio 2020"),
+        (8, "Situación crediticia - no se ha podido calcular dScore"),
+        (9, "Deudas en etapa judicial"),
+        (10, "Situación judicial"),
+        (11, "RUC no conforme"),
+        (12, "No residente"),
     ]
 
     razon_social = models.CharField(max_length=200, blank=True, null=True)
@@ -49,7 +61,7 @@ class SolicitudTemporal(models.Model):
     tasa = models.DecimalField(max_digits=4, decimal_places=2, blank=False)
     uso_financiamiento = models.TextField(blank=False)
     estado = models.IntegerField(choices=opciones_estado, null=True, blank=True, default=0)
-    razon_de_no_aprobacion = models.CharField(max_length=50, choices=opciones_no_aprob, null=True, blank=True)
+    razon_de_no_aprobacion = models.IntegerField(choices=opciones_no_aprob, null=True, blank=True)
     fecha_creacion = models.DateTimeField('Fecha de creación',default=datetime.now())
     id_usuario_solicitante_temporal = models.ForeignKey(UsuarioSolicitanteTemporal, on_delete=models.CASCADE)
 
@@ -83,3 +95,7 @@ class SolicitantesPreAprobados(models.Model):
     ruc = models.CharField(max_length=13, blank=False)
     estado = models.IntegerField(choices=opciones_estado, null=True, blank=True, default=0)
     fecha_creacion = models.DateTimeField(default=datetime.now())
+
+    def __str__ (self):
+        txt = "id: {}, ruc: {}, estado: {}, fecha_creacion: {} "
+        return txt.format(self.id, self.ruc, self.estado,self.fecha_creacion)

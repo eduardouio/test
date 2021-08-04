@@ -58,7 +58,11 @@ EMAIL_PORT = 587
 Note: The **EMAIL_HOST_USER** is the email necessary to send an email to the user to activate their account.
 
 
-## configure pre-approved temporary requests
+## Configure pre-approved temporary requests
+```
+python manage.py makemigrations SolicitantesPreAprobados
+python manage.py migrate SolicitantesPreAprobados
+```
 ```
 python manage.py loaddata preaprobados_seed.json
-``` 
+```

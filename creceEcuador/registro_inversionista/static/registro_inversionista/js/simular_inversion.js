@@ -1,8 +1,8 @@
-
 let COMISION_COBRANZA_INSOLUTO_MENSUAL = 0;//0.004;
 let IVA = 0.12
 let COMISION_ADJUDICACION_FACTOR = 0;//0.007;
 let ADJUDICACION_FACTOR = 0;//1.12
+
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
 let COMISION_BANCO = 0.4
@@ -623,8 +623,9 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		let fila_numero_cuota = '<td>'+ (i+1) +'</td>'
 		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(capital_i)+'</td>'
 		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
-		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
+		// let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
+
 
 		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i
 
