@@ -1228,7 +1228,9 @@
                           <div class="col-11 col-lg-10">
                             <div id="contenedor_dudas_transferencia" class="row">
                                 <div class="col-11 col-lg-2">
-                                    <img id="imagen_dudas_transferencia" src="{% static 'assets/dudas_transferencia.png' %}"/> 
+                                  <a target="_blank" rel="noopener noreferrer" href="https://wa.me/593968779896?text=Hola%20equipo%20Crece!%20,soy%20{{usuario.nombres}}%20{{usuario.apellidos}}%20y%20tengo%20dudas%20sobre%20la%20transferencia%20para%20la%20solicitud%20{{inversion.id_solicitud.ticket}}">
+                                      <img id="imagen_dudas_transferencia" src="{% static 'assets/whatsApp.png' %}"/> 
+                                    </a>
                                 </div>
                                 <div id="contenedor_dudas_pregunta" class="col-12 col-lg-10">
                                     <strong class="crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta">¿A qué cuenta estoy transfiriendo los fondos?</strong>
