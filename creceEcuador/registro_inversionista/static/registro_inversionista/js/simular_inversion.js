@@ -5,7 +5,7 @@ let ADJUDICACION_FACTOR = 0;//1.12
 
 let DICCIONARIO_SIMULACION = {}
 let OPORTUNIDAD = {}
-let COMISION_BANCO = 0.4
+let COMISION_BANCO = 0.0//0.4
 let COMISIONES_BANCARIAS = 0.22
 let RUTA_FASE_1 ="/registro/aceptar_inversion/"
 let RUTA_PAGOS = '/registro/pagos/'
@@ -623,7 +623,7 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		let fila_numero_cuota = '<td>'+ (i+1) +'</td>'
 		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(capital_i)+'</td>'
 		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
-		// let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
+		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
 
 

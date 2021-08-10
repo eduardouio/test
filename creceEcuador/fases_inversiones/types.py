@@ -27,14 +27,14 @@ INVERSIONISTA_KEY = "id_inversionista"
 
 COMISION_ADJUDICACION_FACTOR = 0#0.007
 ADJUDICACION_FACTOR = 0#1.12
-COMISION_BANCO = 0.40
+COMISION_BANCO = 0.0#0.40
 COMISION_COBRANZA_INSOLUTO_MENSUAL = 0#0.004
 IVA = 0.12
 COMISIONES_BANCARIAS = 0.22
 
 
 
-def calcular_interes_n(capital_insoluto_anterior, sum_intereses_pagados_n , dias_totales, dias_mora, ted_supuesta): 
+def calcular_interes_n(capital_insoluto_anterior, sum_intereses_pagados_n , dias_totales, dias_mora, ted_supuesta):
 
 	tasa_efectiva_diaria = calcular_recargo_tasa(dias_mora, ted_supuesta)
 	base = 1 + tasa_efectiva_diaria
@@ -65,6 +65,6 @@ def calcular_recargo_tasa(dias_mora, ted_supuesta):
 		recargo = 0.07
 	elif dias_mora <= 60:
 		recargo = 0.09
-	
+
 	tasa_efectiva_diaria = ted_supuesta * (1 + recargo)
 	return tasa_efectiva_diaria
