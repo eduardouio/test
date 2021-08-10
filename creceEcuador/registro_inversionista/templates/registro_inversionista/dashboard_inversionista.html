@@ -10,7 +10,7 @@
   <!--fases inversion-->
   <link href="{% static 'registro_inversionista/css/dashboard_modal.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
-  <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
+  <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'fases_inversiones/css/completar_datos.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'fases_inversiones/css/flujo_inversionista.css' %}" rel="stylesheet" type="text/css">
@@ -29,16 +29,16 @@
   <body>
       <section class="crece-modal">
           <div class="crece-modal-container">
-            <svg class="bi bi-x crece-modal-container-cerrar" width="50px" height="50px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">                             
-              <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"></path>                             
-              <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"></path>                           
+            <svg class="bi bi-x crece-modal-container-cerrar" width="50px" height="50px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"></path>
+              <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"></path>
             </svg>
 
             <!-- Seccion imagen perfil -->
             <div class="row justify-content-center" id="crece-modal-imagen-solicitud">
                 <div class="col-auto crece-simular-inversion-wrapper" id="imagen-solicitud-container">
                     <img src="">
-                </div> 
+                </div>
             </div>
 
             <!--seccion Preguntas Preferencia Persona-->
@@ -59,23 +59,23 @@
                     <div class="col-12 crece-preferencia-respuestas-grid-container">
                         <div class="grid-item" id="respuesta-preferencia-501">Medio ambiente</div>
                         <div class="grid-item" id="respuesta-preferencia-502">Manufactura</div>
-                        <div class="grid-item" id="respuesta-preferencia-503">Construcción</div>  
+                        <div class="grid-item" id="respuesta-preferencia-503">Construcción</div>
                         <div class="grid-item" id="respuesta-preferencia-504">Tecnología</div>
                         <div class="grid-item" id="respuesta-preferencia-505">Comidas y bebidas</div>
-                        <div class="grid-item" id="respuesta-preferencia-506">Cine</div>  
+                        <div class="grid-item" id="respuesta-preferencia-506">Cine</div>
                         <div class="grid-item" id="respuesta-preferencia-507">Educación</div>
                         <div class="grid-item" id="respuesta-preferencia-508">Emprendimiento</div>
-                        <div class="grid-item" id="respuesta-preferencia-509">Cuidado de la salud</div> 
-                        <div class="grid-item" id="respuesta-preferencia-510">Finanzas</div> 
-                        <div class="grid-item" id="respuesta-preferencia-511">Moda</div> 
-                        <div class="grid-item" id="respuesta-preferencia-512">Marketing digital</div> 
-                        <div class="grid-item" id="respuesta-preferencia-513">Automóviles</div> 
-                        <div class="grid-item" id="respuesta-preferencia-514">Comercio</div> 
+                        <div class="grid-item" id="respuesta-preferencia-509">Cuidado de la salud</div>
+                        <div class="grid-item" id="respuesta-preferencia-510">Finanzas</div>
+                        <div class="grid-item" id="respuesta-preferencia-511">Moda</div>
+                        <div class="grid-item" id="respuesta-preferencia-512">Marketing digital</div>
+                        <div class="grid-item" id="respuesta-preferencia-513">Automóviles</div>
+                        <div class="grid-item" id="respuesta-preferencia-514">Comercio</div>
                     </div>
                     <div class="col-12 fase-2-footer">
                         <button class="crece-boton-final-tabla-amortizacion" onclick="siguiente_pregunta_preferencia(1)">Siguiente</button>
-                        
-                    </div> 
+
+                    </div>
 
 
                 </div>
@@ -90,7 +90,7 @@
                     <div class="col-12 crece-login-container-form-wrapper-titulo">
                       <div class="crece-registro-container-logo"><a href="/" target="_blank"><img src="{% static 'assets/logo_color.png' %}" style="margin: 15px auto;display: block;"></a></div>
                     </div>
-                    
+
                     <div class="col-12 crece-pregunta-preferencia-preguntas-container">
                         <span class="crece-preguntas-preferencia-preguntas">¿Tienes experiencia invirtiendo?</span><br>
                         <span>Selecciona las opciones que apliquen.</span>
@@ -99,15 +99,15 @@
                     <div class="col-12 crece-preferencia-respuestas-grid-container">
                         <div class="grid-item" id="respuesta-preferencia-601">Ahorros programados</div>
                         <div class="grid-item" id="respuesta-preferencia-602">Pólizas de acumulación</div>
-                        <div class="grid-item" id="respuesta-preferencia-603">Bolsa de valores local</div>  
+                        <div class="grid-item" id="respuesta-preferencia-603">Bolsa de valores local</div>
                         <div class="grid-item" id="respuesta-preferencia-604">Bolsa de valores internacional</div>
                         <div class="grid-item" id="respuesta-preferencia-605">Negocio propio</div>
-                        <div class="grid-item" id="respuesta-preferencia-606">No tengo experiencia</div>  
+                        <div class="grid-item" id="respuesta-preferencia-606">No tengo experiencia</div>
                     </div>
                     <div class="col-12 fase-2-footer">
                         <button class="crece-boton-final-tabla-amortizacion" onclick="siguiente_pregunta_preferencia(2)">Siguiente</button>
-                        
-                    </div> 
+
+                    </div>
 
 
                 </div>
@@ -122,7 +122,7 @@
                     <div class="col-12 crece-login-container-form-wrapper-titulo">
                       <div class="crece-registro-container-logo"><a href="/" target="_blank"><img src="{% static 'assets/logo_color.png' %}" style="margin: 15px auto;display: block;"></a></div>
                     </div>
-                    
+
                     <div class="col-12 crece-pregunta-preferencia-preguntas-container">
                         <span class="crece-preguntas-preferencia-preguntas">¿Qué buscas en CRECE?</span><br>
                         <span>Elige una opción.</span>
@@ -135,8 +135,8 @@
                     </div>
                     <div class="col-12 fase-2-footer">
                         <button class="crece-boton-final-tabla-amortizacion" onclick="siguiente_pregunta_preferencia(3)">Siguiente</button>
-                        
-                    </div> 
+
+                    </div>
 
 
                 </div>
@@ -151,7 +151,7 @@
                     <div class="col-12 crece-login-container-form-wrapper-titulo">
                       <div class="crece-registro-container-logo"><a href="/" target="_blank"><img src="{% static 'assets/logo_color.png' %}" style="margin: 15px auto;display: block;"></a></div>
                     </div>
-                    
+
                     <div class="col-12 crece-pregunta-preferencia-preguntas-container">
                         <span class="crece-preguntas-preferencia-preguntas">¿Estás de acuerdo en realizar inversiones 100% a través de la web?</span><br>
                         <span>Elige una opción.</span>
@@ -160,12 +160,12 @@
                     <div class="col-12 crece-preferencia-respuestas-grid-container">
                         <div class="grid-onlyitem-4" id="respuesta-preferencia-801">Sí, me parece genial.</div>
                         <div class="grid-onlyitem-4" id="respuesta-preferencia-802">No, necesito ver algo físico.</div>
-                        
+
                     </div>
                     <div class="col-12 fase-2-footer">
                         <button class="crece-boton-final-tabla-amortizacion" onclick="enviar_preguntas_preferencia()">Finalizar</button>
-                        
-                    </div> 
+
+                    </div>
 
 
                 </div>
@@ -177,25 +177,25 @@
                     <div class="col-12 crece-aceptar-inversion-titulo">
                         <h2>Calcula tu ganancia</h2>
                     </div>
-                      <!--Barra de progreso-->                                               
-                      <div class="col-10 crece-operaciones-contenido-monto-barra" style="margin-top: 10px;margin-left: auto;margin-right: auto;"> 
+                      <!--Barra de progreso-->
+                      <div class="col-10 crece-operaciones-contenido-monto-barra" style="margin-top: 10px;margin-left: auto;margin-right: auto;">
                         <div class="crece-operaciones-contenido-monto-barra-progreso" id="crece-operaciones-contenido-monto-barra-progreso-id">
-                        </div>  
+                        </div>
                         <div class="crece-operaciones-contenido-monto-barra-progreso-proyectado" id="crece-operaciones-contenido-monto-barra-progreso-proyectado-id" data-toggle="tooltip" data-placement="top" title="Tu aporte">
-                        </div>                                                        
+                        </div>
                       </div>
                       <!--Datos Barra-->
                       <div class="col-10 crece-operaciones-contenido-datos-barra" style="margin: 20px auto;">
                         <div class="row">
                               <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">
                                   <strong id=strong-monto-recolectado>
-                                      
+
                                   </strong>
                                   <span id="span-pr-recolectado"> </span>
                               </div>
                               <div class="col-6 crece-operaciones-contenido-datos-barra-objetivo">
                                   <strong id='strong-monto-objetivo'>
-                                      
+
                                   </strong>
                                   <span >Objetivo <br/> (<span id='strong-monto-faltante'></span>) faltante</span>
                               </div>
@@ -211,7 +211,7 @@
                                           Valor no permitido
                                         </label>
                                       </div>
-                                      
+
                                     </div>
                                   </div>
                                   <div class="col-xl-10 col-lg-10 col-md-10 col-12 crece-body-datos">
@@ -231,7 +231,7 @@
                                     <div class="row">
                                         <div class="col-4" style="font-weight: bold;">Total a recibir:</div>
                                         <div class="col-4 body-datos-calculados" id="total-a-recibir-simulacion" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                            
+
                                         </div>
                                     </div>
 
@@ -239,7 +239,7 @@
                                         <div class="col-12" id="container-mensaje-ganancia" style="font-weight: bold;">
                                         </div>
                                     </div>
-        
+
                                   </div>
 
                                   <!--TABLA AMORTIZACION-->
@@ -250,14 +250,14 @@
                                          <th>Intereses</th>
                                          <th>Comisión</th>
                                          <th>Recibes</th>
-                                     </tr> 
+                                     </tr>
                                   </table>
-                                  
+
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                       <button class="crece-boton-final-tabla-amortizacion" id="simular-inversion-boton-invertir">Invertir</button>
-                                      
-                                  </div> 
+
+                                  </div>
                                 </div>
 
                 </div>
@@ -279,7 +279,7 @@
                                         <div class="tabla-detalle-derecha" id="intereses-ganados-tabla-vigente-id" disabled>
                                             $107.35
                                         </div>
-                                        
+
                                       </div>
                                     </div>
                                     <!--Capital Cobrado-->
@@ -289,7 +289,7 @@
                                         <div class="tabla-detalle-derecha" id="capital-cobrado-tabla-vigente-id" disabled>
                                           $702.56
                                         </div>
-                                        
+
                                       </div>
                                     </div>
                                     <!--Capital Invertido-->
@@ -299,7 +299,7 @@
                                         <div class="tabla-detalle-derecha" id="monto-invertir-tabla-vigente-id" disabled >
 
                                         </div>
-                                        
+
                                       </div>
                                     </div>
                                      <!--Tasa TIR-->
@@ -309,15 +309,15 @@
                                         <div class="tabla-detalle-derecha" id="tasa-tir-tabla-vigente-id" disabled>
                                           20.44%
                                         </div>
-                                        
+
                                       </div>
                                     </div>
-                                        
-                                        
-                                    
-            
+
+
+
+
                                 </div>
-                              
+
 
                                   <!--TABLA AMORTIZACION-->
                                   <table class='col-10 tabla-amortizacion' id="tabla-vigente-id">
@@ -330,11 +330,11 @@
                                         <th>Recibes</th>
                                         <th>Estado</th>
 
-                                     </tr> 
+                                     </tr>
                                   </table>
-                                  
+
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
-                                  
+
                                 </div>
 
                 </div>
@@ -375,7 +375,7 @@
                         </div>
                         <!--Aceptar y Descargar-->
                      <div class="row body-opciones">
-                            
+
                              <!--DATOS DE LA TABLA-->
                               <div class="row simular-inversion-input-valores" id="simular-inversion-input-valores-id">
                                 <div class="col-10" style="margin-left: auto;margin-right: auto;">
@@ -385,7 +385,7 @@
                                           Valor no permitido
                                         </label>
                                       </div>
-                                      
+
                                     </div>
                                   </div>
                                   <div class="col-xl-10 col-lg-10 col-md-10 col-12 crece-body-datos">
@@ -404,38 +404,38 @@
                                     <div class="row">
                                         <div class="col-lg-9 col-xl-5 col-sm-5 col-md-5 col-9" style="font-weight: bold;">Cargo de adjudicación:</div>
                                         <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="adjudicacion-total" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
-                                          
+
                                         </div>
                                     </div>
 
-                                    <div class="row" style="display:  none;"> 
+                                    <div class="row" style="display:  none;">
                                         <div>Adjudicacion:</div>
                                         <div class="body-datos-calculados" id="adjudicacion">
-                                          
+
                                         </div>
                                         <div>Adjudicacion (IVA):</div>
                                         <div class="body-datos-calculados" id="adjudicacion-iva"></div>
                                         <div>Ganancia Total:</div>
                                         <div class="body-datos-calculados" id="ganancia-total">
-                                               
+
                                         </div>
 
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Total a transferir:</div>
                                         <div class="col-lg-1 col-xl-3 col-md-3 col-sm-3 col-1 body-datos-calculados" id="inversion-total" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                          
+
                                         </div>
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Total a recibir:</div>
                                         <div class="col-lg-1 col-xl-3 col-md-3 col-sm-3 col-1 body-datos-calculados" id="total-a-recibir" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                            
+
                                         </div>
                                     </div>
-            
+
                                       </div>
 
                                   <!--TABLA AMORTIZACION-->
@@ -446,17 +446,17 @@
                                          <th>Intereses</th>
                                          <th>Comisión</th>
                                          <th>Recibes</th>
-                                     </tr> 
+                                     </tr>
                                   </table>
-                                  
+
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                     <p>
                                     Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     </p>
                                       <a href="#pendientes"><button class="crece-boton-final-tabla-amortizacion" id="aceptar-inversion-button-invertir">Siguiente</button></a>
-                                      
-                                  </div> 
+
+                                  </div>
                                 </div>
                       </div>
                     </div>
@@ -482,7 +482,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            
+
                             <div class="col-auto">
                                 <span class="crece-flujo-inversionista-progreso-texto">Progreso: 0%</span>
                             </div>
@@ -497,7 +497,7 @@
                         </div>
                         <!--Aceptar y Descargar-->
                      <div class="row body-opciones">
-                        
+
                              <!--DATOS DE LA TABLA-->
                               <div class="row simular-inversion-input-valores" id="cambiar-monto-inversion-input-valores-id">
                                 <div class="col-10" style="margin-left: auto;margin-right: auto;">
@@ -507,7 +507,7 @@
                                           Valor no permitido
                                         </label>
                                       </div>
-                                      
+
                                     </div>
                                   </div>
                                   <div class="col-xl-10 col-lg-10 col-md-10 col-12 crece-body-datos">
@@ -526,40 +526,40 @@
                                     <div class="row">
                                         <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Cargo de adjudicación:</div>
                                         <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="adjudicacion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black;margin-top: auto;margin-bottom: auto;">
-                                          
+
                                         </div>
                                     </div>
 
-                                    <div class="row" style="display:  none;"> 
+                                    <div class="row" style="display:  none;">
                                         <div>Adjudicacion:</div>
                                         <div class="body-datos-calculados" id="adjudicacion-cambiar-monto-inversion">
-                                          
+
                                         </div>
                                         <div>Adjudicacion (IVA):</div>
                                         <div class="body-datos-calculados" id="adjudicacion-iva-cambiar-monto-inversion"></div>
                                         <div>Ganancia Total:</div>
                                         <div class="body-datos-calculados" id="ganancia-total-cambiar-monto-inversion">
-                                               
+
                                         </div>
 
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Total a invertir:</div>
                                         <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="inversion-total-cambiar-monto-inversion" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                          
+
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-9 col-xl-5 col-md-5 col-sm-5 col-9" style="font-weight: bold;">Total a recibir:</div>
                                         <div class="col-lg-1 col-xl-3 col-sm-3 col-md-3 col-1 body-datos-calculados" id="inversion-total-cambiar-monto-recibido" style="text-align: right;font-weight: 500;color: black; margin-top: auto;margin-bottom: auto;">
-                                            
+
                                         </div>
                                     </div>
-                                        
-                                    
-            
+
+
+
                                       </div>
 
                                   <!--TABLA AMORTIZACION-->
@@ -570,17 +570,17 @@
                                          <th>Intereses</th>
                                          <th>Comisión</th>
                                          <th>Recibes</th>
-                                     </tr> 
+                                     </tr>
                                   </table>
-                                  
+
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                     <p>
                                     Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal_cambiar" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     </p>
                                       <button class="crece-boton-final-tabla-amortizacion" id="cambiar-monto-inversion-button">Siguiente</button>
-                                      
-                                  </div> 
+
+                                  </div>
                                 </div>
                       </div>
                     </div>
@@ -623,7 +623,7 @@
                             </div>
                             <div class="form-group col-lg-12">
                                 <label>Nombres: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.nombres}}"
                                     class="form-control"
@@ -636,7 +636,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Apellidos: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.apellidos}}"
                                     class="form-control"
@@ -649,7 +649,7 @@
 
                             <div class="form-group col-lg-8">
                                 <label>Cédula: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.cedula}}"
                                     class="form-control"
@@ -676,7 +676,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Celular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.celular}}"
                                     class="form-control"
@@ -700,7 +700,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label>Nombre del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             value="{{usuario.conyuge_id.nombres}}"
                                             class="form-control"
                                             name="nombre_conyugue"
@@ -708,10 +708,10 @@
                                             data-valueMissing="Ingrese el nombre de su cónyugue"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Apellidos del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             value="{{usuario.conyuge_id.apellidos}}"
                                             class="form-control"
                                             name="apellidos_conyugue"
@@ -719,10 +719,10 @@
                                             data-valueMissing="Ingrese el apellido de su cónyugue"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Cédula del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             value="{{usuario.conyuge_id.cedula}}"
                                             class="form-control"
                                             name="cedula_conyugue"
@@ -732,13 +732,13 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-12">
                                 <h2>Domicilio</h2>
                             </div>
                             <div class="form-group col-lg-12">
                                 <label>Dirección de domicilio: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.direccion1}}"
                                     class="form-control"
@@ -750,7 +750,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Provincia: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.provincia}}"
                                     class="form-control typeahead"
@@ -762,7 +762,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.canton.nombre}}"
                                     class="form-control typeahead"
@@ -775,16 +775,16 @@
                             <div class="form-group col-lg-12">
                                 <label>Teléfono domicilio:</label>
                                 {% if usuario.telefono_domicilio %}
-                                <input 
+                                <input
 
                                       value="{{usuario.telefono_domicilio}}"
                                       class="form-control"
                                       name="telf_domicilio"
-                                      id="telf_domicilio" 
+                                      id="telf_domicilio"
                                       data-valueMissing="Ingrese el número de teléfono de su domicilio"
                                       />
                                 {% else %}
-                                 <input 
+                                 <input
 
                                       value=""
                                       class="form-control"
@@ -793,11 +793,11 @@
                                       data-valueMissing="Ingrese el número de teléfono de su domicilio"
                                       />
                                 {% endif %}
-                                  
-                      
+
+
 
                             </div>
-                            
+
                             <div class="col-12">
                                 <h2>Fuentes de Ingresos</h2>
                             </div>
@@ -814,8 +814,8 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label>Empresa: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             class="form-control"
                                             name="empresa_relacion_dependencia"
                                             id="empresa_relacion_dependencia"
@@ -824,8 +824,8 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Cargo: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             class="form-control"
                                             name="cargo_relacion_dependencia"
                                             id="cargo_relacion_dependencia"
@@ -834,8 +834,8 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Años en el puesto: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             type="number"
                                             class="form-control"
                                             name="anios_relacion_dependencia"
@@ -851,7 +851,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label>RUC: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             class="form-control"
                                             name="ruc_profesional_independiente"
                                             id="ruc_profesional_independiente"
@@ -862,8 +862,8 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Actividad: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             class="form-control"
                                             name="actividad_profesional_independiente"
                                             id="actividad_profesional_independiente"
@@ -872,8 +872,8 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Años en la actividad: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             type="number"
                                             class="form-control"
                                             name="anios_profesional_independiente"
@@ -888,8 +888,8 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label>Empresa: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             class="form-control"
                                             name="empresa_auto_empleado"
                                             id="empresa_auto_empleado"
@@ -898,7 +898,7 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>RUC: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input                                     
+                                        <input
                                             class="form-control"
                                             name="ruc_auto_empleado"
                                             id="ruc_auto_empleado"
@@ -907,8 +907,8 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Actividades: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            
+                                        <input
+
                                             class="form-control"
                                             name="actividad_auto_empleado"
                                             id="actividad_auto_empleado"
@@ -925,7 +925,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Dirección: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.ingresos.direccion}}"
                                     class="form-control"
@@ -937,7 +937,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.canton.nombre}}"
                                     class="form-control typeahead"
@@ -948,7 +948,7 @@
                             </div>
                             <div class="form-group col-lg-12">
                                 <label>Ingresos mensuales aproximados: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.ingresos.ingresos_mensuales}}"
                                     type="number"
@@ -964,14 +964,14 @@
                             </div>
                             <div class="form-group col-lg-12">
                                 <label>Titular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.nombres}} {{usuario.apellidos}}"
                                     class="form-control typeahead"
                                     name="titular"
                                     id="titular"
                                     data-valueMissing="Ingrese el nombre del titular de la cuenta"
-                                    disabled 
+                                    disabled
                                     />
                             </div>
                             <div class="form-group col-lg-6">
@@ -1013,7 +1013,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Número de cuenta: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.cuenta_bancaria.numero_cuenta}}"
                                     class="form-control"
@@ -1028,7 +1028,7 @@
                                 <span class="error"></span>
                               </div>
                             </div>
-                            
+
                             <div class="col-12">
                                 <div class="row justify-content-center">
                                     <div class="col-auto crece-completar-datos-formulario-botones">
@@ -1037,7 +1037,7 @@
                                     <div class="col-auto crece-completar-datos-formulario-botones">
                                         <button type="button" id="siguiente"> Siguiente</button>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -1075,7 +1075,7 @@
                     </div>
                     <span id="contrado-titulo">Declaración de Origen de Fondos</span>
                     <p>
-                        
+
                         Yo, <strong>{{usuario.nombres}} {{usuario.apellidos}}</strong>
                         portador de la cédula de ciudadanía No. <strong>{{usuario.cedula}}</strong>, por sus propios y personales derechos, manifiesto que la información descrita en el formulario de usuario en calidad de inversionista para la operación de financiamiento colaborativo con interés a plazo fijo, utilizando la plataforma virtual  de CRECE ECUADOR  es cierta, y realizo las siguientes declaraciones de fuentes u origen de fondos y actividades lícitas:<br><br><br>
 
@@ -1089,7 +1089,7 @@
 
                     <!--Aceptar y Descargar-->
                     <div class="row justify-content-center body-opciones">
-                            
+
                             <div class="col-auto">
                             <button onclick="aceptar_declaracion_fondos_modal()" id="descargar-contrato">Siguiente</button>
                             </div>
@@ -1167,7 +1167,7 @@
                                                         <label for="comprobante_transferencia" class="crece-confirmar-transferencia-formulario-wrapper-boton-subir-doc">
                                                             Cargar documento
                                                         </label>
-                                                        <input 
+                                                        <input
                                                             type="file"
                                                             accept="image/png, image/jpeg, application/pdf"
                                                             class="form-control"
@@ -1179,10 +1179,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
-                                
-                                <!-- 
+
+                                <!--
                                 <div class="col-11 col-lg-10">
                                     <label class="crece-confirmar-transferencia-formulario-wrapper-label">Selecciona el banco de donde vendrá tu transferencia</label>
                                 </div>
@@ -1214,7 +1214,7 @@
                                         <option value='BANCO FINCA S.A.'>BANCO FINCA S.A.</option>
                                     </select>
                                 </div> -->
-                                
+
                             </div>
 
                             <div class="row justify-content-center error-container">
@@ -1229,14 +1229,14 @@
                             <div id="contenedor_dudas_transferencia" class="row">
                                 <div class="col-11 col-lg-2">
                                   <a target="_blank" rel="noopener noreferrer" href="https://wa.me/593968779896?text=Hola%20equipo%20Crece!%20,soy%20{{usuario.nombres}}%20{{usuario.apellidos}}%20y%20tengo%20dudas%20sobre%20la%20transferencia%20para%20la%20solicitud%20{{inversion.id_solicitud.ticket}}">
-                                      <img id="imagen_dudas_transferencia" src="{% static 'assets/whatsApp.png' %}"/> 
+                                      <img id="imagen_dudas_transferencia" src="{% static 'assets/whatsApp.png' %}"/>
                                     </a>
                                 </div>
                                 <div id="contenedor_dudas_pregunta" class="col-12 col-lg-10">
                                     <strong class="crece-confirmar-transferencia-formulario-wrapper-cuenta-pregunta">¿A qué cuenta estoy transfiriendo los fondos?</strong>
                                     <p class="crece-confirmar-transferencia-formulario-wrapper-cuenta-explicacion">
-                                        Tus fondos son transferidos a una cuenta denominada "Escrow". Esta cuenta está a nombre 
-                                        del emprendedor, sin embargo, es administrada por CRECE quien impide el acceso a los fondos 
+                                        Tus fondos son transferidos a una cuenta denominada "Escrow". Esta cuenta está a nombre
+                                        del emprendedor, sin embargo, es administrada por CRECE quien impide el acceso a los fondos
                                         hasta que se complete el total solicitado y se firmen los documentos de respaldo.
                                     </p>
                                 </div>
@@ -1296,7 +1296,7 @@
                                 <div class="col-12 col-lg-6 crece-container-imagen-texto">
                                     <img class="crece-img-final" src="{% static 'assets/fase_final_4.png' %}"/>
                                 </div>
-                                
+
                             <button type="button" id="finalizar_inversion"> Finalizar</button>
                           </div>
                     </div>
@@ -1319,7 +1319,7 @@
                 <div class="crece-usuario-nombre" id='nombre-usuario'>
                     ¡Hola {{ usuario.nombres }} {{usuario.apellidos}}!
                 </div>
-                <div class="crece-usuario-ver-perfil"> 
+                <div class="crece-usuario-ver-perfil">
                   <h6>
                     <a id="ver_perfil" href="#perfil">
                       Ver Perfil
@@ -1333,9 +1333,9 @@
                 </div>
               </div>
           </div>
-          
-          
-          <ul class="list-unstyled components">          
+
+
+          <ul class="list-unstyled components">
 
             <li id="todas_las_oportunidades" class="active selectable" data-fase-inversion="" data-usuario="{{usuario.pk}}">
                 <a href="#todas"> <img class="icono-sidebar" src="{% static 'assets/inicio_icono.png' %}" alt="Logo crece"> <span class="sidebar-span" >Inicio</span></a>
@@ -1348,7 +1348,7 @@
             <li class="sidebar-outer-li selectable" id="oportunidades_por_fondear" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
                 <a href="#por_fondear"><img class="icono-sidebar" src="{% static 'assets/por_fondear_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Por fondear</span></a>
             </li>
-            <li class="sidebar-outer-li selectable" id="oportunidades_vigentes" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
+            <li class="sidebar-outer-li selectable" id="oportunidades_vigentes" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}">
                 <a href="#vigentes"><img class="icono-sidebar" src="{% static 'assets/vigentes_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Vigentes</span></a>
             </li>
             <li class="sidebar-outer-li selectable" id="oportunidades_terminadas" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
@@ -1363,13 +1363,13 @@
                 <li id="oportunidades_por_fondear" class="selectable" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
                   <a href="#por_fondear"><img class="icono-sidebar" src="{% static 'assets/por_fondear_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Por Completar</span></a>
                 </li>
-                <li id="oportunidades_vigentes" class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
+                <li id="oportunidades_vigentes" class="selectable" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}">
                   <a href="#vigentes"><img class="icono-sidebar" src="{% static 'assets/vigentes_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Vigentes</span></a>
                 </li>
                 <li id="oportunidades_terminadas" class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
                   <a href="#terminadas"><img class="icono-sidebar" src="{% static 'assets/terminadas_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Terminadas</span></a>
                 </li>
-              </ul> 
+              </ul>
             </li>
             <li class="selectable" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
               <a href="#"><img class="icono-sidebar" src="{% static 'assets/calendario_icono.png' %}" alt="Logo crece"><span class="sidebar-span">Calendario de Pagos</span></a>
@@ -1382,34 +1382,34 @@
 
           </div>
           <header class="crece-dashboard-header">
-            <!-- 
+            <!--
               <div class="search_area">
                 <i class="fa fa-search" aria-hidden="true"></i>
                 <input type="text" name="">
               </div>-->
-    
+
 
               <div class="row">
                   <div class="col-auto">
                       <div class="crece-menu-toggle">
                           <i id="id_bars_icon" class="fa fa-bars"></i>
                       </div>
-                  </div>  
-                    
-  
+                  </div>
+
+
                   <div class="col-auto">
                       <div class="crece-header-logo" >
 
                         <a href="/" target="_blank">
 
-            
+
                             <img src="{% static 'assets/logo_color.png' %}" alt="Logo crece">
-            
+
                         </a>
-                        
+
                       </div>
 
-                    
+
                   </div>
 
                   <div id="navbar_dashboard_perfil" class="col align-self-end" >
@@ -1428,17 +1428,17 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
 
                         <div id="container_imagen_navbar" class="col-auto">
                             <div id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="crece-usuario-imagen-navbar" 
-                                src="{{usuario.get_profile_pic}}" 
+                                <img class="crece-usuario-imagen-navbar"
+                                src="{{usuario.get_profile_pic}}"
                                 onerror="this.outerHTML= '<i class= &quot crece-usuario-icono-navbar fa fa-user-circle-o &quot aria-hidden= &quot true &quot></i>';">
                                 <i id="flecha_perfil_navbar" class="fa fa-caret-down" aria-hidden="true"></i>
                             </div>
-                            
+
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a id="ver_perfil_navbar" class="dropdown-item" href="#perfil">Ver Perfil</a>
                                 <div class="dropdown-divider"></div>
@@ -1447,13 +1447,13 @@
                         </div>
 
                       </div>
-                    
+
                   </div>
 
               </div>
-    
+
           </header>
-            
+
           <section id="crece-perfil" class="crece-perfil" data-confirmado="{{usuario.estado}}">
               <div class="row justify-content-center" id="crece-registro-super-container">
 
@@ -1465,7 +1465,7 @@
                     <li id="selectable_informacion_laboral" class="" data-fase-inversion="por_fondear" data-usuario="{{usuario.pk}}">
                       <a href="#">Información Laboral</a>
                     </li>
-                    <li id="selectable_cuenta_bancaria" class="" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}"> 
+                    <li id="selectable_cuenta_bancaria" class="" data-fase-inversion="vigentes" data-usuario="{{usuario.pk}}">
                       <a href="#">Cuenta Bancaria</a>
                     </li>
                     <li id="selectable_contratos_aceptados" class="" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
@@ -1474,7 +1474,7 @@
                     <li id="selectable_cambiar_password" class="" data-fase-inversion="terminados" data-usuario="{{usuario.pk}}">
                       <a href="#">Cambiar Contraseña</a>
                     </li>
-                  </ul> 
+                  </ul>
                 </div>
 
                   <!--Cuadro de registro-->
@@ -1490,7 +1490,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                
+
                             </div>
                             <div class="col-12">
                                 <h2>Datos del inversionista</h2>
@@ -1503,7 +1503,7 @@
                                     <label for="modificar_foto_perfil" class="crece-modificar-datos-formulario-wrapper-boton-subir-doc">
                                         Cargar Foto de perfil
                                     </label>
-                                    <input 
+                                    <input
                                         type="file"
                                         accept="image/png, image/jpeg"
                                         class="form-control"
@@ -1513,10 +1513,10 @@
                                         />
                                 </div>
                             </div>
-                            
+
                             <div class="form-group col-lg-12">
                                 <label>Nombre: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.nombres}}"
                                     class="form-control"
@@ -1528,7 +1528,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Apellidos: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.apellidos}}"
                                     class="form-control"
@@ -1540,20 +1540,20 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Fecha de nacimiento: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value-date="{{usuario.fecha_nacimiento}}"
                                     class="form-control"
                                     name="modificar_fecha_nacimiento"
                                     id="modificar_fecha_nacimiento"
                                     data-valueMissing="Ingrese su fecha de nacimiento"
-                                    type="date" 
+                                    type="date"
                                     />
                             </div>
 
                             <div class="form-group col-lg-8">
                                 <label>Cédula: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.cedula}}"
                                     class="form-control"
@@ -1566,7 +1566,7 @@
                                 <label for="modificar_foto_cedula" class="crece-modificar-datos-formulario-wrapper-boton-subir-doc">
                                     Cargar cédula
                                 </label>
-                                <input 
+                                <input
                                     type="file"
                                     accept="image/png, image/jpeg, application/pdf"
                                     class="form-control"
@@ -1579,7 +1579,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Celular: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.celular}}"
                                     class="form-control"
@@ -1603,7 +1603,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label>Nombre del cónyugue: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             value="{{usuario.conyuge_id.nombres}}"
                                             class="form-control"
                                             name="modificar_nombre_conyugue"
@@ -1611,10 +1611,10 @@
                                             data-valueMissing="Ingrese el nombre de su cónyugue"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Apellidos del cónyugue: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             value="{{usuario.conyuge_id.apellidos}}"
                                             class="form-control"
                                             name="modificar_apellidos_conyugue"
@@ -1622,10 +1622,10 @@
                                             data-valueMissing="Ingrese el apellido de su cónyugue"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Cédula del cónyugue: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             value="{{usuario.conyuge_id.cedula}}"
                                             class="form-control"
                                             name="modificar_cedula_conyugue"
@@ -1635,13 +1635,13 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-12">
                                 <h2>Domicilio</h2>
                             </div>
                             <div class="form-group col-lg-12">
                                 <label>Dirección de domicilio: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.direccion1}}"
                                     class="form-control"
@@ -1653,7 +1653,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Provincia: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.provincia}}"
                                     class="form-control typeahead"
@@ -1665,7 +1665,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Canton: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                <input 
+                                <input
                                     required
                                     value="{{usuario.canton.nombre}}"
                                     class="form-control typeahead"
@@ -1677,7 +1677,7 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Teléfono domicilio:</label>
-                                <input 
+                                <input
                                     value="{{usuario.telefono_domicilio}}"
                                     class="form-control"
                                     name="modificar_telf_domicilio"
@@ -1689,13 +1689,13 @@
                             <div class="col-12 error-modificar-container">
                               <span class="error-modificar"></span>
                             </div>
-                            
+
                             <div class="col-12">
                                 <div class="row justify-content-center">
                                     <div class="col-auto crece-modificar-datos-formulario-botones">
                                         <button type="button" class="modificar_guardar_datos"> Guardar</button>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -1713,7 +1713,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                
+
                             </div>
                           <div class="col-12">
                               <h2>Fuentes de Ingresos</h2>
@@ -1731,8 +1731,8 @@
                               <div class="row">
                                   <div class="form-group col-lg-12">
                                       <label>Empresa: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           class="form-control"
                                           name="modificar_empresa_relacion_dependencia"
                                           id="modificar_empresa_relacion_dependencia"
@@ -1741,8 +1741,8 @@
                                   </div>
                                   <div class="form-group col-lg-12">
                                       <label>Cargo: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           class="form-control"
                                           name="modificar_cargo_relacion_dependencia"
                                           id="modificar_cargo_relacion_dependencia"
@@ -1751,8 +1751,8 @@
                                   </div>
                                   <div class="form-group col-lg-12">
                                       <label>Años en el puesto: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           type="number"
                                           class="form-control"
                                           name="modificar_anios_relacion_dependencia"
@@ -1768,7 +1768,7 @@
                               <div class="row">
                                   <div class="form-group col-lg-12">
                                       <label>RUC: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
+                                      <input
                                           class="form-control"
                                           name="modificar_ruc_profesional_independiente"
                                           id="modificar_ruc_profesional_independiente"
@@ -1777,8 +1777,8 @@
                                   </div>
                                   <div class="form-group col-lg-12">
                                       <label>Actividad: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           class="form-control"
                                           name="modificar_actividad_profesional_independiente"
                                           id="modificar_actividad_profesional_independiente"
@@ -1787,8 +1787,8 @@
                                   </div>
                                   <div class="form-group col-lg-12">
                                       <label>Años en la actividad: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           type="number"
                                           class="form-control"
                                           name="modificar_anios_profesional_independiente"
@@ -1803,8 +1803,8 @@
                               <div class="row">
                                   <div class="form-group col-lg-12">
                                       <label>Empresa: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           class="form-control"
                                           name="modificar_empresa_auto_empleado"
                                           id="modificar_empresa_auto_empleado"
@@ -1813,7 +1813,7 @@
                                   </div>
                                   <div class="form-group col-lg-12">
                                       <label>RUC: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input                                     
+                                      <input
                                           class="form-control"
                                           name="modificar_ruc_auto_empleado"
                                           id="modificar_ruc_auto_empleado"
@@ -1822,8 +1822,8 @@
                                   </div>
                                   <div class="form-group col-lg-12">
                                       <label>Actividades: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                                      <input 
-                                          
+                                      <input
+
                                           class="form-control"
                                           name="modificar_actividad_auto_empleado"
                                           id="modificar_actividad_auto_empleado"
@@ -1840,7 +1840,7 @@
 
                           <div class="form-group col-lg-12">
                               <label>Dirección: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                              <input 
+                              <input
                                   required
                                   value="{{usuario.ingresos.direccion}}"
                                   class="form-control"
@@ -1852,7 +1852,7 @@
 
                           <div class="form-group col-lg-12">
                               <label>Canton: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                              <input 
+                              <input
                                   required
                                   value="{{usuario.canton.nombre}}"
                                   class="form-control typeahead"
@@ -1863,7 +1863,7 @@
                           </div>
                           <div class="form-group col-lg-12">
                               <label>Ingresos aproximados: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                              <input 
+                              <input
                                   required
                                   value="{{usuario.ingresos.ingresos_mensuales}}"
                                   type="number"
@@ -1883,7 +1883,7 @@
                                   <div class="col-auto crece-modificar-datos-formulario-botones">
                                       <button type="button" class="modificar_guardar_datos"> Guardar</button>
                                   </div>
-                              </div>                                
+                              </div>
                           </div>
                       </div>
                   </form>
@@ -1901,14 +1901,14 @@
                                     </svg>
                                 </span>
                             </div>
-                          
+
                         </div>
                         <div class="col-12">
                             <h2>Registra tu cuenta bancaria donde recibirás tus ganancias</h2>
                         </div>
                         <div class="form-group col-lg-12">
                             <label>Titular: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                            <input 
+                            <input
                                 required
                                 value="{{usuario.cuenta_bancaria.titular}}"
                                 class="form-control typeahead"
@@ -1956,7 +1956,7 @@
 
                         <div class="form-group col-lg-12">
                             <label>Número de cuenta: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
-                            <input 
+                            <input
                                 required
                                 value="{{usuario.cuenta_bancaria.numero_cuenta}}"
                                 class="form-control"
@@ -1969,13 +1969,13 @@
                         <div class="col-12 error-modificar-container">
                           <span class="error-modificar"></span>
                         </div>
-                        
+
                         <div class="col-12">
                             <div class="row justify-content-center">
                                 <div class="col-auto crece-modificar-datos-formulario-botones">
                                     <button type="button" class="modificar_guardar_datos"> Guardar</button>
                                 </div>
-                            </div>                                
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -1995,7 +1995,7 @@
                       </div>
                       <div id="contratos_container">
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -2004,7 +2004,7 @@
             <div id="perfil_cambiar_password" class="col-xl-7 col-lg-7 col-md-11 col-11  crece-cambiar-password-perfil-container" data-id="{{usuario.pk}}">
               <form method="POST">
                     <div class="row">
-                        
+
                         <div class="col-12">
                             <h2>Cambiar contraseña</h2>
                         </div>
@@ -2013,7 +2013,7 @@
                               <div class="row">
                                 <div class="col-12 crece-registro-form-label">
                                   Nueva Contraseña
-                                </div> 
+                                </div>
                                 <div class="col">
                                   <input type="password" name="password" class="crece-form-input" id="id_password" required="">
                                   <div class="show-hide-password" id="crece-show-hide-password" onclick="switch_mostrar_ocultar_password()">MOSTRAR</div>
@@ -2030,7 +2030,7 @@
                               <div class="row">
                                 <div class="col-12 crece-registro-form-label">
                                   Confirmar contraseña
-                                </div> 
+                                </div>
                                 <div class="col">
                                   <input type="password" name="confirmar-password" class="crece-form-input" id="id_confirmar_password">
                                   <div class="show-hide-password" id="crece-show-hide-confirmar-password" onclick="switch_mostrar_ocultar_password('confirmar')">MOSTRAR</div>
@@ -2047,19 +2047,19 @@
                                 </div>
                               </div>
                             </div>
-                        
+
                         <div class="col-12">
                             <div class="row justify-content-center">
                                 <div class="col-auto crece-modificar-datos-formulario-botones">
                                     <button type="button" onclick="cambiar_password()"> Guardar</button>
                                 </div>
-                            </div>                                
+                            </div>
                         </div>
                     </div>
                 </form>
-              
+
             </div>
-                
+
               </div>
           </section>
           <section class="crece-detalle-operaciones" id="crece-detalle-operaciones-id">
@@ -2075,7 +2075,7 @@
                             <button id="grid-button" class="crece-oportunidades-button-group-selected"><i class="fa fa-th-large"></i>Grid</button>
                         </div>
                     </div>
-                    <div class="row justify-content-center crece-oportunidades-container"> 
+                    <div class="row justify-content-center crece-oportunidades-container">
                         <!-- skeleton -->
                         <div class="col-xl-4 col-lg-6 col-12">
                             <div class="row justify-content-center">
@@ -2141,10 +2141,10 @@
                                 </div>
                             </div>
                         </div>
-                        
 
 
-                    </div> 
+
+                    </div>
                     <div class="row justify-content-center crece-oportunidades-list-container">
 
                         <!-- skeleton -->
@@ -2152,7 +2152,7 @@
                             <div class="row justify-content-center">
                                 <div class="crece-oportunidades-list-skeleton-container">
                                     <div class="crece-oportunidades-list-skeleton-container-card">
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -2163,7 +2163,7 @@
                             <div class="row justify-content-center">
                                 <div class="crece-oportunidades-list-skeleton-container">
                                     <div class="crece-oportunidades-list-skeleton-container-card">
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -2174,18 +2174,21 @@
                             <div class="row justify-content-center">
                                 <div class="crece-oportunidades-list-skeleton-container">
                                     <div class="crece-oportunidades-list-skeleton-container-card">
-                                        
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div> 
-                    
+                    </div>
+
                 </div>
             </div>
           </section>
-
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+          <a href="https://api.whatsapp.com/send?phone=+593968779896&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20para%20invertir%20en%20Crece." class="float" target="_blank">
+            <i class="fa fa-whatsapp my-float"></i>
+          </a>
     </div>
   </body>
 {% endblock content %}

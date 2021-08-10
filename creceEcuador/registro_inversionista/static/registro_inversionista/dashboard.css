@@ -37,7 +37,7 @@ body{
 .crece-dashboard-header a.nav-link:hover{
 	color: #006B8D;
 	text-decoration-line: underline;
-	
+
 }
 
 .crece-dashboard-header a[aria-expanded="true"]{
@@ -209,7 +209,7 @@ header{
 	border: none;
 	padding: 5px;
 
-} 
+}
 
 
 .crece-header-logo{
@@ -374,7 +374,7 @@ footer{
     right: 0;
     margin-top: -50px;
 	padding-right: 25px;
-	
+
 }
 
 .crece-oportunidades-button-group button{
@@ -476,7 +476,7 @@ footer{
 	#crece-modal-imagen-solicitud img {
 		width: 300px;
 	}
-	
+
 	#crece-modal-imagen-solicitud {
 		margin-top: 70%;
 	}
@@ -496,7 +496,7 @@ footer{
 	.crece-usuario-nombre{
 		padding-top: 50px;
 	}
-	
+
 	.content{
 		padding-left: 0px;
 	}
@@ -514,7 +514,7 @@ footer{
 	}
 
 	#crece-registro-super-container {
-		margin-right: 0px !important; 
+		margin-right: 0px !important;
     	margin-left: 0px !important;
 	}
 
@@ -553,4 +553,24 @@ footer{
 		width: 200px;
 		height: auto;
 	}
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top: 13px;
+  margin-left: 13px;
 }
