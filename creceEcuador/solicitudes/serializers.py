@@ -5,6 +5,8 @@ class SolicitudSerializer(serializers.ModelSerializer):
     autor = serializers.ReadOnlyField()
     ruc_autor = serializers.ReadOnlyField()
     categoria = serializers.ReadOnlyField()
+    clase_img = serializers.ReadOnlyField()
+    clase = serializers.ReadOnlyField()
     imagen_categoria = serializers.ReadOnlyField()
     tipo_credito = serializers.ReadOnlyField()
     tipo_persona = serializers.ReadOnlyField()
@@ -30,6 +32,8 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'tir',
             'categoria',
             'imagen_categoria',
+            'clase',
+            'clase_img',
             'solicitudes_pagadas',
             'solicitudes_vigentes',
             'puntualidad_autor',

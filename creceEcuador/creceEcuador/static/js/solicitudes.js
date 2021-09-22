@@ -404,6 +404,8 @@ function crearDetalleInversion(oportunidad) {
 '                                                <div class="col-10 crece-operaciones-contenido-informacion">'+
 '                                                    <h2>Información del Financiamiento</h2>'+
 '        '+
+
+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+

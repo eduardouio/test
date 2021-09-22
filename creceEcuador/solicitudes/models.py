@@ -19,6 +19,18 @@ class CategoriaSolicitud(models.Model):
         verbose_name = "Categoria Solicitud"
         verbose_name_plural = "Categorías Solicitud"
 
+class ClaseSolicitud(models.Model):
+    #Modelo Categoria de solicitud
+    nombre = models.CharField(max_length=100)
+    imagen_clase = models.ImageField(blank=False, null=False, upload_to="clase_solicitud")
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Clase Solicitud"
+        verbose_name_plural = "Clase Solicitud"
+
 class TipoCredito(models.Model):
     #Modelo Tipo de credito
     nombre = models.CharField(max_length=100)
@@ -49,6 +61,7 @@ class Solicitud(models.Model):
     fecha_expiracion = models.DateField(blank=True, null=True)
     id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False) #Se debe especificar la app del modelo
     id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.SET_NULL, null=True, blank=False)
+    id_clase = models.ForeignKey('ClaseSolicitud', on_delete=models.SET_NULL, null=True, blank=False, default=1)
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.SET_NULL, null=True, blank=False)
     id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.SET_NULL, null=True, blank=False)
     id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.SET_NULL, blank=True, null=True)
@@ -66,6 +79,14 @@ class Solicitud(models.Model):
     def ruc_autor(self):
         return self.id_autor.ruc
     
+    @property
+    def clase(self):
+        return self.id_clase.nombre
+
+    @property
+    def clase_img(self):
+        return '/'+ settings.MEDIA_URL + str(self.id_clase.imagen_clase)
+
     @property
     def categoria(self):
         return self.id_categoria.nombre

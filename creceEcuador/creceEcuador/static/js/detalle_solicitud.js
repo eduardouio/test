@@ -109,6 +109,17 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <strong>Clase</strong>'+
+'                                                        </div>'+
+'                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
+'                                                            <span>'+ oportunidad.clase +'</span>'+
+'<img src="'+ oportunidad.clase_img + '">'+
+'                                                        </div>'+
+'                                                    </div>'+
+'        '+
+'                                                    <!-- Item informacion-->'+
+'                                                    <div class="row">'+
+'                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <strong>Monto</strong>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
