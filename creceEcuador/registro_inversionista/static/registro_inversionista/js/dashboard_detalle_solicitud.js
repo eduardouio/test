@@ -292,7 +292,7 @@ crear_boton_regresar_solicitudes()+
 '                                                    <!-- Item informacion-->'+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-informacion-subrayado">'+
-'                                                            <strong>Clase</strong>'+
+'                                                            <strong>Perfil de Riesgo</strong>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 col-sm-3 crece-operaciones-contenido-informacion-subrayado">'+
 '                                                            <span>'+ oportunidad.clase +'</span>'+

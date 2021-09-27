@@ -452,8 +452,15 @@ class Login_Users(generics.CreateAPIView):
             EventoUsuario.objects.create(accion="login", usuario=usuarioAutenticado)
 
             r = requests.post(request.headers['Origin']+'/api/token/', data = {'username':username, 'password': password})
+            print("ERROR HERE >")
+            print(str(r))
             status_send = status.HTTP_200_OK
-            dic_tokens = r.json()
+            dic_tokens = {}
+            try:
+              dic_tokens = r.json()
+            except json.decoder.JSONDecodeError:
+              print('JSON DECODE ERROR')
+
             mensaje = "Ingreso exitoso"
             if (r.status_code == 401 and not user.is_active):
                 status_send = status.HTTP_401_UNAUTHORIZED

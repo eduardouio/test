@@ -28,8 +28,8 @@ class ClaseSolicitud(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name = "Clase Solicitud"
-        verbose_name_plural = "Clase Solicitud"
+        verbose_name = "Perfil de Riesgo"
+        verbose_name_plural = "Perfiles de Riesgo"
 
 class TipoCredito(models.Model):
     #Modelo Tipo de credito
@@ -61,7 +61,7 @@ class Solicitud(models.Model):
     fecha_expiracion = models.DateField(blank=True, null=True)
     id_autor = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False) #Se debe especificar la app del modelo
     id_categoria = models.ForeignKey('CategoriaSolicitud', on_delete=models.SET_NULL, null=True, blank=False)
-    id_clase = models.ForeignKey('ClaseSolicitud', on_delete=models.SET_NULL, null=True, blank=False, default=1)
+    id_perfil_riesgo = models.ForeignKey('ClaseSolicitud', on_delete=models.SET_NULL, null=True, blank=False, default=1)
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.SET_NULL, null=True, blank=False)
     id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.SET_NULL, null=True, blank=False)
     id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.SET_NULL, blank=True, null=True)
@@ -81,11 +81,11 @@ class Solicitud(models.Model):
     
     @property
     def clase(self):
-        return self.id_clase.nombre
+        return self.id_perfil_riesgo.nombre
 
     @property
     def clase_img(self):
-        return '/'+ settings.MEDIA_URL + str(self.id_clase.imagen_clase)
+        return '/'+ settings.MEDIA_URL + str(self.id_perfil_riesgo.imagen_clase)
 
     @property
     def categoria(self):
