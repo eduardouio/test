@@ -236,27 +236,36 @@ def guardar_contratos(nombres,apellidos,cedula, usuario_creado):
     if not os.path.exists(out_filedir):
         os.makedirs(out_filedir)
 
-    ultimoAcUso = models.VersionContrato.objects.filter(tipoContrato="ac_uso").latest('fecha')
+    out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+".pdf"
+    ultimoAcUso = models.VersionContrato.objects.filter(tipoContrato="ac_uso")
+    
+    if ultimoAcUso:
+        ultimoAcUso= ultimoAcUso.latest('fecha')
+        out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+ultimoAcUso.version+".pdf"
+        out_filedir = './creceEcuador/static/contratos/'
+        out_filepath = os.path.join( out_filedir, out_filename )
+        file_open = open(out_filepath, 'w')
+        file_open.close()
+        date = datetime.datetime.now()
+        fecha = current_date_format(date)
+        usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
+        doc = SimpleDocTemplate(out_filepath,pagesize=letter,
+                    rightMargin=72,leftMargin=72,
+                    topMargin=72,bottomMargin=18)
+        hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
 
-    out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+ultimoAcUso.version+".pdf"
-    out_filedir = './creceEcuador/static/contratos/'
-    out_filepath = os.path.join( out_filedir, out_filename )
-    file_open = open(out_filepath, 'w')
-    file_open.close()
-    date = datetime.datetime.now()
-    fecha = current_date_format(date)
-    usuario_to_pdf = {'nombres': nombres, 'apellidos': apellidos, 'cedula': cedula}
-    doc = SimpleDocTemplate(out_filepath,pagesize=letter,
-                rightMargin=72,leftMargin=72,
-                topMargin=72,bottomMargin=18)
-    hacer_contrato_uso_sitio(doc, usuario_to_pdf, fecha, date)
+        ruta_archivo = '/static/contratos/'+out_filename
+        models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario_creado, versionContrato=ultimoAcUso)
+        models.Contrato.objects.create(contrato= '/static/contratos/Terminos-Legales-y-Condiciones.pdf',content_object=usuario_creado)
+        models.Contrato.objects.create(contrato= '/static/contratos/Politicas-de-Privacidad.pdf',content_object=usuario_creado)
+        usuario_creado.contratoAcUsoFirmado = True
+        usuario_creado.save()
 
-    ruta_archivo = '/static/contratos/'+out_filename
-    models.Contrato.objects.create(contrato= ruta_archivo,content_object=usuario_creado, versionContrato=ultimoAcUso)
-    models.Contrato.objects.create(contrato= '/static/contratos/Terminos-Legales-y-Condiciones.pdf',content_object=usuario_creado)
-    models.Contrato.objects.create(contrato= '/static/contratos/Politicas-de-Privacidad.pdf',content_object=usuario_creado)
-    usuario_creado.contratoAcUsoFirmado = True
-    usuario_creado.save()
+    
+    
+    
+    
+    
 
 
 def guardar_contrato_ac_uso(nombres,apellidos,cedula):

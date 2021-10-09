@@ -9,10 +9,10 @@
     background-color: #36656D;
     width: 100%;
     height: 50vw;
-    background-image: url('/static/assets/foto_equipo.jpg');
+    /*background-image: url('/static/assets/DS.png');
     background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+    /*background-repeat: no-repeat; /* Do not repeat the image */
+    /* background-size: cover; Resize the background image to cover the entire container */
 
 }
 

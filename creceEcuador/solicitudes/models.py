@@ -164,9 +164,56 @@ class CalificacionSolicitante(models.Model):
 class BancoDeposito(models.Model):
     numero_cuenta = models.CharField(max_length=15)
     nombre = models.CharField(max_length=200)
+    GUAY = "GUAYAQUIL"
+    PACI = "PACÍFICO"
+    PICH = "PICHINCHA"
+    BOLI = "BOLIVARIANO"
+    PROD = "PRODUBANCO"
+    DINE = "DINERS"
+    AMAZ = "AMAZONAS"
+    AUST = "AUSTRO"
+    RUMI = "GENERAL RUMIÑAHUI"
+    INTE = "INTERNACIONAL"
+    SOLI = "SOLIDARIO"
+    MACH = "MACHALA"
+    LOJA = "LOJA"
+    PROC = "PROCREDIT"
+    LITO = "LITORAL"
+    VISI = "VISIÓNFUND ECUADOR"
+    CODE = "CODESARROLLO"
+    CAPI = "CAPITAL"
+    COMA = "COMERCIAL DE MANABÍ"
+    COOP = "COOPNACIONAL"
+    DELB = "DELBANK"
 
+
+    BANK_CHOICES = (
+    (GUAY, "Guayaquil"),
+    (PACI, "Pacífico"),
+    (PICH, "Pichincha"),
+    (BOLI, "Bolivariano"),
+    (PROD, "Produbanco"),
+    (DINE, "Diners"),
+    (AMAZ, "Amazonas"),
+    (AUST, "Austro"),
+    (RUMI, "General Rumiñahui"),
+    (INTE, "Internacional"),
+    (SOLI, "Solidario"),
+    (MACH, "Machala"),
+    (LOJA, "Loja"),
+    (PROC, "Procredit"),
+    (LITO, "Litoral"),
+    (VISI, "VisiónFund Ecuador"),
+    (CODE, "Codesarrollo"),
+    (CAPI, "Capital"),
+    (COMA, "Comercial de Manabí"),
+    (COOP, "CoopNacional"),
+    (DELB, "DelBank")
+    )
+    nombre_banco = models.CharField(max_length=200, choices=BANK_CHOICES, blank=False ,null=False)
+    
     def __str__(self):
-        return self.nombre + ", " + self.numero_cuenta
+        return self.nombre + ", " + self.numero_cuenta+ ", "+ self.numero_cuenta
 
 
 def generar_ticker(categoria):

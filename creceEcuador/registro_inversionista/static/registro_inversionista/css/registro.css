@@ -406,6 +406,8 @@ html {
     display: none;
 }
 
+
+
 #check-timelime-email-id{
         display: block;
     position: relative;
@@ -605,3 +607,5 @@ html {
   form .form-control{
     font-size: 15px !important;
   }
+
+  

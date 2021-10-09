@@ -3,6 +3,7 @@
 
 }
 
+
 #crece-modal-simular-inversion-id{
 	display: none;
 }
@@ -322,6 +323,7 @@
 }
 
 
+
 .crece-body-datos{
 	margin-left: auto;
     margin-right: auto;
@@ -411,6 +413,10 @@ th{
 	    /* padding: 10px 20px !important; */
 	    text-align: justify;
 	}
+	
+
+	
+	
 
 }
 

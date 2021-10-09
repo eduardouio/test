@@ -257,10 +257,13 @@ function insertar_timestamps(email){
   timestamp_span.innerHTML = timestamp
 
   let timestamp_email_span = document.getElementById("span-send-to-id")
-  timestamp_email_span.innerHTML = "Hemos enviado un correo a de confirmación a "+email
+  timestamp_email_span.innerHTML = "Hemos enviado un correo de confirmación a "+email
 
 
 }
+
+
+
 
 
 function registrar(argument) {
@@ -268,8 +271,9 @@ function registrar(argument) {
     let tipo_persona = $("input[name='tipo-persona']:checked").val();
     let razon_social = "";
     let nombre_comercial = "";
+    const persona_natural="1" ;
 
-    if(tipo_persona === "1"){ 
+    if(tipo_persona === persona_natural){ 
       nombre_comercial = document.getElementById("id_nombre_comercial").value;
     }
     else{
@@ -325,10 +329,25 @@ function registrar(argument) {
 
                 let logo_registro_exitoso = document.getElementById("crece-logo-registro-exitoso")
                 logo_registro_exitoso.style.display = 'block'
-                let container_after_registro  = document.getElementById("crece-wrapper-id")
-                container_after_registro.style.display = 'block'
-                $("#boton_finalizar_container").show();
-
+                  
+                  //const persona_natural="1" ;
+                  if(tipo_persona === persona_natural){ 
+                    let container_after_registro  = document.getElementById("crece-wrapper-id")
+                    container_after_registro.style.display = 'block'
+                    let container_after_registro_empresa  = document.getElementById("crece-wrapper-id-empresa")
+                    container_after_registro_empresa.style.display = 'none'
+                    $("#boton_finalizar_container").show();
+                  }
+                  else{
+                    let container_after_registro  = document.getElementById("crece-wrapper-id")
+                    container_after_registro.style.display = 'none'
+                    let container_after_registro_empresa  = document.getElementById("crece-wrapper-id-empresa")
+                    container_after_registro_empresa.style.display = 'block'
+                    $("#boton_finalizar_container").show();
+                  }
+                  
+                
+               
 
               
 

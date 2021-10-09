@@ -452,8 +452,11 @@
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                     <p>
-                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    * Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     </p>
+                                    <p>
+                                    ** Crece Ecuador se encarga de conectar a emprendedores con inversionistas. Crece no se responsabiliza por el pago de los créditos concedidos a los solicitantes.
+                                        </p>
                                       <a href="#pendientes"><button class="crece-boton-final-tabla-amortizacion" id="aceptar-inversion-button-invertir">Siguiente</button></a>
 
                                   </div>
@@ -576,7 +579,12 @@
                                     <!--Footer (GUARDAR-SIGUIENTE)-->
                                   <div class="col-12 fase-2-footer" id="fase-2-footer-id">
                                     <p>
-                                    Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal_cambiar" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    * Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal_cambiar" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
+                                    <br>
+                                    
+                                    ** Crece Ecuador se encarga de conectar a emprendedores con inversionistas. Crece no se responsabiliza por el pago de los créditos concedidos a los solicitantes.
+                                   
+                                    
                                     </p>
                                       <button class="crece-boton-final-tabla-amortizacion" id="cambiar-monto-inversion-button">Siguiente</button>
 
@@ -1151,7 +1159,7 @@
                                         <div class="col-auto">
                                             <p id="datos_transferencia">
                                                 Cuenta de ahorros: <strong id="cuenta_transferencia"></strong>{{inversion.id_solicitud.id_cuenta_banco_deposito.numero_cuenta}}<br>
-                                                <strong>Banco Amazonas</strong><br>
+                                                <strong>{{inversion.id_solicitud.id_cuenta_banco_deposito.nombre_banco}}</strong><br>
                                                 A nombre de: “<strong id="nombre_transferencia"></strong>” <br>
                                                 Cédula: <strong id="cedula_transferencia"></strong> <br>
                                                 Correo: <strong>info@creceecuador.com</strong> <br>
@@ -1240,8 +1248,24 @@
                                         hasta que se complete el total solicitado y se firmen los documentos de respaldo.
                                     </p>
                                 </div>
+                               
                             </div>
+                        
+                            
+                            
+                        
                         </div>
+                        <div class="col-11 fase-2-footer" id="fase-2-footer-id">
+                            <p>
+                            
+                            * Crece Ecuador se encarga de conectar a emprendedores con inversionistas. Crece no se responsabiliza por el pago de los créditos concedidos a los solicitantes.
+                           
+                            
+                            </p>
+                              <button class="crece-boton-final-tabla-amortizacion" id="cambiar-monto-inversion-button">Siguiente</button>
+
+                          </div>
+
                     </div>
                 </div>
             </div>

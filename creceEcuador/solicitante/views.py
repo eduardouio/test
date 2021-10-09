@@ -90,21 +90,39 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                 respuesta = Respuesta.objects.filter(texto=respuestas[i])[0]
                 encuesta = EncuestaSolicitudTemporal(id_pregunta= pregunta, id_respuesta=respuesta, id_solicitud_temporal=new_solicitud)
                 encuesta.save()
+                persona_natural="1";
+                empresa="0";
+                if(tipo_persona == persona_natural):
+                    mail_subject = '¡Gracias por tu Solicitud!'
+                    message = render_to_string('solicitante/registro_solicitud_email.html', {
+                    'solicitud': new_solicitud,
+                    'monto': numberWithCommas(float(monto)),
+                    'tasa': numberWithCommas(float(tasa))
+                    })
+                    plain_message = strip_tags(message)
+                    to_email = email
+                    correo = EmailMessage(
+                    mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+                    )
+                    correo.content_subtype = "html"
+                    correo.send()
+                
+                elif (tipo_persona == empresa):
+                    mail_subject = '¡Gracias por tu Solicitud!'
+                    message = render_to_string('solicitante/registro_solicitud_email_empresa.html', {
+                    'solicitud': new_solicitud,
+                    'monto': numberWithCommas(float(monto)),
+                    'tasa': numberWithCommas(float(tasa))
+                    })
+                    plain_message = strip_tags(message)
+                    to_email = email
+                    correo = EmailMessage(
+                    mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
+                    )
+                    correo.content_subtype = "html"
+                    correo.send()
 
-
-            mail_subject = '¡Gracias por tu Solicitud!'
-            message = render_to_string('solicitante/registro_solicitud_email.html', {
-                'solicitud': new_solicitud,
-                'monto': numberWithCommas(float(monto)),
-                'tasa': numberWithCommas(float(tasa))
-            })
-            plain_message = strip_tags(message)
-            to_email = email
-            correo = EmailMessage(
-                        mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
-            )
-            correo.content_subtype = "html"
-            correo.send()
+            
 
             #mail a admin
             print(tipo_persona)
@@ -115,7 +133,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                 'tipo_persona': "Si" if tipo_persona == "1" else "No"
             })
             plain_message = strip_tags(message)
-            to_email = "info@creceecuador.com"
+            to_email = "solicitudes@creceecuador.com"
             correo = EmailMessage(
                         mail_subject, message,from_email="El Equipo de CRECE", to=[to_email]
             )

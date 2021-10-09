@@ -88,7 +88,7 @@ footer{
 
 
 
-}
+
 
 .crece-registro-container-tipos-ingreso-wrapper{
     text-align: center;
@@ -333,7 +333,7 @@ html {
   position: relative;
   counter-reset: section;
 }
-.timeline:before {
+/*.timeline:before {
   content: "";
   width: 10px;
   height: 12.2em;
@@ -342,7 +342,7 @@ html {
   top: 0;
   left: -3.313em;
   border-radius: 40px 40px;
-}
+}*/
 
 .timeline--entry {
   position: relative;
@@ -453,10 +453,13 @@ html {
 
 #crece-wrapper-id{
     display: none;
+    
 }
 
+
+
 #check-timelime-email-id{
-        display: block;
+    display: block;
     position: relative;
     right: 90px;
     font-size: 25px;
@@ -665,3 +668,5 @@ input[type=number] {
   form .form-control{
     font-size: 15px !important;
   }
+
+  

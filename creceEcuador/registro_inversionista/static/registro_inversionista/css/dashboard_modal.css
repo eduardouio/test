@@ -252,3 +252,10 @@ div.grid-onlyitem-4.active{
     }
 
 }
+
+.fase-4-footer{
+	font-size: 4px !important;
+	color: #006B8D;
+	/*padding: 10px 20px !important;*/
+	text-align: justify;
+}
