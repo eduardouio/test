@@ -26,7 +26,6 @@ jobs:
       # Step 5
       - name: Build Application and Run unit Test
         run: python ./manage.py test
-
   continuous-deployment:
     runs-on: ubuntu-latest
     needs: [continuous-integration]
