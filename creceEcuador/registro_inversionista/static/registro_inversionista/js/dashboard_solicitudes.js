@@ -1882,6 +1882,8 @@ function llenar_datos_transferencia(id_inversion, mostrar_modal){
 
       $("#nombre_transferencia").html(res.data.nombre_completo_autor);
       $("#cuenta_transferencia").html(res.data.banco_transferencia);
+      $("#cuenta_transferencia_nombre").html(res.data.banco_transferencia_nombre);
+      $("#cuenta_transferencia_nombre").html(res.data.banco_transferencia_nombre);
       $("#texto_monto").html(res.data.monto_a_transferir.toFixed(2));
       $("#cedula_transferencia").html(res.data.cedula_solicitante);
 

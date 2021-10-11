@@ -21,6 +21,7 @@ class InversionTransferenciaSerializer(serializers.ModelSerializer):
 
     monto_a_transferir = serializers.ReadOnlyField()
     banco_transferencia = serializers.ReadOnlyField()
+    banco_transferencia_nombre = serializers.ReadOnlyField()
     nombre_completo = serializers.ReadOnlyField()
     cedula_solicitante = serializers.ReadOnlyField()
 
@@ -30,6 +31,7 @@ class InversionTransferenciaSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'banco_transferencia',
+            'banco_transferencia_nombre',
             'monto_a_transferir',
             'nombre_completo',
             'cedula_solicitante',

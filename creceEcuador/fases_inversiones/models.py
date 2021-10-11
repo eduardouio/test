@@ -128,6 +128,10 @@ class Inversion(models.Model):
         return self.id_solicitud.id_cuenta_banco_deposito.numero_cuenta
 
     @property
+    def banco_transferencia_nombre(self):
+        return self.id_solicitud.id_cuenta_banco_deposito.nombre_banco
+
+    @property
     def nombre_completo(self):
         return self.id_user.nombres + " " + self.id_user.apellidos
 

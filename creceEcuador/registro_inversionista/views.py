@@ -394,6 +394,7 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
             banco = request.data.get("banco")
             numero_cuenta = request.data.get("numero_cuenta")
             tipo_cuenta = request.data.get("tipo_cuenta")
+            nombre_cuenta = request.data.get("nombre_cuenta")
 
             descripcion_ingresos = json.dumps(fuente_ingresos).upper()
             print(fuente_ingresos)

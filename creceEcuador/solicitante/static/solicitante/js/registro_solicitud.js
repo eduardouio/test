@@ -272,7 +272,7 @@ function registrar(argument) {
     let razon_social = "";
     let nombre_comercial = "";
     const persona_natural="1" ;
-
+    
     if(tipo_persona === persona_natural){ 
       nombre_comercial = document.getElementById("id_nombre_comercial").value;
     }

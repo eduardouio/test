@@ -213,7 +213,7 @@ class BancoDeposito(models.Model):
     nombre_banco = models.CharField(max_length=200, choices=BANK_CHOICES, blank=False ,null=False)
     
     def __str__(self):
-        return self.nombre + ", " + self.numero_cuenta+ ", "+ self.numero_cuenta
+        return self.nombre + ", " + self.numero_cuenta+ ", "+ self.nombre_banco
 
 
 def generar_ticker(categoria):

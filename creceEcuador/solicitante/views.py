@@ -107,7 +107,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                     correo.content_subtype = "html"
                     correo.send()
                 
-                elif (tipo_persona == empresa):
+                else:
                     mail_subject = '¡Gracias por tu Solicitud!'
                     message = render_to_string('solicitante/registro_solicitud_email_empresa.html', {
                     'solicitud': new_solicitud,
