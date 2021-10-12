@@ -5,10 +5,10 @@ files:
    destination: /home/ec2-user/viewflow-crece/
 hooks:
   AfterInstall:
-   - location: creceEcuador/install_app_dependencies
+   - location: creceEcuador/install_app_dependencies.sh
      timeout: 300
      runas: root
   ApplicationStart:
-   - location: creceEcuador/start_server
+   - location: creceEcuador/start_server.sh
      timeout: 300
      runas: root
