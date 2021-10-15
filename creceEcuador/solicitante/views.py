@@ -39,24 +39,37 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
             usuario.apellidos = apellidos
             usuario.celular = celular
             #validando si ya existe una solicitud temporal para ese RUC
-            if (existeCI(ruc)):
-                #ya ha realizado una peticion con dicho ruc
-                existe_solicitud = True
-                messages.warning(request,'Ya ha registrado una solicitud con dicha CEDULA O RUC.')
-                #validar tiempo (si lleva mas de un mes se actualiza la peticion)
-            else:
-                usuario.save()
-                new_solicitud = SolicitudTemporal(
-                    razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
-                    tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
-                    id_usuario_solicitante_temporal= usuario
-                )
-                rechazar(tipo_persona,ruc,new_solicitud)
+            
+            usuario.save()
+            new_solicitud = SolicitudTemporal(
+                razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
+                tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
+                id_usuario_solicitante_temporal= usuario
+            )
+            rechazar(tipo_persona,ruc,new_solicitud)
         else:
             if (existeCI(ruc)):
                 #ya ha realizado una peticion con dicho ruc
-                existe_solicitud=True
-                messages.warning(request,'Ya ha registrado una solicitud con dicha CEDULA O RUC.')
+                new_user = User( username=cedula, password=cedula,
+                    email=email, first_name=nombres, last_name=apellidos,
+                )
+
+                new_user.set_password(cedula)
+                new_user.is_active = False
+                new_user.save()
+
+                new_usuario = UsuarioSolicitanteTemporal(
+                    email=email, nombres=nombres, apellidos=apellidos, celular=celular,
+                    cedula=cedula, user=new_user
+                )
+
+                new_usuario.save()
+                new_solicitud = SolicitudTemporal(
+                    razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
+                    tipo_persona=tipo_persona, monto=monto, plazo=plazo, tasa=tasa, uso_financiamiento=uso,
+                    id_usuario_solicitante_temporal= new_usuario
+                )
+                rechazar(tipo_persona,ruc,new_solicitud)
                 #validar tiempo (si lleva mas de un mes se actualiza la peticion)
             else:
                 new_user = User( username=cedula, password=cedula,
