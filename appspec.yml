@@ -16,7 +16,7 @@ hooks:
    - location: creceEcuador/scripts/migrate.sh
      timeout: 6000
      runas: ec2-user
-   - location: scripts/ngnix.sh
+   - location: creceEcuador/scripts/nginx.sh
      timeout: 6000
      runas: ec2-user
   ApplicationStart:

@@ -28,7 +28,6 @@ filechunkio==1.8
 futures==3.1.1
 google-auth==1.5.1
 google-auth-oauthlib==0.2.0
-googleads==13.0.0
 graphviz==0.14.2
 idna==2.7
 importlib-metadata==1.6.0
@@ -69,7 +68,6 @@ social-auth-app-django==5.0.0
 social-auth-core==4.1.0
 sqlparse==0.3.1
 stevedore==1.29.0
-suds-jurko==0.6
 urllib3==1.23
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
