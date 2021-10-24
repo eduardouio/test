@@ -3,12 +3,23 @@ os: linux
 files:
  - source: .
    destination: /home/ec2-user/viewflow-crece/
+permissions:
+  - object: /home/ec2-user/viewflow-crece
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
 hooks:
   AfterInstall:
-   - location: creceEcuador/install_app_dependencies.sh
+   - location: creceEcuador/scripts/install_app_dependencies.sh
      timeout: 300
      runas: root
+   - location: creceEcuador/scripts/migrate.sh
+     timeout: 6000
+     runas: ec2-user
+   - location: scripts/ngnix.sh
+     timeout: 6000
+     runas: ec2-user
   ApplicationStart:
-   - location: creceEcuador/start_server.sh
+   - location: creceEcuador/scripts/start_server.sh
      timeout: 300
      runas: root
