@@ -22,4 +22,8 @@ hooks:
   ApplicationStart:
    - location: creceEcuador/scripts/start_server.sh
      timeout: 300
-     runas: root
+     runas: ec2-user
+  ApplicationStop:
+   - location: creceEcuador/scripts/stop.sh
+     timeout: 6000
+     runas: ec2-user
