@@ -48,7 +48,7 @@ pyaml==15.8.2
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
 pycparser==2.20
-PyJWT==2.1.0
+PyJWT==1.7.1
 pyparsing==2.4.7
 pytest==5.4.1
 pytest-django==3.9.0
