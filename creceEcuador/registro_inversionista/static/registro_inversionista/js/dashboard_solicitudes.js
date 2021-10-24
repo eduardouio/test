@@ -709,7 +709,7 @@ function stringSolicitudList(oportunidad, lista_inversiones_usuario, inicio){
 '                                                    <div class="col-12 crece-oportunidades-contenido-monto-texto">'+
 '                                                            <p>'+
 '                                                                <strong>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</strong><br>'+
-'                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+' ('+oportunidad.porcentaje_financiado+'%) recolectados'+
+'$'+numeroConComas(decimalAEntero(oportunidad.monto_financiado))+'('+roundToTwo(oportunidad.porcentaje_financiado)+'%)'+ 'recolectados'+
 '                                                            </p>'+
 '                                                        <span></span>'+
 '                                                    </div>'+
@@ -778,6 +778,10 @@ function stringSolicitudList(oportunidad, lista_inversiones_usuario, inicio){
 return tarjeta;
 }
 
+function roundToTwo(num) {    
+  return +(Math.round(num + "e+2")  + "e-2");
+}
+
 function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   let tarjeta_oportunidad = ""
   if (oportunidad.fase_inversion === "GOING"){
@@ -807,7 +811,7 @@ function stringSolicitud(oportunidad, lista_inversiones_usuario, inicio){
   '                                                        <div class="col-11 crece-oportunidades-contenido-monto-texto">'+
   '                                                            <p>'+
   '                                                                <strong>$'+numeroConComas(decimalAEntero(oportunidad.monto))+'</strong><br>'+
-  '                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+' ('+oportunidad.porcentaje_financiado+'%) recolectados'+
+  '$'+numeroConComas(decimalAEntero(oportunidad.monto_financiado))+'('+roundToTwo(oportunidad.porcentaje_financiado)+'%)'+ 'recolectados'+
   '                                                            </p>'+
   '                                                            '+
   '                                                            <span></span>'+
@@ -1206,9 +1210,10 @@ function crearDetalleInversion(oportunidad) {
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">'+
 '                                                            <strong>'+
-'                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+
+'                                                                $'+numeroConComas(decimalAEntero(oportunidad.monto_financiado))+
 '                                                            </strong>'+
-'                                                            <span>'+ oportunidad.porcentaje_financiado+'% recolectado</span>'+
+'                                                            <span>'+ 
+                                                                roundToTwo(oportunidad.porcentaje_financiado)+'% recolectado</span>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-objetivo">'+
 '                                                            <strong>'+

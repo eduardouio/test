@@ -55,6 +55,7 @@ class Solicitud(models.Model):
     tir = models.DecimalField(max_digits=4, decimal_places=2, blank=False)
     tin = models.DecimalField(max_digits=4, decimal_places=2, blank=False, default=True)
     porcentaje_financiado = models.DecimalField(max_digits=5, decimal_places=2, blank=False, default=0)
+    monto_financiado = models.DecimalField(max_digits=10, decimal_places=2, blank=False, default=0)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_publicacion = models.DateField()
     fecha_finalizacion = models.DateField(blank=True, null=True)

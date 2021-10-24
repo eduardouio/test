@@ -273,9 +273,10 @@ crear_boton_regresar_solicitudes()+
 '                                                    <div class="row">'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-porcentaje">'+
 '                                                            <strong>'+
-'                                                                $'+numeroConComas(calcularPorcentajeFinanciado(oportunidad.monto, oportunidad.porcentaje_financiado))+
+'                                                                $'+numeroConComas(decimalAEntero(oportunidad.monto_financiado))+
 '                                                            </strong>'+
-'                                                            <span>'+ oportunidad.porcentaje_financiado+'% recolectado</span>'+
+'                                                            <span>'+ 
+                                                                    roundToTwo(oportunidad.porcentaje_financiado)+'% recolectado</span>'+
 '                                                        </div>'+
 '                                                        <div class="col-6 crece-operaciones-contenido-datos-barra-objetivo">'+
 '                                                            <strong>'+

@@ -4,6 +4,8 @@ from fases_inversiones.models import Inversion
 from django.db.models.signals import pre_save, post_save
 from django.core.exceptions import ValidationError
 from django_fsm import TransitionNotAllowed
+from decimal import Decimal
+from solicitudes.models import Solicitud
 
 class TransferenciaInversion(models.Model):
     estado_confirmada = 1
@@ -39,6 +41,8 @@ class TransferenciaInversion(models.Model):
             return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", Por confirmar: $" + str(self.id_inversion.monto)  
                 
 
+
+
 #Signals
 def setear_porcentaje_en_solicitud_cambiar_estado_inversion(sender, instance, **kwargs):
     if(instance.estado == 1):
@@ -50,18 +54,34 @@ def setear_porcentaje_en_solicitud_cambiar_estado_inversion(sender, instance, **
         inversion = instance.id_inversion
         solicitud = inversion.id_solicitud
 
-
         #Actualizar la solicitud con el nuevo monto financiado
-        porcentaje_inversion = 100 * float(inversion.monto)/float(solicitud.monto)
+        
+        porcentaje_inversion = 100 * float(inversion.monto)/float(solicitud.monto) 
         if(porcentaje_inversion < 0 or porcentaje_inversion > 100 ):
             raise ValidationError("Monto de inversion negativo o mayor que el monto de solicitud")
         if (float(solicitud.porcentaje_financiado) + porcentaje_inversion > 100):
             raise ValidationError("Monto de inversion excede monto restante de la solicitud.")
 
-        solicitud.porcentaje_financiado = porcentaje_inversion + float(solicitud.porcentaje_financiado)
+        
+        monto_total=0;
+        
+        for inv in Inversion.objects.filter(id_solicitud=inversion.id_solicitud,estado=1):
+            monto_total=inv.monto + monto_total
+
+        solicitud.monto_financiado = round(Decimal(inversion.monto) + Decimal(monto_total),2)
+        
+        
+        
+        solicitud.porcentaje_financiado = round(Decimal(100 * Decimal(solicitud.monto_financiado) / Decimal(solicitud.monto)),2)
+        
+        
+        
+        #Cambiar estado de inversion
+
+       
         
 
-        #Cambiar estado de inversion
+        
         inversion.estado = 1
 
         try:
@@ -71,6 +91,7 @@ def setear_porcentaje_en_solicitud_cambiar_estado_inversion(sender, instance, **
             print("Estado no se puede cambiar")
 
         inversion.save()
+        
         solicitud.save()
     else:
         print("no confirmado")
