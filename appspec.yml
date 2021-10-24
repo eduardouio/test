@@ -26,4 +26,4 @@ hooks:
   ApplicationStop:
    - location: creceEcuador/scripts/stop.sh
      timeout: 6000
-     runas: ec2-user
+     runas: root
