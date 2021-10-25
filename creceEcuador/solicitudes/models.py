@@ -5,7 +5,10 @@ from django.conf import settings
 from registro_inversionista.models import Usuario
 from django.db.models.signals import pre_save, post_save
 from ckeditor_uploader.fields import RichTextUploadingField
-
+#from fases_inversiones.models import Inversion
+from decimal import Decimal
+from django.db.models.signals import pre_save, post_save
+from django.core.exceptions import ValidationError
 # Create your models here.
 class CategoriaSolicitud(models.Model):
     #Modelo Categoria de solicitud
@@ -132,11 +135,33 @@ class Solicitud(models.Model):
 
 
 
+
     class Meta:
         verbose_name = "Solicitud"
         verbose_name_plural = "Solicitudes"
 
+
+def recalcular_montos_porcentajes_solicitud(sender, instance, **kwargs):
     
+    print(instance.__dict__) 
+    print(sender.__dict__)    
+    solicitud = instance.id
+
+
+    if (instance.monto < instance.monto_financiado):
+        raise ValidationError("Monto excede al monto total financiado.")
+        #solicitud.monto_financiado = round(Decimal(monto_total),2)
+    instance.porcentaje_financiado = round(Decimal(100 * Decimal(instance.monto_financiado) / Decimal(instance.monto)),2)
+
+    
+
+    
+
+pre_save.connect(recalcular_montos_porcentajes_solicitud, sender= Solicitud) 
+
+
+
+
 class HistorialFinanciamiento(models.Model):
     id_usuario = models.ForeignKey('registro_inversionista.Usuario', on_delete=models.SET_NULL, null=True, blank=False)
     id_solicitud = models.ForeignKey('Solicitud', on_delete=models.SET_NULL, null=True, blank=False)
