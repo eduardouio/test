@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_-js_fe9-nlgtgu3xtlvmqeme&+aj1)#v2@1mlxwxxafs^^l#2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', [])
 
 
 # Application definition
@@ -74,7 +74,7 @@ SESSION_COOKIE_AGE = 86400 #24 horas de sesion
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'solicitudes@creceecuador.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASS', '')
 EMAIL_PORT = 587
 
 
