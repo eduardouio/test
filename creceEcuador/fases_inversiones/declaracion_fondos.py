@@ -20,7 +20,7 @@ internacionales por ninguno de los aspectos anteriores. \n""",
   en caso de infracción de cualquiera de los numerales contenidos en este documento eximiendo a CRECE ECUADOR de toda responsabilidad que se 
   derive por información errónea, falsa o inexacta que yo hubiere proporcionado en este u otro documento durante la operación de financiamiento 
   colaborativo utilizando la plataforma de CRECE ECUADOR, o de la violación del mismo. \n""",
-"""5. Autorizo a PROSPERAECU S.A. / CRECE ECUADOR para que consulte mi información crediticia en las Centrales de Riesgo y ante las entidades que 
+"""5. Autorizo a COLABORAECU S.A. / CRECE ECUADOR para que consulte mi información crediticia en las Centrales de Riesgo y ante las entidades que 
 estime necesarias."""
 ]
 CONTRATO_FOOTER = """Los datos aquí consignados obedecen a la realidad. Al dar clic en Siguiente declaro (amos) haber leído, entendido y aceptado libremente el presente documento."""

@@ -22,15 +22,15 @@ SUBTITULO_CONTRATO = 'www.creceecuador.com'
 PRE_ANTECEDENTE = '''De acuerdo con la cláusula quinta de los Términos y Condiciones Generales del Uso de la plataforma de CRECE ECUADOR,
  el usuario INVERSIONISTA ACEPTA los siguientes ACUERDOS ESPECÍFICOS:'''
 ANTECEDENTES = [
-'1. PROSPERAECU S.A. administra una plataforma de financiamiento colaborativa, en adelante el “Sitio”, cuyo objetivo es facilitar el encuentro online entre personas o empresas que desean invertir, los “Inversionistas”, y personas o empresas que necesitan financiamiento para desarrollar sus emprendimientos, los “Solicitantes”. El Inversionista puede elegir una o más Solicitudes de Financiamiento disponibles en la Plataforma, pudiendo invertir en conjunto con otros inversionistas.',
+'1. COLABORAECU S.A. administra una plataforma de financiamiento colaborativa, en adelante el “Sitio”, cuyo objetivo es facilitar el encuentro online entre personas o empresas que desean invertir, los “Inversionistas”, y personas o empresas que necesitan financiamiento para desarrollar sus emprendimientos, los “Solicitantes”. El Inversionista puede elegir una o más Solicitudes de Financiamiento disponibles en la Plataforma, pudiendo invertir en conjunto con otros inversionistas.',
 '2. Las condiciones y términos comerciales de los financiamientos publicados varían según el tipo de financiamiento y en cada caso, según lo que acuerden – exclusivamente - los Inversionistas del financiamiento respectivo y los Solicitantes. Las condiciones y términos de cada solicitud de financiamiento serán informadas al Inversionista mediante mail al  correo electrónico designado por el usuario al momento de registrarse en la plataforma y  a través de publicaciones en la Plataforma, las que se mantendrán vigentes una vez publicadas respecto de cada financiamiento en particular.',
 '3. Todos los términos que no sean definidos en el Contrato, tendrán el significado que aparece en el documento denominado TÉRMINOS LEGALES Y CONDICIONES GENERALES DE USO DEL SITIO WEB WWW.CRECEECUADOR.COM'
 ]
 
 REGLAS_GENERALES = [
-'a.\t El método de inversión será vía transferencia electrónica o depósito bancario a una Institución del sistema financiero de acuerdo a las condiciones que CRECE ECUADOR defina. Quedará a potestad de PROSPERAECU S.A. autorizar inversiones que se realicen por otros medios.',
+'a.\t El método de inversión será vía transferencia electrónica o depósito bancario a una Institución del sistema financiero de acuerdo a las condiciones que CRECE ECUADOR defina. Quedará a potestad de COLABORAECU S.A. autorizar inversiones que se realicen por otros medios.',
 'b \t La adjudicación del financiamiento será realizada por orden de llegada de los fondos de  inversionistas a la cuenta Escrow del Solicitante. Para ello, el inversionista deberá informar a CRECE del depósito realizado enviando comprobante de transacción a info@creceecuador.com o según se indique en la plataforma al momento de realizar el compromiso de inversión.',
-'c.\t Una vez adjudicada la participación en una operación, el inversionista no podrá realizar el retiro de sus fondos bajo ninguna circunstancia. Solo se permitirá el retiro de fondos transferidos a la cuenta Escrow del Solicitante en casos analizados y aprobados por PROSPERAECU S.A. a los cuales se aplicará un cargo por rescate del 10% del valor depositado por el incumplimiento del compromiso de Inversión.',
+'c.\t Una vez adjudicada la participación en una operación, el inversionista no podrá realizar el retiro de sus fondos bajo ninguna circunstancia. Solo se permitirá el retiro de fondos transferidos a la cuenta Escrow del Solicitante en casos analizados y aprobados por COLABORAECU S.A. a los cuales se aplicará un cargo por rescate del 10% del valor depositado por el incumplimiento del compromiso de Inversión.',
 'd.\t En caso de  que un inversionista transfiera fondos a una cuenta Escrow de Solicitante en una operación que ya ha sido financiada al 100%  por otros Inversionistas, dichos fondos excedentes se devolverán al Inversionista descontando los cargos aplicados por la entidad bancaria por la devolución de los fondos al Inversionista.',
 'e.\t Las solicitudes de financiamiento serán financiadas por un mínimo de dos inversionistas. Ninguna solicitud de financiamiento podrá ser inferior a USD 2000 (dos mil dólares de  los Estados Unidos de Norteamérica).',
 'f.\t Un inversionista podrá financiar un proyecto hasta el 90% del valor de la solicitud de financiamiento publicada en la plataforma.',
@@ -227,7 +227,7 @@ c) Finalizado el plazo para transferir los fondos por parte de los Inversionista
             """ 
     agregar_parrafo(Story, ptext, styles)
     ptext= """
-4. EL INVERSIONISTA COMPRENDE Y ACEPTA QUE LAS SOLICITUDES DE FINANCIAMIENTO PUBLICADAS A TRAVÉS DE LA PLATAFORMA NO SE ENCUENTRAN GARANTIZADOS DE NINGUNA MANERA POR PROSPERAECU S.A./CRECE ECUADOR, NO SIENDO ÉSTE RESPONSABLE DE LAS DECISIONES DE INVERSIÓN DEL INVERSIONISTA NI DE SUS CONSECUENCIAS.
+4. EL INVERSIONISTA COMPRENDE Y ACEPTA QUE LAS SOLICITUDES DE FINANCIAMIENTO PUBLICADAS A TRAVÉS DE LA PLATAFORMA NO SE ENCUENTRAN GARANTIZADOS DE NINGUNA MANERA POR COLABORAECU S.A./CRECE ECUADOR, NO SIENDO ÉSTE RESPONSABLE DE LAS DECISIONES DE INVERSIÓN DEL INVERSIONISTA NI DE SUS CONSECUENCIAS.
             """ 
     agregar_parrafo(Story, ptext, styles)
 
@@ -374,7 +374,7 @@ VI. Exigir a los solicitantes el pago de intereses que superen las tasas máxima
     SECCION += 1
     agregar_SECCION(Story, SECCION, styles)
     ptext= """
-Por este acto, el Inversionista confiere mandato especial, pero tan amplio como en derecho corresponda, a PROSPERAECU S.A. para que éste, en nombre y en representación del Inversionista realice lo siguiente:
+Por este acto, el Inversionista confiere mandato especial, pero tan amplio como en derecho corresponda, a COLABORAECU S.A. para que éste, en nombre y en representación del Inversionista realice lo siguiente:
 """ 
     agregar_parrafo(Story, ptext, styles)
 
@@ -420,16 +420,16 @@ Por este acto, el Inversionista confiere mandato especial, pero tan amplio como 
         """ 
     agregar_parrafo(Story, ptext, styles)
     ptext= """
-Adicionalmente por este acto, el Inversionista confiere mandato especial, pero tan amplio como en derecho corresponda, a PROSPERAECU S.A. para que, en nombre y representación del Inversionista realice la gestión de cobranza extrajudicialmente, perciba, por sí mismo o a través de terceros especialmente delegados al efecto, las cuotas de dinero a que tenga derecho el Inversionista de conformidad con la Solicitud de Financiamiento, más sus intereses correspondientes, y para dividir las cuotas pagadas entre los Inversionistas que han participado en dicha Solicitud de Financiamiento, en proporción a sus respectivos aportes, todo lo anterior en los términos del presente instrumento y de las disposiciones del mandato del Código Civil.  Todo valor recuperado por la gestión de cobranza se acreditará a través de la cuenta Escrow del Solicitante designada para la operación y será transferido a las cuentas designadas por los Inversionistas conforme a las condiciones establecidas en  el presente Acuerdo Específico.
+Adicionalmente por este acto, el Inversionista confiere mandato especial, pero tan amplio como en derecho corresponda, a COLABORAECU S.A. para que, en nombre y representación del Inversionista realice la gestión de cobranza extrajudicialmente, perciba, por sí mismo o a través de terceros especialmente delegados al efecto, las cuotas de dinero a que tenga derecho el Inversionista de conformidad con la Solicitud de Financiamiento, más sus intereses correspondientes, y para dividir las cuotas pagadas entre los Inversionistas que han participado en dicha Solicitud de Financiamiento, en proporción a sus respectivos aportes, todo lo anterior en los términos del presente instrumento y de las disposiciones del mandato del Código Civil.  Todo valor recuperado por la gestión de cobranza se acreditará a través de la cuenta Escrow del Solicitante designada para la operación y será transferido a las cuentas designadas por los Inversionistas conforme a las condiciones establecidas en  el presente Acuerdo Específico.
         """ 
     agregar_parrafo(Story, ptext, styles)
     ptext= """
-Para los efectos del mandato otorgado en la cláusula precedente, el Inversionista faculta expresamente a PROSPERAECU S.A. para deducir de las sumas percibidas los descuentos acordados en el Contrato de Términos Legales y Condiciones Generales de Uso del Sitio  Web aceptado y suscrito por el Inversionista, entre los cuales se incluyen el cobro por concepto de uso de la plataforma, y otros que se hayan acordado entre las Partes.
+Para los efectos del mandato otorgado en la cláusula precedente, el Inversionista faculta expresamente a COLABORAECU S.A. para deducir de las sumas percibidas los descuentos acordados en el Contrato de Términos Legales y Condiciones Generales de Uso del Sitio  Web aceptado y suscrito por el Inversionista, entre los cuales se incluyen el cobro por concepto de uso de la plataforma, y otros que se hayan acordado entre las Partes.
 
         """ 
     agregar_parrafo(Story, ptext, styles)
     ptext= """
-En el ejercicio de su mandato, PROSPERAECU S.A. / Crece Ecuador podrá realizar las siguientes actuaciones y estará premunido de las siguientes facultades:
+En el ejercicio de su mandato, COLABORAECU S.A. / Crece Ecuador podrá realizar las siguientes actuaciones y estará premunido de las siguientes facultades:
 
         """ 
     agregar_parrafo(Story, ptext, styles)
@@ -539,16 +539,16 @@ f.          En cualquiera de estos casos, se entenderá que el presente Contrato
     SECCION += 1
     agregar_SECCION(Story, SECCION, styles)
     ptext= """
-            El inversionista pagará a PROSPERAECU S.A. el 0.8% del capital invertido en la operación de financiamiento colaborativo como cargo por adjudicación de operación. Dicho valor será pagado a PROSPERAECU S.A. una sola vez por operación al momento de acreditarse la transferencia de fondos a la cuenta Escrow del Solicitante, asignada para la operación de financiamiento colaborativo y se hará de manera automática.
+            El inversionista pagará a COLABORAECU S.A. el 0.8% del capital invertido en la operación de financiamiento colaborativo como cargo por adjudicación de operación. Dicho valor será pagado a COLABORAECU S.A. una sola vez por operación al momento de acreditarse la transferencia de fondos a la cuenta Escrow del Solicitante, asignada para la operación de financiamiento colaborativo y se hará de manera automática.
             """ 
     agregar_parrafo(Story, ptext, styles)
     ptext= """
-            El inversionista además pagará a PROSPERAECU S.A. por la gestión de cobranza extrajudicial el valor de 0.45% + IVA mensual del capital insoluto a la fecha de pago. En caso de que el porcentaje aquí indicado resulte en un valor inferior a USD $0.50 (cincuenta centavos de dólar de los Estados Unidos de Norteamérica) se establece el valor de USD $0.50 (cincuenta centavos de dólar de los Estados Unidos de Norteamérica) como cargo por gestión de cada uno de los dividendos cobrados al Solicitante.
+            El inversionista además pagará a COLABORAECU S.A. por la gestión de cobranza extrajudicial el valor de 0.45% + IVA mensual del capital insoluto a la fecha de pago. En caso de que el porcentaje aquí indicado resulte en un valor inferior a USD $0.50 (cincuenta centavos de dólar de los Estados Unidos de Norteamérica) se establece el valor de USD $0.50 (cincuenta centavos de dólar de los Estados Unidos de Norteamérica) como cargo por gestión de cada uno de los dividendos cobrados al Solicitante.
             Este valor se debitará de la cuenta Escrow del solicitante al momento de transferir la parte de la cuota que corresponde a cada Inversionista según las condiciones acordadas en la operación.
             """
     agregar_parrafo(Story, ptext, styles)
     ptext= """
-        En caso de que las partes soliciten otro servicio ofrecido por PROSPERAECU S.A. / CRECE ECUADOR y derivado del uso de la plataforma, las partes suscribirán el adenda correspondiente que se adjuntará al archivo de la operación con las formalidades que la ley o Crece Ecuador estime convenientes.
+        En caso de que las partes soliciten otro servicio ofrecido por COLABORAECU S.A. / CRECE ECUADOR y derivado del uso de la plataforma, las partes suscribirán el adenda correspondiente que se adjuntará al archivo de la operación con las formalidades que la ley o Crece Ecuador estime convenientes.
         """
     agregar_parrafo(Story, ptext, styles)
 
