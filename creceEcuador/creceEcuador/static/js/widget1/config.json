@@ -1,0 +1,10 @@
+{
+  "jqueryURL": "https://code.jquery.com/jquery-3.3.1.min.js",
+  "learnMoreURL": "https://www.youtube.com/watch?v=rKZOF68h9_U",
+  "header": "Calculadora SEGCOM",
+  "showHeader": true,
+  "subHeader": "Conoce el verdadero efecto de los cambios en tu impuesto a la renta",
+  "showSubHeader": true,
+  "bodyText": "Ingreso mensual estimado:",
+  "btnText": "Ver impuestos eliminados"
+}

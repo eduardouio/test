@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} Crece Ecuador {% endblock title %} </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- ****** faviconit.com favicons ****** -->
+        <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}">
+        <link rel="icon" sizes="16x16 32x32 64x64" href="{% static 'assets/favicon.ico' %}">
+        <link rel="icon" type="image/png" sizes="196x196" href="{% static 'assets/favicon-192.png' %}">
+        <link rel="icon" type="image/png" sizes="160x160" href="{% static 'assets/favicon-160.png' %}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/favicon-96.png' %}">
+        <link rel="icon" type="image/png" sizes="64x64" href="{% static 'assets/favicon-64.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16.png' %}">
+        <link rel="apple-touch-icon" href="{% static 'assets/favicon-57.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/favicon-114.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/favicon-72.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/favicon-144.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/favicon-60.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/favicon-120.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/favicon-76.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/favicon-152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon-180.png' %}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="{% static 'assets/favicon-144.png' %}">
+        <meta name="msapplication-config" content="{% static 'assets/browserconfig.xml' %}">
+        <!-- ****** faviconit.com favicons ****** -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        {% block head_css %}
+        <link href="{% static 'slick/slick.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'slick/slick-theme.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        {% block head_css_agregado %}{% endblock head_css_agregado %}
+        {% endblock head_css %}
+    </head>
+    <body>
+    <!-- Main Content -->
+            <main>
+                  <div class="crece-contenedor-cuerpo">
+                      {% block content %}
+
+
+                      {% endblock content %}
+                  </div>
+            </main>
+
+
+        {% block footer_javascript %}
+          <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+          <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171686539-1"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-171686539-1');
+          </script>
+
+          {% block footer_javascript_agregado %}
+
+          {% endblock footer_javascript_agregado %}
+        {% endblock footer_javascript %}
+
+    </body>
+</html>

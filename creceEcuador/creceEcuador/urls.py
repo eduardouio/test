@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls import include 
+from django.urls import include
 from django.views.generic.base import TemplateView
 from rest_framework_simplejwt import views as jwt_views
 from django.conf import settings
@@ -37,6 +37,7 @@ urlpatterns = [
     path('invertir/', TemplateView.as_view(template_name="solicitudes.html")),
     path('invertir/detalle/', TemplateView.as_view(template_name="detalle_solicitud.html")),
     path('calculadora/', TemplateView.as_view(template_name="calculadora.html")),
+    path('sri/', TemplateView.as_view(template_name="sri.html")),
     path('faq/', TemplateView.as_view(template_name="preguntas_frecuentes.html")),
     path('nosotros/', TemplateView.as_view(template_name="nosotros.html")),
     path('anunciar-solicitud/', TemplateView.as_view(template_name="anunciar_solicitud.html")),

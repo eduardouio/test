@@ -1,0 +1,30 @@
+{% extends 'template_clean.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        {% block head_css_agregado %}
+            <link href="{% static 'css/bootstrap-slider.slider.min.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static 'css/styles_widget.css' %}" rel="stylesheet" type="text/css">
+        {% endblock head_css_agregado %}
+    </head>
+    <body>
+
+                {% block content %}
+
+                <div class="container" style="">
+                  <div class="widget-1"></div>
+                </div>
+                {% endblock content %}
+
+
+
+        {% block footer_javascript_agregado %}
+            <script type="text/javascript" src="{% static 'js/bootstrap-slider.min.js' %}"></script>
+            <script id="widget-1" src="{% static 'js/widget1/widget1.js' %}" data-config="{% static 'js/widget1/config.json' %}"></script>
+        {% endblock footer_javascript_agregado %}
+
+
+    </body>
+</html>

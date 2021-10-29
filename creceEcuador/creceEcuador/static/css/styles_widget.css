@@ -1,0 +1,207 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+  background-color: rgba(20,25,55,1);
+  width: 21rem;color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+.card_foot{
+  width: 21rem;
+  padding: 0.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+.card header p{
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: normal;
+}
+.card-title{
+  font-size: 1em;
+  margin: 0 auto;
+  text-align: center;
+}
+.slider.slider-horizontal {
+  width: 100%; /*changed*/
+  height: 20px;
+}
+#valor-capital{
+  text-align:center;
+  margin: 0 auto;
+}
+#slidecontainer {
+  border-radius: 5px;
+  width: 100%;
+}
+/* Styling the slider background */
+#ingreso-bruto {
+-webkit-appearance: none;
+background-color: grey;
+outline: none;
+height: 3px;
+border-radius: 1px;
+width:100%;
+}
+/* Styling the thumb */
+#ingreso-bruto::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+background: #078dd8;
+border-radius: 50%;
+cursor: -moz-grab;
+cursor: -webkit-grab;
+}
+
+.slider-handle{
+  background-color: #006B8D;
+}
+/*
+input[type=range].capital {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 5.3px 0;
+  position: relative;
+  top: -11.4px;
+
+}
+input[type=range].capital:focus {
+  outline: none;
+  background: none;
+}
+input[type=range].capital::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4.4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border-radius: 25px;
+  border: 0px solid #000000;
+}
+input[type=range].capital::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #aecb6f;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5.3px;
+}
+input[type=range].capital:focus::-webkit-slider-runnable-track {
+  background: #b0cc73;
+}
+input[type=range].capital::-moz-range-track {
+  width: 100%;
+  height: 4.4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+  background: #aecb6f;
+  border-radius: 25px;
+  border: 0px solid #000000;
+}
+input[type=range].capital::-moz-range-thumb {
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #aecb6f;
+  cursor: pointer;
+}
+input[type=range].capital::-ms-track {
+  width: 100%;
+  height: 4.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].capital::-ms-fill-lower {
+  background: #acca6b;
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range].capital::-ms-fill-upper {
+  background: #aecb6f;
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.3px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range].capital::-ms-thumb {
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #aecb6f;
+  cursor: pointer;
+  height: 4.4px;
+}
+input[type=range].capital:focus::-ms-fill-lower {
+  background: #aecb6f;
+}
+input[type=range].capital:focus::-ms-fill-upper {
+  background: #b0cc73;
+}
+*/
+
+
+#main-response{
+  background-color: #ffffff;
+  border-radius: 8px;
+  color: #006B8D;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+.main{
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-right:0em;
+  text-align: center;
+}
+.main2{
+  font-size: 0.8em;
+  margin-right:1.25em;
+  width: 100%;
+}
+.main3{
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-right:0em;
+}
+.paragraph{
+  font-size: 13px;
+}
+#extra-response{
+  font-size: 12px;
+}
+
+#final-legend{
+  font-size: 0.8em;
+  text-align: justify;
+}
+
+#final-legend-pgp{
+  padding: 2em;
+  font-size: 0.6em;
+  text-align: justify;
+}
+.learn button{
+  margin: 0 auto;
+  display: block;
+}
+
+.ingresos input{
+
+}
