@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'app',
     'registro_inversionista',
-    'solicitudes',
+    'solicitudes.apps.SolicitudesConfig',
     'log_acciones',
-    'fases_inversiones',
+    'fases_inversiones.apps.FasesInversionesConfig',
     'solicitante',
 
     'proceso',
@@ -228,7 +228,6 @@ SIMPLE_JWT = {
 
 
 LOGIN_URL = '/inversionista/login/'
-
 
 #SESSION_ENGINE =  'django.contrib.sessions.backends.signed_cookies'
 

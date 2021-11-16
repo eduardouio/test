@@ -1,4 +1,6 @@
 import math
+import calendar
+from datetime import date, timedelta
 """Variables usadas en esta aplicacion"""
 #keys en el request para la paginacion
 INICIO_KEY = 'inicio'
@@ -68,3 +70,49 @@ def calcular_recargo_tasa(dias_mora, ted_supuesta):
 
 	tasa_efectiva_diaria = ted_supuesta * (1 + recargo)
 	return tasa_efectiva_diaria
+
+def get_fechas_dias_ta(solicitud):
+    start_date = solicitud.fecha_finalizacion
+    temp_date = solicitud.fecha_finalizacion
+    next_date = add_months(start_date, 1)
+    fechas=[]
+    dias=[]
+    plazo_solicitud = solicitud.plazo
+
+
+    dias_transcurridos = abs((start_date - start_date).days)
+    dias.append(dias_transcurridos)
+
+    for i in range(plazo_solicitud):
+        if(next_date.weekday() == 6):   #domingo
+            next_date = next_date + timedelta(days=1)
+
+            dias_transcurridos = abs((next_date - temp_date).days) 
+            temp_date = date(next_date.year, next_date.month , next_date.day)
+            next_date = next_date + timedelta(days=-1)
+        elif (next_date.weekday() == 5):    #sabado
+            next_date = next_date + timedelta(days=2)
+            dias_transcurridos = abs((next_date - temp_date).days) 
+            temp_date = date(next_date.year, next_date.month , next_date.day)
+            next_date = next_date + timedelta(days=-2)
+        else:
+            dias_transcurridos = abs((next_date - temp_date).days) 
+            temp_date = date(next_date.year, next_date.month , next_date.day)
+        dias.append(dias_transcurridos)
+        next_date = add_months(start_date, i+2)
+        fechas.append(temp_date)
+    dic = {'dias':dias,
+            'fechas':fechas}
+    return dic
+
+def add_months(sourcedate, months):
+    month = sourcedate.month - 1 + months
+    year = sourcedate.year + month // 12
+    month = month % 12 + 1
+    day = sourcedate.day
+    try:
+        new_date = date(year, month, day)
+    except Exception as e:
+            day = day % calendar.monthrange(year,month)[1]
+            new_date = date(year, month + 1, day)
+    return new_date

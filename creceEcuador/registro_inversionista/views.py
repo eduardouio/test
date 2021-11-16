@@ -4,7 +4,7 @@ from rest_framework import viewsets, generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse, FileResponse
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse, Http404
 from django.urls import reverse
 from django.shortcuts import redirect
 from rest_framework.decorators import api_view

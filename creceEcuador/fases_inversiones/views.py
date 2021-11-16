@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 
-from .serializers import InversionSerializer, InversionTransferenciaSerializer, PagoDetalleSerializer
+from .serializers import InversionSerializer, InversionTransferenciaSerializer, PagoDetalleSerializer, \
+    PagosTaSupuestaSerializer
 from . import models
 from registro_inversionista.models import Usuario
 from solicitudes.models import Solicitud
@@ -27,7 +28,6 @@ from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.units import inch
 from reportlab.lib.enums import TA_JUSTIFY
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.rl_config import defaultPageSize
 from reportlab.platypus import SimpleDocTemplate, Table, Paragraph, Spacer, TableStyle
 
 from .types import INICIO_DEFAULT, INICIO_KEY, CANTIDAD_DEFAULT, CANTIDAD_KEY, FASE_KEY, FASES_INVERSION, MENSAJE_BAD_REQUEST, INVERSIONISTA_KEY
@@ -431,13 +431,13 @@ def get_inversiones_por_inversionista(request, pk):
 @api_view(['GET'])
 def get_pagos_inversionista(request, id_inversion):
     try:
-        lista_pagos_detalles = models.Pago_detalle.objects.filter(id_inversion=id_inversion) #get_object_or_404(Solicitud, pk=pk)
+        lista_pagos_detalles = models.Pagos_ta_supuesta.objects.filter(id_inversion=id_inversion) #get_object_or_404(Solicitud, pk=pk)
         inversion = models.Inversion.objects.get(id=id_inversion)
         adjudicacion_total = round(inversion.adjudicacion + inversion.adjudicacion_iva, 2)
         pagos_inversionista = []
         for pago in lista_pagos_detalles:
-            pago_i = models.Pago_detalle.objects.get(id=pago.id)
-            serializer = PagoDetalleSerializer(instance=pago_i)
+            pago_i = models.Pagos_ta_supuesta.objects.get(id=pago.id)
+            serializer = PagosTaSupuestaSerializer(instance=pago_i)
             pagos_inversionista.append(serializer.data)
         
         diccionario_respuesta = {
@@ -447,7 +447,7 @@ def get_pagos_inversionista(request, id_inversion):
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
 
-    except models.Pago_detalle.DoesNotExist:
+    except models.Pagos_ta_supuesta.DoesNotExist:
         diccionario_respuesta = {
             'status': status.HTTP_404_NOT_FOUND,
             'message': "Pagos no encontrados",
@@ -458,7 +458,8 @@ def get_pagos_inversionista(request, id_inversion):
 @api_view(['GET'])
 def get_detalles_inversion_vigente(request, id_inversion):
     try:
-        lista_pagos_detalles = models.Pago_detalle.objects.filter(id_inversion=id_inversion) #get_object_or_404(Solicitud, pk=pk)
+        lista_pagos_detalles = models.Pagos_ta_supuesta.objects.filter(id_inversion=id_inversion) #get_object_or_404(Solicitud, pk=pk)
+        print(lista_pagos_detalles)
         if len(lista_pagos_detalles) > 0:
             inversion = models.Inversion.objects.get(id=id_inversion)
             intereses_pagados = 0
@@ -468,12 +469,9 @@ def get_detalles_inversion_vigente(request, id_inversion):
             monto_vencimiento = 0
             interes_vencimiento = 0
             for pago in lista_pagos_detalles:
-                pago_i = models.Pago_detalle.objects.get(id=pago.id)
+                pago_i = models.Pagos_ta_supuesta.objects.get(id=pago.id)
                 capital_i = pago_i.pago
-                ganancia_i = pago_i.ganancia
-                comision_iva_i = pago_i.comision_iva
-                comision_i = pago_i.comision
-                interes_i = ganancia_i + comision_iva_i + comision_i - capital_i
+                interes_i = pago_i.intereses_previos
                 if (pago_i.estado == 1):
                     index_ultimo_pago = contador + 1
                     intereses_pagados += interes_i
@@ -488,16 +486,13 @@ def get_detalles_inversion_vigente(request, id_inversion):
                 proximo_pago = lista_pagos_detalles[index_ultimo_pago-1]
             else:
                 proximo_pago = lista_pagos_detalles[index_ultimo_pago]
-                serializer = PagoDetalleSerializer(instance=proximo_pago)
+                serializer = PagosTaSupuestaSerializer(instance=proximo_pago)
                 next_ganancia = serializer.data.get("ganancia")
-                next_capital = serializer.data.get("pago")
-                next_comision = serializer.data.get("comision")
-                next_comision_iva = serializer.data.get("comision_iva")
-                monto_vencimiento = monto_vencimiento + next_ganancia
+                next_capital = serializer.data.get("capital")
                 capital_vencimiento = next_capital
-                interes_vencimiento = next_ganancia + next_comision + next_comision_iva - next_capital
+                interes_vencimiento = serializer.data.get("intereses_previos")
                 monto_vencimiento = next_ganancia
-            serializer = PagoDetalleSerializer(instance=proximo_pago)
+            serializer = PagosTaSupuestaSerializer(instance=proximo_pago)
             proxima_fecha_pago = serializer.data.get("fecha")
             monto_vencimiento = round(monto_vencimiento,2)
             capital_vencimiento = round(capital_vencimiento,2)
@@ -516,7 +511,7 @@ def get_detalles_inversion_vigente(request, id_inversion):
             }
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
 
-    except models.Pago_detalle.DoesNotExist:
+    except models.Pagos_ta_supuesta.DoesNotExist:
         diccionario_respuesta = {
             'status': status.HTTP_404_NOT_FOUND,
             'message': "Pagos no encontrados",

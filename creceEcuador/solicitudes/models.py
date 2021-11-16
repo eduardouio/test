@@ -69,6 +69,7 @@ class Solicitud(models.Model):
     id_tipo_credito = models.ForeignKey('TipoCredito', on_delete=models.SET_NULL, null=True, blank=False)
     id_calificacion_solicitante = models.ForeignKey('CalificacionSolicitante', on_delete=models.SET_NULL, null=True, blank=False)
     id_cuenta_banco_deposito = models.ForeignKey('BancoDeposito', on_delete=models.SET_NULL, blank=True, null=True)
+    ta_created = models.BooleanField(blank=True, default=False, null=True)
     
     garantias = models.CharField(max_length=200, blank=True, default=True, null=True)
     visita_agente_CRECE = models.TextField(blank=True, default=True, null=True)
@@ -142,13 +143,7 @@ class Solicitud(models.Model):
 
 
 def recalcular_montos_porcentajes_solicitud(sender, instance, **kwargs):
-    
-    print(instance.__dict__) 
-    print(sender.__dict__)    
-    solicitud = instance.id
-
-
-    if (instance.monto < instance.monto_financiado):
+    if (int(instance.monto) < instance.monto_financiado):
         raise ValidationError("Monto excede al monto total financiado.")
         #solicitud.monto_financiado = round(Decimal(monto_total),2)
     instance.porcentaje_financiado = round(Decimal(100 * Decimal(instance.monto_financiado) / Decimal(instance.monto)),2)

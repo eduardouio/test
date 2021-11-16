@@ -301,21 +301,18 @@ function llenar_tabla_solicitud_valida(lista_pagos, monto, adjudicacion_total) {
 				let last_child = tabla.lastChild
 				tabla.removeChild(last_child)
 			}
-
-
-
 		}
 	for (var i = 0 ; i < lista_pagos.length; i++) {
 		let pago = lista_pagos[i]
 		let fecha_pago = pago.fecha
 		let num_cuota = pago.orden
-		let capital_i = pago.pago
 		let ganancia_i = pago.ganancia
 		let comision_iva_i = pago.comision_iva
 		let comision_i = pago.comision
-		let comision_total_i = comision_i + comision_iva_i
+		let comision_total_i = pago.cargo_cobranza
 		let pago_i = ganancia_i + comision_iva_i + comision_i
-		let interes_i = pago_i - capital_i
+		let interes_i = pago.intereses_previos
+		let capital_i = pago.capital
 		let estado_i = pago.estado_pago
 		fecha_pago = format_proxima_fecha_pago(fecha_pago)
 

@@ -1,18 +1,17 @@
 from django.db import models
+
 from solicitudes.models import Solicitud
 from datetime import date
 from registro_inversionista.models import Usuario
 from django_fsm import FSMField, transition
 from django_fsm import TransitionNotAllowed
-from django.db.models.signals import pre_save, post_save
-from django.conf import settings
+from django.db.models.signals import pre_save
 from datetime import date, timedelta
 from log_acciones.models import EventoUsuario, EventoInversionista
 import calendar
 import math
-import numpy as np 
-import decimal
-from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA, COMISIONES_BANCARIAS
+from .types import get_fechas_dias_ta
+from creceEcuador.constants import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_BANCO, COMISION_COBRANZA_INSOLUTO_MENSUAL, IVA, COMISIONES_BANCARIAS
 import numpy_financial as npf
 import json
 import re
@@ -150,6 +149,18 @@ class Inversion(models.Model):
             return self.id_solicitud.id_autor.cedula
         return self.id_solicitud.id_autor.ruc
 
+    def save(self, *args, **kwargs):  
+        monto_solicitud = int(self.id_solicitud.monto)
+        monto_inversion = int(self.monto)
+        comision_adjudicacion = monto_solicitud * COMISION_ADJUDICACION_FACTOR
+        participacion_inversionista = monto_inversion / monto_solicitud
+        adjudicacion = comision_adjudicacion * participacion_inversionista
+        adjudicacion_iva = adjudicacion * IVA
+        self.adjudicacion = adjudicacion
+        self.adjudicacion_iva = adjudicacion_iva
+        self.inversion_total = monto_inversion + adjudicacion_iva + adjudicacion
+        super(Inversion, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Inversion"
         verbose_name_plural = "Inversiones"
@@ -162,62 +173,6 @@ class Inversion(models.Model):
         else:
             return usuario.nombres + " " + usuario.apellidos + ", " + solicitud.operacion + ", No confirmado: $" + str(self.monto)
 
-
-    
-class Pagos_ta_supuesta(models.Model):
-
-    estado_pagado = 1
-    estado_pendiente = 0
-    estado_retrasado = -1
-    opciones_estado = [
-        (estado_pagado,"Pagado"),
-        (estado_pendiente, "Pendiente"),
-        (estado_retrasado, "Retrasado")
-    ]
-
-    id_solicitud = models.ForeignKey(Solicitud, on_delete=models.CASCADE)
-    num_pago = models.IntegerField(default=0)
-    fecha = models.DateField()
-    pago = models.FloatField()
-    capital = models.FloatField()
-    intereses_pagados = models.FloatField()
-    capital_insoluto = models.FloatField()
-    dias_totales = models.IntegerField()
-    estado = models.IntegerField(choices=opciones_estado, default=0)
-
-    class Meta:
-        verbose_name = "Pagos_ta_supuesta"
-        verbose_name_plural = "Pagos_ta_supuestas"
-
-    def __str__(self):
-        return str(self.id_solicitud)+", Pago N°: "+str(self.num_pago)
-
-class Pagos_ta_real(models.Model):
-
-    id_pago_ta_supuesta = models.ForeignKey(Pagos_ta_supuesta, on_delete=models.CASCADE)
-    num_pago = models.IntegerField()
-    fecha = models.DateField()
-    pago = models.FloatField()
-    saldo_capital = models.FloatField()
-    pago_intereses = models.FloatField()
-    saldo_intereses = models.FloatField()
-    capital_insoluto = models.FloatField()
-    dias_mora = models.IntegerField()
-    pago_intereses_mora = models.FloatField()
-    saldo_intereses_mora = models.FloatField()
-    # cargo por mora
-
-    class Meta:
-        verbose_name = "Pagos_ta_real"
-        verbose_name_plural = "Pagos_ta_reals"
-
-    def __str__(self):
-        if (self.dias_mora > 0):
-            return str(self.id_pago_ta_supuesta) + ", Pago Atrasado N°: " + str(self.num_pago)
-        else:
-            return str(self.id_pago_ta_supuesta) + ", Pago Anticipo N°: " + str(self.num_pago)
-    
-    
 
 class Pago_detalle(models.Model):
     estado_pagado = 1
@@ -237,6 +192,7 @@ class Pago_detalle(models.Model):
     comision_iva = models.FloatField()
     ganancia = models.FloatField()
     estado = models.IntegerField(choices=opciones_estado, default=0)
+
     
     @property
     def estado_pago(self):
@@ -247,12 +203,168 @@ class Pago_detalle(models.Model):
             return "Pendiente"
         return "Retrasado"
     class Meta:
-        verbose_name = "Pago_detalle"
-        verbose_name_plural = "Pago_detalles"
+        verbose_name = "Pago detalle"
+        verbose_name_plural = "Pagos detalles"
 
     def __str__(self):
         return "Pago N°: " + str(self.orden) + ", " + str(self.id_inversion)
 
+class Pagos_ta_supuesta(models.Model):
+    estado_pagado = 1
+    estado_pendiente = 0
+    estado_retrasado = -1
+    opciones_estado = [
+        (estado_pagado,"Pagado"),
+        (estado_pendiente, "Pendiente"),
+        (estado_retrasado, "Retrasado")
+    ]
+
+    id_inversion = models.ForeignKey(Inversion, on_delete=models.CASCADE)
+    id_solicitud = models.ForeignKey(Solicitud, on_delete=models.CASCADE)
+    orden = models.IntegerField()
+    fecha = models.DateField()
+    pago = models.FloatField()
+    capital = models.FloatField()
+    cargo_cobranza = models.FloatField()
+    intereses_previos = models.FloatField()
+    monto_recibir = models.FloatField()
+    capital_por_cobrar = models.FloatField()
+    estado = models.IntegerField(choices=opciones_estado, default=0)
+
+    
+    @property
+    def estado_pago(self):
+        estado = self.estado
+        if estado == 1:
+            return "Pagado"
+        elif estado == 0:
+            return "Pendiente"
+        return "Retrasado"
+
+    @property
+    def ganancia(self):
+        return self.pago
+
+    class Meta:
+        verbose_name = "Pago de Inversion"
+        verbose_name_plural = "Pagos supuestos de las Inversiones"
+
+    def __str__(self):
+        return  str(self.id_inversion.id_solicitud.ticket) + " Pago supuesto N°: " + str(self.orden) + ", " + \
+                self.id_inversion.id_user.nombres + ", " + self.id_inversion.id_user.apellidos
+
+class Pagos_ta_real(models.Model):
+    estado_pagado = 1
+    estado_pendiente = 0
+    estado_retrasado = -1
+    opciones_estado = [
+        (estado_pagado,"Pagado"),
+        (estado_pendiente, "Pendiente"),
+        (estado_retrasado, "Retrasado")
+    ]
+
+    id_pago_ta_supuesta = models.ForeignKey(Pagos_ta_supuesta, on_delete=models.CASCADE)
+    num_pago = models.IntegerField()
+    fecha = models.DateField()
+    pago = models.FloatField()
+    pago_capital = models.FloatField()
+    saldo_capital = models.FloatField()
+    pago_intereses_previos = models.FloatField()
+    saldo_intereses_previos = models.FloatField()
+    pago_intereses_mora = models.FloatField()
+    saldo_intereses_mora = models.FloatField()
+    capital_por_cobrar = models.FloatField()
+
+    estado = models.IntegerField(choices=opciones_estado, default=0)
+
+    
+    @property
+    def estado_pago(self):
+        estado = self.estado
+        if estado == 1:
+            return "Pagado"
+        elif estado == 0:
+            return "Pendiente"
+        return "Retrasado"
+
+    class Meta:
+        verbose_name = "Pago de Inversion"
+        verbose_name_plural = "Pagos reales de las Inversiones"
+
+    def __str__(self):
+        return "Pago N°: " + str(self.num_pago) + ", "
+
+def crear_pagos_para_ta_supuesta(inversion, solicitud):
+    monto_inversion = inversion.monto
+    solicitud = inversion.id_solicitud
+    monto_solicitud = int(solicitud.monto)
+    participacion_inversionista = monto_inversion / monto_solicitud
+    capital_por_cobrar_i = monto_inversion
+    lista_capital_por_cobrar = [capital_por_cobrar_i]
+    lista_cargo_por_cobranzas = [0]
+    lista_intereses_mostrar = [0]
+    lista_capitales = [0]
+    lista_intereses_previos = [0]
+    lista_cuotas = [0]
+
+    TASA_INTERES_ANUAL = solicitud.tin
+    if( TASA_INTERES_ANUAL > 1):
+        TASA_INTERES_ANUAL = TASA_INTERES_ANUAL/100
+
+    dic = get_fechas_dias_ta(solicitud)
+    dias = dic['dias']
+    fechas = dic['fechas']
+    plazo_solicitud = solicitud.plazo
+    plazo_dias = sum(dias)
+    tasa_diaria = (1+TASA_INTERES_ANUAL/365)-1
+    base = 1 + tasa_diaria
+    exponente_pmt = plazo_dias / plazo_solicitud
+    result = math.pow(base, exponente_pmt) - 1
+    cuota_mensual = npf.pmt(result, plazo_solicitud,  monto_inversion*-1)
+    cuota_mensual = round(cuota_mensual,2)
+    capital_total = 0
+    for i in range(plazo_solicitud):
+        dias_transcurridos = dias[i+1]
+        fecha_i = fechas[i]
+        interes_previo_i = (math.pow(base,dias_transcurridos) - 1 )* capital_por_cobrar_i
+        interes_previo_i = round(interes_previo_i, 2)
+        capital_i = cuota_mensual - interes_previo_i
+        capital_i = round(capital_i,2)
+        interes_mostrar_i = interes_previo_i - COMISION_BANCO
+        cargo_plataforma_i = capital_por_cobrar_i * COMISION_COBRANZA_INSOLUTO_MENSUAL / 30 * dias_transcurridos
+        cargo_plataforma_i = round(cargo_plataforma_i,2)
+        cargo_plataforma_iva_i = cargo_plataforma_i * IVA
+        cargo_plataforma_iva_i = round(cargo_plataforma_iva_i,2)
+        cargo_por_cobranza_i = cargo_plataforma_iva_i + cargo_plataforma_i
+        
+
+        if (i == plazo_solicitud-1):
+            capital_i = monto_inversion - capital_total
+            cuota_mensual = capital_i + interes_previo_i
+
+        capital_por_cobrar_i = capital_por_cobrar_i - capital_i
+        capital_total += capital_i
+        monto_recibir_i = capital_i + interes_mostrar_i - cargo_por_cobranza_i
+
+        new_pago = Pagos_ta_supuesta(id_inversion = inversion, id_solicitud = solicitud, orden = i+1, fecha = fecha_i, pago = cuota_mensual, capital = capital_i,
+                                    cargo_cobranza = cargo_por_cobranza_i, intereses_previos = interes_previo_i, monto_recibir = monto_recibir_i,
+                                    capital_por_cobrar = capital_por_cobrar_i)
+        new_pago.save()
+
+        lista_capital_por_cobrar.append(capital_por_cobrar_i)
+        lista_capitales.append(capital_i)
+        lista_intereses_previos.append(interes_previo_i)
+        lista_intereses_mostrar.append(interes_mostrar_i)
+        lista_cargo_por_cobranzas.append(cargo_por_cobranza_i)
+        lista_cuotas.append(cuota_mensual)
+
+    dic = {'lista_intereses_previos':lista_intereses_previos,
+            'lista_capitales':lista_capitales,
+            'lista_capital_por_cobrar':lista_capital_por_cobrar,
+            'lista_intereses_mostrar':lista_intereses_mostrar,
+            'lista_cargo_por_cobranzas':lista_cargo_por_cobranzas,
+            'lista_cuotas':lista_cuotas}
+    return dic
 
 def crear_pagos(inversion,solicitud, crear = True):
     monto_inversion = float(inversion.monto)
@@ -343,7 +455,6 @@ def crear_tabla_amortizacion(solicitud, modo):
     tasa_mensual = math.pow(base,exponente) - 1
     cuota_mensual = npf.pmt(tasa_mensual, plazo_solicitud,  monto_solicitud) * -1
 
-
     capital_por_pagar_i = monto_solicitud
     pago_i = cuota_mensual + COMISIONES_BANCARIAS
     MONTO_SOLICITANTE = monto_solicitud
@@ -409,8 +520,7 @@ def add_months(sourcedate, months):
     return new_date  
 
 
-def crear_pago_ta_real(solicitud, fecha_pago_real, num_pago):
-    pass
+
 
 #Funcion para formatear float
 # La funcion espera un string con 2 decimales de precision (ej: "%.2f" % 32757121.33)
@@ -515,87 +625,3 @@ def generarStringTablaInversion(inversion):
 
 
     return string_tabla
-
-    
-
-#Signals
-def cambiar_estado_solicitud(sender, instance, **kwargs):
-    try:
-        solicitud_en_base =  Solicitud.objects.get(pk=instance.pk)
-        
-        if(instance.porcentaje_financiado != solicitud_en_base.porcentaje_financiado and instance.porcentaje_financiado == 100):
-            inversiones = Inversion.objects.filter(id_solicitud=instance)
-
-            for inversion in inversiones:
-                try:
-                    inversion.validate()
-                    
-                    print("Inversion transition: ",str(inversion))
-
-                except TransitionNotAllowed:
-                    print("Inversion no transition: ",str(inversion))
-                    pass
-                inversion.save()
-
-    except Solicitud.DoesNotExist:
-        print("Solicitud nueva")
-
-#Signals
-def crear_pagos_inversion(sender, instance, **kwargs):
-    try:
-        
-        
-        if(instance.porcentaje_financiado == 100 and instance.fecha_finalizacion != None):
-            inversiones = Inversion.objects.filter(id_solicitud=instance)
-
-            for inversion in inversiones:
-                if inversion.fase_inversion == "GOING":
-                    crear_pagos(inversion, instance)
-                    enviarEmailPagos(inversion)
-                # else:
-                #     Inversion.fase_inversion
-            diccionario = crear_tabla_amortizacion(instance, "PAGO")
-            lista_capital_insoluto = diccionario['lista_capital_insoluto']
-            lista_pagos = diccionario['lista_pagos']
-            lista_intereses_pagados = diccionario['lista_intereses_pagados']
-            lista_capitales= diccionario['lista_capitales']
-            dias = diccionario['dias']
-            fechas = diccionario['fechas']
-            for i in range(instance.plazo):
-                dias_totales_i = dias[i+1]
-                fecha_i = fechas[i]
-                intereses_pagados_i = lista_intereses_pagados[i]
-                capital_insoluto_i = lista_capital_insoluto[i+1]
-                capital_i = lista_capitales[i]
-                pago_i = lista_pagos[i]
-                num_pago = i+1
-                new_pago_ta_supuesta = Pagos_ta_supuesta(id_solicitud=instance, num_pago = num_pago, dias_totales = dias_totales_i,
-                                                        fecha = fecha_i, pago = pago_i, capital = capital_i, intereses_pagados = intereses_pagados_i,
-                                                        capital_insoluto = capital_insoluto_i)
-                new_pago_ta_supuesta.save()
-
-                
-
-    except Solicitud.DoesNotExist:
-        print("Solicitud nueva")
-
-
-#Signals
-def cambiar_a_finished(sender, instance, **kwargs):
-    if(instance.capital_insoluto == 0):
-
-        solicitud = instance.id_pago_ta_supuesta.id_solicitud
-        inversiones = Inversion.objects.filter(id_solicitud=solicitud)
-
-        for inversion in inversiones:
-            if inversion.fase_inversion == "GOING":
-                inversion.finish()
-                inversion.save()
-
-
-
-# Se conecta la señal con el modelo TransferenciaInversion
-pre_save.connect(cambiar_estado_solicitud, sender=Solicitud)
-post_save.connect(crear_pagos_inversion, sender=Solicitud)
-
-post_save.connect(cambiar_a_finished, sender=Pagos_ta_real)
