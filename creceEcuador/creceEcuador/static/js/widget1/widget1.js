@@ -115,18 +115,37 @@ async function widget1(){
 
     $(document).ready(function(){
 
-    let ingreso_bruto = $("#ingreso-bruto").bootstrapSlider({
+      let ingreso_bruto = $("#ingreso-bruto").bootstrapSlider({
       min: 400,
       max: 100000,
       value: 1500,
       name: "capital",
       step: 100,
-      ticks: [400,2000,4000,6000,8000, 10000],
-      ticks_labels: ['$400', '$2.000', '$4.000', '$6.000', '$8.000', '$10.000'],
+      ticks: [400,
+        2000,2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900,
+        3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900,
+        4000, 4100, 4200, 4300, 4400, 4500, 4600, 4700, 4800, 4900,
+        5000,
+        5500,
+        6500,
+        7500,
+        8500,
+        9500,
+        10500],
+      ticks_labels: ['400', '2000', '','','','','','','','','','','','','','','','','','','','','','','','','','','','','','5000','','','','','','10.500'],
       ticks_snap_bounds: 50,
-      ticks_positions: [0,20,40,60,80,100],
-      ticks_tooltip: true,
-      tooltip: 'show',
+      ticks_positions: [
+        0,
+        10,12,14,16,18,
+        20,22,24,26,28,
+        30,32,34,36,38,
+        40,42,44,46,48,
+        50,52,54,56,58,
+        60,62,64,66,68,70,
+        73,75,80,85,90,100],
+        ticks_tooltip: true,
+        tooltip: 'always',
+        lock_to_ticks: true
     });
 
     ingreso_bruto.on('change', function () {
