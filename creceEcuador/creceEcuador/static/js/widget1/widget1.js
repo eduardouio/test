@@ -91,8 +91,8 @@ async function widget1(){
 
           <div class="card_foot" id="final-legend-pgp">
              <p id="leyenda_final_pgp" style="margin-right:1em;">
-               Esta estimaci&oacute;n fue realizada en base a datos reales reportados al SRI para cada nivel de ingresos.
-               Se descuentan tambi&eacute;n los aportes a la seguridad social y d&eacute;cimos.
+               Los valores mostrados son referenciales, con base en comportamiento hist&oacute;rico de los contribuyentes, seg&uacute;n lo reportado
+               al SRI.
              </p>
           </div>
          </div>
@@ -177,7 +177,7 @@ async function widget1(){
    let pgp = $("#pgp span b");
 
    let leyenda_final =  document.getElementById("leyenda_final");
-   let leyenda_final_pgp =  document.getElementById("leyenda_final_pgp");
+   //let leyenda_final_pgp =  document.getElementById("leyenda_final_pgp");
 
    if(valores!==-1){
 
@@ -199,7 +199,7 @@ async function widget1(){
      let str3  = FORMAT_CURRENCY.format(valores['PGP']);
      var result3 = str3.substr(str3.length-3)+ str3.substr(0,str3.length-3);
 
-     leyenda_final_pgp.innerHTML = "Esta estimaci&oacute;n fue realizada con gastos deducibles de <span id='pgp'>"+ result3 + "</span> en base a los datos reales promedio reportados al SRI para cada nivel de ingresos. Se descuentan tambi&eacute;n los aportes a la seguridad social y d&eacute;cimos.";
+     //leyenda_final_pgp.innerHTML = "Esta estimaci&oacute;n fue realizada con gastos deducibles de <span id='pgp'>"+ result3 + "</span> en base a los datos reales promedio reportados al SRI para cada nivel de ingresos. Se descuentan tambi&eacute;n los aportes a la seguridad social y d&eacute;cimos.";
 
    }
    else{
@@ -216,7 +216,7 @@ async function widget1(){
 
      leyenda_final.innerHTML = "Eres parte del <span style='font-weight:bold;'' id='ec-perc'>96,25 %</span> de Ecuatorianos que no son afectados por la reforma tributaria.";
 
-     leyenda_final_pgp.innerHTML = "Esta estimaci&oacute;n fue realizada en base a datos reales reportados al SRI para cada nivel de ingresos. Se descuentan tambi&eacute;n los aportes a la seguridad social y d&eacute;cimos.";
+     //leyenda_final_pgp.innerHTML = "Esta estimaci&oacute;n fue realizada en base a datos reales reportados al SRI para cada nivel de ingresos. Se descuentan tambi&eacute;n los aportes a la seguridad social y d&eacute;cimos.";
    }
   }
 
