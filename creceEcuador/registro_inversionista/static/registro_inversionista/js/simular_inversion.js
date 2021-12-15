@@ -431,7 +431,7 @@ function verificar_valores_inversion(modo, oportunidad) {
 
 	let input_monto_inversion = limpiarNumero(document.getElementById(id).value);
 	let monto_maximo = oportunidad.monto * 0.9
-	let total_financiado = parseFloat(oportunidad.monto)*(parseFloat(oportunidad.porcentaje_financiado)/100);
+	let total_financiado = parseFloat(oportunidad.monto_financiado);
 	let monto_por_financiar = oportunidad.monto - total_financiado
 
 	if (parseInt(oportunidad.porcentaje_financiado) < 100){
