@@ -119,7 +119,7 @@ class FirmarContratoAcUso(generics.CreateAPIView):
     """
     inversionista/firma_contrato_ac_uso/
     """
-    
+
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
@@ -129,17 +129,17 @@ class FirmarContratoAcUso(generics.CreateAPIView):
 
         guardar_contrato_ac_uso(nombres,apellidos,cedula)
 
-        response = HttpResponse(status=status.HTTP_200_OK)   
+        response = HttpResponse(status=status.HTTP_200_OK)
 
         return response
 
-    
+
 
 class RegisterUsers(generics.CreateAPIView):
     """
     inversionista/register/
     """
-    
+
     permission_classes = [permissions.AllowAny]
     serializer_class = serializers.UsuarioSerializer
 
@@ -173,12 +173,12 @@ class RegisterUsers(generics.CreateAPIView):
 
         else:
 
-            new_user = User( username=usuario, password=password, 
+            new_user = User( username=usuario, password=password,
                                 email=email, first_name=nombres, last_name=apellidos,
                             )
             new_user.set_password(password)
             new_user.is_active = False
-            
+
             try:
                  canton = models.Canton.objects.get(nombre=nombre_canton.upper())
             except models.Canton.DoesNotExist:
@@ -189,8 +189,8 @@ class RegisterUsers(generics.CreateAPIView):
                 return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
 
-            new_usuario = models.Usuario(usuario=usuario, nombres=nombres, apellidos=apellidos, 
-                                            email=email, celular=celular, tipo_persona=tipo_persona, 
+            new_usuario = models.Usuario(usuario=usuario, nombres=nombres, apellidos=apellidos,
+                                            email=email, celular=celular, tipo_persona=tipo_persona,
                                             canton=canton, cedula=cedula, user=new_user, fecha_nacimiento=fecha_nacimiento)
             new_user.save()
             new_usuario.save()
@@ -223,7 +223,7 @@ class RegisterUsers(generics.CreateAPIView):
 
             EventoUsuario.objects.create(accion="register", usuario=new_usuario)
 
-            response = HttpResponse(status=status.HTTP_200_OK)   
+            response = HttpResponse(status=status.HTTP_200_OK)
 
             return response
     def get(self, request, *args, **kwargs):
@@ -238,7 +238,7 @@ def guardar_contratos(nombres,apellidos,cedula, usuario_creado):
 
     out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+".pdf"
     ultimoAcUso = models.VersionContrato.objects.filter(tipoContrato="ac_uso")
-    
+
     if ultimoAcUso:
         ultimoAcUso= ultimoAcUso.latest('fecha')
         out_filename = "Acuerdo-Uso-Sitio-"+nombres+"-"+apellidos+"-"+cedula+"-v"+ultimoAcUso.version+".pdf"
@@ -261,11 +261,11 @@ def guardar_contratos(nombres,apellidos,cedula, usuario_creado):
         usuario_creado.contratoAcUsoFirmado = True
         usuario_creado.save()
 
-    
-    
-    
-    
-    
+
+
+
+
+
 
 
 def guardar_contrato_ac_uso(nombres,apellidos,cedula):
@@ -378,15 +378,15 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
             direccion_domicilio = request.data.get("direccion_domicilio")
             nombre_canton = request.data.get("canton")
             canton = models.Canton.objects.get(nombre=nombre_canton)
-            provincia = request.data.get("provincia")
+            #provincia = request.data.get("provincia")
             telefono_domicilio = request.data.get("telefono_domicilio")
 
             #Principal fuente de ingresos
             fuente_ingresos = request.data.get("fuente_ingresos")
-            direccion_fuente_ingresos = request.data.get("direccion_fuente_ingresos")
+            #direccion_fuente_ingresos = request.data.get("direccion_fuente_ingresos")
 
-            nombre_canton_fuentes_ingresos = request.data.get("canton_fuentes_ingresos")
-            canton_fuentes_ingresos = models.Canton.objects.get(nombre=nombre_canton_fuentes_ingresos)
+            #nombre_canton_fuentes_ingresos = request.data.get("canton_fuentes_ingresos")
+            #canton_fuentes_ingresos = models.Canton.objects.get(nombre=nombre_canton_fuentes_ingresos)
             ingresos_mensuales = request.data.get("ingresos_mensuales")
 
             #Cuenta bancaria
@@ -403,33 +403,34 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
 
             #estado civil
             inversionista.estado_civil = estado_civil
-            if estado_civil == CASADO or estado_civil == UNION_LIBRE:
-                
-                nombres_conyuge = request.data.get("nombres_conyuge")
-                apellidos_conyuge = request.data.get("apellidos_conyuge")
-                cedula_conyuge = request.data.get("cedula_conyuge")
-                new_conyuge = models.Conyuge(nombres= nombres_conyuge, apellidos=apellidos_conyuge, cedula=cedula_conyuge)
-                new_conyuge.save()
 
-                inversionista.conyuge_id = new_conyuge
+#            if estado_civil == CASADO or estado_civil == UNION_LIBRE:
+
+#                nombres_conyuge = request.data.get("nombres_conyuge")
+#                apellidos_conyuge = request.data.get("apellidos_conyuge")
+#                cedula_conyuge = request.data.get("cedula_conyuge")
+#                new_conyuge = models.Conyuge(nombres= nombres_conyuge, apellidos=apellidos_conyuge, cedula=cedula_conyuge)
+#                new_conyuge.save()
+
+#                inversionista.conyuge_id = new_conyuge
 
             print(descripcion_ingresos)
-            
-            new_ingresos = models.Fuente_ingresos(descripcion= descripcion_ingresos, direccion= direccion_fuente_ingresos,
-                                                    canton= canton_fuentes_ingresos, ingresos_mensuales=ingresos_mensuales)
+
+            new_ingresos = models.Fuente_ingresos(descripcion= descripcion_ingresos, direccion= None,
+                                                    canton= None, ingresos_mensuales=ingresos_mensuales)
             new_ingresos.save()
-            
+
             new_banco = models.Banco(nombre=banco)
             new_banco.save()
 
             new_cuenta_bancaria = models.Cuenta_bancaria(numero_cuenta= numero_cuenta, tipo_cuenta= tipo_cuenta, banco= new_banco, titular=titular)
             new_cuenta_bancaria.save()
-            
+
 
             #agregando al inversionista respectivo
             inversionista.celular = celular
             inversionista.canton = canton
-            inversionista.provincia = provincia
+            #inversionista.provincia = provincia
             inversionista.direccion1 = direccion_domicilio
             inversionista.telefono_domicilio = telefono_domicilio
             inversionista.ingresos = new_ingresos
@@ -445,14 +446,14 @@ class Login_Users(generics.CreateAPIView):
     """
     inversionista/login/
 
-    Este Login es el verdadero API Endpoint para verificar el usuario 
+    Este Login es el verdadero API Endpoint para verificar el usuario
     """
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = serializers.UsuarioSerializer
 
     def post(self, request, *args, **kwargs):
-        
+
         username = request.data.get("username", "")
         password = request.data.get("password")
         user = authenticate(request, username=username, password=password)
@@ -483,12 +484,12 @@ class Login_Users(generics.CreateAPIView):
                 'mensaje': mensaje,
                 'auth_token':dic_tokens
             }
-            response = HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=status_send)   
+            response = HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=status_send)
             response.set_cookie('auth_token', json.dumps(dic_tokens),
                         max_age=None, expires=None, path='/', domain=None, secure=False, httponly=True)
             login(request, user)
             return response
-            #return Response({'tokens':dic_tokens, 'user':usuario},  status=status.HTTP_200_OK) 
+            #return Response({'tokens':dic_tokens, 'user':usuario},  status=status.HTTP_200_OK)
 
         diccionario_respuesta = {
                 'status': status.HTTP_401_UNAUTHORIZED,
@@ -504,10 +505,10 @@ class Login_Users(generics.CreateAPIView):
             print(request.user)
             return render(request, 'registro_inversionista/login.html')
 
-class ImagenPerfilView(APIView):        
+class ImagenPerfilView(APIView):
     parser_classes = (MultiPartParser, )
     def post(self, request, filename, format=None):
-        try: 
+        try:
             file_obj = request.data['img']
             url_base = settings.MEDIA_ROOT +"/profile_pic/"+filename
 
@@ -521,7 +522,7 @@ class ImagenPerfilView(APIView):
             with open(url_base, 'wb+') as destination:
                 for chunk in file_obj.chunks():
                     destination.write(chunk)
-            
+
             inversionista.profile_pic_ruta = "/"+settings.MEDIA_URL +"profile_pic/"+filename
 
             inversionista.save()
@@ -575,7 +576,7 @@ class reenviar_confirmacion_registro(generics.CreateAPIView):
                 email.content_subtype = "html"
                 email.send()
 
-                response = HttpResponse(status=status.HTTP_200_OK)   
+                response = HttpResponse(status=status.HTTP_200_OK)
 
                 return response
 
@@ -586,13 +587,13 @@ class reenviar_confirmacion_registro(generics.CreateAPIView):
                 'data': {}
             }
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
-        
 
 
-class ImagenCedulaView(APIView):        
+
+class ImagenCedulaView(APIView):
     parser_classes = (MultiPartParser, )
     def post(self, request, filename, format=None):
-        try: 
+        try:
             file_obj = request.data['img']
             url_base = settings.MEDIA_ROOT +"/cedula/"+filename
 
@@ -606,7 +607,7 @@ class ImagenCedulaView(APIView):
             with open(url_base, 'wb+') as destination:
                 for chunk in file_obj.chunks():
                     destination.write(chunk)
-            
+
             inversionista.cedula_ruta = settings.MEDIA_URL +"cedula/"+filename
 
             inversionista.save()
@@ -634,15 +635,15 @@ class ImagenCedulaView(APIView):
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=400)
 
 
-class SubirTransferenciaView(APIView):        
+class SubirTransferenciaView(APIView):
     parser_classes = (MultiPartParser, )
     def post(self, request, filename, format=None):
-        try: 
+        try:
             id_inversion = request.POST.get("id_inversion", "")
             count_objects = TransferenciaInversion.objects.filter(id_inversion= id_inversion, estado=0).count()
             print("count objects: "+str(count_objects))
             if(count_objects > 0):
-                
+
                 transferencia_obtenida = TransferenciaInversion.objects.filter(id_inversion= id_inversion, estado=0).latest('fecha_creacion')
                 transferencia_serializer = TransferenciaInversionArchivoSerializer(transferencia_obtenida, data=request.data, partial=True)
                 print(transferencia_serializer)
@@ -730,14 +731,14 @@ def DashboardPerfilUpdate(request, pk):
         usuario = models.Usuario.objects.get(pk=pk) #get_object_or_404(Solicitud, pk=pk)
 
         nombre_canton = request.data.get("canton")
-        celular = request.data.get("celular")  
+        celular = request.data.get("celular")
 
-        usuario.celular = celular    
+        usuario.celular = celular
 
         canton = models.Canton.objects.get(nombre=nombre_canton.upper())
         usuario.canton = canton
 
-        usuario.save()  
+        usuario.save()
 
         serializer = serializers.UsuarioSerializer(instance=usuario)
 
@@ -761,7 +762,7 @@ def ingresar_como(request):
     return render(request, 'registro_inversionista/ingresar_como.html', {})
 
 
-        
+
 @login_required
 def logout_view(request):
     if request.user.is_authenticated:
@@ -802,14 +803,14 @@ class restablecer_password(generics.CreateAPIView):
     """
     inversionista/login/
 
-    Este Login es el verdadero API Endpoint para verificar el usuario 
+    Este Login es el verdadero API Endpoint para verificar el usuario
     """
 
     def post(self, request, *args, **kwargs):
-        
+
         username = request.data.get("username", "")
         try:
-            inversionista = User.objects.get(username=username) 
+            inversionista = User.objects.get(username=username)
             diccionario_respuesta = {
                 'status': status.HTTP_200_OK,
             }
@@ -839,7 +840,7 @@ class restablecer_password(generics.CreateAPIView):
                 'data': {}
             }
             return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
-             
+
 
 
     def get(self, request, *args, **kwargs):
@@ -855,14 +856,14 @@ def confirmar_email_restablecer_password(request, uidb64, token):
 
         return render(request, 'registro_inversionista/restablecer_password_confirmar.html', {'usuario':user})
     else:
-        return HttpResponse('Link de activación inválido!') 
+        return HttpResponse('Link de activación inválido!')
 
 
 class confirmar_restablecer_password_view(APIView):
     """
     inversionista/login/
 
-    Este Login es el verdadero API Endpoint para verificar el usuario 
+    Este Login es el verdadero API Endpoint para verificar el usuario
     """
     permission_classes = [permissions.AllowAny]
     def post(self, request, *args, **kwargs):
@@ -880,7 +881,7 @@ class confirmar_restablecer_password_view(APIView):
             EventoUsuario.objects.create(accion="rec_contrasena", usuario=usuario)
             user.is_active = True
             user.save()
-            
+
             return Response(status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -893,7 +894,7 @@ class cambiar_password(generics.CreateAPIView):
     """
     inversionista/login/
 
-    Este Login es el verdadero API Endpoint para verificar el usuario 
+    Este Login es el verdadero API Endpoint para verificar el usuario
     """
     queryset = models.Usuario.objects.all()
     serializer_class = serializers.UsuarioSerializer
@@ -920,7 +921,7 @@ def encuesta_preferencia_persona(request):
     try:
         pk = request.data.get("inversionista")
         lista_respuestas = request.data.get("lista_respuestas")
-        usuario = models.Usuario.objects.get(pk=pk) 
+        usuario = models.Usuario.objects.get(pk=pk)
         date = datetime.datetime.now()
         for pk_respuesta in lista_respuestas:
             respuesta = models.Respuesta.objects.get(pk=pk_respuesta)
@@ -928,7 +929,7 @@ def encuesta_preferencia_persona(request):
             pregunta = models.Pregunta.objects.get(pk=pk_pregunta)
             encuesta = models.Encuesta(id_pregunta= pregunta, id_respuesta=respuesta, id_usuario=usuario, fecha=date)
             encuesta.save()
-      
+
 
         diccionario_respuesta = {
             'status': status.HTTP_200_OK,

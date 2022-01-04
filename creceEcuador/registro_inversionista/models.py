@@ -33,8 +33,8 @@ class Canton(models.Model):
 
 class Fuente_ingresos(models.Model):
     descripcion = models.TextField()
-    direccion = models.CharField(max_length=200)
-    canton = models.ForeignKey(Canton, null=True, blank=False, on_delete=models.SET_NULL)
+    direccion = models.CharField(null=True, max_length=200)
+    canton = models.ForeignKey(Canton, null=True, blank=True, on_delete=models.SET_NULL)
     ingresos_mensuales = models.FloatField()
     class Meta:
         verbose_name = "Fuente_ingresos"
@@ -74,7 +74,7 @@ class Cuenta_bancaria(models.Model):
         if (self.tipo_cuenta == 1):
             tipo_cuenta_str = "Cuenta Corriente"
 
-        return self.numero_cuenta + ", " + tipo_cuenta_str + ", " + self.banco.nombre   
+        return self.numero_cuenta + ", " + tipo_cuenta_str + ", " + self.banco.nombre
 
     class Meta:
         verbose_name = "Cuenta_bancaria"
@@ -161,7 +161,7 @@ class Usuario(models.Model):
 
     fecha_nacimiento = models.DateField(blank=True, null=True)
 
-    contratoAcUsoFirmado = models.BooleanField(default=False) 
+    contratoAcUsoFirmado = models.BooleanField(default=False)
 
 
     ruc = models.CharField(max_length=15, blank=True, null=True)
@@ -183,7 +183,7 @@ class Usuario(models.Model):
 
     @property
     def get_profile_pic(self):
-        if self.profile_pic_ruta: 
+        if self.profile_pic_ruta:
             return self.profile_pic_ruta
 
         nombre = self.nombres + " " + self.apellidos
@@ -241,5 +241,5 @@ def cambiar_estado_contrato_firmado_usuarios(sender, instance, created, **kwargs
             Usuario.objects.all().update(contratoAcUsoFirmado=False)
 
 
-# Se conecta la señal con el modelo Contrato 
+# Se conecta la señal con el modelo Contrato
 post_save.connect(cambiar_estado_contrato_firmado_usuarios, sender=VersionContrato)

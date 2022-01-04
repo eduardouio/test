@@ -24,16 +24,17 @@ $(document).ready( function(){
 
   if(datosDesdeBase){
     $('#guardar_respuestas').hide();
-    
+
     $(".crece-completar-datos-formulario-wrapper input").each(function(){
       $(this).prop("disabled", true);
     });
-    
+
     $(".crece-completar-datos-formulario-wrapper select").each(function(){
       $(this).prop("disabled", true);
     });
   }
 
+/*
   $("#usar_dir_domicilio").change(function() {
     if(this.checked) {
       $("#direccion_empresa").val(
@@ -45,6 +46,7 @@ $(document).ready( function(){
       );
     }
   });
+  */
 
 
 });
@@ -52,7 +54,7 @@ $(document).ready( function(){
 function parseControlCharacters(json){
   var regex = /\\u([\d\w]{4})/gi;
   json = json.toLowerCase().replace(regex, function (match, grp) {
-      return String.fromCharCode(parseInt(grp, 16)); 
+      return String.fromCharCode(parseInt(grp, 16));
   });
   return json.toUpperCase();
 }
@@ -68,9 +70,9 @@ function cargarFuenteDeIngresos(){
       $("#selectTrabajo").val("1");
       $( "#selectTrabajo" ).trigger( "change" );
 
-      $("#empresa_relacion_dependencia").val(dictIngresos.EMPRESA_RELACION_DEPENDENCIA);
+      //$("#empresa_relacion_dependencia").val(dictIngresos.EMPRESA_RELACION_DEPENDENCIA);
       $("#cargo_relacion_dependencia").val(dictIngresos.CARGO_RELACION_DEPENDENCIA);
-      $("#anios_relacion_dependencia").val(dictIngresos.ANIOS_RELACION_DEPENDENCIA);
+      //$("#anios_relacion_dependencia").val(dictIngresos.ANIOS_RELACION_DEPENDENCIA);
     }
     else if(dictIngresos.RUC_PROFESIONAL_INDEPENDIENTE){
       $("#selectTrabajo").val("2");
@@ -78,15 +80,19 @@ function cargarFuenteDeIngresos(){
 
       $("#ruc_profesional_independiente").val(dictIngresos.RUC_PROFESIONAL_INDEPENDIENTE);
       $("#actividad_profesional_independiente").val(dictIngresos.ACTIVIDAD_PROFESIONAL_INDEPENDIENTE);
-      $("#anios_profesional_independiente").val(dictIngresos.ANIOS_PROFESIONAL_INDEPENDIENTE);
+      //$("#anios_profesional_independiente").val(dictIngresos.ANIOS_PROFESIONAL_INDEPENDIENTE);
     }
     else if(dictIngresos.RUC_AUTO_EMPLEADO){
       $("#selectTrabajo").val("3");
       $( "#selectTrabajo" ).trigger( "change" );
 
       $("#ruc_auto_empleado").val(dictIngresos.RUC_AUTO_EMPLEADO);
-      $("#empresa_auto_empleado").val(dictIngresos.EMPRESA_AUTO_EMPLEADO);
+      //$("#empresa_auto_empleado").val(dictIngresos.EMPRESA_AUTO_EMPLEADO);
       $("#actividad_auto_empleado").val(dictIngresos.ACTIVIDAD_AUTO_EMPLEADO);
+    }
+    else{
+      $("#selectTrabajo").val("4");
+      $( "#selectTrabajo" ).trigger( "change" );
     }
   }
 }
@@ -101,7 +107,7 @@ function seleccionarImagen(){
   else{
     datosDesdeBase = false;
   }
-  
+
 }
 
 function seleccionarDesdeBase(id_selector){
@@ -116,16 +122,19 @@ function seleccionarDesdeBase(id_selector){
   }
 }
 
+/*
 $("#selectEstadoCivil").change(function(){
     if (this.value === "casado" || this.value === "union libre") {
         $(".crece-completar-datos-formulario-conyugue").show();
         hacerRequired(".crece-completar-datos-formulario-conyugue input");
     }
     else{
+
         $(".crece-completar-datos-formulario-conyugue").hide();
         hacerNoRequired(".crece-completar-datos-formulario-conyugue input");
     }
 });
+*/
 
 $("#selectTrabajo").change(function(){
     if (this.value == 1) {
@@ -171,9 +180,11 @@ $("#selectTrabajo").change(function(){
     }
 });
 
+/*
 $("#foto_cedula").on('change', function() {
   $(".crece-completar-datos-formulario-wrapper-boton-subir-label").html(this.files[0].name);
 });
+*/
 
 $('.crece-completar-datos-formulario form').submit(function(e){
     e.preventDefault();
@@ -185,7 +196,7 @@ $("#guardar_respuestas").click(function(){
       var dictRespuestas = obtenerRespuestas()
       enviarDatos(dictRespuestas, false);
     }
-  } 
+  }
 
 });
 
@@ -195,7 +206,7 @@ $("#siguiente").click(function(){
       var dictRespuestas = obtenerRespuestas()
       enviarDatos(dictRespuestas, true);
     }
-  } 
+  }
   else {
     cambio_fase_inversion_completar_datos(id_inversion_modal);
   }
@@ -205,13 +216,13 @@ $("#siguiente").click(function(){
 var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
       var matches, substringRegex;
-  
+
       // an array that will be populated with substring matches
       matches = [];
-  
+
       // regex used to determine if a string contains the substring `q`
       substrRegex = new RegExp(q, 'i');
-  
+
       // iterate through the pool of strings and for any string that
       // contains the substring `q`, add it to the `matches` array
       $.each(strs, function(i, str) {
@@ -219,59 +230,59 @@ var substringMatcher = function(strs) {
           matches.push(str);
         }
       });
-  
+
       cb(matches);
     };
   };
 
-  var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA', 
-    'SAN FERNANDO', 'SANTA ISABEL', 'SIGSIG', 'OÑA', 'CHORDELEG', 'EL PAN', 
-    'SEVILLA DE ORO', 'GUACHAPALA', 'CAMILO PONCE ENRIQUEZ', 'GUARANDA', 
-    'CHILLANES', 'SAN JOSE DE CHIMBO', 'ECHEANDIA', 'SAN MIGUEL', 'CALUMA', 
-    'LAS NAVES', 'AZOGUES', 'BIBLIAN', 'CAÑAR', 'LA TRONCAL', 'EL TAMBO', 
-    'DELEG', 'SUSCAL', 'TULCAN', 'BOLIVAR', 'ESPEJO', 'MIRA', 'MONTUFAR', 
-    'SAN PEDRO DE HUACA', 'LATACUNGA', 'LA MANA', 'PANGUA', 'PUJILI', 
-    'SALCEDO', 'SAQUISILI', 'SIGCHOS', 'RIOBAMBA', 'ALAUSI', 'COLTA', 
-    'CHAMBO', 'CHUNCHI', 'GUAMOTE', 'GUANO', 'PALLATANGA', 'PENIPE', 
-    'CUMANDA', 'MACHALA', 'ARENILLAS', 'ATAHUALPA', 'BALSAS', 'CHILLA', 
-    'EL GUABO', 'HUAQUILLAS', 'MARCABELI', 'PASAJE', 'PIÑAS', 'PORTOVELO', 
-    'SANTA ROSA', 'ZARUMA', 'LAS LAJAS', 'ESMERALDAS', 'ELOY ALFARO', 'MUISNE', 
-    'QUININDE', 'SAN LORENZO', 'ATACAMES', 'RIOVERDE', 'LA CONCORDIA', 'GUAYAQUIL', 
-    'ALFREDO BAQUERIZO MORENO', 'BALAO', 'BALZAR', 'COLIMES', 'DAULE', 'DURAN', 
-    'EL EMPALME', 'EL TRIUNFO', 'MILAGRO', 'NARANJAL', 'NARANJITO', 'PALESTINA', 
-    'PEDRO CARBO', 'SAMBORONDON', 'SANTA LUCIA', 'URBINA JADO', 'YAGUACHI', 'PLAYAS', 
-    'SIMON BOLIVAR', 'CORONEL MARCELINO MARIDUEÑA', 'LOMAS DE SARGENTILLO', 'NOBOL', 
-    'GENERAL ANTONIO ELIZALDE', 'ISIDRO AYORA', 'IBARRA', 'ANTONIO ANTE', 'COTACACHI', 
-    'OTAVALO', 'PIMAMPIRO', 'SAN MIGUEL DE URCUQUI', 'LOJA', 'CALVAS', 'CATAMAYO', 
-    'CELICA', 'CHAGUARPAMBA', 'ESPINDOLA', 'GONZANAMA', 'MACARA', 'PALTAS', 
-    'PUYANGO', 'SARAGURO', 'SOZORANGA', 'ZAPOTILLO', 'PINDAL', 'QUILANGA', 
-    'OLMEDO', 'BABAHOYO', 'BABA', 'MONTALVO', 'PUEBLOVIEJO', 'QUEVEDO', 
-    'URDANETA', 'VENTANAS', 'VINCES', 'PALENQUE', 'BUENA FE', 'VALENCIA', 
-    'MOCACHE', 'QUINSALOMA', 'PORTOVIEJO', 'BOLIVAR', 'CHONE', 'EL CARMEN', 
-    'FLAVIO ALFARO', 'JIPIJAPA', 'JUNIN', 'MANTA', 'MONTECRISTI', 'PAJAN', 
-    'PICHINCHA', 'ROCAFUERTE', 'SANTA ANA', 'SUCRE', 'TOSAGUA', '24 DE MAYO', 
-    'PEDERNALES', 'OLMEDO', 'PUERTO LOPEZ', 'JAMA', 'JARAMIJO', 'SAN VICENTE', 
-    'MORONA', 'GUALAQUIZA', 'LIMON INDANZA', 'PALORA', 'SANTIAGO', 'SUCUA', 
-    'HUAMBOYA', 'SAN JUAN BOSCO', 'TAISHA', 'LOGROÑO', 'PABLO VI', 'TIWINTZA', 
-    'TENA', 'ARCHIDONA', 'EL CHACO', 'QUIJOS', 'CARLOS JULIO AROSEMENA', 'PASTAZA', 
-    'MERA', 'SANTA CLARA', 'ARAJUNO', 'QUITO', 'CAYAMBE', 'MEJIA', 'PEDRO MONCAYO', 
-    'RUMIÑAHUI', 'SAN MIGUEL DE LOS BANCOS', 'PEDRO VICENTE MALDONADO', 'PUERTO QUITO', 
-    'AMBATO', 'BAÑOS', 'CEVALLOS', 'MOCHA', 'PATATE', 'QUERO', 'SAN PEDRO DE PELILEO', 
-    'SANTIAGO DE PILLARO', 'TISALEO', 'ZAMORA', 'CHINCHIPE', 'NANGARITZA', 'YACUAMBI', 
-    'YANTZAZA', 'EL PANGUI', 'CENTINELA DEL CONDOR', 'PALANDA', 'PAQUISHA', 'SAN CRISTOBAL', 
-    'ISABELA', 'SANTA CRUZ', 'LAGO AGRIO', 'GONZALO PIZARRO', 'PUTUMAYO', 'SHUSHUFINDI', 
-    'SUCUMBIOS', 'CASCALES', 'CUYABENO', 'ORELLANA', 'AGUARICO', 'LA JOYA DE LOS SACHAS', 
-    'LORETO', 'SANTO DOMINGO DE LOS TSACHILAS', 'SANTA ELENA', 'LIBERTAD', 'SALINAS', 
+  var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA',
+    'SAN FERNANDO', 'SANTA ISABEL', 'SIGSIG', 'OÑA', 'CHORDELEG', 'EL PAN',
+    'SEVILLA DE ORO', 'GUACHAPALA', 'CAMILO PONCE ENRIQUEZ', 'GUARANDA',
+    'CHILLANES', 'SAN JOSE DE CHIMBO', 'ECHEANDIA', 'SAN MIGUEL', 'CALUMA',
+    'LAS NAVES', 'AZOGUES', 'BIBLIAN', 'CAÑAR', 'LA TRONCAL', 'EL TAMBO',
+    'DELEG', 'SUSCAL', 'TULCAN', 'BOLIVAR', 'ESPEJO', 'MIRA', 'MONTUFAR',
+    'SAN PEDRO DE HUACA', 'LATACUNGA', 'LA MANA', 'PANGUA', 'PUJILI',
+    'SALCEDO', 'SAQUISILI', 'SIGCHOS', 'RIOBAMBA', 'ALAUSI', 'COLTA',
+    'CHAMBO', 'CHUNCHI', 'GUAMOTE', 'GUANO', 'PALLATANGA', 'PENIPE',
+    'CUMANDA', 'MACHALA', 'ARENILLAS', 'ATAHUALPA', 'BALSAS', 'CHILLA',
+    'EL GUABO', 'HUAQUILLAS', 'MARCABELI', 'PASAJE', 'PIÑAS', 'PORTOVELO',
+    'SANTA ROSA', 'ZARUMA', 'LAS LAJAS', 'ESMERALDAS', 'ELOY ALFARO', 'MUISNE',
+    'QUININDE', 'SAN LORENZO', 'ATACAMES', 'RIOVERDE', 'LA CONCORDIA', 'GUAYAQUIL',
+    'ALFREDO BAQUERIZO MORENO', 'BALAO', 'BALZAR', 'COLIMES', 'DAULE', 'DURAN',
+    'EL EMPALME', 'EL TRIUNFO', 'MILAGRO', 'NARANJAL', 'NARANJITO', 'PALESTINA',
+    'PEDRO CARBO', 'SAMBORONDON', 'SANTA LUCIA', 'URBINA JADO', 'YAGUACHI', 'PLAYAS',
+    'SIMON BOLIVAR', 'CORONEL MARCELINO MARIDUEÑA', 'LOMAS DE SARGENTILLO', 'NOBOL',
+    'GENERAL ANTONIO ELIZALDE', 'ISIDRO AYORA', 'IBARRA', 'ANTONIO ANTE', 'COTACACHI',
+    'OTAVALO', 'PIMAMPIRO', 'SAN MIGUEL DE URCUQUI', 'LOJA', 'CALVAS', 'CATAMAYO',
+    'CELICA', 'CHAGUARPAMBA', 'ESPINDOLA', 'GONZANAMA', 'MACARA', 'PALTAS',
+    'PUYANGO', 'SARAGURO', 'SOZORANGA', 'ZAPOTILLO', 'PINDAL', 'QUILANGA',
+    'OLMEDO', 'BABAHOYO', 'BABA', 'MONTALVO', 'PUEBLOVIEJO', 'QUEVEDO',
+    'URDANETA', 'VENTANAS', 'VINCES', 'PALENQUE', 'BUENA FE', 'VALENCIA',
+    'MOCACHE', 'QUINSALOMA', 'PORTOVIEJO', 'BOLIVAR', 'CHONE', 'EL CARMEN',
+    'FLAVIO ALFARO', 'JIPIJAPA', 'JUNIN', 'MANTA', 'MONTECRISTI', 'PAJAN',
+    'PICHINCHA', 'ROCAFUERTE', 'SANTA ANA', 'SUCRE', 'TOSAGUA', '24 DE MAYO',
+    'PEDERNALES', 'OLMEDO', 'PUERTO LOPEZ', 'JAMA', 'JARAMIJO', 'SAN VICENTE',
+    'MORONA', 'GUALAQUIZA', 'LIMON INDANZA', 'PALORA', 'SANTIAGO', 'SUCUA',
+    'HUAMBOYA', 'SAN JUAN BOSCO', 'TAISHA', 'LOGROÑO', 'PABLO VI', 'TIWINTZA',
+    'TENA', 'ARCHIDONA', 'EL CHACO', 'QUIJOS', 'CARLOS JULIO AROSEMENA', 'PASTAZA',
+    'MERA', 'SANTA CLARA', 'ARAJUNO', 'QUITO', 'CAYAMBE', 'MEJIA', 'PEDRO MONCAYO',
+    'RUMIÑAHUI', 'SAN MIGUEL DE LOS BANCOS', 'PEDRO VICENTE MALDONADO', 'PUERTO QUITO',
+    'AMBATO', 'BAÑOS', 'CEVALLOS', 'MOCHA', 'PATATE', 'QUERO', 'SAN PEDRO DE PELILEO',
+    'SANTIAGO DE PILLARO', 'TISALEO', 'ZAMORA', 'CHINCHIPE', 'NANGARITZA', 'YACUAMBI',
+    'YANTZAZA', 'EL PANGUI', 'CENTINELA DEL CONDOR', 'PALANDA', 'PAQUISHA', 'SAN CRISTOBAL',
+    'ISABELA', 'SANTA CRUZ', 'LAGO AGRIO', 'GONZALO PIZARRO', 'PUTUMAYO', 'SHUSHUFINDI',
+    'SUCUMBIOS', 'CASCALES', 'CUYABENO', 'ORELLANA', 'AGUARICO', 'LA JOYA DE LOS SACHAS',
+    'LORETO', 'SANTO DOMINGO DE LOS TSACHILAS', 'SANTA ELENA', 'LIBERTAD', 'SALINAS',
     'LAS GOLONDRINAS', 'MANGA DEL CURA', 'EL PIEDRERO'
   ];
 
   var provincias = ['Azuay', 'Bolivar', 'Cañar', 'Carchi', 'Cotopaxi', 'Chimborazo',
-    'El Oro', 'Esmeraldas', 'Guayas', 'Imbabura', 'Loja', 'Los Rios', 'Manabi', 
+    'El Oro', 'Esmeraldas', 'Guayas', 'Imbabura', 'Loja', 'Los Rios', 'Manabi',
     'Morona Santiago', 'Napo', 'Pastaza', 'Pichincha', 'Tungurahua', 'Zamora Chinchipe',
     'Galápagos', 'Sucumbios', 'Orellana', 'Santo Domingo de los Tsachilas', 'Santa Elena',
 
 ];
-  
+
 
   $('#canton').typeahead({
     hint: true,
@@ -283,6 +294,7 @@ var substringMatcher = function(strs) {
     source: substringMatcher(cantones)
   });
 
+/*
   $('#canton_empresa').typeahead({
     hint: true,
     highlight: true,
@@ -292,6 +304,7 @@ var substringMatcher = function(strs) {
     name: 'canton_empresa',
     source: substringMatcher(cantones)
   });
+  */
 
   $('#provincia').typeahead({
     hint: true,
@@ -319,28 +332,28 @@ var substringMatcher = function(strs) {
         dictRespuestas.cedula_conyuge = $("#cedula_conyugue").val();
       }
 
-      
+
       dictRespuestas.direccion_domicilio = $("#direccion").val();
       dictRespuestas.provincia = $("#provincia").val();
       dictRespuestas.canton = $("#canton").val();
-      dictRespuestas.telefono_domicilio = $("#telf_domicilio").val();
+      //dictRespuestas.telefono_domicilio = $("#telf_domicilio").val();
 
       var fuente_ingresos = $("#selectTrabajo").children("option:selected").val();
 
       var dictFuenteIngresos = {};
-    
+
       if (fuente_ingresos == 1){
-        dictFuenteIngresos.empresa_relacion_dependencia = $("#empresa_relacion_dependencia").val();
+        //dictFuenteIngresos.empresa_relacion_dependencia = $("#empresa_relacion_dependencia").val();
         dictFuenteIngresos.cargo_relacion_dependencia = $("#cargo_relacion_dependencia").val();
-        dictFuenteIngresos.anios_relacion_dependencia = $("#anios_relacion_dependencia").val();
+        //dictFuenteIngresos.anios_relacion_dependencia = $("#anios_relacion_dependencia").val();
       }
       else if (fuente_ingresos == 2){
         dictFuenteIngresos.ruc_profesional_independiente = $("#ruc_profesional_independiente").val();
         dictFuenteIngresos.actividad_profesional_independiente = $("#actividad_profesional_independiente").val();
-        dictFuenteIngresos.anios_profesional_independiente = $("#anios_profesional_independiente").val();
+        //dictFuenteIngresos.anios_profesional_independiente = $("#anios_profesional_independiente").val();
       }
       else if (fuente_ingresos == 3){
-        dictFuenteIngresos.empresa_auto_empleado = $("#empresa_auto_empleado").val();
+        //dictFuenteIngresos.empresa_auto_empleado = $("#empresa_auto_empleado").val();
         dictFuenteIngresos.ruc_auto_empleado = $("#ruc_auto_empleado").val();
         dictFuenteIngresos.actividad_auto_empleado = $("#actividad_auto_empleado").val();
       }
@@ -348,8 +361,8 @@ var substringMatcher = function(strs) {
       dictRespuestas.fuente_ingresos = JSON.stringify(dictFuenteIngresos);
 
 
-      dictRespuestas.direccion_fuente_ingresos = $("#direccion_empresa").val();
-      dictRespuestas.canton_fuentes_ingresos = $("#canton_empresa").val();
+      //dictRespuestas.direccion_fuente_ingresos = $("#direccion_empresa").val();
+      //dictRespuestas.canton_fuentes_ingresos = $("#canton_empresa").val();
 
       let ingresos_aprox = $("#ingresos_aproximados").val();
       if (ingresos_aprox){
@@ -363,7 +376,7 @@ var substringMatcher = function(strs) {
       dictRespuestas.banco = $("#selectBanco").children("option:selected").val();
       dictRespuestas.numero_cuenta = $("#numero_cuenta").val();
       dictRespuestas.tipo_cuenta = $("#selectTipoCuenta").children("option:selected").val();
-      
+
       return dictRespuestas;
   }
 
@@ -381,14 +394,14 @@ var substringMatcher = function(strs) {
         focusAndInvalidate(this);
         $("#completar_datos_wrapper .error").html("Llene todos los campos");
         $("#completar_datos_wrapper .error-container").css("display", "flex");
-        
+
         es_valido = false;
         return false;
       }
       else {
         if (this.name === 'cedula' && !validar_cedula(this)){
 
-          
+
           focusAndInvalidate(this);
           $("#completar_datos_wrapper .error").html("Ingrese su cédula correctamente");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
@@ -418,7 +431,7 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
-
+        /*
         else if(this.name === 'canton_empresa' && !cantones.includes(this.value)) {
           focusAndInvalidate(this);
 
@@ -429,12 +442,13 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
+        */
         else if(this.name === 'provincia' && !provincias.includes(this.value)) {
           focusAndInvalidate(this);
 
           $("#completar_datos_wrapper .error").html("Ingrese una provincia válida");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
-         
+
           this.classList.add("invalid");
           es_valido = false;
           return false;
@@ -454,6 +468,7 @@ var substringMatcher = function(strs) {
       }
     });
 
+    /*
     if (!$('#foto_cedula').prop('files')[0]){
       $("#completar_datos_wrapper .error").html("Por favor, suba una foto o un archivo PDF de su documento de identidad.");
       $("#completar_datos_wrapper .error-container").css("display", "flex");
@@ -461,11 +476,12 @@ var substringMatcher = function(strs) {
       es_valido = false;
       return false;
     }
+    */
 
     if(es_valido){
       $("#completar_datos_wrapper .error-container").hide();
     }
-    
+
     return es_valido;
   }
 
@@ -477,12 +493,12 @@ var substringMatcher = function(strs) {
       if ($(this).val() === '') {
         $("#modificar_"+this.name).val(this.value);
         $("#modificar_"+this.name).attr("value",this.value);
-        return; //lo mismo que continue para for each 
+        return; //lo mismo que continue para for each
       }
       else {
         if (this.name === 'cedula' && !validar_cedula(this)){
 
-          
+
           focusAndInvalidate(this);
           $("#completar_datos_wrapper .error").html("Ingrese su cédula correctamente");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
@@ -512,7 +528,7 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
-
+        /*
         else if(this.name === 'canton_empresa' && !cantones.includes(this.value)) {
           focusAndInvalidate(this);
 
@@ -523,12 +539,13 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
+        */
         else if(this.name === 'provincia' && !provincias.includes(this.value)) {
           focusAndInvalidate(this);
 
           $("#completar_datos_wrapper .error").html("Ingrese una provincia válida");
           $("#completar_datos_wrapper .error-container").css("display", "flex");
-         
+
           this.classList.add("invalid");
           es_valido = false;
           return false;
@@ -553,7 +570,7 @@ var substringMatcher = function(strs) {
     if(es_valido){
       $("#completar_datos_wrapper .error-container").hide();
     }
-    
+
     return es_valido;
   }
 
@@ -562,8 +579,11 @@ var substringMatcher = function(strs) {
         type: 'POST',
         url: "/inversionista/fase1/",
         data: dictRespuestas,
-        success: function(resultData) { 
-            enviarImagenCedula(redirect);
+        success: function(resultData) {
+            //enviarImagenCedula(redirect);
+            $("#completar_datos_wrapper .error-container").hide();
+            //$("#modificar_labelDocumento").html(nombre_imagen);
+            cambio_fase_inversion_completar_datos(id_inversion_modal);
         },
         error: function(e){
           if(e.responseJSON){
@@ -578,13 +598,16 @@ var substringMatcher = function(strs) {
     });
   }
 
+  /*
     function enviarImagenCedula(redirect){
         var myFormData = new FormData();
-        const imagen = $('#foto_cedula').prop('files')[0];
+        //const imagen = $('#foto_cedula').prop('files')[0];
+
 
         if(!imagen){
           return false;
         }
+
 
         myFormData.append("img",imagen );
 
@@ -592,7 +615,7 @@ var substringMatcher = function(strs) {
         var nombre_imagen = renombrarArchivo(cedula, imagen.name);
 
         $.ajax({
-            url: '/inversionista/cedula/'+nombre_imagen,  
+            url: '/inversionista/cedula/'+nombre_imagen,
             type: 'POST',
             processData: false,
             contentType: false,
@@ -605,7 +628,7 @@ var substringMatcher = function(strs) {
                 cambio_fase_inversion_completar_datos(id_inversion_modal);
               }
               else{
-                
+
               }
             },
             error: function(){
@@ -614,6 +637,7 @@ var substringMatcher = function(strs) {
             }
         });
     }
+    */
 
   function cambio_fase_inversion_completar_datos(id_inversion){
     if(fase_inversion_actual != "FILL_INFO") {
@@ -635,9 +659,9 @@ var substringMatcher = function(strs) {
     else {
       $.ajax({
         type: 'POST',
-        url: URL_CAMBIO_FASE_COMPLETAR_DATOS+id_inversion, 
+        url: URL_CAMBIO_FASE_COMPLETAR_DATOS+id_inversion,
         data: {},
-        success: function(resultData) { 
+        success: function(resultData) {
           $("#completar_datos_wrapper .error-container").hide();
           $(CLASE_MODAL).show();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
@@ -661,7 +685,7 @@ var substringMatcher = function(strs) {
         }
       });
     }
-    
+
   }
 
 function obtenerIdInversion(){
@@ -700,11 +724,11 @@ function renombrarArchivo(nombre_nuevo, nombre_anterior_con_extension){
 }
 
 function validar_cedula(textbox){
-  
+
   /**
      * Algoritmo para validar cedulas de Ecuador
      * @Author : Victor Diaz De La Gasca.
-     * @Fecha  : Quito, 15 de Marzo del 2013 
+     * @Fecha  : Quito, 15 de Marzo del 2013
      * @Email  : vicmandlagasca@gmail.com
      * @Pasos  del algoritmo
      * 1.- Se debe validar que tenga 10 numeros
@@ -715,20 +739,20 @@ function validar_cedula(textbox){
      * 6.- Extraigo el primer Digito de la suma (sumaPares + sumaImpares)
      * 7.- Conseguimos la decena inmediata del digito extraido del paso 6 (digito + 1) * 10
      * 8.- restamos la decena inmediata - suma / si la suma nos resulta 10, el decimo digito es cero
-     * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.     
+     * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.
      */
      let cedula = textbox.value
      let times_cedula = document.getElementById("times-cedula-id")
      let check_cedula = document.getElementById("check-cedula-id")
      //Preguntamos si la cedula consta de 10 digitos
      if(cedula.length == 10){
-        
+
         //Obtenemos el digito de la region que sonlos dos primeros digitos
         var digito_region = cedula.substring(0,2);
-        
+
         //Pregunto si la region existe ecuador se divide en 24 regiones
         if( digito_region >= 1 && digito_region <=24 ){
-          
+
           // Extraigo el ultimo digito
           var ultimo_digito   = cedula.substring(9,10);
 
@@ -781,7 +805,7 @@ function validar_cedula(textbox){
             textbox.classList.add("invalid");
             return false
           }
-          
+
         }else{
           // imprimimos en consola si la region no pertenece
           textbox.classList.add("invalid");
@@ -792,6 +816,6 @@ function validar_cedula(textbox){
         textbox.classList.add("invalid");
         return false
 
-     }    
-  
+     }
+
 }

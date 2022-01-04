@@ -78,7 +78,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
             x = 100
             y = 300
             f = Table(data, colWidths=75, rowHeights=25)
-            
+
             f.setStyle(TableStyle(
                                 [('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black),
                                  ('BOX', (0, 0), (-1, -1), 0.5, colors.black),
@@ -97,7 +97,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
             buffer.seek(0)
             return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
 
-            
+
 
         #Inversion
         dic_inversion = request.data.get("inversion")
@@ -113,7 +113,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
         #nueva inversion
         solicitud = Solicitud.objects.get(id=id_solicitud)
         usuario = models.Usuario.objects.get(idUsuario=id_usuario)
-        new_inversion = models.Inversion(id_user=usuario, id_solicitud=solicitud, monto=monto, 
+        new_inversion = models.Inversion(id_user=usuario, id_solicitud=solicitud, monto=monto,
                                         adjudicacion=adjudicacion, adjudicacion_iva=adjudicacion_iva,
                                         inversion_total=inversion_total, ganancia_total=ganancia_total)
         actualizar_datos_inversion(new_inversion,solicitud)
@@ -124,7 +124,7 @@ class Proceso_aceptar_inversion(generics.CreateAPIView):
 
 
         #pago_detalle
-        
+
 
         response_data = {
                 "mensaje": "Datos enviados con exito",
@@ -157,17 +157,17 @@ def get_inversiones(request):
             if int(request_data[INICIO_KEY]) >= 0 :
                 inicio = int(request_data[INICIO_KEY])
 
-        cantidad = CANTIDAD_DEFAULT    
+        cantidad = CANTIDAD_DEFAULT
         if CANTIDAD_KEY in request_data:
             if int(request_data[CANTIDAD_KEY]) >= 0 :
-                cantidad = int(request_data[CANTIDAD_KEY])   
+                cantidad = int(request_data[CANTIDAD_KEY])
 
         #Se obtiene el queryset y se lo convierte a json
         #Se agrega el - antes del atributo para ordenarlo descendientemente
         try:
             if cantidad>0:
                 #Se setea el indice del ultimo registro
-                final = inicio + cantidad 
+                final = inicio + cantidad
                 queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion__in=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')[inicio:final]
             else:
                 queryset = models.Inversion.objects.filter(id_user=inversionista, fase_inversion__in=FASES_INVERSION[fase_request]).order_by('-id_solicitud__fecha_publicacion')
@@ -200,7 +200,7 @@ def get_inversiones(request):
 
 @login_required
 def completar_datos_financieros_view(request):
-    if request.method == 'GET': 
+    if request.method == 'GET':
         if request.user.is_authenticated:
             usuario = models.Usuario.objects.filter(user=request.user)[0]
             return render(request, 'fases_inversiones/completa_datos.html', {"usuario":usuario})
@@ -212,7 +212,7 @@ def declaracion_fondos_view(request):
         print(request.user)
         usuario = models.Usuario.objects.get(user=request.user)
         return render(request, 'fases_inversiones/declaracion_fondos.html',{"usuario": usuario})
-    
+
 
 def current_date_format(date):
     months = ("Enero", "Febrero", "Marzo", "Abri", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
@@ -236,7 +236,7 @@ class aceptar_declaracion_fondos(generics.CreateAPIView):
         # Create a file-like buffer to receive PDF data.
         buffer = io.BytesIO()
 
-        width, height = letter 
+        width, height = letter
 
         doc = SimpleDocTemplate(buffer,pagesize=letter,
                         rightMargin=72,leftMargin=72,
@@ -264,7 +264,7 @@ def hacer_contrato(doc, usuario, fecha, hora):
     styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
 
     #Texto dependiendo que tipo de persona es
-    persona_texto = PERSONA_NATURAL.format(nombre=usuario.nombres+" "+usuario.apellidos, cedula=usuario.cedula)  
+    persona_texto = PERSONA_NATURAL.format(nombre=usuario.nombres+" "+usuario.apellidos, cedula=usuario.cedula)
     ptext = '<font size="12">'+persona_texto+'</font>'
     Story.append(Paragraph(ptext, styles["Justify"]))
     Story.append(Spacer(1, 0.2*inch))
@@ -293,7 +293,7 @@ def hacer_contrato(doc, usuario, fecha, hora):
 
 @login_required
 def subir_transferencia_view(request):
-    if request.method == 'GET': 
+    if request.method == 'GET':
         if request.user.is_authenticated:
             id_inversion = request.GET.get('id_inversion', '')
             if id_inversion:
@@ -303,7 +303,7 @@ def subir_transferencia_view(request):
 
 @login_required
 def fase_final_view(request):
-    if request.method == 'GET': 
+    if request.method == 'GET':
         if request.user.is_authenticated:
             return render(request, 'fases_inversiones/fase_final.html', {})
 
@@ -315,7 +315,9 @@ def step_three_inversion(request):
         inversion.step_three()
         inversion.save()
         return HttpResponse(json.dumps({}), content_type='application/json')
-    except:
+    except Exception as e:
+        print("step_three_inversion exception")
+        print(e)
         return HttpResponse(json.dumps({}), content_type='application/json', status=500)
 
 @api_view(['POST'])
@@ -368,12 +370,12 @@ def get_inversion_individual(request, pk):
 def get_inversion_usuario(request, id_solicitud, id_inversionista):
     try:
         inversion_count = models.Inversion.objects.filter(id_user=id_inversionista, id_solicitud=id_solicitud).count()
-        
+
         if (inversion_count > 0):
             inversion = models.Inversion.objects.filter(id_user=id_inversionista, id_solicitud=id_solicitud).latest('fecha_creacion')
 
             lista_fase = ['OPEN', 'FILL_INFO', 'CONFIRM_INVESTMENT', 'ORIGIN_MONEY', 'PENDING_TRANSFER', 'TRANSFER_SUBMITED','TO_BE_FUND']
-            
+
             print("fase inversion: "+ inversion.fase_inversion)
             if(inversion.fase_inversion in lista_fase):
                 serializer = InversionSerializer(instance=inversion)
@@ -384,7 +386,7 @@ def get_inversion_usuario(request, id_solicitud, id_inversionista):
                 }
 
                 return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
-        
+
         diccionario_respuesta = {
             'status': status.HTTP_200_OK
         }
@@ -412,7 +414,7 @@ def get_inversiones_por_inversionista(request, pk):
             inversion_i = models.Inversion.objects.get(id=inversion.id)
             serializer = InversionSerializer(instance=inversion_i)
             inversiones_usuario.append(serializer.data)
-            
+
         diccionario_respuesta = {
             'status': status.HTTP_200_OK,
             'data': inversiones_usuario
@@ -426,7 +428,7 @@ def get_inversiones_por_inversionista(request, pk):
             'data': {}
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)
-        
+
 
 @api_view(['GET'])
 def get_pagos_inversionista(request, id_inversion):
@@ -439,10 +441,10 @@ def get_pagos_inversionista(request, id_inversion):
             pago_i = models.Pagos_ta_supuesta.objects.get(id=pago.id)
             serializer = PagosTaSupuestaSerializer(instance=pago_i)
             pagos_inversionista.append(serializer.data)
-        
+
         diccionario_respuesta = {
             'status': status.HTTP_200_OK,
-            'data': {'lista_pagos':pagos_inversionista, 'adjudicacion_total': adjudicacion_total, 
+            'data': {'lista_pagos':pagos_inversionista, 'adjudicacion_total': adjudicacion_total,
                         'monto': inversion.monto}
         }
         return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json')
@@ -547,7 +549,7 @@ def actualizar_datos_inversion(inversion,solicitud):
     COMISION_ADJUDICACION = monto_solicitud * COMISION_ADJUDICACION_FACTOR
     cargo_adjudicacion = COMISION_ADJUDICACION * participacion_inversionista
     cargo_adjudicacion_iva = cargo_adjudicacion * IVA
-    inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva 
+    inversion_total = monto_inversion + cargo_adjudicacion + cargo_adjudicacion_iva
 
 
     inversion.adjudicacion = cargo_adjudicacion
@@ -583,7 +585,7 @@ def get_ta_simulacion(request, id_solicitud):
 def get_consulta_pago(request, id_solicitud):
     try:
         solicitud = Solicitud.objects.get(pk = id_solicitud)
-        
+
 
 
     except Solicitud.DoesNotExist:
@@ -592,4 +594,4 @@ def get_consulta_pago(request, id_solicitud):
             'message': "Solicitud no encontrad",
             'data': {}
         }
-        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)   
+        return HttpResponse(json.dumps(diccionario_respuesta), content_type='application/json', status=404)

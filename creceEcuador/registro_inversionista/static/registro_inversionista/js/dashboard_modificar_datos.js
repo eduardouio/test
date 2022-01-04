@@ -14,7 +14,7 @@ function cambiarHabilitadoInputs() {
   else {
     nonEditableInputs = ["modificar_titular"];
   }
-  
+
 
 
   $(".crece-modificar-datos-formulario-wrapper input").each(function(){
@@ -22,15 +22,15 @@ function cambiarHabilitadoInputs() {
     if(! nonEditableInputs.includes(inputName)){
       $(this).prop("disabled", datosDesdeBaseModificar);
     }
-    
+
   });
-  
+
   $(".crece-modificar-datos-formulario-wrapper select").each(function(){
     let inputName = $(this).attr("name");
     if(! nonEditableInputs.includes(inputName)){
       $(this).prop("disabled", datosDesdeBaseModificar);
     }
-    
+
   });
 
   if(datosDesdeBaseModificar){
@@ -43,14 +43,14 @@ function cambiarHabilitadoInputs() {
       $(this).removeClass("label-subir-foto-desactivado");
     });
   }
-  
+
 }
 
 function cargarContratos() {
 
   $.ajax({
-    type: 'GET', 
-    url: "/inversionista/contratos/"+$("#perfil_ver_contratos").attr("data-id")+"/", 
+    type: 'GET',
+    url: "/inversionista/contratos/"+$("#perfil_ver_contratos").attr("data-id")+"/",
     success: function(result){
       let stringContratos = "";
       result.data.forEach(function(contrato){
@@ -67,27 +67,27 @@ function cargarContratos() {
       });
 
       $("#contratos_container").html(stringContratos);
-      
-    } 
+
+    }
   });
 
 
-	
+
 
 }
 
 function parseDate(date){
   var today = new Date(date);
-  var dd = today.getDate(); 
-  var mm = today.getMonth() + 1; 
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
 
-  var yyyy = today.getFullYear(); 
-  if (dd < 10) { 
-      dd = '0' + dd; 
-  } 
-  if (mm < 10) { 
-      mm = '0' + mm; 
-  } 
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+      dd = '0' + dd;
+  }
+  if (mm < 10) {
+      mm = '0' + mm;
+  }
   return dd + '-' + mm + '-' + yyyy;
 }
 
@@ -99,6 +99,7 @@ function getNombreContrato(rutaContrato){
 
 function inicializarVerPerfil(){
 
+  /*
   $("#modificar_usar_dir_domicilio").change(function() {
     if(this.checked) {
       $("#modificar_direccion_empresa").val(
@@ -110,6 +111,7 @@ function inicializarVerPerfil(){
       );
     }
   });
+  */
 
   $(".crece-modificar-datos-formulario-wrapper-editar, div.crece-modificar-datos-formulario-wrapper-editar *").click(function() {
     cambiarHabilitadoInputs();
@@ -136,11 +138,11 @@ function inicializarVerPerfil(){
 
   if(datosDesdeBaseModificar){
     $('#modificar_guardar_respuestas').hide();
-    
+
     $(".crece-modificar-datos-formulario-wrapper input").each(function(){
       $(this).prop("disabled", true);
     });
-    
+
     $(".crece-modificar-datos-formulario-wrapper select").each(function(){
       $(this).prop("disabled", true);
     });
@@ -225,14 +227,14 @@ function inicializarVerPerfil(){
     $("#perfil_cambiar_password").css("display", "flex");
 
     limpiar_password();
-    
+
   });
 
   function cambiar_fecha_nacimiento() {
     // body...
     let fecha_nacimiento = $("#modificar_fecha_nacimiento").attr("value-date");
 
-    
+
     let date = new Date(fecha_nacimiento)
     if (isValidDate(date)){
       var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -240,16 +242,16 @@ function inicializarVerPerfil(){
         $("#modificar_fecha_nacimiento").val(formatDate(fecha_nacimiento))
       }
   }
-    
+
     function formatDate(date) {
       var d = new Date(date),
           month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();
 
-      if (month.length < 2) 
+      if (month.length < 2)
           month = '0' + month;
-      if (day.length < 2) 
+      if (day.length < 2)
           day = '0' + day;
 
       return [year, month, day].join('-');
@@ -284,6 +286,7 @@ function inicializarVerPerfil(){
 
   }
 
+/*
   $("#modificar_selectEstadoCivil").change(function(){
     if (this.value === "casado" || this.value === "union libre") {
         $(".crece-modificar-datos-formulario-conyugue").show();
@@ -294,6 +297,7 @@ function inicializarVerPerfil(){
         hacerNoRequired(".crece-modificar-datos-formulario-conyugue input");
     }
   });
+  */
 
   $("#modificar_selectTrabajo").change(function(){
     if (this.value == 1) {
@@ -339,9 +343,11 @@ function inicializarVerPerfil(){
     }
   });
 
+  /*
   $("#modificar_foto_cedula").on('change', function() {
     $(".crece-modificar-datos-formulario-wrapper-boton-subir-label").html(this.files[0].name);
   });
+*/
 
   $("#modificar_foto_perfil").on('change', function() {
     $("#labelDocumento").html(this.files[0].name);
@@ -358,7 +364,7 @@ function inicializarVerPerfil(){
         var dictRespuestas = obtenerRespuestasModificar()
         enviarDatosModificar(dictRespuestas, false);
       }
-    } 
+    }
     var dictRespuestas = obtenerRespuestasModificar()
   });
 
@@ -368,7 +374,7 @@ function inicializarVerPerfil(){
         var dictRespuestas = obtenerRespuestasModificar()
         enviarDatosModificar(dictRespuestas, true);
       }
-    } 
+    }
 
   });
 
@@ -382,6 +388,7 @@ function inicializarVerPerfil(){
     source: substringMatcher(cantones)
   });
 
+  /*
   $('#modificar_canton_empresa').typeahead({
     hint: true,
     highlight: true,
@@ -390,8 +397,9 @@ function inicializarVerPerfil(){
   {
     name: 'modificar_canton_empresa',
     source: substringMatcher(cantones)
-  });
+  });*/
 
+  /*
   $('#modificar_provincia').typeahead({
     hint: true,
     highlight: true,
@@ -401,14 +409,14 @@ function inicializarVerPerfil(){
     name: 'modificar_provincia',
     source: substringMatcher(provincias)
   });
-
+  */
 
 }
 
 function parseControlCharacters(json){
   var regex = /\\u([\d\w]{4})/gi;
   json = json.toLowerCase().replace(regex, function (match, grp) {
-      return String.fromCharCode(parseInt(grp, 16)); 
+      return String.fromCharCode(parseInt(grp, 16));
   });
   return json.toUpperCase();
 }
@@ -424,9 +432,9 @@ function cargarFuenteDeIngresosModificar(){
       $("#modificar_selectTrabajo").val("1");
       $( "#modificar_selectTrabajo" ).trigger( "change" );
 
-      $("#modificar_empresa_relacion_dependencia").val(dictIngresos.EMPRESA_RELACION_DEPENDENCIA);
+      //$("#modificar_empresa_relacion_dependencia").val(dictIngresos.EMPRESA_RELACION_DEPENDENCIA);
       $("#modificar_cargo_relacion_dependencia").val(dictIngresos.CARGO_RELACION_DEPENDENCIA);
-      $("#modificar_anios_relacion_dependencia").val(dictIngresos.ANIOS_RELACION_DEPENDENCIA);
+      //$("#modificar_anios_relacion_dependencia").val(dictIngresos.ANIOS_RELACION_DEPENDENCIA);
     }
     else if(dictIngresos.RUC_PROFESIONAL_INDEPENDIENTE){
       $("#modificar_selectTrabajo").val("2");
@@ -434,15 +442,19 @@ function cargarFuenteDeIngresosModificar(){
 
       $("#modificar_ruc_profesional_independiente").val(dictIngresos.RUC_PROFESIONAL_INDEPENDIENTE);
       $("#modificar_actividad_profesional_independiente").val(dictIngresos.ACTIVIDAD_PROFESIONAL_INDEPENDIENTE);
-      $("#modificar_anios_profesional_independiente").val(dictIngresos.ANIOS_PROFESIONAL_INDEPENDIENTE);
+      //$("#modificar_anios_profesional_independiente").val(dictIngresos.ANIOS_PROFESIONAL_INDEPENDIENTE);
     }
     else if(dictIngresos.RUC_AUTO_EMPLEADO){
       $("#modificar_selectTrabajo").val("3");
       $( "#modificar_selectTrabajo" ).trigger( "change" );
 
       $("#modificar_ruc_auto_empleado").val(dictIngresos.RUC_AUTO_EMPLEADO);
-      $("#modificar_empresa_auto_empleado").val(dictIngresos.EMPRESA_AUTO_EMPLEADO);
+      //$("#modificar_empresa_auto_empleado").val(dictIngresos.EMPRESA_AUTO_EMPLEADO);
       $("#modificar_actividad_auto_empleado").val(dictIngresos.ACTIVIDAD_AUTO_EMPLEADO);
+    }
+    else{
+      $("#modificar_selectTrabajo").val("4");
+      $( "#modificar_selectTrabajo" ).trigger( "change" );
     }
   }
 }
@@ -457,7 +469,7 @@ function seleccionarImagenModificar(){
   else{
     datosDesdeBaseModificar = false;
   }
-  
+
 }
 
 function seleccionarDesdeBase(id_selector){
@@ -472,6 +484,8 @@ function seleccionarDesdeBase(id_selector){
   }
 }
 
+
+/*
 $("#modificar_selectEstadoCivil").change(function(){
     if (this.value === "casado" || this.value === "union libre") {
         $(".crece-modificar-datos-formulario-conyugue").show();
@@ -482,6 +496,7 @@ $("#modificar_selectEstadoCivil").change(function(){
         hacerNoRequired(".crece-modificar-datos-formulario-conyugue input");
     }
 });
+*/
 
 $("#modificar_selectTrabajo").change(function(){
     if (this.value == 1) {
@@ -527,9 +542,10 @@ $("#modificar_selectTrabajo").change(function(){
     }
 });
 
+/*
 $("#modificar_foto_cedula").on('change', function() {
   $(".crece-modificar-datos-formulario-wrapper-boton-subir-label").html(this.files[0].name);
-});
+});*/
 
 $('.crece-modificar-datos-formulario form').submit(function(e){
     e.preventDefault();
@@ -541,20 +557,20 @@ $("#modificar_guardar_respuestas").click(function(){
       var dictRespuestas = obtenerRespuestasModificar()
       enviarDatosModificar(dictRespuestas, false);
     }
-  } 
+  }
 
 });
 
 var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
       var matches, substringRegex;
-  
+
       // an array that will be populated with substring matches
       matches = [];
-  
+
       // regex used to determine if a string contains the substring `q`
       substrRegex = new RegExp(q, 'i');
-  
+
       // iterate through the pool of strings and for any string that
       // contains the substring `q`, add it to the `matches` array
       $.each(strs, function(i, str) {
@@ -562,59 +578,59 @@ var substringMatcher = function(strs) {
           matches.push(str);
         }
       });
-  
+
       cb(matches);
     };
   };
 
-  var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA', 
-    'SAN FERNANDO', 'SANTA ISABEL', 'SIGSIG', 'OÑA', 'CHORDELEG', 'EL PAN', 
-    'SEVILLA DE ORO', 'GUACHAPALA', 'CAMILO PONCE ENRIQUEZ', 'GUARANDA', 
-    'CHILLANES', 'SAN JOSE DE CHIMBO', 'ECHEANDIA', 'SAN MIGUEL', 'CALUMA', 
-    'LAS NAVES', 'AZOGUES', 'BIBLIAN', 'CAÑAR', 'LA TRONCAL', 'EL TAMBO', 
-    'DELEG', 'SUSCAL', 'TULCAN', 'BOLIVAR', 'ESPEJO', 'MIRA', 'MONTUFAR', 
-    'SAN PEDRO DE HUACA', 'LATACUNGA', 'LA MANA', 'PANGUA', 'PUJILI', 
-    'SALCEDO', 'SAQUISILI', 'SIGCHOS', 'RIOBAMBA', 'ALAUSI', 'COLTA', 
-    'CHAMBO', 'CHUNCHI', 'GUAMOTE', 'GUANO', 'PALLATANGA', 'PENIPE', 
-    'CUMANDA', 'MACHALA', 'ARENILLAS', 'ATAHUALPA', 'BALSAS', 'CHILLA', 
-    'EL GUABO', 'HUAQUILLAS', 'MARCABELI', 'PASAJE', 'PIÑAS', 'PORTOVELO', 
-    'SANTA ROSA', 'ZARUMA', 'LAS LAJAS', 'ESMERALDAS', 'ELOY ALFARO', 'MUISNE', 
-    'QUININDE', 'SAN LORENZO', 'ATACAMES', 'RIOVERDE', 'LA CONCORDIA', 'GUAYAQUIL', 
-    'ALFREDO BAQUERIZO MORENO', 'BALAO', 'BALZAR', 'COLIMES', 'DAULE', 'DURAN', 
-    'EL EMPALME', 'EL TRIUNFO', 'MILAGRO', 'NARANJAL', 'NARANJITO', 'PALESTINA', 
-    'PEDRO CARBO', 'SAMBORONDON', 'SANTA LUCIA', 'URBINA JADO', 'YAGUACHI', 'PLAYAS', 
-    'SIMON BOLIVAR', 'CORONEL MARCELINO MARIDUEÑA', 'LOMAS DE SARGENTILLO', 'NOBOL', 
-    'GENERAL ANTONIO ELIZALDE', 'ISIDRO AYORA', 'IBARRA', 'ANTONIO ANTE', 'COTACACHI', 
-    'OTAVALO', 'PIMAMPIRO', 'SAN MIGUEL DE URCUQUI', 'LOJA', 'CALVAS', 'CATAMAYO', 
-    'CELICA', 'CHAGUARPAMBA', 'ESPINDOLA', 'GONZANAMA', 'MACARA', 'PALTAS', 
-    'PUYANGO', 'SARAGURO', 'SOZORANGA', 'ZAPOTILLO', 'PINDAL', 'QUILANGA', 
-    'OLMEDO', 'BABAHOYO', 'BABA', 'MONTALVO', 'PUEBLOVIEJO', 'QUEVEDO', 
-    'URDANETA', 'VENTANAS', 'VINCES', 'PALENQUE', 'BUENA FE', 'VALENCIA', 
-    'MOCACHE', 'QUINSALOMA', 'PORTOVIEJO', 'BOLIVAR', 'CHONE', 'EL CARMEN', 
-    'FLAVIO ALFARO', 'JIPIJAPA', 'JUNIN', 'MANTA', 'MONTECRISTI', 'PAJAN', 
-    'PICHINCHA', 'ROCAFUERTE', 'SANTA ANA', 'SUCRE', 'TOSAGUA', '24 DE MAYO', 
-    'PEDERNALES', 'OLMEDO', 'PUERTO LOPEZ', 'JAMA', 'JARAMIJO', 'SAN VICENTE', 
-    'MORONA', 'GUALAQUIZA', 'LIMON INDANZA', 'PALORA', 'SANTIAGO', 'SUCUA', 
-    'HUAMBOYA', 'SAN JUAN BOSCO', 'TAISHA', 'LOGROÑO', 'PABLO VI', 'TIWINTZA', 
-    'TENA', 'ARCHIDONA', 'EL CHACO', 'QUIJOS', 'CARLOS JULIO AROSEMENA', 'PASTAZA', 
-    'MERA', 'SANTA CLARA', 'ARAJUNO', 'QUITO', 'CAYAMBE', 'MEJIA', 'PEDRO MONCAYO', 
-    'RUMIÑAHUI', 'SAN MIGUEL DE LOS BANCOS', 'PEDRO VICENTE MALDONADO', 'PUERTO QUITO', 
-    'AMBATO', 'BAÑOS', 'CEVALLOS', 'MOCHA', 'PATATE', 'QUERO', 'SAN PEDRO DE PELILEO', 
-    'SANTIAGO DE PILLARO', 'TISALEO', 'ZAMORA', 'CHINCHIPE', 'NANGARITZA', 'YACUAMBI', 
-    'YANTZAZA', 'EL PANGUI', 'CENTINELA DEL CONDOR', 'PALANDA', 'PAQUISHA', 'SAN CRISTOBAL', 
-    'ISABELA', 'SANTA CRUZ', 'LAGO AGRIO', 'GONZALO PIZARRO', 'PUTUMAYO', 'SHUSHUFINDI', 
-    'SUCUMBIOS', 'CASCALES', 'CUYABENO', 'ORELLANA', 'AGUARICO', 'LA JOYA DE LOS SACHAS', 
-    'LORETO', 'SANTO DOMINGO DE LOS TSACHILAS', 'SANTA ELENA', 'LIBERTAD', 'SALINAS', 
+  var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA',
+    'SAN FERNANDO', 'SANTA ISABEL', 'SIGSIG', 'OÑA', 'CHORDELEG', 'EL PAN',
+    'SEVILLA DE ORO', 'GUACHAPALA', 'CAMILO PONCE ENRIQUEZ', 'GUARANDA',
+    'CHILLANES', 'SAN JOSE DE CHIMBO', 'ECHEANDIA', 'SAN MIGUEL', 'CALUMA',
+    'LAS NAVES', 'AZOGUES', 'BIBLIAN', 'CAÑAR', 'LA TRONCAL', 'EL TAMBO',
+    'DELEG', 'SUSCAL', 'TULCAN', 'BOLIVAR', 'ESPEJO', 'MIRA', 'MONTUFAR',
+    'SAN PEDRO DE HUACA', 'LATACUNGA', 'LA MANA', 'PANGUA', 'PUJILI',
+    'SALCEDO', 'SAQUISILI', 'SIGCHOS', 'RIOBAMBA', 'ALAUSI', 'COLTA',
+    'CHAMBO', 'CHUNCHI', 'GUAMOTE', 'GUANO', 'PALLATANGA', 'PENIPE',
+    'CUMANDA', 'MACHALA', 'ARENILLAS', 'ATAHUALPA', 'BALSAS', 'CHILLA',
+    'EL GUABO', 'HUAQUILLAS', 'MARCABELI', 'PASAJE', 'PIÑAS', 'PORTOVELO',
+    'SANTA ROSA', 'ZARUMA', 'LAS LAJAS', 'ESMERALDAS', 'ELOY ALFARO', 'MUISNE',
+    'QUININDE', 'SAN LORENZO', 'ATACAMES', 'RIOVERDE', 'LA CONCORDIA', 'GUAYAQUIL',
+    'ALFREDO BAQUERIZO MORENO', 'BALAO', 'BALZAR', 'COLIMES', 'DAULE', 'DURAN',
+    'EL EMPALME', 'EL TRIUNFO', 'MILAGRO', 'NARANJAL', 'NARANJITO', 'PALESTINA',
+    'PEDRO CARBO', 'SAMBORONDON', 'SANTA LUCIA', 'URBINA JADO', 'YAGUACHI', 'PLAYAS',
+    'SIMON BOLIVAR', 'CORONEL MARCELINO MARIDUEÑA', 'LOMAS DE SARGENTILLO', 'NOBOL',
+    'GENERAL ANTONIO ELIZALDE', 'ISIDRO AYORA', 'IBARRA', 'ANTONIO ANTE', 'COTACACHI',
+    'OTAVALO', 'PIMAMPIRO', 'SAN MIGUEL DE URCUQUI', 'LOJA', 'CALVAS', 'CATAMAYO',
+    'CELICA', 'CHAGUARPAMBA', 'ESPINDOLA', 'GONZANAMA', 'MACARA', 'PALTAS',
+    'PUYANGO', 'SARAGURO', 'SOZORANGA', 'ZAPOTILLO', 'PINDAL', 'QUILANGA',
+    'OLMEDO', 'BABAHOYO', 'BABA', 'MONTALVO', 'PUEBLOVIEJO', 'QUEVEDO',
+    'URDANETA', 'VENTANAS', 'VINCES', 'PALENQUE', 'BUENA FE', 'VALENCIA',
+    'MOCACHE', 'QUINSALOMA', 'PORTOVIEJO', 'BOLIVAR', 'CHONE', 'EL CARMEN',
+    'FLAVIO ALFARO', 'JIPIJAPA', 'JUNIN', 'MANTA', 'MONTECRISTI', 'PAJAN',
+    'PICHINCHA', 'ROCAFUERTE', 'SANTA ANA', 'SUCRE', 'TOSAGUA', '24 DE MAYO',
+    'PEDERNALES', 'OLMEDO', 'PUERTO LOPEZ', 'JAMA', 'JARAMIJO', 'SAN VICENTE',
+    'MORONA', 'GUALAQUIZA', 'LIMON INDANZA', 'PALORA', 'SANTIAGO', 'SUCUA',
+    'HUAMBOYA', 'SAN JUAN BOSCO', 'TAISHA', 'LOGROÑO', 'PABLO VI', 'TIWINTZA',
+    'TENA', 'ARCHIDONA', 'EL CHACO', 'QUIJOS', 'CARLOS JULIO AROSEMENA', 'PASTAZA',
+    'MERA', 'SANTA CLARA', 'ARAJUNO', 'QUITO', 'CAYAMBE', 'MEJIA', 'PEDRO MONCAYO',
+    'RUMIÑAHUI', 'SAN MIGUEL DE LOS BANCOS', 'PEDRO VICENTE MALDONADO', 'PUERTO QUITO',
+    'AMBATO', 'BAÑOS', 'CEVALLOS', 'MOCHA', 'PATATE', 'QUERO', 'SAN PEDRO DE PELILEO',
+    'SANTIAGO DE PILLARO', 'TISALEO', 'ZAMORA', 'CHINCHIPE', 'NANGARITZA', 'YACUAMBI',
+    'YANTZAZA', 'EL PANGUI', 'CENTINELA DEL CONDOR', 'PALANDA', 'PAQUISHA', 'SAN CRISTOBAL',
+    'ISABELA', 'SANTA CRUZ', 'LAGO AGRIO', 'GONZALO PIZARRO', 'PUTUMAYO', 'SHUSHUFINDI',
+    'SUCUMBIOS', 'CASCALES', 'CUYABENO', 'ORELLANA', 'AGUARICO', 'LA JOYA DE LOS SACHAS',
+    'LORETO', 'SANTO DOMINGO DE LOS TSACHILAS', 'SANTA ELENA', 'LIBERTAD', 'SALINAS',
     'LAS GOLONDRINAS', 'MANGA DEL CURA', 'EL PIEDRERO'
   ];
 
   var provincias = ['Azuay', 'Bolivar', 'Cañar', 'Carchi', 'Cotopaxi', 'Chimborazo',
-    'El Oro', 'Esmeraldas', 'Guayas', 'Imbabura', 'Loja', 'Los Rios', 'Manabi', 
+    'El Oro', 'Esmeraldas', 'Guayas', 'Imbabura', 'Loja', 'Los Rios', 'Manabi',
     'Morona Santiago', 'Napo', 'Pastaza', 'Pichincha', 'Tungurahua', 'Zamora Chinchipe',
     'Galápagos', 'Sucumbios', 'Orellana', 'Santo Domingo de los Tsachilas', 'Santa Elena',
 
 ];
-  
+
 
   $('#modificar_canton').typeahead({
     hint: true,
@@ -626,6 +642,7 @@ var substringMatcher = function(strs) {
     source: substringMatcher(cantones)
   });
 
+  /*
   $('#modificar_canton_empresa').typeahead({
     hint: true,
     highlight: true,
@@ -634,8 +651,9 @@ var substringMatcher = function(strs) {
   {
     name: 'modificar_canton_empresa',
     source: substringMatcher(cantones)
-  });
+  });*/
 
+  /*
   $('#modificar_provincia').typeahead({
     hint: true,
     highlight: true,
@@ -645,7 +663,7 @@ var substringMatcher = function(strs) {
     name: 'modificar_provincia',
     source: substringMatcher(provincias)
   });
-
+  */
   function obtenerRespuestasModificar(){
       var dictRespuestas = {}
       dictRespuestas.nombre = $("#modificar_nombre").val();
@@ -656,34 +674,35 @@ var substringMatcher = function(strs) {
       var estado_civil = $("#modificar_selectEstadoCivil").children("option:selected").val();
 
       dictRespuestas.estado_civil = estado_civil;
+      /*
       if(estado_civil === "casado" || estado_civil === "union libre"){
         dictRespuestas.nombres_conyuge = $("#modificar_nombre_conyugue").val();
         dictRespuestas.apellidos_conyuge = $("#modificar_apellidos_conyugue").val();
         dictRespuestas.cedula_conyuge = $("#modificar_cedula_conyugue").val();
       }
+      */
 
-      
       dictRespuestas.direccion_domicilio = $("#modificar_direccion").val();
-      dictRespuestas.provincia = $("#modificar_provincia").val();
+      //dictRespuestas.provincia = $("#modificar_provincia").val();
       dictRespuestas.canton = $("#modificar_canton").val();
-      dictRespuestas.telefono_domicilio = $("#modificar_telf_domicilio").val();
+      //dictRespuestas.telefono_domicilio = $("#modificar_telf_domicilio").val();
 
       var fuente_ingresos = $("#modificar_selectTrabajo").children("option:selected").val();
 
       var dictFuenteIngresos = {};
-    
+
       if (fuente_ingresos == 1){
-        dictFuenteIngresos.empresa_relacion_dependencia = $("#modificar_empresa_relacion_dependencia").val();
+        //dictFuenteIngresos.empresa_relacion_dependencia = $("#modificar_empresa_relacion_dependencia").val();
         dictFuenteIngresos.cargo_relacion_dependencia = $("#modificar_cargo_relacion_dependencia").val();
-        dictFuenteIngresos.anios_relacion_dependencia = $("#modificar_anios_relacion_dependencia").val();
+        //dictFuenteIngresos.anios_relacion_dependencia = $("#modificar_anios_relacion_dependencia").val();
       }
       else if (fuente_ingresos == 2){
         dictFuenteIngresos.ruc_profesional_independiente = $("#modificar_ruc_profesional_independiente").val();
         dictFuenteIngresos.actividad_profesional_independiente = $("#modificar_actividad_profesional_independiente").val();
-        dictFuenteIngresos.anios_profesional_independiente = $("#modificar_anios_profesional_independiente").val();
+        //dictFuenteIngresos.anios_profesional_independiente = $("#modificar_anios_profesional_independiente").val();
       }
       else if (fuente_ingresos == 3){
-        dictFuenteIngresos.empresa_auto_empleado = $("#modificar_empresa_auto_empleado").val();
+        //dictFuenteIngresos.empresa_auto_empleado = $("#modificar_empresa_auto_empleado").val();
         dictFuenteIngresos.ruc_auto_empleado = $("#modificar_ruc_auto_empleado").val();
         dictFuenteIngresos.actividad_auto_empleado = $("#modificar_actividad_auto_empleado").val();
       }
@@ -691,15 +710,15 @@ var substringMatcher = function(strs) {
       dictRespuestas.fuente_ingresos = JSON.stringify(dictFuenteIngresos);
 
 
-      dictRespuestas.direccion_fuente_ingresos = $("#modificar_direccion_empresa").val();
-      dictRespuestas.canton_fuentes_ingresos = $("#modificar_canton_empresa").val();
+      //dictRespuestas.direccion_fuente_ingresos = $("#modificar_direccion_empresa").val();
+      //dictRespuestas.canton_fuentes_ingresos = $("#modificar_canton_empresa").val();
       dictRespuestas.ingresos_mensuales = $("#modificar_ingresos_aproximados").val();
 
       dictRespuestas.titular = $("#modificar_titular").val();
       dictRespuestas.banco = $("#modificar_selectBanco").children("option:selected").val();
       dictRespuestas.numero_cuenta = $("#modificar_numero_cuenta").val();
       dictRespuestas.tipo_cuenta = $("#modificar_selectTipoCuenta").children("option:selected").val();
-      
+
       return dictRespuestas;
   }
 
@@ -722,7 +741,7 @@ var substringMatcher = function(strs) {
       else {
         if (this.name === 'modificar_cedula' && !validar_cedula_modificar(this)){
 
-          
+
           focusAndInvalidate(this);
           $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("Ingrese su cédula correctamente");
           $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
@@ -752,7 +771,7 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
-
+        /*
         else if(this.name === 'modificar_canton_empresa' && !cantones.includes(this.value)) {
           focusAndInvalidate(this);
 
@@ -763,16 +782,17 @@ var substringMatcher = function(strs) {
           es_valido = false;
           return false;
         }
+
         else if(this.name === 'modificar_provincia' && !provincias.includes(this.value)) {
           focusAndInvalidate(this);
 
           $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("Ingrese una provincia válida");
           $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
-         
+
           this.classList.add("invalid");
           es_valido = false;
           return false;
-        }
+        }*/
         else if(this.name === 'modificar_celular' && this.value.length != 10) {
           focusAndInvalidate(this);
           $(".crece-modificar-datos-formulario-wrapper .error-modificar").html("Ingrese un celular válido");
@@ -793,7 +813,7 @@ var substringMatcher = function(strs) {
     if(es_valido){
       $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").hide();
     }
-    
+
     return es_valido;
   }
 
@@ -802,16 +822,18 @@ var substringMatcher = function(strs) {
         type: 'POST',
         url: "/inversionista/fase1/",
         data: dictRespuestas,
-        success: function(resultData) { 
+        success: function(resultData) {
+          /*
           if($('#modificar_foto_cedula').prop('files')[0]){
             enviarImagenCedulaModificar(redirect);
           }
           else{
+          */
             cambiarHabilitadoInputs();
-          } 
+          //}
         },
         error: function(e){
-          
+
           if(e.responseJSON){
             $(".crece-modificar-datos-formulario-wrapper .error-modificar").html(e.responseJSON.mensaje);
             $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").css("display", "flex");
@@ -824,16 +846,18 @@ var substringMatcher = function(strs) {
     });
   }
 
+  /*
     function enviarImagenCedulaModificar(redirect){
         var myFormData = new FormData();
-        const imagen = $('#modificar_foto_cedula').prop('files')[0];
-        myFormData.append("img",imagen );
+
+        //const imagen = $('#modificar_foto_cedula').prop('files')[0];
+        //myFormData.append("img",imagen );
 
         const cedula = $("#modificar_cedula").val();
         var nombre_imagen = renombrarArchivo(cedula, imagen.name);
 
         $.ajax({
-            url: '/inversionista/cedula/'+nombre_imagen,  
+            url: '/inversionista/cedula/'+nombre_imagen,
             type: 'POST',
             processData: false,
             contentType: false,
@@ -850,6 +874,7 @@ var substringMatcher = function(strs) {
             }
         });
     }
+    */
 
   function enviarImagenPerfilModificar(deshabilitar){
     var myFormData = new FormData();
@@ -860,7 +885,7 @@ var substringMatcher = function(strs) {
     var nombre_imagen = renombrarArchivo(cedula, imagen.name);
 
     $.ajax({
-        url: '/inversionista/profile_pic/'+nombre_imagen,  
+        url: '/inversionista/profile_pic/'+nombre_imagen,
         type: 'POST',
         processData: false,
         contentType: false,
@@ -871,7 +896,7 @@ var substringMatcher = function(strs) {
           if(deshabilitar) {
             cambiarHabilitadoInputs();
           }
-          
+
           if($(".crece-usuario-imagen.fa.fa-user-circle-o").length){
             $.each($(".crece-usuario-imagen.fa.fa-user-circle-o"), function(index, value){
               value.outerHTML = `<img class="crece-usuario-imagen-seleccionada" src="`+response.data.ruta+`"></img>`
@@ -881,18 +906,18 @@ var substringMatcher = function(strs) {
             $(".crece-usuario-imagen-seleccionada").attr("src",response.data.ruta+"?t=" + new Date().getTime());
             $(".crece-usuario-imagen-navbar").attr("src",response.data.ruta+"?t=" + new Date().getTime());
           }
-          
+
           $("#usuario_data_container *, .crece-usuario-imagen-seleccionada, .crece-usuario-imagen").click( function() {
             $(".crece-oportunidades").hide();
             $('#crece-detalle-operaciones-id').hide()
             $(".crece-perfil").show();
-        
+
             $("<link/>", {
                 rel: "stylesheet",
                 type: "text/css",
                 href: "/static/registro_inversionista/css/registro.css"
              }).appendTo("head");
-        
+
              inicializarVerPerfil();
           });
 
@@ -924,9 +949,9 @@ var substringMatcher = function(strs) {
     else {
       $.ajax({
         type: 'POST',
-        url: URL_CAMBIO_FASE_COMPLETAR_DATOS+id_inversion, 
+        url: URL_CAMBIO_FASE_COMPLETAR_DATOS+id_inversion,
         data: {},
-        success: function(resultData) { 
+        success: function(resultData) {
           $(".crece-modificar-datos-formulario-wrapper .error-modificar-container").hide();
           $(CLASE_MODAL).show();
           $(ID_DECLARACION_FONDOS).css('display', 'flex');
@@ -950,7 +975,7 @@ var substringMatcher = function(strs) {
         }
       });
     }
-    
+
   }
 
 function obtenerIdInversion(){
@@ -989,11 +1014,11 @@ function renombrarArchivo(nombre_nuevo, nombre_anterior_con_extension){
 }
 
 function validar_cedula_modificar(textbox){
-  
+
   /**
      * Algoritmo para validar cedulas de Ecuador
      * @Author : Victor Diaz De La Gasca.
-     * @Fecha  : Quito, 15 de Marzo del 2013 
+     * @Fecha  : Quito, 15 de Marzo del 2013
      * @Email  : vicmandlagasca@gmail.com
      * @Pasos  del algoritmo
      * 1.- Se debe validar que tenga 10 numeros
@@ -1004,20 +1029,20 @@ function validar_cedula_modificar(textbox){
      * 6.- Extraigo el primer Digito de la suma (sumaPares + sumaImpares)
      * 7.- Conseguimos la decena inmediata del digito extraido del paso 6 (digito + 1) * 10
      * 8.- restamos la decena inmediata - suma / si la suma nos resulta 10, el decimo digito es cero
-     * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.     
+     * 9.- Paso 9 Comparamos el digito resultante con el ultimo digito de la cedula si son iguales todo OK sino existe error.
      */
      let cedula = $(textbox).val();
      let times_cedula = document.getElementById("times-cedula-id")
      let check_cedula = document.getElementById("check-cedula-id")
      //Preguntamos si la cedula consta de 10 digitos
      if(cedula.length == 10){
-        
+
         //Obtenemos el digito de la region que sonlos dos primeros digitos
         var digito_region = cedula.substring(0,2);
-        
+
         //Pregunto si la region existe ecuador se divide en 24 regiones
         if( digito_region >= 1 && digito_region <=24 ){
-          
+
           // Extraigo el ultimo digito
           var ultimo_digito   = cedula.substring(9,10);
 
@@ -1070,7 +1095,7 @@ function validar_cedula_modificar(textbox){
             textbox.classList.add("invalid");
             return false
           }
-          
+
         }else{
           // imprimimos en consola si la region no pertenece
           textbox.classList.add("invalid");
@@ -1081,7 +1106,6 @@ function validar_cedula_modificar(textbox){
         textbox.classList.add("invalid");
         return false
 
-     }    
-  
-}
+     }
 
+}

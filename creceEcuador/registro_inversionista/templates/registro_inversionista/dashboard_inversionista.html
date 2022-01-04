@@ -580,10 +580,10 @@
                                     <p>
                                     * Al dar clic en Siguiente confirmo haber aceptado previamente los <a id="link_ac_esp_modal_cambiar" href="/static/contratos/Acuerdo-Uso-Sitio.pdf" target="_blank" rel="noopener noreferrer"><strong>Acuerdos específicos de uso del sitio web</strong></a> como usuario inversionista y entiendo los riesgos que se desprenden de este tipo de inversiones.
                                     <br>
-                                    
+
                                     ** Crece Ecuador se encarga de conectar a emprendedores con inversionistas. Crece no se responsabiliza por el pago de los créditos concedidos a los solicitantes.
-                                   
-                                    
+
+
                                     </p>
                                       <button class="crece-boton-final-tabla-amortizacion" id="cambiar-monto-inversion-button">Siguiente</button>
 
@@ -666,6 +666,7 @@
                                     disabled
                                     />
                             </div>
+                            <!--
                             <div class="form-group col-lg-4">
                                 <label for="foto_cedula" class="crece-completar-datos-formulario-wrapper-boton-subir-doc">
                                     Cargar cédula
@@ -680,6 +681,7 @@
                                     />
                                 <label id="labelDocumento" data-documento="{{usuario.cedula_ruta}}" class="crece-completar-datos-formulario-wrapper-boton-subir-label">PDF, JPG o PNG</label>
                             </div>
+                          -->
 
                             <div class="form-group col-lg-12">
                                 <label>Celular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
@@ -703,6 +705,7 @@
                                 </select>
                             </div>
 
+                            <!--
                             <div class="crece-completar-datos-formulario-conyugue col-lg-12">
                                 <div class="row">
                                     <div class="form-group col-lg-12">
@@ -739,6 +742,7 @@
                                     </div>
                                 </div>
                             </div>
+                          -->
 
                             <div class="col-12">
                                 <h2>Domicilio</h2>
@@ -755,6 +759,7 @@
                                     />
                             </div>
 
+                            <!--
                             <div class="form-group col-lg-12">
                                 <label>Provincia: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                 <input
@@ -766,6 +771,7 @@
                                     data-valueMissing="Ingrese su provincia de residencia"
                                     />
                             </div>
+                            -->
 
                             <div class="form-group col-lg-12">
                                 <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
@@ -779,6 +785,7 @@
                                     />
                             </div>
 
+                            <!--
                             <div class="form-group col-lg-12">
                                 <label>Teléfono domicilio:</label>
                                 {% if usuario.telefono_domicilio %}
@@ -804,6 +811,7 @@
 
 
                             </div>
+                          -->
 
                             <div class="col-12">
                                 <h2>Fuentes de Ingresos</h2>
@@ -814,11 +822,13 @@
                                     <option value="1">Relación de dependencia</option>
                                     <option value="2">Profesional independiente</option>
                                     <option value="3">Auto empleado</option>
+                                    <option value="4">Jubilado</option>
                                 </select>
                             </div>
 
                             <div class="crece-completar-datos-formulario-relacion-dependencia col-12">
                                 <div class="row">
+                                  <!--
                                     <div class="form-group col-lg-12">
                                         <label>Empresa: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input
@@ -829,6 +839,7 @@
                                             data-valueMissing="Ingrese el nombre de la empresa donde trabaja"
                                             />
                                     </div>
+                                  -->
                                     <div class="form-group col-lg-12">
                                         <label>Cargo: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input
@@ -839,6 +850,7 @@
                                             data-valueMissing="Ingrese el cargo que desempeña en su empresa"
                                             />
                                     </div>
+                                    <!--
                                     <div class="form-group col-lg-12">
                                         <label>Años en el puesto: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input
@@ -850,6 +862,7 @@
                                             data-valueMissing="Ingrese el número de años que lleva en la empresa"
                                             />
                                     </div>
+                                  -->
 
                                 </div>
                             </div>
@@ -877,6 +890,7 @@
                                             data-valueMissing="Ingrese el nombre de su actividad"
                                             />
                                     </div>
+                                    <!--
                                     <div class="form-group col-lg-12">
                                         <label>Años en la actividad: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input
@@ -888,11 +902,13 @@
                                             data-valueMissing="Ingrese el número de años que ha desempeñado la actividad"
                                             />
                                     </div>
+                                  -->
                                 </div>
                             </div>
 
                             <div class="crece-completar-datos-formulario-auto-empleado col-12">
                                 <div class="row">
+                                  <!--
                                     <div class="form-group col-lg-12">
                                         <label>Empresa: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input
@@ -903,6 +919,7 @@
                                             data-valueMissing="Ingrese el nombre de la empresa"
                                             />
                                     </div>
+                                  -->
                                     <div class="form-group col-lg-12">
                                         <label>RUC: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
                                         <input
@@ -925,6 +942,7 @@
                                 </div>
                             </div>
 
+                            <!--
                             <div class="col-lg-12">
                                 <input type="checkbox" class="form-check-input" id="usar_dir_domicilio">
                                 <label id="usar_dir_domicilio_label" class="form-check-label" for="modificar_usar_dir_domicilio">Usar dirección de domicilio</label>
@@ -953,10 +971,10 @@
                                     data-valueMissing="Ingrese su canton de trabajo"
                                     />
                             </div>
+                          -->
                             <div class="form-group col-lg-12">
-                                <label>Ingresos mensuales aproximados: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
+                                <label>Ingresos mensuales aproximados: </label>
                                 <input
-                                    required
                                     value="{{usuario.ingresos.ingresos_mensuales}}"
                                     type="number"
                                     class="form-control"
@@ -1247,22 +1265,22 @@
                                         hasta que se complete el total solicitado y se firmen los documentos de respaldo.
                                     </p>
                                 </div>
-                               
+
                             </div>
-                        
-                            
-                            
-                        
+
+
+
+
                         </div>
                         <div class="col-11 fase-2-footer" id="fase-2-footer-id">
                             <p>
-                            
+
                             * Crece Ecuador se encarga de conectar a emprendedores con inversionistas. Crece no se responsabiliza por el pago de los créditos concedidos a los solicitantes.
-                           
-                            
+
+
                             </p>
-                             
-                              
+
+
                           </div>
 
                     </div>
@@ -1574,7 +1592,7 @@
                                     />
                             </div>
 
-                            <div class="form-group col-lg-8">
+                            <div class="form-group col-lg-12">
                                 <label>Cédula: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                 <input
                                     required
@@ -1585,6 +1603,7 @@
                                     data-valueMissing="Ingrese su número de cédula"
                                     />
                             </div>
+                            <!--
                             <div class="form-group col-lg-4">
                                 <label for="modificar_foto_cedula" class="crece-modificar-datos-formulario-wrapper-boton-subir-doc">
                                     Cargar cédula
@@ -1599,6 +1618,7 @@
                                     />
                                 <label id="modificar_labelDocumento" data-documento="{{usuario.cedula_ruta}}" class="crece-modificar-datos-formulario-wrapper-boton-subir-label">PDF, JPG o PNG</label>
                             </div>
+                          -->
 
                             <div class="form-group col-lg-12">
                                 <label>Celular: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
@@ -1622,6 +1642,7 @@
                                 </select>
                             </div>
 
+                            <!--
                             <div class="crece-modificar-datos-formulario-conyugue col-lg-12">
                                 <div class="row">
                                     <div class="form-group col-lg-12">
@@ -1658,6 +1679,7 @@
                                     </div>
                                 </div>
                             </div>
+                          -->
 
                             <div class="col-12">
                                 <h2>Domicilio</h2>
@@ -1674,6 +1696,7 @@
                                     />
                             </div>
 
+                            <!--
                             <div class="form-group col-lg-12">
                                 <label>Provincia: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                 <input
@@ -1685,6 +1708,7 @@
                                     data-valueMissing="Ingrese su provincia de residencia"
                                     />
                             </div>
+                          -->
 
                             <div class="form-group col-lg-12">
                                 <label>Canton: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
@@ -1698,6 +1722,7 @@
                                     />
                             </div>
 
+                            <!--
                             <div class="form-group col-lg-12">
                                 <label>Teléfono domicilio:</label>
                                 <input
@@ -1708,6 +1733,7 @@
                                     data-valueMissing="Ingrese el número de teléfono de su domicilio"
                                     />
                             </div>
+                          -->
 
                             <div class="col-12 error-modificar-container">
                               <span class="error-modificar"></span>
@@ -1747,11 +1773,13 @@
                                   <option value="1">Relación de dependencia</option>
                                   <option value="2">Profesional independiente</option>
                                   <option value="3">Auto empleado</option>
+                                  <option value="4">Jubilado</option>
                               </select>
                           </div>
 
                           <div class="crece-modificar-datos-formulario-relacion-dependencia col-12">
                               <div class="row">
+                                <!--
                                   <div class="form-group col-lg-12">
                                       <label>Empresa: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                       <input
@@ -1762,6 +1790,7 @@
                                           data-valueMissing="Ingrese el nombre de la empresa donde trabaja"
                                           />
                                   </div>
+                                -->
                                   <div class="form-group col-lg-12">
                                       <label>Cargo: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                       <input
@@ -1772,6 +1801,7 @@
                                           data-valueMissing="Ingrese el cargo que desempeña en su empresa"
                                           />
                                   </div>
+                                  <!--
                                   <div class="form-group col-lg-12">
                                       <label>Años en el puesto: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                       <input
@@ -1783,6 +1813,7 @@
                                           data-valueMissing="Ingrese el número de años que lleva en la empresa"
                                           />
                                   </div>
+                                -->
 
                               </div>
                           </div>
@@ -1808,6 +1839,7 @@
                                           data-valueMissing="Ingrese el nombre de su actividad"
                                           />
                                   </div>
+                                  <!--
                                   <div class="form-group col-lg-12">
                                       <label>Años en la actividad: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                       <input
@@ -1819,11 +1851,13 @@
                                           data-valueMissing="Ingrese el número de años que ha desempeñado la actividad"
                                           />
                                   </div>
+                                -->
                               </div>
                           </div>
 
                           <div class="crece-modificar-datos-formulario-auto-empleado col-12">
                               <div class="row">
+                                <!--
                                   <div class="form-group col-lg-12">
                                       <label>Empresa: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                       <input
@@ -1834,6 +1868,7 @@
                                           data-valueMissing="Ingrese el nombre de la empresa"
                                           />
                                   </div>
+                                -->
                                   <div class="form-group col-lg-12">
                                       <label>RUC: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
                                       <input
@@ -1856,6 +1891,7 @@
                               </div>
                           </div>
 
+                          <!--
                           <div class="col-lg-12">
                             <input type="checkbox" class="form-check-input" id="modificar_usar_dir_domicilio">
                             <label id="modificar_usar_dir_domicilio_label" class="form-check-label" for="modificar_usar_dir_domicilio">Usar dirección de domicilio</label>
@@ -1884,10 +1920,10 @@
                                   data-valueMissing="Ingrese su canton de trabajo"
                                   />
                           </div>
+                        -->
                           <div class="form-group col-lg-12">
-                              <label>Ingresos aproximados: <span class="crece-modificar-datos-formulario-wrapper-required">*</span></label>
+                              <label>Ingresos aproximados: </label>
                               <input
-                                  required
                                   value="{{usuario.ingresos.ingresos_mensuales}}"
                                   type="number"
                                   class="form-control"

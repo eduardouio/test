@@ -6,16 +6,16 @@
     <head>
         {% block head_css_agregado %}
             <link href="{% static 'fases_inversiones/css/fase2.css' %}" rel="stylesheet" type="text/css">
-            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">  
+            <link href="{% static 'fases_inversiones/css/base_styles.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'registro_inversionista/css/forms.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'fases_inversiones/css/completar_datos.css' %}" rel="stylesheet" type="text/css">
             <link href="{% static 'fases_inversiones/css/flujo_inversionista.css' %}" rel="stylesheet" type="text/css">
             <script src="{% static 'registro_inversionista/js/valid-form.js' %}"></script>
         {% endblock head_css_agregado %}
     </head>
-    <body> 
+    <body>
 
-                {% block content %}  
+                {% block content %}
                 <div class="titulo">
                     <strong>Confirma tu inversion</strong>
                 </div>
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Nombre: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.nombres}}"
                                             class="form-control"
@@ -79,10 +79,10 @@
                                             data-valueMissing="Ingrese un nombre"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Apellidos: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.apellidos}}"
                                             class="form-control"
@@ -91,10 +91,10 @@
                                             data-valueMissing="Ingrese su apellido"
                                             />
                                     </div>
-        
-                                    <div class="form-group col-lg-8">
+
+                                    <div class="form-group col-lg-12">
                                         <label>Cédula: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.cedula}}"
                                             class="form-control"
@@ -103,11 +103,12 @@
                                             data-valueMissing="Ingrese su número de cédula"
                                             />
                                     </div>
+                                    <!--
                                     <div class="form-group col-lg-4">
                                         <label for="foto_cedula" class="crece-completar-datos-formulario-wrapper-boton-subir-doc">
                                             Cargar cédula
                                         </label>
-                                        <input 
+                                        <input
                                             required
                                             type="file"
                                             accept="image/png, image/jpeg, application/pdf"
@@ -118,10 +119,10 @@
                                             />
                                         <label id="labelDocumento" data-documento="{{usuario.cedula_ruta}}" class="crece-completar-datos-formulario-wrapper-boton-subir-label">PDF, JPG o PNG</label>
                                     </div>
-        
+                                  -->
                                     <div class="form-group col-lg-12">
                                         <label>Celular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.celular}}"
                                             class="form-control"
@@ -140,12 +141,13 @@
                                             <option value="viudo">Viudo/a</option>
                                         </select>
                                     </div>
-        
+
+                                    <!--
                                     <div class="crece-completar-datos-formulario-conyugue col-lg-12">
                                         <div class="row">
                                             <div class="form-group col-lg-12">
                                                 <label>Nombre del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
+                                                <input
                                                     value="{{usuario.conyuge_id.nombres}}"
                                                     class="form-control"
                                                     name="nombre_conyugue"
@@ -153,10 +155,10 @@
                                                     data-valueMissing="Ingrese el nombre de su cónyugue"
                                                     />
                                             </div>
-                
+
                                             <div class="form-group col-lg-12">
                                                 <label>Apellidos del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
+                                                <input
                                                     value="{{usuario.conyuge_id.apellidos}}"
                                                     class="form-control"
                                                     name="apellidos_conyugue"
@@ -164,10 +166,10 @@
                                                     data-valueMissing="Ingrese el apellido de su cónyugue"
                                                     />
                                             </div>
-                
+
                                             <div class="form-group col-lg-12">
                                                 <label>Cédula del cónyugue: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
+                                                <input
                                                     value="{{usuario.conyuge_id.cedula}}"
                                                     class="form-control"
                                                     name="cedula_conyugue"
@@ -177,13 +179,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                  -->
+
                                     <div class="col-12">
                                         <h2>Domicilio</h2>
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Dirección de domicilio: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.direccion1}}"
                                             class="form-control"
@@ -192,10 +195,10 @@
                                             data-valueMissing="Ingrese su dirección de domicilio"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Provincia: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.provincia}}"
                                             class="form-control typeahead"
@@ -204,10 +207,10 @@
                                             data-valueMissing="Ingrese su provincia de residencia"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.canton.nombre}}"
                                             class="form-control typeahead"
@@ -216,10 +219,11 @@
                                             data-valueMissing="Ingrese su canton de residencia"
                                             />
                                     </div>
-        
+
+                                    <!--
                                     <div class="form-group col-lg-12">
                                         <label>Teléfono domicilio:</label>
-                                        <input 
+                                        <input
                                             value="{{usuario.telefono_domicilio}}"
                                             class="form-control"
                                             name="telf_domicilio"
@@ -227,7 +231,8 @@
                                             data-valueMissing="Ingrese el número de teléfono de su domicilio"
                                             />
                                     </div>
-                                    
+                                  -->
+
                                     <div class="col-12">
                                         <h2>Fuentes de Ingresos</h2>
                                     </div>
@@ -237,35 +242,39 @@
                                             <option value="1">Relación de dependencia</option>
                                             <option value="2">Profesional independiente</option>
                                             <option value="3">Auto empleado</option>
+                                            <option value="4">Jubilado</option>
                                         </select>
                                     </div>
-        
+
                                     <div class="crece-completar-datos-formulario-relacion-dependencia col-12">
                                         <div class="row">
+                                          <!--
                                             <div class="form-group col-lg-12">
                                                 <label>Empresa: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     class="form-control"
                                                     name="empresa_relacion_dependencia"
                                                     id="empresa_relacion_dependencia"
                                                     data-valueMissing="Ingrese el nombre de la empresa donde trabaja"
                                                     />
                                             </div>
+                                          -->
                                             <div class="form-group col-lg-12">
                                                 <label>Cargo: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     class="form-control"
                                                     name="cargo_relacion_dependencia"
                                                     id="cargo_relacion_dependencia"
                                                     data-valueMissing="Ingrese el cargo que desempeña en su empresa"
                                                     />
                                             </div>
+                                            <!--
                                             <div class="form-group col-lg-12">
                                                 <label>Años en el puesto: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     type="number"
                                                     class="form-control"
                                                     name="anios_relacion_dependencia"
@@ -273,15 +282,16 @@
                                                     data-valueMissing="Ingrese el número de años que lleva en la empresa"
                                                     />
                                             </div>
+                                          -->
 
                                         </div>
                                     </div>
-        
+
                                     <div class="crece-completar-datos-formulario-profesional-independiente col-12">
                                         <div class="row">
                                             <div class="form-group col-lg-12">
                                                 <label>RUC: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
+                                                <input
                                                     class="form-control"
                                                     name="ruc_profesional_independiente"
                                                     id="ruc_profesional_independiente"
@@ -290,18 +300,19 @@
                                             </div>
                                             <div class="form-group col-lg-12">
                                                 <label>Actividad: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     class="form-control"
                                                     name="actividad_profesional_independiente"
                                                     id="actividad_profesional_independiente"
                                                     data-valueMissing="Ingrese el nombre de su actividad"
                                                     />
                                             </div>
+                                            <!--
                                             <div class="form-group col-lg-12">
                                                 <label>Años en la actividad: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     type="number"
                                                     class="form-control"
                                                     name="anios_profesional_independiente"
@@ -309,24 +320,27 @@
                                                     data-valueMissing="Ingrese el número de años que ha desempeñado la actividad"
                                                     />
                                             </div>
+                                          -->
                                         </div>
                                     </div>
-        
+
                                     <div class="crece-completar-datos-formulario-auto-empleado col-12">
                                         <div class="row">
+                                          <!--
                                             <div class="form-group col-lg-12">
                                                 <label>Empresa: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     class="form-control"
                                                     name="empresa_auto_empleado"
                                                     id="empresa_auto_empleado"
                                                     data-valueMissing="Ingrese el nombre de la empresa"
                                                     />
                                             </div>
+                                          -->
                                             <div class="form-group col-lg-12">
                                                 <label>RUC: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input                                     
+                                                <input
                                                     class="form-control"
                                                     name="ruc_auto_empleado"
                                                     id="ruc_auto_empleado"
@@ -335,8 +349,8 @@
                                             </div>
                                             <div class="form-group col-lg-12">
                                                 <label>Actividades: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                                <input 
-                                                    
+                                                <input
+
                                                     class="form-control"
                                                     name="actividad_auto_empleado"
                                                     id="actividad_auto_empleado"
@@ -345,10 +359,11 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
+                                    <!--
                                     <div class="form-group col-lg-12">
                                         <label>Dirección: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.ingresos.direccion}}"
                                             class="form-control"
@@ -357,10 +372,10 @@
                                             data-valueMissing="Ingrese la dirección de su lugar de trabajo"
                                             />
                                     </div>
-        
+
                                     <div class="form-group col-lg-12">
                                         <label>Canton: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.canton.nombre}}"
                                             class="form-control typeahead"
@@ -369,10 +384,10 @@
                                             data-valueMissing="Ingrese su canton de trabajo"
                                             />
                                     </div>
+                                  -->
                                     <div class="form-group col-lg-12">
-                                        <label>Ingresos aproximados: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
-                                            required
+                                        <label>Ingresos aproximados: </label>
+                                        <input
                                             value="{{usuario.ingresos.ingresos_mensuales}}"
                                             type="number"
                                             class="form-control"
@@ -387,7 +402,7 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label>Titular: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.cuenta_bancaria.titular}}"
                                             class="form-control typeahead"
@@ -435,7 +450,7 @@
 
                                     <div class="form-group col-lg-12">
                                         <label>Número de cuenta: <span class="crece-completar-datos-formulario-wrapper-required">*</span></label>
-                                        <input 
+                                        <input
                                             required
                                             value="{{usuario.cuenta_bancaria.numero_cuenta}}"
                                             class="form-control"
@@ -444,7 +459,7 @@
                                             data-valueMissing="Ingrese su número de cuenta"
                                             />
                                     </div>
-                                    
+
                                     <div class="col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-auto crece-completar-datos-formulario-botones">
@@ -453,7 +468,7 @@
                                             <div class="col-auto crece-completar-datos-formulario-botones">
                                                 <button id="siguiente"> Siguiente</button>
                                             </div>
-                                        </div>                                
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -462,7 +477,7 @@
                 </section>
 
                 {% endblock content %}
-      
+
 
 
         {% block footer_javascript_agregado %}
@@ -470,7 +485,7 @@
         <script src="{% static 'fases_inversiones/js/completar_datos.js' %}"></script>
         <script src="{% static 'registro_inversionista/js/postScript.js' %}"></script>
         {% endblock footer_javascript_agregado %}
-        
+
 
     </body>
 </html>
