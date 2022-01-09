@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     #rest_framework
     'rest_framework',
     'django_fsm',
+    'rest_framework_swagger',
 
 
 ]
@@ -240,3 +241,4 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-error',
 }
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema' }

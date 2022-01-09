@@ -23,8 +23,12 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from . import views
 
+from rest_framework_swagger.views import get_swagger_view
+schema_view = get_swagger_view(title='CRECE API')
+
 
 urlpatterns = [
+    path('doc/', schema_view),
     path('admin/', admin.site.urls),
     path('solicitar/', include('solicitante.urls')),
     path('solicitudes/', include("solicitudes.urls")),

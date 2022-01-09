@@ -10,3 +10,5 @@ creceEcuador/app/migrations/*
 */.cache/*
 */.env*
 creceEcuador/media/*
+creceEcuador/static/*
+creceEcuador/creceEcuador/static/*

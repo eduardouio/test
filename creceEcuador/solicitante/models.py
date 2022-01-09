@@ -365,5 +365,3 @@ def get_rango_dias_mora(dias_mora):
         index = 0
 
     return index
-
-

@@ -47,7 +47,7 @@ from .types import COMISION_ADJUDICACION_FACTOR, ADJUDICACION_FACTOR, COMISION_B
 class Proceso_aceptar_inversion(generics.CreateAPIView):
 
     #permission_classes =[permissions.IsAuthenticated]
-
+    serializer_class = InversionSerializer
     def post(self, request, *args, **kwargs):
 
 
@@ -228,6 +228,8 @@ def format_dos_digitos(entero):
     return str(entero) if entero > 9 else "0"+str(entero)
 
 class aceptar_declaracion_fondos(generics.CreateAPIView):
+
+    serializer_class = InversionSerializer
     def post(self, request):
         id_inversionista = request.data.get("id_inversionista")
         usuario = models.Usuario.objects.get(idUsuario=id_inversionista)

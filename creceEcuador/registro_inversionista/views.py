@@ -26,6 +26,7 @@ from django.contrib.contenttypes.models import ContentType
 from . import models
 from . import serializers
 
+from .serializers import ContratoSerializer, UsuarioSerializer
 from manager_archivos.models import TransferenciaInversion
 
 #confirmacion de email
@@ -121,7 +122,7 @@ class FirmarContratoAcUso(generics.CreateAPIView):
     """
 
     permission_classes = [permissions.AllowAny]
-
+    serializer_class = ContratoSerializer
     def post(self, request, *args, **kwargs):
         nombres = request.data.get("nombres").title()
         apellidos = request.data.get("apellidos").title()
@@ -806,6 +807,7 @@ class restablecer_password(generics.CreateAPIView):
     Este Login es el verdadero API Endpoint para verificar el usuario
     """
 
+    serializer_class = UsuarioSerializer
     def post(self, request, *args, **kwargs):
 
         username = request.data.get("username", "")

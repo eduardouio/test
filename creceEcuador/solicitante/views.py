@@ -10,8 +10,10 @@ from django.core.mail import EmailMessage
 from django.utils.html import strip_tags
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .serializers import UsuarioSolicitanteTemporalSerializer
 # Create your views here.
 class RegisterSolicitudTemporal(generics.CreateAPIView):
+    serializer_class = UsuarioSolicitanteTemporalSerializer
     def post(self, request, *args, **kwargs):
         razon_social = request.data.get("razon_social", "")
         nombre_comercial = request.data.get("nombre_comercial", "")
@@ -39,7 +41,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
             usuario.apellidos = apellidos
             usuario.celular = celular
             #validando si ya existe una solicitud temporal para ese RUC
-            
+
             usuario.save()
             new_solicitud = SolicitudTemporal(
                 razon_social=razon_social, nombre_comercial=nombre_comercial, ruc=ruc,
@@ -119,7 +121,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                     )
                     correo.content_subtype = "html"
                     correo.send()
-                
+
                 else:
                     mail_subject = '¡Gracias por tu Solicitud!'
                     message = render_to_string('solicitante/registro_solicitud_email_empresa.html', {
@@ -135,7 +137,7 @@ class RegisterSolicitudTemporal(generics.CreateAPIView):
                     correo.content_subtype = "html"
                     correo.send()
 
-            
+
 
             #mail a admin
             print(tipo_persona)
