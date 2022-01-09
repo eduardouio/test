@@ -1,5 +1,6 @@
 # Django - commands
 
+[![CI/CD Pipeline](https://github.com/bram70/viewflow-crece/actions/workflows/workflow.yml/badge.svg)](https://github.com/bram70/viewflow-crece/actions/workflows/workflow.yml)
 ## Installing packages
 ```
 pip install -r requirements.txt
