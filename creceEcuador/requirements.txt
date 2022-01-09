@@ -77,7 +77,6 @@ six==1.10.0
 sqlparse==0.3.1
 stevedore==1.29.0
 suds-jurko==0.6
-twilio==7.3.1
 uritemplate==4.1.1
 urllib3==1.23
 virtualenv==16.0.0
