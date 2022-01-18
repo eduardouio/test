@@ -1,3 +1,4 @@
+from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from rest_framework import viewsets, generics, status, permissions
@@ -370,6 +371,30 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         
+        fecha_nacimiento = request.data.get("fecha_nacimiento").split('-')
+        
+        fecha_nacimiento = date(
+            int(fecha_nacimiento[0]),
+            int(fecha_nacimiento[1]),
+            int(fecha_nacimiento[2])
+        ) if fecha_nacimiento.__len__() == 3 else None
+        
+        canton_base = models.Canton.objects.get(
+            nombre=request.data.get("canton")
+        )
+        
+        canton = canton_base if canton_base else None
+        
+        banco = models.Banco.objects.filter(
+            nombre=request.data.get("banco")
+        )
+        
+        if not banco:
+            banco = models.Banco(nombre=request.data.get("banco"))
+            banco.save()
+        else:
+            banco = banco[0]
+        
         inversionista = {
             'nombres' : request.data.get("nombre"),
             'apellidos' : request.data.get("apellidos"),
@@ -377,45 +402,51 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
             'celular' : request.data.get("celular"),
             'estado_civil' : request.data.get("estado_civil"),
             'direccion1': request.data.get("direccion_domicilio"),
-            'canton': models.Canton.objects.get(nombre=request.data.get("canton")),
             'telefono_domicilio': request.data.get("telefono_domicilio"),
-            'fecha_nacimiento': request.data.get("fecha_nacimiento")
+            'fecha_nacimiento': fecha_nacimiento
         }
-        
-        banco = models.Banco.objects.filter(
-            nombre=request.data.get("banco")
-        )[0]
-        
-        if not banco:
-            banco = models.Banco(nombre=request.data.get("banco"))
-            banco.save()
 
         cuenta_bancaria = {
             'titular' : request.data.get("titular"),
-            'banco' : banco,
             'numero_cuenta' : request.data.get("numero_cuenta"),
             'tipo_cuenta' : request.data.get("tipo_cuenta"),
         }
         
-        ingresos_mensuales = {
+        ingresos = 0 if not bool(request.data.get("ingresos_mensuales")) else float(
+            request.data.get("ingresos_mensuales"))
+         
+        fuente_ingresos = {
             'descripcion':  json.dumps(request.data.get("fuente_ingresos")).upper(),
             'direccion':  None,
             'canton':  None,
-            'ingresos_mensuales': request.data.get("ingresos_mensuales")
+            'ingresos_mensuales': ingresos
         }
         
-        fuente_ingresos = models.Fuente_ingresos(**ingresos_mensuales)
-        cuenta_bancaria = models.Cuenta_bancaria(**cuenta_bancaria)
         usuario = models.Usuario.objects.get(user=request.user)
         usuario.__dict__.update(**inversionista)
-
+        usuario.canton = canton
+                
         try:
-            import ipdb; ipdb.set_trace()
-            fuente_ingresos.save()
-            cuenta_bancaria.save()
-            usuario.ingresos = fuente_ingresos
-            usuario.cuenta_bancaria = cuenta_bancaria
             usuario.save()
+            
+            if usuario.ingresos:
+                usuario.ingresos.__dict__.update(fuente_ingresos)
+                usuario.ingresos.save()
+            else:
+                usuario.ingresos = models.Fuente_ingresos(**fuente_ingresos)
+                usuario.ingresos.save()
+                
+            if usuario.cuenta_bancaria:
+                print('Se Actualiza')
+                usuario.cuenta_bancaria.__dict__.update(cuenta_bancaria)
+                usuario.cuenta_bancaria.banco = banco
+                usuario.cuenta_bancaria.save()
+            else:
+                print('Se crea')
+                usuario.cuenta_bancaria = models.Cuenta_bancaria(**cuenta_bancaria)
+                usuario.cuenta_bancaria.banco = banco
+                usuario.cuenta_bancaria.save()
+                
             return Response({"mensaje": "Formulario enviado con exito"},status=status.HTTP_200_OK, )
         except Exception as e:
             return Response({"mensaje": str(e)},status=status.HTTP_400_BAD_REQUEST,)
@@ -696,6 +727,10 @@ def get_ultimo_contrato_ac_uso(request, pk):
 def Dashboard(request):
     if request.user.is_authenticated:
         usuario = models.Usuario.objects.filter(user=request.user)[0]
+        
+        if usuario.fecha_nacimiento:
+            usuario.fecha_nacimiento = usuario.fecha_nacimiento.strftime('%m/%m/%Y')
+            
         return render(request, 'registro_inversionista/dashboard_inversionista.html', {"usuario":usuario})
 
 @login_required

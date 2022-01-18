@@ -936,6 +936,7 @@ function obtenerRespuestasModificar() {
   dictRespuestas.apellidos = $("#modificar_apellidos").val();
   dictRespuestas.cedula = $("#modificar_cedula").val();
   dictRespuestas.celular = $("#modificar_celular").val();
+  dictRespuestas.fecha_nacimiento = $("#modificar_fecha_nacimiento").val();
 
   var estado_civil = $("#modificar_selectEstadoCivil")
     .children("option:selected")
@@ -1128,7 +1129,6 @@ function enviarDatosModificar(dictRespuestas, redirect) {
     url: "/inversionista/fase1/",
     data: dictRespuestas,
     success: function (resultData) {
-        alert('Información actualizada correctamente')
       /*
           if($('#modificar_foto_cedula').prop('files')[0]){
             enviarImagenCedulaModificar(redirect);
