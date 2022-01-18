@@ -369,75 +369,53 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
     serializer_class = serializers.UsuarioSerializer
 
     def post(self, request, *args, **kwargs):
+        
+        inversionista = {
+            'nombres' : request.data.get("nombre"),
+            'apellidos' : request.data.get("apellidos"),
+            'cedula' : request.data.get("cedula"),
+            'celular' : request.data.get("celular"),
+            'estado_civil' : request.data.get("estado_civil"),
+            'direccion1': request.data.get("direccion_domicilio"),
+            'canton': models.Canton.objects.get(nombre=request.data.get("canton")),
+            'telefono_domicilio': request.data.get("telefono_domicilio"),
+            'fecha_nacimiento': request.data.get("fecha_nacimiento")
+        }
+        
+        banco = models.Banco.objects.filter(
+            nombre=request.data.get("banco")
+        )[0]
+        
+        if not banco:
+            banco = models.Banco(nombre=request.data.get("banco"))
+            banco.save()
+
+        cuenta_bancaria = {
+            'titular' : request.data.get("titular"),
+            'banco' : banco,
+            'numero_cuenta' : request.data.get("numero_cuenta"),
+            'tipo_cuenta' : request.data.get("tipo_cuenta"),
+        }
+        
+        ingresos_mensuales = {
+            'descripcion':  json.dumps(request.data.get("fuente_ingresos")).upper(),
+            'direccion':  None,
+            'canton':  None,
+            'ingresos_mensuales': request.data.get("ingresos_mensuales")
+        }
+        
+        fuente_ingresos = models.Fuente_ingresos(**ingresos_mensuales)
+        cuenta_bancaria = models.Cuenta_bancaria(**cuenta_bancaria)
+        usuario = models.Usuario.objects.get(user=request.user)
+        usuario.__dict__.update(**inversionista)
+
         try:
-            #Invesionista
-            nombre = request.data.get("nombre")
-            apellidos = request.data.get("apellidos")
-            cedula = request.data.get("cedula")
-            celular = request.data.get("celular")
-            estado_civil = request.data.get("estado_civil")
-            direccion_domicilio = request.data.get("direccion_domicilio")
-            nombre_canton = request.data.get("canton")
-            canton = models.Canton.objects.get(nombre=nombre_canton)
-            #provincia = request.data.get("provincia")
-            telefono_domicilio = request.data.get("telefono_domicilio")
-
-            #Principal fuente de ingresos
-            fuente_ingresos = request.data.get("fuente_ingresos")
-            #direccion_fuente_ingresos = request.data.get("direccion_fuente_ingresos")
-
-            #nombre_canton_fuentes_ingresos = request.data.get("canton_fuentes_ingresos")
-            #canton_fuentes_ingresos = models.Canton.objects.get(nombre=nombre_canton_fuentes_ingresos)
-            ingresos_mensuales = request.data.get("ingresos_mensuales")
-
-            #Cuenta bancaria
-            titular = request.data.get("titular")
-            banco = request.data.get("banco")
-            numero_cuenta = request.data.get("numero_cuenta")
-            tipo_cuenta = request.data.get("tipo_cuenta")
-            nombre_cuenta = request.data.get("nombre_cuenta")
-
-            descripcion_ingresos = json.dumps(fuente_ingresos).upper()
-            print(fuente_ingresos)
-            #inversionista ****Revisar
-            inversionista = models.Usuario.objects.filter(cedula=cedula)[0]
-
-            #estado civil
-            inversionista.estado_civil = estado_civil
-
-#            if estado_civil == CASADO or estado_civil == UNION_LIBRE:
-
-#                nombres_conyuge = request.data.get("nombres_conyuge")
-#                apellidos_conyuge = request.data.get("apellidos_conyuge")
-#                cedula_conyuge = request.data.get("cedula_conyuge")
-#                new_conyuge = models.Conyuge(nombres= nombres_conyuge, apellidos=apellidos_conyuge, cedula=cedula_conyuge)
-#                new_conyuge.save()
-
-#                inversionista.conyuge_id = new_conyuge
-
-            print(descripcion_ingresos)
-
-            new_ingresos = models.Fuente_ingresos(descripcion= descripcion_ingresos, direccion= None,
-                                                    canton= None, ingresos_mensuales=ingresos_mensuales)
-            new_ingresos.save()
-
-            new_banco = models.Banco(nombre=banco)
-            new_banco.save()
-
-            new_cuenta_bancaria = models.Cuenta_bancaria(numero_cuenta= numero_cuenta, tipo_cuenta= tipo_cuenta, banco= new_banco, titular=titular)
-            new_cuenta_bancaria.save()
-
-
-            #agregando al inversionista respectivo
-            inversionista.celular = celular
-            inversionista.canton = canton
-            #inversionista.provincia = provincia
-            inversionista.direccion1 = direccion_domicilio
-            inversionista.telefono_domicilio = telefono_domicilio
-            inversionista.ingresos = new_ingresos
-            inversionista.cuenta_bancaria = new_cuenta_bancaria
-            inversionista.save()
-
+            import ipdb; ipdb.set_trace()
+            fuente_ingresos.save()
+            cuenta_bancaria.save()
+            usuario.ingresos = fuente_ingresos
+            usuario.cuenta_bancaria = cuenta_bancaria
+            usuario.save()
             return Response({"mensaje": "Formulario enviado con exito"},status=status.HTTP_200_OK, )
         except Exception as e:
             return Response({"mensaje": str(e)},status=status.HTTP_400_BAD_REQUEST,)

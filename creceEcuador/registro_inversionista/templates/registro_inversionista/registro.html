@@ -168,12 +168,14 @@
                         </div> 
                         <div class="col">
                           <input
-                                    required
-                                    class="form-control typeahead crece-form-input"
-                                    name="canton"
-                                    id="id_canton"
-                                    data-valueMissing="Ingrese su canton de residencia"
-                                    />
+                            required
+                            class="form-control typeahead crece-form-input"
+                            name="canton"
+                            id="id_canton"
+                            data-valueMissing="Ingrese su canton de residencia"
+                            autocomplete="off"
+                            oninput="this.value = this.value.toUpperCase()"
+                            />
                           <i class="fa fa-check" aria-hidden="true" id="check-canton-id"></i>
                           <i class="fa fa-exclamation-circle" aria-hidden="true" id="times-canton-id"></i>
                            <div class="crece-mensaje-invalid-input" id="crece-mensaje-invalid-input-canton">
@@ -182,8 +184,6 @@
                         </div>
                       </div>
                     </div>
-
-
                   <!--/form-->
 
                 </div>

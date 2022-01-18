@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+#from tkinter import FALSE
 import environ
 from datetime import timedelta
 from django.conf import settings
@@ -75,11 +76,11 @@ SESSION_COOKIE_AGE = 86400 #24 horas de sesion
 
 
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'solicitudes@creceecuador.com'
-EMAIL_HOST_PASSWORD = env.str('MAIL_PASS', '')
-EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'mail.vinesa.com.ec'
+EMAIL_HOST_USER = 'evillota@vinesa.com.ex'
+EMAIL_HOST_PASSWORD = 'Ev2021$$##'
+EMAIL_PORT = 25
 
 
 
@@ -148,7 +149,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ec'
 
 TIME_ZONE = 'America/Guayaquil'
 

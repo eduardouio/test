@@ -69,18 +69,19 @@ var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA',
     'LAS GOLONDRINAS', 'MANGA DEL CURA', 'EL PIEDRERO'
   ];
 
-  $('#id_canton').typeahead({
-    hint: true,
-    highlight: true,
-    minLength: 1
-  },
-  {
-    name: 'canton',
-    source: substringMatcher(cantones)
-  });
+  $("#id_canton").typeahead(
+    {
+      hint: true,
+      highlight: true,
+      minLength: 1,
+    },
+    {
+      name: "canton",
+      source: substringMatcher(cantones),
+    }
+  );
 
 $(document).ready(function(){
-
   if ( $('[type="date"]').prop('type') != 'date' ) {
     $('[type="date"]').datepicker({
       changeMonth: true,
@@ -94,8 +95,6 @@ $(document).ready(function(){
 
 
     let encuesta_container = document.getElementById("crece-registro-encuesta-container-id")
-
-
 
     var xhttp3 = new XMLHttpRequest();
 
