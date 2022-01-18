@@ -80,7 +80,7 @@ var cantones = [ 'CUENCA', 'GIRON', 'GUALACEO', 'NABON', 'PAUTE', 'PUCARA',
   });
 
 function limpiarNumero(num){
-  return num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
+  return  num.toString().replace(/\D/g,'').replaceAll(',', '').replaceAll('.', '')
 }
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -101,13 +101,15 @@ $(document).ready(function(){
    $("#id_monto").keyup(function(e) {
     let numero = $(this).val();
     numero = limpiarNumero(numero);
-
-    if (numero > 20000){
+    
+    if (numero > 4250000){
       numero = monto_anterior;
     }
     else {
       monto_anterior = numero;
     }
+
+    console.log(numero);
 
     $(this).val('$'+numberWithCommas(numero));
   });
@@ -669,7 +671,7 @@ function validateEmail(email) {
 function validateMonto(monto) {
   let numero = limpiarNumero(monto);
 
-  if (numero >=2500 && numero <= 20000){
+  if (numero >=500 && numero <= 425000){
     return true;
   }
   return false;
@@ -724,7 +726,7 @@ function validar_form() {
                 let id_error = "crece-mensaje-invalid-input-"+input.name
                 let label_error = document.getElementById(id_error)
                 label_error.style.display = "block"
-                label_error.innerHTML = "Ingrese un monto entre $2,500 y $20,000"
+                label_error.innerHTML ="Ingrese un monto entre $ 500 y $425,000";
             } else if (input.name === 'tasa' && !validateTasa(input.value)) {
               mostrar_times(input)
               let id_error = "crece-mensaje-invalid-input-"+input.name
