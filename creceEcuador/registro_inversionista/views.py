@@ -437,12 +437,10 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
                 usuario.ingresos.save()
                 
             if usuario.cuenta_bancaria:
-                print('Se Actualiza')
                 usuario.cuenta_bancaria.__dict__.update(cuenta_bancaria)
                 usuario.cuenta_bancaria.banco = banco
                 usuario.cuenta_bancaria.save()
-            else:
-                print('Se crea')
+            else:   
                 usuario.cuenta_bancaria = models.Cuenta_bancaria(**cuenta_bancaria)
                 usuario.cuenta_bancaria.banco = banco
                 usuario.cuenta_bancaria.save()

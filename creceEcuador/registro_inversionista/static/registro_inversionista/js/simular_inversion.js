@@ -620,11 +620,11 @@ function calcular_tabla_inversionista(input_modal,oportunidad,monto) {
 		let fila_numero_cuota = '<td>'+ (i+1) +'</td>'
 		let fila_capital_i= '<td>'+ FORMAT_CURRENCY.format(capital_i)+'</td>'
 		let fila_intereses_i = '<td>'+ FORMAT_CURRENCY.format(interes_i)+'</td>'
-		let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
+		//let fila_comision_total_i = '<td>'+ FORMAT_CURRENCY.format(comision_total_i)+'</td>'
 		let fila_ganancia_i = '<td>'+ FORMAT_CURRENCY.format(ganancia_i)+'</td>'
 
 
-		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i + fila_comision_total_i + fila_ganancia_i
+		let html_fila = fila_numero_cuota + fila_capital_i + fila_intereses_i  + fila_ganancia_i
 
 		fila.innerHTML= html_fila;
 		tabla.appendChild(fila)
