@@ -17,6 +17,21 @@ $(document).ready(function () {
   $("#modificar_canton").keyup(function () {
     $(this).val($(this).val().toUpperCase());
   });
+  
+  
+$("#modificar_nombre").keyup(function () {    
+    $("#modificar_titular").val(
+        $("#modificar_nombre").val() 
+        + " " + 
+        $("#modificar_apellidos").val()
+    );
+  });
+
+$("#modificar_apellidos").keyup(function () {
+  $("#modificar_titular").val(
+    $("#modificar_nombre").val() + " " + $("#modificar_apellidos").val()
+  );
+});
 });
 
 var CSRF_TOKEN = getCookie("csrftoken");

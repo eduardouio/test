@@ -407,7 +407,10 @@ class Proceso_formulario_inversion(generics.CreateAPIView):
         }
 
         cuenta_bancaria = {
-            'titular' : request.data.get("titular"),
+            'titular' : '{} {}'.format(
+                inversionista['nombres'],
+                inversionista['apellidos']
+                ),
             'numero_cuenta' : request.data.get("numero_cuenta"),
             'tipo_cuenta' : request.data.get("tipo_cuenta"),
         }
